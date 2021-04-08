@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,25 @@ class AttestorPublicKeyResponse(dict):
     """
     An attestor public key that will be used to verify attestations signed by this attestor.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asciiArmoredPgpPublicKey":
+            suggest = "ascii_armored_pgp_public_key"
+        elif key == "pkixPublicKey":
+            suggest = "pkix_public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestorPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestorPublicKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestorPublicKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ascii_armored_pgp_public_key: str,
                  comment: str,
@@ -59,9 +78,6 @@ class AttestorPublicKeyResponse(dict):
         A raw PKIX SubjectPublicKeyInfo format public key. NOTE: `id` may be explicitly provided by the caller when using this type of public key, but it MUST be a valid RFC3986 URI. If `id` is left blank, a default one will be computed based on the digest of the DER encoding of the public key.
         """
         return pulumi.get(self, "pkix_public_key")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -106,9 +122,6 @@ class BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -165,15 +178,31 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PkixPublicKeyResponse(dict):
     """
     A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyPem":
+            suggest = "public_key_pem"
+        elif key == "signatureAlgorithm":
+            suggest = "signature_algorithm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PkixPublicKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PkixPublicKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PkixPublicKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_pem: str,
                  signature_algorithm: str):
@@ -201,15 +230,33 @@ class PkixPublicKeyResponse(dict):
         """
         return pulumi.get(self, "signature_algorithm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserOwnedGrafeasNoteResponse(dict):
     """
     An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegationServiceAccountEmail":
+            suggest = "delegation_service_account_email"
+        elif key == "noteReference":
+            suggest = "note_reference"
+        elif key == "publicKeys":
+            suggest = "public_keys"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserOwnedGrafeasNoteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserOwnedGrafeasNoteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserOwnedGrafeasNoteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delegation_service_account_email: str,
                  note_reference: str,
@@ -247,8 +294,5 @@ class UserOwnedGrafeasNoteResponse(dict):
         Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
         """
         return pulumi.get(self, "public_keys")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

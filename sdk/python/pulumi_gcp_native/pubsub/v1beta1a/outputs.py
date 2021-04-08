@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'PushConfigResponse',
@@ -17,6 +17,23 @@ class PushConfigResponse(dict):
     """
     Configuration for a push delivery endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pushEndpoint":
+            suggest = "push_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PushConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PushConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PushConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  push_endpoint: str):
         """
@@ -32,8 +49,5 @@ class PushConfigResponse(dict):
         A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
         """
         return pulumi.get(self, "push_endpoint")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

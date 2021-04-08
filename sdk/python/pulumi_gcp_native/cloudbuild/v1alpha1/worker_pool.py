@@ -5,15 +5,205 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['WorkerPool']
+__all__ = ['WorkerPoolArgs', 'WorkerPool']
+
+@pulumi.input_type
+class WorkerPoolArgs:
+    def __init__(__self__, *,
+                 projects_id: pulumi.Input[str],
+                 worker_pools_id: pulumi.Input[str],
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 delete_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None,
+                 worker_count: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WorkerPool resource.
+        :param pulumi.Input[str] create_time: Time at which the request to create the `WorkerPool` was received.
+        :param pulumi.Input[str] delete_time: Time at which the request to delete the `WorkerPool` was received.
+        :param pulumi.Input[str] name: User-defined name of the `WorkerPool`.
+        :param pulumi.Input[str] project_id: The project ID of the GCP project for which the `WorkerPool` is created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+        :param pulumi.Input[str] service_account_email: The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+        :param pulumi.Input[str] status: WorkerPool Status.
+        :param pulumi.Input[str] update_time: Time at which the request to update the `WorkerPool` was received.
+        :param pulumi.Input['WorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
+        :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
+        """
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "worker_pools_id", worker_pools_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if delete_time is not None:
+            pulumi.set(__self__, "delete_time", delete_time)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if regions is not None:
+            pulumi.set(__self__, "regions", regions)
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+        if worker_config is not None:
+            pulumi.set(__self__, "worker_config", worker_config)
+        if worker_count is not None:
+            pulumi.set(__self__, "worker_count", worker_count)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="workerPoolsId")
+    def worker_pools_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "worker_pools_id")
+
+    @worker_pools_id.setter
+    def worker_pools_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "worker_pools_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the request to create the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deleteTime")
+    def delete_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the request to delete the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "delete_time")
+
+    @delete_time.setter
+    def delete_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "delete_time", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-defined name of the `WorkerPool`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID of the GCP project for which the `WorkerPool` is created.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def regions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
+        """
+        return pulumi.get(self, "regions")
+
+    @regions.setter
+    def regions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "regions", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        WorkerPool Status.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time at which the request to update the `WorkerPool` was received.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> Optional[pulumi.Input['WorkerConfigArgs']]:
+        """
+        Configuration to be used for a creating workers in the `WorkerPool`.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @worker_config.setter
+    def worker_config(self, value: Optional[pulumi.Input['WorkerConfigArgs']]):
+        pulumi.set(self, "worker_config", value)
+
+    @property
+    @pulumi.getter(name="workerCount")
+    def worker_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Total number of workers to be created across all requested regions.
+        """
+        return pulumi.get(self, "worker_count")
+
+    @worker_count.setter
+    def worker_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "worker_count", value)
 
 
 class WorkerPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -48,6 +238,45 @@ class WorkerPool(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`.
         :param pulumi.Input[str] worker_count: Total number of workers to be created across all requested regions.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkerPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a `WorkerPool` to run the builds, and returns the new worker pool.
+
+        :param str resource_name: The name of the resource.
+        :param WorkerPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkerPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 delete_time: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_count: Optional[pulumi.Input[str]] = None,
+                 worker_pools_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -63,24 +292,24 @@ class WorkerPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
-            __props__['create_time'] = create_time
-            __props__['delete_time'] = delete_time
-            __props__['name'] = name
-            __props__['project_id'] = project_id
+            __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["delete_time"] = delete_time
+            __props__.__dict__["name"] = name
+            __props__.__dict__["project_id"] = project_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['regions'] = regions
-            __props__['service_account_email'] = service_account_email
-            __props__['status'] = status
-            __props__['update_time'] = update_time
-            __props__['worker_config'] = worker_config
-            __props__['worker_count'] = worker_count
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["regions"] = regions
+            __props__.__dict__["service_account_email"] = service_account_email
+            __props__.__dict__["status"] = status
+            __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["worker_config"] = worker_config
+            __props__.__dict__["worker_count"] = worker_count
             if worker_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pools_id'")
-            __props__['worker_pools_id'] = worker_pools_id
+            __props__.__dict__["worker_pools_id"] = worker_pools_id
         super(WorkerPool, __self__).__init__(
             'gcp-native:cloudbuild/v1alpha1:WorkerPool',
             resource_name,
@@ -101,18 +330,18 @@ class WorkerPool(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
-        __props__["create_time"] = None
-        __props__["delete_time"] = None
-        __props__["name"] = None
-        __props__["project_id"] = None
-        __props__["regions"] = None
-        __props__["service_account_email"] = None
-        __props__["status"] = None
-        __props__["update_time"] = None
-        __props__["worker_config"] = None
-        __props__["worker_count"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["delete_time"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["project_id"] = None
+        __props__.__dict__["regions"] = None
+        __props__.__dict__["service_account_email"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["update_time"] = None
+        __props__.__dict__["worker_config"] = None
+        __props__.__dict__["worker_count"] = None
         return WorkerPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -194,10 +423,4 @@ class WorkerPool(pulumi.CustomResource):
         Total number of workers to be created across all requested regions.
         """
         return pulumi.get(self, "worker_count")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

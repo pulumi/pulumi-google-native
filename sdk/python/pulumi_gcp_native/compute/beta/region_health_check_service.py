@@ -5,13 +5,262 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['RegionHealthCheckService']
+__all__ = ['RegionHealthCheckServiceArgs', 'RegionHealthCheckService']
+
+@pulumi.input_type
+class RegionHealthCheckServiceArgs:
+    def __init__(__self__, *,
+                 health_check_service: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
+                 health_status_aggregation_strategy: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notification_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a RegionHealthCheckService resource.
+        :param pulumi.Input[str] region: [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] fingerprint: Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
+        :param pulumi.Input[str] health_status_aggregation_policy: Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
+               - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
+               - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        :param pulumi.Input[str] health_status_aggregation_strategy: This field is deprecated. Use health_status_aggregation_policy instead.
+               
+               Policy for how the results from multiple health checks for the same endpoint are aggregated.  
+               - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
+               - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] kind: [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_endpoint_groups: List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_endpoints: List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
+        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
+        """
+        pulumi.set(__self__, "health_check_service", health_check_service)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "region", region)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if health_checks is not None:
+            pulumi.set(__self__, "health_checks", health_checks)
+        if health_status_aggregation_policy is not None:
+            pulumi.set(__self__, "health_status_aggregation_policy", health_status_aggregation_policy)
+        if health_status_aggregation_strategy is not None:
+            pulumi.set(__self__, "health_status_aggregation_strategy", health_status_aggregation_strategy)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network_endpoint_groups is not None:
+            pulumi.set(__self__, "network_endpoint_groups", network_endpoint_groups)
+        if notification_endpoints is not None:
+            pulumi.set(__self__, "notification_endpoints", notification_endpoints)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="healthCheckService")
+    def health_check_service(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "health_check_service")
+
+    @health_check_service.setter
+    def health_check_service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "health_check_service", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a HealthCheckService. An up-to-date fingerprint must be provided in order to patch/update the HealthCheckService; Otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the HealthCheckService.
+        """
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter(name="healthChecks")
+    def health_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of URLs to the HealthCheck resources. Must have at least one HealthCheck, and not more than 10. HealthCheck resources must have portSpecification=USE_SERVING_PORT. For regional HealthCheckService, the HealthCheck must be regional and in the same region. For global HealthCheckService, HealthCheck must be global. Mix of regional and global HealthChecks is not supported. Multiple regional HealthChecks must belong to the same region. Regional HealthChecks</code? must belong to the same region as zones of NEGs.
+        """
+        return pulumi.get(self, "health_checks")
+
+    @health_checks.setter
+    def health_checks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "health_checks", value)
+
+    @property
+    @pulumi.getter(name="healthStatusAggregationPolicy")
+    def health_status_aggregation_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Policy for how the results from multiple health checks for the same endpoint are aggregated. Defaults to NO_AGGREGATION if unspecified.  
+        - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
+        - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        """
+        return pulumi.get(self, "health_status_aggregation_policy")
+
+    @health_status_aggregation_policy.setter
+    def health_status_aggregation_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_status_aggregation_policy", value)
+
+    @property
+    @pulumi.getter(name="healthStatusAggregationStrategy")
+    def health_status_aggregation_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field is deprecated. Use health_status_aggregation_policy instead.
+
+        Policy for how the results from multiple health checks for the same endpoint are aggregated.  
+        - NO_AGGREGATION. An EndpointHealth message is returned for each backend in the health check service. 
+        - AND. If any backend's health check reports UNHEALTHY, then UNHEALTHY is the HealthState of the entire health check service. If all backend's are healthy, the HealthState of the health check service is HEALTHY. .
+        """
+        return pulumi.get(self, "health_status_aggregation_strategy")
+
+    @health_status_aggregation_strategy.setter
+    def health_status_aggregation_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_status_aggregation_strategy", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output only] Type of the resource. Always compute#healthCheckServicefor health check services.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkEndpointGroups")
+    def network_endpoint_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of URLs to the NetworkEndpointGroup resources. Must not have more than 100. For regional HealthCheckService, NEGs must be in zones in the region of the HealthCheckService.
+        """
+        return pulumi.get(self, "network_endpoint_groups")
+
+    @network_endpoint_groups.setter
+    def network_endpoint_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_endpoint_groups", value)
+
+    @property
+    @pulumi.getter(name="notificationEndpoints")
+    def notification_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of URLs to the NotificationEndpoint resources. Must not have more than 10. A list of endpoints for receiving notifications of change in health status. For regional HealthCheckService, NotificationEndpoint must be regional and in the same region. For global HealthCheckService, NotificationEndpoint must be global.
+        """
+        return pulumi.get(self, "notification_endpoints")
+
+    @notification_endpoints.setter
+    def notification_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_endpoints", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
 
 
 class RegionHealthCheckService(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -58,6 +307,48 @@ class RegionHealthCheckService(pulumi.CustomResource):
         :param pulumi.Input[str] region: [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegionHealthCheckServiceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.
+
+        :param str resource_name: The name of the resource.
+        :param RegionHealthCheckServiceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegionHealthCheckServiceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 health_check_service: Optional[pulumi.Input[str]] = None,
+                 health_checks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 health_status_aggregation_policy: Optional[pulumi.Input[str]] = None,
+                 health_status_aggregation_strategy: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 notification_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -73,29 +364,29 @@ class RegionHealthCheckService(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegionHealthCheckServiceArgs.__new__(RegionHealthCheckServiceArgs)
 
-            __props__['creation_timestamp'] = creation_timestamp
-            __props__['description'] = description
-            __props__['fingerprint'] = fingerprint
+            __props__.__dict__["creation_timestamp"] = creation_timestamp
+            __props__.__dict__["description"] = description
+            __props__.__dict__["fingerprint"] = fingerprint
             if health_check_service is None and not opts.urn:
                 raise TypeError("Missing required property 'health_check_service'")
-            __props__['health_check_service'] = health_check_service
-            __props__['health_checks'] = health_checks
-            __props__['health_status_aggregation_policy'] = health_status_aggregation_policy
-            __props__['health_status_aggregation_strategy'] = health_status_aggregation_strategy
-            __props__['id'] = id
-            __props__['kind'] = kind
-            __props__['name'] = name
-            __props__['network_endpoint_groups'] = network_endpoint_groups
-            __props__['notification_endpoints'] = notification_endpoints
+            __props__.__dict__["health_check_service"] = health_check_service
+            __props__.__dict__["health_checks"] = health_checks
+            __props__.__dict__["health_status_aggregation_policy"] = health_status_aggregation_policy
+            __props__.__dict__["health_status_aggregation_strategy"] = health_status_aggregation_strategy
+            __props__.__dict__["id"] = id
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["name"] = name
+            __props__.__dict__["network_endpoint_groups"] = network_endpoint_groups
+            __props__.__dict__["notification_endpoints"] = notification_endpoints
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['self_link'] = self_link
+            __props__.__dict__["region"] = region
+            __props__.__dict__["self_link"] = self_link
         super(RegionHealthCheckService, __self__).__init__(
             'gcp-native:compute/beta:RegionHealthCheckService',
             resource_name,
@@ -116,20 +407,20 @@ class RegionHealthCheckService(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = RegionHealthCheckServiceArgs.__new__(RegionHealthCheckServiceArgs)
 
-        __props__["creation_timestamp"] = None
-        __props__["description"] = None
-        __props__["fingerprint"] = None
-        __props__["health_checks"] = None
-        __props__["health_status_aggregation_policy"] = None
-        __props__["health_status_aggregation_strategy"] = None
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["network_endpoint_groups"] = None
-        __props__["notification_endpoints"] = None
-        __props__["region"] = None
-        __props__["self_link"] = None
+        __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["health_checks"] = None
+        __props__.__dict__["health_status_aggregation_policy"] = None
+        __props__.__dict__["health_status_aggregation_strategy"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["network_endpoint_groups"] = None
+        __props__.__dict__["notification_endpoints"] = None
+        __props__.__dict__["region"] = None
+        __props__.__dict__["self_link"] = None
         return RegionHealthCheckService(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -233,10 +524,4 @@ class RegionHealthCheckService(pulumi.CustomResource):
         [Output Only] Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

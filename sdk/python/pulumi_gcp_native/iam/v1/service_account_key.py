@@ -5,13 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['ServiceAccountKey']
+__all__ = ['ServiceAccountKeyArgs', 'ServiceAccountKey']
+
+@pulumi.input_type
+class ServiceAccountKeyArgs:
+    def __init__(__self__, *,
+                 keys_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 service_accounts_id: pulumi.Input[str],
+                 key_algorithm: Optional[pulumi.Input[str]] = None,
+                 private_key_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ServiceAccountKey resource.
+        :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
+        :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
+        """
+        pulumi.set(__self__, "keys_id", keys_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "service_accounts_id", service_accounts_id)
+        if key_algorithm is not None:
+            pulumi.set(__self__, "key_algorithm", key_algorithm)
+        if private_key_type is not None:
+            pulumi.set(__self__, "private_key_type", private_key_type)
+
+    @property
+    @pulumi.getter(name="keysId")
+    def keys_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "keys_id")
+
+    @keys_id.setter
+    def keys_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keys_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAccountsId")
+    def service_accounts_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_accounts_id")
+
+    @service_accounts_id.setter
+    def service_accounts_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_accounts_id", value)
+
+    @property
+    @pulumi.getter(name="keyAlgorithm")
+    def key_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
+        """
+        return pulumi.get(self, "key_algorithm")
+
+    @key_algorithm.setter
+    def key_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_algorithm", value)
+
+    @property
+    @pulumi.getter(name="privateKeyType")
+    def private_key_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
+        """
+        return pulumi.get(self, "private_key_type")
+
+    @private_key_type.setter
+    def private_key_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_type", value)
 
 
 class ServiceAccountKey(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +104,38 @@ class ServiceAccountKey(pulumi.CustomResource):
         :param pulumi.Input[str] key_algorithm: Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
         :param pulumi.Input[str] private_key_type: The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServiceAccountKeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a ServiceAccountKey.
+
+        :param str resource_name: The name of the resource.
+        :param ServiceAccountKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServiceAccountKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 key_algorithm: Optional[pulumi.Input[str]] = None,
+                 keys_id: Optional[pulumi.Input[str]] = None,
+                 private_key_type: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 service_accounts_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,26 +151,26 @@ class ServiceAccountKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServiceAccountKeyArgs.__new__(ServiceAccountKeyArgs)
 
-            __props__['key_algorithm'] = key_algorithm
+            __props__.__dict__["key_algorithm"] = key_algorithm
             if keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'keys_id'")
-            __props__['keys_id'] = keys_id
-            __props__['private_key_type'] = private_key_type
+            __props__.__dict__["keys_id"] = keys_id
+            __props__.__dict__["private_key_type"] = private_key_type
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if service_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_accounts_id'")
-            __props__['service_accounts_id'] = service_accounts_id
-            __props__['key_origin'] = None
-            __props__['key_type'] = None
-            __props__['name'] = None
-            __props__['private_key_data'] = None
-            __props__['public_key_data'] = None
-            __props__['valid_after_time'] = None
-            __props__['valid_before_time'] = None
+            __props__.__dict__["service_accounts_id"] = service_accounts_id
+            __props__.__dict__["key_origin"] = None
+            __props__.__dict__["key_type"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["private_key_data"] = None
+            __props__.__dict__["public_key_data"] = None
+            __props__.__dict__["valid_after_time"] = None
+            __props__.__dict__["valid_before_time"] = None
         super(ServiceAccountKey, __self__).__init__(
             'gcp-native:iam/v1:ServiceAccountKey',
             resource_name,
@@ -86,17 +191,17 @@ class ServiceAccountKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ServiceAccountKeyArgs.__new__(ServiceAccountKeyArgs)
 
-        __props__["key_algorithm"] = None
-        __props__["key_origin"] = None
-        __props__["key_type"] = None
-        __props__["name"] = None
-        __props__["private_key_data"] = None
-        __props__["private_key_type"] = None
-        __props__["public_key_data"] = None
-        __props__["valid_after_time"] = None
-        __props__["valid_before_time"] = None
+        __props__.__dict__["key_algorithm"] = None
+        __props__.__dict__["key_origin"] = None
+        __props__.__dict__["key_type"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["private_key_data"] = None
+        __props__.__dict__["private_key_type"] = None
+        __props__.__dict__["public_key_data"] = None
+        __props__.__dict__["valid_after_time"] = None
+        __props__.__dict__["valid_before_time"] = None
         return ServiceAccountKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -170,10 +275,4 @@ class ServiceAccountKey(pulumi.CustomResource):
         The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
         """
         return pulumi.get(self, "valid_before_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

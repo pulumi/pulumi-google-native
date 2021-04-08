@@ -5,15 +5,168 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationJobTrigger']
+__all__ = ['OrganizationJobTriggerArgs', 'OrganizationJobTrigger']
+
+@pulumi.input_type
+class OrganizationJobTriggerArgs:
+    def __init__(__self__, *,
+                 job_triggers_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]] = None):
+        """
+        The set of arguments for constructing a OrganizationJobTrigger resource.
+        :param pulumi.Input[str] description: User provided description (max 256 chars)
+        :param pulumi.Input[str] display_name: Display name (max 100 chars)
+        :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: For inspect jobs, a snapshot of the configuration.
+        :param pulumi.Input[str] name: Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        :param pulumi.Input[str] status: Required. A status for this trigger.
+        :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        """
+        pulumi.set(__self__, "job_triggers_id", job_triggers_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if inspect_job is not None:
+            pulumi.set(__self__, "inspect_job", inspect_job)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if trigger_id is not None:
+            pulumi.set(__self__, "trigger_id", trigger_id)
+        if triggers is not None:
+            pulumi.set(__self__, "triggers", triggers)
+
+    @property
+    @pulumi.getter(name="jobTriggersId")
+    def job_triggers_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_triggers_id")
+
+    @job_triggers_id.setter
+    def job_triggers_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_triggers_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        User provided description (max 256 chars)
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name (max 100 chars)
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="inspectJob")
+    def inspect_job(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]:
+        """
+        For inspect jobs, a snapshot of the configuration.
+        """
+        return pulumi.get(self, "inspect_job")
+
+    @inspect_job.setter
+    def inspect_job(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]):
+        pulumi.set(self, "inspect_job", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. A status for this trigger.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
+    @pulumi.getter
+    def triggers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]]:
+        """
+        A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
+        """
+        return pulumi.get(self, "triggers")
+
+    @triggers.setter
+    def triggers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TriggerArgs']]]]):
+        pulumi.set(self, "triggers", value)
 
 
 class OrganizationJobTrigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -43,6 +196,43 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         :param pulumi.Input[str] trigger_id: The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]] triggers: A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationJobTriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationJobTriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationJobTriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 job_triggers_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
+                 triggers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2TriggerArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -58,28 +248,28 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationJobTriggerArgs.__new__(OrganizationJobTriggerArgs)
 
-            __props__['description'] = description
-            __props__['display_name'] = display_name
-            __props__['inspect_job'] = inspect_job
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["inspect_job"] = inspect_job
             if job_triggers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_triggers_id'")
-            __props__['job_triggers_id'] = job_triggers_id
+            __props__.__dict__["job_triggers_id"] = job_triggers_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['status'] = status
-            __props__['trigger_id'] = trigger_id
-            __props__['triggers'] = triggers
-            __props__['create_time'] = None
-            __props__['errors'] = None
-            __props__['last_run_time'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["status"] = status
+            __props__.__dict__["trigger_id"] = trigger_id
+            __props__.__dict__["triggers"] = triggers
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["errors"] = None
+            __props__.__dict__["last_run_time"] = None
+            __props__.__dict__["update_time"] = None
         super(OrganizationJobTrigger, __self__).__init__(
             'gcp-native:dlp/v2:OrganizationJobTrigger',
             resource_name,
@@ -100,18 +290,18 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationJobTriggerArgs.__new__(OrganizationJobTriggerArgs)
 
-        __props__["create_time"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["errors"] = None
-        __props__["inspect_job"] = None
-        __props__["last_run_time"] = None
-        __props__["name"] = None
-        __props__["status"] = None
-        __props__["triggers"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["errors"] = None
+        __props__.__dict__["inspect_job"] = None
+        __props__.__dict__["last_run_time"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["triggers"] = None
+        __props__.__dict__["update_time"] = None
         return OrganizationJobTrigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -193,10 +383,4 @@ class OrganizationJobTrigger(pulumi.CustomResource):
         The last update timestamp of a triggeredJob.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

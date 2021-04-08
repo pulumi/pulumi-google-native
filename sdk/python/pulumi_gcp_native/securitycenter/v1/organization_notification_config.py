@@ -5,15 +5,109 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationNotificationConfig']
+__all__ = ['OrganizationNotificationConfigArgs', 'OrganizationNotificationConfig']
+
+@pulumi.input_type
+class OrganizationNotificationConfigArgs:
+    def __init__(__self__, *,
+                 notification_configs_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 pubsub_topic: Optional[pulumi.Input[str]] = None,
+                 streaming_config: Optional[pulumi.Input['StreamingConfigArgs']] = None):
+        """
+        The set of arguments for constructing a OrganizationNotificationConfig resource.
+        :param pulumi.Input[str] description: The description of the notification config (max of 1024 characters).
+        :param pulumi.Input[str] name: The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        :param pulumi.Input['StreamingConfigArgs'] streaming_config: The config for triggering streaming-based notifications.
+        """
+        pulumi.set(__self__, "notification_configs_id", notification_configs_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if pubsub_topic is not None:
+            pulumi.set(__self__, "pubsub_topic", pubsub_topic)
+        if streaming_config is not None:
+            pulumi.set(__self__, "streaming_config", streaming_config)
+
+    @property
+    @pulumi.getter(name="notificationConfigsId")
+    def notification_configs_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "notification_configs_id")
+
+    @notification_configs_id.setter
+    def notification_configs_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notification_configs_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the notification config (max of 1024 characters).
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="pubsubTopic")
+    def pubsub_topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
+        """
+        return pulumi.get(self, "pubsub_topic")
+
+    @pubsub_topic.setter
+    def pubsub_topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pubsub_topic", value)
+
+    @property
+    @pulumi.getter(name="streamingConfig")
+    def streaming_config(self) -> Optional[pulumi.Input['StreamingConfigArgs']]:
+        """
+        The config for triggering streaming-based notifications.
+        """
+        return pulumi.get(self, "streaming_config")
+
+    @streaming_config.setter
+    def streaming_config(self, value: Optional[pulumi.Input['StreamingConfigArgs']]):
+        pulumi.set(self, "streaming_config", value)
 
 
 class OrganizationNotificationConfig(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +130,39 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
         :param pulumi.Input[str] pubsub_topic: The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
         :param pulumi.Input[pulumi.InputType['StreamingConfigArgs']] streaming_config: The config for triggering streaming-based notifications.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationNotificationConfigArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a notification config.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationNotificationConfigArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationNotificationConfigArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 notification_configs_id: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 pubsub_topic: Optional[pulumi.Input[str]] = None,
+                 streaming_config: Optional[pulumi.Input[pulumi.InputType['StreamingConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,19 +178,19 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationNotificationConfigArgs.__new__(OrganizationNotificationConfigArgs)
 
-            __props__['description'] = description
-            __props__['name'] = name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
             if notification_configs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'notification_configs_id'")
-            __props__['notification_configs_id'] = notification_configs_id
+            __props__.__dict__["notification_configs_id"] = notification_configs_id
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['pubsub_topic'] = pubsub_topic
-            __props__['streaming_config'] = streaming_config
-            __props__['service_account'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["pubsub_topic"] = pubsub_topic
+            __props__.__dict__["streaming_config"] = streaming_config
+            __props__.__dict__["service_account"] = None
         super(OrganizationNotificationConfig, __self__).__init__(
             'gcp-native:securitycenter/v1:OrganizationNotificationConfig',
             resource_name,
@@ -84,13 +211,13 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationNotificationConfigArgs.__new__(OrganizationNotificationConfigArgs)
 
-        __props__["description"] = None
-        __props__["name"] = None
-        __props__["pubsub_topic"] = None
-        __props__["service_account"] = None
-        __props__["streaming_config"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["pubsub_topic"] = None
+        __props__.__dict__["service_account"] = None
+        __props__.__dict__["streaming_config"] = None
         return OrganizationNotificationConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -132,10 +259,4 @@ class OrganizationNotificationConfig(pulumi.CustomResource):
         The config for triggering streaming-based notifications.
         """
         return pulumi.get(self, "streaming_config")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

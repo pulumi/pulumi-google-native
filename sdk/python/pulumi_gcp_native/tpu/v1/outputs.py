@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'NetworkEndpointResponse',
@@ -19,6 +19,23 @@ class NetworkEndpointResponse(dict):
     """
     A network endpoint over which a TPU worker can be reached.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: str,
                  port: int):
@@ -45,9 +62,6 @@ class NetworkEndpointResponse(dict):
         The port of this network endpoint.
         """
         return pulumi.get(self, "port")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -82,15 +96,33 @@ class SchedulingConfigResponse(dict):
         """
         return pulumi.get(self, "reserved")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SymptomResponse(dict):
     """
     A Symptom instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "symptomType":
+            suggest = "symptom_type"
+        elif key == "workerId":
+            suggest = "worker_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SymptomResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SymptomResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SymptomResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  details: str,
@@ -139,8 +171,5 @@ class SymptomResponse(dict):
         A string used to uniquely distinguish a worker within a TPU node.
         """
         return pulumi.get(self, "worker_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

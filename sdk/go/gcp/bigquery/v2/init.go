@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:bigquery/v2:Dataset":
-		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dataset{}
 	case "gcp-native:bigquery/v2:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &Job{}
 	case "gcp-native:bigquery/v2:Routine":
-		r, err = NewRoutine(ctx, name, nil, pulumi.URN_(urn))
+		r = &Routine{}
 	case "gcp-native:bigquery/v2:RowAccessPolicyIamPolicy":
-		r, err = NewRowAccessPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RowAccessPolicyIamPolicy{}
 	case "gcp-native:bigquery/v2:Table":
-		r, err = NewTable(ctx, name, nil, pulumi.URN_(urn))
+		r = &Table{}
 	case "gcp-native:bigquery/v2:TableIamPolicy":
-		r, err = NewTableIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TableIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

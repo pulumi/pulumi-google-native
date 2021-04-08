@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:vision/v1:Product":
-		r, err = NewProduct(ctx, name, nil, pulumi.URN_(urn))
+		r = &Product{}
 	case "gcp-native:vision/v1:ProductReferenceImage":
-		r, err = NewProductReferenceImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProductReferenceImage{}
 	case "gcp-native:vision/v1:ProductSet":
-		r, err = NewProductSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProductSet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

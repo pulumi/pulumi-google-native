@@ -5,13 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Gateway']
+__all__ = ['GatewayArgs', 'Gateway']
+
+@pulumi.input_type
+class GatewayArgs:
+    def __init__(__self__, *,
+                 gateways_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 api_config: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Gateway resource.
+        :param pulumi.Input[str] api_config: Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        :param pulumi.Input[str] display_name: Optional. Display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        """
+        pulumi.set(__self__, "gateways_id", gateways_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if api_config is not None:
+            pulumi.set(__self__, "api_config", api_config)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="gatewaysId")
+    def gateways_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gateways_id")
+
+    @gateways_id.setter
+    def gateways_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gateways_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="apiConfig")
+    def api_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        """
+        return pulumi.get(self, "api_config")
+
+    @api_config.setter
+    def api_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_config", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
 
 class Gateway(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -33,6 +122,39 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GatewayArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Gateway in a given project and location.
+
+        :param str resource_name: The name of the resource.
+        :param GatewayArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GatewayArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_config: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gateways_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -48,25 +170,25 @@ class Gateway(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GatewayArgs.__new__(GatewayArgs)
 
-            __props__['api_config'] = api_config
-            __props__['display_name'] = display_name
+            __props__.__dict__["api_config"] = api_config
+            __props__.__dict__["display_name"] = display_name
             if gateways_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateways_id'")
-            __props__['gateways_id'] = gateways_id
-            __props__['labels'] = labels
+            __props__.__dict__["gateways_id"] = gateways_id
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['create_time'] = None
-            __props__['default_hostname'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["default_hostname"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["update_time"] = None
         super(Gateway, __self__).__init__(
             'gcp-native:apigateway/v1:Gateway',
             resource_name,
@@ -87,16 +209,16 @@ class Gateway(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = GatewayArgs.__new__(GatewayArgs)
 
-        __props__["api_config"] = None
-        __props__["create_time"] = None
-        __props__["default_hostname"] = None
-        __props__["display_name"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["api_config"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["default_hostname"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["update_time"] = None
         return Gateway(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -162,10 +284,4 @@ class Gateway(pulumi.CustomResource):
         Updated time.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

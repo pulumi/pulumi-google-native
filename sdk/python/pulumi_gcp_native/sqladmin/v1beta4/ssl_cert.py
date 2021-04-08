@@ -5,13 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['SslCert']
+__all__ = ['SslCertArgs', 'SslCert']
+
+@pulumi.input_type
+class SslCertArgs:
+    def __init__(__self__, *,
+                 instance: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 sha1_fingerprint: pulumi.Input[str],
+                 common_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SslCert resource.
+        :param pulumi.Input[str] common_name: User supplied name. Must be a distinct name from the other certificates for this instance.
+        """
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "sha1_fingerprint", sha1_fingerprint)
+        if common_name is not None:
+            pulumi.set(__self__, "common_name", common_name)
+
+    @property
+    @pulumi.getter
+    def instance(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance")
+
+    @instance.setter
+    def instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="sha1Fingerprint")
+    def sha1_fingerprint(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sha1_fingerprint")
+
+    @sha1_fingerprint.setter
+    def sha1_fingerprint(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sha1_fingerprint", value)
+
+    @property
+    @pulumi.getter(name="commonName")
+    def common_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User supplied name. Must be a distinct name from the other certificates for this instance.
+        """
+        return pulumi.get(self, "common_name")
+
+    @common_name.setter
+    def common_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "common_name", value)
 
 
 class SslCert(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -29,6 +86,37 @@ class SslCert(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] common_name: User supplied name. Must be a distinct name from the other certificates for this instance.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SslCertArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
+
+        :param str resource_name: The name of the resource.
+        :param SslCertArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SslCertArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 common_name: Optional[pulumi.Input[str]] = None,
+                 instance: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 sha1_fingerprint: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -44,24 +132,24 @@ class SslCert(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SslCertArgs.__new__(SslCertArgs)
 
-            __props__['common_name'] = common_name
+            __props__.__dict__["common_name"] = common_name
             if instance is None and not opts.urn:
                 raise TypeError("Missing required property 'instance'")
-            __props__['instance'] = instance
+            __props__.__dict__["instance"] = instance
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if sha1_fingerprint is None and not opts.urn:
                 raise TypeError("Missing required property 'sha1_fingerprint'")
-            __props__['sha1_fingerprint'] = sha1_fingerprint
-            __props__['cert'] = None
-            __props__['cert_serial_number'] = None
-            __props__['create_time'] = None
-            __props__['expiration_time'] = None
-            __props__['kind'] = None
-            __props__['self_link'] = None
+            __props__.__dict__["sha1_fingerprint"] = sha1_fingerprint
+            __props__.__dict__["cert"] = None
+            __props__.__dict__["cert_serial_number"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["expiration_time"] = None
+            __props__.__dict__["kind"] = None
+            __props__.__dict__["self_link"] = None
         super(SslCert, __self__).__init__(
             'gcp-native:sqladmin/v1beta4:SslCert',
             resource_name,
@@ -82,17 +170,17 @@ class SslCert(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SslCertArgs.__new__(SslCertArgs)
 
-        __props__["cert"] = None
-        __props__["cert_serial_number"] = None
-        __props__["common_name"] = None
-        __props__["create_time"] = None
-        __props__["expiration_time"] = None
-        __props__["instance"] = None
-        __props__["kind"] = None
-        __props__["self_link"] = None
-        __props__["sha1_fingerprint"] = None
+        __props__.__dict__["cert"] = None
+        __props__.__dict__["cert_serial_number"] = None
+        __props__.__dict__["common_name"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["expiration_time"] = None
+        __props__.__dict__["instance"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["self_link"] = None
+        __props__.__dict__["sha1_fingerprint"] = None
         return SslCert(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -166,10 +254,4 @@ class SslCert(pulumi.CustomResource):
         Sha1 Fingerprint.
         """
         return pulumi.get(self, "sha1_fingerprint")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

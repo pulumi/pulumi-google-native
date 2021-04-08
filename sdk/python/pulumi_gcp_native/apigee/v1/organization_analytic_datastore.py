@@ -5,15 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationAnalyticDatastore']
+__all__ = ['OrganizationAnalyticDatastoreArgs', 'OrganizationAnalyticDatastore']
+
+@pulumi.input_type
+class OrganizationAnalyticDatastoreArgs:
+    def __init__(__self__, *,
+                 datastores_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 datastore_config: Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 target_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationAnalyticDatastore resource.
+        :param pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs'] datastore_config: Datastore Configurations.
+        :param pulumi.Input[str] display_name: Required. Display name in UI
+        :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
+        """
+        pulumi.set(__self__, "datastores_id", datastores_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if datastore_config is not None:
+            pulumi.set(__self__, "datastore_config", datastore_config)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="datastoresId")
+    def datastores_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datastores_id")
+
+    @datastores_id.setter
+    def datastores_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datastores_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="datastoreConfig")
+    def datastore_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']]:
+        """
+        Datastore Configurations.
+        """
+        return pulumi.get(self, "datastore_config")
+
+    @datastore_config.setter
+    def datastore_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']]):
+        pulumi.set(self, "datastore_config", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Display name in UI
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Destination storage type. Supported types `gcs` or `bigquery`.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_type", value)
 
 
 class OrganizationAnalyticDatastore(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +112,38 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Required. Display name in UI
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationAnalyticDatastoreArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Datastore for an org
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationAnalyticDatastoreArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationAnalyticDatastoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 datastore_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']]] = None,
+                 datastores_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 target_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -49,21 +159,21 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationAnalyticDatastoreArgs.__new__(OrganizationAnalyticDatastoreArgs)
 
-            __props__['datastore_config'] = datastore_config
+            __props__.__dict__["datastore_config"] = datastore_config
             if datastores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datastores_id'")
-            __props__['datastores_id'] = datastores_id
-            __props__['display_name'] = display_name
+            __props__.__dict__["datastores_id"] = datastores_id
+            __props__.__dict__["display_name"] = display_name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['target_type'] = target_type
-            __props__['create_time'] = None
-            __props__['last_update_time'] = None
-            __props__['org'] = None
-            __props__['self'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["target_type"] = target_type
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["last_update_time"] = None
+            __props__.__dict__["org"] = None
+            __props__.__dict__["self"] = None
         super(OrganizationAnalyticDatastore, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationAnalyticDatastore',
             resource_name,
@@ -84,15 +194,15 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationAnalyticDatastoreArgs.__new__(OrganizationAnalyticDatastoreArgs)
 
-        __props__["create_time"] = None
-        __props__["datastore_config"] = None
-        __props__["display_name"] = None
-        __props__["last_update_time"] = None
-        __props__["org"] = None
-        __props__["self"] = None
-        __props__["target_type"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["datastore_config"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["last_update_time"] = None
+        __props__.__dict__["org"] = None
+        __props__.__dict__["self"] = None
+        __props__.__dict__["target_type"] = None
         return OrganizationAnalyticDatastore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -150,10 +260,4 @@ class OrganizationAnalyticDatastore(pulumi.CustomResource):
         Destination storage type. Supported types `gcs` or `bigquery`.
         """
         return pulumi.get(self, "target_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

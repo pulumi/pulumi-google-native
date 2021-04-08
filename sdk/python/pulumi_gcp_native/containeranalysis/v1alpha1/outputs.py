@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -103,15 +103,29 @@ class ArtifactResponse(dict):
         """
         return pulumi.get(self, "names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttestationAuthorityHintResponse(dict):
     """
     This submessage provides human-readable hints about the purpose of the AttestationAuthority. Because the name of a Note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should NOT be used to look up AttestationAuthorities in security sensitive contexts, such as when looking up Attestations to verify.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "humanReadableName":
+            suggest = "human_readable_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestationAuthorityHintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestationAuthorityHintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestationAuthorityHintResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  human_readable_name: str):
         """
@@ -127,9 +141,6 @@ class AttestationAuthorityHintResponse(dict):
         The human readable name of this Attestation Authority, for example "qa".
         """
         return pulumi.get(self, "human_readable_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -149,15 +160,29 @@ class AttestationAuthorityResponse(dict):
     def hint(self) -> 'outputs.AttestationAuthorityHintResponse':
         return pulumi.get(self, "hint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttestationResponse(dict):
     """
     Occurrence that represents a single "attestation". The authenticity of an Attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the AttestationAuthority to which this Attestation is attached is primarily useful for look-up (how to find this Attestation if you already know the Authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pgpSignedAttestation":
+            suggest = "pgp_signed_attestation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttestationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttestationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttestationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pgp_signed_attestation: 'outputs.PgpSignedAttestationResponse'):
         """
@@ -170,15 +195,29 @@ class AttestationResponse(dict):
     def pgp_signed_attestation(self) -> 'outputs.PgpSignedAttestationResponse':
         return pulumi.get(self, "pgp_signed_attestation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasisResponse(dict):
     """
     Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceUrl":
+            suggest = "resource_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasisResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasisResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasisResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fingerprint: 'outputs.FingerprintResponse',
                  resource_url: str):
@@ -205,9 +244,6 @@ class BasisResponse(dict):
         The resource_url for the resource representing the basis of associated occurrence images.
         """
         return pulumi.get(self, "resource_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -253,15 +289,29 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BuildDetailsResponse(dict):
     """
     Message encapsulating build provenance details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provenanceBytes":
+            suggest = "provenance_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  provenance: 'outputs.BuildProvenanceResponse',
                  provenance_bytes: str):
@@ -289,15 +339,47 @@ class BuildDetailsResponse(dict):
         """
         return pulumi.get(self, "provenance_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BuildProvenanceResponse(dict):
     """
     Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buildOptions":
+            suggest = "build_options"
+        elif key == "builderVersion":
+            suggest = "builder_version"
+        elif key == "builtArtifacts":
+            suggest = "built_artifacts"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "finishTime":
+            suggest = "finish_time"
+        elif key == "logsBucket":
+            suggest = "logs_bucket"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "sourceProvenance":
+            suggest = "source_provenance"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "triggerId":
+            suggest = "trigger_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildProvenanceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildProvenanceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildProvenanceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  build_options: Mapping[str, str],
                  builder_version: str,
@@ -435,15 +517,33 @@ class BuildProvenanceResponse(dict):
         """
         return pulumi.get(self, "trigger_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BuildSignatureResponse(dict):
     """
     Message encapsulating the signature of the verified build.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+        elif key == "keyType":
+            suggest = "key_type"
+        elif key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildSignatureResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildSignatureResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildSignatureResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_id: str,
                  key_type: str,
@@ -493,15 +593,29 @@ class BuildSignatureResponse(dict):
         """
         return pulumi.get(self, "signature")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BuildTypeResponse(dict):
     """
     Note holding the version of the provider's builder and the signature of the provenance message in linked BuildDetails.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builderVersion":
+            suggest = "builder_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BuildTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BuildTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BuildTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  builder_version: str,
                  signature: 'outputs.BuildSignatureResponse'):
@@ -529,15 +643,29 @@ class BuildTypeResponse(dict):
         """
         return pulumi.get(self, "signature")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CommandResponse(dict):
     """
     Command describes a step performed as part of the build pipeline.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "waitFor":
+            suggest = "wait_for"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CommandResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CommandResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CommandResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  args: Sequence[str],
                  dir: str,
@@ -598,15 +726,29 @@ class CommandResponse(dict):
         """
         return pulumi.get(self, "wait_for")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeployableResponse(dict):
     """
     An artifact that can be deployed in some runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceUri":
+            suggest = "resource_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeployableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeployableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeployableResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_uri: Sequence[str]):
         """
@@ -623,15 +765,35 @@ class DeployableResponse(dict):
         """
         return pulumi.get(self, "resource_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeploymentResponse(dict):
     """
     The period during which some deployable was active in a runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployTime":
+            suggest = "deploy_time"
+        elif key == "resourceUri":
+            suggest = "resource_uri"
+        elif key == "undeployTime":
+            suggest = "undeploy_time"
+        elif key == "userEmail":
+            suggest = "user_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeploymentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeploymentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeploymentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: str,
                  config: str,
@@ -714,15 +876,31 @@ class DeploymentResponse(dict):
         """
         return pulumi.get(self, "user_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DerivedResponse(dict):
     """
     Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseResourceUrl":
+            suggest = "base_resource_url"
+        elif key == "layerInfo":
+            suggest = "layer_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DerivedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DerivedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DerivedResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_resource_url: str,
                  distance: int,
@@ -772,15 +950,41 @@ class DerivedResponse(dict):
         """
         return pulumi.get(self, "layer_info")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DetailResponse(dict):
     """
     Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "fixedLocation":
+            suggest = "fixed_location"
+        elif key == "isObsolete":
+            suggest = "is_obsolete"
+        elif key == "maxAffectedVersion":
+            suggest = "max_affected_version"
+        elif key == "minAffectedVersion":
+            suggest = "min_affected_version"
+        elif key == "packageType":
+            suggest = "package_type"
+        elif key == "severityName":
+            suggest = "severity_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpe_uri: str,
                  description: str,
@@ -896,15 +1100,33 @@ class DetailResponse(dict):
         """
         return pulumi.get(self, "source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiscoveredResponse(dict):
     """
     Provides information about the scan status of a discovered resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysisStatus":
+            suggest = "analysis_status"
+        elif key == "analysisStatusError":
+            suggest = "analysis_status_error"
+        elif key == "continuousAnalysis":
+            suggest = "continuous_analysis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiscoveredResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiscoveredResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiscoveredResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
@@ -965,15 +1187,29 @@ class DiscoveredResponse(dict):
         """
         return pulumi.get(self, "operation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiscoveryResponse(dict):
     """
     A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysisKind":
+            suggest = "analysis_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiscoveryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiscoveryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiscoveryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  analysis_kind: str):
         """
@@ -990,15 +1226,31 @@ class DiscoveryResponse(dict):
         """
         return pulumi.get(self, "analysis_kind")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributionResponse(dict):
     """
     This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+        elif key == "latestVersion":
+            suggest = "latest_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  architecture: str,
                  cpe_uri: str,
@@ -1070,9 +1322,6 @@ class DistributionResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExprResponse(dict):
@@ -1128,15 +1377,33 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FingerprintResponse(dict):
     """
     A set of properties that uniquely identify a given Docker image.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "v1Name":
+            suggest = "v1_name"
+        elif key == "v2Blob":
+            suggest = "v2_blob"
+        elif key == "v2Name":
+            suggest = "v2_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FingerprintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FingerprintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FingerprintResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  v1_name: str,
                  v2_blob: Sequence[str],
@@ -1175,9 +1442,6 @@ class FingerprintResponse(dict):
         """
         return pulumi.get(self, "v2_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse(dict):
@@ -1211,15 +1475,33 @@ class GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse(dict):
     """
     A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aliasContext":
+            suggest = "alias_context"
+        elif key == "repoId":
+            suggest = "repo_id"
+        elif key == "revisionId":
+            suggest = "revision_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias_context: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse',
                  repo_id: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse',
@@ -1258,15 +1540,35 @@ class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse(dict
         """
         return pulumi.get(self, "revision_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse(dict):
     """
     A SourceContext referring to a Gerrit project.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aliasContext":
+            suggest = "alias_context"
+        elif key == "gerritProject":
+            suggest = "gerrit_project"
+        elif key == "hostUri":
+            suggest = "host_uri"
+        elif key == "revisionId":
+            suggest = "revision_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias_context: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1AliasContextResponse',
                  gerrit_project: str,
@@ -1316,15 +1618,29 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse(dict):
         """
         return pulumi.get(self, "revision_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse(dict):
     """
     A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "revisionId":
+            suggest = "revision_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  revision_id: str,
                  url: str):
@@ -1352,15 +1668,31 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(dict):
     """
     Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "repoName":
+            suggest = "repo_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_id: str,
                  repo_name: str):
@@ -1388,15 +1720,29 @@ class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(dict):
         """
         return pulumi.get(self, "repo_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse(dict):
     """
     A unique identifier for a Cloud Repo.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectRepoId":
+            suggest = "project_repo_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  project_repo_id: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse',
                  uid: str):
@@ -1424,15 +1770,29 @@ class GoogleDevtoolsContaineranalysisV1alpha1RepoIdResponse(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse(dict):
     """
     A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRepo":
+            suggest = "cloud_repo"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_repo: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextResponse',
                  gerrit: 'outputs.GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponse',
@@ -1482,9 +1842,6 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HashResponse(dict):
@@ -1517,9 +1874,6 @@ class HashResponse(dict):
         The hash value.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1554,9 +1908,6 @@ class InstallationResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LayerResponse(dict):
@@ -1590,15 +1941,29 @@ class LayerResponse(dict):
         """
         return pulumi.get(self, "directive")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocationResponse(dict):
     """
     An occurrence of a particular package installation found within a system's filesystem. e.g. glibc was found in /var/lib/dpkg/status
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpe_uri: str,
                  path: str,
@@ -1636,9 +2001,6 @@ class LocationResponse(dict):
         The version installed at this location.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1706,15 +2068,33 @@ class OperationResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PackageIssueResponse(dict):
     """
     This message wraps a location affected by a vulnerability and its associated fix (if one is available).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "affectedLocation":
+            suggest = "affected_location"
+        elif key == "fixedLocation":
+            suggest = "fixed_location"
+        elif key == "severityName":
+            suggest = "severity_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PackageIssueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PackageIssueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PackageIssueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  affected_location: 'outputs.VulnerabilityLocationResponse',
                  fixed_location: 'outputs.VulnerabilityLocationResponse',
@@ -1749,9 +2129,6 @@ class PackageIssueResponse(dict):
     def severity_name(self) -> str:
         return pulumi.get(self, "severity_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PackageResponse(dict):
@@ -1785,15 +2162,31 @@ class PackageResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PgpSignedAttestationResponse(dict):
     """
     An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentType":
+            suggest = "content_type"
+        elif key == "pgpKeyId":
+            suggest = "pgp_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PgpSignedAttestationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PgpSignedAttestationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PgpSignedAttestationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_type: str,
                  pgp_key_id: str,
@@ -1832,9 +2225,6 @@ class PgpSignedAttestationResponse(dict):
         """
         return pulumi.get(self, "signature")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RelatedUrlResponse(dict):
@@ -1868,15 +2258,37 @@ class RelatedUrlResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RepoSourceResponse(dict):
     """
     RepoSource describes the location of the source in a Google Cloud Source Repository.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "branchName":
+            suggest = "branch_name"
+        elif key == "commitSha":
+            suggest = "commit_sha"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "repoName":
+            suggest = "repo_name"
+        elif key == "tagName":
+            suggest = "tag_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepoSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepoSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepoSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  branch_name: str,
                  commit_sha: str,
@@ -1937,15 +2349,29 @@ class RepoSourceResponse(dict):
         """
         return pulumi.get(self, "tag_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceResponse(dict):
     """
      Resource is an entity that can have metadata. E.g., a Docker image.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentHash":
+            suggest = "content_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_hash: 'outputs.HashResponse',
                  name: str,
@@ -1984,15 +2410,37 @@ class ResourceResponse(dict):
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceResponse(dict):
     """
     Source describes the location of the source used for the build.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalContexts":
+            suggest = "additional_contexts"
+        elif key == "artifactStorageSource":
+            suggest = "artifact_storage_source"
+        elif key == "fileHashes":
+            suggest = "file_hashes"
+        elif key == "repoSource":
+            suggest = "repo_source"
+        elif key == "storageSource":
+            suggest = "storage_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_contexts: Sequence['outputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponse'],
                  artifact_storage_source: 'outputs.StorageSourceResponse',
@@ -2064,9 +2512,6 @@ class SourceResponse(dict):
         """
         return pulumi.get(self, "storage_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatusResponse(dict):
@@ -2110,9 +2555,6 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2158,15 +2600,29 @@ class StorageSourceResponse(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UpgradeDistributionResponse(dict):
     """
     The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeDistributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeDistributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeDistributionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  classification: str,
                  cpe_uri: str,
@@ -2216,9 +2672,6 @@ class UpgradeDistributionResponse(dict):
         """
         return pulumi.get(self, "severity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UpgradeNoteResponse(dict):
@@ -2263,15 +2716,29 @@ class UpgradeNoteResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UpgradeOccurrenceResponse(dict):
     """
     An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parsedVersion":
+            suggest = "parsed_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution: 'outputs.UpgradeDistributionResponse',
                  package: str,
@@ -2309,9 +2776,6 @@ class UpgradeOccurrenceResponse(dict):
         Required - The version of the package in a machine + human readable form.
         """
         return pulumi.get(self, "parsed_version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2379,15 +2843,33 @@ class VersionResponse(dict):
         """
         return pulumi.get(self, "revision")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VulnerabilityDetailsResponse(dict):
     """
     Used by Occurrence to point to where the vulnerability exists and how to fix it.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cvssScore":
+            suggest = "cvss_score"
+        elif key == "effectiveSeverity":
+            suggest = "effective_severity"
+        elif key == "packageIssue":
+            suggest = "package_issue"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VulnerabilityDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VulnerabilityDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cvss_score: float,
                  effective_severity: str,
@@ -2448,15 +2930,29 @@ class VulnerabilityDetailsResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VulnerabilityLocationResponse(dict):
     """
     The location of the vulnerability
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityLocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VulnerabilityLocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VulnerabilityLocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpe_uri: str,
                  package: str,
@@ -2495,15 +2991,29 @@ class VulnerabilityLocationResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VulnerabilityTypeResponse(dict):
     """
     VulnerabilityType provides metadata about a security vulnerability.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cvssScore":
+            suggest = "cvss_score"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VulnerabilityTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VulnerabilityTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VulnerabilityTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cvss_score: float,
                  details: Sequence['outputs.DetailResponse'],
@@ -2541,8 +3051,5 @@ class VulnerabilityTypeResponse(dict):
         Note provider assigned impact of the vulnerability
         """
         return pulumi.get(self, "severity")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:firebase/v1beta1:AndroidApp":
-		r, err = NewAndroidApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &AndroidApp{}
 	case "gcp-native:firebase/v1beta1:IosApp":
-		r, err = NewIosApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &IosApp{}
 	case "gcp-native:firebase/v1beta1:WebApp":
-		r, err = NewWebApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &WebApp{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

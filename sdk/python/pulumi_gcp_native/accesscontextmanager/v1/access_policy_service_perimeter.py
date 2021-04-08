@@ -5,15 +5,157 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AccessPolicyServicePerimeter']
+__all__ = ['AccessPolicyServicePerimeterArgs', 'AccessPolicyServicePerimeter']
+
+@pulumi.input_type
+class AccessPolicyServicePerimeterArgs:
+    def __init__(__self__, *,
+                 access_policies_id: pulumi.Input[str],
+                 service_perimeters_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
+                 status: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a AccessPolicyServicePerimeter resource.
+        :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
+        :param pulumi.Input[str] name: Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        :param pulumi.Input[str] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        :param pulumi.Input['ServicePerimeterConfigArgs'] spec: Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
+        :param pulumi.Input['ServicePerimeterConfigArgs'] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
+        :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
+        :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
+        """
+        pulumi.set(__self__, "access_policies_id", access_policies_id)
+        pulumi.set(__self__, "service_perimeters_id", service_perimeters_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if perimeter_type is not None:
+            pulumi.set(__self__, "perimeter_type", perimeter_type)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+        if use_explicit_dry_run_spec is not None:
+            pulumi.set(__self__, "use_explicit_dry_run_spec", use_explicit_dry_run_spec)
+
+    @property
+    @pulumi.getter(name="accessPoliciesId")
+    def access_policies_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_policies_id")
+
+    @access_policies_id.setter
+    def access_policies_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_policies_id", value)
+
+    @property
+    @pulumi.getter(name="servicePerimetersId")
+    def service_perimeters_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_perimeters_id")
+
+    @service_perimeters_id.setter
+    def service_perimeters_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_perimeters_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the `ServicePerimeter` and its use. Does not affect behavior.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="perimeterType")
+    def perimeter_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
+        """
+        return pulumi.get(self, "perimeter_type")
+
+    @perimeter_type.setter
+    def perimeter_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "perimeter_type", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['ServicePerimeterConfigArgs']]:
+        """
+        Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['ServicePerimeterConfigArgs']]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['ServicePerimeterConfigArgs']]:
+        """
+        Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['ServicePerimeterConfigArgs']]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Human readable title. Must be unique within the Policy.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter(name="useExplicitDryRunSpec")
+    def use_explicit_dry_run_spec(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
+        """
+        return pulumi.get(self, "use_explicit_dry_run_spec")
+
+    @use_explicit_dry_run_spec.setter
+    def use_explicit_dry_run_spec(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_explicit_dry_run_spec", value)
 
 
 class AccessPolicyServicePerimeter(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -42,6 +184,42 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessPolicyServicePerimeterArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
+
+        :param str resource_name: The name of the resource.
+        :param AccessPolicyServicePerimeterArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyServicePerimeterArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policies_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 perimeter_type: Optional[pulumi.Input[str]] = None,
+                 service_perimeters_id: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
+                 status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 use_explicit_dry_run_spec: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -57,21 +235,21 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessPolicyServicePerimeterArgs.__new__(AccessPolicyServicePerimeterArgs)
 
             if access_policies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_policies_id'")
-            __props__['access_policies_id'] = access_policies_id
-            __props__['description'] = description
-            __props__['name'] = name
-            __props__['perimeter_type'] = perimeter_type
+            __props__.__dict__["access_policies_id"] = access_policies_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["name"] = name
+            __props__.__dict__["perimeter_type"] = perimeter_type
             if service_perimeters_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_perimeters_id'")
-            __props__['service_perimeters_id'] = service_perimeters_id
-            __props__['spec'] = spec
-            __props__['status'] = status
-            __props__['title'] = title
-            __props__['use_explicit_dry_run_spec'] = use_explicit_dry_run_spec
+            __props__.__dict__["service_perimeters_id"] = service_perimeters_id
+            __props__.__dict__["spec"] = spec
+            __props__.__dict__["status"] = status
+            __props__.__dict__["title"] = title
+            __props__.__dict__["use_explicit_dry_run_spec"] = use_explicit_dry_run_spec
         super(AccessPolicyServicePerimeter, __self__).__init__(
             'gcp-native:accesscontextmanager/v1:AccessPolicyServicePerimeter',
             resource_name,
@@ -92,15 +270,15 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AccessPolicyServicePerimeterArgs.__new__(AccessPolicyServicePerimeterArgs)
 
-        __props__["description"] = None
-        __props__["name"] = None
-        __props__["perimeter_type"] = None
-        __props__["spec"] = None
-        __props__["status"] = None
-        __props__["title"] = None
-        __props__["use_explicit_dry_run_spec"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["perimeter_type"] = None
+        __props__.__dict__["spec"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["title"] = None
+        __props__.__dict__["use_explicit_dry_run_spec"] = None
         return AccessPolicyServicePerimeter(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -158,10 +336,4 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
         Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
         """
         return pulumi.get(self, "use_explicit_dry_run_spec")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

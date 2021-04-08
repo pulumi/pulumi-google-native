@@ -5,15 +5,216 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Routine']
+__all__ = ['RoutineArgs', 'Routine']
+
+@pulumi.input_type
+class RoutineArgs:
+    def __init__(__self__, *,
+                 datasets_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 routines_id: pulumi.Input[str],
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]] = None,
+                 definition_body: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 determinism_level: Optional[pulumi.Input[str]] = None,
+                 imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
+                 return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
+                 routine_reference: Optional[pulumi.Input['RoutineReferenceArgs']] = None,
+                 routine_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Routine resource.
+        :param pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]] arguments: Optional.
+        :param pulumi.Input[str] definition_body: Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        :param pulumi.Input[str] description: Optional. [Experimental] The description of the routine if defined.
+        :param pulumi.Input[str] determinism_level: Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
+        :param pulumi.Input[str] language: Optional. Defaults to "SQL".
+        :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
+        :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input['RoutineReferenceArgs'] routine_reference: Required. Reference describing the ID of this routine.
+        :param pulumi.Input[str] routine_type: Required. The type of routine.
+        """
+        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "routines_id", routines_id)
+        if arguments is not None:
+            pulumi.set(__self__, "arguments", arguments)
+        if definition_body is not None:
+            pulumi.set(__self__, "definition_body", definition_body)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if determinism_level is not None:
+            pulumi.set(__self__, "determinism_level", determinism_level)
+        if imported_libraries is not None:
+            pulumi.set(__self__, "imported_libraries", imported_libraries)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
+        if return_table_type is not None:
+            pulumi.set(__self__, "return_table_type", return_table_type)
+        if return_type is not None:
+            pulumi.set(__self__, "return_type", return_type)
+        if routine_reference is not None:
+            pulumi.set(__self__, "routine_reference", routine_reference)
+        if routine_type is not None:
+            pulumi.set(__self__, "routine_type", routine_type)
+
+    @property
+    @pulumi.getter(name="datasetsId")
+    def datasets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasets_id")
+
+    @datasets_id.setter
+    def datasets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasets_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="routinesId")
+    def routines_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "routines_id")
+
+    @routines_id.setter
+    def routines_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "routines_id", value)
+
+    @property
+    @pulumi.getter
+    def arguments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]]:
+        """
+        Optional.
+        """
+        return pulumi.get(self, "arguments")
+
+    @arguments.setter
+    def arguments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ArgumentArgs']]]]):
+        pulumi.set(self, "arguments", value)
+
+    @property
+    @pulumi.getter(name="definitionBody")
+    def definition_body(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        """
+        return pulumi.get(self, "definition_body")
+
+    @definition_body.setter
+    def definition_body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "definition_body", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. [Experimental] The description of the routine if defined.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="determinismLevel")
+    def determinism_level(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. [Experimental] The determinism level of the JavaScript UDF if defined.
+        """
+        return pulumi.get(self, "determinism_level")
+
+    @determinism_level.setter
+    def determinism_level(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "determinism_level", value)
+
+    @property
+    @pulumi.getter(name="importedLibraries")
+    def imported_libraries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. If language = "JAVASCRIPT", this field stores the path of the imported JAVASCRIPT libraries.
+        """
+        return pulumi.get(self, "imported_libraries")
+
+    @imported_libraries.setter
+    def imported_libraries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "imported_libraries", value)
+
+    @property
+    @pulumi.getter
+    def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Defaults to "SQL".
+        """
+        return pulumi.get(self, "language")
+
+    @language.setter
+    def language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language", value)
+
+    @property
+    @pulumi.getter(name="returnTableType")
+    def return_table_type(self) -> Optional[pulumi.Input['StandardSqlTableTypeArgs']]:
+        """
+        Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
+        """
+        return pulumi.get(self, "return_table_type")
+
+    @return_table_type.setter
+    def return_table_type(self, value: Optional[pulumi.Input['StandardSqlTableTypeArgs']]):
+        pulumi.set(self, "return_table_type", value)
+
+    @property
+    @pulumi.getter(name="returnType")
+    def return_type(self) -> Optional[pulumi.Input['StandardSqlDataTypeArgs']]:
+        """
+        Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        """
+        return pulumi.get(self, "return_type")
+
+    @return_type.setter
+    def return_type(self, value: Optional[pulumi.Input['StandardSqlDataTypeArgs']]):
+        pulumi.set(self, "return_type", value)
+
+    @property
+    @pulumi.getter(name="routineReference")
+    def routine_reference(self) -> Optional[pulumi.Input['RoutineReferenceArgs']]:
+        """
+        Required. Reference describing the ID of this routine.
+        """
+        return pulumi.get(self, "routine_reference")
+
+    @routine_reference.setter
+    def routine_reference(self, value: Optional[pulumi.Input['RoutineReferenceArgs']]):
+        pulumi.set(self, "routine_reference", value)
+
+    @property
+    @pulumi.getter(name="routineType")
+    def routine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The type of routine.
+        """
+        return pulumi.get(self, "routine_type")
+
+    @routine_type.setter
+    def routine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "routine_type", value)
 
 
 class Routine(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +250,46 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Required. Reference describing the ID of this routine.
         :param pulumi.Input[str] routine_type: Required. The type of routine.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RoutineArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new routine in the dataset.
+
+        :param str resource_name: The name of the resource.
+        :param RoutineArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RoutineArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 arguments: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ArgumentArgs']]]]] = None,
+                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 definition_body: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 determinism_level: Optional[pulumi.Input[str]] = None,
+                 imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 language: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 return_table_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlTableTypeArgs']]] = None,
+                 return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
+                 routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
+                 routine_type: Optional[pulumi.Input[str]] = None,
+                 routines_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,30 +305,30 @@ class Routine(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RoutineArgs.__new__(RoutineArgs)
 
-            __props__['arguments'] = arguments
+            __props__.__dict__["arguments"] = arguments
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
-            __props__['datasets_id'] = datasets_id
-            __props__['definition_body'] = definition_body
-            __props__['description'] = description
-            __props__['determinism_level'] = determinism_level
-            __props__['imported_libraries'] = imported_libraries
-            __props__['language'] = language
+            __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["definition_body"] = definition_body
+            __props__.__dict__["description"] = description
+            __props__.__dict__["determinism_level"] = determinism_level
+            __props__.__dict__["imported_libraries"] = imported_libraries
+            __props__.__dict__["language"] = language
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['return_table_type'] = return_table_type
-            __props__['return_type'] = return_type
-            __props__['routine_reference'] = routine_reference
-            __props__['routine_type'] = routine_type
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["return_table_type"] = return_table_type
+            __props__.__dict__["return_type"] = return_type
+            __props__.__dict__["routine_reference"] = routine_reference
+            __props__.__dict__["routine_type"] = routine_type
             if routines_id is None and not opts.urn:
                 raise TypeError("Missing required property 'routines_id'")
-            __props__['routines_id'] = routines_id
-            __props__['creation_time'] = None
-            __props__['etag'] = None
-            __props__['last_modified_time'] = None
+            __props__.__dict__["routines_id"] = routines_id
+            __props__.__dict__["creation_time"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["last_modified_time"] = None
         super(Routine, __self__).__init__(
             'gcp-native:bigquery/v2:Routine',
             resource_name,
@@ -108,21 +349,21 @@ class Routine(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = RoutineArgs.__new__(RoutineArgs)
 
-        __props__["arguments"] = None
-        __props__["creation_time"] = None
-        __props__["definition_body"] = None
-        __props__["description"] = None
-        __props__["determinism_level"] = None
-        __props__["etag"] = None
-        __props__["imported_libraries"] = None
-        __props__["language"] = None
-        __props__["last_modified_time"] = None
-        __props__["return_table_type"] = None
-        __props__["return_type"] = None
-        __props__["routine_reference"] = None
-        __props__["routine_type"] = None
+        __props__.__dict__["arguments"] = None
+        __props__.__dict__["creation_time"] = None
+        __props__.__dict__["definition_body"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["determinism_level"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["imported_libraries"] = None
+        __props__.__dict__["language"] = None
+        __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["return_table_type"] = None
+        __props__.__dict__["return_type"] = None
+        __props__.__dict__["routine_reference"] = None
+        __props__.__dict__["routine_type"] = None
         return Routine(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -228,10 +469,4 @@ class Routine(pulumi.CustomResource):
         Required. The type of routine.
         """
         return pulumi.get(self, "routine_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

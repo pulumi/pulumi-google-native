@@ -5,14 +5,124 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['SiteChannel']
+__all__ = ['SiteChannelArgs', 'SiteChannel']
+
+@pulumi.input_type
+class SiteChannelArgs:
+    def __init__(__self__, *,
+                 channels_id: pulumi.Input[str],
+                 sites_id: pulumi.Input[str],
+                 expire_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 retained_release_count: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SiteChannel resource.
+        :param pulumi.Input[str] expire_time: The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Text labels used for extra metadata and/or filtering.
+        :param pulumi.Input[str] name: The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+        :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+        :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+        """
+        pulumi.set(__self__, "channels_id", channels_id)
+        pulumi.set(__self__, "sites_id", sites_id)
+        if expire_time is not None:
+            pulumi.set(__self__, "expire_time", expire_time)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if retained_release_count is not None:
+            pulumi.set(__self__, "retained_release_count", retained_release_count)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="channelsId")
+    def channels_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channels_id")
+
+    @channels_id.setter
+    def channels_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channels_id", value)
+
+    @property
+    @pulumi.getter(name="sitesId")
+    def sites_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sites_id")
+
+    @sites_id.setter
+    def sites_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sites_id", value)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @expire_time.setter
+    def expire_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expire_time", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Text labels used for extra metadata and/or filtering.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="retainedReleaseCount")
+    def retained_release_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
+        """
+        return pulumi.get(self, "retained_release_count")
+
+    @retained_release_count.setter
+    def retained_release_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retained_release_count", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ttl", value)
 
 
 class SiteChannel(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -37,6 +147,40 @@ class SiteChannel(pulumi.CustomResource):
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SiteChannelArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new channel in the specified site.
+
+        :param str resource_name: The name of the resource.
+        :param SiteChannelArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SiteChannelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 channels_id: Optional[pulumi.Input[str]] = None,
+                 expire_time: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 retained_release_count: Optional[pulumi.Input[int]] = None,
+                 sites_id: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -52,23 +196,23 @@ class SiteChannel(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SiteChannelArgs.__new__(SiteChannelArgs)
 
             if channels_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channels_id'")
-            __props__['channels_id'] = channels_id
-            __props__['expire_time'] = expire_time
-            __props__['labels'] = labels
-            __props__['name'] = name
-            __props__['retained_release_count'] = retained_release_count
+            __props__.__dict__["channels_id"] = channels_id
+            __props__.__dict__["expire_time"] = expire_time
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
+            __props__.__dict__["retained_release_count"] = retained_release_count
             if sites_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sites_id'")
-            __props__['sites_id'] = sites_id
-            __props__['ttl'] = ttl
-            __props__['create_time'] = None
-            __props__['release'] = None
-            __props__['update_time'] = None
-            __props__['url'] = None
+            __props__.__dict__["sites_id"] = sites_id
+            __props__.__dict__["ttl"] = ttl
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["release"] = None
+            __props__.__dict__["update_time"] = None
+            __props__.__dict__["url"] = None
         super(SiteChannel, __self__).__init__(
             'gcp-native:firebasehosting/v1beta1:SiteChannel',
             resource_name,
@@ -89,17 +233,17 @@ class SiteChannel(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SiteChannelArgs.__new__(SiteChannelArgs)
 
-        __props__["create_time"] = None
-        __props__["expire_time"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["release"] = None
-        __props__["retained_release_count"] = None
-        __props__["ttl"] = None
-        __props__["update_time"] = None
-        __props__["url"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["expire_time"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["release"] = None
+        __props__.__dict__["retained_release_count"] = None
+        __props__.__dict__["ttl"] = None
+        __props__.__dict__["update_time"] = None
+        __props__.__dict__["url"] = None
         return SiteChannel(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -173,10 +317,4 @@ class SiteChannel(pulumi.CustomResource):
         The URL at which the content of this channel's current release can be viewed. This URL is a Firebase-provided subdomain of `web.app`. The content of this channel's current release can also be viewed at the Firebase-provided subdomain of `firebaseapp.com`. If this channel is the `live` channel for the Hosting site, then the content of this channel's current release can also be viewed at any connected custom domains.
         """
         return pulumi.get(self, "url")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

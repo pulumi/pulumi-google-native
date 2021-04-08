@@ -5,15 +5,104 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DlpJob']
+__all__ = ['DlpJobArgs', 'DlpJob']
+
+@pulumi.input_type
+class DlpJobArgs:
+    def __init__(__self__, *,
+                 dlp_jobs_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 risk_job: Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] = None):
+        """
+        The set of arguments for constructing a DlpJob resource.
+        :param pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs'] inspect_job: An inspection job scans a storage repository for InfoTypes.
+        :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
+        """
+        pulumi.set(__self__, "dlp_jobs_id", dlp_jobs_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if inspect_job is not None:
+            pulumi.set(__self__, "inspect_job", inspect_job)
+        if job_id is not None:
+            pulumi.set(__self__, "job_id", job_id)
+        if risk_job is not None:
+            pulumi.set(__self__, "risk_job", risk_job)
+
+    @property
+    @pulumi.getter(name="dlpJobsId")
+    def dlp_jobs_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dlp_jobs_id")
+
+    @dlp_jobs_id.setter
+    def dlp_jobs_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dlp_jobs_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="inspectJob")
+    def inspect_job(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]:
+        """
+        An inspection job scans a storage repository for InfoTypes.
+        """
+        return pulumi.get(self, "inspect_job")
+
+    @inspect_job.setter
+    def inspect_job(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']]):
+        pulumi.set(self, "inspect_job", value)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
+        """
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="riskJob")
+    def risk_job(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]:
+        """
+        A risk analysis job calculates re-identification risk metrics for a BigQuery table.
+        """
+        return pulumi.get(self, "risk_job")
+
+    @risk_job.setter
+    def risk_job(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]):
+        pulumi.set(self, "risk_job", value)
 
 
 class DlpJob(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +124,39 @@ class DlpJob(pulumi.CustomResource):
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DlpJobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
+
+        :param str resource_name: The name of the resource.
+        :param DlpJobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DlpJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 dlp_jobs_id: Optional[pulumi.Input[str]] = None,
+                 inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -50,30 +172,30 @@ class DlpJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DlpJobArgs.__new__(DlpJobArgs)
 
             if dlp_jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dlp_jobs_id'")
-            __props__['dlp_jobs_id'] = dlp_jobs_id
-            __props__['inspect_job'] = inspect_job
-            __props__['job_id'] = job_id
+            __props__.__dict__["dlp_jobs_id"] = dlp_jobs_id
+            __props__.__dict__["inspect_job"] = inspect_job
+            __props__.__dict__["job_id"] = job_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['risk_job'] = risk_job
-            __props__['create_time'] = None
-            __props__['end_time'] = None
-            __props__['errors'] = None
-            __props__['inspect_details'] = None
-            __props__['job_trigger_name'] = None
-            __props__['name'] = None
-            __props__['risk_details'] = None
-            __props__['start_time'] = None
-            __props__['state'] = None
-            __props__['type'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["risk_job"] = risk_job
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["end_time"] = None
+            __props__.__dict__["errors"] = None
+            __props__.__dict__["inspect_details"] = None
+            __props__.__dict__["job_trigger_name"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["risk_details"] = None
+            __props__.__dict__["start_time"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["type"] = None
         super(DlpJob, __self__).__init__(
             'gcp-native:dlp/v2:DlpJob',
             resource_name,
@@ -94,18 +216,18 @@ class DlpJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DlpJobArgs.__new__(DlpJobArgs)
 
-        __props__["create_time"] = None
-        __props__["end_time"] = None
-        __props__["errors"] = None
-        __props__["inspect_details"] = None
-        __props__["job_trigger_name"] = None
-        __props__["name"] = None
-        __props__["risk_details"] = None
-        __props__["start_time"] = None
-        __props__["state"] = None
-        __props__["type"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["end_time"] = None
+        __props__.__dict__["errors"] = None
+        __props__.__dict__["inspect_details"] = None
+        __props__.__dict__["job_trigger_name"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["risk_details"] = None
+        __props__.__dict__["start_time"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["type"] = None
         return DlpJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -187,10 +309,4 @@ class DlpJob(pulumi.CustomResource):
         The type of job.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

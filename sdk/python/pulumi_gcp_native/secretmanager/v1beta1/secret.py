@@ -5,15 +5,77 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Secret']
+__all__ = ['SecretArgs', 'Secret']
+
+@pulumi.input_type
+class SecretArgs:
+    def __init__(__self__, *,
+                 projects_id: pulumi.Input[str],
+                 secrets_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 replication: Optional[pulumi.Input['ReplicationArgs']] = None):
+        """
+        The set of arguments for constructing a Secret resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+        :param pulumi.Input['ReplicationArgs'] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        """
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "secrets_id", secrets_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if replication is not None:
+            pulumi.set(__self__, "replication", replication)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="secretsId")
+    def secrets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "secrets_id")
+
+    @secrets_id.setter
+    def secrets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secrets_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def replication(self) -> Optional[pulumi.Input['ReplicationArgs']]:
+        """
+        Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        """
+        return pulumi.get(self, "replication")
+
+    @replication.setter
+    def replication(self, value: Optional[pulumi.Input['ReplicationArgs']]):
+        pulumi.set(self, "replication", value)
 
 
 class Secret(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -32,6 +94,37 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
         :param pulumi.Input[pulumi.InputType['ReplicationArgs']] replication: Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecretArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Secret containing no SecretVersions.
+
+        :param str resource_name: The name of the resource.
+        :param SecretArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecretArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 replication: Optional[pulumi.Input[pulumi.InputType['ReplicationArgs']]] = None,
+                 secrets_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -47,18 +140,18 @@ class Secret(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecretArgs.__new__(SecretArgs)
 
-            __props__['labels'] = labels
+            __props__.__dict__["labels"] = labels
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['replication'] = replication
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["replication"] = replication
             if secrets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'secrets_id'")
-            __props__['secrets_id'] = secrets_id
-            __props__['create_time'] = None
-            __props__['name'] = None
+            __props__.__dict__["secrets_id"] = secrets_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
         super(Secret, __self__).__init__(
             'gcp-native:secretmanager/v1beta1:Secret',
             resource_name,
@@ -79,12 +172,12 @@ class Secret(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SecretArgs.__new__(SecretArgs)
 
-        __props__["create_time"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["replication"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["replication"] = None
         return Secret(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -118,10 +211,4 @@ class Secret(pulumi.CustomResource):
         Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
         return pulumi.get(self, "replication")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

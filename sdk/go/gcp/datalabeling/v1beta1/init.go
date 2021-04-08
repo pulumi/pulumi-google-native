@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:datalabeling/v1beta1:AnnotationSpecSet":
-		r, err = NewAnnotationSpecSet(ctx, name, nil, pulumi.URN_(urn))
+		r = &AnnotationSpecSet{}
 	case "gcp-native:datalabeling/v1beta1:Dataset":
-		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dataset{}
 	case "gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage":
-		r, err = NewDatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage{}
 	case "gcp-native:datalabeling/v1beta1:EvaluationJob":
-		r, err = NewEvaluationJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &EvaluationJob{}
 	case "gcp-native:datalabeling/v1beta1:Instruction":
-		r, err = NewInstruction(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instruction{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

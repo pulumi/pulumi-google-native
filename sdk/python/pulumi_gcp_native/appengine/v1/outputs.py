@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -52,6 +52,25 @@ class ApiConfigHandlerResponse(dict):
     """
     Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authFailAction":
+            suggest = "auth_fail_action"
+        elif key == "securityLevel":
+            suggest = "security_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiConfigHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiConfigHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiConfigHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_fail_action: str,
                  login: str,
@@ -112,15 +131,29 @@ class ApiConfigHandlerResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApiEndpointHandlerResponse(dict):
     """
     Uses Google Cloud Endpoints to handle requests.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scriptPath":
+            suggest = "script_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiEndpointHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiEndpointHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiEndpointHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script_path: str):
         """
@@ -137,15 +170,53 @@ class ApiEndpointHandlerResponse(dict):
         """
         return pulumi.get(self, "script_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutomaticScalingResponse(dict):
     """
     Automatic scaling is based on request rate, response latencies, and other application metrics.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coolDownPeriod":
+            suggest = "cool_down_period"
+        elif key == "cpuUtilization":
+            suggest = "cpu_utilization"
+        elif key == "diskUtilization":
+            suggest = "disk_utilization"
+        elif key == "maxConcurrentRequests":
+            suggest = "max_concurrent_requests"
+        elif key == "maxIdleInstances":
+            suggest = "max_idle_instances"
+        elif key == "maxPendingLatency":
+            suggest = "max_pending_latency"
+        elif key == "maxTotalInstances":
+            suggest = "max_total_instances"
+        elif key == "minIdleInstances":
+            suggest = "min_idle_instances"
+        elif key == "minPendingLatency":
+            suggest = "min_pending_latency"
+        elif key == "minTotalInstances":
+            suggest = "min_total_instances"
+        elif key == "networkUtilization":
+            suggest = "network_utilization"
+        elif key == "requestUtilization":
+            suggest = "request_utilization"
+        elif key == "standardSchedulerSettings":
+            suggest = "standard_scheduler_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutomaticScalingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutomaticScalingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutomaticScalingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cool_down_period: str,
                  cpu_utilization: 'outputs.CpuUtilizationResponse',
@@ -294,15 +365,31 @@ class AutomaticScalingResponse(dict):
         """
         return pulumi.get(self, "standard_scheduler_settings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicScalingResponse(dict):
     """
     A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idleTimeout":
+            suggest = "idle_timeout"
+        elif key == "maxInstances":
+            suggest = "max_instances"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicScalingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicScalingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicScalingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  idle_timeout: str,
                  max_instances: int):
@@ -330,15 +417,31 @@ class BasicScalingResponse(dict):
         """
         return pulumi.get(self, "max_instances")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateRawDataResponse(dict):
     """
     An SSL certificate obtained from a certificate authority.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "publicCertificate":
+            suggest = "public_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateRawDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateRawDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateRawDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_key: str,
                  public_certificate: str):
@@ -366,15 +469,31 @@ class CertificateRawDataResponse(dict):
         """
         return pulumi.get(self, "public_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudBuildOptionsResponse(dict):
     """
     Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appYamlPath":
+            suggest = "app_yaml_path"
+        elif key == "cloudBuildTimeout":
+            suggest = "cloud_build_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudBuildOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudBuildOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudBuildOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_yaml_path: str,
                  cloud_build_timeout: str):
@@ -402,9 +521,6 @@ class CloudBuildOptionsResponse(dict):
         """
         return pulumi.get(self, "cloud_build_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerInfoResponse(dict):
@@ -427,15 +543,31 @@ class ContainerInfoResponse(dict):
         """
         return pulumi.get(self, "image")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CpuUtilizationResponse(dict):
     """
     Target scaling by CPU usage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationWindowLength":
+            suggest = "aggregation_window_length"
+        elif key == "targetUtilization":
+            suggest = "target_utilization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CpuUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CpuUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CpuUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aggregation_window_length: str,
                  target_utilization: float):
@@ -463,15 +595,29 @@ class CpuUtilizationResponse(dict):
         """
         return pulumi.get(self, "target_utilization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeploymentResponse(dict):
     """
     Code and application artifacts used to deploy a version to App Engine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudBuildOptions":
+            suggest = "cloud_build_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeploymentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeploymentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeploymentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_build_options: 'outputs.CloudBuildOptionsResponse',
                  container: 'outputs.ContainerInfoResponse',
@@ -521,15 +667,35 @@ class DeploymentResponse(dict):
         """
         return pulumi.get(self, "zip")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskUtilizationResponse(dict):
     """
     Target scaling by disk usage. Only applicable in the App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReadBytesPerSecond":
+            suggest = "target_read_bytes_per_second"
+        elif key == "targetReadOpsPerSecond":
+            suggest = "target_read_ops_per_second"
+        elif key == "targetWriteBytesPerSecond":
+            suggest = "target_write_bytes_per_second"
+        elif key == "targetWriteOpsPerSecond":
+            suggest = "target_write_ops_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_read_bytes_per_second: int,
                  target_read_ops_per_second: int,
@@ -579,15 +745,33 @@ class DiskUtilizationResponse(dict):
         """
         return pulumi.get(self, "target_write_ops_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointsApiServiceResponse(dict):
     """
     Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configId":
+            suggest = "config_id"
+        elif key == "disableTraceSampling":
+            suggest = "disable_trace_sampling"
+        elif key == "rolloutStrategy":
+            suggest = "rollout_strategy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointsApiServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointsApiServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointsApiServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_id: str,
                  disable_trace_sampling: bool,
@@ -637,9 +821,6 @@ class EndpointsApiServiceResponse(dict):
         """
         return pulumi.get(self, "rollout_strategy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntrypointResponse(dict):
@@ -662,15 +843,33 @@ class EntrypointResponse(dict):
         """
         return pulumi.get(self, "shell")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ErrorHandlerResponse(dict):
     """
     Custom static error page to be served when an error occurs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCode":
+            suggest = "error_code"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "staticFile":
+            suggest = "static_file"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ErrorHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ErrorHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ErrorHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_code: str,
                  mime_type: str,
@@ -709,15 +908,31 @@ class ErrorHandlerResponse(dict):
         """
         return pulumi.get(self, "static_file")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FeatureSettingsResponse(dict):
     """
     The feature specific settings to be used in the application. These define behaviors that are user configurable.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "splitHealthChecks":
+            suggest = "split_health_checks"
+        elif key == "useContainerOptimizedOs":
+            suggest = "use_container_optimized_os"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  split_health_checks: bool,
                  use_container_optimized_os: bool):
@@ -745,15 +960,37 @@ class FeatureSettingsResponse(dict):
         """
         return pulumi.get(self, "use_container_optimized_os")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HealthCheckResponse(dict):
     """
     Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances. Only applicable for instances in App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkInterval":
+            suggest = "check_interval"
+        elif key == "disableHealthCheck":
+            suggest = "disable_health_check"
+        elif key == "healthyThreshold":
+            suggest = "healthy_threshold"
+        elif key == "restartThreshold":
+            suggest = "restart_threshold"
+        elif key == "unhealthyThreshold":
+            suggest = "unhealthy_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_interval: str,
                  disable_health_check: bool,
@@ -836,15 +1073,33 @@ class HealthCheckResponse(dict):
         """
         return pulumi.get(self, "unhealthy_threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IdentityAwareProxyResponse(dict):
     """
     Identity-Aware Proxy
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2ClientId":
+            suggest = "oauth2_client_id"
+        elif key == "oauth2ClientSecret":
+            suggest = "oauth2_client_secret"
+        elif key == "oauth2ClientSecretSha256":
+            suggest = "oauth2_client_secret_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IdentityAwareProxyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IdentityAwareProxyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IdentityAwareProxyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: bool,
                  oauth2_client_id: str,
@@ -894,9 +1149,6 @@ class IdentityAwareProxyResponse(dict):
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LibraryResponse(dict):
@@ -930,15 +1182,35 @@ class LibraryResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LivenessCheckResponse(dict):
     """
     Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "checkInterval":
+            suggest = "check_interval"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "initialDelay":
+            suggest = "initial_delay"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LivenessCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LivenessCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LivenessCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  check_interval: str,
                  failure_threshold: int,
@@ -1021,15 +1293,29 @@ class LivenessCheckResponse(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedCertificateResponse(dict):
     """
     A certificate managed by App Engine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastRenewalTime":
+            suggest = "last_renewal_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_renewal_time: str,
                  status: str):
@@ -1057,9 +1343,6 @@ class ManagedCertificateResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManualScalingResponse(dict):
@@ -1082,15 +1365,35 @@ class ManualScalingResponse(dict):
         """
         return pulumi.get(self, "instances")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkResponse(dict):
     """
     Extra network settings. Only applicable in the App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardedPorts":
+            suggest = "forwarded_ports"
+        elif key == "instanceTag":
+            suggest = "instance_tag"
+        elif key == "sessionAffinity":
+            suggest = "session_affinity"
+        elif key == "subnetworkName":
+            suggest = "subnetwork_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  forwarded_ports: Sequence[str],
                  instance_tag: str,
@@ -1151,15 +1454,35 @@ class NetworkResponse(dict):
         """
         return pulumi.get(self, "subnetwork_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkUtilizationResponse(dict):
     """
     Target scaling by network usage. Only applicable in the App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetReceivedBytesPerSecond":
+            suggest = "target_received_bytes_per_second"
+        elif key == "targetReceivedPacketsPerSecond":
+            suggest = "target_received_packets_per_second"
+        elif key == "targetSentBytesPerSecond":
+            suggest = "target_sent_bytes_per_second"
+        elif key == "targetSentPacketsPerSecond":
+            suggest = "target_sent_packets_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_received_bytes_per_second: int,
                  target_received_packets_per_second: int,
@@ -1209,15 +1532,35 @@ class NetworkUtilizationResponse(dict):
         """
         return pulumi.get(self, "target_sent_packets_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReadinessCheckResponse(dict):
     """
     Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appStartTimeout":
+            suggest = "app_start_timeout"
+        elif key == "checkInterval":
+            suggest = "check_interval"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReadinessCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReadinessCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReadinessCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_start_timeout: str,
                  check_interval: str,
@@ -1300,15 +1643,31 @@ class ReadinessCheckResponse(dict):
         """
         return pulumi.get(self, "timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RequestUtilizationResponse(dict):
     """
     Target scaling by request utilization. Only applicable in the App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetConcurrentRequests":
+            suggest = "target_concurrent_requests"
+        elif key == "targetRequestCountPerSecond":
+            suggest = "target_request_count_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RequestUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RequestUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RequestUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_concurrent_requests: int,
                  target_request_count_per_second: int):
@@ -1335,9 +1694,6 @@ class RequestUtilizationResponse(dict):
         Target requests per second.
         """
         return pulumi.get(self, "target_request_count_per_second")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1383,15 +1739,33 @@ class ResourceRecordResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcesResponse(dict):
     """
     Machine resources for a version.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskGb":
+            suggest = "disk_gb"
+        elif key == "kmsKeyReference":
+            suggest = "kms_key_reference"
+        elif key == "memoryGb":
+            suggest = "memory_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu: float,
                  disk_gb: float,
@@ -1452,15 +1826,29 @@ class ResourcesResponse(dict):
         """
         return pulumi.get(self, "volumes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScriptHandlerResponse(dict):
     """
     Executes a script to handle the request that matches the URL pattern.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scriptPath":
+            suggest = "script_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScriptHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScriptHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScriptHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  script_path: str):
         """
@@ -1477,15 +1865,33 @@ class ScriptHandlerResponse(dict):
         """
         return pulumi.get(self, "script_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslSettingsResponse(dict):
     """
     SSL configuration for a DomainMapping resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "pendingManagedCertificateId":
+            suggest = "pending_managed_certificate_id"
+        elif key == "sslManagementType":
+            suggest = "ssl_management_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_id: str,
                  pending_managed_certificate_id: str,
@@ -1524,15 +1930,35 @@ class SslSettingsResponse(dict):
         """
         return pulumi.get(self, "ssl_management_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardSchedulerSettingsResponse(dict):
     """
     Scheduler settings for standard environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstances":
+            suggest = "max_instances"
+        elif key == "minInstances":
+            suggest = "min_instances"
+        elif key == "targetCpuUtilization":
+            suggest = "target_cpu_utilization"
+        elif key == "targetThroughputUtilization":
+            suggest = "target_throughput_utilization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardSchedulerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardSchedulerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardSchedulerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_instances: int,
                  min_instances: int,
@@ -1582,15 +2008,37 @@ class StandardSchedulerSettingsResponse(dict):
         """
         return pulumi.get(self, "target_throughput_utilization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StaticFilesHandlerResponse(dict):
     """
     Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "applicationReadable":
+            suggest = "application_readable"
+        elif key == "httpHeaders":
+            suggest = "http_headers"
+        elif key == "mimeType":
+            suggest = "mime_type"
+        elif key == "requireMatchingFile":
+            suggest = "require_matching_file"
+        elif key == "uploadPathRegex":
+            suggest = "upload_path_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StaticFilesHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StaticFilesHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StaticFilesHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  application_readable: bool,
                  expiration: str,
@@ -1673,9 +2121,6 @@ class StaticFilesHandlerResponse(dict):
         """
         return pulumi.get(self, "upload_path_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlDispatchRuleResponse(dict):
@@ -1720,15 +2165,39 @@ class UrlDispatchRuleResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlMapResponse(dict):
     """
     URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiEndpoint":
+            suggest = "api_endpoint"
+        elif key == "authFailAction":
+            suggest = "auth_fail_action"
+        elif key == "redirectHttpResponseCode":
+            suggest = "redirect_http_response_code"
+        elif key == "securityLevel":
+            suggest = "security_level"
+        elif key == "staticFiles":
+            suggest = "static_files"
+        elif key == "urlRegex":
+            suggest = "url_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UrlMapResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UrlMapResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UrlMapResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_endpoint: 'outputs.ApiEndpointHandlerResponse',
                  auth_fail_action: str,
@@ -1822,15 +2291,31 @@ class UrlMapResponse(dict):
         """
         return pulumi.get(self, "url_regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VolumeResponse(dict):
     """
     Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "volumeType":
+            suggest = "volume_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  size_gb: float,
@@ -1869,9 +2354,6 @@ class VolumeResponse(dict):
         """
         return pulumi.get(self, "volume_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VpcAccessConnectorResponse(dict):
@@ -1894,15 +2376,31 @@ class VpcAccessConnectorResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZipInfoResponse(dict):
     """
     The zip file information for a zip deployment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filesCount":
+            suggest = "files_count"
+        elif key == "sourceUrl":
+            suggest = "source_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZipInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZipInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZipInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  files_count: int,
                  source_url: str):
@@ -1929,8 +2427,5 @@ class ZipInfoResponse(dict):
         URL of the zip file to deploy from. Must be a URL to a resource in Google Cloud Storage in the form 'http(s)://storage.googleapis.com//'.
         """
         return pulumi.get(self, "source_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

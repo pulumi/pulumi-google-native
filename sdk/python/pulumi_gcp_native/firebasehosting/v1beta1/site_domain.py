@@ -5,15 +5,141 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['SiteDomain']
+__all__ = ['SiteDomainArgs', 'SiteDomain']
+
+@pulumi.input_type
+class SiteDomainArgs:
+    def __init__(__self__, *,
+                 domains_id: pulumi.Input[str],
+                 sites_id: pulumi.Input[str],
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
+                 provisioning: Optional[pulumi.Input['DomainProvisioningArgs']] = None,
+                 site: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a SiteDomain resource.
+        :param pulumi.Input[str] domain_name: Required. The domain name of the association.
+        :param pulumi.Input['DomainRedirectArgs'] domain_redirect: If set, the domain should redirect with the provided parameters.
+        :param pulumi.Input['DomainProvisioningArgs'] provisioning: Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+        :param pulumi.Input[str] site: Required. The site name of the association.
+        :param pulumi.Input[str] status: Additional status of the domain association.
+        :param pulumi.Input[str] update_time: The time at which the domain was last updated.
+        """
+        pulumi.set(__self__, "domains_id", domains_id)
+        pulumi.set(__self__, "sites_id", sites_id)
+        if domain_name is not None:
+            pulumi.set(__self__, "domain_name", domain_name)
+        if domain_redirect is not None:
+            pulumi.set(__self__, "domain_redirect", domain_redirect)
+        if provisioning is not None:
+            pulumi.set(__self__, "provisioning", provisioning)
+        if site is not None:
+            pulumi.set(__self__, "site", site)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="domainsId")
+    def domains_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domains_id")
+
+    @domains_id.setter
+    def domains_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domains_id", value)
+
+    @property
+    @pulumi.getter(name="sitesId")
+    def sites_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sites_id")
+
+    @sites_id.setter
+    def sites_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sites_id", value)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The domain name of the association.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_name", value)
+
+    @property
+    @pulumi.getter(name="domainRedirect")
+    def domain_redirect(self) -> Optional[pulumi.Input['DomainRedirectArgs']]:
+        """
+        If set, the domain should redirect with the provided parameters.
+        """
+        return pulumi.get(self, "domain_redirect")
+
+    @domain_redirect.setter
+    def domain_redirect(self, value: Optional[pulumi.Input['DomainRedirectArgs']]):
+        pulumi.set(self, "domain_redirect", value)
+
+    @property
+    @pulumi.getter
+    def provisioning(self) -> Optional[pulumi.Input['DomainProvisioningArgs']]:
+        """
+        Information about the provisioning of certificates and the health of the DNS resolution for the domain.
+        """
+        return pulumi.get(self, "provisioning")
+
+    @provisioning.setter
+    def provisioning(self, value: Optional[pulumi.Input['DomainProvisioningArgs']]):
+        pulumi.set(self, "provisioning", value)
+
+    @property
+    @pulumi.getter
+    def site(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The site name of the association.
+        """
+        return pulumi.get(self, "site")
+
+    @site.setter
+    def site(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "site", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        Additional status of the domain association.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time at which the domain was last updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class SiteDomain(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +166,41 @@ class SiteDomain(pulumi.CustomResource):
         :param pulumi.Input[str] status: Additional status of the domain association.
         :param pulumi.Input[str] update_time: The time at which the domain was last updated.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SiteDomainArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a domain mapping on the specified site.
+
+        :param str resource_name: The name of the resource.
+        :param SiteDomainArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SiteDomainArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain_name: Optional[pulumi.Input[str]] = None,
+                 domain_redirect: Optional[pulumi.Input[pulumi.InputType['DomainRedirectArgs']]] = None,
+                 domains_id: Optional[pulumi.Input[str]] = None,
+                 provisioning: Optional[pulumi.Input[pulumi.InputType['DomainProvisioningArgs']]] = None,
+                 site: Optional[pulumi.Input[str]] = None,
+                 sites_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,20 +216,20 @@ class SiteDomain(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SiteDomainArgs.__new__(SiteDomainArgs)
 
-            __props__['domain_name'] = domain_name
-            __props__['domain_redirect'] = domain_redirect
+            __props__.__dict__["domain_name"] = domain_name
+            __props__.__dict__["domain_redirect"] = domain_redirect
             if domains_id is None and not opts.urn:
                 raise TypeError("Missing required property 'domains_id'")
-            __props__['domains_id'] = domains_id
-            __props__['provisioning'] = provisioning
-            __props__['site'] = site
+            __props__.__dict__["domains_id"] = domains_id
+            __props__.__dict__["provisioning"] = provisioning
+            __props__.__dict__["site"] = site
             if sites_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sites_id'")
-            __props__['sites_id'] = sites_id
-            __props__['status'] = status
-            __props__['update_time'] = update_time
+            __props__.__dict__["sites_id"] = sites_id
+            __props__.__dict__["status"] = status
+            __props__.__dict__["update_time"] = update_time
         super(SiteDomain, __self__).__init__(
             'gcp-native:firebasehosting/v1beta1:SiteDomain',
             resource_name,
@@ -89,14 +250,14 @@ class SiteDomain(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SiteDomainArgs.__new__(SiteDomainArgs)
 
-        __props__["domain_name"] = None
-        __props__["domain_redirect"] = None
-        __props__["provisioning"] = None
-        __props__["site"] = None
-        __props__["status"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["domain_name"] = None
+        __props__.__dict__["domain_redirect"] = None
+        __props__.__dict__["provisioning"] = None
+        __props__.__dict__["site"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["update_time"] = None
         return SiteDomain(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -146,10 +307,4 @@ class SiteDomain(pulumi.CustomResource):
         The time at which the domain was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

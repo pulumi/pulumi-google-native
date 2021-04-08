@@ -5,14 +5,151 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from ._inputs import *
 
-__all__ = ['OrganizationEnvironmentAnalyticExport']
+__all__ = ['OrganizationEnvironmentAnalyticExportArgs', 'OrganizationEnvironmentAnalyticExport']
+
+@pulumi.input_type
+class OrganizationEnvironmentAnalyticExportArgs:
+    def __init__(__self__, *,
+                 environments_id: pulumi.Input[str],
+                 exports_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 csv_delimiter: Optional[pulumi.Input[str]] = None,
+                 datastore_name: Optional[pulumi.Input[str]] = None,
+                 date_range: Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_format: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationEnvironmentAnalyticExport resource.
+        :param pulumi.Input[str] csv_delimiter: Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
+        :param pulumi.Input[str] datastore_name: Required. Name of the preconfigured datastore.
+        :param pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'] date_range: Required. Date range of the data to export.
+        :param pulumi.Input[str] description: Optional. Description of the export job.
+        :param pulumi.Input[str] name: Required. Display name of the export job.
+        :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
+        """
+        pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "exports_id", exports_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if csv_delimiter is not None:
+            pulumi.set(__self__, "csv_delimiter", csv_delimiter)
+        if datastore_name is not None:
+            pulumi.set(__self__, "datastore_name", datastore_name)
+        if date_range is not None:
+            pulumi.set(__self__, "date_range", date_range)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if output_format is not None:
+            pulumi.set(__self__, "output_format", output_format)
+
+    @property
+    @pulumi.getter(name="environmentsId")
+    def environments_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environments_id")
+
+    @environments_id.setter
+    def environments_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environments_id", value)
+
+    @property
+    @pulumi.getter(name="exportsId")
+    def exports_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "exports_id")
+
+    @exports_id.setter
+    def exports_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "exports_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="csvDelimiter")
+    def csv_delimiter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
+        """
+        return pulumi.get(self, "csv_delimiter")
+
+    @csv_delimiter.setter
+    def csv_delimiter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "csv_delimiter", value)
+
+    @property
+    @pulumi.getter(name="datastoreName")
+    def datastore_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Name of the preconfigured datastore.
+        """
+        return pulumi.get(self, "datastore_name")
+
+    @datastore_name.setter
+    def datastore_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore_name", value)
+
+    @property
+    @pulumi.getter(name="dateRange")
+    def date_range(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']]:
+        """
+        Required. Date range of the data to export.
+        """
+        return pulumi.get(self, "date_range")
+
+    @date_range.setter
+    def date_range(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']]):
+        pulumi.set(self, "date_range", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the export job.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Display name of the export job.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
+        """
+        return pulumi.get(self, "output_format")
+
+    @output_format.setter
+    def output_format(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_format", value)
 
 
 class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +177,42 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
         :param pulumi.Input[str] name: Required. Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationEnvironmentAnalyticExportArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationEnvironmentAnalyticExportArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationEnvironmentAnalyticExportArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 csv_delimiter: Optional[pulumi.Input[str]] = None,
+                 datastore_name: Optional[pulumi.Input[str]] = None,
+                 date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments_id: Optional[pulumi.Input[str]] = None,
+                 exports_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 output_format: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,29 +228,29 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationEnvironmentAnalyticExportArgs.__new__(OrganizationEnvironmentAnalyticExportArgs)
 
-            __props__['csv_delimiter'] = csv_delimiter
-            __props__['datastore_name'] = datastore_name
-            __props__['date_range'] = date_range
-            __props__['description'] = description
+            __props__.__dict__["csv_delimiter"] = csv_delimiter
+            __props__.__dict__["datastore_name"] = datastore_name
+            __props__.__dict__["date_range"] = date_range
+            __props__.__dict__["description"] = description
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
-            __props__['environments_id'] = environments_id
+            __props__.__dict__["environments_id"] = environments_id
             if exports_id is None and not opts.urn:
                 raise TypeError("Missing required property 'exports_id'")
-            __props__['exports_id'] = exports_id
-            __props__['name'] = name
+            __props__.__dict__["exports_id"] = exports_id
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['output_format'] = output_format
-            __props__['created'] = None
-            __props__['error'] = None
-            __props__['execution_time'] = None
-            __props__['self'] = None
-            __props__['state'] = None
-            __props__['updated'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["output_format"] = output_format
+            __props__.__dict__["created"] = None
+            __props__.__dict__["error"] = None
+            __props__.__dict__["execution_time"] = None
+            __props__.__dict__["self"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["updated"] = None
         super(OrganizationEnvironmentAnalyticExport, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport',
             resource_name,
@@ -98,17 +271,17 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationEnvironmentAnalyticExportArgs.__new__(OrganizationEnvironmentAnalyticExportArgs)
 
-        __props__["created"] = None
-        __props__["datastore_name"] = None
-        __props__["description"] = None
-        __props__["error"] = None
-        __props__["execution_time"] = None
-        __props__["name"] = None
-        __props__["self"] = None
-        __props__["state"] = None
-        __props__["updated"] = None
+        __props__.__dict__["created"] = None
+        __props__.__dict__["datastore_name"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["error"] = None
+        __props__.__dict__["execution_time"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["self"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["updated"] = None
         return OrganizationEnvironmentAnalyticExport(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -182,10 +355,4 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
         Time the export job was last updated.
         """
         return pulumi.get(self, "updated")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

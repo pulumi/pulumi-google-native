@@ -5,15 +5,216 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['CertificateAuthority']
+__all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
+
+@pulumi.input_type
+class CertificateAuthorityArgs:
+    def __init__(__self__, *,
+                 certificate_authorities_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 certificate_policy: Optional[pulumi.Input['CertificateAuthorityPolicyArgs']] = None,
+                 config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None,
+                 issuing_options: Optional[pulumi.Input['IssuingOptionsArgs']] = None,
+                 key_spec: Optional[pulumi.Input['KeyVersionSpecArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input['SubordinateConfigArgs']] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a CertificateAuthority resource.
+        :param pulumi.Input['CertificateAuthorityPolicyArgs'] certificate_policy: Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
+        :param pulumi.Input['CertificateConfigArgs'] config: Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        :param pulumi.Input[str] gcs_bucket: Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
+        :param pulumi.Input['IssuingOptionsArgs'] issuing_options: Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
+        :param pulumi.Input['KeyVersionSpecArgs'] key_spec: Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels with user-defined metadata.
+        :param pulumi.Input[str] lifetime: Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        :param pulumi.Input['SubordinateConfigArgs'] subordinate_config: Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
+        :param pulumi.Input[str] tier: Required. Immutable. The Tier of this CertificateAuthority.
+        :param pulumi.Input[str] type: Required. Immutable. The Type of this CertificateAuthority.
+        """
+        pulumi.set(__self__, "certificate_authorities_id", certificate_authorities_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if certificate_policy is not None:
+            pulumi.set(__self__, "certificate_policy", certificate_policy)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if gcs_bucket is not None:
+            pulumi.set(__self__, "gcs_bucket", gcs_bucket)
+        if issuing_options is not None:
+            pulumi.set(__self__, "issuing_options", issuing_options)
+        if key_spec is not None:
+            pulumi.set(__self__, "key_spec", key_spec)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if lifetime is not None:
+            pulumi.set(__self__, "lifetime", lifetime)
+        if subordinate_config is not None:
+            pulumi.set(__self__, "subordinate_config", subordinate_config)
+        if tier is not None:
+            pulumi.set(__self__, "tier", tier)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="certificateAuthoritiesId")
+    def certificate_authorities_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_authorities_id")
+
+    @certificate_authorities_id.setter
+    def certificate_authorities_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_authorities_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="certificatePolicy")
+    def certificate_policy(self) -> Optional[pulumi.Input['CertificateAuthorityPolicyArgs']]:
+        """
+        Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
+        """
+        return pulumi.get(self, "certificate_policy")
+
+    @certificate_policy.setter
+    def certificate_policy(self, value: Optional[pulumi.Input['CertificateAuthorityPolicyArgs']]):
+        pulumi.set(self, "certificate_policy", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['CertificateConfigArgs']]:
+        """
+        Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['CertificateConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="gcsBucket")
+    def gcs_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
+        """
+        return pulumi.get(self, "gcs_bucket")
+
+    @gcs_bucket.setter
+    def gcs_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_bucket", value)
+
+    @property
+    @pulumi.getter(name="issuingOptions")
+    def issuing_options(self) -> Optional[pulumi.Input['IssuingOptionsArgs']]:
+        """
+        Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
+        """
+        return pulumi.get(self, "issuing_options")
+
+    @issuing_options.setter
+    def issuing_options(self, value: Optional[pulumi.Input['IssuingOptionsArgs']]):
+        pulumi.set(self, "issuing_options", value)
+
+    @property
+    @pulumi.getter(name="keySpec")
+    def key_spec(self) -> Optional[pulumi.Input['KeyVersionSpecArgs']]:
+        """
+        Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        """
+        return pulumi.get(self, "key_spec")
+
+    @key_spec.setter
+    def key_spec(self, value: Optional[pulumi.Input['KeyVersionSpecArgs']]):
+        pulumi.set(self, "key_spec", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Labels with user-defined metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def lifetime(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        """
+        return pulumi.get(self, "lifetime")
+
+    @lifetime.setter
+    def lifetime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "lifetime", value)
+
+    @property
+    @pulumi.getter(name="subordinateConfig")
+    def subordinate_config(self) -> Optional[pulumi.Input['SubordinateConfigArgs']]:
+        """
+        Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
+        """
+        return pulumi.get(self, "subordinate_config")
+
+    @subordinate_config.setter
+    def subordinate_config(self, value: Optional[pulumi.Input['SubordinateConfigArgs']]):
+        pulumi.set(self, "subordinate_config", value)
+
+    @property
+    @pulumi.getter
+    def tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Immutable. The Tier of this CertificateAuthority.
+        """
+        return pulumi.get(self, "tier")
+
+    @tier.setter
+    def tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Immutable. The Type of this CertificateAuthority.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 class CertificateAuthority(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -49,6 +250,46 @@ class CertificateAuthority(pulumi.CustomResource):
         :param pulumi.Input[str] tier: Required. Immutable. The Tier of this CertificateAuthority.
         :param pulumi.Input[str] type: Required. Immutable. The Type of this CertificateAuthority.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CertificateAuthorityArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a new CertificateAuthority in a given Project and Location.
+
+        :param str resource_name: The name of the resource.
+        :param CertificateAuthorityArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CertificateAuthorityArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']]] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
+                 gcs_bucket: Optional[pulumi.Input[str]] = None,
+                 issuing_options: Optional[pulumi.Input[pulumi.InputType['IssuingOptionsArgs']]] = None,
+                 key_spec: Optional[pulumi.Input[pulumi.InputType['KeyVersionSpecArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifetime: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
+                 tier: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -64,35 +305,35 @@ class CertificateAuthority(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CertificateAuthorityArgs.__new__(CertificateAuthorityArgs)
 
             if certificate_authorities_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authorities_id'")
-            __props__['certificate_authorities_id'] = certificate_authorities_id
-            __props__['certificate_policy'] = certificate_policy
-            __props__['config'] = config
-            __props__['gcs_bucket'] = gcs_bucket
-            __props__['issuing_options'] = issuing_options
-            __props__['key_spec'] = key_spec
-            __props__['labels'] = labels
-            __props__['lifetime'] = lifetime
+            __props__.__dict__["certificate_authorities_id"] = certificate_authorities_id
+            __props__.__dict__["certificate_policy"] = certificate_policy
+            __props__.__dict__["config"] = config
+            __props__.__dict__["gcs_bucket"] = gcs_bucket
+            __props__.__dict__["issuing_options"] = issuing_options
+            __props__.__dict__["key_spec"] = key_spec
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["lifetime"] = lifetime
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['subordinate_config'] = subordinate_config
-            __props__['tier'] = tier
-            __props__['type'] = type
-            __props__['access_urls'] = None
-            __props__['ca_certificate_descriptions'] = None
-            __props__['create_time'] = None
-            __props__['delete_time'] = None
-            __props__['name'] = None
-            __props__['pem_ca_certificates'] = None
-            __props__['state'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["subordinate_config"] = subordinate_config
+            __props__.__dict__["tier"] = tier
+            __props__.__dict__["type"] = type
+            __props__.__dict__["access_urls"] = None
+            __props__.__dict__["ca_certificate_descriptions"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["delete_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["pem_ca_certificates"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["update_time"] = None
         super(CertificateAuthority, __self__).__init__(
             'gcp-native:privateca/v1beta1:CertificateAuthority',
             resource_name,
@@ -113,26 +354,26 @@ class CertificateAuthority(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = CertificateAuthorityArgs.__new__(CertificateAuthorityArgs)
 
-        __props__["access_urls"] = None
-        __props__["ca_certificate_descriptions"] = None
-        __props__["certificate_policy"] = None
-        __props__["config"] = None
-        __props__["create_time"] = None
-        __props__["delete_time"] = None
-        __props__["gcs_bucket"] = None
-        __props__["issuing_options"] = None
-        __props__["key_spec"] = None
-        __props__["labels"] = None
-        __props__["lifetime"] = None
-        __props__["name"] = None
-        __props__["pem_ca_certificates"] = None
-        __props__["state"] = None
-        __props__["subordinate_config"] = None
-        __props__["tier"] = None
-        __props__["type"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["access_urls"] = None
+        __props__.__dict__["ca_certificate_descriptions"] = None
+        __props__.__dict__["certificate_policy"] = None
+        __props__.__dict__["config"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["delete_time"] = None
+        __props__.__dict__["gcs_bucket"] = None
+        __props__.__dict__["issuing_options"] = None
+        __props__.__dict__["key_spec"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["lifetime"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["pem_ca_certificates"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["subordinate_config"] = None
+        __props__.__dict__["tier"] = None
+        __props__.__dict__["type"] = None
+        __props__.__dict__["update_time"] = None
         return CertificateAuthority(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -278,10 +519,4 @@ class CertificateAuthority(pulumi.CustomResource):
         The time at which this CertificateAuthority was updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,129 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['DatasetConsentStore']
+__all__ = ['DatasetConsentStoreArgs', 'DatasetConsentStore']
+
+@pulumi.input_type
+class DatasetConsentStoreArgs:
+    def __init__(__self__, *,
+                 consent_stores_id: pulumi.Input[str],
+                 datasets_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 default_consent_ttl: Optional[pulumi.Input[str]] = None,
+                 enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DatasetConsentStore resource.
+        :param pulumi.Input[str] default_consent_ttl: Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
+        :param pulumi.Input[bool] enable_consent_create_on_update: Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified, defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
+        :param pulumi.Input[str] name: Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+        """
+        pulumi.set(__self__, "consent_stores_id", consent_stores_id)
+        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if default_consent_ttl is not None:
+            pulumi.set(__self__, "default_consent_ttl", default_consent_ttl)
+        if enable_consent_create_on_update is not None:
+            pulumi.set(__self__, "enable_consent_create_on_update", enable_consent_create_on_update)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="consentStoresId")
+    def consent_stores_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_stores_id")
+
+    @consent_stores_id.setter
+    def consent_stores_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_stores_id", value)
+
+    @property
+    @pulumi.getter(name="datasetsId")
+    def datasets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasets_id")
+
+    @datasets_id.setter
+    def datasets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasets_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="defaultConsentTtl")
+    def default_consent_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
+        """
+        return pulumi.get(self, "default_consent_ttl")
+
+    @default_consent_ttl.setter
+    def default_consent_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_consent_ttl", value)
+
+    @property
+    @pulumi.getter(name="enableConsentCreateOnUpdate")
+    def enable_consent_create_on_update(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If `true`, UpdateConsent creates the Consent if it does not already exist. If unspecified, defaults to `false`.
+        """
+        return pulumi.get(self, "enable_consent_create_on_update")
+
+    @enable_consent_create_on_update.setter
+    def enable_consent_create_on_update(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_consent_create_on_update", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class DatasetConsentStore(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +152,41 @@ class DatasetConsentStore(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
         :param pulumi.Input[str] name: Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatasetConsentStoreArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
+
+        :param str resource_name: The name of the resource.
+        :param DatasetConsentStoreArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetConsentStoreArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 consent_stores_id: Optional[pulumi.Input[str]] = None,
+                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 default_consent_ttl: Optional[pulumi.Input[str]] = None,
+                 enable_consent_create_on_update: Optional[pulumi.Input[bool]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,24 +202,24 @@ class DatasetConsentStore(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatasetConsentStoreArgs.__new__(DatasetConsentStoreArgs)
 
             if consent_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_stores_id'")
-            __props__['consent_stores_id'] = consent_stores_id
+            __props__.__dict__["consent_stores_id"] = consent_stores_id
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
-            __props__['datasets_id'] = datasets_id
-            __props__['default_consent_ttl'] = default_consent_ttl
-            __props__['enable_consent_create_on_update'] = enable_consent_create_on_update
-            __props__['labels'] = labels
+            __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["default_consent_ttl"] = default_consent_ttl
+            __props__.__dict__["enable_consent_create_on_update"] = enable_consent_create_on_update
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
         super(DatasetConsentStore, __self__).__init__(
             'gcp-native:healthcare/v1beta1:DatasetConsentStore',
             resource_name,
@@ -89,12 +240,12 @@ class DatasetConsentStore(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatasetConsentStoreArgs.__new__(DatasetConsentStoreArgs)
 
-        __props__["default_consent_ttl"] = None
-        __props__["enable_consent_create_on_update"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
+        __props__.__dict__["default_consent_ttl"] = None
+        __props__.__dict__["enable_consent_create_on_update"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
         return DatasetConsentStore(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -128,10 +279,4 @@ class DatasetConsentStore(pulumi.CustomResource):
         Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

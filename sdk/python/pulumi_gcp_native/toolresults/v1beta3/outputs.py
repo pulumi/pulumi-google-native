@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -54,6 +54,27 @@ class AndroidAppInfoResponse(dict):
     """
     Android app information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packageName":
+            suggest = "package_name"
+        elif key == "versionCode":
+            suggest = "version_code"
+        elif key == "versionName":
+            suggest = "version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AndroidAppInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AndroidAppInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AndroidAppInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  package_name: str,
@@ -103,15 +124,35 @@ class AndroidAppInfoResponse(dict):
         """
         return pulumi.get(self, "version_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AndroidInstrumentationTestResponse(dict):
     """
     A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testPackageId":
+            suggest = "test_package_id"
+        elif key == "testRunnerClass":
+            suggest = "test_runner_class"
+        elif key == "testTargets":
+            suggest = "test_targets"
+        elif key == "useOrchestrator":
+            suggest = "use_orchestrator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AndroidInstrumentationTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AndroidInstrumentationTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AndroidInstrumentationTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  test_package_id: str,
                  test_runner_class: str,
@@ -161,15 +202,37 @@ class AndroidInstrumentationTestResponse(dict):
         """
         return pulumi.get(self, "use_orchestrator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AndroidRoboTestResponse(dict):
     """
     A test of an android application that explores the application on a virtual or physical Android device, finding culprits and crashes as it goes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appInitialActivity":
+            suggest = "app_initial_activity"
+        elif key == "bootstrapPackageId":
+            suggest = "bootstrap_package_id"
+        elif key == "bootstrapRunnerClass":
+            suggest = "bootstrap_runner_class"
+        elif key == "maxDepth":
+            suggest = "max_depth"
+        elif key == "maxSteps":
+            suggest = "max_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AndroidRoboTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AndroidRoboTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AndroidRoboTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_initial_activity: str,
                  bootstrap_package_id: str,
@@ -230,9 +293,6 @@ class AndroidRoboTestResponse(dict):
         """
         return pulumi.get(self, "max_steps")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AndroidTestLoopResponse(dict):
@@ -245,15 +305,37 @@ class AndroidTestLoopResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AndroidTestResponse(dict):
     """
     An Android mobile test specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "androidAppInfo":
+            suggest = "android_app_info"
+        elif key == "androidInstrumentationTest":
+            suggest = "android_instrumentation_test"
+        elif key == "androidRoboTest":
+            suggest = "android_robo_test"
+        elif key == "androidTestLoop":
+            suggest = "android_test_loop"
+        elif key == "testTimeout":
+            suggest = "test_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AndroidTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AndroidTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AndroidTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  android_app_info: 'outputs.AndroidAppInfoResponse',
                  android_instrumentation_test: 'outputs.AndroidInstrumentationTestResponse',
@@ -314,15 +396,29 @@ class AndroidTestResponse(dict):
         """
         return pulumi.get(self, "test_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AnyResponse(dict):
     """
      `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "typeUrl":
+            suggest = "type_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  type_url: str,
                  value: str):
@@ -350,15 +446,33 @@ class AnyResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicPerfSampleSeriesResponse(dict):
     """
     Encapsulates the metadata for basic sample series represented by a line chart
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perfMetricType":
+            suggest = "perf_metric_type"
+        elif key == "perfUnit":
+            suggest = "perf_unit"
+        elif key == "sampleSeriesLabel":
+            suggest = "sample_series_label"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicPerfSampleSeriesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicPerfSampleSeriesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicPerfSampleSeriesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  perf_metric_type: str,
                  perf_unit: str,
@@ -384,9 +498,6 @@ class BasicPerfSampleSeriesResponse(dict):
     @pulumi.getter(name="sampleSeriesLabel")
     def sample_series_label(self) -> str:
         return pulumi.get(self, "sample_series_label")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -421,15 +532,39 @@ class DurationResponse(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FailureDetailResponse(dict):
     """
     Details for an outcome with a FAILURE outcome summary.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deviceOutOfMemory":
+            suggest = "device_out_of_memory"
+        elif key == "failedRoboscript":
+            suggest = "failed_roboscript"
+        elif key == "notInstalled":
+            suggest = "not_installed"
+        elif key == "otherNativeCrash":
+            suggest = "other_native_crash"
+        elif key == "timedOut":
+            suggest = "timed_out"
+        elif key == "unableToCrawl":
+            suggest = "unable_to_crawl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FailureDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FailureDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FailureDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  crashed: bool,
                  device_out_of_memory: bool,
@@ -512,15 +647,29 @@ class FailureDetailResponse(dict):
         """
         return pulumi.get(self, "unable_to_crawl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileReferenceResponse(dict):
     """
     A reference to a file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileUri":
+            suggest = "file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_uri: str):
         """
@@ -537,15 +686,33 @@ class FileReferenceResponse(dict):
         """
         return pulumi.get(self, "file_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InconclusiveDetailResponse(dict):
     """
     Details for an outcome with an INCONCLUSIVE outcome summary.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortedByUser":
+            suggest = "aborted_by_user"
+        elif key == "hasErrorLogs":
+            suggest = "has_error_logs"
+        elif key == "infrastructureFailure":
+            suggest = "infrastructure_failure"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InconclusiveDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InconclusiveDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InconclusiveDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aborted_by_user: bool,
                  has_error_logs: bool,
@@ -584,15 +751,35 @@ class InconclusiveDetailResponse(dict):
         """
         return pulumi.get(self, "infrastructure_failure")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IndividualOutcomeResponse(dict):
     """
     Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "multistepNumber":
+            suggest = "multistep_number"
+        elif key == "outcomeSummary":
+            suggest = "outcome_summary"
+        elif key == "runDuration":
+            suggest = "run_duration"
+        elif key == "stepId":
+            suggest = "step_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IndividualOutcomeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IndividualOutcomeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IndividualOutcomeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  multistep_number: int,
                  outcome_summary: str,
@@ -634,9 +821,6 @@ class IndividualOutcomeResponse(dict):
     def step_id(self) -> str:
         return pulumi.get(self, "step_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IosAppInfoResponse(dict):
@@ -659,9 +843,6 @@ class IosAppInfoResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IosRoboTestResponse(dict):
@@ -674,15 +855,29 @@ class IosRoboTestResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IosTestLoopResponse(dict):
     """
     A game loop test of an iOS application.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bundleId":
+            suggest = "bundle_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IosTestLoopResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IosTestLoopResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IosTestLoopResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bundle_id: str):
         """
@@ -699,15 +894,37 @@ class IosTestLoopResponse(dict):
         """
         return pulumi.get(self, "bundle_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IosTestResponse(dict):
     """
     A iOS mobile test specification
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iosAppInfo":
+            suggest = "ios_app_info"
+        elif key == "iosRoboTest":
+            suggest = "ios_robo_test"
+        elif key == "iosTestLoop":
+            suggest = "ios_test_loop"
+        elif key == "iosXcTest":
+            suggest = "ios_xc_test"
+        elif key == "testTimeout":
+            suggest = "test_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IosTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IosTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IosTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ios_app_info: 'outputs.IosAppInfoResponse',
                  ios_robo_test: 'outputs.IosRoboTestResponse',
@@ -768,15 +985,31 @@ class IosTestResponse(dict):
         """
         return pulumi.get(self, "test_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IosXcTestResponse(dict):
     """
     A test of an iOS application that uses the XCTest framework.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bundleId":
+            suggest = "bundle_id"
+        elif key == "xcodeVersion":
+            suggest = "xcode_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IosXcTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IosXcTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IosXcTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bundle_id: str,
                  xcode_version: str):
@@ -804,9 +1037,6 @@ class IosXcTestResponse(dict):
         """
         return pulumi.get(self, "xcode_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MatrixDimensionDefinitionResponse(dict):
@@ -819,15 +1049,33 @@ class MatrixDimensionDefinitionResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MultiStepResponse(dict):
     """
     Details when multiple steps are run with the same configuration as a group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "multistepNumber":
+            suggest = "multistep_number"
+        elif key == "primaryStep":
+            suggest = "primary_step"
+        elif key == "primaryStepId":
+            suggest = "primary_step_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MultiStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MultiStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MultiStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  multistep_number: int,
                  primary_step: 'outputs.PrimaryStepResponse',
@@ -866,15 +1114,35 @@ class MultiStepResponse(dict):
         """
         return pulumi.get(self, "primary_step_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OutcomeResponse(dict):
     """
     Interprets a result so that humans and machines can act on it.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failureDetail":
+            suggest = "failure_detail"
+        elif key == "inconclusiveDetail":
+            suggest = "inconclusive_detail"
+        elif key == "skippedDetail":
+            suggest = "skipped_detail"
+        elif key == "successDetail":
+            suggest = "success_detail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OutcomeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OutcomeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OutcomeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  failure_detail: 'outputs.FailureDetailResponse',
                  inconclusive_detail: 'outputs.InconclusiveDetailResponse',
@@ -935,15 +1203,31 @@ class OutcomeResponse(dict):
         """
         return pulumi.get(self, "summary")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrimaryStepResponse(dict):
     """
     Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "individualOutcome":
+            suggest = "individual_outcome"
+        elif key == "rollUp":
+            suggest = "roll_up"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrimaryStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrimaryStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrimaryStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  individual_outcome: Sequence['outputs.IndividualOutcomeResponse'],
                  roll_up: str):
@@ -971,15 +1255,33 @@ class PrimaryStepResponse(dict):
         """
         return pulumi.get(self, "roll_up")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SkippedDetailResponse(dict):
     """
     Details for an outcome with a SKIPPED outcome summary.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "incompatibleAppVersion":
+            suggest = "incompatible_app_version"
+        elif key == "incompatibleArchitecture":
+            suggest = "incompatible_architecture"
+        elif key == "incompatibleDevice":
+            suggest = "incompatible_device"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkippedDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkippedDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkippedDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  incompatible_app_version: bool,
                  incompatible_architecture: bool,
@@ -1018,15 +1320,31 @@ class SkippedDetailResponse(dict):
         """
         return pulumi.get(self, "incompatible_device")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpecificationResponse(dict):
     """
     The details about how to run the execution.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "androidTest":
+            suggest = "android_test"
+        elif key == "iosTest":
+            suggest = "ios_test"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpecificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpecificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpecificationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  android_test: 'outputs.AndroidTestResponse',
                  ios_test: 'outputs.IosTestResponse'):
@@ -1054,9 +1372,6 @@ class SpecificationResponse(dict):
         """
         return pulumi.get(self, "ios_test")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StackTraceResponse(dict):
@@ -1079,9 +1394,6 @@ class StackTraceResponse(dict):
         """
         return pulumi.get(self, "exception")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StepDimensionValueEntryResponse(dict):
@@ -1100,9 +1412,6 @@ class StepDimensionValueEntryResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1123,15 +1432,29 @@ class StepLabelsEntryResponse(dict):
     def value(self) -> str:
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SuccessDetailResponse(dict):
     """
     Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "otherNativeCrash":
+            suggest = "other_native_crash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SuccessDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SuccessDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SuccessDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  other_native_crash: bool):
         """
@@ -1148,15 +1471,31 @@ class SuccessDetailResponse(dict):
         """
         return pulumi.get(self, "other_native_crash")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TestCaseReferenceResponse(dict):
     """
     A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "className":
+            suggest = "class_name"
+        elif key == "testSuiteName":
+            suggest = "test_suite_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TestCaseReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TestCaseReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TestCaseReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  class_name: str,
                  name: str,
@@ -1195,15 +1534,35 @@ class TestCaseReferenceResponse(dict):
         """
         return pulumi.get(self, "test_suite_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TestExecutionStepResponse(dict):
     """
     A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testIssues":
+            suggest = "test_issues"
+        elif key == "testSuiteOverviews":
+            suggest = "test_suite_overviews"
+        elif key == "testTiming":
+            suggest = "test_timing"
+        elif key == "toolExecution":
+            suggest = "tool_execution"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TestExecutionStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TestExecutionStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TestExecutionStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  test_issues: Sequence['outputs.TestIssueResponse'],
                  test_suite_overviews: Sequence['outputs.TestSuiteOverviewResponse'],
@@ -1253,15 +1612,31 @@ class TestExecutionStepResponse(dict):
         """
         return pulumi.get(self, "tool_execution")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TestIssueResponse(dict):
     """
     An issue detected occurring during a test execution.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorMessage":
+            suggest = "error_message"
+        elif key == "stackTrace":
+            suggest = "stack_trace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TestIssueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TestIssueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TestIssueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  category: str,
                  error_message: str,
@@ -1333,15 +1708,41 @@ class TestIssueResponse(dict):
         """
         return pulumi.get(self, "warning")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TestSuiteOverviewResponse(dict):
     """
     A summary of a test suite result either parsed from XML or uploaded directly by a user. Note: the API related comments are for StepService only. This message is also being used in ExecutionService in a read only mode for the corresponding step.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elapsedTime":
+            suggest = "elapsed_time"
+        elif key == "errorCount":
+            suggest = "error_count"
+        elif key == "failureCount":
+            suggest = "failure_count"
+        elif key == "flakyCount":
+            suggest = "flaky_count"
+        elif key == "skippedCount":
+            suggest = "skipped_count"
+        elif key == "totalCount":
+            suggest = "total_count"
+        elif key == "xmlSource":
+            suggest = "xml_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TestSuiteOverviewResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TestSuiteOverviewResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TestSuiteOverviewResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elapsed_time: 'outputs.DurationResponse',
                  error_count: int,
@@ -1435,15 +1836,29 @@ class TestSuiteOverviewResponse(dict):
         """
         return pulumi.get(self, "xml_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TestTimingResponse(dict):
     """
     Testing timing break down to know phases.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "testProcessDuration":
+            suggest = "test_process_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TestTimingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TestTimingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TestTimingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  test_process_duration: 'outputs.DurationResponse'):
         """
@@ -1459,9 +1874,6 @@ class TestTimingResponse(dict):
         How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
         """
         return pulumi.get(self, "test_process_duration")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1496,15 +1908,35 @@ class TimestampResponse(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ToolExecutionResponse(dict):
     """
     An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commandLineArguments":
+            suggest = "command_line_arguments"
+        elif key == "exitCode":
+            suggest = "exit_code"
+        elif key == "toolLogs":
+            suggest = "tool_logs"
+        elif key == "toolOutputs":
+            suggest = "tool_outputs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolExecutionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolExecutionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolExecutionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  command_line_arguments: Sequence[str],
                  exit_code: 'outputs.ToolExitCodeResponse',
@@ -1554,15 +1986,29 @@ class ToolExecutionResponse(dict):
         """
         return pulumi.get(self, "tool_outputs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ToolExecutionStepResponse(dict):
     """
     Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "toolExecution":
+            suggest = "tool_execution"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolExecutionStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolExecutionStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolExecutionStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  tool_execution: 'outputs.ToolExecutionResponse'):
         """
@@ -1578,9 +2024,6 @@ class ToolExecutionStepResponse(dict):
         A Tool execution. - In response: present if set by create/update request - In create/update request: optional
         """
         return pulumi.get(self, "tool_execution")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1604,15 +2047,31 @@ class ToolExitCodeResponse(dict):
         """
         return pulumi.get(self, "number")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ToolOutputReferenceResponse(dict):
     """
     A reference to a ToolExecution output file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creationTime":
+            suggest = "creation_time"
+        elif key == "testCase":
+            suggest = "test_case"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ToolOutputReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ToolOutputReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ToolOutputReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  creation_time: 'outputs.TimestampResponse',
                  output: 'outputs.FileReferenceResponse',
@@ -1650,8 +2109,5 @@ class ToolOutputReferenceResponse(dict):
         The test case to which this output file belongs. - In response: present if set by create/update request - In create/update request: optional
         """
         return pulumi.get(self, "test_case")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

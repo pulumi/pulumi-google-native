@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:dlp/v2:DeidentifyTemplate":
-		r, err = NewDeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeidentifyTemplate{}
 	case "gcp-native:dlp/v2:DlpJob":
-		r, err = NewDlpJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &DlpJob{}
 	case "gcp-native:dlp/v2:InspectTemplate":
-		r, err = NewInspectTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &InspectTemplate{}
 	case "gcp-native:dlp/v2:JobTrigger":
-		r, err = NewJobTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobTrigger{}
 	case "gcp-native:dlp/v2:OrganizationDeidentifyTemplate":
-		r, err = NewOrganizationDeidentifyTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationDeidentifyTemplate{}
 	case "gcp-native:dlp/v2:OrganizationInspectTemplate":
-		r, err = NewOrganizationInspectTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationInspectTemplate{}
 	case "gcp-native:dlp/v2:OrganizationJobTrigger":
-		r, err = NewOrganizationJobTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationJobTrigger{}
 	case "gcp-native:dlp/v2:OrganizationStoredInfoType":
-		r, err = NewOrganizationStoredInfoType(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationStoredInfoType{}
 	case "gcp-native:dlp/v2:StoredInfoType":
-		r, err = NewStoredInfoType(ctx, name, nil, pulumi.URN_(urn))
+		r = &StoredInfoType{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

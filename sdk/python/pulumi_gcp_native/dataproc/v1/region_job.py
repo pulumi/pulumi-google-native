@@ -5,15 +5,264 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionJob']
+__all__ = ['RegionJobArgs', 'RegionJob']
+
+@pulumi.input_type
+class RegionJobArgs:
+    def __init__(__self__, *,
+                 job_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 region: pulumi.Input[str],
+                 hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
+                 hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pig_job: Optional[pulumi.Input['PigJobArgs']] = None,
+                 placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
+                 presto_job: Optional[pulumi.Input['PrestoJobArgs']] = None,
+                 pyspark_job: Optional[pulumi.Input['PySparkJobArgs']] = None,
+                 reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
+                 spark_job: Optional[pulumi.Input['SparkJobArgs']] = None,
+                 spark_r_job: Optional[pulumi.Input['SparkRJobArgs']] = None,
+                 spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None):
+        """
+        The set of arguments for constructing a RegionJob resource.
+        :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
+        :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        :param pulumi.Input['PigJobArgs'] pig_job: Optional. Job is a Pig job.
+        :param pulumi.Input['JobPlacementArgs'] placement: Required. Job information, including how, when, and where to run the job.
+        :param pulumi.Input['PrestoJobArgs'] presto_job: Optional. Job is a Presto job.
+        :param pulumi.Input['PySparkJobArgs'] pyspark_job: Optional. Job is a PySpark job.
+        :param pulumi.Input['JobReferenceArgs'] reference: Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
+        :param pulumi.Input[str] request_id: Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        :param pulumi.Input['JobSchedulingArgs'] scheduling: Optional. Job scheduling configuration.
+        :param pulumi.Input['SparkJobArgs'] spark_job: Optional. Job is a Spark job.
+        :param pulumi.Input['SparkRJobArgs'] spark_r_job: Optional. Job is a SparkR job.
+        :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
+        """
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        if hadoop_job is not None:
+            pulumi.set(__self__, "hadoop_job", hadoop_job)
+        if hive_job is not None:
+            pulumi.set(__self__, "hive_job", hive_job)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if pig_job is not None:
+            pulumi.set(__self__, "pig_job", pig_job)
+        if placement is not None:
+            pulumi.set(__self__, "placement", placement)
+        if presto_job is not None:
+            pulumi.set(__self__, "presto_job", presto_job)
+        if pyspark_job is not None:
+            pulumi.set(__self__, "pyspark_job", pyspark_job)
+        if reference is not None:
+            pulumi.set(__self__, "reference", reference)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
+        if scheduling is not None:
+            pulumi.set(__self__, "scheduling", scheduling)
+        if spark_job is not None:
+            pulumi.set(__self__, "spark_job", spark_job)
+        if spark_r_job is not None:
+            pulumi.set(__self__, "spark_r_job", spark_r_job)
+        if spark_sql_job is not None:
+            pulumi.set(__self__, "spark_sql_job", spark_sql_job)
+
+    @property
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_id")
+
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="hadoopJob")
+    def hadoop_job(self) -> Optional[pulumi.Input['HadoopJobArgs']]:
+        """
+        Optional. Job is a Hadoop job.
+        """
+        return pulumi.get(self, "hadoop_job")
+
+    @hadoop_job.setter
+    def hadoop_job(self, value: Optional[pulumi.Input['HadoopJobArgs']]):
+        pulumi.set(self, "hadoop_job", value)
+
+    @property
+    @pulumi.getter(name="hiveJob")
+    def hive_job(self) -> Optional[pulumi.Input['HiveJobArgs']]:
+        """
+        Optional. Job is a Hive job.
+        """
+        return pulumi.get(self, "hive_job")
+
+    @hive_job.setter
+    def hive_job(self, value: Optional[pulumi.Input['HiveJobArgs']]):
+        pulumi.set(self, "hive_job", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="pigJob")
+    def pig_job(self) -> Optional[pulumi.Input['PigJobArgs']]:
+        """
+        Optional. Job is a Pig job.
+        """
+        return pulumi.get(self, "pig_job")
+
+    @pig_job.setter
+    def pig_job(self, value: Optional[pulumi.Input['PigJobArgs']]):
+        pulumi.set(self, "pig_job", value)
+
+    @property
+    @pulumi.getter
+    def placement(self) -> Optional[pulumi.Input['JobPlacementArgs']]:
+        """
+        Required. Job information, including how, when, and where to run the job.
+        """
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: Optional[pulumi.Input['JobPlacementArgs']]):
+        pulumi.set(self, "placement", value)
+
+    @property
+    @pulumi.getter(name="prestoJob")
+    def presto_job(self) -> Optional[pulumi.Input['PrestoJobArgs']]:
+        """
+        Optional. Job is a Presto job.
+        """
+        return pulumi.get(self, "presto_job")
+
+    @presto_job.setter
+    def presto_job(self, value: Optional[pulumi.Input['PrestoJobArgs']]):
+        pulumi.set(self, "presto_job", value)
+
+    @property
+    @pulumi.getter(name="pysparkJob")
+    def pyspark_job(self) -> Optional[pulumi.Input['PySparkJobArgs']]:
+        """
+        Optional. Job is a PySpark job.
+        """
+        return pulumi.get(self, "pyspark_job")
+
+    @pyspark_job.setter
+    def pyspark_job(self, value: Optional[pulumi.Input['PySparkJobArgs']]):
+        pulumi.set(self, "pyspark_job", value)
+
+    @property
+    @pulumi.getter
+    def reference(self) -> Optional[pulumi.Input['JobReferenceArgs']]:
+        """
+        Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
+        """
+        return pulumi.get(self, "reference")
+
+    @reference.setter
+    def reference(self, value: Optional[pulumi.Input['JobReferenceArgs']]):
+        pulumi.set(self, "reference", value)
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
+    @pulumi.getter
+    def scheduling(self) -> Optional[pulumi.Input['JobSchedulingArgs']]:
+        """
+        Optional. Job scheduling configuration.
+        """
+        return pulumi.get(self, "scheduling")
+
+    @scheduling.setter
+    def scheduling(self, value: Optional[pulumi.Input['JobSchedulingArgs']]):
+        pulumi.set(self, "scheduling", value)
+
+    @property
+    @pulumi.getter(name="sparkJob")
+    def spark_job(self) -> Optional[pulumi.Input['SparkJobArgs']]:
+        """
+        Optional. Job is a Spark job.
+        """
+        return pulumi.get(self, "spark_job")
+
+    @spark_job.setter
+    def spark_job(self, value: Optional[pulumi.Input['SparkJobArgs']]):
+        pulumi.set(self, "spark_job", value)
+
+    @property
+    @pulumi.getter(name="sparkRJob")
+    def spark_r_job(self) -> Optional[pulumi.Input['SparkRJobArgs']]:
+        """
+        Optional. Job is a SparkR job.
+        """
+        return pulumi.get(self, "spark_r_job")
+
+    @spark_r_job.setter
+    def spark_r_job(self, value: Optional[pulumi.Input['SparkRJobArgs']]):
+        pulumi.set(self, "spark_r_job", value)
+
+    @property
+    @pulumi.getter(name="sparkSqlJob")
+    def spark_sql_job(self) -> Optional[pulumi.Input['SparkSqlJobArgs']]:
+        """
+        Optional. Job is a SparkSql job.
+        """
+        return pulumi.get(self, "spark_sql_job")
+
+    @spark_sql_job.setter
+    def spark_sql_job(self, value: Optional[pulumi.Input['SparkSqlJobArgs']]):
+        pulumi.set(self, "spark_sql_job", value)
 
 
 class RegionJob(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +304,49 @@ class RegionJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SparkRJobArgs']] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input[pulumi.InputType['SparkSqlJobArgs']] spark_sql_job: Optional. Job is a SparkSql job.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RegionJobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Submits a job to a cluster.
+
+        :param str resource_name: The name of the resource.
+        :param RegionJobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RegionJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 hadoop_job: Optional[pulumi.Input[pulumi.InputType['HadoopJobArgs']]] = None,
+                 hive_job: Optional[pulumi.Input[pulumi.InputType['HiveJobArgs']]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
+                 placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
+                 presto_job: Optional[pulumi.Input[pulumi.InputType['PrestoJobArgs']]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 pyspark_job: Optional[pulumi.Input[pulumi.InputType['PySparkJobArgs']]] = None,
+                 reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
+                 region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 scheduling: Optional[pulumi.Input[pulumi.InputType['JobSchedulingArgs']]] = None,
+                 spark_job: Optional[pulumi.Input[pulumi.InputType['SparkJobArgs']]] = None,
+                 spark_r_job: Optional[pulumi.Input[pulumi.InputType['SparkRJobArgs']]] = None,
+                 spark_sql_job: Optional[pulumi.Input[pulumi.InputType['SparkSqlJobArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -70,37 +362,37 @@ class RegionJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RegionJobArgs.__new__(RegionJobArgs)
 
-            __props__['hadoop_job'] = hadoop_job
-            __props__['hive_job'] = hive_job
+            __props__.__dict__["hadoop_job"] = hadoop_job
+            __props__.__dict__["hive_job"] = hive_job
             if job_id is None and not opts.urn:
                 raise TypeError("Missing required property 'job_id'")
-            __props__['job_id'] = job_id
-            __props__['labels'] = labels
-            __props__['pig_job'] = pig_job
-            __props__['placement'] = placement
-            __props__['presto_job'] = presto_job
+            __props__.__dict__["job_id"] = job_id
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["pig_job"] = pig_job
+            __props__.__dict__["placement"] = placement
+            __props__.__dict__["presto_job"] = presto_job
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['pyspark_job'] = pyspark_job
-            __props__['reference'] = reference
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["pyspark_job"] = pyspark_job
+            __props__.__dict__["reference"] = reference
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
-            __props__['region'] = region
-            __props__['request_id'] = request_id
-            __props__['scheduling'] = scheduling
-            __props__['spark_job'] = spark_job
-            __props__['spark_r_job'] = spark_r_job
-            __props__['spark_sql_job'] = spark_sql_job
-            __props__['done'] = None
-            __props__['driver_control_files_uri'] = None
-            __props__['driver_output_resource_uri'] = None
-            __props__['job_uuid'] = None
-            __props__['status'] = None
-            __props__['status_history'] = None
-            __props__['yarn_applications'] = None
+            __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["scheduling"] = scheduling
+            __props__.__dict__["spark_job"] = spark_job
+            __props__.__dict__["spark_r_job"] = spark_r_job
+            __props__.__dict__["spark_sql_job"] = spark_sql_job
+            __props__.__dict__["done"] = None
+            __props__.__dict__["driver_control_files_uri"] = None
+            __props__.__dict__["driver_output_resource_uri"] = None
+            __props__.__dict__["job_uuid"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["status_history"] = None
+            __props__.__dict__["yarn_applications"] = None
         super(RegionJob, __self__).__init__(
             'gcp-native:dataproc/v1:RegionJob',
             resource_name,
@@ -121,27 +413,27 @@ class RegionJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = RegionJobArgs.__new__(RegionJobArgs)
 
-        __props__["done"] = None
-        __props__["driver_control_files_uri"] = None
-        __props__["driver_output_resource_uri"] = None
-        __props__["hadoop_job"] = None
-        __props__["hive_job"] = None
-        __props__["job_uuid"] = None
-        __props__["labels"] = None
-        __props__["pig_job"] = None
-        __props__["placement"] = None
-        __props__["presto_job"] = None
-        __props__["pyspark_job"] = None
-        __props__["reference"] = None
-        __props__["scheduling"] = None
-        __props__["spark_job"] = None
-        __props__["spark_r_job"] = None
-        __props__["spark_sql_job"] = None
-        __props__["status"] = None
-        __props__["status_history"] = None
-        __props__["yarn_applications"] = None
+        __props__.__dict__["done"] = None
+        __props__.__dict__["driver_control_files_uri"] = None
+        __props__.__dict__["driver_output_resource_uri"] = None
+        __props__.__dict__["hadoop_job"] = None
+        __props__.__dict__["hive_job"] = None
+        __props__.__dict__["job_uuid"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["pig_job"] = None
+        __props__.__dict__["placement"] = None
+        __props__.__dict__["presto_job"] = None
+        __props__.__dict__["pyspark_job"] = None
+        __props__.__dict__["reference"] = None
+        __props__.__dict__["scheduling"] = None
+        __props__.__dict__["spark_job"] = None
+        __props__.__dict__["spark_r_job"] = None
+        __props__.__dict__["spark_sql_job"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["status_history"] = None
+        __props__.__dict__["yarn_applications"] = None
         return RegionJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -295,10 +587,4 @@ class RegionJob(pulumi.CustomResource):
         The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
         """
         return pulumi.get(self, "yarn_applications")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

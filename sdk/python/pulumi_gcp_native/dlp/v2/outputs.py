@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -144,6 +144,33 @@ class GooglePrivacyDlpV2ActionResponse(dict):
     """
     A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobNotificationEmails":
+            suggest = "job_notification_emails"
+        elif key == "pubSub":
+            suggest = "pub_sub"
+        elif key == "publishFindingsToCloudDataCatalog":
+            suggest = "publish_findings_to_cloud_data_catalog"
+        elif key == "publishSummaryToCscc":
+            suggest = "publish_summary_to_cscc"
+        elif key == "publishToStackdriver":
+            suggest = "publish_to_stackdriver"
+        elif key == "saveFindings":
+            suggest = "save_findings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_notification_emails: 'outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse',
                  pub_sub: 'outputs.GooglePrivacyDlpV2PublishToPubSubResponse',
@@ -215,15 +242,45 @@ class GooglePrivacyDlpV2ActionResponse(dict):
         """
         return pulumi.get(self, "save_findings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse(dict):
     """
     Result of a risk analysis operation request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "categoricalStatsResult":
+            suggest = "categorical_stats_result"
+        elif key == "deltaPresenceEstimationResult":
+            suggest = "delta_presence_estimation_result"
+        elif key == "kAnonymityResult":
+            suggest = "k_anonymity_result"
+        elif key == "kMapEstimationResult":
+            suggest = "k_map_estimation_result"
+        elif key == "lDiversityResult":
+            suggest = "l_diversity_result"
+        elif key == "numericalStatsResult":
+            suggest = "numerical_stats_result"
+        elif key == "requestedOptions":
+            suggest = "requested_options"
+        elif key == "requestedPrivacyMetric":
+            suggest = "requested_privacy_metric"
+        elif key == "requestedSourceTable":
+            suggest = "requested_source_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categorical_stats_result: 'outputs.GooglePrivacyDlpV2CategoricalStatsResultResponse',
                  delta_presence_estimation_result: 'outputs.GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse',
@@ -328,15 +385,31 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse(dict):
         """
         return pulumi.get(self, "requested_source_table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
     """
     An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quasiIds":
+            suggest = "quasi_ids"
+        elif key == "relativeFrequency":
+            suggest = "relative_frequency"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2AuxiliaryTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2AuxiliaryTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2AuxiliaryTableResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2QuasiIdFieldResponse'],
                  relative_frequency: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
@@ -375,9 +448,6 @@ class GooglePrivacyDlpV2AuxiliaryTableResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2BigQueryFieldResponse(dict):
@@ -411,15 +481,39 @@ class GooglePrivacyDlpV2BigQueryFieldResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
     """
     Options defining BigQuery table and row identifiers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedFields":
+            suggest = "excluded_fields"
+        elif key == "identifyingFields":
+            suggest = "identifying_fields"
+        elif key == "rowsLimit":
+            suggest = "rows_limit"
+        elif key == "rowsLimitPercent":
+            suggest = "rows_limit_percent"
+        elif key == "sampleMethod":
+            suggest = "sample_method"
+        elif key == "tableReference":
+            suggest = "table_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2BigQueryOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2BigQueryOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2BigQueryOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  excluded_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
                  identifying_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
@@ -487,15 +581,33 @@ class GooglePrivacyDlpV2BigQueryOptionsResponse(dict):
         """
         return pulumi.get(self, "table_reference")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2BigQueryTableResponse(dict):
     """
     Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2BigQueryTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2BigQueryTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2BigQueryTableResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -534,15 +646,29 @@ class GooglePrivacyDlpV2BigQueryTableResponse(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2BucketResponse(dict):
     """
     Bucket is represented as a range, along with replacement values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "replacementValue":
+            suggest = "replacement_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2BucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2BucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2BucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max: 'outputs.GooglePrivacyDlpV2ValueResponse',
                  min: 'outputs.GooglePrivacyDlpV2ValueResponse',
@@ -581,9 +707,6 @@ class GooglePrivacyDlpV2BucketResponse(dict):
         """
         return pulumi.get(self, "replacement_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2BucketingConfigResponse(dict):
@@ -605,9 +728,6 @@ class GooglePrivacyDlpV2BucketingConfigResponse(dict):
         Set of buckets. Ranges must be non-overlapping.
         """
         return pulumi.get(self, "buckets")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -631,15 +751,37 @@ class GooglePrivacyDlpV2CategoricalStatsConfigResponse(dict):
         """
         return pulumi.get(self, "field")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse(dict):
     """
     Histogram of value frequencies in the column.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "bucketValueCount":
+            suggest = "bucket_value_count"
+        elif key == "bucketValues":
+            suggest = "bucket_values"
+        elif key == "valueFrequencyLowerBound":
+            suggest = "value_frequency_lower_bound"
+        elif key == "valueFrequencyUpperBound":
+            suggest = "value_frequency_upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: str,
                  bucket_value_count: str,
@@ -700,15 +842,29 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse(dict):
         """
         return pulumi.get(self, "value_frequency_upper_bound")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CategoricalStatsResultResponse(dict):
     """
     Result of the categorical stats computation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueFrequencyHistogramBuckets":
+            suggest = "value_frequency_histogram_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CategoricalStatsResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CategoricalStatsResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CategoricalStatsResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  value_frequency_histogram_buckets: Sequence['outputs.GooglePrivacyDlpV2CategoricalStatsHistogramBucketResponse']):
         """
@@ -725,15 +881,35 @@ class GooglePrivacyDlpV2CategoricalStatsResultResponse(dict):
         """
         return pulumi.get(self, "value_frequency_histogram_buckets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CharacterMaskConfigResponse(dict):
     """
     Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "charactersToIgnore":
+            suggest = "characters_to_ignore"
+        elif key == "maskingCharacter":
+            suggest = "masking_character"
+        elif key == "numberToMask":
+            suggest = "number_to_mask"
+        elif key == "reverseOrder":
+            suggest = "reverse_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CharacterMaskConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CharacterMaskConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CharacterMaskConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  characters_to_ignore: Sequence['outputs.GooglePrivacyDlpV2CharsToIgnoreResponse'],
                  masking_character: str,
@@ -783,15 +959,31 @@ class GooglePrivacyDlpV2CharacterMaskConfigResponse(dict):
         """
         return pulumi.get(self, "reverse_order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CharsToIgnoreResponse(dict):
     """
     Characters to skip when doing deidentification of a value. These will be left alone and skipped.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "charactersToSkip":
+            suggest = "characters_to_skip"
+        elif key == "commonCharactersToIgnore":
+            suggest = "common_characters_to_ignore"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CharsToIgnoreResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CharsToIgnoreResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CharsToIgnoreResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  characters_to_skip: str,
                  common_characters_to_ignore: str):
@@ -819,9 +1011,6 @@ class GooglePrivacyDlpV2CharsToIgnoreResponse(dict):
         """
         return pulumi.get(self, "common_characters_to_ignore")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CloudStorageFileSetResponse(dict):
@@ -844,15 +1033,39 @@ class GooglePrivacyDlpV2CloudStorageFileSetResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
     """
     Options defining a file or a set of files within a Google Cloud Storage bucket.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bytesLimitPerFile":
+            suggest = "bytes_limit_per_file"
+        elif key == "bytesLimitPerFilePercent":
+            suggest = "bytes_limit_per_file_percent"
+        elif key == "fileSet":
+            suggest = "file_set"
+        elif key == "fileTypes":
+            suggest = "file_types"
+        elif key == "filesLimitPercent":
+            suggest = "files_limit_percent"
+        elif key == "sampleMethod":
+            suggest = "sample_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CloudStorageOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CloudStorageOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CloudStorageOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bytes_limit_per_file: str,
                  bytes_limit_per_file_percent: int,
@@ -920,9 +1133,6 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
     def sample_method(self) -> str:
         return pulumi.get(self, "sample_method")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CloudStoragePathResponse(dict):
@@ -945,15 +1155,33 @@ class GooglePrivacyDlpV2CloudStoragePathResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CloudStorageRegexFileSetResponse(dict):
     """
     Message representing a set of files in a Cloud Storage bucket. Regular expressions are used to allow fine-grained control over which files in the bucket to include. Included files are those that match at least one item in `include_regex` and do not match any items in `exclude_regex`. Note that a file that matches items from both lists will _not_ be included. For a match to occur, the entire file path (i.e., everything in the url after the bucket name) must match the regular expression. For example, given the input `{bucket_name: "mybucket", include_regex: ["directory1/.*"], exclude_regex: ["directory1/excluded.*"]}`: * `gs://mybucket/directory1/myfile` will be included * `gs://mybucket/directory1/directory2/myfile` will be included (`.*` matches across `/`) * `gs://mybucket/directory0/directory1/myfile` will _not_ be included (the full path doesn't match any items in `include_regex`) * `gs://mybucket/directory1/excludedfile` will _not_ be included (the path matches an item in `exclude_regex`) If `include_regex` is left empty, it will match all files by default (this is equivalent to setting `include_regex: [".*"]`). Some other common use cases: * `{bucket_name: "mybucket", exclude_regex: [".*\.pdf"]}` will include all files in `mybucket` except for .pdf files * `{bucket_name: "mybucket", include_regex: ["directory/[^/]+"]}` will include all files directly under `gs://mybucket/directory/`, without matching across `/`
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "excludeRegex":
+            suggest = "exclude_regex"
+        elif key == "includeRegex":
+            suggest = "include_regex"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CloudStorageRegexFileSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CloudStorageRegexFileSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CloudStorageRegexFileSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str,
                  exclude_regex: Sequence[str],
@@ -991,9 +1219,6 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetResponse(dict):
         A list of regular expressions matching file paths to include. All files in the bucket that match at least one of these regular expressions will be included in the set of files, except for those that also match an item in `exclude_regex`. Leaving this field empty will match all files by default (this is equivalent to including `.*` in the list). Regular expressions use RE2 [syntax](https://github.com/google/re2/wiki/Syntax); a guide can be found under the google/re2 repository on GitHub.
         """
         return pulumi.get(self, "include_regex")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1039,9 +1264,6 @@ class GooglePrivacyDlpV2ConditionResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ConditionsResponse(dict):
@@ -1064,15 +1286,31 @@ class GooglePrivacyDlpV2ConditionsResponse(dict):
         """
         return pulumi.get(self, "conditions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CryptoDeterministicConfigResponse(dict):
     """
     Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "surrogateInfoType":
+            suggest = "surrogate_info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CryptoDeterministicConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CryptoDeterministicConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CryptoDeterministicConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  context: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
                  crypto_key: 'outputs.GooglePrivacyDlpV2CryptoKeyResponse',
@@ -1111,15 +1349,29 @@ class GooglePrivacyDlpV2CryptoDeterministicConfigResponse(dict):
         """
         return pulumi.get(self, "surrogate_info_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CryptoHashConfigResponse(dict):
     """
     Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CryptoHashConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CryptoHashConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CryptoHashConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  crypto_key: 'outputs.GooglePrivacyDlpV2CryptoKeyResponse'):
         """
@@ -1136,15 +1388,29 @@ class GooglePrivacyDlpV2CryptoHashConfigResponse(dict):
         """
         return pulumi.get(self, "crypto_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CryptoKeyResponse(dict):
     """
     This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by KMS). When using KMS to wrap/unwrap DEKs, be sure to set an appropriate IAM policy on the KMS CryptoKey (KEK) to ensure an attacker cannot unwrap the data crypto key.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsWrapped":
+            suggest = "kms_wrapped"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CryptoKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CryptoKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CryptoKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_wrapped: 'outputs.GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse',
                  transient: 'outputs.GooglePrivacyDlpV2TransientCryptoKeyResponse',
@@ -1183,15 +1449,35 @@ class GooglePrivacyDlpV2CryptoKeyResponse(dict):
         """
         return pulumi.get(self, "unwrapped")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
     """
     Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonAlphabet":
+            suggest = "common_alphabet"
+        elif key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "customAlphabet":
+            suggest = "custom_alphabet"
+        elif key == "surrogateInfoType":
+            suggest = "surrogate_info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_alphabet: str,
                  context: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
@@ -1263,15 +1549,37 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
         """
         return pulumi.get(self, "surrogate_info_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
     """
     Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "detectionRules":
+            suggest = "detection_rules"
+        elif key == "exclusionType":
+            suggest = "exclusion_type"
+        elif key == "infoType":
+            suggest = "info_type"
+        elif key == "storedType":
+            suggest = "stored_type"
+        elif key == "surrogateType":
+            suggest = "surrogate_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2CustomInfoTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2CustomInfoTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2CustomInfoTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  detection_rules: Sequence['outputs.GooglePrivacyDlpV2DetectionRuleResponse'],
                  dictionary: 'outputs.GooglePrivacyDlpV2DictionaryResponse',
@@ -1365,15 +1673,29 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse(dict):
         """
         return pulumi.get(self, "surrogate_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DatastoreOptionsResponse(dict):
     """
     Options defining a data set within Google Cloud Datastore.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partitionId":
+            suggest = "partition_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DatastoreOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DatastoreOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DatastoreOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: 'outputs.GooglePrivacyDlpV2KindExpressionResponse',
                  partition_id: 'outputs.GooglePrivacyDlpV2PartitionIdResponse'):
@@ -1401,15 +1723,33 @@ class GooglePrivacyDlpV2DatastoreOptionsResponse(dict):
         """
         return pulumi.get(self, "partition_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DateShiftConfigResponse(dict):
     """
     Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKey":
+            suggest = "crypto_key"
+        elif key == "lowerBoundDays":
+            suggest = "lower_bound_days"
+        elif key == "upperBoundDays":
+            suggest = "upper_bound_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DateShiftConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DateShiftConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DateShiftConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  context: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
                  crypto_key: 'outputs.GooglePrivacyDlpV2CryptoKeyResponse',
@@ -1459,15 +1799,33 @@ class GooglePrivacyDlpV2DateShiftConfigResponse(dict):
         """
         return pulumi.get(self, "upper_bound_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
     """
     The configuration that controls how the data will change.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypeTransformations":
+            suggest = "info_type_transformations"
+        elif key == "recordTransformations":
+            suggest = "record_transformations"
+        elif key == "transformationErrorHandling":
+            suggest = "transformation_error_handling"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeidentifyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeidentifyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeidentifyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_type_transformations: 'outputs.GooglePrivacyDlpV2InfoTypeTransformationsResponse',
                  record_transformations: 'outputs.GooglePrivacyDlpV2RecordTransformationsResponse',
@@ -1506,15 +1864,33 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
         """
         return pulumi.get(self, "transformation_error_handling")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse(dict):
     """
     δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auxiliaryTables":
+            suggest = "auxiliary_tables"
+        elif key == "quasiIds":
+            suggest = "quasi_ids"
+        elif key == "regionCode":
+            suggest = "region_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auxiliary_tables: Sequence['outputs.GooglePrivacyDlpV2StatisticalTableResponse'],
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2QuasiIdResponse'],
@@ -1553,15 +1929,37 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse(dict):
         """
         return pulumi.get(self, "region_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse(dict):
     """
     A DeltaPresenceEstimationHistogramBucket message with the following values: min_probability: 0.1 max_probability: 0.2 frequency: 42 means that there are 42 records for which δ is in [0.1, 0.2). An important particular case is when min_probability = max_probability = 1: then, every individual who shares this quasi-identifier combination is in the dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "bucketValueCount":
+            suggest = "bucket_value_count"
+        elif key == "bucketValues":
+            suggest = "bucket_values"
+        elif key == "maxProbability":
+            suggest = "max_probability"
+        elif key == "minProbability":
+            suggest = "min_probability"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: str,
                  bucket_value_count: str,
@@ -1622,15 +2020,31 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse(dict):
         """
         return pulumi.get(self, "min_probability")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse(dict):
     """
     A tuple of values for the quasi-identifier columns.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedProbability":
+            suggest = "estimated_probability"
+        elif key == "quasiIdsValues":
+            suggest = "quasi_ids_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  estimated_probability: float,
                  quasi_ids_values: Sequence['outputs.GooglePrivacyDlpV2ValueResponse']):
@@ -1658,15 +2072,29 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse(dict):
         """
         return pulumi.get(self, "quasi_ids_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse(dict):
     """
     Result of the δ-presence computation. Note that these results are an estimation, not exact values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deltaPresenceEstimationHistogram":
+            suggest = "delta_presence_estimation_histogram"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delta_presence_estimation_histogram: Sequence['outputs.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse']):
         """
@@ -1683,15 +2111,29 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResultResponse(dict):
         """
         return pulumi.get(self, "delta_presence_estimation_histogram")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DetectionRuleResponse(dict):
     """
     Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hotwordRule":
+            suggest = "hotword_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DetectionRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DetectionRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DetectionRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hotword_rule: 'outputs.GooglePrivacyDlpV2HotwordRuleResponse'):
         """
@@ -1708,15 +2150,31 @@ class GooglePrivacyDlpV2DetectionRuleResponse(dict):
         """
         return pulumi.get(self, "hotword_rule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2DictionaryResponse(dict):
     """
     Custom information type based on a dictionary of words or phrases. This can be used to match sensitive information specific to the data, such as a list of employee IDs or job titles. Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be of a different type than the adjacent characters within the word, so letters must be next to non-letters and digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text "jen123" but will return no matches for "jennifer". Dictionary words containing a large number of characters that are not letters or digits may result in unexpected findings because such characters are treated as whitespace. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries. For dictionaries that do not fit within these constraints, consider using `LargeCustomDictionaryConfig` in the `StoredInfoType` API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStoragePath":
+            suggest = "cloud_storage_path"
+        elif key == "wordList":
+            suggest = "word_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DictionaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DictionaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DictionaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_storage_path: 'outputs.GooglePrivacyDlpV2CloudStoragePathResponse',
                  word_list: 'outputs.GooglePrivacyDlpV2WordListResponse'):
@@ -1744,9 +2202,6 @@ class GooglePrivacyDlpV2DictionaryResponse(dict):
         """
         return pulumi.get(self, "word_list")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2EntityIdResponse(dict):
@@ -1768,9 +2223,6 @@ class GooglePrivacyDlpV2EntityIdResponse(dict):
         Composite key indicating which field contains the entity identifier.
         """
         return pulumi.get(self, "field")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1805,15 +2257,29 @@ class GooglePrivacyDlpV2ErrorResponse(dict):
         """
         return pulumi.get(self, "timestamps")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ExcludeInfoTypesResponse(dict):
     """
     List of exclude infoTypes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ExcludeInfoTypesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ExcludeInfoTypesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ExcludeInfoTypesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse']):
         """
@@ -1830,15 +2296,31 @@ class GooglePrivacyDlpV2ExcludeInfoTypesResponse(dict):
         """
         return pulumi.get(self, "info_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ExclusionRuleResponse(dict):
     """
     The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+        elif key == "matchingType":
+            suggest = "matching_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ExclusionRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ExclusionRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ExclusionRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dictionary: 'outputs.GooglePrivacyDlpV2DictionaryResponse',
                  exclude_info_types: 'outputs.GooglePrivacyDlpV2ExcludeInfoTypesResponse',
@@ -1888,15 +2370,29 @@ class GooglePrivacyDlpV2ExclusionRuleResponse(dict):
         """
         return pulumi.get(self, "regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ExpressionsResponse(dict):
     """
     An expression, consisting or an operator and conditions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicalOperator":
+            suggest = "logical_operator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ExpressionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ExpressionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ExpressionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: 'outputs.GooglePrivacyDlpV2ConditionsResponse',
                  logical_operator: str):
@@ -1924,9 +2420,6 @@ class GooglePrivacyDlpV2ExpressionsResponse(dict):
         """
         return pulumi.get(self, "logical_operator")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2FieldIdResponse(dict):
@@ -1949,15 +2442,31 @@ class GooglePrivacyDlpV2FieldIdResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2FieldTransformationResponse(dict):
     """
     The transformation to apply to the field.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypeTransformations":
+            suggest = "info_type_transformations"
+        elif key == "primitiveTransformation":
+            suggest = "primitive_transformation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2FieldTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2FieldTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2FieldTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition: 'outputs.GooglePrivacyDlpV2RecordConditionResponse',
                  fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
@@ -2007,15 +2516,29 @@ class GooglePrivacyDlpV2FieldTransformationResponse(dict):
         """
         return pulumi.get(self, "primitive_transformation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2FileSetResponse(dict):
     """
     Set of files to scan.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "regexFileSet":
+            suggest = "regex_file_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2FileSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2FileSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2FileSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  regex_file_set: 'outputs.GooglePrivacyDlpV2CloudStorageRegexFileSetResponse',
                  url: str):
@@ -2043,15 +2566,33 @@ class GooglePrivacyDlpV2FileSetResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2FindingLimitsResponse(dict):
     """
     Configuration to control the number of findings returned. Cannot be set if de-identification is requested.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxFindingsPerInfoType":
+            suggest = "max_findings_per_info_type"
+        elif key == "maxFindingsPerItem":
+            suggest = "max_findings_per_item"
+        elif key == "maxFindingsPerRequest":
+            suggest = "max_findings_per_request"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2FindingLimitsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2FindingLimitsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2FindingLimitsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_findings_per_info_type: Sequence['outputs.GooglePrivacyDlpV2InfoTypeLimitResponse'],
                  max_findings_per_item: int,
@@ -2090,15 +2631,33 @@ class GooglePrivacyDlpV2FindingLimitsResponse(dict):
         """
         return pulumi.get(self, "max_findings_per_request")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
     """
     Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "lowerBound":
+            suggest = "lower_bound"
+        elif key == "upperBound":
+            suggest = "upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2FixedSizeBucketingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2FixedSizeBucketingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2FixedSizeBucketingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: float,
                  lower_bound: 'outputs.GooglePrivacyDlpV2ValueResponse',
@@ -2137,15 +2696,31 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfigResponse(dict):
         """
         return pulumi.get(self, "upper_bound")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2HotwordRuleResponse(dict):
     """
     The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hotwordRegex":
+            suggest = "hotword_regex"
+        elif key == "likelihoodAdjustment":
+            suggest = "likelihood_adjustment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2HotwordRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2HotwordRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2HotwordRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hotword_regex: 'outputs.GooglePrivacyDlpV2RegexResponse',
                  likelihood_adjustment: 'outputs.GooglePrivacyDlpV2LikelihoodAdjustmentResponse',
@@ -2184,15 +2759,33 @@ class GooglePrivacyDlpV2HotwordRuleResponse(dict):
         """
         return pulumi.get(self, "proximity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2HybridInspectStatisticsResponse(dict):
     """
     Statistics related to processing hybrid inspect requests.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "abortedCount":
+            suggest = "aborted_count"
+        elif key == "pendingCount":
+            suggest = "pending_count"
+        elif key == "processedCount":
+            suggest = "processed_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2HybridInspectStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2HybridInspectStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2HybridInspectStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aborted_count: str,
                  pending_count: str,
@@ -2231,15 +2824,31 @@ class GooglePrivacyDlpV2HybridInspectStatisticsResponse(dict):
         """
         return pulumi.get(self, "processed_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2HybridOptionsResponse(dict):
     """
     Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requiredFindingLabelKeys":
+            suggest = "required_finding_label_keys"
+        elif key == "tableOptions":
+            suggest = "table_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2HybridOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2HybridOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2HybridOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  labels: Mapping[str, str],
@@ -2289,15 +2898,31 @@ class GooglePrivacyDlpV2HybridOptionsResponse(dict):
         """
         return pulumi.get(self, "table_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeLimitResponse(dict):
     """
     Max findings configuration per infoType, per content item or long running DlpJob.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+        elif key == "maxFindings":
+            suggest = "max_findings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InfoTypeLimitResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InfoTypeLimitResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InfoTypeLimitResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_type: 'outputs.GooglePrivacyDlpV2InfoTypeResponse',
                  max_findings: int):
@@ -2325,9 +2950,6 @@ class GooglePrivacyDlpV2InfoTypeLimitResponse(dict):
         """
         return pulumi.get(self, "max_findings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeResponse(dict):
@@ -2350,15 +2972,29 @@ class GooglePrivacyDlpV2InfoTypeResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeStatsResponse(dict):
     """
     Statistics regarding a specific InfoType.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoType":
+            suggest = "info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InfoTypeStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InfoTypeStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InfoTypeStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: str,
                  info_type: 'outputs.GooglePrivacyDlpV2InfoTypeResponse'):
@@ -2386,15 +3022,31 @@ class GooglePrivacyDlpV2InfoTypeStatsResponse(dict):
         """
         return pulumi.get(self, "info_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeTransformationResponse(dict):
     """
     A transformation to apply to text that is identified as a specific info_type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+        elif key == "primitiveTransformation":
+            suggest = "primitive_transformation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InfoTypeTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InfoTypeTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InfoTypeTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse'],
                  primitive_transformation: 'outputs.GooglePrivacyDlpV2PrimitiveTransformationResponse'):
@@ -2422,9 +3074,6 @@ class GooglePrivacyDlpV2InfoTypeTransformationResponse(dict):
         """
         return pulumi.get(self, "primitive_transformation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeTransformationsResponse(dict):
@@ -2447,15 +3096,41 @@ class GooglePrivacyDlpV2InfoTypeTransformationsResponse(dict):
         """
         return pulumi.get(self, "transformations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectConfigResponse(dict):
     """
     Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentOptions":
+            suggest = "content_options"
+        elif key == "customInfoTypes":
+            suggest = "custom_info_types"
+        elif key == "excludeInfoTypes":
+            suggest = "exclude_info_types"
+        elif key == "includeQuote":
+            suggest = "include_quote"
+        elif key == "infoTypes":
+            suggest = "info_types"
+        elif key == "minLikelihood":
+            suggest = "min_likelihood"
+        elif key == "ruleSet":
+            suggest = "rule_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_options: Sequence[str],
                  custom_info_types: Sequence['outputs.GooglePrivacyDlpV2CustomInfoTypeResponse'],
@@ -2549,15 +3224,29 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         """
         return pulumi.get(self, "rule_set")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectDataSourceDetailsResponse(dict):
     """
     The results of an inspect DataSource job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestedOptions":
+            suggest = "requested_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectDataSourceDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectDataSourceDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectDataSourceDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  requested_options: 'outputs.GooglePrivacyDlpV2RequestedOptionsResponse',
                  result: 'outputs.GooglePrivacyDlpV2ResultResponse'):
@@ -2585,15 +3274,33 @@ class GooglePrivacyDlpV2InspectDataSourceDetailsResponse(dict):
         """
         return pulumi.get(self, "result")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectJobConfigResponse(dict):
     """
     Controls what and how to inspect for findings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inspectConfig":
+            suggest = "inspect_config"
+        elif key == "inspectTemplateName":
+            suggest = "inspect_template_name"
+        elif key == "storageConfig":
+            suggest = "storage_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectJobConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectJobConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectJobConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions: Sequence['outputs.GooglePrivacyDlpV2ActionResponse'],
                  inspect_config: 'outputs.GooglePrivacyDlpV2InspectConfigResponse',
@@ -2643,15 +3350,35 @@ class GooglePrivacyDlpV2InspectJobConfigResponse(dict):
         """
         return pulumi.get(self, "storage_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectTemplateResponse(dict):
     """
     The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/dlp/docs/concepts-templates to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "inspectConfig":
+            suggest = "inspect_config"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  description: str,
@@ -2723,15 +3450,31 @@ class GooglePrivacyDlpV2InspectTemplateResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectionRuleResponse(dict):
     """
     A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusionRule":
+            suggest = "exclusion_rule"
+        elif key == "hotwordRule":
+            suggest = "hotword_rule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectionRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectionRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectionRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exclusion_rule: 'outputs.GooglePrivacyDlpV2ExclusionRuleResponse',
                  hotword_rule: 'outputs.GooglePrivacyDlpV2HotwordRuleResponse'):
@@ -2759,15 +3502,29 @@ class GooglePrivacyDlpV2InspectionRuleResponse(dict):
         """
         return pulumi.get(self, "hotword_rule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2InspectionRuleSetResponse(dict):
     """
     Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on the specific details of the rules within the set.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2InspectionRuleSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2InspectionRuleSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2InspectionRuleSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse'],
                  rules: Sequence['outputs.GooglePrivacyDlpV2InspectionRuleResponse']):
@@ -2795,9 +3552,6 @@ class GooglePrivacyDlpV2InspectionRuleSetResponse(dict):
         """
         return pulumi.get(self, "rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2JobNotificationEmailsResponse(dict):
@@ -2810,15 +3564,31 @@ class GooglePrivacyDlpV2JobNotificationEmailsResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KAnonymityConfigResponse(dict):
     """
     k-anonymity metric, used for analysis of reidentification risk.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+        elif key == "quasiIds":
+            suggest = "quasi_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KAnonymityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KAnonymityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KAnonymityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  entity_id: 'outputs.GooglePrivacyDlpV2EntityIdResponse',
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']):
@@ -2846,15 +3616,31 @@ class GooglePrivacyDlpV2KAnonymityConfigResponse(dict):
         """
         return pulumi.get(self, "quasi_ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse(dict):
     """
     The set of columns' values that share the same ldiversity value
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "equivalenceClassSize":
+            suggest = "equivalence_class_size"
+        elif key == "quasiIdsValues":
+            suggest = "quasi_ids_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  equivalence_class_size: str,
                  quasi_ids_values: Sequence['outputs.GooglePrivacyDlpV2ValueResponse']):
@@ -2882,15 +3668,37 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse(dict):
         """
         return pulumi.get(self, "quasi_ids_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse(dict):
     """
     Histogram of k-anonymity equivalence classes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "bucketValueCount":
+            suggest = "bucket_value_count"
+        elif key == "bucketValues":
+            suggest = "bucket_values"
+        elif key == "equivalenceClassSizeLowerBound":
+            suggest = "equivalence_class_size_lower_bound"
+        elif key == "equivalenceClassSizeUpperBound":
+            suggest = "equivalence_class_size_upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KAnonymityHistogramBucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KAnonymityHistogramBucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: str,
                  bucket_value_count: str,
@@ -2951,15 +3759,29 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucketResponse(dict):
         """
         return pulumi.get(self, "equivalence_class_size_upper_bound")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KAnonymityResultResponse(dict):
     """
     Result of the k-anonymity computation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "equivalenceClassHistogramBuckets":
+            suggest = "equivalence_class_histogram_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KAnonymityResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KAnonymityResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KAnonymityResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  equivalence_class_histogram_buckets: Sequence['outputs.GooglePrivacyDlpV2KAnonymityHistogramBucketResponse']):
         """
@@ -2976,15 +3798,33 @@ class GooglePrivacyDlpV2KAnonymityResultResponse(dict):
         """
         return pulumi.get(self, "equivalence_class_histogram_buckets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KMapEstimationConfigResponse(dict):
     """
     Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auxiliaryTables":
+            suggest = "auxiliary_tables"
+        elif key == "quasiIds":
+            suggest = "quasi_ids"
+        elif key == "regionCode":
+            suggest = "region_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KMapEstimationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KMapEstimationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KMapEstimationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auxiliary_tables: Sequence['outputs.GooglePrivacyDlpV2AuxiliaryTableResponse'],
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2TaggedFieldResponse'],
@@ -3023,15 +3863,37 @@ class GooglePrivacyDlpV2KMapEstimationConfigResponse(dict):
         """
         return pulumi.get(self, "region_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse(dict):
     """
     A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5 frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency field then corresponds to the number of uniquely identifiable records.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "bucketValueCount":
+            suggest = "bucket_value_count"
+        elif key == "bucketValues":
+            suggest = "bucket_values"
+        elif key == "maxAnonymity":
+            suggest = "max_anonymity"
+        elif key == "minAnonymity":
+            suggest = "min_anonymity"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: str,
                  bucket_value_count: str,
@@ -3092,15 +3954,31 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse(dict):
         """
         return pulumi.get(self, "min_anonymity")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse(dict):
     """
     A tuple of values for the quasi-identifier columns.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedAnonymity":
+            suggest = "estimated_anonymity"
+        elif key == "quasiIdsValues":
+            suggest = "quasi_ids_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  estimated_anonymity: str,
                  quasi_ids_values: Sequence['outputs.GooglePrivacyDlpV2ValueResponse']):
@@ -3128,15 +4006,29 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse(dict):
         """
         return pulumi.get(self, "quasi_ids_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KMapEstimationResultResponse(dict):
     """
     Result of the reidentifiability analysis. Note that these results are an estimation, not exact values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kMapEstimationHistogram":
+            suggest = "k_map_estimation_histogram"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KMapEstimationResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KMapEstimationResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KMapEstimationResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  k_map_estimation_histogram: Sequence['outputs.GooglePrivacyDlpV2KMapEstimationHistogramBucketResponse']):
         """
@@ -3152,9 +4044,6 @@ class GooglePrivacyDlpV2KMapEstimationResultResponse(dict):
         The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10.
         """
         return pulumi.get(self, "k_map_estimation_histogram")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3178,15 +4067,31 @@ class GooglePrivacyDlpV2KindExpressionResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
     """
     Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cryptoKeyName":
+            suggest = "crypto_key_name"
+        elif key == "wrappedKey":
+            suggest = "wrapped_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  crypto_key_name: str,
                  wrapped_key: str):
@@ -3214,15 +4119,31 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse(dict):
         """
         return pulumi.get(self, "wrapped_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LDiversityConfigResponse(dict):
     """
     l-diversity metric, used for analysis of reidentification risk.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quasiIds":
+            suggest = "quasi_ids"
+        elif key == "sensitiveAttribute":
+            suggest = "sensitive_attribute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LDiversityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LDiversityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LDiversityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse'],
                  sensitive_attribute: 'outputs.GooglePrivacyDlpV2FieldIdResponse'):
@@ -3250,15 +4171,35 @@ class GooglePrivacyDlpV2LDiversityConfigResponse(dict):
         """
         return pulumi.get(self, "sensitive_attribute")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LDiversityEquivalenceClassResponse(dict):
     """
     The set of columns' values that share the same ldiversity value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "equivalenceClassSize":
+            suggest = "equivalence_class_size"
+        elif key == "numDistinctSensitiveValues":
+            suggest = "num_distinct_sensitive_values"
+        elif key == "quasiIdsValues":
+            suggest = "quasi_ids_values"
+        elif key == "topSensitiveValues":
+            suggest = "top_sensitive_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LDiversityEquivalenceClassResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LDiversityEquivalenceClassResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LDiversityEquivalenceClassResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  equivalence_class_size: str,
                  num_distinct_sensitive_values: str,
@@ -3308,15 +4249,37 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClassResponse(dict):
         """
         return pulumi.get(self, "top_sensitive_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LDiversityHistogramBucketResponse(dict):
     """
     Histogram of l-diversity equivalence class sensitive value frequencies.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketSize":
+            suggest = "bucket_size"
+        elif key == "bucketValueCount":
+            suggest = "bucket_value_count"
+        elif key == "bucketValues":
+            suggest = "bucket_values"
+        elif key == "sensitiveValueFrequencyLowerBound":
+            suggest = "sensitive_value_frequency_lower_bound"
+        elif key == "sensitiveValueFrequencyUpperBound":
+            suggest = "sensitive_value_frequency_upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LDiversityHistogramBucketResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LDiversityHistogramBucketResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LDiversityHistogramBucketResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_size: str,
                  bucket_value_count: str,
@@ -3377,15 +4340,29 @@ class GooglePrivacyDlpV2LDiversityHistogramBucketResponse(dict):
         """
         return pulumi.get(self, "sensitive_value_frequency_upper_bound")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LDiversityResultResponse(dict):
     """
     Result of the l-diversity computation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sensitiveValueFrequencyHistogramBuckets":
+            suggest = "sensitive_value_frequency_histogram_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LDiversityResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LDiversityResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LDiversityResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sensitive_value_frequency_histogram_buckets: Sequence['outputs.GooglePrivacyDlpV2LDiversityHistogramBucketResponse']):
         """
@@ -3402,15 +4379,33 @@ class GooglePrivacyDlpV2LDiversityResultResponse(dict):
         """
         return pulumi.get(self, "sensitive_value_frequency_histogram_buckets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(dict):
     """
     Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryField":
+            suggest = "big_query_field"
+        elif key == "cloudStorageFileSet":
+            suggest = "cloud_storage_file_set"
+        elif key == "outputPath":
+            suggest = "output_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  big_query_field: 'outputs.GooglePrivacyDlpV2BigQueryFieldResponse',
                  cloud_storage_file_set: 'outputs.GooglePrivacyDlpV2CloudStorageFileSetResponse',
@@ -3449,15 +4444,29 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(dict):
         """
         return pulumi.get(self, "output_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse(dict):
     """
     Summary statistics of a custom dictionary.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "approxNumPhrases":
+            suggest = "approx_num_phrases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  approx_num_phrases: str):
         """
@@ -3474,9 +4483,6 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse(dict):
         """
         return pulumi.get(self, "approx_num_phrases")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LeaveUntransformedResponse(dict):
@@ -3489,15 +4495,31 @@ class GooglePrivacyDlpV2LeaveUntransformedResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2LikelihoodAdjustmentResponse(dict):
     """
     Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedLikelihood":
+            suggest = "fixed_likelihood"
+        elif key == "relativeLikelihood":
+            suggest = "relative_likelihood"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2LikelihoodAdjustmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2LikelihoodAdjustmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2LikelihoodAdjustmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fixed_likelihood: str,
                  relative_likelihood: int):
@@ -3525,9 +4547,6 @@ class GooglePrivacyDlpV2LikelihoodAdjustmentResponse(dict):
         """
         return pulumi.get(self, "relative_likelihood")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ManualResponse(dict):
@@ -3539,9 +4558,6 @@ class GooglePrivacyDlpV2ManualResponse(dict):
         Job trigger option for hybrid jobs. Jobs must be manually created and finished.
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3565,15 +4581,33 @@ class GooglePrivacyDlpV2NumericalStatsConfigResponse(dict):
         """
         return pulumi.get(self, "field")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2NumericalStatsResultResponse(dict):
     """
     Result of the numerical stats computation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+        elif key == "quantileValues":
+            suggest = "quantile_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2NumericalStatsResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2NumericalStatsResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2NumericalStatsResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_value: 'outputs.GooglePrivacyDlpV2ValueResponse',
                  min_value: 'outputs.GooglePrivacyDlpV2ValueResponse',
@@ -3612,15 +4646,29 @@ class GooglePrivacyDlpV2NumericalStatsResultResponse(dict):
         """
         return pulumi.get(self, "quantile_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2OutputStorageConfigResponse(dict):
     """
     Cloud repository for storing output.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputSchema":
+            suggest = "output_schema"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2OutputStorageConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2OutputStorageConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2OutputStorageConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  output_schema: str,
                  table: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
@@ -3648,15 +4696,31 @@ class GooglePrivacyDlpV2OutputStorageConfigResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PartitionIdResponse(dict):
     """
     Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespaceId":
+            suggest = "namespace_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PartitionIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PartitionIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PartitionIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespace_id: str,
                  project_id: str):
@@ -3684,15 +4748,49 @@ class GooglePrivacyDlpV2PartitionIdResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
     """
     A rule for transforming a value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketingConfig":
+            suggest = "bucketing_config"
+        elif key == "characterMaskConfig":
+            suggest = "character_mask_config"
+        elif key == "cryptoDeterministicConfig":
+            suggest = "crypto_deterministic_config"
+        elif key == "cryptoHashConfig":
+            suggest = "crypto_hash_config"
+        elif key == "cryptoReplaceFfxFpeConfig":
+            suggest = "crypto_replace_ffx_fpe_config"
+        elif key == "dateShiftConfig":
+            suggest = "date_shift_config"
+        elif key == "fixedSizeBucketingConfig":
+            suggest = "fixed_size_bucketing_config"
+        elif key == "redactConfig":
+            suggest = "redact_config"
+        elif key == "replaceConfig":
+            suggest = "replace_config"
+        elif key == "replaceWithInfoTypeConfig":
+            suggest = "replace_with_info_type_config"
+        elif key == "timePartConfig":
+            suggest = "time_part_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PrimitiveTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PrimitiveTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PrimitiveTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucketing_config: 'outputs.GooglePrivacyDlpV2BucketingConfigResponse',
                  character_mask_config: 'outputs.GooglePrivacyDlpV2CharacterMaskConfigResponse',
@@ -3819,15 +4917,39 @@ class GooglePrivacyDlpV2PrimitiveTransformationResponse(dict):
         """
         return pulumi.get(self, "time_part_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PrivacyMetricResponse(dict):
     """
     Privacy metric to compute for reidentification risk analysis.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "categoricalStatsConfig":
+            suggest = "categorical_stats_config"
+        elif key == "deltaPresenceEstimationConfig":
+            suggest = "delta_presence_estimation_config"
+        elif key == "kAnonymityConfig":
+            suggest = "k_anonymity_config"
+        elif key == "kMapEstimationConfig":
+            suggest = "k_map_estimation_config"
+        elif key == "lDiversityConfig":
+            suggest = "l_diversity_config"
+        elif key == "numericalStatsConfig":
+            suggest = "numerical_stats_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2PrivacyMetricResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2PrivacyMetricResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2PrivacyMetricResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categorical_stats_config: 'outputs.GooglePrivacyDlpV2CategoricalStatsConfigResponse',
                  delta_presence_estimation_config: 'outputs.GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse',
@@ -3899,15 +5021,31 @@ class GooglePrivacyDlpV2PrivacyMetricResponse(dict):
         """
         return pulumi.get(self, "numerical_stats_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ProximityResponse(dict):
     """
     Message for specifying a window around a finding to apply a detection rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "windowAfter":
+            suggest = "window_after"
+        elif key == "windowBefore":
+            suggest = "window_before"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ProximityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ProximityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ProximityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  window_after: int,
                  window_before: int):
@@ -3935,9 +5073,6 @@ class GooglePrivacyDlpV2ProximityResponse(dict):
         """
         return pulumi.get(self, "window_before")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
@@ -3950,9 +5085,6 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishSummaryToCsccResponse(dict):
@@ -3964,9 +5096,6 @@ class GooglePrivacyDlpV2PublishSummaryToCsccResponse(dict):
         Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3990,9 +5119,6 @@ class GooglePrivacyDlpV2PublishToPubSubResponse(dict):
         """
         return pulumi.get(self, "topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishToStackdriverResponse(dict):
@@ -4005,15 +5131,29 @@ class GooglePrivacyDlpV2PublishToStackdriverResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2QuasiIdFieldResponse(dict):
     """
     A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTag":
+            suggest = "custom_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2QuasiIdFieldResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2QuasiIdFieldResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2QuasiIdFieldResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_tag: str,
                  field: 'outputs.GooglePrivacyDlpV2FieldIdResponse'):
@@ -4041,15 +5181,31 @@ class GooglePrivacyDlpV2QuasiIdFieldResponse(dict):
         """
         return pulumi.get(self, "field")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2QuasiIdResponse(dict):
     """
     A column with a semantic tag attached.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTag":
+            suggest = "custom_tag"
+        elif key == "infoType":
+            suggest = "info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2QuasiIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2QuasiIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2QuasiIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_tag: str,
                  field: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
@@ -4099,15 +5255,29 @@ class GooglePrivacyDlpV2QuasiIdResponse(dict):
         """
         return pulumi.get(self, "info_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2QuasiIdentifierFieldResponse(dict):
     """
     A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTag":
+            suggest = "custom_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2QuasiIdentifierFieldResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2QuasiIdentifierFieldResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2QuasiIdentifierFieldResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_tag: str,
                  field: 'outputs.GooglePrivacyDlpV2FieldIdResponse'):
@@ -4135,9 +5305,6 @@ class GooglePrivacyDlpV2QuasiIdentifierFieldResponse(dict):
         """
         return pulumi.get(self, "field")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RecordConditionResponse(dict):
@@ -4159,9 +5326,6 @@ class GooglePrivacyDlpV2RecordConditionResponse(dict):
         An expression.
         """
         return pulumi.get(self, "expressions")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4185,15 +5349,31 @@ class GooglePrivacyDlpV2RecordSuppressionResponse(dict):
         """
         return pulumi.get(self, "condition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RecordTransformationsResponse(dict):
     """
     A type of transformation that is applied over structured data such as a table.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldTransformations":
+            suggest = "field_transformations"
+        elif key == "recordSuppressions":
+            suggest = "record_suppressions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RecordTransformationsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RecordTransformationsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RecordTransformationsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  field_transformations: Sequence['outputs.GooglePrivacyDlpV2FieldTransformationResponse'],
                  record_suppressions: Sequence['outputs.GooglePrivacyDlpV2RecordSuppressionResponse']):
@@ -4221,9 +5401,6 @@ class GooglePrivacyDlpV2RecordTransformationsResponse(dict):
         """
         return pulumi.get(self, "record_suppressions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RedactConfigResponse(dict):
@@ -4236,15 +5413,29 @@ class GooglePrivacyDlpV2RedactConfigResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RegexResponse(dict):
     """
     Message defining a custom regular expression.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupIndexes":
+            suggest = "group_indexes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RegexResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RegexResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RegexResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_indexes: Sequence[int],
                  pattern: str):
@@ -4272,15 +5463,29 @@ class GooglePrivacyDlpV2RegexResponse(dict):
         """
         return pulumi.get(self, "pattern")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ReplaceValueConfigResponse(dict):
     """
     Replace each input value with a given `Value`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "newValue":
+            suggest = "new_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ReplaceValueConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ReplaceValueConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ReplaceValueConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  new_value: 'outputs.GooglePrivacyDlpV2ValueResponse'):
         """
@@ -4297,9 +5502,6 @@ class GooglePrivacyDlpV2ReplaceValueConfigResponse(dict):
         """
         return pulumi.get(self, "new_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse(dict):
@@ -4312,15 +5514,31 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RequestedOptionsResponse(dict):
     """
     Snapshot of the inspection configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobConfig":
+            suggest = "job_config"
+        elif key == "snapshotInspectTemplate":
+            suggest = "snapshot_inspect_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RequestedOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RequestedOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RequestedOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_config: 'outputs.GooglePrivacyDlpV2InspectJobConfigResponse',
                  snapshot_inspect_template: 'outputs.GooglePrivacyDlpV2InspectTemplateResponse'):
@@ -4348,15 +5566,29 @@ class GooglePrivacyDlpV2RequestedOptionsResponse(dict):
         """
         return pulumi.get(self, "snapshot_inspect_template")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse(dict):
     """
     Risk analysis options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobConfig":
+            suggest = "job_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_config: 'outputs.GooglePrivacyDlpV2RiskAnalysisJobConfigResponse'):
         """
@@ -4373,15 +5605,35 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptionsResponse(dict):
         """
         return pulumi.get(self, "job_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ResultResponse(dict):
     """
     All result fields mentioned below are updated while the job is processing.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hybridStats":
+            suggest = "hybrid_stats"
+        elif key == "infoTypeStats":
+            suggest = "info_type_stats"
+        elif key == "processedBytes":
+            suggest = "processed_bytes"
+        elif key == "totalEstimatedBytes":
+            suggest = "total_estimated_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hybrid_stats: 'outputs.GooglePrivacyDlpV2HybridInspectStatisticsResponse',
                  info_type_stats: Sequence['outputs.GooglePrivacyDlpV2InfoTypeStatsResponse'],
@@ -4431,15 +5683,31 @@ class GooglePrivacyDlpV2ResultResponse(dict):
         """
         return pulumi.get(self, "total_estimated_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse(dict):
     """
     Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privacyMetric":
+            suggest = "privacy_metric"
+        elif key == "sourceTable":
+            suggest = "source_table"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2RiskAnalysisJobConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2RiskAnalysisJobConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  actions: Sequence['outputs.GooglePrivacyDlpV2ActionResponse'],
                  privacy_metric: 'outputs.GooglePrivacyDlpV2PrivacyMetricResponse',
@@ -4478,15 +5746,29 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfigResponse(dict):
         """
         return pulumi.get(self, "source_table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2SaveFindingsResponse(dict):
     """
     If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single instance of this action can be specified. Compatible with: Inspect, Risk
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "outputConfig":
+            suggest = "output_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2SaveFindingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2SaveFindingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2SaveFindingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  output_config: 'outputs.GooglePrivacyDlpV2OutputStorageConfigResponse'):
         """
@@ -4503,15 +5785,29 @@ class GooglePrivacyDlpV2SaveFindingsResponse(dict):
         """
         return pulumi.get(self, "output_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ScheduleResponse(dict):
     """
     Schedule for inspect job triggers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrencePeriodDuration":
+            suggest = "recurrence_period_duration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recurrence_period_duration: str):
         """
@@ -4528,15 +5824,31 @@ class GooglePrivacyDlpV2ScheduleResponse(dict):
         """
         return pulumi.get(self, "recurrence_period_duration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StatisticalTableResponse(dict):
     """
     An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quasiIds":
+            suggest = "quasi_ids"
+        elif key == "relativeFrequency":
+            suggest = "relative_frequency"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StatisticalTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StatisticalTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StatisticalTableResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  quasi_ids: Sequence['outputs.GooglePrivacyDlpV2QuasiIdentifierFieldResponse'],
                  relative_frequency: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
@@ -4575,15 +5887,37 @@ class GooglePrivacyDlpV2StatisticalTableResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StorageConfigResponse(dict):
     """
     Shared message indicating Cloud storage type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQueryOptions":
+            suggest = "big_query_options"
+        elif key == "cloudStorageOptions":
+            suggest = "cloud_storage_options"
+        elif key == "datastoreOptions":
+            suggest = "datastore_options"
+        elif key == "hybridOptions":
+            suggest = "hybrid_options"
+        elif key == "timespanConfig":
+            suggest = "timespan_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StorageConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StorageConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StorageConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  big_query_options: 'outputs.GooglePrivacyDlpV2BigQueryOptionsResponse',
                  cloud_storage_options: 'outputs.GooglePrivacyDlpV2CloudStorageOptionsResponse',
@@ -4640,15 +5974,31 @@ class GooglePrivacyDlpV2StorageConfigResponse(dict):
     def timespan_config(self) -> 'outputs.GooglePrivacyDlpV2TimespanConfigResponse':
         return pulumi.get(self, "timespan_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StoredInfoTypeConfigResponse(dict):
     """
     Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "largeCustomDictionary":
+            suggest = "large_custom_dictionary"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StoredInfoTypeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  dictionary: 'outputs.GooglePrivacyDlpV2DictionaryResponse',
@@ -4709,15 +6059,29 @@ class GooglePrivacyDlpV2StoredInfoTypeConfigResponse(dict):
         """
         return pulumi.get(self, "regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StoredInfoTypeStatsResponse(dict):
     """
     Statistics for a StoredInfoType.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "largeCustomDictionary":
+            suggest = "large_custom_dictionary"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StoredInfoTypeStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  large_custom_dictionary: 'outputs.GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse'):
         """
@@ -4734,15 +6098,29 @@ class GooglePrivacyDlpV2StoredInfoTypeStatsResponse(dict):
         """
         return pulumi.get(self, "large_custom_dictionary")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StoredInfoTypeVersionResponse(dict):
     """
     Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StoredInfoTypeVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StoredInfoTypeVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config: 'outputs.GooglePrivacyDlpV2StoredInfoTypeConfigResponse',
                  create_time: str,
@@ -4803,15 +6181,29 @@ class GooglePrivacyDlpV2StoredInfoTypeVersionResponse(dict):
         """
         return pulumi.get(self, "stats")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2StoredTypeResponse(dict):
     """
     A reference to a StoredInfoType to use with scanning.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2StoredTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2StoredTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2StoredTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  name: str):
@@ -4839,9 +6231,6 @@ class GooglePrivacyDlpV2StoredTypeResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2SurrogateTypeResponse(dict):
@@ -4854,15 +6243,29 @@ class GooglePrivacyDlpV2SurrogateTypeResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TableOptionsResponse(dict):
     """
     Instructions regarding the table content being inspected.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identifyingFields":
+            suggest = "identifying_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TableOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TableOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TableOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identifying_fields: Sequence['outputs.GooglePrivacyDlpV2FieldIdResponse']):
         """
@@ -4879,15 +6282,31 @@ class GooglePrivacyDlpV2TableOptionsResponse(dict):
         """
         return pulumi.get(self, "identifying_fields")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TaggedFieldResponse(dict):
     """
     A column with a semantic tag attached.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customTag":
+            suggest = "custom_tag"
+        elif key == "infoType":
+            suggest = "info_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TaggedFieldResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TaggedFieldResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TaggedFieldResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_tag: str,
                  field: 'outputs.GooglePrivacyDlpV2FieldIdResponse',
@@ -4937,9 +6356,6 @@ class GooglePrivacyDlpV2TaggedFieldResponse(dict):
         """
         return pulumi.get(self, "info_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ThrowErrorResponse(dict):
@@ -4952,15 +6368,29 @@ class GooglePrivacyDlpV2ThrowErrorResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TimePartConfigResponse(dict):
     """
     For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "partToExtract":
+            suggest = "part_to_extract"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TimePartConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TimePartConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TimePartConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  part_to_extract: str):
         """
@@ -4977,15 +6407,35 @@ class GooglePrivacyDlpV2TimePartConfigResponse(dict):
         """
         return pulumi.get(self, "part_to_extract")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TimespanConfigResponse(dict):
     """
     Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableAutoPopulationOfTimespanConfig":
+            suggest = "enable_auto_population_of_timespan_config"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timestampField":
+            suggest = "timestamp_field"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TimespanConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TimespanConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TimespanConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_auto_population_of_timespan_config: bool,
                  end_time: str,
@@ -5035,15 +6485,31 @@ class GooglePrivacyDlpV2TimespanConfigResponse(dict):
         """
         return pulumi.get(self, "timestamp_field")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TransformationErrorHandlingResponse(dict):
     """
     How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "leaveUntransformed":
+            suggest = "leave_untransformed"
+        elif key == "throwError":
+            suggest = "throw_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TransformationErrorHandlingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TransformationErrorHandlingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TransformationErrorHandlingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  leave_untransformed: 'outputs.GooglePrivacyDlpV2LeaveUntransformedResponse',
                  throw_error: 'outputs.GooglePrivacyDlpV2ThrowErrorResponse'):
@@ -5071,9 +6537,6 @@ class GooglePrivacyDlpV2TransformationErrorHandlingResponse(dict):
         """
         return pulumi.get(self, "throw_error")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2TransientCryptoKeyResponse(dict):
@@ -5095,9 +6558,6 @@ class GooglePrivacyDlpV2TransientCryptoKeyResponse(dict):
         Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5132,9 +6592,6 @@ class GooglePrivacyDlpV2TriggerResponse(dict):
         """
         return pulumi.get(self, "schedule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse(dict):
@@ -5156,9 +6613,6 @@ class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse(dict):
         Required. A 128/192/256 bit key.
         """
         return pulumi.get(self, "key")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5193,15 +6647,43 @@ class GooglePrivacyDlpV2ValueFrequencyResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2ValueResponse(dict):
     """
     Set of primitive values supported by the system. Note that for the purposes of inspection or transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8 encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9, even though an int64 only holds up to 8 bytes of data.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "dayOfWeekValue":
+            suggest = "day_of_week_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timeValue":
+            suggest = "time_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ValueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boolean_value: bool,
                  date_value: 'outputs.GoogleTypeDateResponse',
@@ -5295,9 +6777,6 @@ class GooglePrivacyDlpV2ValueResponse(dict):
         """
         return pulumi.get(self, "timestamp_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooglePrivacyDlpV2WordListResponse(dict):
@@ -5320,9 +6799,6 @@ class GooglePrivacyDlpV2WordListResponse(dict):
         """
         return pulumi.get(self, "words")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleProtobufEmptyResponse(dict):
@@ -5334,9 +6810,6 @@ class GoogleProtobufEmptyResponse(dict):
         A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for `Empty` is empty JSON object `{}`.
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5382,9 +6855,6 @@ class GoogleRpcStatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleTypeDateResponse(dict):
@@ -5428,9 +6898,6 @@ class GoogleTypeDateResponse(dict):
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -5486,8 +6953,5 @@ class GoogleTypeTimeOfDayResponse(dict):
         Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
         """
         return pulumi.get(self, "seconds")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

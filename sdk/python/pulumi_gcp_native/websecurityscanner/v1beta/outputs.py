@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -27,6 +27,27 @@ class AuthenticationResponse(dict):
     """
     Scan authentication configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customAccount":
+            suggest = "custom_account"
+        elif key == "googleAccount":
+            suggest = "google_account"
+        elif key == "iapCredential":
+            suggest = "iap_credential"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_account: 'outputs.CustomAccountResponse',
                  google_account: 'outputs.GoogleAccountResponse',
@@ -65,15 +86,29 @@ class AuthenticationResponse(dict):
         """
         return pulumi.get(self, "iap_credential")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomAccountResponse(dict):
     """
     Describes authentication configuration that uses a custom account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginUrl":
+            suggest = "login_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomAccountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomAccountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomAccountResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  login_url: str,
                  password: str,
@@ -112,9 +147,6 @@ class CustomAccountResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleAccountResponse(dict):
@@ -148,15 +180,29 @@ class GoogleAccountResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IapCredentialResponse(dict):
     """
     Describes authentication configuration for Identity-Aware-Proxy (IAP).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iapTestServiceAccountInfo":
+            suggest = "iap_test_service_account_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IapCredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IapCredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IapCredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  iap_test_service_account_info: 'outputs.IapTestServiceAccountInfoResponse'):
         """
@@ -173,15 +219,29 @@ class IapCredentialResponse(dict):
         """
         return pulumi.get(self, "iap_test_service_account_info")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IapTestServiceAccountInfoResponse(dict):
     """
     Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetAudienceClientId":
+            suggest = "target_audience_client_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IapTestServiceAccountInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IapTestServiceAccountInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IapTestServiceAccountInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_audience_client_id: str):
         """
@@ -198,15 +258,29 @@ class IapTestServiceAccountInfoResponse(dict):
         """
         return pulumi.get(self, "target_audience_client_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScanConfigErrorResponse(dict):
     """
     Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScanConfigErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScanConfigErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScanConfigErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  code: str,
                  field_name: str):
@@ -234,15 +308,31 @@ class ScanConfigErrorResponse(dict):
         """
         return pulumi.get(self, "field_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScanRunErrorTraceResponse(dict):
     """
     Output only. Defines an error trace message for a ScanRun.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mostCommonHttpErrorCode":
+            suggest = "most_common_http_error_code"
+        elif key == "scanConfigError":
+            suggest = "scan_config_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScanRunErrorTraceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScanRunErrorTraceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScanRunErrorTraceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  code: str,
                  most_common_http_error_code: int,
@@ -281,15 +371,47 @@ class ScanRunErrorTraceResponse(dict):
         """
         return pulumi.get(self, "scan_config_error")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScanRunResponse(dict):
     """
     A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "errorTrace":
+            suggest = "error_trace"
+        elif key == "executionState":
+            suggest = "execution_state"
+        elif key == "hasVulnerabilities":
+            suggest = "has_vulnerabilities"
+        elif key == "progressPercent":
+            suggest = "progress_percent"
+        elif key == "resultState":
+            suggest = "result_state"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "urlsCrawledCount":
+            suggest = "urls_crawled_count"
+        elif key == "urlsTestedCount":
+            suggest = "urls_tested_count"
+        elif key == "warningTraces":
+            suggest = "warning_traces"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScanRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScanRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScanRunResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  error_trace: 'outputs.ScanRunErrorTraceResponse',
@@ -416,9 +538,6 @@ class ScanRunResponse(dict):
         """
         return pulumi.get(self, "warning_traces")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScanRunWarningTraceResponse(dict):
@@ -441,15 +560,31 @@ class ScanRunWarningTraceResponse(dict):
         """
         return pulumi.get(self, "code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
     Scan schedule configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalDurationDays":
+            suggest = "interval_duration_days"
+        elif key == "scheduleTime":
+            suggest = "schedule_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interval_duration_days: int,
                  schedule_time: str):
@@ -476,8 +611,5 @@ class ScheduleResponse(dict):
         A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
         """
         return pulumi.get(self, "schedule_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

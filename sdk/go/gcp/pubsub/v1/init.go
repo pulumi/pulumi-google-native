@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:pubsub/v1:Schema":
-		r, err = NewSchema(ctx, name, nil, pulumi.URN_(urn))
+		r = &Schema{}
 	case "gcp-native:pubsub/v1:SchemaIamPolicy":
-		r, err = NewSchemaIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SchemaIamPolicy{}
 	case "gcp-native:pubsub/v1:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &Snapshot{}
 	case "gcp-native:pubsub/v1:SnapshotIamPolicy":
-		r, err = NewSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SnapshotIamPolicy{}
 	case "gcp-native:pubsub/v1:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subscription{}
 	case "gcp-native:pubsub/v1:SubscriptionIamPolicy":
-		r, err = NewSubscriptionIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubscriptionIamPolicy{}
 	case "gcp-native:pubsub/v1:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &Topic{}
 	case "gcp-native:pubsub/v1:TopicIamPolicy":
-		r, err = NewTopicIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TopicIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

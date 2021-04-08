@@ -5,13 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OrganizationEnvironmentReference']
+__all__ = ['OrganizationEnvironmentReferenceArgs', 'OrganizationEnvironmentReference']
+
+@pulumi.input_type
+class OrganizationEnvironmentReferenceArgs:
+    def __init__(__self__, *,
+                 environments_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 references_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 refers: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationEnvironmentReference resource.
+        :param pulumi.Input[str] description: Optional. A human-readable description of this reference.
+        :param pulumi.Input[str] name: Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+        """
+        pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "references_id", references_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if refers is not None:
+            pulumi.set(__self__, "refers", refers)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="environmentsId")
+    def environments_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environments_id")
+
+    @environments_id.setter
+    def environments_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environments_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="referencesId")
+    def references_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "references_id")
+
+    @references_id.setter
+    def references_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "references_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A human-readable description of this reference.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def refers(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        """
+        return pulumi.get(self, "refers")
+
+    @refers.setter
+    def refers(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "refers", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 
 class OrganizationEnvironmentReference(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +140,40 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
         :param pulumi.Input[str] refers: Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         :param pulumi.Input[str] resource_type: The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationEnvironmentReferenceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Reference in the specified environment.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationEnvironmentReferenceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationEnvironmentReferenceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 environments_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 references_id: Optional[pulumi.Input[str]] = None,
+                 refers: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -50,21 +189,21 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationEnvironmentReferenceArgs.__new__(OrganizationEnvironmentReferenceArgs)
 
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
-            __props__['environments_id'] = environments_id
-            __props__['name'] = name
+            __props__.__dict__["environments_id"] = environments_id
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
+            __props__.__dict__["organizations_id"] = organizations_id
             if references_id is None and not opts.urn:
                 raise TypeError("Missing required property 'references_id'")
-            __props__['references_id'] = references_id
-            __props__['refers'] = refers
-            __props__['resource_type'] = resource_type
+            __props__.__dict__["references_id"] = references_id
+            __props__.__dict__["refers"] = refers
+            __props__.__dict__["resource_type"] = resource_type
         super(OrganizationEnvironmentReference, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationEnvironmentReference',
             resource_name,
@@ -85,12 +224,12 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationEnvironmentReferenceArgs.__new__(OrganizationEnvironmentReferenceArgs)
 
-        __props__["description"] = None
-        __props__["name"] = None
-        __props__["refers"] = None
-        __props__["resource_type"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["refers"] = None
+        __props__.__dict__["resource_type"] = None
         return OrganizationEnvironmentReference(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -124,10 +263,4 @@ class OrganizationEnvironmentReference(pulumi.CustomResource):
         The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
         """
         return pulumi.get(self, "resource_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

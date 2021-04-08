@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -57,9 +57,6 @@ class BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -116,15 +113,47 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TrustResponse(dict):
     """
     Represents a relationship between two domains. This allows a controller in one domain to authenticate a user in another domain.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "lastTrustHeartbeatTime":
+            suggest = "last_trust_heartbeat_time"
+        elif key == "selectiveAuthentication":
+            suggest = "selective_authentication"
+        elif key == "stateDescription":
+            suggest = "state_description"
+        elif key == "targetDnsIpAddresses":
+            suggest = "target_dns_ip_addresses"
+        elif key == "targetDomainName":
+            suggest = "target_domain_name"
+        elif key == "trustDirection":
+            suggest = "trust_direction"
+        elif key == "trustHandshakeSecret":
+            suggest = "trust_handshake_secret"
+        elif key == "trustType":
+            suggest = "trust_type"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrustResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrustResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrustResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  last_trust_heartbeat_time: str,
@@ -250,8 +279,5 @@ class TrustResponse(dict):
         The last update time.
         """
         return pulumi.get(self, "update_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

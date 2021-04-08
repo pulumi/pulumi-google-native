@@ -5,15 +5,185 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['License']
+__all__ = ['LicenseArgs', 'License']
+
+@pulumi.input_type
+class LicenseArgs:
+    def __init__(__self__, *,
+                 license: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 license_code: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input['LicenseResourceRequirementsArgs']] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 transferable: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a License resource.
+        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
+        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] kind: [Output Only] Type of resource. Always compute#license for licenses.
+        :param pulumi.Input[str] license_code: [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
+        :param pulumi.Input[bool] transferable: If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+        """
+        pulumi.set(__self__, "license", license)
+        pulumi.set(__self__, "project", project)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if license_code is not None:
+            pulumi.set(__self__, "license_code", license_code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_requirements is not None:
+            pulumi.set(__self__, "resource_requirements", resource_requirements)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if transferable is not None:
+            pulumi.set(__self__, "transferable", transferable)
+
+    @property
+    @pulumi.getter
+    def license(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "license")
+
+    @license.setter
+    def license(self, value: pulumi.Input[str]):
+        pulumi.set(self, "license", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional textual description of the resource; provided by the client when the resource is created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Type of resource. Always compute#license for licenses.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="licenseCode")
+    def license_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The unique code used to attach this license to images, snapshots, and disks.
+        """
+        return pulumi.get(self, "license_code")
+
+    @license_code.setter
+    def license_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "license_code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceRequirements")
+    def resource_requirements(self) -> Optional[pulumi.Input['LicenseResourceRequirementsArgs']]:
+        return pulumi.get(self, "resource_requirements")
+
+    @resource_requirements.setter
+    def resource_requirements(self, value: Optional[pulumi.Input['LicenseResourceRequirementsArgs']]):
+        pulumi.set(self, "resource_requirements", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def transferable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
+        """
+        return pulumi.get(self, "transferable")
+
+    @transferable.setter
+    def transferable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "transferable", value)
 
 
 class License(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +215,44 @@ class License(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[bool] transferable: If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: LicenseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
+
+        :param str resource_name: The name of the resource.
+        :param LicenseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(LicenseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 license: Optional[pulumi.Input[str]] = None,
+                 license_code: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 transferable: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -60,23 +268,23 @@ class License(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = LicenseArgs.__new__(LicenseArgs)
 
-            __props__['creation_timestamp'] = creation_timestamp
-            __props__['description'] = description
-            __props__['id'] = id
-            __props__['kind'] = kind
+            __props__.__dict__["creation_timestamp"] = creation_timestamp
+            __props__.__dict__["description"] = description
+            __props__.__dict__["id"] = id
+            __props__.__dict__["kind"] = kind
             if license is None and not opts.urn:
                 raise TypeError("Missing required property 'license'")
-            __props__['license'] = license
-            __props__['license_code'] = license_code
-            __props__['name'] = name
+            __props__.__dict__["license"] = license
+            __props__.__dict__["license_code"] = license_code
+            __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['resource_requirements'] = resource_requirements
-            __props__['self_link'] = self_link
-            __props__['transferable'] = transferable
+            __props__.__dict__["project"] = project
+            __props__.__dict__["resource_requirements"] = resource_requirements
+            __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["transferable"] = transferable
         super(License, __self__).__init__(
             'gcp-native:compute/beta:License',
             resource_name,
@@ -97,16 +305,16 @@ class License(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = LicenseArgs.__new__(LicenseArgs)
 
-        __props__["creation_timestamp"] = None
-        __props__["description"] = None
-        __props__["kind"] = None
-        __props__["license_code"] = None
-        __props__["name"] = None
-        __props__["resource_requirements"] = None
-        __props__["self_link"] = None
-        __props__["transferable"] = None
+        __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["license_code"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["resource_requirements"] = None
+        __props__.__dict__["self_link"] = None
+        __props__.__dict__["transferable"] = None
         return License(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -169,10 +377,4 @@ class License(pulumi.CustomResource):
         If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
         """
         return pulumi.get(self, "transferable")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

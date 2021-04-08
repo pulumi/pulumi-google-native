@@ -5,15 +5,264 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Build']
+__all__ = ['BuildArgs', 'Build']
+
+@pulumi.input_type
+class BuildArgs:
+    def __init__(__self__, *,
+                 builds_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
+                 available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logs_bucket: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input['BuildOptionsArgs']] = None,
+                 queue_ttl: Optional[pulumi.Input[str]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input['SecretArgs']]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input['SourceArgs']] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Build resource.
+        :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+        :param pulumi.Input[str] logs_bucket: Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        :param pulumi.Input['BuildOptionsArgs'] options: Special options for this build.
+        :param pulumi.Input[str] queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+        :param pulumi.Input[Sequence[pulumi.Input['SecretArgs']]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+        :param pulumi.Input['SourceArgs'] source: The location of the source files to build.
+        :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: Required. The operations to be performed on the workspace.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
+        :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        """
+        pulumi.set(__self__, "builds_id", builds_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if artifacts is not None:
+            pulumi.set(__self__, "artifacts", artifacts)
+        if available_secrets is not None:
+            pulumi.set(__self__, "available_secrets", available_secrets)
+        if images is not None:
+            pulumi.set(__self__, "images", images)
+        if logs_bucket is not None:
+            pulumi.set(__self__, "logs_bucket", logs_bucket)
+        if options is not None:
+            pulumi.set(__self__, "options", options)
+        if queue_ttl is not None:
+            pulumi.set(__self__, "queue_ttl", queue_ttl)
+        if secrets is not None:
+            pulumi.set(__self__, "secrets", secrets)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if steps is not None:
+            pulumi.set(__self__, "steps", steps)
+        if substitutions is not None:
+            pulumi.set(__self__, "substitutions", substitutions)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if timeout is not None:
+            pulumi.set(__self__, "timeout", timeout)
+
+    @property
+    @pulumi.getter(name="buildsId")
+    def builds_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "builds_id")
+
+    @builds_id.setter
+    def builds_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "builds_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def artifacts(self) -> Optional[pulumi.Input['ArtifactsArgs']]:
+        """
+        Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
+        """
+        return pulumi.get(self, "artifacts")
+
+    @artifacts.setter
+    def artifacts(self, value: Optional[pulumi.Input['ArtifactsArgs']]):
+        pulumi.set(self, "artifacts", value)
+
+    @property
+    @pulumi.getter(name="availableSecrets")
+    def available_secrets(self) -> Optional[pulumi.Input['SecretsArgs']]:
+        """
+        Secrets and secret environment variables.
+        """
+        return pulumi.get(self, "available_secrets")
+
+    @available_secrets.setter
+    def available_secrets(self, value: Optional[pulumi.Input['SecretsArgs']]):
+        pulumi.set(self, "available_secrets", value)
+
+    @property
+    @pulumi.getter
+    def images(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
+        """
+        return pulumi.get(self, "images")
+
+    @images.setter
+    def images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "images", value)
+
+    @property
+    @pulumi.getter(name="logsBucket")
+    def logs_bucket(self) -> Optional[pulumi.Input[str]]:
+        """
+        Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
+        """
+        return pulumi.get(self, "logs_bucket")
+
+    @logs_bucket.setter
+    def logs_bucket(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logs_bucket", value)
+
+    @property
+    @pulumi.getter
+    def options(self) -> Optional[pulumi.Input['BuildOptionsArgs']]:
+        """
+        Special options for this build.
+        """
+        return pulumi.get(self, "options")
+
+    @options.setter
+    def options(self, value: Optional[pulumi.Input['BuildOptionsArgs']]):
+        pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter(name="queueTtl")
+    def queue_ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
+        """
+        return pulumi.get(self, "queue_ttl")
+
+    @queue_ttl.setter
+    def queue_ttl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "queue_ttl", value)
+
+    @property
+    @pulumi.getter
+    def secrets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecretArgs']]]]:
+        """
+        Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
+        """
+        return pulumi.get(self, "secrets")
+
+    @secrets.setter
+    def secrets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecretArgs']]]]):
+        pulumi.set(self, "secrets", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['SourceArgs']]:
+        """
+        The location of the source files to build.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['SourceArgs']]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]]:
+        """
+        Required. The operations to be performed on the workspace.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]]):
+        pulumi.set(self, "steps", value)
+
+    @property
+    @pulumi.getter
+    def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Substitutions data for `Build` resource.
+        """
+        return pulumi.get(self, "substitutions")
+
+    @substitutions.setter
+    def substitutions(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "substitutions", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Tags for annotation of a `Build`. These are not docker tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
+    def timeout(self) -> Optional[pulumi.Input[str]]:
+        """
+        Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "timeout", value)
 
 
 class Build(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -55,6 +304,49 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BuildArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+
+        :param str resource_name: The name of the resource.
+        :param BuildArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BuildArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
+                 available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
+                 builds_id: Optional[pulumi.Input[str]] = None,
+                 images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 logs_bucket: Optional[pulumi.Input[str]] = None,
+                 options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 queue_ttl: Optional[pulumi.Input[str]] = None,
+                 secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['SourceArgs']]] = None,
+                 steps: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]]] = None,
+                 substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 timeout: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -70,42 +362,42 @@ class Build(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BuildArgs.__new__(BuildArgs)
 
-            __props__['artifacts'] = artifacts
-            __props__['available_secrets'] = available_secrets
+            __props__.__dict__["artifacts"] = artifacts
+            __props__.__dict__["available_secrets"] = available_secrets
             if builds_id is None and not opts.urn:
                 raise TypeError("Missing required property 'builds_id'")
-            __props__['builds_id'] = builds_id
-            __props__['images'] = images
+            __props__.__dict__["builds_id"] = builds_id
+            __props__.__dict__["images"] = images
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['logs_bucket'] = logs_bucket
-            __props__['options'] = options
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["logs_bucket"] = logs_bucket
+            __props__.__dict__["options"] = options
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['queue_ttl'] = queue_ttl
-            __props__['secrets'] = secrets
-            __props__['service_account'] = service_account
-            __props__['source'] = source
-            __props__['steps'] = steps
-            __props__['substitutions'] = substitutions
-            __props__['tags'] = tags
-            __props__['timeout'] = timeout
-            __props__['build_trigger_id'] = None
-            __props__['create_time'] = None
-            __props__['finish_time'] = None
-            __props__['log_url'] = None
-            __props__['name'] = None
-            __props__['project_id'] = None
-            __props__['results'] = None
-            __props__['source_provenance'] = None
-            __props__['start_time'] = None
-            __props__['status'] = None
-            __props__['status_detail'] = None
-            __props__['timing'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["queue_ttl"] = queue_ttl
+            __props__.__dict__["secrets"] = secrets
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["source"] = source
+            __props__.__dict__["steps"] = steps
+            __props__.__dict__["substitutions"] = substitutions
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["build_trigger_id"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["finish_time"] = None
+            __props__.__dict__["log_url"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["project_id"] = None
+            __props__.__dict__["results"] = None
+            __props__.__dict__["source_provenance"] = None
+            __props__.__dict__["start_time"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["status_detail"] = None
+            __props__.__dict__["timing"] = None
         super(Build, __self__).__init__(
             'gcp-native:cloudbuild/v1:Build',
             resource_name,
@@ -126,33 +418,33 @@ class Build(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = BuildArgs.__new__(BuildArgs)
 
-        __props__["artifacts"] = None
-        __props__["available_secrets"] = None
-        __props__["build_trigger_id"] = None
-        __props__["create_time"] = None
-        __props__["finish_time"] = None
-        __props__["images"] = None
-        __props__["log_url"] = None
-        __props__["logs_bucket"] = None
-        __props__["name"] = None
-        __props__["options"] = None
-        __props__["project_id"] = None
-        __props__["queue_ttl"] = None
-        __props__["results"] = None
-        __props__["secrets"] = None
-        __props__["service_account"] = None
-        __props__["source"] = None
-        __props__["source_provenance"] = None
-        __props__["start_time"] = None
-        __props__["status"] = None
-        __props__["status_detail"] = None
-        __props__["steps"] = None
-        __props__["substitutions"] = None
-        __props__["tags"] = None
-        __props__["timeout"] = None
-        __props__["timing"] = None
+        __props__.__dict__["artifacts"] = None
+        __props__.__dict__["available_secrets"] = None
+        __props__.__dict__["build_trigger_id"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["finish_time"] = None
+        __props__.__dict__["images"] = None
+        __props__.__dict__["log_url"] = None
+        __props__.__dict__["logs_bucket"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["options"] = None
+        __props__.__dict__["project_id"] = None
+        __props__.__dict__["queue_ttl"] = None
+        __props__.__dict__["results"] = None
+        __props__.__dict__["secrets"] = None
+        __props__.__dict__["service_account"] = None
+        __props__.__dict__["source"] = None
+        __props__.__dict__["source_provenance"] = None
+        __props__.__dict__["start_time"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["status_detail"] = None
+        __props__.__dict__["steps"] = None
+        __props__.__dict__["substitutions"] = None
+        __props__.__dict__["tags"] = None
+        __props__.__dict__["timeout"] = None
+        __props__.__dict__["timing"] = None
         return Build(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -354,10 +646,4 @@ class Build(pulumi.CustomResource):
         Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

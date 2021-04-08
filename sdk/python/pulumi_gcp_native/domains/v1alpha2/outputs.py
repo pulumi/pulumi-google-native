@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -30,6 +30,23 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -57,15 +74,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -92,9 +125,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -140,15 +170,33 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContactResponse(dict):
     """
     Details required for a contact associated with a `Registration`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "faxNumber":
+            suggest = "fax_number"
+        elif key == "phoneNumber":
+            suggest = "phone_number"
+        elif key == "postalAddress":
+            suggest = "postal_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContactResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContactResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContactResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: str,
                  fax_number: str,
@@ -198,15 +246,33 @@ class ContactResponse(dict):
         """
         return pulumi.get(self, "postal_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContactSettingsResponse(dict):
     """
     Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminContact":
+            suggest = "admin_contact"
+        elif key == "registrantContact":
+            suggest = "registrant_contact"
+        elif key == "technicalContact":
+            suggest = "technical_contact"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContactSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContactSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContactSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_contact: 'outputs.ContactResponse',
                  privacy: str,
@@ -256,15 +322,31 @@ class ContactSettingsResponse(dict):
         """
         return pulumi.get(self, "technical_contact")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomDnsResponse(dict):
     """
     Configuration for an arbitrary DNS provider.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dsRecords":
+            suggest = "ds_records"
+        elif key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDnsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDnsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDnsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ds_records: Sequence['outputs.DsRecordResponse'],
                  name_servers: Sequence[str]):
@@ -292,15 +374,33 @@ class CustomDnsResponse(dict):
         """
         return pulumi.get(self, "name_servers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DnsSettingsResponse(dict):
     """
     Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customDns":
+            suggest = "custom_dns"
+        elif key == "glueRecords":
+            suggest = "glue_records"
+        elif key == "googleDomainsDns":
+            suggest = "google_domains_dns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DnsSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DnsSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DnsSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_dns: 'outputs.CustomDnsResponse',
                  glue_records: Sequence['outputs.GlueRecordResponse'],
@@ -339,15 +439,31 @@ class DnsSettingsResponse(dict):
         """
         return pulumi.get(self, "google_domains_dns")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DsRecordResponse(dict):
     """
     Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "digestType":
+            suggest = "digest_type"
+        elif key == "keyTag":
+            suggest = "key_tag"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DsRecordResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DsRecordResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DsRecordResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  digest: str,
@@ -396,9 +512,6 @@ class DsRecordResponse(dict):
         The key tag of the record. Must be set in range 0 -- 65535.
         """
         return pulumi.get(self, "key_tag")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -455,15 +568,33 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GlueRecordResponse(dict):
     """
     Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostName":
+            suggest = "host_name"
+        elif key == "ipv4Addresses":
+            suggest = "ipv4_addresses"
+        elif key == "ipv6Addresses":
+            suggest = "ipv6_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GlueRecordResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GlueRecordResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GlueRecordResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_name: str,
                  ipv4_addresses: Sequence[str],
@@ -502,15 +633,33 @@ class GlueRecordResponse(dict):
         """
         return pulumi.get(self, "ipv6_addresses")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDomainsDnsResponse(dict):
     """
     Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dsRecords":
+            suggest = "ds_records"
+        elif key == "dsState":
+            suggest = "ds_state"
+        elif key == "nameServers":
+            suggest = "name_servers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDomainsDnsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDomainsDnsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDomainsDnsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ds_records: Sequence['outputs.DsRecordResponse'],
                  ds_state: str,
@@ -549,15 +698,31 @@ class GoogleDomainsDnsResponse(dict):
         """
         return pulumi.get(self, "name_servers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagementSettingsResponse(dict):
     """
     Defines renewal, billing, and transfer settings for a `Registration`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "renewalMethod":
+            suggest = "renewal_method"
+        elif key == "transferLockState":
+            suggest = "transfer_lock_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagementSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagementSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagementSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  renewal_method: str,
                  transfer_lock_state: str):
@@ -585,15 +750,39 @@ class ManagementSettingsResponse(dict):
         """
         return pulumi.get(self, "transfer_lock_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PostalAddressResponse(dict):
     """
     Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressLines":
+            suggest = "address_lines"
+        elif key == "administrativeArea":
+            suggest = "administrative_area"
+        elif key == "languageCode":
+            suggest = "language_code"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "regionCode":
+            suggest = "region_code"
+        elif key == "sortingCode":
+            suggest = "sorting_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostalAddressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostalAddressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostalAddressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address_lines: Sequence[str],
                  administrative_area: str,
@@ -719,8 +908,5 @@ class PostalAddressResponse(dict):
         Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
         """
         return pulumi.get(self, "sublocality")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

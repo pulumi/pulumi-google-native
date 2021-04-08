@@ -5,13 +5,123 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['ObjectIamPolicy']
+__all__ = ['ObjectIamPolicyArgs', 'ObjectIamPolicy']
+
+@pulumi.input_type
+class ObjectIamPolicyArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 object: pulumi.Input[str],
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a ObjectIamPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
+        :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
+        :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+        :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        :param pulumi.Input[int] version: The IAM policy format version.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "object", object)
+        if bindings is not None:
+            pulumi.set(__self__, "bindings", bindings)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def object(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "object")
+
+    @object.setter
+    def object(self, value: pulumi.Input[str]):
+        pulumi.set(self, "object", value)
+
+    @property
+    @pulumi.getter
+    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        An association between a role, which comes with a set of permissions, and members who may assume that role.
+        """
+        return pulumi.get(self, "bindings")
+
+    @bindings.setter
+    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "bindings", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        HTTP 1.1  Entity tag for the policy.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        The IAM policy format version.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
 
 
 class ObjectIamPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,6 +146,40 @@ class ObjectIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         :param pulumi.Input[int] version: The IAM policy format version.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ObjectIamPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Updates an IAM policy for the specified object.
+
+        :param str resource_name: The name of the resource.
+        :param ObjectIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ObjectIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 bucket: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 object: Optional[pulumi.Input[str]] = None,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -51,19 +195,19 @@ class ObjectIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ObjectIamPolicyArgs.__new__(ObjectIamPolicyArgs)
 
-            __props__['bindings'] = bindings
+            __props__.__dict__["bindings"] = bindings
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
-            __props__['bucket'] = bucket
-            __props__['etag'] = etag
-            __props__['kind'] = kind
+            __props__.__dict__["bucket"] = bucket
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["kind"] = kind
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
-            __props__['object'] = object
-            __props__['resource_id'] = resource_id
-            __props__['version'] = version
+            __props__.__dict__["object"] = object
+            __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["version"] = version
         super(ObjectIamPolicy, __self__).__init__(
             'gcp-native:storage/v1:ObjectIamPolicy',
             resource_name,
@@ -84,13 +228,13 @@ class ObjectIamPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ObjectIamPolicyArgs.__new__(ObjectIamPolicyArgs)
 
-        __props__["bindings"] = None
-        __props__["etag"] = None
-        __props__["kind"] = None
-        __props__["resource_id"] = None
-        __props__["version"] = None
+        __props__.__dict__["bindings"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["resource_id"] = None
+        __props__.__dict__["version"] = None
         return ObjectIamPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -132,10 +276,4 @@ class ObjectIamPolicy(pulumi.CustomResource):
         The IAM policy format version.
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

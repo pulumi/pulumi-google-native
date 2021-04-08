@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -103,15 +103,29 @@ class GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse(dict):
         """
         return pulumi.get(self, "agent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1ContextResponse(dict):
     """
     Dialogflow contexts are similar to natural language context. If a person says to you "they are orange", you need context in order to understand what "they" is referring to. Similarly, for Dialogflow to handle an end-user expression like that, it needs to be provided with context in order to correctly match an intent. Using contexts, you can control the flow of a conversation. You can configure contexts for an intent by setting input and output contexts, which are identified by string names. When an intent is matched, any configured output contexts for that intent become active. While any contexts are active, Dialogflow is more likely to match intents that are configured with input contexts that correspond to the currently active contexts. For more information about context, see the [Contexts guide](https://cloud.google.com/dialogflow/docs/contexts-overview).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lifespanCount":
+            suggest = "lifespan_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1ContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1ContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1ContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  lifespan_count: int,
                  name: str,
@@ -150,15 +164,29 @@ class GoogleCloudDialogflowV2beta1ContextResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse(dict):
     """
     Represents a phone number for telephony integration. It allows for connecting a particular conversation over telephony.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  phone_number: str):
         """
@@ -174,9 +202,6 @@ class GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse(dict):
         The phone number to connect to this conversation.
         """
         return pulumi.get(self, "phone_number")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -211,9 +236,6 @@ class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse(dict):
         """
         return pulumi.get(self, "time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1EntityTypeEntityResponse(dict):
@@ -247,9 +269,6 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntityResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse(dict):
@@ -272,15 +291,31 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConf
         """
         return pulumi.get(self, "model")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse(dict):
     """
     Configuration for analyses to run on each conversation message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableEntityExtraction":
+            suggest = "enable_entity_extraction"
+        elif key == "enableSentimentAnalysis":
+            suggest = "enable_sentiment_analysis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_entity_extraction: bool,
                  enable_sentiment_analysis: bool):
@@ -308,15 +343,35 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig
         """
         return pulumi.get(self, "enable_sentiment_analysis")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse(dict):
     """
     Defines the Human Agent Assistant to connect to a conversation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endUserSuggestionConfig":
+            suggest = "end_user_suggestion_config"
+        elif key == "humanAgentSuggestionConfig":
+            suggest = "human_agent_suggestion_config"
+        elif key == "messageAnalysisConfig":
+            suggest = "message_analysis_config"
+        elif key == "notificationConfig":
+            suggest = "notification_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_user_suggestion_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse',
                  human_agent_suggestion_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse',
@@ -366,15 +421,31 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse(dict):
         """
         return pulumi.get(self, "notification_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse(dict):
     """
     Detail human agent assistant config.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "featureConfigs":
+            suggest = "feature_configs"
+        elif key == "groupSuggestionResponses":
+            suggest = "group_suggestion_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  feature_configs: Sequence['outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse'],
                  group_suggestion_responses: bool):
@@ -402,15 +473,37 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigRespo
         """
         return pulumi.get(self, "group_suggestion_responses")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse(dict):
     """
     Config for suggestion features.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationModelConfig":
+            suggest = "conversation_model_config"
+        elif key == "enableEventBasedSuggestion":
+            suggest = "enable_event_based_suggestion"
+        elif key == "queryConfig":
+            suggest = "query_config"
+        elif key == "suggestionFeature":
+            suggest = "suggestion_feature"
+        elif key == "suggestionTriggerSettings":
+            suggest = "suggestion_trigger_settings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conversation_model_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigResponse',
                  enable_event_based_suggestion: bool,
@@ -471,15 +564,33 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConf
         """
         return pulumi.get(self, "suggestion_trigger_settings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse(dict):
     """
     Settings that determine how to filter recent conversation context when generating suggestions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dropHandoffMessages":
+            suggest = "drop_handoff_messages"
+        elif key == "dropIvrMessages":
+            suggest = "drop_ivr_messages"
+        elif key == "dropVirtualAgentMessages":
+            suggest = "drop_virtual_agent_messages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  drop_handoff_messages: bool,
                  drop_ivr_messages: bool,
@@ -518,9 +629,6 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         """
         return pulumi.get(self, "drop_virtual_agent_messages")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse(dict):
@@ -542,9 +650,6 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
         """
         return pulumi.get(self, "agent")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -568,15 +673,29 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         """
         return pulumi.get(self, "documents")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse(dict):
     """
     Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "knowledgeBases":
+            suggest = "knowledge_bases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  knowledge_bases: Sequence[str]):
         """
@@ -593,15 +712,39 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         """
         return pulumi.get(self, "knowledge_bases")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse(dict):
     """
     Config for suggestion query.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceThreshold":
+            suggest = "confidence_threshold"
+        elif key == "contextFilterSettings":
+            suggest = "context_filter_settings"
+        elif key == "dialogflowQuerySource":
+            suggest = "dialogflow_query_source"
+        elif key == "documentQuerySource":
+            suggest = "document_query_source"
+        elif key == "knowledgeBaseQuerySource":
+            suggest = "knowledge_base_query_source"
+        elif key == "maxResults":
+            suggest = "max_results"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  confidence_threshold: float,
                  context_filter_settings: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsResponse',
@@ -673,15 +816,31 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
         """
         return pulumi.get(self, "max_results")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse(dict):
     """
     Settings of suggestion trigger.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "noSmallTalk":
+            suggest = "no_small_talk"
+        elif key == "onlyEndUser":
+            suggest = "only_end_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  no_small_talk: bool,
                  only_end_user: bool):
@@ -709,15 +868,29 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSett
         """
         return pulumi.get(self, "only_end_user")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse(dict):
     """
     Configuration specific to LivePerson (https://www.liveperson.com).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accountNumber":
+            suggest = "account_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  account_number: str):
         """
@@ -734,15 +907,31 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigRespons
         """
         return pulumi.get(self, "account_number")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse(dict):
     """
     Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "livePersonConfig":
+            suggest = "live_person_config"
+        elif key == "salesforceLiveAgentConfig":
+            suggest = "salesforce_live_agent_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  live_person_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigResponse',
                  salesforce_live_agent_config: 'outputs.GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse'):
@@ -770,15 +959,35 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigResponse(dict):
         """
         return pulumi.get(self, "salesforce_live_agent_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse(dict):
     """
     Configuration specific to Salesforce Live Agent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "buttonId":
+            suggest = "button_id"
+        elif key == "deploymentId":
+            suggest = "deployment_id"
+        elif key == "endpointDomain":
+            suggest = "endpoint_domain"
+        elif key == "organizationId":
+            suggest = "organization_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  button_id: str,
                  deployment_id: str,
@@ -828,15 +1037,31 @@ class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConf
         """
         return pulumi.get(self, "organization_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse(dict):
     """
     Represents a single followup intent in the chain.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "followupIntentName":
+            suggest = "followup_intent_name"
+        elif key == "parentFollowupIntentName":
+            suggest = "parent_followup_intent_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  followup_intent_name: str,
                  parent_followup_intent_name: str):
@@ -864,9 +1089,6 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfoResponse(dict):
         """
         return pulumi.get(self, "parent_followup_intent_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse(dict):
@@ -889,15 +1111,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionRespo
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse(dict):
     """
     The button object that appears at the bottom of a card.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openUriAction":
+            suggest = "open_uri_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  open_uri_action: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionResponse',
                  title: str):
@@ -925,15 +1161,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse(dict):
     """
     The basic card message. Useful for displaying information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "formattedText":
+            suggest = "formatted_text"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  buttons: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse'],
                  formatted_text: str,
@@ -994,15 +1244,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse(dict):
     """
     Actions on Google action to open a given url.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlTypeHint":
+            suggest = "url_type_hint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  url: str,
                  url_type_hint: str):
@@ -1030,15 +1294,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
         """
         return pulumi.get(self, "url_type_hint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse(dict):
     """
     Browsing carousel tile
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openUriAction":
+            suggest = "open_uri_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  footer: str,
@@ -1099,15 +1377,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse(dict):
     """
     Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageDisplayOptions":
+            suggest = "image_display_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_display_options: str,
                  items: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse']):
@@ -1134,9 +1426,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse(dict):
         Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
         """
         return pulumi.get(self, "items")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1171,15 +1460,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageCardResponse(dict):
     """
     The card response message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  buttons: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse'],
                  image_uri: str,
@@ -1228,9 +1531,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardResponse(dict):
         Optional. The title of the card.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1287,9 +1587,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse(dict):
@@ -1312,15 +1609,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectResponse(dict):
         """
         return pulumi.get(self, "items")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse(dict):
     """
     Column properties for TableCard.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "horizontalAlignment":
+            suggest = "horizontal_alignment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header: str,
                  horizontal_alignment: str):
@@ -1348,15 +1659,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse(dict):
         """
         return pulumi.get(self, "horizontal_alignment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageImageResponse(dict):
     """
     The image response message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessibilityText":
+            suggest = "accessibility_text"
+        elif key == "imageUri":
+            suggest = "image_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageImageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageImageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageImageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accessibility_text: str,
                  image_uri: str):
@@ -1384,15 +1711,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageImageResponse(dict):
         """
         return pulumi.get(self, "image_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse(dict):
     """
     The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationName":
+            suggest = "destination_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  destination_name: str,
                  uri: str):
@@ -1419,9 +1760,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse(dict):
         Required. The URI of the app or site to open when the user taps the suggestion chip.
         """
         return pulumi.get(self, "uri")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1478,9 +1816,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItemResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse(dict):
@@ -1525,15 +1860,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse(dict):
     """
     The media content card for Actions on Google.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mediaObjects":
+            suggest = "media_objects"
+        elif key == "mediaType":
+            suggest = "media_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  media_objects: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse'],
                  media_type: str):
@@ -1561,15 +1912,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponse(dict):
         """
         return pulumi.get(self, "media_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse(dict):
     """
     Response media object for media content card.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentUrl":
+            suggest = "content_url"
+        elif key == "largeImage":
+            suggest = "large_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content_url: str,
                  description: str,
@@ -1630,15 +1997,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectRe
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse(dict):
     """
     The quick replies response message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "quickReplies":
+            suggest = "quick_replies"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  quick_replies: Sequence[str],
                  title: str):
@@ -1666,15 +2047,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse(dict):
     """
     Rich Business Messaging (RBM) Media displayed in Cards The following media-types are currently supported: Image Types * image/jpeg * image/jpg' * image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 * video/mpeg * video/mpeg4 * video/webm
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileUri":
+            suggest = "file_uri"
+        elif key == "thumbnailUri":
+            suggest = "thumbnail_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_uri: str,
                  height: str,
@@ -1712,9 +2109,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaResponse(di
         Optional. Publicly reachable URI of the thumbnail.If you don't provide a thumbnail URI, the RBM platform displays a blank placeholder thumbnail until the user's device downloads the file. Depending on the user's setting, the file may not download automatically and may require the user to tap a download button.
         """
         return pulumi.get(self, "thumbnail_uri")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1771,15 +2165,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse(dict):
     """
     Carousel Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. If you want to show a single card with more control over the layout, please use RbmStandaloneCard instead.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cardContents":
+            suggest = "card_contents"
+        elif key == "cardWidth":
+            suggest = "card_width"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  card_contents: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse'],
                  card_width: str):
@@ -1807,15 +2217,33 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse(dict):
         """
         return pulumi.get(self, "card_width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse(dict):
     """
     Standalone Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. You can group multiple rich cards into one using RbmCarouselCard but carousel cards will give you less control over the card layout.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cardContent":
+            suggest = "card_content"
+        elif key == "cardOrientation":
+            suggest = "card_orientation"
+        elif key == "thumbnailImageAlignment":
+            suggest = "thumbnail_image_alignment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  card_content: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse',
                  card_orientation: str,
@@ -1854,15 +2282,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardResponse(dict):
         """
         return pulumi.get(self, "thumbnail_image_alignment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse(dict):
     """
     Opens the user's default dialer app with the specified phone number but does not dial automatically.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  phone_number: str):
         """
@@ -1878,9 +2320,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
         Required. The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
         """
         return pulumi.get(self, "phone_number")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1904,9 +2343,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationResponse(dict):
@@ -1919,15 +2355,33 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse(dict):
     """
     Rich Business Messaging (RBM) suggested client-side action that the user can choose from the card.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "openUrl":
+            suggest = "open_url"
+        elif key == "postbackData":
+            suggest = "postback_data"
+        elif key == "shareLocation":
+            suggest = "share_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dial: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialResponse',
                  open_url: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse',
@@ -1988,15 +2442,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyResponse(dict):
     """
     Rich Business Messaging (RBM) suggested reply that the user can click instead of typing in their own response.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postbackData":
+            suggest = "postback_data"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  postback_data: str,
                  text: str):
@@ -2023,9 +2491,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyResponse(dict):
         Suggested reply text.
         """
         return pulumi.get(self, "text")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2060,15 +2525,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse(dict):
         """
         return pulumi.get(self, "reply")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse(dict):
     """
     Rich Business Messaging (RBM) text response with suggestions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rbmSuggestion":
+            suggest = "rbm_suggestion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  rbm_suggestion: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse'],
                  text: str):
@@ -2096,15 +2575,57 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmTextResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageResponse(dict):
     """
     Corresponds to the `Response` field in the Dialogflow console.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicCard":
+            suggest = "basic_card"
+        elif key == "browseCarouselCard":
+            suggest = "browse_carousel_card"
+        elif key == "carouselSelect":
+            suggest = "carousel_select"
+        elif key == "linkOutSuggestion":
+            suggest = "link_out_suggestion"
+        elif key == "listSelect":
+            suggest = "list_select"
+        elif key == "mediaContent":
+            suggest = "media_content"
+        elif key == "quickReplies":
+            suggest = "quick_replies"
+        elif key == "rbmCarouselRichCard":
+            suggest = "rbm_carousel_rich_card"
+        elif key == "rbmStandaloneRichCard":
+            suggest = "rbm_standalone_rich_card"
+        elif key == "rbmText":
+            suggest = "rbm_text"
+        elif key == "simpleResponses":
+            suggest = "simple_responses"
+        elif key == "tableCard":
+            suggest = "table_card"
+        elif key == "telephonyPlayAudio":
+            suggest = "telephony_play_audio"
+        elif key == "telephonySynthesizeSpeech":
+            suggest = "telephony_synthesize_speech"
+        elif key == "telephonyTransferCall":
+            suggest = "telephony_transfer_call"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_card: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageBasicCardResponse',
                  browse_carousel_card: 'outputs.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse',
@@ -2341,9 +2862,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse(dict):
@@ -2377,15 +2895,31 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse(dict):
         """
         return pulumi.get(self, "synonyms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse(dict):
     """
     The simple response message containing speech or text.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayText":
+            suggest = "display_text"
+        elif key == "textToSpeech":
+            suggest = "text_to_speech"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_text: str,
                  ssml: str,
@@ -2424,15 +2958,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse(dict):
         """
         return pulumi.get(self, "text_to_speech")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse(dict):
     """
     The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "simpleResponses":
+            suggest = "simple_responses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  simple_responses: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse']):
         """
@@ -2448,9 +2996,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse(dict):
         Required. The list of simple responses.
         """
         return pulumi.get(self, "simple_responses")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2474,9 +3019,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse(dict):
@@ -2498,9 +3040,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsResponse(dict):
         Required. The list of suggested replies.
         """
         return pulumi.get(self, "suggestions")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2524,15 +3063,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse(dict):
     """
     Table card for Actions on Google.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnProperties":
+            suggest = "column_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  buttons: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonResponse'],
                  column_properties: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse'],
@@ -2604,15 +3157,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse(dict):
     """
     Row of TableCard.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dividerAfter":
+            suggest = "divider_after"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cells: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentMessageTableCardCellResponse'],
                  divider_after: bool):
@@ -2640,15 +3207,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRowResponse(dict):
         """
         return pulumi.get(self, "divider_after")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse(dict):
     """
     Plays audio from a file in Telephony Gateway.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioUri":
+            suggest = "audio_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audio_uri: str):
         """
@@ -2664,9 +3245,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioResponse(dict):
         Required. URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
         """
         return pulumi.get(self, "audio_uri")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2701,15 +3279,29 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechResponse
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse(dict):
     """
     Transfers the call in Telephony Gateway.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "phoneNumber":
+            suggest = "phone_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  phone_number: str):
         """
@@ -2725,9 +3317,6 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallResponse(dic
         Required. The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
         """
         return pulumi.get(self, "phone_number")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2751,15 +3340,35 @@ class GoogleCloudDialogflowV2beta1IntentMessageTextResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentParameterResponse(dict):
     """
     Represents intent parameters.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "entityTypeDisplayName":
+            suggest = "entity_type_display_name"
+        elif key == "isList":
+            suggest = "is_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_value: str,
                  display_name: str,
@@ -2853,15 +3462,31 @@ class GoogleCloudDialogflowV2beta1IntentParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse(dict):
     """
     Represents a part of a training phrase.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "userDefined":
+            suggest = "user_defined"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alias: str,
                  entity_type: str,
@@ -2911,15 +3536,29 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse(dict):
         """
         return pulumi.get(self, "user_defined")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse(dict):
     """
     Represents an example that the agent is trained on.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timesAddedCount":
+            suggest = "times_added_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  parts: Sequence['outputs.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse'],
@@ -2969,15 +3608,29 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhraseResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1LoggingConfigResponse(dict):
     """
     Defines logging behavior for conversation lifecycle events.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableStackdriverLogging":
+            suggest = "enable_stackdriver_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1LoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1LoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1LoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_stackdriver_logging: bool):
         """
@@ -2994,15 +3647,29 @@ class GoogleCloudDialogflowV2beta1LoggingConfigResponse(dict):
         """
         return pulumi.get(self, "enable_stackdriver_logging")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1NotificationConfigResponse(dict):
     """
     Defines notification behavior.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageFormat":
+            suggest = "message_format"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1NotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1NotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1NotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_format: str,
                  topic: str):
@@ -3030,15 +3697,29 @@ class GoogleCloudDialogflowV2beta1NotificationConfigResponse(dict):
         """
         return pulumi.get(self, "topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse(dict):
     """
     Configures speech transcription for ConversationProfile.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "speechModelVariant":
+            suggest = "speech_model_variant"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  speech_model_variant: str):
         """
@@ -3054,9 +3735,6 @@ class GoogleCloudDialogflowV2beta1SpeechToTextConfigResponse(dict):
         Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
         """
         return pulumi.get(self, "speech_model_variant")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3079,9 +3757,6 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureResponse(dict):
         Type of Human Agent Assistant API feature to request.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3126,8 +3801,5 @@ class GoogleRpcStatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

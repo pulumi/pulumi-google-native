@@ -5,13 +5,86 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OrganizationEnvgroupAttachment']
+__all__ = ['OrganizationEnvgroupAttachmentArgs', 'OrganizationEnvgroupAttachment']
+
+@pulumi.input_type
+class OrganizationEnvgroupAttachmentArgs:
+    def __init__(__self__, *,
+                 attachments_id: pulumi.Input[str],
+                 envgroups_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
+        :param pulumi.Input[str] environment: Required. ID of the attached environment.
+        :param pulumi.Input[str] name: ID of the environment group attachment.
+        """
+        pulumi.set(__self__, "attachments_id", attachments_id)
+        pulumi.set(__self__, "envgroups_id", envgroups_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="attachmentsId")
+    def attachments_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attachments_id")
+
+    @attachments_id.setter
+    def attachments_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attachments_id", value)
+
+    @property
+    @pulumi.getter(name="envgroupsId")
+    def envgroups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "envgroups_id")
+
+    @envgroups_id.setter
+    def envgroups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "envgroups_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. ID of the attached environment.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the environment group attachment.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class OrganizationEnvgroupAttachment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,6 +104,38 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] environment: Required. ID of the attached environment.
         :param pulumi.Input[str] name: ID of the environment group attachment.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationEnvgroupAttachmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new attachment of an environment to an environment group.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationEnvgroupAttachmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationEnvgroupAttachmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 attachments_id: Optional[pulumi.Input[str]] = None,
+                 envgroups_id: Optional[pulumi.Input[str]] = None,
+                 environment: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -46,20 +151,20 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationEnvgroupAttachmentArgs.__new__(OrganizationEnvgroupAttachmentArgs)
 
             if attachments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attachments_id'")
-            __props__['attachments_id'] = attachments_id
+            __props__.__dict__["attachments_id"] = attachments_id
             if envgroups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroups_id'")
-            __props__['envgroups_id'] = envgroups_id
-            __props__['environment'] = environment
-            __props__['name'] = name
+            __props__.__dict__["envgroups_id"] = envgroups_id
+            __props__.__dict__["environment"] = environment
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['created_at'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["created_at"] = None
         super(OrganizationEnvgroupAttachment, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationEnvgroupAttachment',
             resource_name,
@@ -80,11 +185,11 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationEnvgroupAttachmentArgs.__new__(OrganizationEnvgroupAttachmentArgs)
 
-        __props__["created_at"] = None
-        __props__["environment"] = None
-        __props__["name"] = None
+        __props__.__dict__["created_at"] = None
+        __props__.__dict__["environment"] = None
+        __props__.__dict__["name"] = None
         return OrganizationEnvgroupAttachment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -110,10 +215,4 @@ class OrganizationEnvgroupAttachment(pulumi.CustomResource):
         ID of the environment group attachment.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

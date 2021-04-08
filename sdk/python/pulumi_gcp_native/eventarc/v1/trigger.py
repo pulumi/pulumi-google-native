@@ -5,15 +5,152 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Trigger']
+__all__ = ['TriggerArgs', 'Trigger']
+
+@pulumi.input_type
+class TriggerArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 triggers_id: pulumi.Input[str],
+                 destination: Optional[pulumi.Input['DestinationArgs']] = None,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 transport: Optional[pulumi.Input['TransportArgs']] = None):
+        """
+        The set of arguments for constructing a Trigger resource.
+        :param pulumi.Input['DestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]] event_filters: Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
+        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+        :param pulumi.Input['TransportArgs'] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "triggers_id", triggers_id)
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if event_filters is not None:
+            pulumi.set(__self__, "event_filters", event_filters)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if transport is not None:
+            pulumi.set(__self__, "transport", transport)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="triggersId")
+    def triggers_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "triggers_id")
+
+    @triggers_id.setter
+    def triggers_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "triggers_id", value)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input['DestinationArgs']]:
+        """
+        Required. Destination specifies where the events should be sent to.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input['DestinationArgs']]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter(name="eventFilters")
+    def event_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]]]:
+        """
+        Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
+        """
+        return pulumi.get(self, "event_filters")
+
+    @event_filters.setter
+    def event_filters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]]]):
+        pulumi.set(self, "event_filters", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User labels attached to the triggers that can be used to group resources.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The resource name of the trigger. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter
+    def transport(self) -> Optional[pulumi.Input['TransportArgs']]:
+        """
+        Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
+        """
+        return pulumi.get(self, "transport")
+
+    @transport.setter
+    def transport(self, value: Optional[pulumi.Input['TransportArgs']]):
+        pulumi.set(self, "transport", value)
 
 
 class Trigger(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -41,6 +178,42 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TriggerArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a new trigger in a particular project and location.
+
+        :param str resource_name: The name of the resource.
+        :param TriggerArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TriggerArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
+                 event_filters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EventFilterArgs']]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
+                 triggers_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -56,27 +229,27 @@ class Trigger(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TriggerArgs.__new__(TriggerArgs)
 
-            __props__['destination'] = destination
-            __props__['event_filters'] = event_filters
-            __props__['labels'] = labels
+            __props__.__dict__["destination"] = destination
+            __props__.__dict__["event_filters"] = event_filters
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['service_account'] = service_account
-            __props__['transport'] = transport
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["transport"] = transport
             if triggers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'triggers_id'")
-            __props__['triggers_id'] = triggers_id
-            __props__['create_time'] = None
-            __props__['etag'] = None
-            __props__['uid'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["triggers_id"] = triggers_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["uid"] = None
+            __props__.__dict__["update_time"] = None
         super(Trigger, __self__).__init__(
             'gcp-native:eventarc/v1:Trigger',
             resource_name,
@@ -97,18 +270,18 @@ class Trigger(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = TriggerArgs.__new__(TriggerArgs)
 
-        __props__["create_time"] = None
-        __props__["destination"] = None
-        __props__["etag"] = None
-        __props__["event_filters"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["service_account"] = None
-        __props__["transport"] = None
-        __props__["uid"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["destination"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["event_filters"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["service_account"] = None
+        __props__.__dict__["transport"] = None
+        __props__.__dict__["uid"] = None
+        __props__.__dict__["update_time"] = None
         return Trigger(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -190,10 +363,4 @@ class Trigger(pulumi.CustomResource):
         The last-modified time.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

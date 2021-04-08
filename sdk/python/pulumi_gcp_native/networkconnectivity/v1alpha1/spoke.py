@@ -5,15 +5,200 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Spoke']
+__all__ = ['SpokeArgs', 'Spoke']
+
+@pulumi.input_type
+class SpokeArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 spokes_id: pulumi.Input[str],
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 hub: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]] = None,
+                 linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Spoke resource.
+        :param pulumi.Input[str] create_time: The time when the Spoke was created.
+        :param pulumi.Input[str] description: Short description of the spoke resource
+        :param pulumi.Input[str] hub: The resource URL of the hub resource that the spoke is attached to
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_interconnect_attachments: The URIs of linked interconnect attachment resources
+        :param pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]] linked_router_appliance_instances: The URIs of linked Router appliance resources
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] linked_vpn_tunnels: The URIs of linked VPN tunnel resources
+        :param pulumi.Input[str] name: Immutable. The name of a Spoke resource.
+        :param pulumi.Input[str] update_time: The time when the Spoke was updated.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "spokes_id", spokes_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if hub is not None:
+            pulumi.set(__self__, "hub", hub)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if linked_interconnect_attachments is not None:
+            pulumi.set(__self__, "linked_interconnect_attachments", linked_interconnect_attachments)
+        if linked_router_appliance_instances is not None:
+            pulumi.set(__self__, "linked_router_appliance_instances", linked_router_appliance_instances)
+        if linked_vpn_tunnels is not None:
+            pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="spokesId")
+    def spokes_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "spokes_id")
+
+    @spokes_id.setter
+    def spokes_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "spokes_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Spoke was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short description of the spoke resource
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def hub(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource URL of the hub resource that the spoke is attached to
+        """
+        return pulumi.get(self, "hub")
+
+    @hub.setter
+    def hub(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hub", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="linkedInterconnectAttachments")
+    def linked_interconnect_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The URIs of linked interconnect attachment resources
+        """
+        return pulumi.get(self, "linked_interconnect_attachments")
+
+    @linked_interconnect_attachments.setter
+    def linked_interconnect_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "linked_interconnect_attachments", value)
+
+    @property
+    @pulumi.getter(name="linkedRouterApplianceInstances")
+    def linked_router_appliance_instances(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]]:
+        """
+        The URIs of linked Router appliance resources
+        """
+        return pulumi.get(self, "linked_router_appliance_instances")
+
+    @linked_router_appliance_instances.setter
+    def linked_router_appliance_instances(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]]):
+        pulumi.set(self, "linked_router_appliance_instances", value)
+
+    @property
+    @pulumi.getter(name="linkedVpnTunnels")
+    def linked_vpn_tunnels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The URIs of linked VPN tunnel resources
+        """
+        return pulumi.get(self, "linked_vpn_tunnels")
+
+    @linked_vpn_tunnels.setter
+    def linked_vpn_tunnels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "linked_vpn_tunnels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The name of a Spoke resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the Spoke was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class Spoke(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -47,6 +232,45 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The name of a Spoke resource.
         :param pulumi.Input[str] update_time: The time when the Spoke was updated.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SpokeArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Spoke in a given project and location.
+
+        :param str resource_name: The name of the resource.
+        :param SpokeArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SpokeArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 hub: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 linked_interconnect_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouterApplianceInstanceArgs']]]]] = None,
+                 linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 spokes_id: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -62,28 +286,28 @@ class Spoke(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SpokeArgs.__new__(SpokeArgs)
 
-            __props__['create_time'] = create_time
-            __props__['description'] = description
-            __props__['hub'] = hub
-            __props__['labels'] = labels
-            __props__['linked_interconnect_attachments'] = linked_interconnect_attachments
-            __props__['linked_router_appliance_instances'] = linked_router_appliance_instances
-            __props__['linked_vpn_tunnels'] = linked_vpn_tunnels
+            __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["description"] = description
+            __props__.__dict__["hub"] = hub
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
+            __props__.__dict__["linked_router_appliance_instances"] = linked_router_appliance_instances
+            __props__.__dict__["linked_vpn_tunnels"] = linked_vpn_tunnels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if spokes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'spokes_id'")
-            __props__['spokes_id'] = spokes_id
-            __props__['update_time'] = update_time
-            __props__['state'] = None
-            __props__['unique_id'] = None
+            __props__.__dict__["spokes_id"] = spokes_id
+            __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["state"] = None
+            __props__.__dict__["unique_id"] = None
         super(Spoke, __self__).__init__(
             'gcp-native:networkconnectivity/v1alpha1:Spoke',
             resource_name,
@@ -104,19 +328,19 @@ class Spoke(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SpokeArgs.__new__(SpokeArgs)
 
-        __props__["create_time"] = None
-        __props__["description"] = None
-        __props__["hub"] = None
-        __props__["labels"] = None
-        __props__["linked_interconnect_attachments"] = None
-        __props__["linked_router_appliance_instances"] = None
-        __props__["linked_vpn_tunnels"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["unique_id"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["hub"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["linked_interconnect_attachments"] = None
+        __props__.__dict__["linked_router_appliance_instances"] = None
+        __props__.__dict__["linked_vpn_tunnels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["unique_id"] = None
+        __props__.__dict__["update_time"] = None
         return Spoke(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -206,10 +430,4 @@ class Spoke(pulumi.CustomResource):
         The time when the Spoke was updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

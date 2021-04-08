@@ -5,15 +5,136 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationInstanceCanaryevaluation']
+__all__ = ['OrganizationInstanceCanaryevaluationArgs', 'OrganizationInstanceCanaryevaluation']
+
+@pulumi.input_type
+class OrganizationInstanceCanaryevaluationArgs:
+    def __init__(__self__, *,
+                 canaryevaluations_id: pulumi.Input[str],
+                 instances_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 control: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 metric_labels: Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 treatment: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationInstanceCanaryevaluation resource.
+        :param pulumi.Input[str] control: Required. The stable version that is serving requests.
+        :param pulumi.Input[str] end_time: Required. End time for the evaluation's analysis.
+        :param pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs'] metric_labels: Required. Labels used to filter the metrics used for a canary evaluation.
+        :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
+        :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
+        """
+        pulumi.set(__self__, "canaryevaluations_id", canaryevaluations_id)
+        pulumi.set(__self__, "instances_id", instances_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if control is not None:
+            pulumi.set(__self__, "control", control)
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if metric_labels is not None:
+            pulumi.set(__self__, "metric_labels", metric_labels)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if treatment is not None:
+            pulumi.set(__self__, "treatment", treatment)
+
+    @property
+    @pulumi.getter(name="canaryevaluationsId")
+    def canaryevaluations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "canaryevaluations_id")
+
+    @canaryevaluations_id.setter
+    def canaryevaluations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "canaryevaluations_id", value)
+
+    @property
+    @pulumi.getter(name="instancesId")
+    def instances_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instances_id")
+
+    @instances_id.setter
+    def instances_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instances_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def control(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The stable version that is serving requests.
+        """
+        return pulumi.get(self, "control")
+
+    @control.setter
+    def control(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "control", value)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. End time for the evaluation's analysis.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="metricLabels")
+    def metric_labels(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]:
+        """
+        Required. Labels used to filter the metrics used for a canary evaluation.
+        """
+        return pulumi.get(self, "metric_labels")
+
+    @metric_labels.setter
+    def metric_labels(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]):
+        pulumi.set(self, "metric_labels", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Start time for the canary evaluation's analysis.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def treatment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The newer version that is serving requests.
+        """
+        return pulumi.get(self, "treatment")
+
+    @treatment.setter
+    def treatment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "treatment", value)
 
 
 class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,6 +160,41 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
         :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
         :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationInstanceCanaryevaluationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new canary evaluation for an organization.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationInstanceCanaryevaluationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationInstanceCanaryevaluationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 canaryevaluations_id: Optional[pulumi.Input[str]] = None,
+                 control: Optional[pulumi.Input[str]] = None,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
+                 metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 treatment: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -54,26 +210,26 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationInstanceCanaryevaluationArgs.__new__(OrganizationInstanceCanaryevaluationArgs)
 
             if canaryevaluations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'canaryevaluations_id'")
-            __props__['canaryevaluations_id'] = canaryevaluations_id
-            __props__['control'] = control
-            __props__['end_time'] = end_time
+            __props__.__dict__["canaryevaluations_id"] = canaryevaluations_id
+            __props__.__dict__["control"] = control
+            __props__.__dict__["end_time"] = end_time
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
-            __props__['instances_id'] = instances_id
-            __props__['metric_labels'] = metric_labels
+            __props__.__dict__["instances_id"] = instances_id
+            __props__.__dict__["metric_labels"] = metric_labels
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['start_time'] = start_time
-            __props__['treatment'] = treatment
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['state'] = None
-            __props__['verdict'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["treatment"] = treatment
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["verdict"] = None
         super(OrganizationInstanceCanaryevaluation, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationInstanceCanaryevaluation',
             resource_name,
@@ -94,17 +250,17 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationInstanceCanaryevaluationArgs.__new__(OrganizationInstanceCanaryevaluationArgs)
 
-        __props__["control"] = None
-        __props__["create_time"] = None
-        __props__["end_time"] = None
-        __props__["metric_labels"] = None
-        __props__["name"] = None
-        __props__["start_time"] = None
-        __props__["state"] = None
-        __props__["treatment"] = None
-        __props__["verdict"] = None
+        __props__.__dict__["control"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["end_time"] = None
+        __props__.__dict__["metric_labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["start_time"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["treatment"] = None
+        __props__.__dict__["verdict"] = None
         return OrganizationInstanceCanaryevaluation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -178,10 +334,4 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
         The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
         """
         return pulumi.get(self, "verdict")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

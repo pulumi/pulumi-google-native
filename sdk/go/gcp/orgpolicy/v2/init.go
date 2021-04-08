@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:orgpolicy/v2:FolderPolicy":
-		r, err = NewFolderPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FolderPolicy{}
 	case "gcp-native:orgpolicy/v2:OrganizationPolicy":
-		r, err = NewOrganizationPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationPolicy{}
 	case "gcp-native:orgpolicy/v2:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

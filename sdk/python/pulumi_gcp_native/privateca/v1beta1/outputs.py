@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -48,6 +48,25 @@ class AccessUrlsResponse(dict):
     """
     URLs where a CertificateAuthority will publish content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificateAccessUrl":
+            suggest = "ca_certificate_access_url"
+        elif key == "crlAccessUrl":
+            suggest = "crl_access_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessUrlsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessUrlsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessUrlsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate_access_url: str,
                  crl_access_url: str):
@@ -75,12 +94,26 @@ class AccessUrlsResponse(dict):
         """
         return pulumi.get(self, "crl_access_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AllowedConfigListResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedConfigValues":
+            suggest = "allowed_config_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllowedConfigListResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllowedConfigListResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllowedConfigListResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_config_values: Sequence['outputs.ReusableConfigWrapperResponse']):
         """
@@ -96,15 +129,39 @@ class AllowedConfigListResponse(dict):
         """
         return pulumi.get(self, "allowed_config_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AllowedSubjectAltNamesResponse(dict):
     """
     AllowedSubjectAltNames specifies the allowed values for SubjectAltNames by the CertificateAuthority when issuing Certificates.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCustomSans":
+            suggest = "allow_custom_sans"
+        elif key == "allowGlobbingDnsWildcards":
+            suggest = "allow_globbing_dns_wildcards"
+        elif key == "allowedDnsNames":
+            suggest = "allowed_dns_names"
+        elif key == "allowedEmailAddresses":
+            suggest = "allowed_email_addresses"
+        elif key == "allowedIps":
+            suggest = "allowed_ips"
+        elif key == "allowedUris":
+            suggest = "allowed_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllowedSubjectAltNamesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllowedSubjectAltNamesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllowedSubjectAltNamesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_custom_sans: bool,
                  allow_globbing_dns_wildcards: bool,
@@ -176,15 +233,29 @@ class AllowedSubjectAltNamesResponse(dict):
         """
         return pulumi.get(self, "allowed_uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -212,15 +283,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -247,9 +334,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -295,15 +379,31 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CaOptionsResponse(dict):
     """
     Describes values that are relevant in a CA certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isCa":
+            suggest = "is_ca"
+        elif key == "maxIssuerPathLength":
+            suggest = "max_issuer_path_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CaOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CaOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CaOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_ca: bool,
                  max_issuer_path_length: int):
@@ -331,15 +431,41 @@ class CaOptionsResponse(dict):
         """
         return pulumi.get(self, "max_issuer_path_length")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateAuthorityPolicyResponse(dict):
     """
     The issuing policy for a CertificateAuthority. Certificates will not be successfully issued from this CertificateAuthority if they violate the policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedCommonNames":
+            suggest = "allowed_common_names"
+        elif key == "allowedConfigList":
+            suggest = "allowed_config_list"
+        elif key == "allowedIssuanceModes":
+            suggest = "allowed_issuance_modes"
+        elif key == "allowedLocationsAndOrganizations":
+            suggest = "allowed_locations_and_organizations"
+        elif key == "allowedSans":
+            suggest = "allowed_sans"
+        elif key == "maximumLifetime":
+            suggest = "maximum_lifetime"
+        elif key == "overwriteConfigValues":
+            suggest = "overwrite_config_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateAuthorityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateAuthorityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateAuthorityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_common_names: Sequence[str],
                  allowed_config_list: 'outputs.AllowedConfigListResponse',
@@ -422,15 +548,33 @@ class CertificateAuthorityPolicyResponse(dict):
         """
         return pulumi.get(self, "overwrite_config_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateConfigResponse(dict):
     """
     A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKey":
+            suggest = "public_key"
+        elif key == "reusableConfig":
+            suggest = "reusable_config"
+        elif key == "subjectConfig":
+            suggest = "subject_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key: 'outputs.PublicKeyResponse',
                  reusable_config: 'outputs.ReusableConfigWrapperResponse',
@@ -469,15 +613,43 @@ class CertificateConfigResponse(dict):
         """
         return pulumi.get(self, "subject_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateDescriptionResponse(dict):
     """
     A CertificateDescription describes an X.509 certificate or CSR that has been issued, as an alternative to using ASN.1 / X.509.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aiaIssuingCertificateUrls":
+            suggest = "aia_issuing_certificate_urls"
+        elif key == "authorityKeyId":
+            suggest = "authority_key_id"
+        elif key == "certFingerprint":
+            suggest = "cert_fingerprint"
+        elif key == "configValues":
+            suggest = "config_values"
+        elif key == "crlDistributionPoints":
+            suggest = "crl_distribution_points"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "subjectDescription":
+            suggest = "subject_description"
+        elif key == "subjectKeyId":
+            suggest = "subject_key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateDescriptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateDescriptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aia_issuing_certificate_urls: Sequence[str],
                  authority_key_id: 'outputs.KeyIdResponse',
@@ -571,15 +743,29 @@ class CertificateDescriptionResponse(dict):
         """
         return pulumi.get(self, "subject_key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateFingerprintResponse(dict):
     """
     A group of fingerprints for the x509 certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sha256Hash":
+            suggest = "sha256_hash"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateFingerprintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateFingerprintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateFingerprintResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sha256_hash: str):
         """
@@ -595,9 +781,6 @@ class CertificateFingerprintResponse(dict):
         The SHA 256 hash, encoded in hexadecimal, of the DER x509 certificate.
         """
         return pulumi.get(self, "sha256_hash")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -654,15 +837,39 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExtendedKeyUsageOptionsResponse(dict):
     """
     KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientAuth":
+            suggest = "client_auth"
+        elif key == "codeSigning":
+            suggest = "code_signing"
+        elif key == "emailProtection":
+            suggest = "email_protection"
+        elif key == "ocspSigning":
+            suggest = "ocsp_signing"
+        elif key == "serverAuth":
+            suggest = "server_auth"
+        elif key == "timeStamping":
+            suggest = "time_stamping"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExtendedKeyUsageOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExtendedKeyUsageOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExtendedKeyUsageOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_auth: bool,
                  code_signing: bool,
@@ -734,15 +941,31 @@ class ExtendedKeyUsageOptionsResponse(dict):
         """
         return pulumi.get(self, "time_stamping")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IssuanceModesResponse(dict):
     """
     IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowConfigBasedIssuance":
+            suggest = "allow_config_based_issuance"
+        elif key == "allowCsrBasedIssuance":
+            suggest = "allow_csr_based_issuance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IssuanceModesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IssuanceModesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IssuanceModesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_config_based_issuance: bool,
                  allow_csr_based_issuance: bool):
@@ -770,15 +993,31 @@ class IssuanceModesResponse(dict):
         """
         return pulumi.get(self, "allow_csr_based_issuance")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IssuingOptionsResponse(dict):
     """
     Options that affect all certificates issued by a CertificateAuthority.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeCaCertUrl":
+            suggest = "include_ca_cert_url"
+        elif key == "includeCrlAccessUrl":
+            suggest = "include_crl_access_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IssuingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IssuingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IssuingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  include_ca_cert_url: bool,
                  include_crl_access_url: bool):
@@ -806,15 +1045,29 @@ class IssuingOptionsResponse(dict):
         """
         return pulumi.get(self, "include_crl_access_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyIdResponse(dict):
     """
     A KeyId identifies a specific public key, usually by hashing the public key.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key_id: str):
         """
@@ -831,15 +1084,45 @@ class KeyIdResponse(dict):
         """
         return pulumi.get(self, "key_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyUsageOptionsResponse(dict):
     """
     KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certSign":
+            suggest = "cert_sign"
+        elif key == "contentCommitment":
+            suggest = "content_commitment"
+        elif key == "crlSign":
+            suggest = "crl_sign"
+        elif key == "dataEncipherment":
+            suggest = "data_encipherment"
+        elif key == "decipherOnly":
+            suggest = "decipher_only"
+        elif key == "digitalSignature":
+            suggest = "digital_signature"
+        elif key == "encipherOnly":
+            suggest = "encipher_only"
+        elif key == "keyAgreement":
+            suggest = "key_agreement"
+        elif key == "keyEncipherment":
+            suggest = "key_encipherment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyUsageOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyUsageOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyUsageOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_sign: bool,
                  content_commitment: bool,
@@ -944,15 +1227,33 @@ class KeyUsageOptionsResponse(dict):
         """
         return pulumi.get(self, "key_encipherment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyUsageResponse(dict):
     """
     A KeyUsage describes key usage values that may appear in an X.509 certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseKeyUsage":
+            suggest = "base_key_usage"
+        elif key == "extendedKeyUsage":
+            suggest = "extended_key_usage"
+        elif key == "unknownExtendedKeyUsages":
+            suggest = "unknown_extended_key_usages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyUsageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyUsageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyUsageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_key_usage: 'outputs.KeyUsageOptionsResponse',
                  extended_key_usage: 'outputs.ExtendedKeyUsageOptionsResponse',
@@ -991,15 +1292,29 @@ class KeyUsageResponse(dict):
         """
         return pulumi.get(self, "unknown_extended_key_usages")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyVersionSpecResponse(dict):
     """
     A Cloud KMS key configuration that a CertificateAuthority will use.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudKmsKeyVersion":
+            suggest = "cloud_kms_key_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyVersionSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyVersionSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyVersionSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  cloud_kms_key_version: str):
@@ -1027,15 +1342,29 @@ class KeyVersionSpecResponse(dict):
         """
         return pulumi.get(self, "cloud_kms_key_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ObjectIdResponse(dict):
     """
     An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectIdPath":
+            suggest = "object_id_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectIdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectIdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectIdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  object_id_path: Sequence[int]):
         """
@@ -1051,9 +1380,6 @@ class ObjectIdResponse(dict):
         Required. The parts of an OID path. The most significant parts of the path come first.
         """
         return pulumi.get(self, "object_id_path")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1088,15 +1414,37 @@ class PublicKeyResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReusableConfigValuesResponse(dict):
     """
     A ReusableConfigValues is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalExtensions":
+            suggest = "additional_extensions"
+        elif key == "aiaOcspServers":
+            suggest = "aia_ocsp_servers"
+        elif key == "caOptions":
+            suggest = "ca_options"
+        elif key == "keyUsage":
+            suggest = "key_usage"
+        elif key == "policyIds":
+            suggest = "policy_ids"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReusableConfigValuesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReusableConfigValuesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReusableConfigValuesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_extensions: Sequence['outputs.X509ExtensionResponse'],
                  aia_ocsp_servers: Sequence[str],
@@ -1157,15 +1505,31 @@ class ReusableConfigValuesResponse(dict):
         """
         return pulumi.get(self, "policy_ids")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReusableConfigWrapperResponse(dict):
     """
     A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reusableConfig":
+            suggest = "reusable_config"
+        elif key == "reusableConfigValues":
+            suggest = "reusable_config_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReusableConfigWrapperResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReusableConfigWrapperResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReusableConfigWrapperResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  reusable_config: str,
                  reusable_config_values: 'outputs.ReusableConfigValuesResponse'):
@@ -1193,15 +1557,31 @@ class ReusableConfigWrapperResponse(dict):
         """
         return pulumi.get(self, "reusable_config_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RevocationDetailsResponse(dict):
     """
     Describes fields that are relavent to the revocation of a Certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "revocationState":
+            suggest = "revocation_state"
+        elif key == "revocationTime":
+            suggest = "revocation_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RevocationDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RevocationDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RevocationDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  revocation_state: str,
                  revocation_time: str):
@@ -1229,15 +1609,35 @@ class RevocationDetailsResponse(dict):
         """
         return pulumi.get(self, "revocation_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubjectAltNamesResponse(dict):
     """
     SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSans":
+            suggest = "custom_sans"
+        elif key == "dnsNames":
+            suggest = "dns_names"
+        elif key == "emailAddresses":
+            suggest = "email_addresses"
+        elif key == "ipAddresses":
+            suggest = "ip_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubjectAltNamesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubjectAltNamesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubjectAltNamesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_sans: Sequence['outputs.X509ExtensionResponse'],
                  dns_names: Sequence[str],
@@ -1298,15 +1698,31 @@ class SubjectAltNamesResponse(dict):
         """
         return pulumi.get(self, "uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubjectConfigResponse(dict):
     """
     These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "subjectAltName":
+            suggest = "subject_alt_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubjectConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubjectConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubjectConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_name: str,
                  subject: 'outputs.SubjectResponse',
@@ -1345,15 +1761,37 @@ class SubjectConfigResponse(dict):
         """
         return pulumi.get(self, "subject_alt_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubjectDescriptionResponse(dict):
     """
     These values describe fields in an issued X.509 certificate such as the distinguished name, subject alternative names, serial number, and lifetime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "commonName":
+            suggest = "common_name"
+        elif key == "hexSerialNumber":
+            suggest = "hex_serial_number"
+        elif key == "notAfterTime":
+            suggest = "not_after_time"
+        elif key == "notBeforeTime":
+            suggest = "not_before_time"
+        elif key == "subjectAltName":
+            suggest = "subject_alt_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubjectDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubjectDescriptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubjectDescriptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  common_name: str,
                  hex_serial_number: str,
@@ -1436,15 +1874,35 @@ class SubjectDescriptionResponse(dict):
         """
         return pulumi.get(self, "subject_alt_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubjectResponse(dict):
     """
     Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "countryCode":
+            suggest = "country_code"
+        elif key == "organizationalUnit":
+            suggest = "organizational_unit"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "streetAddress":
+            suggest = "street_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubjectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubjectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubjectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  country_code: str,
                  locality: str,
@@ -1527,15 +1985,29 @@ class SubjectResponse(dict):
         """
         return pulumi.get(self, "street_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubordinateConfigChainResponse(dict):
     """
     This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pemCertificates":
+            suggest = "pem_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubordinateConfigChainResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubordinateConfigChainResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubordinateConfigChainResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pem_certificates: Sequence[str]):
         """
@@ -1552,15 +2024,31 @@ class SubordinateConfigChainResponse(dict):
         """
         return pulumi.get(self, "pem_certificates")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubordinateConfigResponse(dict):
     """
     Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateAuthority":
+            suggest = "certificate_authority"
+        elif key == "pemIssuerChain":
+            suggest = "pem_issuer_chain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubordinateConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubordinateConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubordinateConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_authority: str,
                  pem_issuer_chain: 'outputs.SubordinateConfigChainResponse'):
@@ -1588,15 +2076,29 @@ class SubordinateConfigResponse(dict):
         """
         return pulumi.get(self, "pem_issuer_chain")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X509ExtensionResponse(dict):
     """
     An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectId":
+            suggest = "object_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X509ExtensionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X509ExtensionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X509ExtensionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  critical: bool,
                  object_id: 'outputs.ObjectIdResponse',
@@ -1634,8 +2136,5 @@ class X509ExtensionResponse(dict):
         Required. The value of this X.509 extension.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

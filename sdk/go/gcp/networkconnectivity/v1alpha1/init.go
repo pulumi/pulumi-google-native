@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:networkconnectivity/v1alpha1:Hub":
-		r, err = NewHub(ctx, name, nil, pulumi.URN_(urn))
+		r = &Hub{}
 	case "gcp-native:networkconnectivity/v1alpha1:HubIamPolicy":
-		r, err = NewHubIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &HubIamPolicy{}
 	case "gcp-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy":
-		r, err = NewInternalRangeIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InternalRangeIamPolicy{}
 	case "gcp-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy":
-		r, err = NewPolicyBasedRouteIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &PolicyBasedRouteIamPolicy{}
 	case "gcp-native:networkconnectivity/v1alpha1:Spoke":
-		r, err = NewSpoke(ctx, name, nil, pulumi.URN_(urn))
+		r = &Spoke{}
 	case "gcp-native:networkconnectivity/v1alpha1:SpokeIamPolicy":
-		r, err = NewSpokeIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SpokeIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

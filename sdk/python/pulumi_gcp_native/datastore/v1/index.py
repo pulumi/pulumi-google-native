@@ -5,15 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Index']
+__all__ = ['IndexArgs', 'Index']
+
+@pulumi.input_type
+class IndexArgs:
+    def __init__(__self__, *,
+                 index_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 ancestor: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] = None):
+        """
+        The set of arguments for constructing a Index resource.
+        :param pulumi.Input[str] ancestor: Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]] properties: Required. An ordered sequence of property names and their index attributes.
+        """
+        pulumi.set(__self__, "index_id", index_id)
+        pulumi.set(__self__, "project_id", project_id)
+        if ancestor is not None:
+            pulumi.set(__self__, "ancestor", ancestor)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "index_id")
+
+    @index_id.setter
+    def index_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "index_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def ancestor(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        """
+        return pulumi.get(self, "ancestor")
+
+    @ancestor.setter
+    def ancestor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ancestor", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The entity kind to which this index applies.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]:
+        """
+        Required. An ordered sequence of property names and their index attributes.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]):
+        pulumi.set(self, "properties", value)
 
 
 class Index(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +112,38 @@ class Index(pulumi.CustomResource):
         :param pulumi.Input[str] kind: Required. The entity kind to which this index applies.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]] properties: Required. An ordered sequence of property names and their index attributes.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: IndexArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During index creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single property cannot be created.
+
+        :param str resource_name: The name of the resource.
+        :param IndexArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(IndexArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ancestor: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleDatastoreAdminV1IndexedPropertyArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -49,18 +159,18 @@ class Index(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = IndexArgs.__new__(IndexArgs)
 
-            __props__['ancestor'] = ancestor
+            __props__.__dict__["ancestor"] = ancestor
             if index_id is None and not opts.urn:
                 raise TypeError("Missing required property 'index_id'")
-            __props__['index_id'] = index_id
-            __props__['kind'] = kind
+            __props__.__dict__["index_id"] = index_id
+            __props__.__dict__["kind"] = kind
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['properties'] = properties
-            __props__['state'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["properties"] = properties
+            __props__.__dict__["state"] = None
         super(Index, __self__).__init__(
             'gcp-native:datastore/v1:Index',
             resource_name,
@@ -81,14 +191,14 @@ class Index(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = IndexArgs.__new__(IndexArgs)
 
-        __props__["ancestor"] = None
-        __props__["index_id"] = None
-        __props__["kind"] = None
-        __props__["project_id"] = None
-        __props__["properties"] = None
-        __props__["state"] = None
+        __props__.__dict__["ancestor"] = None
+        __props__.__dict__["index_id"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["project_id"] = None
+        __props__.__dict__["properties"] = None
+        __props__.__dict__["state"] = None
         return Index(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -138,10 +248,4 @@ class Index(pulumi.CustomResource):
         The state of the index.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

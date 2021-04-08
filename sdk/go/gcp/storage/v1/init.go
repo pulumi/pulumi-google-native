@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:storage/v1:Bucket":
-		r, err = NewBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &Bucket{}
 	case "gcp-native:storage/v1:BucketAccessControl":
-		r, err = NewBucketAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketAccessControl{}
 	case "gcp-native:storage/v1:BucketIamPolicy":
-		r, err = NewBucketIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketIamPolicy{}
 	case "gcp-native:storage/v1:BucketObject":
-		r, err = NewBucketObject(ctx, name, nil, pulumi.URN_(urn))
+		r = &BucketObject{}
 	case "gcp-native:storage/v1:DefaultObjectAccessControl":
-		r, err = NewDefaultObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &DefaultObjectAccessControl{}
 	case "gcp-native:storage/v1:HmacKey":
-		r, err = NewHmacKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &HmacKey{}
 	case "gcp-native:storage/v1:Notification":
-		r, err = NewNotification(ctx, name, nil, pulumi.URN_(urn))
+		r = &Notification{}
 	case "gcp-native:storage/v1:ObjectAccessControl":
-		r, err = NewObjectAccessControl(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectAccessControl{}
 	case "gcp-native:storage/v1:ObjectIamPolicy":
-		r, err = NewObjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ObjectIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

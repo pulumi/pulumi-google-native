@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -48,6 +48,23 @@ class AutoscalingSettingsResponse(dict):
     """
     Settings for WorkerPool autoscaling.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNumWorkers":
+            suggest = "max_num_workers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  max_num_workers: int):
@@ -75,15 +92,29 @@ class AutoscalingSettingsResponse(dict):
         """
         return pulumi.get(self, "max_num_workers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigQueryIODetailsResponse(dict):
     """
     Metadata for a BigQuery connector used by the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryIODetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryIODetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: str,
                  project_id: str,
@@ -133,15 +164,33 @@ class BigQueryIODetailsResponse(dict):
         """
         return pulumi.get(self, "table")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigTableIODetailsResponse(dict):
     """
     Metadata for a Cloud BigTable connector used by the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigTableIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigTableIODetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigTableIODetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_id: str,
                  project_id: str,
@@ -180,15 +229,31 @@ class BigTableIODetailsResponse(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ComponentSourceResponse(dict):
     """
     Description of an interstitial value between transforms in an execution stage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originalTransformOrCollection":
+            suggest = "original_transform_or_collection"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComponentSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComponentSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComponentSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  original_transform_or_collection: str,
@@ -227,15 +292,31 @@ class ComponentSourceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ComponentTransformResponse(dict):
     """
     Description of a transform executed as part of an execution stage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originalTransform":
+            suggest = "original_transform"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComponentTransformResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComponentTransformResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComponentTransformResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  original_transform: str,
@@ -274,15 +355,29 @@ class ComponentTransformResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatastoreIODetailsResponse(dict):
     """
     Metadata for a Datastore connector used by the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatastoreIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatastoreIODetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatastoreIODetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespace: str,
                  project_id: str):
@@ -310,15 +405,29 @@ class DatastoreIODetailsResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DebugOptionsResponse(dict):
     """
     Describes any options that have an effect on the debugging of pipelines.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHotKeyLogging":
+            suggest = "enable_hot_key_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DebugOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DebugOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DebugOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_hot_key_logging: bool):
         """
@@ -335,15 +444,33 @@ class DebugOptionsResponse(dict):
         """
         return pulumi.get(self, "enable_hot_key_logging")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskResponse(dict):
     """
     Describes the data disk used by a workflow job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskType":
+            suggest = "disk_type"
+        elif key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_type: str,
                  mount_point: str,
@@ -382,15 +509,43 @@ class DiskResponse(dict):
         """
         return pulumi.get(self, "size_gb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DisplayDataResponse(dict):
     """
     Data provided with a pipeline or transform to provide descriptive info.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "durationValue":
+            suggest = "duration_value"
+        elif key == "floatValue":
+            suggest = "float_value"
+        elif key == "int64Value":
+            suggest = "int64_value"
+        elif key == "javaClassValue":
+            suggest = "java_class_value"
+        elif key == "shortStrValue":
+            suggest = "short_str_value"
+        elif key == "strValue":
+            suggest = "str_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DisplayDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DisplayDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DisplayDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bool_value: bool,
                  duration_value: str,
@@ -528,15 +683,55 @@ class DisplayDataResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvironmentResponse(dict):
     """
     Describes the environment in which a Dataflow Job runs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterManagerApiService":
+            suggest = "cluster_manager_api_service"
+        elif key == "debugOptions":
+            suggest = "debug_options"
+        elif key == "flexResourceSchedulingGoal":
+            suggest = "flex_resource_scheduling_goal"
+        elif key == "internalExperiments":
+            suggest = "internal_experiments"
+        elif key == "sdkPipelineOptions":
+            suggest = "sdk_pipeline_options"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+        elif key == "serviceKmsKeyName":
+            suggest = "service_kms_key_name"
+        elif key == "serviceOptions":
+            suggest = "service_options"
+        elif key == "shuffleMode":
+            suggest = "shuffle_mode"
+        elif key == "tempStoragePrefix":
+            suggest = "temp_storage_prefix"
+        elif key == "userAgent":
+            suggest = "user_agent"
+        elif key == "workerPools":
+            suggest = "worker_pools"
+        elif key == "workerRegion":
+            suggest = "worker_region"
+        elif key == "workerZone":
+            suggest = "worker_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_manager_api_service: str,
                  dataset: str,
@@ -729,15 +924,33 @@ class EnvironmentResponse(dict):
         """
         return pulumi.get(self, "worker_zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutionStageStateResponse(dict):
     """
     A message describing the state of a particular execution stage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentStateTime":
+            suggest = "current_state_time"
+        elif key == "executionStageName":
+            suggest = "execution_stage_name"
+        elif key == "executionStageState":
+            suggest = "execution_stage_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionStageStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionStageStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionStageStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  current_state_time: str,
                  execution_stage_name: str,
@@ -776,15 +989,37 @@ class ExecutionStageStateResponse(dict):
         """
         return pulumi.get(self, "execution_stage_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutionStageSummaryResponse(dict):
     """
     Description of the composing transforms, names/ids, and input/outputs of a stage of execution. Some composing transforms and sources may have been generated by the Dataflow service during execution planning.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "componentSource":
+            suggest = "component_source"
+        elif key == "componentTransform":
+            suggest = "component_transform"
+        elif key == "inputSource":
+            suggest = "input_source"
+        elif key == "outputSource":
+            suggest = "output_source"
+        elif key == "prerequisiteStage":
+            suggest = "prerequisite_stage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionStageSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionStageSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionStageSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  component_source: Sequence['outputs.ComponentSourceResponse'],
                  component_transform: Sequence['outputs.ComponentTransformResponse'],
@@ -867,15 +1102,29 @@ class ExecutionStageSummaryResponse(dict):
         """
         return pulumi.get(self, "prerequisite_stage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileIODetailsResponse(dict):
     """
     Metadata for a File connector used by the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePattern":
+            suggest = "file_pattern"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileIODetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileIODetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_pattern: str):
         """
@@ -892,15 +1141,41 @@ class FileIODetailsResponse(dict):
         """
         return pulumi.get(self, "file_pattern")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobMetadataResponse(dict):
     """
     Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigTableDetails":
+            suggest = "big_table_details"
+        elif key == "bigqueryDetails":
+            suggest = "bigquery_details"
+        elif key == "datastoreDetails":
+            suggest = "datastore_details"
+        elif key == "fileDetails":
+            suggest = "file_details"
+        elif key == "pubsubDetails":
+            suggest = "pubsub_details"
+        elif key == "sdkVersion":
+            suggest = "sdk_version"
+        elif key == "spannerDetails":
+            suggest = "spanner_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  big_table_details: Sequence['outputs.BigTableIODetailsResponse'],
                  bigquery_details: Sequence['outputs.BigQueryIODetailsResponse'],
@@ -983,9 +1258,6 @@ class JobMetadataResponse(dict):
         """
         return pulumi.get(self, "spanner_details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PackageResponse(dict):
@@ -1019,15 +1291,33 @@ class PackageResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParameterMetadataResponse(dict):
     """
     Metadata for a specific parameter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "helpText":
+            suggest = "help_text"
+        elif key == "isOptional":
+            suggest = "is_optional"
+        elif key == "paramType":
+            suggest = "param_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParameterMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParameterMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParameterMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  help_text: str,
                  is_optional: bool,
@@ -1099,15 +1389,33 @@ class ParameterMetadataResponse(dict):
         """
         return pulumi.get(self, "regexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PipelineDescriptionResponse(dict):
     """
     A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayData":
+            suggest = "display_data"
+        elif key == "executionPipelineStage":
+            suggest = "execution_pipeline_stage"
+        elif key == "originalPipelineTransform":
+            suggest = "original_pipeline_transform"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineDescriptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineDescriptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_data: Sequence['outputs.DisplayDataResponse'],
                  execution_pipeline_stage: Sequence['outputs.ExecutionStageSummaryResponse'],
@@ -1146,9 +1454,6 @@ class PipelineDescriptionResponse(dict):
         """
         return pulumi.get(self, "original_pipeline_transform")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PubSubIODetailsResponse(dict):
@@ -1182,15 +1487,29 @@ class PubSubIODetailsResponse(dict):
         """
         return pulumi.get(self, "topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeMetadataResponse(dict):
     """
     RuntimeMetadata describing a runtime environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sdkInfo":
+            suggest = "sdk_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parameters: Sequence['outputs.ParameterMetadataResponse'],
                  sdk_info: 'outputs.SDKInfoResponse'):
@@ -1217,9 +1536,6 @@ class RuntimeMetadataResponse(dict):
         SDK Info for the template.
         """
         return pulumi.get(self, "sdk_info")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1254,15 +1570,33 @@ class SDKInfoResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SdkHarnessContainerImageResponse(dict):
     """
     Defines a SDK harness container for executing Dataflow pipelines.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImage":
+            suggest = "container_image"
+        elif key == "environmentId":
+            suggest = "environment_id"
+        elif key == "useSingleCorePerContainer":
+            suggest = "use_single_core_per_container"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SdkHarnessContainerImageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SdkHarnessContainerImageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SdkHarnessContainerImageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_image: str,
                  environment_id: str,
@@ -1301,15 +1635,31 @@ class SdkHarnessContainerImageResponse(dict):
         """
         return pulumi.get(self, "use_single_core_per_container")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SdkVersionResponse(dict):
     """
     The version of the SDK used to run the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sdkSupportStatus":
+            suggest = "sdk_support_status"
+        elif key == "versionDisplayName":
+            suggest = "version_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SdkVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SdkVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SdkVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sdk_support_status: str,
                  version: str,
@@ -1348,15 +1698,33 @@ class SdkVersionResponse(dict):
         """
         return pulumi.get(self, "version_display_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SpannerIODetailsResponse(dict):
     """
     Metadata for a Spanner connector used by the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseId":
+            suggest = "database_id"
+        elif key == "instanceId":
+            suggest = "instance_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SpannerIODetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SpannerIODetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SpannerIODetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_id: str,
                  instance_id: str,
@@ -1395,15 +1763,33 @@ class SpannerIODetailsResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StageSourceResponse(dict):
     """
     Description of an input or output of an execution stage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "originalTransformOrCollection":
+            suggest = "original_transform_or_collection"
+        elif key == "sizeBytes":
+            suggest = "size_bytes"
+        elif key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StageSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StageSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StageSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  original_transform_or_collection: str,
@@ -1453,9 +1839,6 @@ class StageSourceResponse(dict):
         """
         return pulumi.get(self, "user_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatusResponse(dict):
@@ -1499,9 +1882,6 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1547,15 +1927,63 @@ class StepResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TaskRunnerSettingsResponse(dict):
     """
     Taskrunner configuration settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseTaskDir":
+            suggest = "base_task_dir"
+        elif key == "baseUrl":
+            suggest = "base_url"
+        elif key == "commandlinesFileName":
+            suggest = "commandlines_file_name"
+        elif key == "continueOnException":
+            suggest = "continue_on_exception"
+        elif key == "dataflowApiVersion":
+            suggest = "dataflow_api_version"
+        elif key == "harnessCommand":
+            suggest = "harness_command"
+        elif key == "languageHint":
+            suggest = "language_hint"
+        elif key == "logDir":
+            suggest = "log_dir"
+        elif key == "logToSerialconsole":
+            suggest = "log_to_serialconsole"
+        elif key == "logUploadLocation":
+            suggest = "log_upload_location"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "parallelWorkerSettings":
+            suggest = "parallel_worker_settings"
+        elif key == "streamingWorkerMainClass":
+            suggest = "streaming_worker_main_class"
+        elif key == "taskGroup":
+            suggest = "task_group"
+        elif key == "taskUser":
+            suggest = "task_user"
+        elif key == "tempStoragePrefix":
+            suggest = "temp_storage_prefix"
+        elif key == "vmId":
+            suggest = "vm_id"
+        elif key == "workflowFileName":
+            suggest = "workflow_file_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TaskRunnerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TaskRunnerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TaskRunnerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alsologtostderr: bool,
                  base_task_dir: str,
@@ -1770,9 +2198,6 @@ class TaskRunnerSettingsResponse(dict):
         """
         return pulumi.get(self, "workflow_file_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TemplateMetadataResponse(dict):
@@ -1817,15 +2242,33 @@ class TemplateMetadataResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransformSummaryResponse(dict):
     """
     Description of the type, names/ids, and input/outputs for a transform.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayData":
+            suggest = "display_data"
+        elif key == "inputCollectionName":
+            suggest = "input_collection_name"
+        elif key == "outputCollectionName":
+            suggest = "output_collection_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransformSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransformSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransformSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_data: Sequence['outputs.DisplayDataResponse'],
                  input_collection_name: Sequence[str],
@@ -1886,15 +2329,59 @@ class TransformSummaryResponse(dict):
         """
         return pulumi.get(self, "output_collection_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkerPoolResponse(dict):
     """
     Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingSettings":
+            suggest = "autoscaling_settings"
+        elif key == "dataDisks":
+            suggest = "data_disks"
+        elif key == "defaultPackageSet":
+            suggest = "default_package_set"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskSourceImage":
+            suggest = "disk_source_image"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "ipConfiguration":
+            suggest = "ip_configuration"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "numThreadsPerWorker":
+            suggest = "num_threads_per_worker"
+        elif key == "numWorkers":
+            suggest = "num_workers"
+        elif key == "onHostMaintenance":
+            suggest = "on_host_maintenance"
+        elif key == "poolArgs":
+            suggest = "pool_args"
+        elif key == "sdkHarnessContainerImages":
+            suggest = "sdk_harness_container_images"
+        elif key == "taskrunnerSettings":
+            suggest = "taskrunner_settings"
+        elif key == "teardownPolicy":
+            suggest = "teardown_policy"
+        elif key == "workerHarnessContainerImage":
+            suggest = "worker_harness_container_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPoolResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPoolResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPoolResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autoscaling_settings: 'outputs.AutoscalingSettingsResponse',
                  data_disks: Sequence['outputs.DiskResponse'],
@@ -2142,15 +2629,39 @@ class WorkerPoolResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkerSettingsResponse(dict):
     """
     Provides data to pass through to the worker harness.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseUrl":
+            suggest = "base_url"
+        elif key == "reportingEnabled":
+            suggest = "reporting_enabled"
+        elif key == "servicePath":
+            suggest = "service_path"
+        elif key == "shuffleServicePath":
+            suggest = "shuffle_service_path"
+        elif key == "tempStoragePrefix":
+            suggest = "temp_storage_prefix"
+        elif key == "workerId":
+            suggest = "worker_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_url: str,
                  reporting_enabled: bool,
@@ -2221,8 +2732,5 @@ class WorkerSettingsResponse(dict):
         The ID of the worker running this pipeline.
         """
         return pulumi.get(self, "worker_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

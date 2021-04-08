@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -188,6 +188,25 @@ class AcceleratorConfigResponse(dict):
     """
     A specification of the type and number of accelerator cards attached to the instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_count: int,
                  accelerator_type: str):
@@ -215,15 +234,35 @@ class AcceleratorConfigResponse(dict):
         """
         return pulumi.get(self, "accelerator_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AccessConfigResponse(dict):
     """
     An access configuration attached to an instance's network interface. Only one access config per instance is supported.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "natIP":
+            suggest = "nat_ip"
+        elif key == "networkTier":
+            suggest = "network_tier"
+        elif key == "publicPtrDomainName":
+            suggest = "public_ptr_domain_name"
+        elif key == "setPublicPtr":
+            suggest = "set_public_ptr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AccessConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AccessConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AccessConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: str,
                  name: str,
@@ -314,15 +353,29 @@ class AccessConfigResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AdvancedMachineFeaturesResponse(dict):
     """
     Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableNestedVirtualization":
+            suggest = "enable_nested_virtualization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AdvancedMachineFeaturesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AdvancedMachineFeaturesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_nested_virtualization: bool):
         """
@@ -339,15 +392,31 @@ class AdvancedMachineFeaturesResponse(dict):
         """
         return pulumi.get(self, "enable_nested_virtualization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AliasIpRangeResponse(dict):
     """
     An alias IP range attached to an instance's network interface.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "subnetworkRangeName":
+            suggest = "subnetwork_range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AliasIpRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AliasIpRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AliasIpRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  subnetwork_range_name: str):
@@ -375,12 +444,26 @@ class AliasIpRangeResponse(dict):
         """
         return pulumi.get(self, "subnetwork_range_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_size_gb: str,
                  interface: str):
@@ -407,15 +490,37 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResp
         """
         return pulumi.get(self, "interface")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
     """
     Properties of the SKU instances being reserved. Next ID: 9
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "localSsds":
+            suggest = "local_ssds"
+        elif key == "locationHint":
+            suggest = "location_hint"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationSpecificSKUAllocationReservedInstancePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationSpecificSKUAllocationReservedInstancePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationSpecificSKUAllocationReservedInstancePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  guest_accelerators: Sequence['outputs.AcceleratorConfigResponse'],
                  local_ssds: Sequence['outputs.AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse'],
@@ -476,15 +581,31 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesResponse(dict):
         """
         return pulumi.get(self, "min_cpu_platform")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AllocationSpecificSKUReservationResponse(dict):
     """
     This reservation type allows to pre allocate specific instance configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inUseCount":
+            suggest = "in_use_count"
+        elif key == "instanceProperties":
+            suggest = "instance_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationSpecificSKUReservationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationSpecificSKUReservationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationSpecificSKUReservationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  count: str,
                  in_use_count: str,
@@ -523,9 +644,6 @@ class AllocationSpecificSKUReservationResponse(dict):
         """
         return pulumi.get(self, "instance_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttachedDiskInitializeParamsResponse(dict):
@@ -534,6 +652,41 @@ class AttachedDiskInitializeParamsResponse(dict):
 
     This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "onUpdateAction":
+            suggest = "on_update_action"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
+        elif key == "sourceImage":
+            suggest = "source_image"
+        elif key == "sourceImageEncryptionKey":
+            suggest = "source_image_encryption_key"
+        elif key == "sourceSnapshot":
+            suggest = "source_snapshot"
+        elif key == "sourceSnapshotEncryptionKey":
+            suggest = "source_snapshot_encryption_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedDiskInitializeParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedDiskInitializeParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedDiskInitializeParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  disk_name: str,
@@ -739,15 +892,41 @@ class AttachedDiskInitializeParamsResponse(dict):
         """
         return pulumi.get(self, "source_snapshot_encryption_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttachedDiskResponse(dict):
     """
     An instance-attached disk resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "diskEncryptionKey":
+            suggest = "disk_encryption_key"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
+        elif key == "initializeParams":
+            suggest = "initialize_params"
+        elif key == "shieldedInstanceInitialState":
+            suggest = "shielded_instance_initial_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttachedDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttachedDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttachedDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_delete: bool,
                  boot: bool,
@@ -950,9 +1129,6 @@ class AttachedDiskResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -967,6 +1143,25 @@ class AuditConfigResponse(dict):
 
     For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+        elif key == "exemptedMembers":
+            suggest = "exempted_members"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  exempted_members: Sequence[str],
@@ -1009,9 +1204,6 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
@@ -1022,6 +1214,27 @@ class AuditLogConfigResponse(dict):
 
     This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "ignoreChildExemptions":
+            suggest = "ignore_child_exemptions"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  ignore_child_exemptions: bool,
@@ -1060,15 +1273,29 @@ class AuditLogConfigResponse(dict):
         """
         return pulumi.get(self, "log_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorizationLoggingOptionsResponse(dict):
     """
     Authorization-related information used by Cloud Audit Logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionType":
+            suggest = "permission_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizationLoggingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizationLoggingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizationLoggingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  permission_type: str):
         """
@@ -1084,9 +1311,6 @@ class AuthorizationLoggingOptionsResponse(dict):
         The type of the permission that was checked.
         """
         return pulumi.get(self, "permission_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1149,15 +1373,31 @@ class AutoscalerStatusDetailsResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingPolicyCpuUtilizationResponse(dict):
     """
     CPU utilization policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predictiveMethod":
+            suggest = "predictive_method"
+        elif key == "utilizationTarget":
+            suggest = "utilization_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyCpuUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyCpuUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyCpuUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  predictive_method: str,
                  utilization_target: float):
@@ -1197,15 +1437,33 @@ class AutoscalingPolicyCpuUtilizationResponse(dict):
         """
         return pulumi.get(self, "utilization_target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingPolicyCustomMetricUtilizationResponse(dict):
     """
     Custom utilization metric policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "singleInstanceAssignment":
+            suggest = "single_instance_assignment"
+        elif key == "utilizationTarget":
+            suggest = "utilization_target"
+        elif key == "utilizationTargetType":
+            suggest = "utilization_target_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyCustomMetricUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyCustomMetricUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyCustomMetricUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filter: str,
                  metric: str,
@@ -1304,15 +1562,29 @@ class AutoscalingPolicyCustomMetricUtilizationResponse(dict):
         """
         return pulumi.get(self, "utilization_target_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingPolicyLoadBalancingUtilizationResponse(dict):
     """
     Configuration parameters of autoscaling based on load balancing.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "utilizationTarget":
+            suggest = "utilization_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyLoadBalancingUtilizationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyLoadBalancingUtilizationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyLoadBalancingUtilizationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  utilization_target: float):
         """
@@ -1329,15 +1601,43 @@ class AutoscalingPolicyLoadBalancingUtilizationResponse(dict):
         """
         return pulumi.get(self, "utilization_target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingPolicyResponse(dict):
     """
     Cloud Autoscaler policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coolDownPeriodSec":
+            suggest = "cool_down_period_sec"
+        elif key == "cpuUtilization":
+            suggest = "cpu_utilization"
+        elif key == "customMetricUtilizations":
+            suggest = "custom_metric_utilizations"
+        elif key == "loadBalancingUtilization":
+            suggest = "load_balancing_utilization"
+        elif key == "maxNumReplicas":
+            suggest = "max_num_replicas"
+        elif key == "minNumReplicas":
+            suggest = "min_num_replicas"
+        elif key == "scaleInControl":
+            suggest = "scale_in_control"
+        elif key == "scalingSchedules":
+            suggest = "scaling_schedules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cool_down_period_sec: int,
                  cpu_utilization: 'outputs.AutoscalingPolicyCpuUtilizationResponse',
@@ -1442,15 +1742,31 @@ class AutoscalingPolicyResponse(dict):
         """
         return pulumi.get(self, "scaling_schedules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingPolicyScaleInControlResponse(dict):
     """
     Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxScaledInReplicas":
+            suggest = "max_scaled_in_replicas"
+        elif key == "timeWindowSec":
+            suggest = "time_window_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingPolicyScaleInControlResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingPolicyScaleInControlResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingPolicyScaleInControlResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_scaled_in_replicas: 'outputs.FixedOrPercentResponse',
                  time_window_sec: int):
@@ -1478,15 +1794,29 @@ class AutoscalingPolicyScaleInControlResponse(dict):
         """
         return pulumi.get(self, "time_window_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse(dict):
     """
     Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header_name: str):
         """
@@ -1502,9 +1832,6 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse(dict):
         The header field name to match on when bypassing cache. Values are case-insensitive.
         """
         return pulumi.get(self, "header_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1539,15 +1866,49 @@ class BackendBucketCdnPolicyNegativeCachingPolicyResponse(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendBucketCdnPolicyResponse(dict):
     """
     Message containing Cloud CDN configuration for a backend bucket.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bypassCacheOnRequestHeaders":
+            suggest = "bypass_cache_on_request_headers"
+        elif key == "cacheMode":
+            suggest = "cache_mode"
+        elif key == "clientTtl":
+            suggest = "client_ttl"
+        elif key == "defaultTtl":
+            suggest = "default_ttl"
+        elif key == "maxTtl":
+            suggest = "max_ttl"
+        elif key == "negativeCaching":
+            suggest = "negative_caching"
+        elif key == "negativeCachingPolicy":
+            suggest = "negative_caching_policy"
+        elif key == "requestCoalescing":
+            suggest = "request_coalescing"
+        elif key == "serveWhileStale":
+            suggest = "serve_while_stale"
+        elif key == "signedUrlCacheMaxAgeSec":
+            suggest = "signed_url_cache_max_age_sec"
+        elif key == "signedUrlKeyNames":
+            suggest = "signed_url_key_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendBucketCdnPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendBucketCdnPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendBucketCdnPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bypass_cache_on_request_headers: Sequence['outputs.BackendBucketCdnPolicyBypassCacheOnRequestHeaderResponse'],
                  cache_mode: str,
@@ -1686,15 +2047,45 @@ class BackendBucketCdnPolicyResponse(dict):
         """
         return pulumi.get(self, "signed_url_key_names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendResponse(dict):
     """
     Message containing information of one individual backend.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "balancingMode":
+            suggest = "balancing_mode"
+        elif key == "capacityScaler":
+            suggest = "capacity_scaler"
+        elif key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxConnectionsPerEndpoint":
+            suggest = "max_connections_per_endpoint"
+        elif key == "maxConnectionsPerInstance":
+            suggest = "max_connections_per_instance"
+        elif key == "maxRate":
+            suggest = "max_rate"
+        elif key == "maxRatePerEndpoint":
+            suggest = "max_rate_per_endpoint"
+        elif key == "maxRatePerInstance":
+            suggest = "max_rate_per_instance"
+        elif key == "maxUtilization":
+            suggest = "max_utilization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  balancing_mode: str,
                  capacity_scaler: float,
@@ -1888,15 +2279,29 @@ class BackendResponse(dict):
     def max_utilization(self) -> float:
         return pulumi.get(self, "max_utilization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse(dict):
     """
     Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header_name: str):
         """
@@ -1912,9 +2317,6 @@ class BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse(dict):
         The header field name to match on when bypassing cache. Values are case-insensitive.
         """
         return pulumi.get(self, "header_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1949,15 +2351,51 @@ class BackendServiceCdnPolicyNegativeCachingPolicyResponse(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceCdnPolicyResponse(dict):
     """
     Message containing Cloud CDN configuration for a backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bypassCacheOnRequestHeaders":
+            suggest = "bypass_cache_on_request_headers"
+        elif key == "cacheKeyPolicy":
+            suggest = "cache_key_policy"
+        elif key == "cacheMode":
+            suggest = "cache_mode"
+        elif key == "clientTtl":
+            suggest = "client_ttl"
+        elif key == "defaultTtl":
+            suggest = "default_ttl"
+        elif key == "maxTtl":
+            suggest = "max_ttl"
+        elif key == "negativeCaching":
+            suggest = "negative_caching"
+        elif key == "negativeCachingPolicy":
+            suggest = "negative_caching_policy"
+        elif key == "requestCoalescing":
+            suggest = "request_coalescing"
+        elif key == "serveWhileStale":
+            suggest = "serve_while_stale"
+        elif key == "signedUrlCacheMaxAgeSec":
+            suggest = "signed_url_cache_max_age_sec"
+        elif key == "signedUrlKeyNames":
+            suggest = "signed_url_key_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceCdnPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceCdnPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceCdnPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bypass_cache_on_request_headers: Sequence['outputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderResponse'],
                  cache_key_policy: 'outputs.CacheKeyPolicyResponse',
@@ -2107,15 +2545,33 @@ class BackendServiceCdnPolicyResponse(dict):
         """
         return pulumi.get(self, "signed_url_key_names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceFailoverPolicyResponse(dict):
     """
     Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. On failover or failback, this field indicates whether connection draining will be honored. GCP has a fixed connection draining timeout of 10 minutes. A setting of true terminates existing TCP connections to the active pool during failover and failback, immediately draining traffic. A setting of false allows existing TCP connections to persist, even on VMs no longer in the active pool, for up to the duration of the connection draining timeout (10 minutes).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableConnectionDrainOnFailover":
+            suggest = "disable_connection_drain_on_failover"
+        elif key == "dropTrafficIfUnhealthy":
+            suggest = "drop_traffic_if_unhealthy"
+        elif key == "failoverRatio":
+            suggest = "failover_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceFailoverPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceFailoverPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceFailoverPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_connection_drain_on_failover: bool,
                  drop_traffic_if_unhealthy: bool,
@@ -2158,15 +2614,33 @@ class BackendServiceFailoverPolicyResponse(dict):
         """
         return pulumi.get(self, "failover_ratio")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceIAPResponse(dict):
     """
     Identity-Aware Proxy
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oauth2ClientId":
+            suggest = "oauth2_client_id"
+        elif key == "oauth2ClientSecret":
+            suggest = "oauth2_client_secret"
+        elif key == "oauth2ClientSecretSha256":
+            suggest = "oauth2_client_secret_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceIAPResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceIAPResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceIAPResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled: bool,
                  oauth2_client_id: str,
@@ -2216,15 +2690,29 @@ class BackendServiceIAPResponse(dict):
         """
         return pulumi.get(self, "oauth2_client_secret_sha256")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackendServiceLogConfigResponse(dict):
     """
     The available logging options for the load balancer traffic served by this backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sampleRate":
+            suggest = "sample_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackendServiceLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackendServiceLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackendServiceLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable: bool,
                  sample_rate: float):
@@ -2252,15 +2740,29 @@ class BackendServiceLogConfigResponse(dict):
         """
         return pulumi.get(self, "sample_rate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members` with a `role`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindingId":
+            suggest = "binding_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BindingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BindingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BindingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binding_id: str,
                  condition: 'outputs.ExprResponse',
@@ -2362,15 +2864,37 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CacheKeyPolicyResponse(dict):
     """
     Message containing what to include in the cache key for a request for Cloud CDN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "includeHost":
+            suggest = "include_host"
+        elif key == "includeProtocol":
+            suggest = "include_protocol"
+        elif key == "includeQueryString":
+            suggest = "include_query_string"
+        elif key == "queryStringBlacklist":
+            suggest = "query_string_blacklist"
+        elif key == "queryStringWhitelist":
+            suggest = "query_string_whitelist"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CacheKeyPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CacheKeyPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CacheKeyPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  include_host: bool,
                  include_protocol: bool,
@@ -2431,15 +2955,37 @@ class CacheKeyPolicyResponse(dict):
         """
         return pulumi.get(self, "query_string_whitelist")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CircuitBreakersResponse(dict):
     """
     Settings controlling the volume of connections to a backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxConnections":
+            suggest = "max_connections"
+        elif key == "maxPendingRequests":
+            suggest = "max_pending_requests"
+        elif key == "maxRequests":
+            suggest = "max_requests"
+        elif key == "maxRequestsPerConnection":
+            suggest = "max_requests_per_connection"
+        elif key == "maxRetries":
+            suggest = "max_retries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CircuitBreakersResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CircuitBreakersResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CircuitBreakersResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_connections: int,
                  max_pending_requests: int,
@@ -2499,9 +3045,6 @@ class CircuitBreakersResponse(dict):
         The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1.
         """
         return pulumi.get(self, "max_retries")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2569,15 +3112,29 @@ class ConditionResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfidentialInstanceConfigResponse(dict):
     """
     A set of Confidential Instance options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfidentialInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfidentialInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfidentialInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
@@ -2594,15 +3151,29 @@ class ConfidentialInstanceConfigResponse(dict):
         """
         return pulumi.get(self, "enable_confidential_compute")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConnectionDrainingResponse(dict):
     """
     Message containing connection draining configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainingTimeoutSec":
+            suggest = "draining_timeout_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionDrainingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionDrainingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionDrainingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  draining_timeout_sec: int):
         """
@@ -2618,9 +3189,6 @@ class ConnectionDrainingResponse(dict):
         Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
         """
         return pulumi.get(self, "draining_timeout_sec")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2666,15 +3234,33 @@ class ConsistentHashLoadBalancerSettingsHttpCookieResponse(dict):
         """
         return pulumi.get(self, "ttl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConsistentHashLoadBalancerSettingsResponse(dict):
     """
     This message defines settings for a consistent hash style load balancer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpCookie":
+            suggest = "http_cookie"
+        elif key == "httpHeaderName":
+            suggest = "http_header_name"
+        elif key == "minimumRingSize":
+            suggest = "minimum_ring_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConsistentHashLoadBalancerSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConsistentHashLoadBalancerSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConsistentHashLoadBalancerSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  http_cookie: 'outputs.ConsistentHashLoadBalancerSettingsHttpCookieResponse',
                  http_header_name: str,
@@ -2713,15 +3299,41 @@ class ConsistentHashLoadBalancerSettingsResponse(dict):
         """
         return pulumi.get(self, "minimum_ring_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CorsPolicyResponse(dict):
     """
     The specification for allowing client side cross-origin requests. Please see W3C Recommendation for Cross Origin Resource Sharing
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowCredentials":
+            suggest = "allow_credentials"
+        elif key == "allowHeaders":
+            suggest = "allow_headers"
+        elif key == "allowMethods":
+            suggest = "allow_methods"
+        elif key == "allowOriginRegexes":
+            suggest = "allow_origin_regexes"
+        elif key == "allowOrigins":
+            suggest = "allow_origins"
+        elif key == "exposeHeaders":
+            suggest = "expose_headers"
+        elif key == "maxAge":
+            suggest = "max_age"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CorsPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CorsPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CorsPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_credentials: bool,
                  allow_headers: Sequence[str],
@@ -2821,12 +3433,30 @@ class CorsPolicyResponse(dict):
         """
         return pulumi.get(self, "max_age")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomerEncryptionKeyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+        elif key == "kmsKeyServiceAccount":
+            suggest = "kms_key_service_account"
+        elif key == "rawKey":
+            suggest = "raw_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomerEncryptionKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomerEncryptionKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomerEncryptionKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key_name: str,
                  kms_key_service_account: str,
@@ -2874,9 +3504,6 @@ class CustomerEncryptionKeyResponse(dict):
         [Output only] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied encryption key that protects this resource.
         """
         return pulumi.get(self, "sha256")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2944,15 +3571,35 @@ class DeprecationStatusResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskInstantiationConfigResponse(dict):
     """
     A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "customImage":
+            suggest = "custom_image"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "instantiateFrom":
+            suggest = "instantiate_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskInstantiationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskInstantiationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskInstantiationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_delete: bool,
                  custom_image: str,
@@ -3012,15 +3659,29 @@ class DiskInstantiationConfigResponse(dict):
         """
         return pulumi.get(self, "instantiate_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DisplayDeviceResponse(dict):
     """
     A set of Display Device options
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableDisplay":
+            suggest = "enable_display"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DisplayDeviceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DisplayDeviceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DisplayDeviceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_display: bool):
         """
@@ -3037,12 +3698,26 @@ class DisplayDeviceResponse(dict):
         """
         return pulumi.get(self, "enable_display")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributionPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetShape":
+            suggest = "target_shape"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributionPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributionPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  target_shape: str,
                  zones: Sequence['outputs.DistributionPolicyZoneConfigurationResponse']):
@@ -3069,9 +3744,6 @@ class DistributionPolicyResponse(dict):
         """
         return pulumi.get(self, "zones")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributionPolicyZoneConfigurationResponse(dict):
@@ -3089,9 +3761,6 @@ class DistributionPolicyZoneConfigurationResponse(dict):
         The URL of the zone. The zone must exist in the region where the managed instance group is located.
         """
         return pulumi.get(self, "zone")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3125,9 +3794,6 @@ class DurationResponse(dict):
         Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         """
         return pulumi.get(self, "seconds")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3220,15 +3886,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExternalVpnGatewayInterfaceResponse(dict):
     """
     The interface for the external VPN gateway.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalVpnGatewayInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalVpnGatewayInterfaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalVpnGatewayInterfaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: str):
         """
@@ -3245,12 +3925,26 @@ class ExternalVpnGatewayInterfaceResponse(dict):
         """
         return pulumi.get(self, "ip_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FileContentBufferResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fileType":
+            suggest = "file_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileContentBufferResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileContentBufferResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileContentBufferResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: str,
                  file_type: str):
@@ -3276,9 +3970,6 @@ class FileContentBufferResponse(dict):
         The file type of source file.
         """
         return pulumi.get(self, "file_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3313,12 +4004,32 @@ class FirewallLogConfigResponse(dict):
         """
         return pulumi.get(self, "metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallPolicyAssociationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attachmentTarget":
+            suggest = "attachment_target"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "firewallPolicyId":
+            suggest = "firewall_policy_id"
+        elif key == "shortName":
+            suggest = "short_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyAssociationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyAssociationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyAssociationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attachment_target: str,
                  display_name: str,
@@ -3378,12 +4089,26 @@ class FirewallPolicyAssociationResponse(dict):
         """
         return pulumi.get(self, "short_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallPolicyRuleMatcherLayer4ConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleMatcherLayer4ConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyRuleMatcherLayer4ConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyRuleMatcherLayer4ConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_protocol: str,
                  ports: Sequence[str]):
@@ -3414,15 +4139,35 @@ class FirewallPolicyRuleMatcherLayer4ConfigResponse(dict):
         """
         return pulumi.get(self, "ports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallPolicyRuleMatcherResponse(dict):
     """
     Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destIpRanges":
+            suggest = "dest_ip_ranges"
+        elif key == "layer4Configs":
+            suggest = "layer4_configs"
+        elif key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+        elif key == "srcSecureLabels":
+            suggest = "src_secure_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyRuleMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyRuleMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dest_ip_ranges: Sequence[str],
                  layer4_configs: Sequence['outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse'],
@@ -3472,15 +4217,37 @@ class FirewallPolicyRuleMatcherResponse(dict):
         """
         return pulumi.get(self, "src_secure_labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FirewallPolicyRuleResponse(dict):
     """
     Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLogging":
+            suggest = "enable_logging"
+        elif key == "ruleTupleCount":
+            suggest = "rule_tuple_count"
+        elif key == "targetResources":
+            suggest = "target_resources"
+        elif key == "targetSecureLabels":
+            suggest = "target_secure_labels"
+        elif key == "targetServiceAccounts":
+            suggest = "target_service_accounts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallPolicyRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallPolicyRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  description: str,
@@ -3618,9 +4385,6 @@ class FirewallPolicyRuleResponse(dict):
         """
         return pulumi.get(self, "target_service_accounts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FixedOrPercentResponse(dict):
@@ -3673,15 +4437,29 @@ class FixedOrPercentResponse(dict):
         """
         return pulumi.get(self, "percent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ForwardingRuleServiceDirectoryRegistrationResponse(dict):
     """
     Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceDirectoryRegion":
+            suggest = "service_directory_region"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ForwardingRuleServiceDirectoryRegistrationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ForwardingRuleServiceDirectoryRegistrationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ForwardingRuleServiceDirectoryRegistrationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespace: str,
                  service: str,
@@ -3720,12 +4498,30 @@ class ForwardingRuleServiceDirectoryRegistrationResponse(dict):
         """
         return pulumi.get(self, "service_directory_region")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GRPCHealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "grpcServiceName":
+            suggest = "grpc_service_name"
+        elif key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GRPCHealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GRPCHealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GRPCHealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  grpc_service_name: str,
                  port: int,
@@ -3792,9 +4588,6 @@ class GRPCHealthCheckResponse(dict):
         """
         return pulumi.get(self, "port_specification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestOsFeatureResponse(dict):
@@ -3817,12 +4610,32 @@ class GuestOsFeatureResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HTTP2HealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+        elif key == "proxyHeader":
+            suggest = "proxy_header"
+        elif key == "requestPath":
+            suggest = "request_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HTTP2HealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HTTP2HealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HTTP2HealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -3916,12 +4729,32 @@ class HTTP2HealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HTTPHealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+        elif key == "proxyHeader":
+            suggest = "proxy_header"
+        elif key == "requestPath":
+            suggest = "request_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HTTPHealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HTTPHealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HTTPHealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -4015,12 +4848,32 @@ class HTTPHealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HTTPSHealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+        elif key == "proxyHeader":
+            suggest = "proxy_header"
+        elif key == "requestPath":
+            suggest = "request_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HTTPSHealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HTTPSHealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HTTPSHealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  port: int,
@@ -4114,9 +4967,6 @@ class HTTPSHealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HealthCheckLogConfigResponse(dict):
@@ -4139,15 +4989,29 @@ class HealthCheckLogConfigResponse(dict):
         """
         return pulumi.get(self, "enable")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HostRuleResponse(dict):
     """
     UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pathMatcher":
+            suggest = "path_matcher"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HostRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HostRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HostRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  hosts: Sequence[str],
@@ -4188,15 +5052,29 @@ class HostRuleResponse(dict):
         """
         return pulumi.get(self, "path_matcher")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpFaultAbortResponse(dict):
     """
     Specification for how requests are aborted as part of fault injection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpStatus":
+            suggest = "http_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpFaultAbortResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpFaultAbortResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpFaultAbortResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  http_status: int,
                  percentage: float):
@@ -4228,15 +5106,29 @@ class HttpFaultAbortResponse(dict):
         """
         return pulumi.get(self, "percentage")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpFaultDelayResponse(dict):
     """
     Specifies the delay introduced by Loadbalancer before forwarding the request to the backend service as part of fault injection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedDelay":
+            suggest = "fixed_delay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpFaultDelayResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpFaultDelayResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpFaultDelayResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fixed_delay: 'outputs.DurationResponse',
                  percentage: float):
@@ -4265,9 +5157,6 @@ class HttpFaultDelayResponse(dict):
         The value must be between 0.0 and 100.0 inclusive.
         """
         return pulumi.get(self, "percentage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -4302,15 +5191,35 @@ class HttpFaultInjectionResponse(dict):
         """
         return pulumi.get(self, "delay")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpHeaderActionResponse(dict):
     """
     The request and response header transformations that take effect before the request is passed along to the selected backendService.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeadersToAdd":
+            suggest = "request_headers_to_add"
+        elif key == "requestHeadersToRemove":
+            suggest = "request_headers_to_remove"
+        elif key == "responseHeadersToAdd":
+            suggest = "response_headers_to_add"
+        elif key == "responseHeadersToRemove":
+            suggest = "response_headers_to_remove"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpHeaderActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpHeaderActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpHeaderActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  request_headers_to_add: Sequence['outputs.HttpHeaderOptionResponse'],
                  request_headers_to_remove: Sequence[str],
@@ -4360,15 +5269,43 @@ class HttpHeaderActionResponse(dict):
         """
         return pulumi.get(self, "response_headers_to_remove")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpHeaderMatchResponse(dict):
     """
     matchRule criteria for request header matches.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exactMatch":
+            suggest = "exact_match"
+        elif key == "headerName":
+            suggest = "header_name"
+        elif key == "invertMatch":
+            suggest = "invert_match"
+        elif key == "prefixMatch":
+            suggest = "prefix_match"
+        elif key == "presentMatch":
+            suggest = "present_match"
+        elif key == "rangeMatch":
+            suggest = "range_match"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+        elif key == "suffixMatch":
+            suggest = "suffix_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpHeaderMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpHeaderMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpHeaderMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exact_match: str,
                  header_name: str,
@@ -4498,15 +5435,31 @@ class HttpHeaderMatchResponse(dict):
         """
         return pulumi.get(self, "suffix_match")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpHeaderOptionResponse(dict):
     """
     Specification determining how headers are added to requests or responses.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerName":
+            suggest = "header_name"
+        elif key == "headerValue":
+            suggest = "header_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpHeaderOptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpHeaderOptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpHeaderOptionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  header_name: str,
                  header_value: str,
@@ -4547,15 +5500,33 @@ class HttpHeaderOptionResponse(dict):
         """
         return pulumi.get(self, "replace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpQueryParameterMatchResponse(dict):
     """
     HttpRouteRuleMatch criteria for a request's query parameter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exactMatch":
+            suggest = "exact_match"
+        elif key == "presentMatch":
+            suggest = "present_match"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpQueryParameterMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpQueryParameterMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpQueryParameterMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exact_match: str,
                  name: str,
@@ -4613,15 +5584,39 @@ class HttpQueryParameterMatchResponse(dict):
         """
         return pulumi.get(self, "regex_match")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRedirectActionResponse(dict):
     """
     Specifies settings for an HTTP redirect.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRedirect":
+            suggest = "host_redirect"
+        elif key == "httpsRedirect":
+            suggest = "https_redirect"
+        elif key == "pathRedirect":
+            suggest = "path_redirect"
+        elif key == "prefixRedirect":
+            suggest = "prefix_redirect"
+        elif key == "redirectResponseCode":
+            suggest = "redirect_response_code"
+        elif key == "stripQuery":
+            suggest = "strip_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRedirectActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRedirectActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRedirectActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_redirect: str,
                  https_redirect: bool,
@@ -4721,15 +5716,33 @@ class HttpRedirectActionResponse(dict):
         """
         return pulumi.get(self, "strip_query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRetryPolicyResponse(dict):
     """
     The retry policy associates with HttpRouteRule
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numRetries":
+            suggest = "num_retries"
+        elif key == "perTryTimeout":
+            suggest = "per_try_timeout"
+        elif key == "retryConditions":
+            suggest = "retry_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRetryPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRetryPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRetryPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_retries: int,
                  per_try_timeout: 'outputs.DurationResponse',
@@ -4790,12 +5803,38 @@ class HttpRetryPolicyResponse(dict):
         """
         return pulumi.get(self, "retry_conditions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRouteActionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "corsPolicy":
+            suggest = "cors_policy"
+        elif key == "faultInjectionPolicy":
+            suggest = "fault_injection_policy"
+        elif key == "maxStreamDuration":
+            suggest = "max_stream_duration"
+        elif key == "requestMirrorPolicy":
+            suggest = "request_mirror_policy"
+        elif key == "retryPolicy":
+            suggest = "retry_policy"
+        elif key == "urlRewrite":
+            suggest = "url_rewrite"
+        elif key == "weightedBackendServices":
+            suggest = "weighted_backend_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cors_policy: 'outputs.CorsPolicyResponse',
                  fault_injection_policy: 'outputs.HttpFaultInjectionResponse',
@@ -4912,15 +5951,41 @@ class HttpRouteActionResponse(dict):
         """
         return pulumi.get(self, "weighted_backend_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRouteRuleMatchResponse(dict):
     """
     HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fullPathMatch":
+            suggest = "full_path_match"
+        elif key == "headerMatches":
+            suggest = "header_matches"
+        elif key == "ignoreCase":
+            suggest = "ignore_case"
+        elif key == "metadataFilters":
+            suggest = "metadata_filters"
+        elif key == "prefixMatch":
+            suggest = "prefix_match"
+        elif key == "queryParameterMatches":
+            suggest = "query_parameter_matches"
+        elif key == "regexMatch":
+            suggest = "regex_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  full_path_match: str,
                  header_matches: Sequence['outputs.HttpHeaderMatchResponse'],
@@ -5031,15 +6096,35 @@ class HttpRouteRuleMatchResponse(dict):
         """
         return pulumi.get(self, "regex_match")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRouteRuleResponse(dict):
     """
     An HttpRouteRule specifies how to match an HTTP request and the corresponding routing action that load balancing proxies will perform.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headerAction":
+            suggest = "header_action"
+        elif key == "matchRules":
+            suggest = "match_rules"
+        elif key == "routeAction":
+            suggest = "route_action"
+        elif key == "urlRedirect":
+            suggest = "url_redirect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRouteRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRouteRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRouteRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  header_action: 'outputs.HttpHeaderActionResponse',
@@ -5144,9 +6229,6 @@ class HttpRouteRuleResponse(dict):
         """
         return pulumi.get(self, "url_redirect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InitialStateConfigResponse(dict):
@@ -5202,12 +6284,26 @@ class InitialStateConfigResponse(dict):
         """
         return pulumi.get(self, "pk")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerActionsSummaryResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creatingWithoutRetries":
+            suggest = "creating_without_retries"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerActionsSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerActionsSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerActionsSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  abandoning: int,
                  creating: int,
@@ -5315,12 +6411,28 @@ class InstanceGroupManagerActionsSummaryResponse(dict):
         """
         return pulumi.get(self, "verifying")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerAutoHealingPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "healthCheck":
+            suggest = "health_check"
+        elif key == "initialDelaySec":
+            suggest = "initial_delay_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerAutoHealingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerAutoHealingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerAutoHealingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  health_check: str,
                  initial_delay_sec: int):
@@ -5347,12 +6459,28 @@ class InstanceGroupManagerAutoHealingPolicyResponse(dict):
         """
         return pulumi.get(self, "initial_delay_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isStable":
+            suggest = "is_stable"
+        elif key == "versionTarget":
+            suggest = "version_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autoscaler: str,
                  is_stable: bool,
@@ -5401,12 +6529,26 @@ class InstanceGroupManagerStatusResponse(dict):
         """
         return pulumi.get(self, "version_target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allEffective":
+            suggest = "all_effective"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  all_effective: bool):
         """
@@ -5422,12 +6564,28 @@ class InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse(dict):
         """
         return pulumi.get(self, "all_effective")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerStatusStatefulResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hasStatefulConfig":
+            suggest = "has_stateful_config"
+        elif key == "perInstanceConfigs":
+            suggest = "per_instance_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusStatefulResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusStatefulResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusStatefulResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  has_stateful_config: bool,
                  per_instance_configs: 'outputs.InstanceGroupManagerStatusStatefulPerInstanceConfigsResponse'):
@@ -5454,12 +6612,26 @@ class InstanceGroupManagerStatusStatefulResponse(dict):
         """
         return pulumi.get(self, "per_instance_configs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerStatusVersionTargetResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isReached":
+            suggest = "is_reached"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerStatusVersionTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerStatusVersionTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerStatusVersionTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_reached: bool):
         """
@@ -5475,12 +6647,34 @@ class InstanceGroupManagerStatusVersionTargetResponse(dict):
         """
         return pulumi.get(self, "is_reached")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerUpdatePolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceRedistributionType":
+            suggest = "instance_redistribution_type"
+        elif key == "maxSurge":
+            suggest = "max_surge"
+        elif key == "maxUnavailable":
+            suggest = "max_unavailable"
+        elif key == "minimalAction":
+            suggest = "minimal_action"
+        elif key == "replacementMethod":
+            suggest = "replacement_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerUpdatePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerUpdatePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerUpdatePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_redistribution_type: str,
                  max_surge: 'outputs.FixedOrPercentResponse',
@@ -5571,12 +6765,28 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupManagerVersionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceTemplate":
+            suggest = "instance_template"
+        elif key == "targetSize":
+            suggest = "target_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupManagerVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupManagerVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupManagerVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_template: str,
                  name: str,
@@ -5618,12 +6828,50 @@ class InstanceGroupManagerVersionResponse(dict):
         """
         return pulumi.get(self, "target_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstancePropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedMachineFeatures":
+            suggest = "advanced_machine_features"
+        elif key == "canIpForward":
+            suggest = "can_ip_forward"
+        elif key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
+        elif key == "guestAccelerators":
+            suggest = "guest_accelerators"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "networkInterfaces":
+            suggest = "network_interfaces"
+        elif key == "postKeyRevocationActionType":
+            suggest = "post_key_revocation_action_type"
+        elif key == "privateIpv6GoogleAccess":
+            suggest = "private_ipv6_google_access"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
+        elif key == "resourcePolicies":
+            suggest = "resource_policies"
+        elif key == "serviceAccounts":
+            suggest = "service_accounts"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  advanced_machine_features: 'outputs.AdvancedMachineFeaturesResponse',
                  can_ip_forward: bool,
@@ -5833,15 +7081,31 @@ class InstancePropertiesResponse(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Int64RangeMatchResponse(dict):
     """
     HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rangeEnd":
+            suggest = "range_end"
+        elif key == "rangeStart":
+            suggest = "range_start"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Int64RangeMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Int64RangeMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Int64RangeMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  range_end: str,
                  range_start: str):
@@ -5869,15 +7133,33 @@ class Int64RangeMatchResponse(dict):
         """
         return pulumi.get(self, "range_start")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InterconnectAttachmentPartnerMetadataResponse(dict):
     """
     Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "interconnectName":
+            suggest = "interconnect_name"
+        elif key == "partnerName":
+            suggest = "partner_name"
+        elif key == "portalUrl":
+            suggest = "portal_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectAttachmentPartnerMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectAttachmentPartnerMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectAttachmentPartnerMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interconnect_name: str,
                  partner_name: str,
@@ -5916,9 +7198,6 @@ class InterconnectAttachmentPartnerMetadataResponse(dict):
         """
         return pulumi.get(self, "portal_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InterconnectAttachmentPrivateInfoResponse(dict):
@@ -5941,15 +7220,33 @@ class InterconnectAttachmentPrivateInfoResponse(dict):
         """
         return pulumi.get(self, "tag8021q")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InterconnectCircuitInfoResponse(dict):
     """
     Describes a single physical circuit between the Customer and Google. CircuitInfo objects are created by Google, so all fields are output only.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customerDemarcId":
+            suggest = "customer_demarc_id"
+        elif key == "googleCircuitId":
+            suggest = "google_circuit_id"
+        elif key == "googleDemarcId":
+            suggest = "google_demarc_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectCircuitInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectCircuitInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectCircuitInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  customer_demarc_id: str,
                  google_circuit_id: str,
@@ -5988,15 +7285,35 @@ class InterconnectCircuitInfoResponse(dict):
         """
         return pulumi.get(self, "google_demarc_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InterconnectOutageNotificationResponse(dict):
     """
     Description of a planned outage on this Interconnect.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "affectedCircuits":
+            suggest = "affected_circuits"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "issueType":
+            suggest = "issue_type"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InterconnectOutageNotificationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InterconnectOutageNotificationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InterconnectOutageNotificationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  affected_circuits: Sequence[str],
                  description: str,
@@ -6100,15 +7417,29 @@ class InterconnectOutageNotificationResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LicenseResourceCommitmentResponse(dict):
     """
     Commitment for a particular license resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coresPerLicense":
+            suggest = "cores_per_license"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LicenseResourceCommitmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LicenseResourceCommitmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LicenseResourceCommitmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  amount: str,
                  cores_per_license: str,
@@ -6147,12 +7478,28 @@ class LicenseResourceCommitmentResponse(dict):
         """
         return pulumi.get(self, "license")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LicenseResourceRequirementsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minGuestCpuCount":
+            suggest = "min_guest_cpu_count"
+        elif key == "minMemoryMb":
+            suggest = "min_memory_mb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LicenseResourceRequirementsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LicenseResourceRequirementsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LicenseResourceRequirementsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  min_guest_cpu_count: int,
                  min_memory_mb: int):
@@ -6179,12 +7526,30 @@ class LicenseResourceRequirementsResponse(dict):
         """
         return pulumi.get(self, "min_memory_mb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocalDiskResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskCount":
+            suggest = "disk_count"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocalDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocalDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocalDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_count: int,
                  disk_size_gb: int,
@@ -6222,15 +7587,31 @@ class LocalDiskResponse(dict):
         """
         return pulumi.get(self, "disk_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogConfigCloudAuditOptionsResponse(dict):
     """
     Write a Cloud Audit log
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationLoggingOptions":
+            suggest = "authorization_logging_options"
+        elif key == "logName":
+            suggest = "log_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogConfigCloudAuditOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogConfigCloudAuditOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogConfigCloudAuditOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_logging_options: 'outputs.AuthorizationLoggingOptionsResponse',
                  log_name: str):
@@ -6257,9 +7638,6 @@ class LogConfigCloudAuditOptionsResponse(dict):
         The log_name to populate in the Cloud Audit Record.
         """
         return pulumi.get(self, "log_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -6294,9 +7672,6 @@ class LogConfigCounterOptionsCustomFieldResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogConfigCounterOptionsResponse(dict):
@@ -6311,6 +7686,23 @@ class LogConfigCounterOptionsResponse(dict):
 
     Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customFields":
+            suggest = "custom_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogConfigCounterOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogConfigCounterOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogConfigCounterOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_fields: Sequence['outputs.LogConfigCounterOptionsCustomFieldResponse'],
                  field: str,
@@ -6357,15 +7749,29 @@ class LogConfigCounterOptionsResponse(dict):
         """
         return pulumi.get(self, "metric")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogConfigDataAccessOptionsResponse(dict):
     """
     Write a Data Access (Gin) log
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logMode":
+            suggest = "log_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogConfigDataAccessOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogConfigDataAccessOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogConfigDataAccessOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_mode: str):
         """
@@ -6378,15 +7784,31 @@ class LogConfigDataAccessOptionsResponse(dict):
     def log_mode(self) -> str:
         return pulumi.get(self, "log_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogConfigResponse(dict):
     """
     Specifies what kind of log the caller must write
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudAudit":
+            suggest = "cloud_audit"
+        elif key == "dataAccess":
+            suggest = "data_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_audit: 'outputs.LogConfigCloudAuditOptionsResponse',
                  counter: 'outputs.LogConfigCounterOptionsResponse',
@@ -6425,9 +7847,6 @@ class LogConfigResponse(dict):
         """
         return pulumi.get(self, "data_access")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataFilterLabelMatchResponse(dict):
@@ -6465,9 +7884,6 @@ class MetadataFilterLabelMatchResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataFilterResponse(dict):
@@ -6476,6 +7892,25 @@ class MetadataFilterResponse(dict):
     For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata.
     An example for using metadataFilters would be: if loadbalancing involves  Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in <a href="https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/base.proto#envoy-api-msg-core-node" Node metadata of their XDS requests to loadbalancers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterLabels":
+            suggest = "filter_labels"
+        elif key == "filterMatchCriteria":
+            suggest = "filter_match_criteria"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filter_labels: Sequence['outputs.MetadataFilterLabelMatchResponse'],
                  filter_match_criteria: str):
@@ -6512,9 +7947,6 @@ class MetadataFilterResponse(dict):
         - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
         """
         return pulumi.get(self, "filter_match_criteria")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -6564,9 +7996,6 @@ class MetadataResponse(dict):
         """
         return pulumi.get(self, "kind")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NamedPortResponse(dict):
@@ -6600,9 +8029,6 @@ class NamedPortResponse(dict):
         """
         return pulumi.get(self, "port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkEndpointGroupAppEngineResponse(dict):
@@ -6611,6 +8037,23 @@ class NetworkEndpointGroupAppEngineResponse(dict):
 
     Note: App Engine service must be in the same project and located in the same region as the Serverless NEG.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlMask":
+            suggest = "url_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupAppEngineResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointGroupAppEngineResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointGroupAppEngineResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service: str,
                  url_mask: str,
@@ -6671,9 +8114,6 @@ class NetworkEndpointGroupAppEngineResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkEndpointGroupCloudFunctionResponse(dict):
@@ -6682,6 +8122,23 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
 
     Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlMask":
+            suggest = "url_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupCloudFunctionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointGroupCloudFunctionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointGroupCloudFunctionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  function: str,
                  url_mask: str):
@@ -6723,9 +8180,6 @@ class NetworkEndpointGroupCloudFunctionResponse(dict):
         """
         return pulumi.get(self, "url_mask")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkEndpointGroupCloudRunResponse(dict):
@@ -6734,6 +8188,23 @@ class NetworkEndpointGroupCloudRunResponse(dict):
 
     Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "urlMask":
+            suggest = "url_mask"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupCloudRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointGroupCloudRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointGroupCloudRunResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  service: str,
                  tag: str,
@@ -6794,15 +8265,37 @@ class NetworkEndpointGroupCloudRunResponse(dict):
         """
         return pulumi.get(self, "url_mask")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkInterfaceResponse(dict):
     """
     A network interface resource attached to an instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessConfigs":
+            suggest = "access_configs"
+        elif key == "aliasIpRanges":
+            suggest = "alias_ip_ranges"
+        elif key == "ipv6Address":
+            suggest = "ipv6_address"
+        elif key == "networkIP":
+            suggest = "network_ip"
+        elif key == "nicType":
+            suggest = "nic_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkInterfaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkInterfaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_configs: Sequence['outputs.AccessConfigResponse'],
                  alias_ip_ranges: Sequence['outputs.AliasIpRangeResponse'],
@@ -6932,15 +8425,43 @@ class NetworkInterfaceResponse(dict):
         """
         return pulumi.get(self, "subnetwork")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkPeeringResponse(dict):
     """
     A network peering attached to a network resource. The message includes the peering name, peer network, peering state, and a flag indicating whether Google Compute Engine should automatically create routes for the peering.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoCreateRoutes":
+            suggest = "auto_create_routes"
+        elif key == "exchangeSubnetRoutes":
+            suggest = "exchange_subnet_routes"
+        elif key == "exportCustomRoutes":
+            suggest = "export_custom_routes"
+        elif key == "exportSubnetRoutesWithPublicIp":
+            suggest = "export_subnet_routes_with_public_ip"
+        elif key == "importCustomRoutes":
+            suggest = "import_custom_routes"
+        elif key == "importSubnetRoutesWithPublicIp":
+            suggest = "import_subnet_routes_with_public_ip"
+        elif key == "peerMtu":
+            suggest = "peer_mtu"
+        elif key == "stateDetails":
+            suggest = "state_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkPeeringResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkPeeringResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkPeeringResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_create_routes: bool,
                  exchange_subnet_routes: bool,
@@ -7067,15 +8588,29 @@ class NetworkPeeringResponse(dict):
         """
         return pulumi.get(self, "state_details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkRoutingConfigResponse(dict):
     """
     A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routingMode":
+            suggest = "routing_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkRoutingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkRoutingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkRoutingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  routing_mode: str):
         """
@@ -7092,12 +8627,28 @@ class NetworkRoutingConfigResponse(dict):
         """
         return pulumi.get(self, "routing_mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeGroupAutoscalingPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupAutoscalingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupAutoscalingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupAutoscalingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_nodes: int,
                  min_nodes: int,
@@ -7135,15 +8686,31 @@ class NodeGroupAutoscalingPolicyResponse(dict):
         """
         return pulumi.get(self, "mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeGroupMaintenanceWindowResponse(dict):
     """
     Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maintenanceDuration":
+            suggest = "maintenance_duration"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupMaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupMaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupMaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  maintenance_duration: 'outputs.DurationResponse',
                  start_time: str):
@@ -7171,12 +8738,26 @@ class NodeGroupMaintenanceWindowResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeTemplateNodeTypeFlexibilityResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localSsd":
+            suggest = "local_ssd"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeTemplateNodeTypeFlexibilityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeTemplateNodeTypeFlexibilityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeTemplateNodeTypeFlexibilityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpus: str,
                  local_ssd: str,
@@ -7200,15 +8781,33 @@ class NodeTemplateNodeTypeFlexibilityResponse(dict):
     def memory(self) -> str:
         return pulumi.get(self, "memory")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NotificationEndpointGrpcSettingsResponse(dict):
     """
     Represents a gRPC setting that describes one gRPC notification endpoint and the retry duration attempting to send notification to this endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "payloadName":
+            suggest = "payload_name"
+        elif key == "resendInterval":
+            suggest = "resend_interval"
+        elif key == "retryDurationSec":
+            suggest = "retry_duration_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationEndpointGrpcSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationEndpointGrpcSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationEndpointGrpcSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authority: str,
                  endpoint: str,
@@ -7269,15 +8868,47 @@ class NotificationEndpointGrpcSettingsResponse(dict):
         """
         return pulumi.get(self, "retry_duration_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OutlierDetectionResponse(dict):
     """
     Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseEjectionTime":
+            suggest = "base_ejection_time"
+        elif key == "consecutiveErrors":
+            suggest = "consecutive_errors"
+        elif key == "consecutiveGatewayFailure":
+            suggest = "consecutive_gateway_failure"
+        elif key == "enforcingConsecutiveErrors":
+            suggest = "enforcing_consecutive_errors"
+        elif key == "enforcingConsecutiveGatewayFailure":
+            suggest = "enforcing_consecutive_gateway_failure"
+        elif key == "enforcingSuccessRate":
+            suggest = "enforcing_success_rate"
+        elif key == "maxEjectionPercent":
+            suggest = "max_ejection_percent"
+        elif key == "successRateMinimumHosts":
+            suggest = "success_rate_minimum_hosts"
+        elif key == "successRateRequestVolume":
+            suggest = "success_rate_request_volume"
+        elif key == "successRateStdevFactor":
+            suggest = "success_rate_stdev_factor"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OutlierDetectionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OutlierDetectionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OutlierDetectionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_ejection_time: 'outputs.DurationResponse',
                  consecutive_errors: int,
@@ -7404,12 +9035,28 @@ class OutlierDetectionResponse(dict):
         """
         return pulumi.get(self, "success_rate_stdev_factor")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PacketMirroringFilterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "IPProtocols":
+            suggest = "ip_protocols"
+        elif key == "cidrRanges":
+            suggest = "cidr_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PacketMirroringFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PacketMirroringFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PacketMirroringFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_protocols: Sequence[str],
                  cidr_ranges: Sequence[str],
@@ -7447,12 +9094,26 @@ class PacketMirroringFilterResponse(dict):
         """
         return pulumi.get(self, "direction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PacketMirroringForwardingRuleInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalUrl":
+            suggest = "canonical_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PacketMirroringForwardingRuleInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PacketMirroringForwardingRuleInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PacketMirroringForwardingRuleInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  canonical_url: str,
                  url: str):
@@ -7479,12 +9140,26 @@ class PacketMirroringForwardingRuleInfoResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PacketMirroringMirroredResourceInfoInstanceInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalUrl":
+            suggest = "canonical_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PacketMirroringMirroredResourceInfoInstanceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PacketMirroringMirroredResourceInfoInstanceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PacketMirroringMirroredResourceInfoInstanceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  canonical_url: str,
                  url: str):
@@ -7510,9 +9185,6 @@ class PacketMirroringMirroredResourceInfoInstanceInfoResponse(dict):
         Resource URL to the virtual machine instance which is being mirrored.
         """
         return pulumi.get(self, "url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -7566,12 +9238,26 @@ class PacketMirroringMirroredResourceInfoResponse(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PacketMirroringMirroredResourceInfoSubnetInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalUrl":
+            suggest = "canonical_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PacketMirroringMirroredResourceInfoSubnetInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PacketMirroringMirroredResourceInfoSubnetInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PacketMirroringMirroredResourceInfoSubnetInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  canonical_url: str,
                  url: str):
@@ -7598,12 +9284,26 @@ class PacketMirroringMirroredResourceInfoSubnetInfoResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PacketMirroringNetworkInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalUrl":
+            suggest = "canonical_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PacketMirroringNetworkInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PacketMirroringNetworkInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PacketMirroringNetworkInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  canonical_url: str,
                  url: str):
@@ -7630,15 +9330,39 @@ class PacketMirroringNetworkInfoResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PathMatcherResponse(dict):
     """
     A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service will be used.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultRouteAction":
+            suggest = "default_route_action"
+        elif key == "defaultService":
+            suggest = "default_service"
+        elif key == "defaultUrlRedirect":
+            suggest = "default_url_redirect"
+        elif key == "headerAction":
+            suggest = "header_action"
+        elif key == "pathRules":
+            suggest = "path_rules"
+        elif key == "routeRules":
+            suggest = "route_rules"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PathMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PathMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PathMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_route_action: 'outputs.HttpRouteActionResponse',
                  default_service: str,
@@ -7766,15 +9490,31 @@ class PathMatcherResponse(dict):
         """
         return pulumi.get(self, "route_rules")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PathRuleResponse(dict):
     """
     A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "routeAction":
+            suggest = "route_action"
+        elif key == "urlRedirect":
+            suggest = "url_redirect"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PathRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PathRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PathRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  paths: Sequence[str],
                  route_action: 'outputs.HttpRouteActionResponse',
@@ -7834,15 +9574,29 @@ class PathRuleResponse(dict):
         """
         return pulumi.get(self, "url_redirect")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublicAdvertisedPrefixPublicDelegatedPrefixResponse(dict):
     """
     Represents a CIDR range which can be used to assign addresses.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipRange":
+            suggest = "ip_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublicAdvertisedPrefixPublicDelegatedPrefixResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublicAdvertisedPrefixPublicDelegatedPrefixResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublicAdvertisedPrefixPublicDelegatedPrefixResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_range: str,
                  name: str,
@@ -7903,15 +9657,33 @@ class PublicAdvertisedPrefixPublicDelegatedPrefixResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
     """
     Represents a sub PublicDelegatedPrefix.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "delegateeProject":
+            suggest = "delegatee_project"
+        elif key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "isAddress":
+            suggest = "is_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublicDelegatedPrefixPublicDelegatedSubPrefixResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublicDelegatedPrefixPublicDelegatedSubPrefixResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delegatee_project: str,
                  description: str,
@@ -7994,15 +9766,29 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RequestMirrorPolicyResponse(dict):
     """
     A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. Loadbalancer does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host / authority header is suffixed with -shadow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendService":
+            suggest = "backend_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RequestMirrorPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RequestMirrorPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RequestMirrorPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backend_service: str):
         """
@@ -8019,15 +9805,29 @@ class RequestMirrorPolicyResponse(dict):
         """
         return pulumi.get(self, "backend_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReservationAffinityResponse(dict):
     """
     Specifies the reservations that this instance can consume from.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationAffinityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationAffinityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationAffinityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  consume_reservation_type: str,
                  key: str,
@@ -8066,15 +9866,37 @@ class ReservationAffinityResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReservationResponse(dict):
     """
     Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read  Reserving zonal resources. (== resource_for {$api_version}.reservations ==)
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "creationTimestamp":
+            suggest = "creation_timestamp"
+        elif key == "satisfiesPzs":
+            suggest = "satisfies_pzs"
+        elif key == "selfLink":
+            suggest = "self_link"
+        elif key == "specificReservation":
+            suggest = "specific_reservation"
+        elif key == "specificReservationRequired":
+            suggest = "specific_reservation_required"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  commitment: str,
                  creation_timestamp: str,
@@ -8201,15 +10023,29 @@ class ReservationResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceCommitmentResponse(dict):
     """
     Commitment for a particular resource (a Commitment is composed of one or more of these).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceCommitmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceCommitmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceCommitmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_type: str,
                  amount: str,
@@ -8248,15 +10084,31 @@ class ResourceCommitmentResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyDailyCycleResponse(dict):
     """
     Time window specified for daily operations.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "daysInCycle":
+            suggest = "days_in_cycle"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyDailyCycleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyDailyCycleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyDailyCycleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  days_in_cycle: int,
                  duration: str,
@@ -8295,15 +10147,31 @@ class ResourcePolicyDailyCycleResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyGroupPlacementPolicyResponse(dict):
     """
     A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availabilityDomainCount":
+            suggest = "availability_domain_count"
+        elif key == "vmCount":
+            suggest = "vm_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyGroupPlacementPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyGroupPlacementPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyGroupPlacementPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  availability_domain_count: int,
                  collocation: str,
@@ -8342,15 +10210,31 @@ class ResourcePolicyGroupPlacementPolicyResponse(dict):
         """
         return pulumi.get(self, "vm_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyHourlyCycleResponse(dict):
     """
     Time window specified for hourly operations.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hoursInCycle":
+            suggest = "hours_in_cycle"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyHourlyCycleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyHourlyCycleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyHourlyCycleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  duration: str,
                  hours_in_cycle: int,
@@ -8389,15 +10273,37 @@ class ResourcePolicyHourlyCycleResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyInstanceSchedulePolicyResponse(dict):
     """
     An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationTime":
+            suggest = "expiration_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "vmStartSchedule":
+            suggest = "vm_start_schedule"
+        elif key == "vmStopSchedule":
+            suggest = "vm_stop_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyInstanceSchedulePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyInstanceSchedulePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyInstanceSchedulePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiration_time: str,
                  start_time: str,
@@ -8458,9 +10364,6 @@ class ResourcePolicyInstanceSchedulePolicyResponse(dict):
         """
         return pulumi.get(self, "vm_stop_schedule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyInstanceSchedulePolicyScheduleResponse(dict):
@@ -8483,12 +10386,28 @@ class ResourcePolicyInstanceSchedulePolicyScheduleResponse(dict):
         """
         return pulumi.get(self, "schedule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastRunStartTime":
+            suggest = "last_run_start_time"
+        elif key == "nextRunStartTime":
+            suggest = "next_run_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_run_start_time: str,
                  next_run_start_time: str):
@@ -8515,15 +10434,29 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse(dict):
         """
         return pulumi.get(self, "next_run_start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyResourceStatusResponse(dict):
     """
     Contains output only fields. Use this sub-message for all output fields set on ResourcePolicy. The internal structure of this "status" field should mimic the structure of ResourcePolicy proto specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceSchedulePolicy":
+            suggest = "instance_schedule_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_schedule_policy: 'outputs.ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponse'):
         """
@@ -8540,15 +10473,31 @@ class ResourcePolicyResourceStatusResponse(dict):
         """
         return pulumi.get(self, "instance_schedule_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicySnapshotSchedulePolicyResponse(dict):
     """
     A snapshot schedule policy specifies when and how frequently snapshots are to be created for the target disk. Also specifies how many and how long these scheduled snapshots should be retained.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionPolicy":
+            suggest = "retention_policy"
+        elif key == "snapshotProperties":
+            suggest = "snapshot_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicySnapshotSchedulePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicySnapshotSchedulePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicySnapshotSchedulePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retention_policy: 'outputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse',
                  schedule: 'outputs.ResourcePolicySnapshotSchedulePolicyScheduleResponse',
@@ -8587,15 +10536,31 @@ class ResourcePolicySnapshotSchedulePolicyResponse(dict):
         """
         return pulumi.get(self, "snapshot_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse(dict):
     """
     Policy for retention of scheduled snapshots.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxRetentionDays":
+            suggest = "max_retention_days"
+        elif key == "onSourceDiskDelete":
+            suggest = "on_source_disk_delete"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_retention_days: int,
                  on_source_disk_delete: str):
@@ -8623,15 +10588,33 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponse(dict):
         """
         return pulumi.get(self, "on_source_disk_delete")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicySnapshotSchedulePolicyScheduleResponse(dict):
     """
     A schedule for disks where the schedueled operations are performed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dailySchedule":
+            suggest = "daily_schedule"
+        elif key == "hourlySchedule":
+            suggest = "hourly_schedule"
+        elif key == "weeklySchedule":
+            suggest = "weekly_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicySnapshotSchedulePolicyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicySnapshotSchedulePolicyScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicySnapshotSchedulePolicyScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  daily_schedule: 'outputs.ResourcePolicyDailyCycleResponse',
                  hourly_schedule: 'outputs.ResourcePolicyHourlyCycleResponse',
@@ -8658,15 +10641,33 @@ class ResourcePolicySnapshotSchedulePolicyScheduleResponse(dict):
     def weekly_schedule(self) -> 'outputs.ResourcePolicyWeeklyCycleResponse':
         return pulumi.get(self, "weekly_schedule")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse(dict):
     """
     Specified snapshot properties for scheduled snapshots created by this policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chainName":
+            suggest = "chain_name"
+        elif key == "guestFlush":
+            suggest = "guest_flush"
+        elif key == "storageLocations":
+            suggest = "storage_locations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chain_name: str,
                  guest_flush: bool,
@@ -8716,12 +10717,26 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesResponse(dict):
         """
         return pulumi.get(self, "storage_locations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyWeeklyCycleDayOfWeekResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyWeeklyCycleDayOfWeekResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyWeeklyCycleDayOfWeekResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyWeeklyCycleDayOfWeekResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day: str,
                  duration: str,
@@ -8759,15 +10774,29 @@ class ResourcePolicyWeeklyCycleDayOfWeekResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourcePolicyWeeklyCycleResponse(dict):
     """
     Time window specified for weekly operations.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeeks":
+            suggest = "day_of_weeks"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourcePolicyWeeklyCycleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourcePolicyWeeklyCycleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourcePolicyWeeklyCycleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_weeks: Sequence['outputs.ResourcePolicyWeeklyCycleDayOfWeekResponse']):
         """
@@ -8783,9 +10812,6 @@ class ResourcePolicyWeeklyCycleResponse(dict):
         Up to 7 intervals/windows, one for each day of the week.
         """
         return pulumi.get(self, "day_of_weeks")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -8820,12 +10846,42 @@ class RouterAdvertisedIpRangeResponse(dict):
         """
         return pulumi.get(self, "range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterBgpPeerResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advertiseMode":
+            suggest = "advertise_mode"
+        elif key == "advertisedGroups":
+            suggest = "advertised_groups"
+        elif key == "advertisedIpRanges":
+            suggest = "advertised_ip_ranges"
+        elif key == "advertisedRoutePriority":
+            suggest = "advertised_route_priority"
+        elif key == "interfaceName":
+            suggest = "interface_name"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "managementType":
+            suggest = "management_type"
+        elif key == "peerAsn":
+            suggest = "peer_asn"
+        elif key == "peerIpAddress":
+            suggest = "peer_ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterBgpPeerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterBgpPeerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterBgpPeerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  advertise_mode: str,
                  advertised_groups: Sequence[str],
@@ -8948,12 +11004,30 @@ class RouterBgpPeerResponse(dict):
         """
         return pulumi.get(self, "peer_ip_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterBgpResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advertiseMode":
+            suggest = "advertise_mode"
+        elif key == "advertisedGroups":
+            suggest = "advertised_groups"
+        elif key == "advertisedIpRanges":
+            suggest = "advertised_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterBgpResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterBgpResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterBgpResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  advertise_mode: str,
                  advertised_groups: Sequence[str],
@@ -9002,12 +11076,32 @@ class RouterBgpResponse(dict):
         """
         return pulumi.get(self, "asn")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterInterfaceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipRange":
+            suggest = "ip_range"
+        elif key == "linkedInterconnectAttachment":
+            suggest = "linked_interconnect_attachment"
+        elif key == "linkedVpnTunnel":
+            suggest = "linked_vpn_tunnel"
+        elif key == "managementType":
+            suggest = "management_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterInterfaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterInterfaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_range: str,
                  linked_interconnect_attachment: str,
@@ -9071,9 +11165,6 @@ class RouterInterfaceResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterNatLogConfigResponse(dict):
@@ -9113,15 +11204,49 @@ class RouterNatLogConfigResponse(dict):
         """
         return pulumi.get(self, "filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterNatResponse(dict):
     """
     Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drainNatIps":
+            suggest = "drain_nat_ips"
+        elif key == "enableEndpointIndependentMapping":
+            suggest = "enable_endpoint_independent_mapping"
+        elif key == "icmpIdleTimeoutSec":
+            suggest = "icmp_idle_timeout_sec"
+        elif key == "logConfig":
+            suggest = "log_config"
+        elif key == "minPortsPerVm":
+            suggest = "min_ports_per_vm"
+        elif key == "natIpAllocateOption":
+            suggest = "nat_ip_allocate_option"
+        elif key == "natIps":
+            suggest = "nat_ips"
+        elif key == "sourceSubnetworkIpRangesToNat":
+            suggest = "source_subnetwork_ip_ranges_to_nat"
+        elif key == "tcpEstablishedIdleTimeoutSec":
+            suggest = "tcp_established_idle_timeout_sec"
+        elif key == "tcpTransitoryIdleTimeoutSec":
+            suggest = "tcp_transitory_idle_timeout_sec"
+        elif key == "udpIdleTimeoutSec":
+            suggest = "udp_idle_timeout_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  drain_nat_ips: Sequence[str],
                  enable_endpoint_independent_mapping: bool,
@@ -9276,15 +11401,31 @@ class RouterNatResponse(dict):
         """
         return pulumi.get(self, "udp_idle_timeout_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RouterNatSubnetworkToNatResponse(dict):
     """
     Defines the IP ranges that want to use NAT for a subnetwork.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secondaryIpRangeNames":
+            suggest = "secondary_ip_range_names"
+        elif key == "sourceIpRangesToNat":
+            suggest = "source_ip_ranges_to_nat"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RouterNatSubnetworkToNatResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RouterNatSubnetworkToNatResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RouterNatSubnetworkToNatResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  secondary_ip_range_names: Sequence[str],
@@ -9323,15 +11464,31 @@ class RouterNatSubnetworkToNatResponse(dict):
         """
         return pulumi.get(self, "source_ip_ranges_to_nat")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuleResponse(dict):
     """
     A rule to be applied in a Policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logConfigs":
+            suggest = "log_configs"
+        elif key == "notIns":
+            suggest = "not_ins"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  conditions: Sequence['outputs.ConditionResponse'],
@@ -9414,12 +11571,30 @@ class RuleResponse(dict):
         """
         return pulumi.get(self, "permissions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SSLHealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+        elif key == "proxyHeader":
+            suggest = "proxy_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SSLHealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SSLHealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SSLHealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  port_name: str,
@@ -9502,9 +11677,6 @@ class SSLHealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchedulingNodeAffinityResponse(dict):
@@ -9549,15 +11721,37 @@ class SchedulingNodeAffinityResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchedulingResponse(dict):
     """
     Sets the scheduling options for an Instance. NextID: 20
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automaticRestart":
+            suggest = "automatic_restart"
+        elif key == "locationHint":
+            suggest = "location_hint"
+        elif key == "minNodeCpus":
+            suggest = "min_node_cpus"
+        elif key == "nodeAffinities":
+            suggest = "node_affinities"
+        elif key == "onHostMaintenance":
+            suggest = "on_host_maintenance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchedulingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchedulingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchedulingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  automatic_restart: bool,
                  location_hint: str,
@@ -9633,12 +11827,26 @@ class SchedulingResponse(dict):
         """
         return pulumi.get(self, "preemptible")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecurityPolicyRuleMatcherConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "srcIpRanges":
+            suggest = "src_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleMatcherConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleMatcherConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleMatcherConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  src_ip_ranges: Sequence[str]):
         """
@@ -9654,15 +11862,29 @@ class SecurityPolicyRuleMatcherConfigResponse(dict):
         """
         return pulumi.get(self, "src_ip_ranges")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecurityPolicyRuleMatcherResponse(dict):
     """
     Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionedExpr":
+            suggest = "versioned_expr"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRuleMatcherResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRuleMatcherResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRuleMatcherResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config: 'outputs.SecurityPolicyRuleMatcherConfigResponse',
                  expr: 'outputs.ExprResponse',
@@ -9700,9 +11922,6 @@ class SecurityPolicyRuleMatcherResponse(dict):
         Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
         """
         return pulumi.get(self, "versioned_expr")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -9781,15 +12000,31 @@ class SecurityPolicyRuleResponse(dict):
         """
         return pulumi.get(self, "priority")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecuritySettingsResponse(dict):
     """
     The authentication and authorization settings for a BackendService.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientTlsPolicy":
+            suggest = "client_tls_policy"
+        elif key == "subjectAltNames":
+            suggest = "subject_alt_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecuritySettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecuritySettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecuritySettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_tls_policy: str,
                  subject_alt_names: Sequence[str]):
@@ -9829,9 +12064,6 @@ class SecuritySettingsResponse(dict):
         """
         return pulumi.get(self, "subject_alt_names")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServerBindingResponse(dict):
@@ -9843,9 +12075,6 @@ class ServerBindingResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -9880,15 +12109,33 @@ class ServiceAccountResponse(dict):
         """
         return pulumi.get(self, "scopes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShieldedInstanceConfigResponse(dict):
     """
     A set of Shielded Instance options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShieldedInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -9927,15 +12174,29 @@ class ShieldedInstanceConfigResponse(dict):
         """
         return pulumi.get(self, "enable_vtpm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShieldedInstanceIntegrityPolicyResponse(dict):
     """
     The policy describes the baseline against which Instance boot integrity is measured.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateAutoLearnPolicy":
+            suggest = "update_auto_learn_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShieldedInstanceIntegrityPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShieldedInstanceIntegrityPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShieldedInstanceIntegrityPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  update_auto_learn_policy: bool):
         """
@@ -9952,15 +12213,29 @@ class ShieldedInstanceIntegrityPolicyResponse(dict):
         """
         return pulumi.get(self, "update_auto_learn_policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceInstanceParamsResponse(dict):
     """
     A specification of the parameters to use when creating the instance template from a source instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskConfigs":
+            suggest = "disk_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceInstanceParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceInstanceParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceInstanceParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_configs: Sequence['outputs.DiskInstantiationConfigResponse']):
         """
@@ -9977,15 +12252,29 @@ class SourceInstanceParamsResponse(dict):
         """
         return pulumi.get(self, "disk_configs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslCertificateManagedSslCertificateResponse(dict):
     """
     Configuration and status of a managed SSL certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainStatus":
+            suggest = "domain_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslCertificateManagedSslCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslCertificateManagedSslCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslCertificateManagedSslCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain_status: Mapping[str, str],
                  domains: Sequence[str],
@@ -10024,15 +12313,29 @@ class SslCertificateManagedSslCertificateResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslCertificateSelfManagedSslCertificateResponse(dict):
     """
     Configuration and status of a self-managed SSL certificate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslCertificateSelfManagedSslCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslCertificateSelfManagedSslCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslCertificateSelfManagedSslCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate: str,
                  private_key: str):
@@ -10060,9 +12363,6 @@ class SslCertificateSelfManagedSslCertificateResponse(dict):
         """
         return pulumi.get(self, "private_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatefulPolicyPreservedStateResponse(dict):
@@ -10085,12 +12385,26 @@ class StatefulPolicyPreservedStateResponse(dict):
         """
         return pulumi.get(self, "disks")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatefulPolicyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "preservedState":
+            suggest = "preserved_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatefulPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatefulPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatefulPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  preserved_state: 'outputs.StatefulPolicyPreservedStateResponse'):
         pulumi.set(__self__, "preserved_state", preserved_state)
@@ -10100,15 +12414,35 @@ class StatefulPolicyResponse(dict):
     def preserved_state(self) -> 'outputs.StatefulPolicyPreservedStateResponse':
         return pulumi.get(self, "preserved_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubnetworkLogConfigResponse(dict):
     """
     The available logging options for this subnetwork.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aggregationInterval":
+            suggest = "aggregation_interval"
+        elif key == "filterExpr":
+            suggest = "filter_expr"
+        elif key == "flowSampling":
+            suggest = "flow_sampling"
+        elif key == "metadataFields":
+            suggest = "metadata_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetworkLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetworkLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetworkLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aggregation_interval: str,
                  enable: bool,
@@ -10180,15 +12514,31 @@ class SubnetworkLogConfigResponse(dict):
         """
         return pulumi.get(self, "metadata_fields")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SubnetworkSecondaryRangeResponse(dict):
     """
     Represents a secondary IP range of a subnetwork.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipCidrRange":
+            suggest = "ip_cidr_range"
+        elif key == "rangeName":
+            suggest = "range_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetworkSecondaryRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetworkSecondaryRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetworkSecondaryRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_cidr_range: str,
                  range_name: str):
@@ -10216,12 +12566,30 @@ class SubnetworkSecondaryRangeResponse(dict):
         """
         return pulumi.get(self, "range_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TCPHealthCheckResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "portName":
+            suggest = "port_name"
+        elif key == "portSpecification":
+            suggest = "port_specification"
+        elif key == "proxyHeader":
+            suggest = "proxy_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TCPHealthCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TCPHealthCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TCPHealthCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  port: int,
                  port_name: str,
@@ -10304,9 +12672,6 @@ class TCPHealthCheckResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TagsResponse(dict):
@@ -10344,9 +12709,6 @@ class TagsResponse(dict):
         """
         return pulumi.get(self, "items")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlMapTestHeaderResponse(dict):
@@ -10380,15 +12742,31 @@ class UrlMapTestHeaderResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlMapTestResponse(dict):
     """
     Message for the expected URL mappings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expectedOutputUrl":
+            suggest = "expected_output_url"
+        elif key == "expectedRedirectResponseCode":
+            suggest = "expected_redirect_response_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UrlMapTestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UrlMapTestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UrlMapTestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  expected_output_url: str,
@@ -10481,15 +12859,31 @@ class UrlMapTestResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UrlRewriteResponse(dict):
     """
     The spec for modifying the path before sending the request to the matched backend service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostRewrite":
+            suggest = "host_rewrite"
+        elif key == "pathPrefixRewrite":
+            suggest = "path_prefix_rewrite"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UrlRewriteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UrlRewriteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UrlRewriteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host_rewrite: str,
                  path_prefix_rewrite: str):
@@ -10521,15 +12915,31 @@ class UrlRewriteResponse(dict):
         """
         return pulumi.get(self, "path_prefix_rewrite")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VpnGatewayVpnGatewayInterfaceResponse(dict):
     """
     A VPN gateway interface.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "interconnectAttachment":
+            suggest = "interconnect_attachment"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnGatewayVpnGatewayInterfaceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnGatewayVpnGatewayInterfaceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnGatewayVpnGatewayInterfaceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interconnect_attachment: str,
                  ip_address: str):
@@ -10559,15 +12969,31 @@ class VpnGatewayVpnGatewayInterfaceResponse(dict):
         """
         return pulumi.get(self, "ip_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WeightedBackendServiceResponse(dict):
     """
     In contrast to a single BackendService in  HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple BackendServices. The volume of traffic for each BackendService is proportional to the weight specified in each WeightedBackendService
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backendService":
+            suggest = "backend_service"
+        elif key == "headerAction":
+            suggest = "header_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WeightedBackendServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WeightedBackendServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WeightedBackendServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backend_service: str,
                  header_action: 'outputs.HttpHeaderActionResponse',
@@ -10615,8 +13041,5 @@ class WeightedBackendServiceResponse(dict):
         The value must be between 0 and 1000
         """
         return pulumi.get(self, "weight")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

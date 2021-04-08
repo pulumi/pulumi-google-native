@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:dataproc/v1:AutoscalingPolicy":
-		r, err = NewAutoscalingPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoscalingPolicy{}
 	case "gcp-native:dataproc/v1:AutoscalingPolicyIamPolicy":
-		r, err = NewAutoscalingPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AutoscalingPolicyIamPolicy{}
 	case "gcp-native:dataproc/v1:RegionAutoscalingPolicy":
-		r, err = NewRegionAutoscalingPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionAutoscalingPolicy{}
 	case "gcp-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
-		r, err = NewRegionAutoscalingPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionAutoscalingPolicyIamPolicy{}
 	case "gcp-native:dataproc/v1:RegionCluster":
-		r, err = NewRegionCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionCluster{}
 	case "gcp-native:dataproc/v1:RegionClusterIamPolicy":
-		r, err = NewRegionClusterIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionClusterIamPolicy{}
 	case "gcp-native:dataproc/v1:RegionJob":
-		r, err = NewRegionJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionJob{}
 	case "gcp-native:dataproc/v1:RegionJobIamPolicy":
-		r, err = NewRegionJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionJobIamPolicy{}
 	case "gcp-native:dataproc/v1:RegionOperationIamPolicy":
-		r, err = NewRegionOperationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionOperationIamPolicy{}
 	case "gcp-native:dataproc/v1:RegionWorkflowTemplate":
-		r, err = NewRegionWorkflowTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionWorkflowTemplate{}
 	case "gcp-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
-		r, err = NewRegionWorkflowTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionWorkflowTemplateIamPolicy{}
 	case "gcp-native:dataproc/v1:WorkflowTemplate":
-		r, err = NewWorkflowTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkflowTemplate{}
 	case "gcp-native:dataproc/v1:WorkflowTemplateIamPolicy":
-		r, err = NewWorkflowTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkflowTemplateIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

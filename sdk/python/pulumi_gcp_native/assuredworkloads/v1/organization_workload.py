@@ -5,15 +5,184 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationWorkload']
+__all__ = ['OrganizationWorkloadArgs', 'OrganizationWorkload']
+
+@pulumi.input_type
+class OrganizationWorkloadArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 workloads_id: pulumi.Input[str],
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 compliance_regime: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 provisioned_resources_parent: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationWorkload resource.
+        :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        :param pulumi.Input[str] compliance_regime: Required. Immutable. Compliance Regime associated with this workload.
+        :param pulumi.Input[str] display_name: Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        :param pulumi.Input[str] etag: Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+        :param pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs'] kms_settings: Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
+        :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "workloads_id", workloads_id)
+        if billing_account is not None:
+            pulumi.set(__self__, "billing_account", billing_account)
+        if compliance_regime is not None:
+            pulumi.set(__self__, "compliance_regime", compliance_regime)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if kms_settings is not None:
+            pulumi.set(__self__, "kms_settings", kms_settings)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if provisioned_resources_parent is not None:
+            pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="workloadsId")
+    def workloads_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workloads_id")
+
+    @workloads_id.setter
+    def workloads_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workloads_id", value)
+
+    @property
+    @pulumi.getter(name="billingAccount")
+    def billing_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+        """
+        return pulumi.get(self, "billing_account")
+
+    @billing_account.setter
+    def billing_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "billing_account", value)
+
+    @property
+    @pulumi.getter(name="complianceRegime")
+    def compliance_regime(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Immutable. Compliance Regime associated with this workload.
+        """
+        return pulumi.get(self, "compliance_regime")
+
+    @compliance_regime.setter
+    def compliance_regime(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "compliance_regime", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="kmsSettings")
+    def kms_settings(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]:
+        """
+        Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
+        """
+        return pulumi.get(self, "kms_settings")
+
+    @kms_settings.setter
+    def kms_settings(self, value: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]):
+        pulumi.set(self, "kms_settings", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Labels applied to the workload.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="provisionedResourcesParent")
+    def provisioned_resources_parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        """
+        return pulumi.get(self, "provisioned_resources_parent")
+
+    @provisioned_resources_parent.setter
+    def provisioned_resources_parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisioned_resources_parent", value)
 
 
 class OrganizationWorkload(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -45,6 +214,44 @@ class OrganizationWorkload(pulumi.CustomResource):
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationWorkloadArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates Assured Workload.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationWorkloadArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationWorkloadArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 billing_account: Optional[pulumi.Input[str]] = None,
+                 compliance_regime: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+                 workloads_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -60,27 +267,27 @@ class OrganizationWorkload(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationWorkloadArgs.__new__(OrganizationWorkloadArgs)
 
-            __props__['billing_account'] = billing_account
-            __props__['compliance_regime'] = compliance_regime
-            __props__['display_name'] = display_name
-            __props__['etag'] = etag
-            __props__['kms_settings'] = kms_settings
-            __props__['labels'] = labels
+            __props__.__dict__["billing_account"] = billing_account
+            __props__.__dict__["compliance_regime"] = compliance_regime
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["kms_settings"] = kms_settings
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['provisioned_resources_parent'] = provisioned_resources_parent
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
             if workloads_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workloads_id'")
-            __props__['workloads_id'] = workloads_id
-            __props__['create_time'] = None
-            __props__['resources'] = None
+            __props__.__dict__["workloads_id"] = workloads_id
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["resources"] = None
         super(OrganizationWorkload, __self__).__init__(
             'gcp-native:assuredworkloads/v1:OrganizationWorkload',
             resource_name,
@@ -101,18 +308,18 @@ class OrganizationWorkload(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationWorkloadArgs.__new__(OrganizationWorkloadArgs)
 
-        __props__["billing_account"] = None
-        __props__["compliance_regime"] = None
-        __props__["create_time"] = None
-        __props__["display_name"] = None
-        __props__["etag"] = None
-        __props__["kms_settings"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["provisioned_resources_parent"] = None
-        __props__["resources"] = None
+        __props__.__dict__["billing_account"] = None
+        __props__.__dict__["compliance_regime"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["kms_settings"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["provisioned_resources_parent"] = None
+        __props__.__dict__["resources"] = None
         return OrganizationWorkload(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -194,10 +401,4 @@ class OrganizationWorkload(pulumi.CustomResource):
         The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         """
         return pulumi.get(self, "resources")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Backup']
+__all__ = ['BackupArgs', 'Backup']
+
+@pulumi.input_type
+class BackupArgs:
+    def __init__(__self__, *,
+                 backups_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_file_share: Optional[pulumi.Input[str]] = None,
+                 source_instance: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Backup resource.
+        :param pulumi.Input[str] description: A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
+        :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        """
+        pulumi.set(__self__, "backups_id", backups_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if source_file_share is not None:
+            pulumi.set(__self__, "source_file_share", source_file_share)
+        if source_instance is not None:
+            pulumi.set(__self__, "source_instance", source_instance)
+
+    @property
+    @pulumi.getter(name="backupsId")
+    def backups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "backups_id")
+
+    @backups_id.setter
+    def backups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backups_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="sourceFileShare")
+    def source_file_share(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        """
+        return pulumi.get(self, "source_file_share")
+
+    @source_file_share.setter
+    def source_file_share(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_file_share", value)
+
+    @property
+    @pulumi.getter(name="sourceInstance")
+    def source_instance(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
+        """
+        return pulumi.get(self, "source_instance")
+
+    @source_instance.setter
+    def source_instance(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance", value)
 
 
 class Backup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,6 +140,40 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BackupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a backup.
+
+        :param str resource_name: The name of the resource.
+        :param BackupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BackupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 backups_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 source_file_share: Optional[pulumi.Input[str]] = None,
+                 source_instance: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -50,28 +189,28 @@ class Backup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BackupArgs.__new__(BackupArgs)
 
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
-            __props__['backups_id'] = backups_id
-            __props__['description'] = description
-            __props__['labels'] = labels
+            __props__.__dict__["backups_id"] = backups_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['source_file_share'] = source_file_share
-            __props__['source_instance'] = source_instance
-            __props__['capacity_gb'] = None
-            __props__['create_time'] = None
-            __props__['download_bytes'] = None
-            __props__['name'] = None
-            __props__['source_instance_tier'] = None
-            __props__['state'] = None
-            __props__['storage_bytes'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["source_file_share"] = source_file_share
+            __props__.__dict__["source_instance"] = source_instance
+            __props__.__dict__["capacity_gb"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["download_bytes"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["source_instance_tier"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["storage_bytes"] = None
         super(Backup, __self__).__init__(
             'gcp-native:file/v1beta1:Backup',
             resource_name,
@@ -92,19 +231,19 @@ class Backup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = BackupArgs.__new__(BackupArgs)
 
-        __props__["capacity_gb"] = None
-        __props__["create_time"] = None
-        __props__["description"] = None
-        __props__["download_bytes"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["source_file_share"] = None
-        __props__["source_instance"] = None
-        __props__["source_instance_tier"] = None
-        __props__["state"] = None
-        __props__["storage_bytes"] = None
+        __props__.__dict__["capacity_gb"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["download_bytes"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["source_file_share"] = None
+        __props__.__dict__["source_instance"] = None
+        __props__.__dict__["source_instance_tier"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["storage_bytes"] = None
         return Backup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -194,10 +333,4 @@ class Backup(pulumi.CustomResource):
         The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

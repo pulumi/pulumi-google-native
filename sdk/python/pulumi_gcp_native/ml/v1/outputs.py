@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -61,6 +61,23 @@ __all__ = [
 
 @pulumi.output_type
 class GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useElapsedTime":
+            suggest = "use_elapsed_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_elapsed_time: bool):
         """
@@ -76,15 +93,29 @@ class GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigR
         """
         return pulumi.get(self, "use_elapsed_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse(dict):
     """
     The median automated stopping rule stops a pending trial if the trial's best objective_value is strictly below the median 'performance' of all completed trials reported up to the trial's last measurement. Currently, 'performance' refers to the running average of the objective values reported by the trial in each measurement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useElapsedTime":
+            suggest = "use_elapsed_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_elapsed_time: bool):
         """
@@ -101,15 +132,31 @@ class GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigRespo
         """
         return pulumi.get(self, "use_elapsed_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse(dict):
     """
     An observed value of a metric.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectiveValue":
+            suggest = "objective_value"
+        elif key == "trainingStep":
+            suggest = "training_step"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  objective_value: float,
                  training_step: str):
@@ -136,9 +183,6 @@ class GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse(dict):
         The global training step for this metric.
         """
         return pulumi.get(self, "training_step")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -173,9 +217,6 @@ class GoogleCloudMlV1_Measurement_MetricResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse(dict):
@@ -193,9 +234,6 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse(dict
         Must be specified if type is `CATEGORICAL`. The list of possible categories.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -215,12 +253,28 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_value: float,
                  min_value: float):
@@ -247,12 +301,28 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse(dict):
         """
         return pulumi.get(self, "min_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_value: str,
                  min_value: str):
@@ -279,9 +349,6 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse(dict):
         """
         return pulumi.get(self, "min_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse(dict):
@@ -303,9 +370,6 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpe
         Matches values of the parent parameter with type 'CATEGORICAL'. All values must exist in `categorical_value_spec` of parent parameter.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -329,9 +393,6 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecRe
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponse(dict):
@@ -353,9 +414,6 @@ class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecRespons
         Matches values of the parent parameter with type 'INTEGER'. All values must lie in `integer_value_spec` of parent parameter.
         """
         return pulumi.get(self, "values")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -390,15 +448,45 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecResponse(dict):
         """
         return pulumi.get(self, "metric")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_StudyConfig_ParameterSpecResponse(dict):
     """
     Represents a single parameter to optimize.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "categoricalValueSpec":
+            suggest = "categorical_value_spec"
+        elif key == "childParameterSpecs":
+            suggest = "child_parameter_specs"
+        elif key == "discreteValueSpec":
+            suggest = "discrete_value_spec"
+        elif key == "doubleValueSpec":
+            suggest = "double_value_spec"
+        elif key == "integerValueSpec":
+            suggest = "integer_value_spec"
+        elif key == "parentCategoricalValues":
+            suggest = "parent_categorical_values"
+        elif key == "parentDiscreteValues":
+            suggest = "parent_discrete_values"
+        elif key == "parentIntValues":
+            suggest = "parent_int_values"
+        elif key == "scaleType":
+            suggest = "scale_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_StudyConfig_ParameterSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_StudyConfig_ParameterSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_StudyConfig_ParameterSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categorical_value_spec: 'outputs.GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecResponse',
                  child_parameter_specs: Sequence['outputs.GoogleCloudMlV1_StudyConfig_ParameterSpecResponse'],
@@ -513,15 +601,33 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1_Trial_ParameterResponse(dict):
     """
     A message representing a parameter to be tuned. Contains the name of the parameter and the suggested value to use for this trial.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "floatValue":
+            suggest = "float_value"
+        elif key == "intValue":
+            suggest = "int_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1_Trial_ParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1_Trial_ParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1_Trial_ParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  float_value: float,
                  int_value: str,
@@ -571,9 +677,6 @@ class GoogleCloudMlV1_Trial_ParameterResponse(dict):
         """
         return pulumi.get(self, "string_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__AcceleratorConfigResponse(dict):
@@ -607,15 +710,31 @@ class GoogleCloudMlV1__AcceleratorConfigResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__AutoScalingResponse(dict):
     """
     Options for automatically scaling a model.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "minNodes":
+            suggest = "min_nodes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__AutoScalingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__AutoScalingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__AutoScalingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_nodes: int,
                  metrics: Sequence['outputs.GoogleCloudMlV1__MetricSpecResponse'],
@@ -654,15 +773,31 @@ class GoogleCloudMlV1__AutoScalingResponse(dict):
         """
         return pulumi.get(self, "min_nodes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__AutomatedStoppingConfigResponse(dict):
     """
     Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "decayCurveStoppingConfig":
+            suggest = "decay_curve_stopping_config"
+        elif key == "medianAutomatedStoppingConfig":
+            suggest = "median_automated_stopping_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__AutomatedStoppingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__AutomatedStoppingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__AutomatedStoppingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  decay_curve_stopping_config: 'outputs.GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigResponse',
                  median_automated_stopping_config: 'outputs.GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse'):
@@ -682,15 +817,33 @@ class GoogleCloudMlV1__AutomatedStoppingConfigResponse(dict):
     def median_automated_stopping_config(self) -> 'outputs.GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigResponse':
         return pulumi.get(self, "median_automated_stopping_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__BuiltInAlgorithmOutputResponse(dict):
     """
     Represents output related to a built-in algorithm Job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelPath":
+            suggest = "model_path"
+        elif key == "pythonVersion":
+            suggest = "python_version"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__BuiltInAlgorithmOutputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__BuiltInAlgorithmOutputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__BuiltInAlgorithmOutputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  framework: str,
                  model_path: str,
@@ -740,15 +893,29 @@ class GoogleCloudMlV1__BuiltInAlgorithmOutputResponse(dict):
         """
         return pulumi.get(self, "runtime_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__ContainerPortResponse(dict):
     """
     Represents a network port in a single container. This message is a subset of the [Kubernetes ContainerPort v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#containerport-v1-core).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__ContainerPortResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__ContainerPortResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__ContainerPortResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_port: int):
         """
@@ -764,9 +931,6 @@ class GoogleCloudMlV1__ContainerPortResponse(dict):
         Number of the port to expose on the container. This must be a valid port number: 0 < PORT_NUMBER < 65536.
         """
         return pulumi.get(self, "container_port")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -834,15 +998,31 @@ class GoogleCloudMlV1__ContainerSpecResponse(dict):
         """
         return pulumi.get(self, "ports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__DiskConfigResponse(dict):
     """
     Represents the config of disk options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__DiskConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__DiskConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__DiskConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boot_disk_size_gb: int,
                  boot_disk_type: str):
@@ -870,15 +1050,29 @@ class GoogleCloudMlV1__DiskConfigResponse(dict):
         """
         return pulumi.get(self, "boot_disk_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__EncryptionConfigResponse(dict):
     """
     Represents a custom encryption key configuration that can be applied to a resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key_name: str):
         """
@@ -894,9 +1088,6 @@ class GoogleCloudMlV1__EncryptionConfigResponse(dict):
         The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
         """
         return pulumi.get(self, "kms_key_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -931,15 +1122,33 @@ class GoogleCloudMlV1__EnvVarResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__ExplanationConfigResponse(dict):
     """
     Message holding configuration options for explaining model predictions. There are three feature attribution methods supported for TensorFlow models: integrated gradients, sampled Shapley, and XRAI. [Learn more about feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "integratedGradientsAttribution":
+            suggest = "integrated_gradients_attribution"
+        elif key == "sampledShapleyAttribution":
+            suggest = "sampled_shapley_attribution"
+        elif key == "xraiAttribution":
+            suggest = "xrai_attribution"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__ExplanationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__ExplanationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__ExplanationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  integrated_gradients_attribution: 'outputs.GoogleCloudMlV1__IntegratedGradientsAttributionResponse',
                  sampled_shapley_attribution: 'outputs.GoogleCloudMlV1__SampledShapleyAttributionResponse',
@@ -978,15 +1187,41 @@ class GoogleCloudMlV1__ExplanationConfigResponse(dict):
         """
         return pulumi.get(self, "xrai_attribution")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
     """
     Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allMetrics":
+            suggest = "all_metrics"
+        elif key == "builtInAlgorithmOutput":
+            suggest = "built_in_algorithm_output"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "finalMetric":
+            suggest = "final_metric"
+        elif key == "isTrialStoppedEarly":
+            suggest = "is_trial_stopped_early"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "trialId":
+            suggest = "trial_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__HyperparameterOutputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__HyperparameterOutputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__HyperparameterOutputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  all_metrics: Sequence['outputs.GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponse'],
                  built_in_algorithm_output: 'outputs.GoogleCloudMlV1__BuiltInAlgorithmOutputResponse',
@@ -1091,15 +1326,39 @@ class GoogleCloudMlV1__HyperparameterOutputResponse(dict):
         """
         return pulumi.get(self, "trial_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__HyperparameterSpecResponse(dict):
     """
     Represents a set of hyperparameters to optimize.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableTrialEarlyStopping":
+            suggest = "enable_trial_early_stopping"
+        elif key == "hyperparameterMetricTag":
+            suggest = "hyperparameter_metric_tag"
+        elif key == "maxFailedTrials":
+            suggest = "max_failed_trials"
+        elif key == "maxParallelTrials":
+            suggest = "max_parallel_trials"
+        elif key == "maxTrials":
+            suggest = "max_trials"
+        elif key == "resumePreviousJobId":
+            suggest = "resume_previous_job_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__HyperparameterSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__HyperparameterSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__HyperparameterSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  enable_trial_early_stopping: bool,
@@ -1204,15 +1463,29 @@ class GoogleCloudMlV1__HyperparameterSpecResponse(dict):
         """
         return pulumi.get(self, "resume_previous_job_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__IntegratedGradientsAttributionResponse(dict):
     """
     Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numIntegralSteps":
+            suggest = "num_integral_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__IntegratedGradientsAttributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__IntegratedGradientsAttributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__IntegratedGradientsAttributionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_integral_steps: int):
         """
@@ -1228,9 +1501,6 @@ class GoogleCloudMlV1__IntegratedGradientsAttributionResponse(dict):
         Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
         """
         return pulumi.get(self, "num_integral_steps")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1254,15 +1524,31 @@ class GoogleCloudMlV1__ManualScalingResponse(dict):
         """
         return pulumi.get(self, "nodes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__MeasurementResponse(dict):
     """
     A message representing a measurement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "elapsedTime":
+            suggest = "elapsed_time"
+        elif key == "stepCount":
+            suggest = "step_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__MeasurementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__MeasurementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__MeasurementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  elapsed_time: str,
                  metrics: Sequence['outputs.GoogleCloudMlV1_Measurement_MetricResponse'],
@@ -1301,9 +1587,6 @@ class GoogleCloudMlV1__MeasurementResponse(dict):
         """
         return pulumi.get(self, "step_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__MetricSpecResponse(dict):
@@ -1337,15 +1620,39 @@ class GoogleCloudMlV1__MetricSpecResponse(dict):
         """
         return pulumi.get(self, "target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__ParameterSpecResponse(dict):
     """
     Represents a single hyperparameter to optimize.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "categoricalValues":
+            suggest = "categorical_values"
+        elif key == "discreteValues":
+            suggest = "discrete_values"
+        elif key == "maxValue":
+            suggest = "max_value"
+        elif key == "minValue":
+            suggest = "min_value"
+        elif key == "parameterName":
+            suggest = "parameter_name"
+        elif key == "scaleType":
+            suggest = "scale_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__ParameterSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__ParameterSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__ParameterSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categorical_values: Sequence[str],
                  discrete_values: Sequence[float],
@@ -1428,15 +1735,47 @@ class GoogleCloudMlV1__ParameterSpecResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__PredictionInputResponse(dict):
     """
     Represents input parameters for a prediction job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "batchSize":
+            suggest = "batch_size"
+        elif key == "dataFormat":
+            suggest = "data_format"
+        elif key == "inputPaths":
+            suggest = "input_paths"
+        elif key == "maxWorkerCount":
+            suggest = "max_worker_count"
+        elif key == "modelName":
+            suggest = "model_name"
+        elif key == "outputDataFormat":
+            suggest = "output_data_format"
+        elif key == "outputPath":
+            suggest = "output_path"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "signatureName":
+            suggest = "signature_name"
+        elif key == "versionName":
+            suggest = "version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__PredictionInputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__PredictionInputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__PredictionInputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  batch_size: str,
                  data_format: str,
@@ -1574,15 +1913,35 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
         """
         return pulumi.get(self, "version_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__PredictionOutputResponse(dict):
     """
     Represents results of a prediction job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorCount":
+            suggest = "error_count"
+        elif key == "nodeHours":
+            suggest = "node_hours"
+        elif key == "outputPath":
+            suggest = "output_path"
+        elif key == "predictionCount":
+            suggest = "prediction_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__PredictionOutputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__PredictionOutputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__PredictionOutputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_count: str,
                  node_hours: float,
@@ -1632,15 +1991,39 @@ class GoogleCloudMlV1__PredictionOutputResponse(dict):
         """
         return pulumi.get(self, "prediction_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__ReplicaConfigResponse(dict):
     """
     Represents the configuration for a replica in a cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorConfig":
+            suggest = "accelerator_config"
+        elif key == "containerArgs":
+            suggest = "container_args"
+        elif key == "containerCommand":
+            suggest = "container_command"
+        elif key == "diskConfig":
+            suggest = "disk_config"
+        elif key == "imageUri":
+            suggest = "image_uri"
+        elif key == "tpuTfVersion":
+            suggest = "tpu_tf_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__ReplicaConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__ReplicaConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__ReplicaConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_config: 'outputs.GoogleCloudMlV1__AcceleratorConfigResponse',
                  container_args: Sequence[str],
@@ -1712,15 +2095,31 @@ class GoogleCloudMlV1__ReplicaConfigResponse(dict):
         """
         return pulumi.get(self, "tpu_tf_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__RequestLoggingConfigResponse(dict):
     """
     Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryTableName":
+            suggest = "bigquery_table_name"
+        elif key == "samplingPercentage":
+            suggest = "sampling_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__RequestLoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__RequestLoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__RequestLoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_table_name: str,
                  sampling_percentage: float):
@@ -1747,9 +2146,6 @@ class GoogleCloudMlV1__RequestLoggingConfigResponse(dict):
         Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
         """
         return pulumi.get(self, "sampling_percentage")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1784,15 +2180,29 @@ class GoogleCloudMlV1__RouteMapResponse(dict):
         """
         return pulumi.get(self, "predict")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__SampledShapleyAttributionResponse(dict):
     """
     An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numPaths":
+            suggest = "num_paths"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__SampledShapleyAttributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__SampledShapleyAttributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__SampledShapleyAttributionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_paths: int):
         """
@@ -1809,15 +2219,31 @@ class GoogleCloudMlV1__SampledShapleyAttributionResponse(dict):
         """
         return pulumi.get(self, "num_paths")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__SchedulingResponse(dict):
     """
     All parameters related to scheduling of training jobs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxRunningTime":
+            suggest = "max_running_time"
+        elif key == "maxWaitTime":
+            suggest = "max_wait_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__SchedulingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__SchedulingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__SchedulingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_running_time: str,
                  max_wait_time: str):
@@ -1845,15 +2271,29 @@ class GoogleCloudMlV1__SchedulingResponse(dict):
         """
         return pulumi.get(self, "max_wait_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__StudyConfigResponse(dict):
     """
     Represents configuration of a study.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automatedStoppingConfig":
+            suggest = "automated_stopping_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__StudyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__StudyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__StudyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  automated_stopping_config: 'outputs.GoogleCloudMlV1__AutomatedStoppingConfigResponse',
@@ -1903,15 +2343,67 @@ class GoogleCloudMlV1__StudyConfigResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__TrainingInputResponse(dict):
     """
     Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionConfig":
+            suggest = "encryption_config"
+        elif key == "evaluatorConfig":
+            suggest = "evaluator_config"
+        elif key == "evaluatorCount":
+            suggest = "evaluator_count"
+        elif key == "evaluatorType":
+            suggest = "evaluator_type"
+        elif key == "jobDir":
+            suggest = "job_dir"
+        elif key == "masterConfig":
+            suggest = "master_config"
+        elif key == "masterType":
+            suggest = "master_type"
+        elif key == "packageUris":
+            suggest = "package_uris"
+        elif key == "parameterServerConfig":
+            suggest = "parameter_server_config"
+        elif key == "parameterServerCount":
+            suggest = "parameter_server_count"
+        elif key == "parameterServerType":
+            suggest = "parameter_server_type"
+        elif key == "pythonModule":
+            suggest = "python_module"
+        elif key == "pythonVersion":
+            suggest = "python_version"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "scaleTier":
+            suggest = "scale_tier"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "useChiefInTfConfig":
+            suggest = "use_chief_in_tf_config"
+        elif key == "workerConfig":
+            suggest = "worker_config"
+        elif key == "workerCount":
+            suggest = "worker_count"
+        elif key == "workerType":
+            suggest = "worker_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__TrainingInputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__TrainingInputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__TrainingInputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  args: Sequence[str],
                  encryption_config: 'outputs.GoogleCloudMlV1__EncryptionConfigResponse',
@@ -2192,15 +2684,39 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         """
         return pulumi.get(self, "worker_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__TrainingOutputResponse(dict):
     """
     Represents results of a training job. Output only.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "builtInAlgorithmOutput":
+            suggest = "built_in_algorithm_output"
+        elif key == "completedTrialCount":
+            suggest = "completed_trial_count"
+        elif key == "consumedMLUnits":
+            suggest = "consumed_ml_units"
+        elif key == "hyperparameterMetricTag":
+            suggest = "hyperparameter_metric_tag"
+        elif key == "isBuiltInAlgorithmJob":
+            suggest = "is_built_in_algorithm_job"
+        elif key == "isHyperparameterTuningJob":
+            suggest = "is_hyperparameter_tuning_job"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__TrainingOutputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__TrainingOutputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__TrainingOutputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  built_in_algorithm_output: 'outputs.GoogleCloudMlV1__BuiltInAlgorithmOutputResponse',
                  completed_trial_count: str,
@@ -2283,15 +2799,63 @@ class GoogleCloudMlV1__TrainingOutputResponse(dict):
         """
         return pulumi.get(self, "trials")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__VersionResponse(dict):
     """
     Represents a version of the model. Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have multiple versions. You can get information about all of the versions of a given model by calling projects.models.versions.list.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorConfig":
+            suggest = "accelerator_config"
+        elif key == "autoScaling":
+            suggest = "auto_scaling"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "deploymentUri":
+            suggest = "deployment_uri"
+        elif key == "errorMessage":
+            suggest = "error_message"
+        elif key == "explanationConfig":
+            suggest = "explanation_config"
+        elif key == "isDefault":
+            suggest = "is_default"
+        elif key == "lastMigrationModelId":
+            suggest = "last_migration_model_id"
+        elif key == "lastMigrationTime":
+            suggest = "last_migration_time"
+        elif key == "lastUseTime":
+            suggest = "last_use_time"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "manualScaling":
+            suggest = "manual_scaling"
+        elif key == "packageUris":
+            suggest = "package_uris"
+        elif key == "predictionClass":
+            suggest = "prediction_class"
+        elif key == "pythonVersion":
+            suggest = "python_version"
+        elif key == "requestLoggingConfig":
+            suggest = "request_logging_config"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__VersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__VersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__VersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_config: 'outputs.GoogleCloudMlV1__AcceleratorConfigResponse',
                  auto_scaling: 'outputs.GoogleCloudMlV1__AutoScalingResponse',
@@ -2583,15 +3147,29 @@ class GoogleCloudMlV1__VersionResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudMlV1__XraiAttributionResponse(dict):
     """
     Attributes credit by computing the XRAI taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 Currently only implemented for models with natural image inputs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numIntegralSteps":
+            suggest = "num_integral_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudMlV1__XraiAttributionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudMlV1__XraiAttributionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudMlV1__XraiAttributionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_integral_steps: int):
         """
@@ -2608,15 +3186,29 @@ class GoogleCloudMlV1__XraiAttributionResponse(dict):
         """
         return pulumi.get(self, "num_integral_steps")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleIamV1__AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamV1__AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamV1__AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamV1__AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.GoogleIamV1__AuditLogConfigResponse'],
                  service: str):
@@ -2644,15 +3236,31 @@ class GoogleIamV1__AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleIamV1__AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamV1__AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamV1__AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamV1__AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -2679,9 +3287,6 @@ class GoogleIamV1__AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2726,9 +3331,6 @@ class GoogleIamV1__BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2784,8 +3386,5 @@ class GoogleType__ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

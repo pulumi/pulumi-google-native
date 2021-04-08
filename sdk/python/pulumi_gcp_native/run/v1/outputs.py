@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -67,15 +67,29 @@ class AddressableResponse(dict):
     def url(self) -> str:
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -103,15 +117,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -138,9 +168,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -186,15 +213,29 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigMapEnvSourceResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMapEnvSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMapEnvSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMapEnvSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_object_reference: 'outputs.LocalObjectReferenceResponse',
                  name: str,
@@ -233,15 +274,29 @@ class ConfigMapEnvSourceResponse(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigMapKeySelectorResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMapKeySelectorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMapKeySelectorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMapKeySelectorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key: str,
                  local_object_reference: 'outputs.LocalObjectReferenceResponse',
@@ -291,15 +346,29 @@ class ConfigMapKeySelectorResponse(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigMapVolumeSourceResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMode":
+            suggest = "default_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfigMapVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfigMapVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfigMapVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_mode: int,
                  items: Sequence['outputs.KeyToPathResponse'],
@@ -349,15 +418,29 @@ class ConfigMapVolumeSourceResponse(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerPortResponse(dict):
     """
     ContainerPort represents a network port in a single container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerPort":
+            suggest = "container_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerPortResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerPortResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerPortResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_port: int,
                  name: str,
@@ -396,15 +479,45 @@ class ContainerPortResponse(dict):
         """
         return pulumi.get(self, "protocol")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerResponse(dict):
     """
     A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "envFrom":
+            suggest = "env_from"
+        elif key == "imagePullPolicy":
+            suggest = "image_pull_policy"
+        elif key == "livenessProbe":
+            suggest = "liveness_probe"
+        elif key == "readinessProbe":
+            suggest = "readiness_probe"
+        elif key == "securityContext":
+            suggest = "security_context"
+        elif key == "terminationMessagePath":
+            suggest = "termination_message_path"
+        elif key == "terminationMessagePolicy":
+            suggest = "termination_message_policy"
+        elif key == "volumeMounts":
+            suggest = "volume_mounts"
+        elif key == "workingDir":
+            suggest = "working_dir"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ContainerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ContainerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ContainerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  args: Sequence[str],
                  command: Sequence[str],
@@ -582,15 +695,33 @@ class ContainerResponse(dict):
         """
         return pulumi.get(self, "working_dir")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingSpecResponse(dict):
     """
     The desired state of the Domain Mapping.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateMode":
+            suggest = "certificate_mode"
+        elif key == "forceOverride":
+            suggest = "force_override"
+        elif key == "routeName":
+            suggest = "route_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_mode: str,
                  force_override: bool,
@@ -629,15 +760,33 @@ class DomainMappingSpecResponse(dict):
         """
         return pulumi.get(self, "route_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainMappingStatusResponse(dict):
     """
     The current state of the Domain Mapping.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mappedRouteName":
+            suggest = "mapped_route_name"
+        elif key == "observedGeneration":
+            suggest = "observed_generation"
+        elif key == "resourceRecords":
+            suggest = "resource_records"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainMappingStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainMappingStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainMappingStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditions: Sequence['outputs.GoogleCloudRunV1ConditionResponse'],
                  mapped_route_name: str,
@@ -698,15 +847,31 @@ class DomainMappingStatusResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvFromSourceResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMapRef":
+            suggest = "config_map_ref"
+        elif key == "secretRef":
+            suggest = "secret_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvFromSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvFromSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvFromSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_map_ref: 'outputs.ConfigMapEnvSourceResponse',
                  prefix: str,
@@ -745,15 +910,29 @@ class EnvFromSourceResponse(dict):
         """
         return pulumi.get(self, "secret_ref")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvVarResponse(dict):
     """
     EnvVar represents an environment variable present in a Container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueFrom":
+            suggest = "value_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvVarResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvVarResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvVarResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  value: str,
@@ -792,15 +971,31 @@ class EnvVarResponse(dict):
         """
         return pulumi.get(self, "value_from")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvVarSourceResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMapKeyRef":
+            suggest = "config_map_key_ref"
+        elif key == "secretKeyRef":
+            suggest = "secret_key_ref"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvVarSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvVarSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvVarSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_map_key_ref: 'outputs.ConfigMapKeySelectorResponse',
                  secret_key_ref: 'outputs.SecretKeySelectorResponse'):
@@ -828,9 +1023,6 @@ class EnvVarSourceResponse(dict):
         """
         return pulumi.get(self, "secret_key_ref")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecActionResponse(dict):
@@ -852,9 +1044,6 @@ class ExecActionResponse(dict):
         (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         return pulumi.get(self, "command")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -911,15 +1100,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudRunV1ConditionResponse(dict):
     """
     Condition defines a generic condition for a Resource
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastTransitionTime":
+            suggest = "last_transition_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRunV1ConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRunV1ConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRunV1ConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_transition_time: str,
                  message: str,
@@ -991,15 +1194,29 @@ class GoogleCloudRunV1ConditionResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HTTPGetActionResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported HTTPGetAction describes an action based on HTTP Get requests.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpHeaders":
+            suggest = "http_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HTTPGetActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HTTPGetActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HTTPGetActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  http_headers: Sequence['outputs.HTTPHeaderResponse'],
@@ -1049,9 +1266,6 @@ class HTTPGetActionResponse(dict):
         """
         return pulumi.get(self, "scheme")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HTTPHeaderResponse(dict):
@@ -1084,9 +1298,6 @@ class HTTPHeaderResponse(dict):
         Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1132,9 +1343,6 @@ class KeyToPathResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocalObjectReferenceResponse(dict):
@@ -1157,15 +1365,43 @@ class LocalObjectReferenceResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ObjectMetaResponse(dict):
     """
     k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "creationTimestamp":
+            suggest = "creation_timestamp"
+        elif key == "deletionGracePeriodSeconds":
+            suggest = "deletion_grace_period_seconds"
+        elif key == "deletionTimestamp":
+            suggest = "deletion_timestamp"
+        elif key == "generateName":
+            suggest = "generate_name"
+        elif key == "ownerReferences":
+            suggest = "owner_references"
+        elif key == "resourceVersion":
+            suggest = "resource_version"
+        elif key == "selfLink":
+            suggest = "self_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectMetaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectMetaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectMetaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotations: Mapping[str, str],
                  cluster_name: str,
@@ -1336,15 +1572,31 @@ class ObjectMetaResponse(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OwnerReferenceResponse(dict):
     """
     OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiVersion":
+            suggest = "api_version"
+        elif key == "blockOwnerDeletion":
+            suggest = "block_owner_deletion"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OwnerReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OwnerReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OwnerReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_version: str,
                  block_owner_deletion: bool,
@@ -1416,15 +1668,43 @@ class OwnerReferenceResponse(dict):
         """
         return pulumi.get(self, "uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProbeResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exec":
+            suggest = "exec_"
+        elif key == "failureThreshold":
+            suggest = "failure_threshold"
+        elif key == "httpGet":
+            suggest = "http_get"
+        elif key == "initialDelaySeconds":
+            suggest = "initial_delay_seconds"
+        elif key == "periodSeconds":
+            suggest = "period_seconds"
+        elif key == "successThreshold":
+            suggest = "success_threshold"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProbeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProbeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProbeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exec_: 'outputs.ExecActionResponse',
                  failure_threshold: int,
@@ -1518,9 +1798,6 @@ class ProbeResponse(dict):
         """
         return pulumi.get(self, "timeout_seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceRecordResponse(dict):
@@ -1565,9 +1842,6 @@ class ResourceRecordResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceRequirementsResponse(dict):
@@ -1601,15 +1875,33 @@ class ResourceRequirementsResponse(dict):
         """
         return pulumi.get(self, "requests")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RevisionSpecResponse(dict):
     """
     RevisionSpec holds the desired state of the Revision (from the client).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerConcurrency":
+            suggest = "container_concurrency"
+        elif key == "serviceAccountName":
+            suggest = "service_account_name"
+        elif key == "timeoutSeconds":
+            suggest = "timeout_seconds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RevisionSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RevisionSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RevisionSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_concurrency: int,
                  containers: Sequence['outputs.ContainerResponse'],
@@ -1666,9 +1958,6 @@ class RevisionSpecResponse(dict):
     def volumes(self) -> Sequence['outputs.VolumeResponse']:
         return pulumi.get(self, "volumes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RevisionTemplateResponse(dict):
@@ -1702,15 +1991,29 @@ class RevisionTemplateResponse(dict):
         """
         return pulumi.get(self, "spec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretEnvSourceResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretEnvSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretEnvSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretEnvSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  local_object_reference: 'outputs.LocalObjectReferenceResponse',
                  name: str,
@@ -1749,15 +2052,29 @@ class SecretEnvSourceResponse(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretKeySelectorResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecretKeySelector selects a key of a Secret.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localObjectReference":
+            suggest = "local_object_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretKeySelectorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretKeySelectorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretKeySelectorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  key: str,
                  local_object_reference: 'outputs.LocalObjectReferenceResponse',
@@ -1807,15 +2124,31 @@ class SecretKeySelectorResponse(dict):
         """
         return pulumi.get(self, "optional")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretVolumeSourceResponse(dict):
     """
     Cloud Run fully managed: supported The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. Cloud Run for Anthos: supported The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultMode":
+            suggest = "default_mode"
+        elif key == "secretName":
+            suggest = "secret_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretVolumeSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretVolumeSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretVolumeSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_mode: int,
                  items: Sequence['outputs.KeyToPathResponse'],
@@ -1865,15 +2198,29 @@ class SecretVolumeSourceResponse(dict):
         """
         return pulumi.get(self, "secret_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecurityContextResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runAsUser":
+            suggest = "run_as_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityContextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityContextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityContextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  run_as_user: int):
         """
@@ -1889,9 +2236,6 @@ class SecurityContextResponse(dict):
         (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
         """
         return pulumi.get(self, "run_as_user")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1926,15 +2270,33 @@ class ServiceSpecResponse(dict):
         """
         return pulumi.get(self, "traffic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceStatusResponse(dict):
     """
     The current state of the Service. Output only.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latestCreatedRevisionName":
+            suggest = "latest_created_revision_name"
+        elif key == "latestReadyRevisionName":
+            suggest = "latest_ready_revision_name"
+        elif key == "observedGeneration":
+            suggest = "observed_generation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: 'outputs.AddressableResponse',
                  conditions: Sequence['outputs.GoogleCloudRunV1ConditionResponse'],
@@ -2017,9 +2379,6 @@ class ServiceStatusResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TCPSocketActionResponse(dict):
@@ -2053,15 +2412,33 @@ class TCPSocketActionResponse(dict):
         """
         return pulumi.get(self, "port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TrafficTargetResponse(dict):
     """
     TrafficTarget holds a single entry of the routing table for a Route.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configurationName":
+            suggest = "configuration_name"
+        elif key == "latestRevision":
+            suggest = "latest_revision"
+        elif key == "revisionName":
+            suggest = "revision_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrafficTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrafficTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrafficTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  configuration_name: str,
                  latest_revision: bool,
@@ -2133,15 +2510,33 @@ class TrafficTargetResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VolumeMountResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported VolumeMount describes a mounting of a Volume within a container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPath":
+            suggest = "mount_path"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "subPath":
+            suggest = "sub_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeMountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeMountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeMountResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_path: str,
                  name: str,
@@ -2191,15 +2586,29 @@ class VolumeMountResponse(dict):
         """
         return pulumi.get(self, "sub_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VolumeResponse(dict):
     """
     Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configMap":
+            suggest = "config_map"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_map: 'outputs.ConfigMapVolumeSourceResponse',
                  name: str,
@@ -2237,8 +2646,5 @@ class VolumeResponse(dict):
         Cloud Run fully managed: supported Cloud Run for Anthos: supported
         """
         return pulumi.get(self, "secret")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

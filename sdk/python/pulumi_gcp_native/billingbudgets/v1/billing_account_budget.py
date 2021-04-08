@@ -5,15 +5,141 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BillingAccountBudget']
+__all__ = ['BillingAccountBudgetArgs', 'BillingAccountBudget']
+
+@pulumi.input_type
+class BillingAccountBudgetArgs:
+    def __init__(__self__, *,
+                 billing_accounts_id: pulumi.Input[str],
+                 budgets_id: pulumi.Input[str],
+                 amount: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1BudgetAmountArgs']] = None,
+                 budget_filter: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1FilterArgs']] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 notifications_rule: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] = None):
+        """
+        The set of arguments for constructing a BillingAccountBudget resource.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1BudgetAmountArgs'] amount: Required. Budgeted amount.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
+        :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs'] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        """
+        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
+        pulumi.set(__self__, "budgets_id", budgets_id)
+        if amount is not None:
+            pulumi.set(__self__, "amount", amount)
+        if budget_filter is not None:
+            pulumi.set(__self__, "budget_filter", budget_filter)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if notifications_rule is not None:
+            pulumi.set(__self__, "notifications_rule", notifications_rule)
+        if threshold_rules is not None:
+            pulumi.set(__self__, "threshold_rules", threshold_rules)
+
+    @property
+    @pulumi.getter(name="billingAccountsId")
+    def billing_accounts_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_accounts_id")
+
+    @billing_accounts_id.setter
+    def billing_accounts_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_accounts_id", value)
+
+    @property
+    @pulumi.getter(name="budgetsId")
+    def budgets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "budgets_id")
+
+    @budgets_id.setter
+    def budgets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "budgets_id", value)
+
+    @property
+    @pulumi.getter
+    def amount(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1BudgetAmountArgs']]:
+        """
+        Required. Budgeted amount.
+        """
+        return pulumi.get(self, "amount")
+
+    @amount.setter
+    def amount(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1BudgetAmountArgs']]):
+        pulumi.set(self, "amount", value)
+
+    @property
+    @pulumi.getter(name="budgetFilter")
+    def budget_filter(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1FilterArgs']]:
+        """
+        Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        """
+        return pulumi.get(self, "budget_filter")
+
+    @budget_filter.setter
+    def budget_filter(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1FilterArgs']]):
+        pulumi.set(self, "budget_filter", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User data for display name in UI. The name must be less than or equal to 60 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="notificationsRule")
+    def notifications_rule(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]:
+        """
+        Optional. Rules to apply to notifications sent based on budget spend and thresholds.
+        """
+        return pulumi.get(self, "notifications_rule")
+
+    @notifications_rule.setter
+    def notifications_rule(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]):
+        pulumi.set(self, "notifications_rule", value)
+
+    @property
+    @pulumi.getter(name="thresholdRules")
+    def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]:
+        """
+        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        """
+        return pulumi.get(self, "threshold_rules")
+
+    @threshold_rules.setter
+    def threshold_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]):
+        pulumi.set(self, "threshold_rules", value)
 
 
 class BillingAccountBudget(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -40,6 +166,41 @@ class BillingAccountBudget(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BillingAccountBudgetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
+
+        :param str resource_name: The name of the resource.
+        :param BillingAccountBudgetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BillingAccountBudgetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1BudgetAmountArgs']]] = None,
+                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1FilterArgs']]] = None,
+                 budgets_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 notifications_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']]] = None,
+                 threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -55,21 +216,21 @@ class BillingAccountBudget(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BillingAccountBudgetArgs.__new__(BillingAccountBudgetArgs)
 
-            __props__['amount'] = amount
+            __props__.__dict__["amount"] = amount
             if billing_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__['billing_accounts_id'] = billing_accounts_id
-            __props__['budget_filter'] = budget_filter
+            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            __props__.__dict__["budget_filter"] = budget_filter
             if budgets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'budgets_id'")
-            __props__['budgets_id'] = budgets_id
-            __props__['display_name'] = display_name
-            __props__['etag'] = etag
-            __props__['notifications_rule'] = notifications_rule
-            __props__['threshold_rules'] = threshold_rules
-            __props__['name'] = None
+            __props__.__dict__["budgets_id"] = budgets_id
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["notifications_rule"] = notifications_rule
+            __props__.__dict__["threshold_rules"] = threshold_rules
+            __props__.__dict__["name"] = None
         super(BillingAccountBudget, __self__).__init__(
             'gcp-native:billingbudgets/v1:BillingAccountBudget',
             resource_name,
@@ -90,15 +251,15 @@ class BillingAccountBudget(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = BillingAccountBudgetArgs.__new__(BillingAccountBudgetArgs)
 
-        __props__["amount"] = None
-        __props__["budget_filter"] = None
-        __props__["display_name"] = None
-        __props__["etag"] = None
-        __props__["name"] = None
-        __props__["notifications_rule"] = None
-        __props__["threshold_rules"] = None
+        __props__.__dict__["amount"] = None
+        __props__.__dict__["budget_filter"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["notifications_rule"] = None
+        __props__.__dict__["threshold_rules"] = None
         return BillingAccountBudget(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -156,10 +317,4 @@ class BillingAccountBudget(pulumi.CustomResource):
         Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
         """
         return pulumi.get(self, "threshold_rules")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

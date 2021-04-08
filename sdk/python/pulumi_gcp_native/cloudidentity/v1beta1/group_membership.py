@@ -5,15 +5,93 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['GroupMembership']
+__all__ = ['GroupMembershipArgs', 'GroupMembership']
+
+@pulumi.input_type
+class GroupMembershipArgs:
+    def __init__(__self__, *,
+                 groups_id: pulumi.Input[str],
+                 memberships_id: pulumi.Input[str],
+                 member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
+                 preferred_member_key: Optional[pulumi.Input['EntityKeyArgs']] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]]] = None):
+        """
+        The set of arguments for constructing a GroupMembership resource.
+        :param pulumi.Input['EntityKeyArgs'] member_key: Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        :param pulumi.Input['EntityKeyArgs'] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        :param pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+        """
+        pulumi.set(__self__, "groups_id", groups_id)
+        pulumi.set(__self__, "memberships_id", memberships_id)
+        if member_key is not None:
+            pulumi.set(__self__, "member_key", member_key)
+        if preferred_member_key is not None:
+            pulumi.set(__self__, "preferred_member_key", preferred_member_key)
+        if roles is not None:
+            pulumi.set(__self__, "roles", roles)
+
+    @property
+    @pulumi.getter(name="groupsId")
+    def groups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "groups_id")
+
+    @groups_id.setter
+    def groups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "groups_id", value)
+
+    @property
+    @pulumi.getter(name="membershipsId")
+    def memberships_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "memberships_id")
+
+    @memberships_id.setter
+    def memberships_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "memberships_id", value)
+
+    @property
+    @pulumi.getter(name="memberKey")
+    def member_key(self) -> Optional[pulumi.Input['EntityKeyArgs']]:
+        """
+        Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        """
+        return pulumi.get(self, "member_key")
+
+    @member_key.setter
+    def member_key(self, value: Optional[pulumi.Input['EntityKeyArgs']]):
+        pulumi.set(self, "member_key", value)
+
+    @property
+    @pulumi.getter(name="preferredMemberKey")
+    def preferred_member_key(self) -> Optional[pulumi.Input['EntityKeyArgs']]:
+        """
+        Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+        """
+        return pulumi.get(self, "preferred_member_key")
+
+    @preferred_member_key.setter
+    def preferred_member_key(self, value: Optional[pulumi.Input['EntityKeyArgs']]):
+        pulumi.set(self, "preferred_member_key", value)
+
+    @property
+    @pulumi.getter
+    def roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]]]:
+        """
+        The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
+        """
+        return pulumi.get(self, "roles")
+
+    @roles.setter
+    def roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MembershipRoleArgs']]]]):
+        pulumi.set(self, "roles", value)
 
 
 class GroupMembership(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -34,6 +112,38 @@ class GroupMembership(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['EntityKeyArgs']] preferred_member_key: Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]] roles: The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupMembershipArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a `Membership`.
+
+        :param str resource_name: The name of the resource.
+        :param GroupMembershipArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupMembershipArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 groups_id: Optional[pulumi.Input[str]] = None,
+                 member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
+                 memberships_id: Optional[pulumi.Input[str]] = None,
+                 preferred_member_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
+                 roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MembershipRoleArgs']]]]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -49,21 +159,21 @@ class GroupMembership(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
             if groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_id'")
-            __props__['groups_id'] = groups_id
-            __props__['member_key'] = member_key
+            __props__.__dict__["groups_id"] = groups_id
+            __props__.__dict__["member_key"] = member_key
             if memberships_id is None and not opts.urn:
                 raise TypeError("Missing required property 'memberships_id'")
-            __props__['memberships_id'] = memberships_id
-            __props__['preferred_member_key'] = preferred_member_key
-            __props__['roles'] = roles
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['type'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["memberships_id"] = memberships_id
+            __props__.__dict__["preferred_member_key"] = preferred_member_key
+            __props__.__dict__["roles"] = roles
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["type"] = None
+            __props__.__dict__["update_time"] = None
         super(GroupMembership, __self__).__init__(
             'gcp-native:cloudidentity/v1beta1:GroupMembership',
             resource_name,
@@ -84,15 +194,15 @@ class GroupMembership(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = GroupMembershipArgs.__new__(GroupMembershipArgs)
 
-        __props__["create_time"] = None
-        __props__["member_key"] = None
-        __props__["name"] = None
-        __props__["preferred_member_key"] = None
-        __props__["roles"] = None
-        __props__["type"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["member_key"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["preferred_member_key"] = None
+        __props__.__dict__["roles"] = None
+        __props__.__dict__["type"] = None
+        __props__.__dict__["update_time"] = None
         return GroupMembership(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -150,10 +260,4 @@ class GroupMembership(pulumi.CustomResource):
         The time when the `Membership` was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

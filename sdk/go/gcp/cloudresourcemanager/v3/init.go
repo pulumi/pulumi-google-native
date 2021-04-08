@@ -22,29 +22,30 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudresourcemanager/v3:Folder":
-		r, err = NewFolder(ctx, name, nil, pulumi.URN_(urn))
+		r = &Folder{}
 	case "gcp-native:cloudresourcemanager/v3:FolderIamPolicy":
-		r, err = NewFolderIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FolderIamPolicy{}
 	case "gcp-native:cloudresourcemanager/v3:Lien":
-		r, err = NewLien(ctx, name, nil, pulumi.URN_(urn))
+		r = &Lien{}
 	case "gcp-native:cloudresourcemanager/v3:OrganizationIamPolicy":
-		r, err = NewOrganizationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationIamPolicy{}
 	case "gcp-native:cloudresourcemanager/v3:Project":
-		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
+		r = &Project{}
 	case "gcp-native:cloudresourcemanager/v3:ProjectIamPolicy":
-		r, err = NewProjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ProjectIamPolicy{}
 	case "gcp-native:cloudresourcemanager/v3:TagKey":
-		r, err = NewTagKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagKey{}
 	case "gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy":
-		r, err = NewTagKeyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagKeyIamPolicy{}
 	case "gcp-native:cloudresourcemanager/v3:TagValue":
-		r, err = NewTagValue(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagValue{}
 	case "gcp-native:cloudresourcemanager/v3:TagValueIamPolicy":
-		r, err = NewTagValueIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagValueIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

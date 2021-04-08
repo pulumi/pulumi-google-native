@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -32,6 +32,23 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs.If there are AuditConfigs for both allServices and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted.Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -59,15 +76,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -94,9 +127,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -142,9 +172,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataCatalogConfigResponse(dict):
@@ -167,15 +194,33 @@ class DataCatalogConfigResponse(dict):
         """
         return pulumi.get(self, "enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseDumpResponse(dict):
     """
     A specification of the location of and metadata about a database dump from a relational database management system.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseType":
+            suggest = "database_type"
+        elif key == "gcsUri":
+            suggest = "gcs_uri"
+        elif key == "sourceDatabase":
+            suggest = "source_database"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseDumpResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseDumpResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseDumpResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_type: str,
                  gcs_uri: str,
@@ -224,9 +269,6 @@ class DatabaseDumpResponse(dict):
         Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -283,15 +325,31 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HiveMetastoreConfigResponse(dict):
     """
     Specifies configuration information specific to running Hive metastore software as the metastore service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configOverrides":
+            suggest = "config_overrides"
+        elif key == "kerberosConfig":
+            suggest = "kerberos_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HiveMetastoreConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HiveMetastoreConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HiveMetastoreConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config_overrides: Mapping[str, str],
                  kerberos_config: 'outputs.KerberosConfigResponse',
@@ -330,15 +388,29 @@ class HiveMetastoreConfigResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KerberosConfigResponse(dict):
     """
     Configuration information for a Kerberos principal.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "krb5ConfigGcsUri":
+            suggest = "krb5_config_gcs_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KerberosConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KerberosConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KerberosConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  keytab: 'outputs.SecretResponse',
                  krb5_config_gcs_uri: str,
@@ -377,15 +449,31 @@ class KerberosConfigResponse(dict):
         """
         return pulumi.get(self, "principal")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MaintenanceWindowResponse(dict):
     """
     Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "hourOfDay":
+            suggest = "hour_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_week: str,
                  hour_of_day: int):
@@ -413,15 +501,35 @@ class MaintenanceWindowResponse(dict):
         """
         return pulumi.get(self, "hour_of_day")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataExportResponse(dict):
     """
     The details of a metadata export operation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseDumpType":
+            suggest = "database_dump_type"
+        elif key == "destinationGcsUri":
+            suggest = "destination_gcs_uri"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataExportResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataExportResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataExportResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  database_dump_type: str,
                  destination_gcs_uri: str,
@@ -482,15 +590,29 @@ class MetadataExportResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataIntegrationResponse(dict):
     """
     Specifies how metastore metadata should be integrated with external services.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataCatalogConfig":
+            suggest = "data_catalog_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataIntegrationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataIntegrationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataIntegrationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  data_catalog_config: 'outputs.DataCatalogConfigResponse'):
         """
@@ -507,15 +629,29 @@ class MetadataIntegrationResponse(dict):
         """
         return pulumi.get(self, "data_catalog_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetadataManagementActivityResponse(dict):
     """
     The metadata management activities of the metastore service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metadataExports":
+            suggest = "metadata_exports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetadataManagementActivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetadataManagementActivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetadataManagementActivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metadata_exports: Sequence['outputs.MetadataExportResponse'],
                  restores: Sequence['outputs.RestoreResponse']):
@@ -543,15 +679,31 @@ class MetadataManagementActivityResponse(dict):
         """
         return pulumi.get(self, "restores")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RestoreResponse(dict):
     """
     The details of a metadata restore operation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RestoreResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RestoreResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RestoreResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backup: str,
                  details: str,
@@ -623,15 +775,29 @@ class RestoreResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecretResponse(dict):
     """
     A securely stored value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSecret":
+            suggest = "cloud_secret"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_secret: str):
         """
@@ -648,15 +814,47 @@ class SecretResponse(dict):
         """
         return pulumi.get(self, "cloud_secret")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceResponse(dict):
     """
     A managed metastore service that serves metadata queries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactGcsUri":
+            suggest = "artifact_gcs_uri"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "endpointUri":
+            suggest = "endpoint_uri"
+        elif key == "hiveMetastoreConfig":
+            suggest = "hive_metastore_config"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "metadataIntegration":
+            suggest = "metadata_integration"
+        elif key == "metadataManagementActivity":
+            suggest = "metadata_management_activity"
+        elif key == "releaseChannel":
+            suggest = "release_channel"
+        elif key == "stateMessage":
+            suggest = "state_message"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  artifact_gcs_uri: str,
                  create_time: str,
@@ -848,8 +1046,5 @@ class ServiceResponse(dict):
         The time when the metastore service was last updated.
         """
         return pulumi.get(self, "update_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

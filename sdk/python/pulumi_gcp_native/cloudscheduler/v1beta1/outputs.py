@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -25,6 +25,27 @@ class AppEngineHttpTargetResponse(dict):
     """
     App Engine target. The job will be pushed to a job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application error. Requests returning error 503 will be retried regardless of retry configuration and not counted against retry counts. Any other response code, or a failure to receive a response before the deadline, constitutes a failed attempt.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appEngineRouting":
+            suggest = "app_engine_routing"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "relativeUri":
+            suggest = "relative_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineHttpTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineHttpTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineHttpTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_engine_routing: 'outputs.AppEngineRoutingResponse',
                  body: str,
@@ -85,9 +106,6 @@ class AppEngineHttpTargetResponse(dict):
         """
         return pulumi.get(self, "relative_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineRoutingResponse(dict):
@@ -143,15 +161,33 @@ class AppEngineRoutingResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpTargetResponse(dict):
     """
     Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  body: str,
                  headers: Mapping[str, str],
@@ -223,15 +259,29 @@ class HttpTargetResponse(dict):
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OAuthTokenResponse(dict):
     """
     Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OAuthTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  scope: str,
                  service_account_email: str):
@@ -259,15 +309,29 @@ class OAuthTokenResponse(dict):
         """
         return pulumi.get(self, "service_account_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OidcTokenResponse(dict):
     """
     Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OidcTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audience: str,
                  service_account_email: str):
@@ -295,15 +359,29 @@ class OidcTokenResponse(dict):
         """
         return pulumi.get(self, "service_account_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PubsubTargetResponse(dict):
     """
     Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "topicName":
+            suggest = "topic_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PubsubTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PubsubTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PubsubTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attributes: Mapping[str, str],
                  data: str,
@@ -342,15 +420,37 @@ class PubsubTargetResponse(dict):
         """
         return pulumi.get(self, "topic_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetryConfigResponse(dict):
     """
     Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBackoffDuration":
+            suggest = "max_backoff_duration"
+        elif key == "maxDoublings":
+            suggest = "max_doublings"
+        elif key == "maxRetryDuration":
+            suggest = "max_retry_duration"
+        elif key == "minBackoffDuration":
+            suggest = "min_backoff_duration"
+        elif key == "retryCount":
+            suggest = "retry_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_backoff_duration: str,
                  max_doublings: int,
@@ -411,9 +511,6 @@ class RetryConfigResponse(dict):
         """
         return pulumi.get(self, "retry_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatusResponse(dict):
@@ -457,8 +554,5 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

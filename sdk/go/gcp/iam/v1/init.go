@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:iam/v1:OrganizationRole":
-		r, err = NewOrganizationRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationRole{}
 	case "gcp-native:iam/v1:Role":
-		r, err = NewRole(ctx, name, nil, pulumi.URN_(urn))
+		r = &Role{}
 	case "gcp-native:iam/v1:ServiceAccount":
-		r, err = NewServiceAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceAccount{}
 	case "gcp-native:iam/v1:ServiceAccountIamPolicy":
-		r, err = NewServiceAccountIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceAccountIamPolicy{}
 	case "gcp-native:iam/v1:ServiceAccountKey":
-		r, err = NewServiceAccountKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceAccountKey{}
 	case "gcp-native:iam/v1:WorkloadIdentityPool":
-		r, err = NewWorkloadIdentityPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkloadIdentityPool{}
 	case "gcp-native:iam/v1:WorkloadIdentityPoolProvider":
-		r, err = NewWorkloadIdentityPoolProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &WorkloadIdentityPoolProvider{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

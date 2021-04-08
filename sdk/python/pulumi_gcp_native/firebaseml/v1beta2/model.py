@@ -5,15 +5,125 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Model']
+__all__ = ['ModelArgs', 'Model']
+
+@pulumi.input_type
+class ModelArgs:
+    def __init__(__self__, *,
+                 models_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input['ModelStateArgs']] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tflite_model: Optional[pulumi.Input['TfLiteModelArgs']] = None):
+        """
+        The set of arguments for constructing a Model resource.
+        :param pulumi.Input[str] display_name: Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        :param pulumi.Input[str] name: The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+        :param pulumi.Input['ModelStateArgs'] state: State common to all model types. Includes publishing and validation information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
+        :param pulumi.Input['TfLiteModelArgs'] tflite_model: A TFLite Model
+        """
+        pulumi.set(__self__, "models_id", models_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if tflite_model is not None:
+            pulumi.set(__self__, "tflite_model", tflite_model)
+
+    @property
+    @pulumi.getter(name="modelsId")
+    def models_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "models_id")
+
+    @models_id.setter
+    def models_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "models_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['ModelStateArgs']]:
+        """
+        State common to all model types. Includes publishing and validation information.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['ModelStateArgs']]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        User defined tags which can be used to group/filter models during listing
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="tfliteModel")
+    def tflite_model(self) -> Optional[pulumi.Input['TfLiteModelArgs']]:
+        """
+        A TFLite Model
+        """
+        return pulumi.get(self, "tflite_model")
+
+    @tflite_model.setter
+    def tflite_model(self, value: Optional[pulumi.Input['TfLiteModelArgs']]):
+        pulumi.set(self, "tflite_model", value)
 
 
 class Model(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +148,40 @@ class Model(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: User defined tags which can be used to group/filter models during listing
         :param pulumi.Input[pulumi.InputType['TfLiteModelArgs']] tflite_model: A TFLite Model
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ModelArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a model in Firebase ML. The longrunning operation will eventually return a Model
+
+        :param str resource_name: The name of the resource.
+        :param ModelArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ModelArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 models_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[pulumi.InputType['ModelStateArgs']]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 tflite_model: Optional[pulumi.Input[pulumi.InputType['TfLiteModelArgs']]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -53,24 +197,24 @@ class Model(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ModelArgs.__new__(ModelArgs)
 
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if models_id is None and not opts.urn:
                 raise TypeError("Missing required property 'models_id'")
-            __props__['models_id'] = models_id
-            __props__['name'] = name
+            __props__.__dict__["models_id"] = models_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['tags'] = tags
-            __props__['tflite_model'] = tflite_model
-            __props__['active_operations'] = None
-            __props__['create_time'] = None
-            __props__['etag'] = None
-            __props__['model_hash'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["state"] = state
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["tflite_model"] = tflite_model
+            __props__.__dict__["active_operations"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["etag"] = None
+            __props__.__dict__["model_hash"] = None
+            __props__.__dict__["update_time"] = None
         super(Model, __self__).__init__(
             'gcp-native:firebaseml/v1beta2:Model',
             resource_name,
@@ -91,18 +235,18 @@ class Model(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ModelArgs.__new__(ModelArgs)
 
-        __props__["active_operations"] = None
-        __props__["create_time"] = None
-        __props__["display_name"] = None
-        __props__["etag"] = None
-        __props__["model_hash"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["tags"] = None
-        __props__["tflite_model"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["active_operations"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["model_hash"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["tags"] = None
+        __props__.__dict__["tflite_model"] = None
+        __props__.__dict__["update_time"] = None
         return Model(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -184,10 +328,4 @@ class Model(pulumi.CustomResource):
         Timestamp when this model was updated in Firebase ML.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

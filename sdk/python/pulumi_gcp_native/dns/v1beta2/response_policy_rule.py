@@ -5,15 +5,132 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ResponsePolicyRule']
+__all__ = ['ResponsePolicyRuleArgs', 'ResponsePolicyRule']
+
+@pulumi.input_type
+class ResponsePolicyRuleArgs:
+    def __init__(__self__, *,
+                 project: pulumi.Input[str],
+                 response_policy: pulumi.Input[str],
+                 response_policy_rule: pulumi.Input[str],
+                 behavior: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ResponsePolicyRule resource.
+        :param pulumi.Input[str] behavior: Answer this query with a behavior rather than DNS data.
+        :param pulumi.Input[str] dns_name: The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+        :param pulumi.Input['ResponsePolicyRuleLocalDataArgs'] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+        :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
+        """
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "response_policy", response_policy)
+        pulumi.set(__self__, "response_policy_rule", response_policy_rule)
+        if behavior is not None:
+            pulumi.set(__self__, "behavior", behavior)
+        if dns_name is not None:
+            pulumi.set(__self__, "dns_name", dns_name)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if local_data is not None:
+            pulumi.set(__self__, "local_data", local_data)
+        if rule_name is not None:
+            pulumi.set(__self__, "rule_name", rule_name)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="responsePolicy")
+    def response_policy(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "response_policy")
+
+    @response_policy.setter
+    def response_policy(self, value: pulumi.Input[str]):
+        pulumi.set(self, "response_policy", value)
+
+    @property
+    @pulumi.getter(name="responsePolicyRule")
+    def response_policy_rule(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "response_policy_rule")
+
+    @response_policy_rule.setter
+    def response_policy_rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "response_policy_rule", value)
+
+    @property
+    @pulumi.getter
+    def behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Answer this query with a behavior rather than DNS data.
+        """
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "behavior", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
+        """
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="localData")
+    def local_data(self) -> Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']]:
+        """
+        Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
+        """
+        return pulumi.get(self, "local_data")
+
+    @local_data.setter
+    def local_data(self, value: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']]):
+        pulumi.set(self, "local_data", value)
+
+    @property
+    @pulumi.getter(name="ruleName")
+    def rule_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        An identifier for this rule. Must be unique with the ResponsePolicy.
+        """
+        return pulumi.get(self, "rule_name")
+
+    @rule_name.setter
+    def rule_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rule_name", value)
 
 
 class ResponsePolicyRule(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -38,6 +155,41 @@ class ResponsePolicyRule(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']] local_data: Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
         :param pulumi.Input[str] rule_name: An identifier for this rule. Must be unique with the ResponsePolicy.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ResponsePolicyRuleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Response Policy Rule.
+
+        :param str resource_name: The name of the resource.
+        :param ResponsePolicyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ResponsePolicyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 behavior: Optional[pulumi.Input[str]] = None,
+                 dns_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 response_policy: Optional[pulumi.Input[str]] = None,
+                 response_policy_rule: Optional[pulumi.Input[str]] = None,
+                 rule_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -53,22 +205,22 @@ class ResponsePolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ResponsePolicyRuleArgs.__new__(ResponsePolicyRuleArgs)
 
-            __props__['behavior'] = behavior
-            __props__['dns_name'] = dns_name
-            __props__['kind'] = kind
-            __props__['local_data'] = local_data
+            __props__.__dict__["behavior"] = behavior
+            __props__.__dict__["dns_name"] = dns_name
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["local_data"] = local_data
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
+            __props__.__dict__["project"] = project
             if response_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'response_policy'")
-            __props__['response_policy'] = response_policy
+            __props__.__dict__["response_policy"] = response_policy
             if response_policy_rule is None and not opts.urn:
                 raise TypeError("Missing required property 'response_policy_rule'")
-            __props__['response_policy_rule'] = response_policy_rule
-            __props__['rule_name'] = rule_name
+            __props__.__dict__["response_policy_rule"] = response_policy_rule
+            __props__.__dict__["rule_name"] = rule_name
         super(ResponsePolicyRule, __self__).__init__(
             'gcp-native:dns/v1beta2:ResponsePolicyRule',
             resource_name,
@@ -89,13 +241,13 @@ class ResponsePolicyRule(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ResponsePolicyRuleArgs.__new__(ResponsePolicyRuleArgs)
 
-        __props__["behavior"] = None
-        __props__["dns_name"] = None
-        __props__["kind"] = None
-        __props__["local_data"] = None
-        __props__["rule_name"] = None
+        __props__.__dict__["behavior"] = None
+        __props__.__dict__["dns_name"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["local_data"] = None
+        __props__.__dict__["rule_name"] = None
         return ResponsePolicyRule(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -134,10 +286,4 @@ class ResponsePolicyRule(pulumi.CustomResource):
         An identifier for this rule. Must be unique with the ResponsePolicy.
         """
         return pulumi.get(self, "rule_name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

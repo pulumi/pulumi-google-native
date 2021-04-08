@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -64,15 +64,31 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeadLetterPolicyResponse(dict):
     """
     Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deadLetterTopic":
+            suggest = "dead_letter_topic"
+        elif key == "maxDeliveryAttempts":
+            suggest = "max_delivery_attempts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeadLetterPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeadLetterPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeadLetterPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dead_letter_topic: str,
                  max_delivery_attempts: int):
@@ -100,9 +116,6 @@ class DeadLetterPolicyResponse(dict):
         """
         return pulumi.get(self, "max_delivery_attempts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExpirationPolicyResponse(dict):
@@ -124,9 +137,6 @@ class ExpirationPolicyResponse(dict):
         Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
         """
         return pulumi.get(self, "ttl")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -183,15 +193,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MessageStoragePolicyResponse(dict):
     """
     A policy constraining the storage of messages published to the topic.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedPersistenceRegions":
+            suggest = "allowed_persistence_regions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MessageStoragePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MessageStoragePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MessageStoragePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_persistence_regions: Sequence[str]):
         """
@@ -208,15 +232,29 @@ class MessageStoragePolicyResponse(dict):
         """
         return pulumi.get(self, "allowed_persistence_regions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OidcTokenResponse(dict):
     """
     Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OidcTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audience: str,
                  service_account_email: str):
@@ -244,15 +282,31 @@ class OidcTokenResponse(dict):
         """
         return pulumi.get(self, "service_account_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PushConfigResponse(dict):
     """
     Configuration for a push delivery endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "oidcToken":
+            suggest = "oidc_token"
+        elif key == "pushEndpoint":
+            suggest = "push_endpoint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PushConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PushConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PushConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attributes: Mapping[str, str],
                  oidc_token: 'outputs.OidcTokenResponse',
@@ -291,15 +345,31 @@ class PushConfigResponse(dict):
         """
         return pulumi.get(self, "push_endpoint")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetryPolicyResponse(dict):
     """
     A policy that specifies how Cloud Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maximumBackoff":
+            suggest = "maximum_backoff"
+        elif key == "minimumBackoff":
+            suggest = "minimum_backoff"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetryPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetryPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetryPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  maximum_backoff: str,
                  minimum_backoff: str):
@@ -326,9 +396,6 @@ class RetryPolicyResponse(dict):
         The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
         """
         return pulumi.get(self, "minimum_backoff")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -362,8 +429,5 @@ class SchemaSettingsResponse(dict):
         Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         """
         return pulumi.get(self, "schema")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
