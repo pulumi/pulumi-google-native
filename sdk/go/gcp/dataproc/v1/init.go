@@ -33,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewRegionCluster(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:dataproc/v1:RegionClusterIamPolicy":
 		r, err = NewRegionClusterIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp-native:dataproc/v1:RegionJob":
+		r, err = NewRegionJob(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:dataproc/v1:RegionJobIamPolicy":
 		r, err = NewRegionJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:dataproc/v1:RegionOperationIamPolicy":

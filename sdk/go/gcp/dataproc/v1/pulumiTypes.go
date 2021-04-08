@@ -5411,6 +5411,47 @@ func (i HadoopJobResponseArgs) ToHadoopJobResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(HadoopJobResponseOutput)
 }
 
+func (i HadoopJobResponseArgs) ToHadoopJobResponsePtrOutput() HadoopJobResponsePtrOutput {
+	return i.ToHadoopJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HadoopJobResponseArgs) ToHadoopJobResponsePtrOutputWithContext(ctx context.Context) HadoopJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopJobResponseOutput).ToHadoopJobResponsePtrOutputWithContext(ctx)
+}
+
+// HadoopJobResponsePtrInput is an input type that accepts HadoopJobResponseArgs, HadoopJobResponsePtr and HadoopJobResponsePtrOutput values.
+// You can construct a concrete instance of `HadoopJobResponsePtrInput` via:
+//
+//          HadoopJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HadoopJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToHadoopJobResponsePtrOutput() HadoopJobResponsePtrOutput
+	ToHadoopJobResponsePtrOutputWithContext(context.Context) HadoopJobResponsePtrOutput
+}
+
+type hadoopJobResponsePtrType HadoopJobResponseArgs
+
+func HadoopJobResponsePtr(v *HadoopJobResponseArgs) HadoopJobResponsePtrInput {
+	return (*hadoopJobResponsePtrType)(v)
+}
+
+func (*hadoopJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HadoopJobResponse)(nil)).Elem()
+}
+
+func (i *hadoopJobResponsePtrType) ToHadoopJobResponsePtrOutput() HadoopJobResponsePtrOutput {
+	return i.ToHadoopJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *hadoopJobResponsePtrType) ToHadoopJobResponsePtrOutputWithContext(ctx context.Context) HadoopJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HadoopJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
 type HadoopJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -5424,6 +5465,16 @@ func (o HadoopJobResponseOutput) ToHadoopJobResponseOutput() HadoopJobResponseOu
 
 func (o HadoopJobResponseOutput) ToHadoopJobResponseOutputWithContext(ctx context.Context) HadoopJobResponseOutput {
 	return o
+}
+
+func (o HadoopJobResponseOutput) ToHadoopJobResponsePtrOutput() HadoopJobResponsePtrOutput {
+	return o.ToHadoopJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HadoopJobResponseOutput) ToHadoopJobResponsePtrOutputWithContext(ctx context.Context) HadoopJobResponsePtrOutput {
+	return o.ApplyT(func(v HadoopJobResponse) *HadoopJobResponse {
+		return &v
+	}).(HadoopJobResponsePtrOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
@@ -5464,6 +5515,104 @@ func (o HadoopJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
 // Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
 func (o HadoopJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HadoopJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type HadoopJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HadoopJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HadoopJobResponse)(nil)).Elem()
+}
+
+func (o HadoopJobResponsePtrOutput) ToHadoopJobResponsePtrOutput() HadoopJobResponsePtrOutput {
+	return o
+}
+
+func (o HadoopJobResponsePtrOutput) ToHadoopJobResponsePtrOutputWithContext(ctx context.Context) HadoopJobResponsePtrOutput {
+	return o
+}
+
+func (o HadoopJobResponsePtrOutput) Elem() HadoopJobResponseOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) HadoopJobResponse { return *v }).(HadoopJobResponseOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.
+func (o HadoopJobResponsePtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o HadoopJobResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.
+func (o HadoopJobResponsePtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.
+func (o HadoopJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o HadoopJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in jar_file_uris.
+func (o HadoopJobResponsePtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
+func (o HadoopJobResponsePtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
+func (o HadoopJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HadoopJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
@@ -5750,6 +5899,47 @@ func (i HiveJobResponseArgs) ToHiveJobResponseOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(HiveJobResponseOutput)
 }
 
+func (i HiveJobResponseArgs) ToHiveJobResponsePtrOutput() HiveJobResponsePtrOutput {
+	return i.ToHiveJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i HiveJobResponseArgs) ToHiveJobResponsePtrOutputWithContext(ctx context.Context) HiveJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveJobResponseOutput).ToHiveJobResponsePtrOutputWithContext(ctx)
+}
+
+// HiveJobResponsePtrInput is an input type that accepts HiveJobResponseArgs, HiveJobResponsePtr and HiveJobResponsePtrOutput values.
+// You can construct a concrete instance of `HiveJobResponsePtrInput` via:
+//
+//          HiveJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type HiveJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToHiveJobResponsePtrOutput() HiveJobResponsePtrOutput
+	ToHiveJobResponsePtrOutputWithContext(context.Context) HiveJobResponsePtrOutput
+}
+
+type hiveJobResponsePtrType HiveJobResponseArgs
+
+func HiveJobResponsePtr(v *HiveJobResponseArgs) HiveJobResponsePtrInput {
+	return (*hiveJobResponsePtrType)(v)
+}
+
+func (*hiveJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveJobResponse)(nil)).Elem()
+}
+
+func (i *hiveJobResponsePtrType) ToHiveJobResponsePtrOutput() HiveJobResponsePtrOutput {
+	return i.ToHiveJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *hiveJobResponsePtrType) ToHiveJobResponsePtrOutputWithContext(ctx context.Context) HiveJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(HiveJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
 type HiveJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -5763,6 +5953,16 @@ func (o HiveJobResponseOutput) ToHiveJobResponseOutput() HiveJobResponseOutput {
 
 func (o HiveJobResponseOutput) ToHiveJobResponseOutputWithContext(ctx context.Context) HiveJobResponseOutput {
 	return o
+}
+
+func (o HiveJobResponseOutput) ToHiveJobResponsePtrOutput() HiveJobResponsePtrOutput {
+	return o.ToHiveJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o HiveJobResponseOutput) ToHiveJobResponsePtrOutputWithContext(ctx context.Context) HiveJobResponsePtrOutput {
+	return o.ApplyT(func(v HiveJobResponse) *HiveJobResponse {
+		return &v
+	}).(HiveJobResponsePtrOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -5793,6 +5993,84 @@ func (o HiveJobResponseOutput) QueryList() QueryListResponseOutput {
 // Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
 func (o HiveJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HiveJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type HiveJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (HiveJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**HiveJobResponse)(nil)).Elem()
+}
+
+func (o HiveJobResponsePtrOutput) ToHiveJobResponsePtrOutput() HiveJobResponsePtrOutput {
+	return o
+}
+
+func (o HiveJobResponsePtrOutput) ToHiveJobResponsePtrOutputWithContext(ctx context.Context) HiveJobResponsePtrOutput {
+	return o
+}
+
+func (o HiveJobResponsePtrOutput) Elem() HiveJobResponseOutput {
+	return o.ApplyT(func(v *HiveJobResponse) HiveJobResponse { return *v }).(HiveJobResponseOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o HiveJobResponsePtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *HiveJobResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce (MR) tasks. Can contain Hive SerDes and UDFs.
+func (o HiveJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *HiveJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
+func (o HiveJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains Hive queries.
+func (o HiveJobResponsePtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *HiveJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o HiveJobResponsePtrOutput) QueryList() QueryListResponsePtrOutput {
+	return o.ApplyT(func(v *HiveJobResponse) *QueryListResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryList
+	}).(QueryListResponsePtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
+func (o HiveJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *HiveJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
 }
 
 // Identity related configuration, including service account based secure multi-tenancy user mappings.
@@ -7099,6 +7377,637 @@ func (o InstanceReferenceResponseArrayOutput) Index(i pulumi.IntInput) InstanceR
 	}).(InstanceReferenceResponseOutput)
 }
 
+// Dataproc job config.
+type JobPlacement struct {
+	// Optional. Cluster labels to identify a cluster where the job will be submitted.
+	ClusterLabels map[string]string `pulumi:"clusterLabels"`
+	// Required. The name of the cluster where the job will be submitted.
+	ClusterName *string `pulumi:"clusterName"`
+}
+
+// JobPlacementInput is an input type that accepts JobPlacementArgs and JobPlacementOutput values.
+// You can construct a concrete instance of `JobPlacementInput` via:
+//
+//          JobPlacementArgs{...}
+type JobPlacementInput interface {
+	pulumi.Input
+
+	ToJobPlacementOutput() JobPlacementOutput
+	ToJobPlacementOutputWithContext(context.Context) JobPlacementOutput
+}
+
+// Dataproc job config.
+type JobPlacementArgs struct {
+	// Optional. Cluster labels to identify a cluster where the job will be submitted.
+	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
+	// Required. The name of the cluster where the job will be submitted.
+	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+}
+
+func (JobPlacementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPlacement)(nil)).Elem()
+}
+
+func (i JobPlacementArgs) ToJobPlacementOutput() JobPlacementOutput {
+	return i.ToJobPlacementOutputWithContext(context.Background())
+}
+
+func (i JobPlacementArgs) ToJobPlacementOutputWithContext(ctx context.Context) JobPlacementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementOutput)
+}
+
+func (i JobPlacementArgs) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
+	return i.ToJobPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i JobPlacementArgs) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementOutput).ToJobPlacementPtrOutputWithContext(ctx)
+}
+
+// JobPlacementPtrInput is an input type that accepts JobPlacementArgs, JobPlacementPtr and JobPlacementPtrOutput values.
+// You can construct a concrete instance of `JobPlacementPtrInput` via:
+//
+//          JobPlacementArgs{...}
+//
+//  or:
+//
+//          nil
+type JobPlacementPtrInput interface {
+	pulumi.Input
+
+	ToJobPlacementPtrOutput() JobPlacementPtrOutput
+	ToJobPlacementPtrOutputWithContext(context.Context) JobPlacementPtrOutput
+}
+
+type jobPlacementPtrType JobPlacementArgs
+
+func JobPlacementPtr(v *JobPlacementArgs) JobPlacementPtrInput {
+	return (*jobPlacementPtrType)(v)
+}
+
+func (*jobPlacementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPlacement)(nil)).Elem()
+}
+
+func (i *jobPlacementPtrType) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
+	return i.ToJobPlacementPtrOutputWithContext(context.Background())
+}
+
+func (i *jobPlacementPtrType) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementPtrOutput)
+}
+
+// Dataproc job config.
+type JobPlacementOutput struct{ *pulumi.OutputState }
+
+func (JobPlacementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPlacement)(nil)).Elem()
+}
+
+func (o JobPlacementOutput) ToJobPlacementOutput() JobPlacementOutput {
+	return o
+}
+
+func (o JobPlacementOutput) ToJobPlacementOutputWithContext(ctx context.Context) JobPlacementOutput {
+	return o
+}
+
+func (o JobPlacementOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
+	return o.ToJobPlacementPtrOutputWithContext(context.Background())
+}
+
+func (o JobPlacementOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
+	return o.ApplyT(func(v JobPlacement) *JobPlacement {
+		return &v
+	}).(JobPlacementPtrOutput)
+}
+
+// Optional. Cluster labels to identify a cluster where the job will be submitted.
+func (o JobPlacementOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobPlacement) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
+}
+
+// Required. The name of the cluster where the job will be submitted.
+func (o JobPlacementOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobPlacement) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+}
+
+type JobPlacementPtrOutput struct{ *pulumi.OutputState }
+
+func (JobPlacementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPlacement)(nil)).Elem()
+}
+
+func (o JobPlacementPtrOutput) ToJobPlacementPtrOutput() JobPlacementPtrOutput {
+	return o
+}
+
+func (o JobPlacementPtrOutput) ToJobPlacementPtrOutputWithContext(ctx context.Context) JobPlacementPtrOutput {
+	return o
+}
+
+func (o JobPlacementPtrOutput) Elem() JobPlacementOutput {
+	return o.ApplyT(func(v *JobPlacement) JobPlacement { return *v }).(JobPlacementOutput)
+}
+
+// Optional. Cluster labels to identify a cluster where the job will be submitted.
+func (o JobPlacementPtrOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobPlacement) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The name of the cluster where the job will be submitted.
+func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobPlacement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataproc job config.
+type JobPlacementResponse struct {
+	// Optional. Cluster labels to identify a cluster where the job will be submitted.
+	ClusterLabels map[string]string `pulumi:"clusterLabels"`
+	// Required. The name of the cluster where the job will be submitted.
+	ClusterName string `pulumi:"clusterName"`
+	// A cluster UUID generated by the Dataproc service when the job is submitted.
+	ClusterUuid string `pulumi:"clusterUuid"`
+}
+
+// JobPlacementResponseInput is an input type that accepts JobPlacementResponseArgs and JobPlacementResponseOutput values.
+// You can construct a concrete instance of `JobPlacementResponseInput` via:
+//
+//          JobPlacementResponseArgs{...}
+type JobPlacementResponseInput interface {
+	pulumi.Input
+
+	ToJobPlacementResponseOutput() JobPlacementResponseOutput
+	ToJobPlacementResponseOutputWithContext(context.Context) JobPlacementResponseOutput
+}
+
+// Dataproc job config.
+type JobPlacementResponseArgs struct {
+	// Optional. Cluster labels to identify a cluster where the job will be submitted.
+	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
+	// Required. The name of the cluster where the job will be submitted.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// A cluster UUID generated by the Dataproc service when the job is submitted.
+	ClusterUuid pulumi.StringInput `pulumi:"clusterUuid"`
+}
+
+func (JobPlacementResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPlacementResponse)(nil)).Elem()
+}
+
+func (i JobPlacementResponseArgs) ToJobPlacementResponseOutput() JobPlacementResponseOutput {
+	return i.ToJobPlacementResponseOutputWithContext(context.Background())
+}
+
+func (i JobPlacementResponseArgs) ToJobPlacementResponseOutputWithContext(ctx context.Context) JobPlacementResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementResponseOutput)
+}
+
+func (i JobPlacementResponseArgs) ToJobPlacementResponsePtrOutput() JobPlacementResponsePtrOutput {
+	return i.ToJobPlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobPlacementResponseArgs) ToJobPlacementResponsePtrOutputWithContext(ctx context.Context) JobPlacementResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementResponseOutput).ToJobPlacementResponsePtrOutputWithContext(ctx)
+}
+
+// JobPlacementResponsePtrInput is an input type that accepts JobPlacementResponseArgs, JobPlacementResponsePtr and JobPlacementResponsePtrOutput values.
+// You can construct a concrete instance of `JobPlacementResponsePtrInput` via:
+//
+//          JobPlacementResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobPlacementResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobPlacementResponsePtrOutput() JobPlacementResponsePtrOutput
+	ToJobPlacementResponsePtrOutputWithContext(context.Context) JobPlacementResponsePtrOutput
+}
+
+type jobPlacementResponsePtrType JobPlacementResponseArgs
+
+func JobPlacementResponsePtr(v *JobPlacementResponseArgs) JobPlacementResponsePtrInput {
+	return (*jobPlacementResponsePtrType)(v)
+}
+
+func (*jobPlacementResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPlacementResponse)(nil)).Elem()
+}
+
+func (i *jobPlacementResponsePtrType) ToJobPlacementResponsePtrOutput() JobPlacementResponsePtrOutput {
+	return i.ToJobPlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobPlacementResponsePtrType) ToJobPlacementResponsePtrOutputWithContext(ctx context.Context) JobPlacementResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobPlacementResponsePtrOutput)
+}
+
+// Dataproc job config.
+type JobPlacementResponseOutput struct{ *pulumi.OutputState }
+
+func (JobPlacementResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPlacementResponse)(nil)).Elem()
+}
+
+func (o JobPlacementResponseOutput) ToJobPlacementResponseOutput() JobPlacementResponseOutput {
+	return o
+}
+
+func (o JobPlacementResponseOutput) ToJobPlacementResponseOutputWithContext(ctx context.Context) JobPlacementResponseOutput {
+	return o
+}
+
+func (o JobPlacementResponseOutput) ToJobPlacementResponsePtrOutput() JobPlacementResponsePtrOutput {
+	return o.ToJobPlacementResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobPlacementResponseOutput) ToJobPlacementResponsePtrOutputWithContext(ctx context.Context) JobPlacementResponsePtrOutput {
+	return o.ApplyT(func(v JobPlacementResponse) *JobPlacementResponse {
+		return &v
+	}).(JobPlacementResponsePtrOutput)
+}
+
+// Optional. Cluster labels to identify a cluster where the job will be submitted.
+func (o JobPlacementResponseOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v JobPlacementResponse) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
+}
+
+// Required. The name of the cluster where the job will be submitted.
+func (o JobPlacementResponseOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobPlacementResponse) string { return v.ClusterName }).(pulumi.StringOutput)
+}
+
+// A cluster UUID generated by the Dataproc service when the job is submitted.
+func (o JobPlacementResponseOutput) ClusterUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v JobPlacementResponse) string { return v.ClusterUuid }).(pulumi.StringOutput)
+}
+
+type JobPlacementResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobPlacementResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobPlacementResponse)(nil)).Elem()
+}
+
+func (o JobPlacementResponsePtrOutput) ToJobPlacementResponsePtrOutput() JobPlacementResponsePtrOutput {
+	return o
+}
+
+func (o JobPlacementResponsePtrOutput) ToJobPlacementResponsePtrOutputWithContext(ctx context.Context) JobPlacementResponsePtrOutput {
+	return o
+}
+
+func (o JobPlacementResponsePtrOutput) Elem() JobPlacementResponseOutput {
+	return o.ApplyT(func(v *JobPlacementResponse) JobPlacementResponse { return *v }).(JobPlacementResponseOutput)
+}
+
+// Optional. Cluster labels to identify a cluster where the job will be submitted.
+func (o JobPlacementResponsePtrOutput) ClusterLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *JobPlacementResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterLabels
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The name of the cluster where the job will be submitted.
+func (o JobPlacementResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobPlacementResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterName
+	}).(pulumi.StringPtrOutput)
+}
+
+// A cluster UUID generated by the Dataproc service when the job is submitted.
+func (o JobPlacementResponsePtrOutput) ClusterUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobPlacementResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReference struct {
+	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+	JobId *string `pulumi:"jobId"`
+	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+	ProjectId *string `pulumi:"projectId"`
+}
+
+// JobReferenceInput is an input type that accepts JobReferenceArgs and JobReferenceOutput values.
+// You can construct a concrete instance of `JobReferenceInput` via:
+//
+//          JobReferenceArgs{...}
+type JobReferenceInput interface {
+	pulumi.Input
+
+	ToJobReferenceOutput() JobReferenceOutput
+	ToJobReferenceOutputWithContext(context.Context) JobReferenceOutput
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReferenceArgs struct {
+	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+	JobId pulumi.StringPtrInput `pulumi:"jobId"`
+	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+}
+
+func (JobReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobReference)(nil)).Elem()
+}
+
+func (i JobReferenceArgs) ToJobReferenceOutput() JobReferenceOutput {
+	return i.ToJobReferenceOutputWithContext(context.Background())
+}
+
+func (i JobReferenceArgs) ToJobReferenceOutputWithContext(ctx context.Context) JobReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceOutput)
+}
+
+func (i JobReferenceArgs) ToJobReferencePtrOutput() JobReferencePtrOutput {
+	return i.ToJobReferencePtrOutputWithContext(context.Background())
+}
+
+func (i JobReferenceArgs) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceOutput).ToJobReferencePtrOutputWithContext(ctx)
+}
+
+// JobReferencePtrInput is an input type that accepts JobReferenceArgs, JobReferencePtr and JobReferencePtrOutput values.
+// You can construct a concrete instance of `JobReferencePtrInput` via:
+//
+//          JobReferenceArgs{...}
+//
+//  or:
+//
+//          nil
+type JobReferencePtrInput interface {
+	pulumi.Input
+
+	ToJobReferencePtrOutput() JobReferencePtrOutput
+	ToJobReferencePtrOutputWithContext(context.Context) JobReferencePtrOutput
+}
+
+type jobReferencePtrType JobReferenceArgs
+
+func JobReferencePtr(v *JobReferenceArgs) JobReferencePtrInput {
+	return (*jobReferencePtrType)(v)
+}
+
+func (*jobReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobReference)(nil)).Elem()
+}
+
+func (i *jobReferencePtrType) ToJobReferencePtrOutput() JobReferencePtrOutput {
+	return i.ToJobReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *jobReferencePtrType) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferencePtrOutput)
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReferenceOutput struct{ *pulumi.OutputState }
+
+func (JobReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobReference)(nil)).Elem()
+}
+
+func (o JobReferenceOutput) ToJobReferenceOutput() JobReferenceOutput {
+	return o
+}
+
+func (o JobReferenceOutput) ToJobReferenceOutputWithContext(ctx context.Context) JobReferenceOutput {
+	return o
+}
+
+func (o JobReferenceOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
+	return o.ToJobReferencePtrOutputWithContext(context.Background())
+}
+
+func (o JobReferenceOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
+	return o.ApplyT(func(v JobReference) *JobReference {
+		return &v
+	}).(JobReferencePtrOutput)
+}
+
+// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+func (o JobReferenceOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobReference) *string { return v.JobId }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+func (o JobReferenceOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+type JobReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (JobReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobReference)(nil)).Elem()
+}
+
+func (o JobReferencePtrOutput) ToJobReferencePtrOutput() JobReferencePtrOutput {
+	return o
+}
+
+func (o JobReferencePtrOutput) ToJobReferencePtrOutputWithContext(ctx context.Context) JobReferencePtrOutput {
+	return o
+}
+
+func (o JobReferencePtrOutput) Elem() JobReferenceOutput {
+	return o.ApplyT(func(v *JobReference) JobReference { return *v }).(JobReferenceOutput)
+}
+
+// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+func (o JobReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobReference) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReferenceResponse struct {
+	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+	JobId string `pulumi:"jobId"`
+	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+	ProjectId string `pulumi:"projectId"`
+}
+
+// JobReferenceResponseInput is an input type that accepts JobReferenceResponseArgs and JobReferenceResponseOutput values.
+// You can construct a concrete instance of `JobReferenceResponseInput` via:
+//
+//          JobReferenceResponseArgs{...}
+type JobReferenceResponseInput interface {
+	pulumi.Input
+
+	ToJobReferenceResponseOutput() JobReferenceResponseOutput
+	ToJobReferenceResponseOutputWithContext(context.Context) JobReferenceResponseOutput
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReferenceResponseArgs struct {
+	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+	JobId pulumi.StringInput `pulumi:"jobId"`
+	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (JobReferenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobReferenceResponse)(nil)).Elem()
+}
+
+func (i JobReferenceResponseArgs) ToJobReferenceResponseOutput() JobReferenceResponseOutput {
+	return i.ToJobReferenceResponseOutputWithContext(context.Background())
+}
+
+func (i JobReferenceResponseArgs) ToJobReferenceResponseOutputWithContext(ctx context.Context) JobReferenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponseOutput)
+}
+
+func (i JobReferenceResponseArgs) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
+	return i.ToJobReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobReferenceResponseArgs) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponseOutput).ToJobReferenceResponsePtrOutputWithContext(ctx)
+}
+
+// JobReferenceResponsePtrInput is an input type that accepts JobReferenceResponseArgs, JobReferenceResponsePtr and JobReferenceResponsePtrOutput values.
+// You can construct a concrete instance of `JobReferenceResponsePtrInput` via:
+//
+//          JobReferenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobReferenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput
+	ToJobReferenceResponsePtrOutputWithContext(context.Context) JobReferenceResponsePtrOutput
+}
+
+type jobReferenceResponsePtrType JobReferenceResponseArgs
+
+func JobReferenceResponsePtr(v *JobReferenceResponseArgs) JobReferenceResponsePtrInput {
+	return (*jobReferenceResponsePtrType)(v)
+}
+
+func (*jobReferenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobReferenceResponse)(nil)).Elem()
+}
+
+func (i *jobReferenceResponsePtrType) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
+	return i.ToJobReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobReferenceResponsePtrType) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobReferenceResponsePtrOutput)
+}
+
+// Encapsulates the full scoping used to reference a job.
+type JobReferenceResponseOutput struct{ *pulumi.OutputState }
+
+func (JobReferenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobReferenceResponse)(nil)).Elem()
+}
+
+func (o JobReferenceResponseOutput) ToJobReferenceResponseOutput() JobReferenceResponseOutput {
+	return o
+}
+
+func (o JobReferenceResponseOutput) ToJobReferenceResponseOutputWithContext(ctx context.Context) JobReferenceResponseOutput {
+	return o
+}
+
+func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
+	return o.ToJobReferenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobReferenceResponseOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
+	return o.ApplyT(func(v JobReferenceResponse) *JobReferenceResponse {
+		return &v
+	}).(JobReferenceResponsePtrOutput)
+}
+
+// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+func (o JobReferenceResponseOutput) JobId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobReferenceResponse) string { return v.JobId }).(pulumi.StringOutput)
+}
+
+// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+func (o JobReferenceResponseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type JobReferenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobReferenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobReferenceResponse)(nil)).Elem()
+}
+
+func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutput() JobReferenceResponsePtrOutput {
+	return o
+}
+
+func (o JobReferenceResponsePtrOutput) ToJobReferenceResponsePtrOutputWithContext(ctx context.Context) JobReferenceResponsePtrOutput {
+	return o
+}
+
+func (o JobReferenceResponsePtrOutput) Elem() JobReferenceResponseOutput {
+	return o.ApplyT(func(v *JobReferenceResponse) JobReferenceResponse { return *v }).(JobReferenceResponseOutput)
+}
+
+// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
+func (o JobReferenceResponsePtrOutput) JobId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.JobId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
+func (o JobReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobReferenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Job scheduling options.
 type JobScheduling struct {
 	// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
@@ -7291,6 +8200,47 @@ func (i JobSchedulingResponseArgs) ToJobSchedulingResponseOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingResponseOutput)
 }
 
+func (i JobSchedulingResponseArgs) ToJobSchedulingResponsePtrOutput() JobSchedulingResponsePtrOutput {
+	return i.ToJobSchedulingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobSchedulingResponseArgs) ToJobSchedulingResponsePtrOutputWithContext(ctx context.Context) JobSchedulingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingResponseOutput).ToJobSchedulingResponsePtrOutputWithContext(ctx)
+}
+
+// JobSchedulingResponsePtrInput is an input type that accepts JobSchedulingResponseArgs, JobSchedulingResponsePtr and JobSchedulingResponsePtrOutput values.
+// You can construct a concrete instance of `JobSchedulingResponsePtrInput` via:
+//
+//          JobSchedulingResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobSchedulingResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobSchedulingResponsePtrOutput() JobSchedulingResponsePtrOutput
+	ToJobSchedulingResponsePtrOutputWithContext(context.Context) JobSchedulingResponsePtrOutput
+}
+
+type jobSchedulingResponsePtrType JobSchedulingResponseArgs
+
+func JobSchedulingResponsePtr(v *JobSchedulingResponseArgs) JobSchedulingResponsePtrInput {
+	return (*jobSchedulingResponsePtrType)(v)
+}
+
+func (*jobSchedulingResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSchedulingResponse)(nil)).Elem()
+}
+
+func (i *jobSchedulingResponsePtrType) ToJobSchedulingResponsePtrOutput() JobSchedulingResponsePtrOutput {
+	return i.ToJobSchedulingResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobSchedulingResponsePtrType) ToJobSchedulingResponsePtrOutputWithContext(ctx context.Context) JobSchedulingResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobSchedulingResponsePtrOutput)
+}
+
 // Job scheduling options.
 type JobSchedulingResponseOutput struct{ *pulumi.OutputState }
 
@@ -7306,6 +8256,16 @@ func (o JobSchedulingResponseOutput) ToJobSchedulingResponseOutputWithContext(ct
 	return o
 }
 
+func (o JobSchedulingResponseOutput) ToJobSchedulingResponsePtrOutput() JobSchedulingResponsePtrOutput {
+	return o.ToJobSchedulingResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobSchedulingResponseOutput) ToJobSchedulingResponsePtrOutputWithContext(ctx context.Context) JobSchedulingResponsePtrOutput {
+	return o.ApplyT(func(v JobSchedulingResponse) *JobSchedulingResponse {
+		return &v
+	}).(JobSchedulingResponsePtrOutput)
+}
+
 // Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
 func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresPerHour }).(pulumi.IntOutput)
@@ -7314,6 +8274,280 @@ func (o JobSchedulingResponseOutput) MaxFailuresPerHour() pulumi.IntOutput {
 // Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
 func (o JobSchedulingResponseOutput) MaxFailuresTotal() pulumi.IntOutput {
 	return o.ApplyT(func(v JobSchedulingResponse) int { return v.MaxFailuresTotal }).(pulumi.IntOutput)
+}
+
+type JobSchedulingResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobSchedulingResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobSchedulingResponse)(nil)).Elem()
+}
+
+func (o JobSchedulingResponsePtrOutput) ToJobSchedulingResponsePtrOutput() JobSchedulingResponsePtrOutput {
+	return o
+}
+
+func (o JobSchedulingResponsePtrOutput) ToJobSchedulingResponsePtrOutputWithContext(ctx context.Context) JobSchedulingResponsePtrOutput {
+	return o
+}
+
+func (o JobSchedulingResponsePtrOutput) Elem() JobSchedulingResponseOutput {
+	return o.ApplyT(func(v *JobSchedulingResponse) JobSchedulingResponse { return *v }).(JobSchedulingResponseOutput)
+}
+
+// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed.A job may be reported as thrashing if driver exits with non-zero code 4 times within 10 minute window.Maximum value is 10.
+func (o JobSchedulingResponsePtrOutput) MaxFailuresPerHour() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSchedulingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxFailuresPerHour
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Maximum number of times in total a driver may be restarted as a result of driver exiting with non-zero code before job is reported failed. Maximum value is 240.
+func (o JobSchedulingResponsePtrOutput) MaxFailuresTotal() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *JobSchedulingResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxFailuresTotal
+	}).(pulumi.IntPtrOutput)
+}
+
+// Dataproc job status.
+type JobStatusResponse struct {
+	// Optional. Output only. Job state details, such as an error description if the state is ERROR.
+	Details string `pulumi:"details"`
+	// A state message specifying the overall job state.
+	State string `pulumi:"state"`
+	// The time when this state was entered.
+	StateStartTime string `pulumi:"stateStartTime"`
+	// Additional state information, which includes status reported by the agent.
+	Substate string `pulumi:"substate"`
+}
+
+// JobStatusResponseInput is an input type that accepts JobStatusResponseArgs and JobStatusResponseOutput values.
+// You can construct a concrete instance of `JobStatusResponseInput` via:
+//
+//          JobStatusResponseArgs{...}
+type JobStatusResponseInput interface {
+	pulumi.Input
+
+	ToJobStatusResponseOutput() JobStatusResponseOutput
+	ToJobStatusResponseOutputWithContext(context.Context) JobStatusResponseOutput
+}
+
+// Dataproc job status.
+type JobStatusResponseArgs struct {
+	// Optional. Output only. Job state details, such as an error description if the state is ERROR.
+	Details pulumi.StringInput `pulumi:"details"`
+	// A state message specifying the overall job state.
+	State pulumi.StringInput `pulumi:"state"`
+	// The time when this state was entered.
+	StateStartTime pulumi.StringInput `pulumi:"stateStartTime"`
+	// Additional state information, which includes status reported by the agent.
+	Substate pulumi.StringInput `pulumi:"substate"`
+}
+
+func (JobStatusResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusResponse)(nil)).Elem()
+}
+
+func (i JobStatusResponseArgs) ToJobStatusResponseOutput() JobStatusResponseOutput {
+	return i.ToJobStatusResponseOutputWithContext(context.Background())
+}
+
+func (i JobStatusResponseArgs) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput)
+}
+
+func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i JobStatusResponseArgs) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseOutput).ToJobStatusResponsePtrOutputWithContext(ctx)
+}
+
+// JobStatusResponsePtrInput is an input type that accepts JobStatusResponseArgs, JobStatusResponsePtr and JobStatusResponsePtrOutput values.
+// You can construct a concrete instance of `JobStatusResponsePtrInput` via:
+//
+//          JobStatusResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type JobStatusResponsePtrInput interface {
+	pulumi.Input
+
+	ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput
+	ToJobStatusResponsePtrOutputWithContext(context.Context) JobStatusResponsePtrOutput
+}
+
+type jobStatusResponsePtrType JobStatusResponseArgs
+
+func JobStatusResponsePtr(v *JobStatusResponseArgs) JobStatusResponsePtrInput {
+	return (*jobStatusResponsePtrType)(v)
+}
+
+func (*jobStatusResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
+}
+
+func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return i.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *jobStatusResponsePtrType) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponsePtrOutput)
+}
+
+// JobStatusResponseArrayInput is an input type that accepts JobStatusResponseArray and JobStatusResponseArrayOutput values.
+// You can construct a concrete instance of `JobStatusResponseArrayInput` via:
+//
+//          JobStatusResponseArray{ JobStatusResponseArgs{...} }
+type JobStatusResponseArrayInput interface {
+	pulumi.Input
+
+	ToJobStatusResponseArrayOutput() JobStatusResponseArrayOutput
+	ToJobStatusResponseArrayOutputWithContext(context.Context) JobStatusResponseArrayOutput
+}
+
+type JobStatusResponseArray []JobStatusResponseInput
+
+func (JobStatusResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusResponse)(nil)).Elem()
+}
+
+func (i JobStatusResponseArray) ToJobStatusResponseArrayOutput() JobStatusResponseArrayOutput {
+	return i.ToJobStatusResponseArrayOutputWithContext(context.Background())
+}
+
+func (i JobStatusResponseArray) ToJobStatusResponseArrayOutputWithContext(ctx context.Context) JobStatusResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(JobStatusResponseArrayOutput)
+}
+
+// Dataproc job status.
+type JobStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (JobStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobStatusResponse)(nil)).Elem()
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponseOutput() JobStatusResponseOutput {
+	return o
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx context.Context) JobStatusResponseOutput {
+	return o
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return o.ToJobStatusResponsePtrOutputWithContext(context.Background())
+}
+
+func (o JobStatusResponseOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return o.ApplyT(func(v JobStatusResponse) *JobStatusResponse {
+		return &v
+	}).(JobStatusResponsePtrOutput)
+}
+
+// Optional. Output only. Job state details, such as an error description if the state is ERROR.
+func (o JobStatusResponseOutput) Details() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatusResponse) string { return v.Details }).(pulumi.StringOutput)
+}
+
+// A state message specifying the overall job state.
+func (o JobStatusResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatusResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The time when this state was entered.
+func (o JobStatusResponseOutput) StateStartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatusResponse) string { return v.StateStartTime }).(pulumi.StringOutput)
+}
+
+// Additional state information, which includes status reported by the agent.
+func (o JobStatusResponseOutput) Substate() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatusResponse) string { return v.Substate }).(pulumi.StringOutput)
+}
+
+type JobStatusResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (JobStatusResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**JobStatusResponse)(nil)).Elem()
+}
+
+func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutput() JobStatusResponsePtrOutput {
+	return o
+}
+
+func (o JobStatusResponsePtrOutput) ToJobStatusResponsePtrOutputWithContext(ctx context.Context) JobStatusResponsePtrOutput {
+	return o
+}
+
+func (o JobStatusResponsePtrOutput) Elem() JobStatusResponseOutput {
+	return o.ApplyT(func(v *JobStatusResponse) JobStatusResponse { return *v }).(JobStatusResponseOutput)
+}
+
+// Optional. Output only. Job state details, such as an error description if the state is ERROR.
+func (o JobStatusResponsePtrOutput) Details() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Details
+	}).(pulumi.StringPtrOutput)
+}
+
+// A state message specifying the overall job state.
+func (o JobStatusResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when this state was entered.
+func (o JobStatusResponsePtrOutput) StateStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StateStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Additional state information, which includes status reported by the agent.
+func (o JobStatusResponsePtrOutput) Substate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatusResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Substate
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobStatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (JobStatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]JobStatusResponse)(nil)).Elem()
+}
+
+func (o JobStatusResponseArrayOutput) ToJobStatusResponseArrayOutput() JobStatusResponseArrayOutput {
+	return o
+}
+
+func (o JobStatusResponseArrayOutput) ToJobStatusResponseArrayOutputWithContext(ctx context.Context) JobStatusResponseArrayOutput {
+	return o
+}
+
+func (o JobStatusResponseArrayOutput) Index(i pulumi.IntInput) JobStatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobStatusResponse {
+		return vs[0].([]JobStatusResponse)[vs[1].(int)]
+	}).(JobStatusResponseOutput)
 }
 
 // Specifies Kerberos related configuration.
@@ -8648,6 +9882,47 @@ func (i LoggingConfigResponseArgs) ToLoggingConfigResponseOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput)
 }
 
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i LoggingConfigResponseArgs) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponseOutput).ToLoggingConfigResponsePtrOutputWithContext(ctx)
+}
+
+// LoggingConfigResponsePtrInput is an input type that accepts LoggingConfigResponseArgs, LoggingConfigResponsePtr and LoggingConfigResponsePtrOutput values.
+// You can construct a concrete instance of `LoggingConfigResponsePtrInput` via:
+//
+//          LoggingConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type LoggingConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput
+	ToLoggingConfigResponsePtrOutputWithContext(context.Context) LoggingConfigResponsePtrOutput
+}
+
+type loggingConfigResponsePtrType LoggingConfigResponseArgs
+
+func LoggingConfigResponsePtr(v *LoggingConfigResponseArgs) LoggingConfigResponsePtrInput {
+	return (*loggingConfigResponsePtrType)(v)
+}
+
+func (*loggingConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return i.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *loggingConfigResponsePtrType) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingConfigResponsePtrOutput)
+}
+
 // The runtime logging config of the job.
 type LoggingConfigResponseOutput struct{ *pulumi.OutputState }
 
@@ -8663,9 +9938,47 @@ func (o LoggingConfigResponseOutput) ToLoggingConfigResponseOutputWithContext(ct
 	return o
 }
 
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o.ToLoggingConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o LoggingConfigResponseOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v LoggingConfigResponse) *LoggingConfigResponse {
+		return &v
+	}).(LoggingConfigResponsePtrOutput)
+}
+
 // The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
 func (o LoggingConfigResponseOutput) DriverLogLevels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LoggingConfigResponse) map[string]string { return v.DriverLogLevels }).(pulumi.StringMapOutput)
+}
+
+type LoggingConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutput() LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) ToLoggingConfigResponsePtrOutputWithContext(ctx context.Context) LoggingConfigResponsePtrOutput {
+	return o
+}
+
+func (o LoggingConfigResponsePtrOutput) Elem() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) LoggingConfigResponse { return *v }).(LoggingConfigResponseOutput)
+}
+
+// The per-package log levels for the driver. This may include "root" package name to configure rootLogger. Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+func (o LoggingConfigResponsePtrOutput) DriverLogLevels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LoggingConfigResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DriverLogLevels
+	}).(pulumi.StringMapOutput)
 }
 
 // Cluster that is managed by the workflow.
@@ -11147,6 +12460,47 @@ func (i PigJobResponseArgs) ToPigJobResponseOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(PigJobResponseOutput)
 }
 
+func (i PigJobResponseArgs) ToPigJobResponsePtrOutput() PigJobResponsePtrOutput {
+	return i.ToPigJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PigJobResponseArgs) ToPigJobResponsePtrOutputWithContext(ctx context.Context) PigJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PigJobResponseOutput).ToPigJobResponsePtrOutputWithContext(ctx)
+}
+
+// PigJobResponsePtrInput is an input type that accepts PigJobResponseArgs, PigJobResponsePtr and PigJobResponsePtrOutput values.
+// You can construct a concrete instance of `PigJobResponsePtrInput` via:
+//
+//          PigJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PigJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToPigJobResponsePtrOutput() PigJobResponsePtrOutput
+	ToPigJobResponsePtrOutputWithContext(context.Context) PigJobResponsePtrOutput
+}
+
+type pigJobResponsePtrType PigJobResponseArgs
+
+func PigJobResponsePtr(v *PigJobResponseArgs) PigJobResponsePtrInput {
+	return (*pigJobResponsePtrType)(v)
+}
+
+func (*pigJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PigJobResponse)(nil)).Elem()
+}
+
+func (i *pigJobResponsePtrType) ToPigJobResponsePtrOutput() PigJobResponsePtrOutput {
+	return i.ToPigJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pigJobResponsePtrType) ToPigJobResponsePtrOutputWithContext(ctx context.Context) PigJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PigJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
 type PigJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -11160,6 +12514,16 @@ func (o PigJobResponseOutput) ToPigJobResponseOutput() PigJobResponseOutput {
 
 func (o PigJobResponseOutput) ToPigJobResponseOutputWithContext(ctx context.Context) PigJobResponseOutput {
 	return o
+}
+
+func (o PigJobResponseOutput) ToPigJobResponsePtrOutput() PigJobResponsePtrOutput {
+	return o.ToPigJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PigJobResponseOutput) ToPigJobResponsePtrOutputWithContext(ctx context.Context) PigJobResponsePtrOutput {
+	return o.ApplyT(func(v PigJobResponse) *PigJobResponse {
+		return &v
+	}).(PigJobResponsePtrOutput)
 }
 
 // Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -11195,6 +12559,94 @@ func (o PigJobResponseOutput) QueryList() QueryListResponseOutput {
 // Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
 func (o PigJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v PigJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type PigJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PigJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PigJobResponse)(nil)).Elem()
+}
+
+func (o PigJobResponsePtrOutput) ToPigJobResponsePtrOutput() PigJobResponsePtrOutput {
+	return o
+}
+
+func (o PigJobResponsePtrOutput) ToPigJobResponsePtrOutputWithContext(ctx context.Context) PigJobResponsePtrOutput {
+	return o
+}
+
+func (o PigJobResponsePtrOutput) Elem() PigJobResponseOutput {
+	return o.ApplyT(func(v *PigJobResponse) PigJobResponse { return *v }).(PigJobResponseOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o PigJobResponsePtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PigJobResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR) tasks. Can contain Pig UDFs.
+func (o PigJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PigJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PigJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *PigJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml, /etc/pig/conf/pig.properties, and classes in user code.
+func (o PigJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PigJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains the Pig queries.
+func (o PigJobResponsePtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PigJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o PigJobResponsePtrOutput) QueryList() QueryListResponsePtrOutput {
+	return o.ApplyT(func(v *PigJobResponse) *QueryListResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryList
+	}).(QueryListResponsePtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Pig command: name=[value]).
+func (o PigJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PigJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
@@ -11504,6 +12956,47 @@ func (i PrestoJobResponseArgs) ToPrestoJobResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(PrestoJobResponseOutput)
 }
 
+func (i PrestoJobResponseArgs) ToPrestoJobResponsePtrOutput() PrestoJobResponsePtrOutput {
+	return i.ToPrestoJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PrestoJobResponseArgs) ToPrestoJobResponsePtrOutputWithContext(ctx context.Context) PrestoJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrestoJobResponseOutput).ToPrestoJobResponsePtrOutputWithContext(ctx)
+}
+
+// PrestoJobResponsePtrInput is an input type that accepts PrestoJobResponseArgs, PrestoJobResponsePtr and PrestoJobResponsePtrOutput values.
+// You can construct a concrete instance of `PrestoJobResponsePtrInput` via:
+//
+//          PrestoJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PrestoJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToPrestoJobResponsePtrOutput() PrestoJobResponsePtrOutput
+	ToPrestoJobResponsePtrOutputWithContext(context.Context) PrestoJobResponsePtrOutput
+}
+
+type prestoJobResponsePtrType PrestoJobResponseArgs
+
+func PrestoJobResponsePtr(v *PrestoJobResponseArgs) PrestoJobResponsePtrInput {
+	return (*prestoJobResponsePtrType)(v)
+}
+
+func (*prestoJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrestoJobResponse)(nil)).Elem()
+}
+
+func (i *prestoJobResponsePtrType) ToPrestoJobResponsePtrOutput() PrestoJobResponsePtrOutput {
+	return i.ToPrestoJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *prestoJobResponsePtrType) ToPrestoJobResponsePtrOutputWithContext(ctx context.Context) PrestoJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrestoJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
 type PrestoJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -11517,6 +13010,16 @@ func (o PrestoJobResponseOutput) ToPrestoJobResponseOutput() PrestoJobResponseOu
 
 func (o PrestoJobResponseOutput) ToPrestoJobResponseOutputWithContext(ctx context.Context) PrestoJobResponseOutput {
 	return o
+}
+
+func (o PrestoJobResponseOutput) ToPrestoJobResponsePtrOutput() PrestoJobResponsePtrOutput {
+	return o.ToPrestoJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PrestoJobResponseOutput) ToPrestoJobResponsePtrOutputWithContext(ctx context.Context) PrestoJobResponsePtrOutput {
+	return o.ApplyT(func(v PrestoJobResponse) *PrestoJobResponse {
+		return &v
+	}).(PrestoJobResponsePtrOutput)
 }
 
 // Optional. Presto client tags to attach to this query
@@ -11552,6 +13055,94 @@ func (o PrestoJobResponseOutput) QueryFileUri() pulumi.StringOutput {
 // A list of queries.
 func (o PrestoJobResponseOutput) QueryList() QueryListResponseOutput {
 	return o.ApplyT(func(v PrestoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
+type PrestoJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PrestoJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrestoJobResponse)(nil)).Elem()
+}
+
+func (o PrestoJobResponsePtrOutput) ToPrestoJobResponsePtrOutput() PrestoJobResponsePtrOutput {
+	return o
+}
+
+func (o PrestoJobResponsePtrOutput) ToPrestoJobResponsePtrOutputWithContext(ctx context.Context) PrestoJobResponsePtrOutput {
+	return o
+}
+
+func (o PrestoJobResponsePtrOutput) Elem() PrestoJobResponseOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) PrestoJobResponse { return *v }).(PrestoJobResponseOutput)
+}
+
+// Optional. Presto client tags to attach to this query
+func (o PrestoJobResponsePtrOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o PrestoJobResponsePtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PrestoJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Presto documentation for supported output formats
+func (o PrestoJobResponsePtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values. Used to set Presto session properties (https://prestodb.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Presto CLI
+func (o PrestoJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o PrestoJobResponsePtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o PrestoJobResponsePtrOutput) QueryList() QueryListResponsePtrOutput {
+	return o.ApplyT(func(v *PrestoJobResponse) *QueryListResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryList
+	}).(QueryListResponsePtrOutput)
 }
 
 // A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
@@ -11884,6 +13475,47 @@ func (i PySparkJobResponseArgs) ToPySparkJobResponseOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(PySparkJobResponseOutput)
 }
 
+func (i PySparkJobResponseArgs) ToPySparkJobResponsePtrOutput() PySparkJobResponsePtrOutput {
+	return i.ToPySparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PySparkJobResponseArgs) ToPySparkJobResponsePtrOutputWithContext(ctx context.Context) PySparkJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkJobResponseOutput).ToPySparkJobResponsePtrOutputWithContext(ctx)
+}
+
+// PySparkJobResponsePtrInput is an input type that accepts PySparkJobResponseArgs, PySparkJobResponsePtr and PySparkJobResponsePtrOutput values.
+// You can construct a concrete instance of `PySparkJobResponsePtrInput` via:
+//
+//          PySparkJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PySparkJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToPySparkJobResponsePtrOutput() PySparkJobResponsePtrOutput
+	ToPySparkJobResponsePtrOutputWithContext(context.Context) PySparkJobResponsePtrOutput
+}
+
+type pySparkJobResponsePtrType PySparkJobResponseArgs
+
+func PySparkJobResponsePtr(v *PySparkJobResponseArgs) PySparkJobResponsePtrInput {
+	return (*pySparkJobResponsePtrType)(v)
+}
+
+func (*pySparkJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PySparkJobResponse)(nil)).Elem()
+}
+
+func (i *pySparkJobResponsePtrType) ToPySparkJobResponsePtrOutput() PySparkJobResponsePtrOutput {
+	return i.ToPySparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pySparkJobResponsePtrType) ToPySparkJobResponsePtrOutputWithContext(ctx context.Context) PySparkJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PySparkJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
 type PySparkJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -11897,6 +13529,16 @@ func (o PySparkJobResponseOutput) ToPySparkJobResponseOutput() PySparkJobRespons
 
 func (o PySparkJobResponseOutput) ToPySparkJobResponseOutputWithContext(ctx context.Context) PySparkJobResponseOutput {
 	return o
+}
+
+func (o PySparkJobResponseOutput) ToPySparkJobResponsePtrOutput() PySparkJobResponsePtrOutput {
+	return o.ToPySparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PySparkJobResponseOutput) ToPySparkJobResponsePtrOutputWithContext(ctx context.Context) PySparkJobResponsePtrOutput {
+	return o.ApplyT(func(v PySparkJobResponse) *PySparkJobResponse {
+		return &v
+	}).(PySparkJobResponsePtrOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -11937,6 +13579,104 @@ func (o PySparkJobResponseOutput) Properties() pulumi.StringMapOutput {
 // Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
 func (o PySparkJobResponseOutput) PythonFileUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PySparkJobResponse) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
+}
+
+type PySparkJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PySparkJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PySparkJobResponse)(nil)).Elem()
+}
+
+func (o PySparkJobResponsePtrOutput) ToPySparkJobResponsePtrOutput() PySparkJobResponsePtrOutput {
+	return o
+}
+
+func (o PySparkJobResponsePtrOutput) ToPySparkJobResponsePtrOutputWithContext(ctx context.Context) PySparkJobResponsePtrOutput {
+	return o
+}
+
+func (o PySparkJobResponsePtrOutput) Elem() PySparkJobResponseOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) PySparkJobResponse { return *v }).(PySparkJobResponseOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o PySparkJobResponsePtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o PySparkJobResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o PySparkJobResponsePtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+func (o PySparkJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o PySparkJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o PySparkJobResponsePtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainPythonFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o PySparkJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o PySparkJobResponsePtrOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PySparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonFileUris
+	}).(pulumi.StringArrayOutput)
 }
 
 // A list of queries to run on a cluster.
@@ -12108,6 +13848,47 @@ func (i QueryListResponseArgs) ToQueryListResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(QueryListResponseOutput)
 }
 
+func (i QueryListResponseArgs) ToQueryListResponsePtrOutput() QueryListResponsePtrOutput {
+	return i.ToQueryListResponsePtrOutputWithContext(context.Background())
+}
+
+func (i QueryListResponseArgs) ToQueryListResponsePtrOutputWithContext(ctx context.Context) QueryListResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryListResponseOutput).ToQueryListResponsePtrOutputWithContext(ctx)
+}
+
+// QueryListResponsePtrInput is an input type that accepts QueryListResponseArgs, QueryListResponsePtr and QueryListResponsePtrOutput values.
+// You can construct a concrete instance of `QueryListResponsePtrInput` via:
+//
+//          QueryListResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type QueryListResponsePtrInput interface {
+	pulumi.Input
+
+	ToQueryListResponsePtrOutput() QueryListResponsePtrOutput
+	ToQueryListResponsePtrOutputWithContext(context.Context) QueryListResponsePtrOutput
+}
+
+type queryListResponsePtrType QueryListResponseArgs
+
+func QueryListResponsePtr(v *QueryListResponseArgs) QueryListResponsePtrInput {
+	return (*queryListResponsePtrType)(v)
+}
+
+func (*queryListResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryListResponse)(nil)).Elem()
+}
+
+func (i *queryListResponsePtrType) ToQueryListResponsePtrOutput() QueryListResponsePtrOutput {
+	return i.ToQueryListResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *queryListResponsePtrType) ToQueryListResponsePtrOutputWithContext(ctx context.Context) QueryListResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(QueryListResponsePtrOutput)
+}
+
 // A list of queries to run on a cluster.
 type QueryListResponseOutput struct{ *pulumi.OutputState }
 
@@ -12123,9 +13904,47 @@ func (o QueryListResponseOutput) ToQueryListResponseOutputWithContext(ctx contex
 	return o
 }
 
+func (o QueryListResponseOutput) ToQueryListResponsePtrOutput() QueryListResponsePtrOutput {
+	return o.ToQueryListResponsePtrOutputWithContext(context.Background())
+}
+
+func (o QueryListResponseOutput) ToQueryListResponsePtrOutputWithContext(ctx context.Context) QueryListResponsePtrOutput {
+	return o.ApplyT(func(v QueryListResponse) *QueryListResponse {
+		return &v
+	}).(QueryListResponsePtrOutput)
+}
+
 // Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 func (o QueryListResponseOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v QueryListResponse) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type QueryListResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (QueryListResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**QueryListResponse)(nil)).Elem()
+}
+
+func (o QueryListResponsePtrOutput) ToQueryListResponsePtrOutput() QueryListResponsePtrOutput {
+	return o
+}
+
+func (o QueryListResponsePtrOutput) ToQueryListResponsePtrOutputWithContext(ctx context.Context) QueryListResponsePtrOutput {
+	return o
+}
+
+func (o QueryListResponsePtrOutput) Elem() QueryListResponseOutput {
+	return o.ApplyT(func(v *QueryListResponse) QueryListResponse { return *v }).(QueryListResponseOutput)
+}
+
+// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+func (o QueryListResponsePtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *QueryListResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
 }
 
 // Validation based on regular expressions.
@@ -13985,6 +15804,47 @@ func (i SparkJobResponseArgs) ToSparkJobResponseOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(SparkJobResponseOutput)
 }
 
+func (i SparkJobResponseArgs) ToSparkJobResponsePtrOutput() SparkJobResponsePtrOutput {
+	return i.ToSparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SparkJobResponseArgs) ToSparkJobResponsePtrOutputWithContext(ctx context.Context) SparkJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobResponseOutput).ToSparkJobResponsePtrOutputWithContext(ctx)
+}
+
+// SparkJobResponsePtrInput is an input type that accepts SparkJobResponseArgs, SparkJobResponsePtr and SparkJobResponsePtrOutput values.
+// You can construct a concrete instance of `SparkJobResponsePtrInput` via:
+//
+//          SparkJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToSparkJobResponsePtrOutput() SparkJobResponsePtrOutput
+	ToSparkJobResponsePtrOutputWithContext(context.Context) SparkJobResponsePtrOutput
+}
+
+type sparkJobResponsePtrType SparkJobResponseArgs
+
+func SparkJobResponsePtr(v *SparkJobResponseArgs) SparkJobResponsePtrInput {
+	return (*sparkJobResponsePtrType)(v)
+}
+
+func (*sparkJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkJobResponse)(nil)).Elem()
+}
+
+func (i *sparkJobResponsePtrType) ToSparkJobResponsePtrOutput() SparkJobResponsePtrOutput {
+	return i.ToSparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sparkJobResponsePtrType) ToSparkJobResponsePtrOutputWithContext(ctx context.Context) SparkJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN.
 type SparkJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -13998,6 +15858,16 @@ func (o SparkJobResponseOutput) ToSparkJobResponseOutput() SparkJobResponseOutpu
 
 func (o SparkJobResponseOutput) ToSparkJobResponseOutputWithContext(ctx context.Context) SparkJobResponseOutput {
 	return o
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponsePtrOutput() SparkJobResponsePtrOutput {
+	return o.ToSparkJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SparkJobResponseOutput) ToSparkJobResponsePtrOutputWithContext(ctx context.Context) SparkJobResponsePtrOutput {
+	return o.ApplyT(func(v SparkJobResponse) *SparkJobResponse {
+		return &v
+	}).(SparkJobResponsePtrOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -14038,6 +15908,104 @@ func (o SparkJobResponseOutput) MainJarFileUri() pulumi.StringOutput {
 // Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type SparkJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkJobResponse)(nil)).Elem()
+}
+
+func (o SparkJobResponsePtrOutput) ToSparkJobResponsePtrOutput() SparkJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkJobResponsePtrOutput) ToSparkJobResponsePtrOutputWithContext(ctx context.Context) SparkJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkJobResponsePtrOutput) Elem() SparkJobResponseOutput {
+	return o.ApplyT(func(v *SparkJobResponse) SparkJobResponse { return *v }).(SparkJobResponseOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkJobResponsePtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o SparkJobResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o SparkJobResponsePtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.
+func (o SparkJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SparkJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH or specified in jar_file_uris.
+func (o SparkJobResponsePtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o SparkJobResponsePtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o SparkJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
@@ -14324,6 +16292,47 @@ func (i SparkRJobResponseArgs) ToSparkRJobResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(SparkRJobResponseOutput)
 }
 
+func (i SparkRJobResponseArgs) ToSparkRJobResponsePtrOutput() SparkRJobResponsePtrOutput {
+	return i.ToSparkRJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SparkRJobResponseArgs) ToSparkRJobResponsePtrOutputWithContext(ctx context.Context) SparkRJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRJobResponseOutput).ToSparkRJobResponsePtrOutputWithContext(ctx)
+}
+
+// SparkRJobResponsePtrInput is an input type that accepts SparkRJobResponseArgs, SparkRJobResponsePtr and SparkRJobResponsePtrOutput values.
+// You can construct a concrete instance of `SparkRJobResponsePtrInput` via:
+//
+//          SparkRJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkRJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToSparkRJobResponsePtrOutput() SparkRJobResponsePtrOutput
+	ToSparkRJobResponsePtrOutputWithContext(context.Context) SparkRJobResponsePtrOutput
+}
+
+type sparkRJobResponsePtrType SparkRJobResponseArgs
+
+func SparkRJobResponsePtr(v *SparkRJobResponseArgs) SparkRJobResponsePtrInput {
+	return (*sparkRJobResponsePtrType)(v)
+}
+
+func (*sparkRJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkRJobResponse)(nil)).Elem()
+}
+
+func (i *sparkRJobResponsePtrType) ToSparkRJobResponsePtrOutput() SparkRJobResponsePtrOutput {
+	return i.ToSparkRJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sparkRJobResponsePtrType) ToSparkRJobResponsePtrOutputWithContext(ctx context.Context) SparkRJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkRJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
 type SparkRJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -14337,6 +16346,16 @@ func (o SparkRJobResponseOutput) ToSparkRJobResponseOutput() SparkRJobResponseOu
 
 func (o SparkRJobResponseOutput) ToSparkRJobResponseOutputWithContext(ctx context.Context) SparkRJobResponseOutput {
 	return o
+}
+
+func (o SparkRJobResponseOutput) ToSparkRJobResponsePtrOutput() SparkRJobResponsePtrOutput {
+	return o.ToSparkRJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SparkRJobResponseOutput) ToSparkRJobResponsePtrOutputWithContext(ctx context.Context) SparkRJobResponsePtrOutput {
+	return o.ApplyT(func(v SparkRJobResponse) *SparkRJobResponse {
+		return &v
+	}).(SparkRJobResponsePtrOutput)
 }
 
 // Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -14367,6 +16386,84 @@ func (o SparkRJobResponseOutput) MainRFileUri() pulumi.StringOutput {
 // Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 func (o SparkRJobResponseOutput) Properties() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkRJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+type SparkRJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkRJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkRJobResponse)(nil)).Elem()
+}
+
+func (o SparkRJobResponsePtrOutput) ToSparkRJobResponsePtrOutput() SparkRJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkRJobResponsePtrOutput) ToSparkRJobResponsePtrOutputWithContext(ctx context.Context) SparkRJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkRJobResponsePtrOutput) Elem() SparkRJobResponseOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) SparkRJobResponse { return *v }).(SparkRJobResponseOutput)
+}
+
+// Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o SparkRJobResponsePtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o SparkRJobResponsePtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o SparkRJobResponsePtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkRJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o SparkRJobResponsePtrOutput) MainRFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainRFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
+func (o SparkRJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkRJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
 }
 
 // A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
@@ -14653,6 +16750,47 @@ func (i SparkSqlJobResponseArgs) ToSparkSqlJobResponseOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlJobResponseOutput)
 }
 
+func (i SparkSqlJobResponseArgs) ToSparkSqlJobResponsePtrOutput() SparkSqlJobResponsePtrOutput {
+	return i.ToSparkSqlJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SparkSqlJobResponseArgs) ToSparkSqlJobResponsePtrOutputWithContext(ctx context.Context) SparkSqlJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlJobResponseOutput).ToSparkSqlJobResponsePtrOutputWithContext(ctx)
+}
+
+// SparkSqlJobResponsePtrInput is an input type that accepts SparkSqlJobResponseArgs, SparkSqlJobResponsePtr and SparkSqlJobResponsePtrOutput values.
+// You can construct a concrete instance of `SparkSqlJobResponsePtrInput` via:
+//
+//          SparkSqlJobResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SparkSqlJobResponsePtrInput interface {
+	pulumi.Input
+
+	ToSparkSqlJobResponsePtrOutput() SparkSqlJobResponsePtrOutput
+	ToSparkSqlJobResponsePtrOutputWithContext(context.Context) SparkSqlJobResponsePtrOutput
+}
+
+type sparkSqlJobResponsePtrType SparkSqlJobResponseArgs
+
+func SparkSqlJobResponsePtr(v *SparkSqlJobResponseArgs) SparkSqlJobResponsePtrInput {
+	return (*sparkSqlJobResponsePtrType)(v)
+}
+
+func (*sparkSqlJobResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkSqlJobResponse)(nil)).Elem()
+}
+
+func (i *sparkSqlJobResponsePtrType) ToSparkSqlJobResponsePtrOutput() SparkSqlJobResponsePtrOutput {
+	return i.ToSparkSqlJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *sparkSqlJobResponsePtrType) ToSparkSqlJobResponsePtrOutputWithContext(ctx context.Context) SparkSqlJobResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkSqlJobResponsePtrOutput)
+}
+
 // A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
 type SparkSqlJobResponseOutput struct{ *pulumi.OutputState }
 
@@ -14666,6 +16804,16 @@ func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponseOutput() SparkSqlJobResp
 
 func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponseOutputWithContext(ctx context.Context) SparkSqlJobResponseOutput {
 	return o
+}
+
+func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponsePtrOutput() SparkSqlJobResponsePtrOutput {
+	return o.ToSparkSqlJobResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SparkSqlJobResponseOutput) ToSparkSqlJobResponsePtrOutputWithContext(ctx context.Context) SparkSqlJobResponsePtrOutput {
+	return o.ApplyT(func(v SparkSqlJobResponse) *SparkSqlJobResponse {
+		return &v
+	}).(SparkSqlJobResponsePtrOutput)
 }
 
 // Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
@@ -14696,6 +16844,84 @@ func (o SparkSqlJobResponseOutput) QueryList() QueryListResponseOutput {
 // Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
 func (o SparkSqlJobResponseOutput) ScriptVariables() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SparkSqlJobResponse) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type SparkSqlJobResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkSqlJobResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkSqlJobResponse)(nil)).Elem()
+}
+
+func (o SparkSqlJobResponsePtrOutput) ToSparkSqlJobResponsePtrOutput() SparkSqlJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkSqlJobResponsePtrOutput) ToSparkSqlJobResponsePtrOutputWithContext(ctx context.Context) SparkSqlJobResponsePtrOutput {
+	return o
+}
+
+func (o SparkSqlJobResponsePtrOutput) Elem() SparkSqlJobResponseOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) SparkSqlJobResponse { return *v }).(SparkSqlJobResponseOutput)
+}
+
+// Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o SparkSqlJobResponsePtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o SparkSqlJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) *LoggingConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.LoggingConfig
+	}).(LoggingConfigResponsePtrOutput)
+}
+
+// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that conflict with values set by the Dataproc API may be overwritten.
+func (o SparkSqlJobResponsePtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o SparkSqlJobResponsePtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o SparkSqlJobResponsePtrOutput) QueryList() QueryListResponsePtrOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) *QueryListResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.QueryList
+	}).(QueryListResponsePtrOutput)
+}
+
+// Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET name="value";).
+func (o SparkSqlJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkSqlJobResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
 }
 
 // A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
@@ -15447,6 +17673,133 @@ func (o WorkflowTemplatePlacementResponsePtrOutput) ManagedCluster() ManagedClus
 	}).(ManagedClusterResponsePtrOutput)
 }
 
+// A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+type YarnApplicationResponse struct {
+	// Required. The application name.
+	Name string `pulumi:"name"`
+	// Required. The numerical progress of the application, from 1 to 100.
+	Progress float64 `pulumi:"progress"`
+	// Required. The application state.
+	State string `pulumi:"state"`
+	// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
+	TrackingUrl string `pulumi:"trackingUrl"`
+}
+
+// YarnApplicationResponseInput is an input type that accepts YarnApplicationResponseArgs and YarnApplicationResponseOutput values.
+// You can construct a concrete instance of `YarnApplicationResponseInput` via:
+//
+//          YarnApplicationResponseArgs{...}
+type YarnApplicationResponseInput interface {
+	pulumi.Input
+
+	ToYarnApplicationResponseOutput() YarnApplicationResponseOutput
+	ToYarnApplicationResponseOutputWithContext(context.Context) YarnApplicationResponseOutput
+}
+
+// A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+type YarnApplicationResponseArgs struct {
+	// Required. The application name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Required. The numerical progress of the application, from 1 to 100.
+	Progress pulumi.Float64Input `pulumi:"progress"`
+	// Required. The application state.
+	State pulumi.StringInput `pulumi:"state"`
+	// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
+	TrackingUrl pulumi.StringInput `pulumi:"trackingUrl"`
+}
+
+func (YarnApplicationResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*YarnApplicationResponse)(nil)).Elem()
+}
+
+func (i YarnApplicationResponseArgs) ToYarnApplicationResponseOutput() YarnApplicationResponseOutput {
+	return i.ToYarnApplicationResponseOutputWithContext(context.Background())
+}
+
+func (i YarnApplicationResponseArgs) ToYarnApplicationResponseOutputWithContext(ctx context.Context) YarnApplicationResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YarnApplicationResponseOutput)
+}
+
+// YarnApplicationResponseArrayInput is an input type that accepts YarnApplicationResponseArray and YarnApplicationResponseArrayOutput values.
+// You can construct a concrete instance of `YarnApplicationResponseArrayInput` via:
+//
+//          YarnApplicationResponseArray{ YarnApplicationResponseArgs{...} }
+type YarnApplicationResponseArrayInput interface {
+	pulumi.Input
+
+	ToYarnApplicationResponseArrayOutput() YarnApplicationResponseArrayOutput
+	ToYarnApplicationResponseArrayOutputWithContext(context.Context) YarnApplicationResponseArrayOutput
+}
+
+type YarnApplicationResponseArray []YarnApplicationResponseInput
+
+func (YarnApplicationResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]YarnApplicationResponse)(nil)).Elem()
+}
+
+func (i YarnApplicationResponseArray) ToYarnApplicationResponseArrayOutput() YarnApplicationResponseArrayOutput {
+	return i.ToYarnApplicationResponseArrayOutputWithContext(context.Background())
+}
+
+func (i YarnApplicationResponseArray) ToYarnApplicationResponseArrayOutputWithContext(ctx context.Context) YarnApplicationResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YarnApplicationResponseArrayOutput)
+}
+
+// A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
+type YarnApplicationResponseOutput struct{ *pulumi.OutputState }
+
+func (YarnApplicationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YarnApplicationResponse)(nil)).Elem()
+}
+
+func (o YarnApplicationResponseOutput) ToYarnApplicationResponseOutput() YarnApplicationResponseOutput {
+	return o
+}
+
+func (o YarnApplicationResponseOutput) ToYarnApplicationResponseOutputWithContext(ctx context.Context) YarnApplicationResponseOutput {
+	return o
+}
+
+// Required. The application name.
+func (o YarnApplicationResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v YarnApplicationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Required. The numerical progress of the application, from 1 to 100.
+func (o YarnApplicationResponseOutput) Progress() pulumi.Float64Output {
+	return o.ApplyT(func(v YarnApplicationResponse) float64 { return v.Progress }).(pulumi.Float64Output)
+}
+
+// Required. The application state.
+func (o YarnApplicationResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v YarnApplicationResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
+func (o YarnApplicationResponseOutput) TrackingUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v YarnApplicationResponse) string { return v.TrackingUrl }).(pulumi.StringOutput)
+}
+
+type YarnApplicationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (YarnApplicationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]YarnApplicationResponse)(nil)).Elem()
+}
+
+func (o YarnApplicationResponseArrayOutput) ToYarnApplicationResponseArrayOutput() YarnApplicationResponseArrayOutput {
+	return o
+}
+
+func (o YarnApplicationResponseArrayOutput) ToYarnApplicationResponseArrayOutputWithContext(ctx context.Context) YarnApplicationResponseArrayOutput {
+	return o
+}
+
+func (o YarnApplicationResponseArrayOutput) Index(i pulumi.IntInput) YarnApplicationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) YarnApplicationResponse {
+		return vs[0].([]YarnApplicationResponse)[vs[1].(int)]
+	}).(YarnApplicationResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(AcceleratorConfigArrayOutput{})
@@ -15507,9 +17860,11 @@ func init() {
 	pulumi.RegisterOutputType(HadoopJobOutput{})
 	pulumi.RegisterOutputType(HadoopJobPtrOutput{})
 	pulumi.RegisterOutputType(HadoopJobResponseOutput{})
+	pulumi.RegisterOutputType(HadoopJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(HiveJobOutput{})
 	pulumi.RegisterOutputType(HiveJobPtrOutput{})
 	pulumi.RegisterOutputType(HiveJobResponseOutput{})
+	pulumi.RegisterOutputType(HiveJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(IdentityConfigOutput{})
 	pulumi.RegisterOutputType(IdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(IdentityConfigResponseOutput{})
@@ -15524,9 +17879,21 @@ func init() {
 	pulumi.RegisterOutputType(InstanceGroupConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(InstanceReferenceResponseOutput{})
 	pulumi.RegisterOutputType(InstanceReferenceResponseArrayOutput{})
+	pulumi.RegisterOutputType(JobPlacementOutput{})
+	pulumi.RegisterOutputType(JobPlacementPtrOutput{})
+	pulumi.RegisterOutputType(JobPlacementResponseOutput{})
+	pulumi.RegisterOutputType(JobPlacementResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobReferenceOutput{})
+	pulumi.RegisterOutputType(JobReferencePtrOutput{})
+	pulumi.RegisterOutputType(JobReferenceResponseOutput{})
+	pulumi.RegisterOutputType(JobReferenceResponsePtrOutput{})
 	pulumi.RegisterOutputType(JobSchedulingOutput{})
 	pulumi.RegisterOutputType(JobSchedulingPtrOutput{})
 	pulumi.RegisterOutputType(JobSchedulingResponseOutput{})
+	pulumi.RegisterOutputType(JobSchedulingResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobStatusResponseOutput{})
+	pulumi.RegisterOutputType(JobStatusResponsePtrOutput{})
+	pulumi.RegisterOutputType(JobStatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(KerberosConfigOutput{})
 	pulumi.RegisterOutputType(KerberosConfigPtrOutput{})
 	pulumi.RegisterOutputType(KerberosConfigResponseOutput{})
@@ -15538,6 +17905,7 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigOutput{})
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterOutput{})
 	pulumi.RegisterOutputType(ManagedClusterPtrOutput{})
 	pulumi.RegisterOutputType(ManagedClusterResponseOutput{})
@@ -15570,15 +17938,19 @@ func init() {
 	pulumi.RegisterOutputType(PigJobOutput{})
 	pulumi.RegisterOutputType(PigJobPtrOutput{})
 	pulumi.RegisterOutputType(PigJobResponseOutput{})
+	pulumi.RegisterOutputType(PigJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(PrestoJobOutput{})
 	pulumi.RegisterOutputType(PrestoJobPtrOutput{})
 	pulumi.RegisterOutputType(PrestoJobResponseOutput{})
+	pulumi.RegisterOutputType(PrestoJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(PySparkJobOutput{})
 	pulumi.RegisterOutputType(PySparkJobPtrOutput{})
 	pulumi.RegisterOutputType(PySparkJobResponseOutput{})
+	pulumi.RegisterOutputType(PySparkJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(QueryListOutput{})
 	pulumi.RegisterOutputType(QueryListPtrOutput{})
 	pulumi.RegisterOutputType(QueryListResponseOutput{})
+	pulumi.RegisterOutputType(QueryListResponsePtrOutput{})
 	pulumi.RegisterOutputType(RegexValidationOutput{})
 	pulumi.RegisterOutputType(RegexValidationPtrOutput{})
 	pulumi.RegisterOutputType(RegexValidationResponseOutput{})
@@ -15601,12 +17973,15 @@ func init() {
 	pulumi.RegisterOutputType(SparkJobOutput{})
 	pulumi.RegisterOutputType(SparkJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(SparkRJobOutput{})
 	pulumi.RegisterOutputType(SparkRJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkRJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkRJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobPtrOutput{})
 	pulumi.RegisterOutputType(SparkSqlJobResponseOutput{})
+	pulumi.RegisterOutputType(SparkSqlJobResponsePtrOutput{})
 	pulumi.RegisterOutputType(TemplateParameterOutput{})
 	pulumi.RegisterOutputType(TemplateParameterArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterResponseOutput{})
@@ -15618,4 +17993,6 @@ func init() {
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementPtrOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementResponseOutput{})
 	pulumi.RegisterOutputType(WorkflowTemplatePlacementResponsePtrOutput{})
+	pulumi.RegisterOutputType(YarnApplicationResponseOutput{})
+	pulumi.RegisterOutputType(YarnApplicationResponseArrayOutput{})
 }
