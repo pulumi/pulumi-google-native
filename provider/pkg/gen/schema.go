@@ -302,7 +302,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		var flatten string
 		createRequest := g.rest.Schemas[createMethod.Request.Ref]
 		if getMethod != nil && createMethod.Request.Ref != getMethod.Response.Ref {
-			for name, v := range createRequest.Properties {
+			for _, name := range codegen.SortedKeys(createRequest.Properties) {
+				v := createRequest.Properties[name]
 				if v.Ref == getMethod.Response.Ref {
 					flatten = name
 				}
@@ -327,7 +328,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			var updateFlatten string
 			updateRequest := g.rest.Schemas[updateMethod.Request.Ref]
 			if getMethod != nil && updateMethod.Request.Ref != getMethod.Response.Ref {
-				for name, v := range updateRequest.Properties {
+				for _, name := range codegen.SortedKeys(updateRequest.Properties) {
+					v := updateRequest.Properties[name]
 					if v.Ref == getMethod.Response.Ref {
 						updateFlatten = name
 					}
