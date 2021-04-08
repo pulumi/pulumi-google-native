@@ -3,10 +3,8 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .registration import *
-from .registration_iam_policy import *
+from .controller_debuggee import *
 from ._inputs import *
-from . import outputs
 
 def _register_module():
     import pulumi
@@ -20,15 +18,13 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp-native:domains/v1beta1:Registration":
-                return Registration(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:domains/v1beta1:RegistrationIamPolicy":
-                return RegistrationIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            if typ == "gcp-native:clouddebugger/v2:ControllerDebuggee":
+                return ControllerDebuggee(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
-    pulumi.runtime.register_resource_module("gcp-native", "domains/v1beta1", _module_instance)
+    pulumi.runtime.register_resource_module("gcp-native", "clouddebugger/v2", _module_instance)
 
 _register_module()

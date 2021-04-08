@@ -24,6 +24,7 @@ from . import (
     cloudbilling,
     cloudbuild,
     cloudchannel,
+    clouddebugger,
     cloudfunctions,
     cloudidentity,
     cloudiot,
