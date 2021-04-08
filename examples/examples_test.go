@@ -9,10 +9,31 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	return integration.ProgramTestOptions{
-		ExpectRefreshChanges: true,
+func getProject(t *testing.T) string {
+	project := os.Getenv("GOOGLE_PROJECT")
+	if project == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_PROJECT environment variable")
 	}
+
+	return project
+}
+
+func getZone(t *testing.T) string {
+	zone := os.Getenv("GOOGLE_ZONE")
+	if zone == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_ZONE environment variable")
+	}
+
+	return zone
+}
+
+func getRegion(t *testing.T) string {
+	region := os.Getenv("GOOGLE_REGION")
+	if region == "" {
+		t.Skipf("Skipping test due to missing GOOGLE_REGION environment variable")
+	}
+
+	return region
 }
 
 func getCwd(t *testing.T) string {
@@ -22,6 +43,19 @@ func getCwd(t *testing.T) string {
 	}
 
 	return cwd
+}
+
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	project := getProject(t)
+	zone := getZone(t)
+	region := getRegion(t)
+	return integration.ProgramTestOptions{
+		Config: map[string]string{
+			"gcp-native:config:project": project,
+			"gcp-native:config:zone":    zone,
+			"gcp-native:config:region":  region,
+		},
+	}
 }
 
 func skipIfShort(t *testing.T) {
