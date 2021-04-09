@@ -707,25 +707,6 @@
                 "apisId"
             ]
         },
-        "gcp-native:apigee/v1:OrganizationApiKeyvaluemap": {
-            "baseUrl": "https://apigee.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps",
-            "createParams": [
-                "organizationsId",
-                "apisId"
-            ],
-            "createProperties": {
-                "encrypted": {},
-                "name": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/apis/{apisId}/keyvaluemaps/{keyvaluemapsId}",
-            "idParams": [
-                "organizationsId",
-                "apisId",
-                "keyvaluemapsId"
-            ],
-            "noGet": true
-        },
         "gcp-native:apigee/v1:OrganizationApiproduct": {
             "baseUrl": "https://apigee.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/apiproducts",
@@ -900,34 +881,6 @@
                 "appsId",
                 "keysId"
             ]
-        },
-        "gcp-native:apigee/v1:OrganizationDeveloperAppKeyCreate": {
-            "baseUrl": "https://apigee.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/create",
-            "createParams": [
-                "organizationsId",
-                "developersId",
-                "appsId"
-            ],
-            "createProperties": {
-                "apiProducts": {},
-                "attributes": {},
-                "consumerKey": {},
-                "consumerSecret": {},
-                "expiresAt": {},
-                "expiresInSeconds": {},
-                "issuedAt": {},
-                "scopes": {},
-                "status": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/developers/{developersId}/apps/{appsId}/keys/create",
-            "idParams": [
-                "organizationsId",
-                "developersId",
-                "appsId"
-            ],
-            "noGet": true,
-            "noDelete": true
         },
         "gcp-native:apigee/v1:OrganizationEnvgroup": {
             "baseUrl": "https://apigee.googleapis.com/",
@@ -1131,25 +1084,6 @@
                 "keystoresId",
                 "aliasesId"
             ]
-        },
-        "gcp-native:apigee/v1:OrganizationEnvironmentKeyvaluemap": {
-            "baseUrl": "https://apigee.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps",
-            "createParams": [
-                "organizationsId",
-                "environmentsId"
-            ],
-            "createProperties": {
-                "encrypted": {},
-                "name": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/environments/{environmentsId}/keyvaluemaps/{keyvaluemapsId}",
-            "idParams": [
-                "organizationsId",
-                "environmentsId",
-                "keyvaluemapsId"
-            ],
-            "noGet": true
         },
         "gcp-native:apigee/v1:OrganizationEnvironmentQuery": {
             "baseUrl": "https://apigee.googleapis.com/",
@@ -1389,23 +1323,6 @@
                 "instancesId",
                 "natAddressesId"
             ]
-        },
-        "gcp-native:apigee/v1:OrganizationKeyvaluemap": {
-            "baseUrl": "https://apigee.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/keyvaluemaps",
-            "createParams": [
-                "organizationsId"
-            ],
-            "createProperties": {
-                "encrypted": {},
-                "name": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/keyvaluemaps/{keyvaluemapsId}",
-            "idParams": [
-                "organizationsId",
-                "keyvaluemapsId"
-            ],
-            "noGet": true
         },
         "gcp-native:apigee/v1:OrganizationReport": {
             "baseUrl": "https://apigee.googleapis.com/",
@@ -2690,27 +2607,6 @@
                 "reservationsId"
             ]
         },
-        "gcp-native:bigqueryreservation/v1:ReservationAssignment": {
-            "baseUrl": "https://bigqueryreservation.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "reservationsId"
-            ],
-            "createProperties": {
-                "assignee": {},
-                "jobType": {}
-            },
-            "idPath": "v1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "reservationsId",
-                "assignmentsId"
-            ],
-            "noGet": true
-        },
         "gcp-native:bigqueryreservation/v1beta1:CapacityCommitment": {
             "baseUrl": "https://bigqueryreservation.googleapis.com/",
             "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/capacityCommitments",
@@ -2762,27 +2658,6 @@
                 "locationsId",
                 "reservationsId"
             ]
-        },
-        "gcp-native:bigqueryreservation/v1beta1:ReservationAssignment": {
-            "baseUrl": "https://bigqueryreservation.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "reservationsId"
-            ],
-            "createProperties": {
-                "assignee": {},
-                "jobType": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/reservations/{reservationsId}/assignments/{assignmentsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "reservationsId",
-                "assignmentsId"
-            ],
-            "noGet": true
         },
         "gcp-native:bigtableadmin/v2:Instance": {
             "baseUrl": "https://bigtableadmin.googleapis.com/",
@@ -3615,22 +3490,6 @@
                 "workerPoolsId"
             ]
         },
-        "gcp-native:cloudchannel/v1:Account": {
-            "baseUrl": "https://cloudchannel.googleapis.com/",
-            "createPath": "v1/accounts/{accountsId}:register",
-            "createParams": [
-                "accountsId"
-            ],
-            "createProperties": {
-                "serviceAccount": {}
-            },
-            "idPath": "v1/accounts/{accountsId}:register",
-            "idParams": [
-                "accountsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:cloudchannel/v1:AccountChannelPartnerLink": {
             "baseUrl": "https://cloudchannel.googleapis.com/",
             "createPath": "v1/accounts/{accountsId}/channelPartnerLinks",
@@ -3752,17 +3611,6 @@
                 "customersId",
                 "entitlementsId"
             ],
-            "noDelete": true
-        },
-        "gcp-native:clouddebugger/v2:ControllerDebuggee": {
-            "baseUrl": "https://clouddebugger.googleapis.com/",
-            "createPath": "v2/controller/debuggees/register",
-            "createParams": null,
-            "createProperties": {
-                "debuggee": {}
-            },
-            "idPath": "v2/controller/debuggees/register",
-            "noGet": true,
             "noDelete": true
         },
         "gcp-native:cloudfunctions/v1:Function": {
@@ -4411,28 +4259,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:cloudprofiler/v2:Profile": {
-            "baseUrl": "https://cloudprofiler.googleapis.com/",
-            "createPath": "v2/projects/{projectsId}/profiles",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "deployment": {},
-                "profileType": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "deployment": {},
-                "profileType": {}
-            },
-            "idPath": "v2/projects/{projectsId}/profiles",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:cloudresourcemanager/v1:Lien": {
             "baseUrl": "https://cloudresourcemanager.googleapis.com/",
             "createPath": "v1/liens",
@@ -4985,20 +4811,6 @@
                 "projectsId"
             ],
             "noDelete": true
-        },
-        "gcp-native:cloudresourcemanager/v3:TagBinding": {
-            "baseUrl": "https://cloudresourcemanager.googleapis.com/",
-            "createPath": "v3/tagBindings",
-            "createParams": null,
-            "createProperties": {
-                "parent": {},
-                "tagValue": {}
-            },
-            "idPath": "v3/tagBindings/{tagBindingsId}",
-            "idParams": [
-                "tagBindingsId"
-            ],
-            "noGet": true
         },
         "gcp-native:cloudresourcemanager/v3:TagKey": {
             "baseUrl": "https://cloudresourcemanager.googleapis.com/",
@@ -18596,27 +18408,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:containeranalysis/v1alpha1:Operation": {
-            "baseUrl": "https://containeranalysis.googleapis.com/",
-            "createPath": "v1alpha1/projects/{projectsId}/operations",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "operation": {},
-                "operationId": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "operation": {}
-            },
-            "idPath": "v1alpha1/projects/{projectsId}/operations",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:containeranalysis/v1alpha1:ProviderNote": {
             "baseUrl": "https://containeranalysis.googleapis.com/",
             "createPath": "v1alpha1/providers/{providersId}/notes",
@@ -18941,38 +18732,6 @@
                 "entriesId"
             ]
         },
-        "gcp-native:datacatalog/v1beta1:EntryGroupEntryTag": {
-            "baseUrl": "https://datacatalog.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "entryGroupsId",
-                "entriesId"
-            ],
-            "createProperties": {
-                "column": {},
-                "fields": {},
-                "name": {},
-                "template": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "column": {},
-                "fields": {},
-                "name": {},
-                "template": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/entries/{entriesId}/tags/{tagsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "entryGroupsId",
-                "entriesId",
-                "tagsId"
-            ],
-            "noGet": true
-        },
         "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy": {
             "baseUrl": "https://datacatalog.googleapis.com/",
             "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}:setIamPolicy",
@@ -19012,36 +18771,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:datacatalog/v1beta1:EntryGroupTag": {
-            "baseUrl": "https://datacatalog.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "entryGroupsId"
-            ],
-            "createProperties": {
-                "column": {},
-                "fields": {},
-                "name": {},
-                "template": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "column": {},
-                "fields": {},
-                "name": {},
-                "template": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/entryGroups/{entryGroupsId}/tags/{tagsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "entryGroupsId",
-                "tagsId"
-            ],
-            "noGet": true
-        },
         "gcp-native:datacatalog/v1beta1:TagTemplate": {
             "baseUrl": "https://datacatalog.googleapis.com/",
             "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates",
@@ -19066,38 +18795,6 @@
                 "locationsId",
                 "tagTemplatesId"
             ]
-        },
-        "gcp-native:datacatalog/v1beta1:TagTemplateField": {
-            "baseUrl": "https://datacatalog.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "tagTemplatesId"
-            ],
-            "createProperties": {
-                "description": {},
-                "displayName": {},
-                "isRequired": {},
-                "order": {},
-                "type": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "description": {},
-                "displayName": {},
-                "isRequired": {},
-                "order": {},
-                "type": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tagTemplates/{tagTemplatesId}/fields/{fieldsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "tagTemplatesId",
-                "fieldsId"
-            ],
-            "noGet": true
         },
         "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy": {
             "baseUrl": "https://datacatalog.googleapis.com/",
@@ -24457,26 +24154,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:firebase/v1beta1:AndroidAppSha": {
-            "baseUrl": "https://firebase.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha",
-            "createParams": [
-                "projectsId",
-                "androidAppsId"
-            ],
-            "createProperties": {
-                "certType": {},
-                "name": {},
-                "shaHash": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/androidApps/{androidAppsId}/sha/{shaId}",
-            "idParams": [
-                "projectsId",
-                "androidAppsId",
-                "shaId"
-            ],
-            "noGet": true
-        },
         "gcp-native:firebase/v1beta1:IosApp": {
             "baseUrl": "https://firebase.googleapis.com/",
             "createPath": "v1beta1/projects/{projectsId}/iosApps",
@@ -24556,35 +24233,6 @@
                 "instancesId"
             ]
         },
-        "gcp-native:firebasedynamiclinks/v1:ManagedShortLink": {
-            "baseUrl": "https://firebasedynamiclinks.googleapis.com/",
-            "createPath": "v1/managedShortLinks:create",
-            "createParams": null,
-            "createProperties": {
-                "dynamicLinkInfo": {},
-                "longDynamicLink": {},
-                "name": {},
-                "sdkVersion": {},
-                "suffix": {}
-            },
-            "idPath": "v1/managedShortLinks:create",
-            "noGet": true,
-            "noDelete": true
-        },
-        "gcp-native:firebasedynamiclinks/v1:ShortLink": {
-            "baseUrl": "https://firebasedynamiclinks.googleapis.com/",
-            "createPath": "v1/shortLinks",
-            "createParams": null,
-            "createProperties": {
-                "dynamicLinkInfo": {},
-                "longDynamicLink": {},
-                "sdkVersion": {},
-                "suffix": {}
-            },
-            "idPath": "v1/shortLinks",
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:firebasehosting/v1beta1:Site": {
             "baseUrl": "https://firebasehosting.googleapis.com/",
             "createPath": "v1beta1/projects/{projectsId}/sites",
@@ -24633,29 +24281,6 @@
                 "channelsId"
             ]
         },
-        "gcp-native:firebasehosting/v1beta1:SiteChannelRelease": {
-            "baseUrl": "https://firebasehosting.googleapis.com/",
-            "createPath": "v1beta1/sites/{sitesId}/channels/{channelsId}/releases",
-            "createParams": [
-                "sitesId",
-                "channelsId"
-            ],
-            "createProperties": {
-                "message": {},
-                "name": {},
-                "releaseTime": {},
-                "releaseUser": {},
-                "type": {},
-                "version": {}
-            },
-            "idPath": "v1beta1/sites/{sitesId}/channels/{channelsId}/releases",
-            "idParams": [
-                "sitesId",
-                "channelsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:firebasehosting/v1beta1:SiteDomain": {
             "baseUrl": "https://firebasehosting.googleapis.com/",
             "createPath": "v1beta1/sites/{sitesId}/domains",
@@ -24684,71 +24309,6 @@
                 "sitesId",
                 "domainsId"
             ]
-        },
-        "gcp-native:firebasehosting/v1beta1:SiteRelease": {
-            "baseUrl": "https://firebasehosting.googleapis.com/",
-            "createPath": "v1beta1/sites/{sitesId}/releases",
-            "createParams": [
-                "sitesId"
-            ],
-            "createProperties": {
-                "message": {},
-                "name": {},
-                "releaseTime": {},
-                "releaseUser": {},
-                "type": {},
-                "version": {}
-            },
-            "idPath": "v1beta1/sites/{sitesId}/releases",
-            "idParams": [
-                "sitesId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
-        "gcp-native:firebasehosting/v1beta1:SiteVersion": {
-            "baseUrl": "https://firebasehosting.googleapis.com/",
-            "createPath": "v1beta1/sites/{sitesId}/versions",
-            "createParams": [
-                "sitesId"
-            ],
-            "createProperties": {
-                "config": {},
-                "createTime": {},
-                "createUser": {},
-                "deleteTime": {},
-                "deleteUser": {},
-                "fileCount": {},
-                "finalizeTime": {},
-                "finalizeUser": {},
-                "labels": {},
-                "name": {},
-                "preview": {},
-                "status": {},
-                "versionBytes": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "config": {},
-                "createTime": {},
-                "createUser": {},
-                "deleteTime": {},
-                "deleteUser": {},
-                "fileCount": {},
-                "finalizeTime": {},
-                "finalizeUser": {},
-                "labels": {},
-                "name": {},
-                "preview": {},
-                "status": {},
-                "versionBytes": {}
-            },
-            "idPath": "v1beta1/sites/{sitesId}/versions/{versionsId}",
-            "idParams": [
-                "sitesId",
-                "versionsId"
-            ],
-            "noGet": true
         },
         "gcp-native:firebaseml/v1beta2:Model": {
             "baseUrl": "https://firebaseml.googleapis.com/",
@@ -26089,8 +25649,7 @@
                 "fhirStoresId",
                 "fhirId",
                 "fhirId1"
-            ],
-            "noGet": true
+            ]
         },
         "gcp-native:healthcare/v1:DatasetFhirStoreIamPolicy": {
             "baseUrl": "https://healthcare.googleapis.com/",
@@ -26814,8 +26373,7 @@
                 "fhirStoresId",
                 "fhirId",
                 "fhirId1"
-            ],
-            "noGet": true
+            ]
         },
         "gcp-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy": {
             "baseUrl": "https://healthcare.googleapis.com/",
@@ -27399,22 +26957,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:jobs/v3:ClientEvent": {
-            "baseUrl": "https://jobs.googleapis.com/",
-            "createPath": "v3/projects/{projectsId}/clientEvents",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "clientEvent": {}
-            },
-            "idPath": "v3/projects/{projectsId}/clientEvents",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:jobs/v3:Company": {
             "baseUrl": "https://jobs.googleapis.com/",
             "createPath": "v3/projects/{projectsId}/companies",
@@ -27722,28 +27264,6 @@
                 "tenantsId"
             ]
         },
-        "gcp-native:jobs/v4:TenantClientEvent": {
-            "baseUrl": "https://jobs.googleapis.com/",
-            "createPath": "v4/projects/{projectsId}/tenants/{tenantsId}/clientEvents",
-            "createParams": [
-                "projectsId",
-                "tenantsId"
-            ],
-            "createProperties": {
-                "createTime": {},
-                "eventId": {},
-                "eventNotes": {},
-                "jobEvent": {},
-                "requestId": {}
-            },
-            "idPath": "v4/projects/{projectsId}/tenants/{tenantsId}/clientEvents",
-            "idParams": [
-                "projectsId",
-                "tenantsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:jobs/v4:TenantCompany": {
             "baseUrl": "https://jobs.googleapis.com/",
             "createPath": "v4/projects/{projectsId}/tenants/{tenantsId}/companies",
@@ -27853,60 +27373,6 @@
                 "tenantsId",
                 "jobsId"
             ]
-        },
-        "gcp-native:logging/v2:BillingAccountBucket": {
-            "baseUrl": "https://logging.googleapis.com/",
-            "createPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets",
-            "createParams": [
-                "billingAccountsId",
-                "locationsId"
-            ],
-            "createProperties": {
-                "description": {},
-                "locked": {},
-                "retentionDays": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "description": {},
-                "locked": {},
-                "retentionDays": {}
-            },
-            "idPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}",
-            "idParams": [
-                "billingAccountsId",
-                "locationsId",
-                "bucketsId"
-            ],
-            "noGet": true
-        },
-        "gcp-native:logging/v2:BillingAccountBucketView": {
-            "baseUrl": "https://logging.googleapis.com/",
-            "createPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views",
-            "createParams": [
-                "billingAccountsId",
-                "locationsId",
-                "bucketsId"
-            ],
-            "createProperties": {
-                "description": {},
-                "filter": {},
-                "name": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "description": {},
-                "filter": {},
-                "name": {}
-            },
-            "idPath": "v2/billingAccounts/{billingAccountsId}/locations/{locationsId}/buckets/{bucketsId}/views/{viewsId}",
-            "idParams": [
-                "billingAccountsId",
-                "locationsId",
-                "bucketsId",
-                "viewsId"
-            ],
-            "noGet": true
         },
         "gcp-native:logging/v2:BillingAccountExclusion": {
             "baseUrl": "https://logging.googleapis.com/",
@@ -29298,24 +28764,6 @@
                 "alertPoliciesId"
             ]
         },
-        "gcp-native:monitoring/v3:CollectdTimeSeries": {
-            "baseUrl": "https://monitoring.googleapis.com/",
-            "createPath": "v3/projects/{projectsId}/collectdTimeSeries",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "collectdPayloads": {},
-                "collectdVersion": {},
-                "resource": {}
-            },
-            "idPath": "v3/projects/{projectsId}/collectdTimeSeries",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:monitoring/v3:Group": {
             "baseUrl": "https://monitoring.googleapis.com/",
             "createPath": "v3/projects/{projectsId}/groups",
@@ -29474,22 +28922,6 @@
                 "servicesId",
                 "serviceLevelObjectivesId"
             ]
-        },
-        "gcp-native:monitoring/v3:TimeSeries": {
-            "baseUrl": "https://monitoring.googleapis.com/",
-            "createPath": "v3/projects/{projectsId}/timeSeries",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "timeSeries": {}
-            },
-            "idPath": "v3/projects/{projectsId}/timeSeries",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
         },
         "gcp-native:monitoring/v3:UptimeCheckConfig": {
             "baseUrl": "https://monitoring.googleapis.com/",
@@ -30606,29 +30038,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:pubsub/v1:Snapshot": {
-            "baseUrl": "https://pubsub.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
-            "createParams": [
-                "projectsId",
-                "snapshotsId"
-            ],
-            "createProperties": {
-                "labels": {},
-                "subscription": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "labels": {
-                    "container": "snapshot"
-                }
-            },
-            "idPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}",
-            "idParams": [
-                "projectsId",
-                "snapshotsId"
-            ]
-        },
         "gcp-native:pubsub/v1:SnapshotIamPolicy": {
             "baseUrl": "https://pubsub.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/snapshots/{snapshotsId}:setIamPolicy",
@@ -30666,76 +30075,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:pubsub/v1:Subscription": {
-            "baseUrl": "https://pubsub.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
-            "createParams": [
-                "projectsId",
-                "subscriptionsId"
-            ],
-            "createProperties": {
-                "ackDeadlineSeconds": {},
-                "deadLetterPolicy": {},
-                "detached": {},
-                "enableMessageOrdering": {},
-                "expirationPolicy": {},
-                "filter": {},
-                "labels": {},
-                "messageRetentionDuration": {},
-                "name": {},
-                "pushConfig": {},
-                "retainAckedMessages": {},
-                "retryPolicy": {},
-                "topic": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "ackDeadlineSeconds": {
-                    "container": "subscription"
-                },
-                "deadLetterPolicy": {
-                    "container": "subscription"
-                },
-                "detached": {
-                    "container": "subscription"
-                },
-                "enableMessageOrdering": {
-                    "container": "subscription"
-                },
-                "expirationPolicy": {
-                    "container": "subscription"
-                },
-                "filter": {
-                    "container": "subscription"
-                },
-                "labels": {
-                    "container": "subscription"
-                },
-                "messageRetentionDuration": {
-                    "container": "subscription"
-                },
-                "name": {
-                    "container": "subscription"
-                },
-                "pushConfig": {
-                    "container": "subscription"
-                },
-                "retainAckedMessages": {
-                    "container": "subscription"
-                },
-                "retryPolicy": {
-                    "container": "subscription"
-                },
-                "topic": {
-                    "container": "subscription"
-                }
-            },
-            "idPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}",
-            "idParams": [
-                "projectsId",
-                "subscriptionsId"
-            ]
-        },
         "gcp-native:pubsub/v1:SubscriptionIamPolicy": {
             "baseUrl": "https://pubsub.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/subscriptions/{subscriptionsId}:setIamPolicy",
@@ -30772,48 +30111,6 @@
                 "subscriptionsId"
             ],
             "noDelete": true
-        },
-        "gcp-native:pubsub/v1:Topic": {
-            "baseUrl": "https://pubsub.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/topics/{topicsId}",
-            "createParams": [
-                "projectsId",
-                "topicsId"
-            ],
-            "createProperties": {
-                "kmsKeyName": {},
-                "labels": {},
-                "messageStoragePolicy": {},
-                "name": {},
-                "satisfiesPzs": {},
-                "schemaSettings": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "kmsKeyName": {
-                    "container": "topic"
-                },
-                "labels": {
-                    "container": "topic"
-                },
-                "messageStoragePolicy": {
-                    "container": "topic"
-                },
-                "name": {
-                    "container": "topic"
-                },
-                "satisfiesPzs": {
-                    "container": "topic"
-                },
-                "schemaSettings": {
-                    "container": "topic"
-                }
-            },
-            "idPath": "v1/projects/{projectsId}/topics/{topicsId}",
-            "idParams": [
-                "projectsId",
-                "topicsId"
-            ]
         },
         "gcp-native:pubsub/v1:TopicIamPolicy": {
             "baseUrl": "https://pubsub.googleapis.com/",
@@ -30879,25 +30176,6 @@
                 "topicsId"
             ]
         },
-        "gcp-native:pubsub/v1beta2:Subscription": {
-            "baseUrl": "https://pubsub.googleapis.com/",
-            "createPath": "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}",
-            "createParams": [
-                "projectsId",
-                "subscriptionsId"
-            ],
-            "createProperties": {
-                "ackDeadlineSeconds": {},
-                "name": {},
-                "pushConfig": {},
-                "topic": {}
-            },
-            "idPath": "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}",
-            "idParams": [
-                "projectsId",
-                "subscriptionsId"
-            ]
-        },
         "gcp-native:pubsub/v1beta2:SubscriptionIamPolicy": {
             "baseUrl": "https://pubsub.googleapis.com/",
             "createPath": "v1beta2/projects/{projectsId}/subscriptions/{subscriptionsId}:setIamPolicy",
@@ -30934,22 +30212,6 @@
                 "subscriptionsId"
             ],
             "noDelete": true
-        },
-        "gcp-native:pubsub/v1beta2:Topic": {
-            "baseUrl": "https://pubsub.googleapis.com/",
-            "createPath": "v1beta2/projects/{projectsId}/topics/{topicsId}",
-            "createParams": [
-                "projectsId",
-                "topicsId"
-            ],
-            "createProperties": {
-                "name": {}
-            },
-            "idPath": "v1beta2/projects/{projectsId}/topics/{topicsId}",
-            "idParams": [
-                "projectsId",
-                "topicsId"
-            ]
         },
         "gcp-native:pubsub/v1beta2:TopicIamPolicy": {
             "baseUrl": "https://pubsub.googleapis.com/",
@@ -31074,28 +30336,6 @@
                 "catalogsId",
                 "catalogItemsId"
             ]
-        },
-        "gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration": {
-            "baseUrl": "https://recommendationengine.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "catalogsId",
-                "eventStoresId"
-            ],
-            "createProperties": {
-                "predictionApiKeyRegistration": {}
-            },
-            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/catalogs/{catalogsId}/eventStores/{eventStoresId}/predictionApiKeyRegistrations/{predictionApiKeyRegistrationsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "catalogsId",
-                "eventStoresId",
-                "predictionApiKeyRegistrationsId"
-            ],
-            "noGet": true
         },
         "gcp-native:redis/v1:Instance": {
             "baseUrl": "https://redis.googleapis.com/",
@@ -32052,48 +31292,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:securitycenter/v1:OrganizationSourceFinding": {
-            "baseUrl": "https://securitycenter.googleapis.com/",
-            "createPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-            "createParams": [
-                "organizationsId",
-                "sourcesId"
-            ],
-            "createProperties": {
-                "canonicalName": {},
-                "category": {},
-                "createTime": {},
-                "eventTime": {},
-                "externalUri": {},
-                "name": {},
-                "parent": {},
-                "resourceName": {},
-                "severity": {},
-                "sourceProperties": {},
-                "state": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "canonicalName": {},
-                "category": {},
-                "createTime": {},
-                "eventTime": {},
-                "externalUri": {},
-                "name": {},
-                "parent": {},
-                "resourceName": {},
-                "severity": {},
-                "sourceProperties": {},
-                "state": {}
-            },
-            "idPath": "v1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-            "idParams": [
-                "organizationsId",
-                "sourcesId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:securitycenter/v1:OrganizationSourceIamPolicy": {
             "baseUrl": "https://securitycenter.googleapis.com/",
             "createPath": "v1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
@@ -32163,44 +31361,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:securitycenter/v1beta1:OrganizationSourceFinding": {
-            "baseUrl": "https://securitycenter.googleapis.com/",
-            "createPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-            "createParams": [
-                "organizationsId",
-                "sourcesId"
-            ],
-            "createProperties": {
-                "category": {},
-                "createTime": {},
-                "eventTime": {},
-                "externalUri": {},
-                "name": {},
-                "parent": {},
-                "resourceName": {},
-                "sourceProperties": {},
-                "state": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "category": {},
-                "createTime": {},
-                "eventTime": {},
-                "externalUri": {},
-                "name": {},
-                "parent": {},
-                "resourceName": {},
-                "sourceProperties": {},
-                "state": {}
-            },
-            "idPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}/findings",
-            "idParams": [
-                "organizationsId",
-                "sourcesId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy": {
             "baseUrl": "https://securitycenter.googleapis.com/",
             "createPath": "v1beta1/organizations/{organizationsId}/sources/{sourcesId}:setIamPolicy",
@@ -32245,64 +31405,6 @@
                 "sourcesId"
             ],
             "noDelete": true
-        },
-        "gcp-native:serviceconsumermanagement/v1:ServiceTenancyUnit": {
-            "baseUrl": "https://serviceconsumermanagement.googleapis.com/",
-            "createPath": "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits",
-            "createParams": [
-                "servicesId",
-                "servicesId1",
-                "servicesId2"
-            ],
-            "createProperties": {
-                "tenancyUnitId": {}
-            },
-            "idPath": "v1/services/{servicesId}/{servicesId1}/{servicesId2}/tenancyUnits/{tenancyUnitsId}",
-            "idParams": [
-                "servicesId",
-                "servicesId1",
-                "servicesId2",
-                "tenancyUnitsId"
-            ],
-            "noGet": true
-        },
-        "gcp-native:serviceconsumermanagement/v1beta1:ServiceConsumerQuotaMetricLimitProducerOverride": {
-            "baseUrl": "https://serviceconsumermanagement.googleapis.com/",
-            "createPath": "v1beta1/services/{servicesId}/{servicesId1}/{servicesId2}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/producerOverrides",
-            "createParams": [
-                "servicesId",
-                "servicesId1",
-                "servicesId2",
-                "consumerQuotaMetricsId",
-                "limitsId"
-            ],
-            "createProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "idPath": "v1beta1/services/{servicesId}/{servicesId1}/{servicesId2}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/producerOverrides/{producerOverridesId}",
-            "idParams": [
-                "servicesId",
-                "servicesId1",
-                "servicesId2",
-                "consumerQuotaMetricsId",
-                "limitsId",
-                "producerOverridesId"
-            ],
-            "noGet": true
         },
         "gcp-native:servicedirectory/v1:Namespace": {
             "baseUrl": "https://servicedirectory.googleapis.com/",
@@ -32787,144 +31889,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:servicenetworking/v1:ServiceConnection": {
-            "baseUrl": "https://servicenetworking.googleapis.com/",
-            "createPath": "v1/services/{servicesId}/connections",
-            "createParams": [
-                "servicesId"
-            ],
-            "createProperties": {
-                "network": {},
-                "reservedPeeringRanges": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "network": {},
-                "reservedPeeringRanges": {}
-            },
-            "idPath": "v1/services/{servicesId}/connections",
-            "idParams": [
-                "servicesId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
-        "gcp-native:servicenetworking/v1:ServiceNetworkPeeredDnsDomain": {
-            "baseUrl": "https://servicenetworking.googleapis.com/",
-            "createPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/peeredDnsDomains",
-            "createParams": [
-                "servicesId",
-                "projectsId",
-                "networksId"
-            ],
-            "createProperties": {
-                "dnsSuffix": {},
-                "name": {}
-            },
-            "idPath": "v1/services/{servicesId}/projects/{projectsId}/global/networks/{networksId}/peeredDnsDomains/{peeredDnsDomainsId}",
-            "idParams": [
-                "servicesId",
-                "projectsId",
-                "networksId",
-                "peeredDnsDomainsId"
-            ],
-            "noGet": true
-        },
-        "gcp-native:servicenetworking/v1beta:ServiceConnection": {
-            "baseUrl": "https://servicenetworking.googleapis.com/",
-            "createPath": "v1beta/services/{servicesId}/connections",
-            "createParams": [
-                "servicesId"
-            ],
-            "createProperties": {
-                "network": {},
-                "peering": {},
-                "reservedPeeringRanges": {},
-                "service": {}
-            },
-            "idPath": "v1beta/services/{servicesId}/connections",
-            "idParams": [
-                "servicesId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
-        "gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitAdminOverride": {
-            "baseUrl": "https://serviceusage.googleapis.com/",
-            "createPath": "v1beta1/{v1beta1Id}/{v1beta1Id1}/services/{servicesId}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/adminOverrides",
-            "createParams": [
-                "v1beta1Id",
-                "v1beta1Id1",
-                "servicesId",
-                "consumerQuotaMetricsId",
-                "limitsId"
-            ],
-            "createProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "idPath": "v1beta1/{v1beta1Id}/{v1beta1Id1}/services/{servicesId}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/adminOverrides/{adminOverridesId}",
-            "idParams": [
-                "v1beta1Id",
-                "v1beta1Id1",
-                "servicesId",
-                "consumerQuotaMetricsId",
-                "limitsId",
-                "adminOverridesId"
-            ],
-            "noGet": true
-        },
-        "gcp-native:serviceusage/v1beta1:ServiceConsumerQuotaMetricLimitConsumerOverride": {
-            "baseUrl": "https://serviceusage.googleapis.com/",
-            "createPath": "v1beta1/{v1beta1Id}/{v1beta1Id1}/services/{servicesId}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/consumerOverrides",
-            "createParams": [
-                "v1beta1Id",
-                "v1beta1Id1",
-                "servicesId",
-                "consumerQuotaMetricsId",
-                "limitsId"
-            ],
-            "createProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "updateVerb": "PATCH",
-            "updateProperties": {
-                "adminOverrideAncestor": {},
-                "dimensions": {},
-                "metric": {},
-                "name": {},
-                "overrideValue": {},
-                "unit": {}
-            },
-            "idPath": "v1beta1/{v1beta1Id}/{v1beta1Id1}/services/{servicesId}/consumerQuotaMetrics/{consumerQuotaMetricsId}/limits/{limitsId}/consumerOverrides/{consumerOverridesId}",
-            "idParams": [
-                "v1beta1Id",
-                "v1beta1Id1",
-                "servicesId",
-                "consumerQuotaMetricsId",
-                "limitsId",
-                "consumerOverridesId"
-            ],
-            "noGet": true
-        },
         "gcp-native:sourcerepo/v1:Repo": {
             "baseUrl": "https://sourcerepo.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/repos",
@@ -33402,43 +32366,6 @@
                 "instance",
                 "sha1Fingerprint"
             ]
-        },
-        "gcp-native:sqladmin/v1beta4:User": {
-            "baseUrl": "https://sqladmin.googleapis.com/",
-            "createPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
-            "createParams": [
-                "project",
-                "instance"
-            ],
-            "createProperties": {
-                "etag": {},
-                "host": {},
-                "instance": {},
-                "kind": {},
-                "name": {},
-                "password": {},
-                "project": {},
-                "sqlserverUserDetails": {},
-                "type": {}
-            },
-            "updateVerb": "PUT",
-            "updateProperties": {
-                "etag": {},
-                "host": {},
-                "instance": {},
-                "kind": {},
-                "name": {},
-                "password": {},
-                "project": {},
-                "sqlserverUserDetails": {},
-                "type": {}
-            },
-            "idPath": "sql/v1beta4/projects/{project}/instances/{instance}/users",
-            "idParams": [
-                "project",
-                "instance"
-            ],
-            "noGet": true
         },
         "gcp-native:storage/v1:Bucket": {
             "baseUrl": "https://storage.googleapis.com/storage/v1/",
@@ -33994,35 +32921,6 @@
             ],
             "noDelete": true
         },
-        "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary": {
-            "baseUrl": "https://toolresults.googleapis.com/",
-            "createPath": "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
-            "createParams": [
-                "projectId",
-                "historyId",
-                "executionId",
-                "stepId"
-            ],
-            "createProperties": {
-                "appStartTime": {},
-                "executionId": {},
-                "graphicsStats": {},
-                "historyId": {},
-                "perfEnvironment": {},
-                "perfMetrics": {},
-                "projectId": {},
-                "stepId": {}
-            },
-            "idPath": "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
-            "idParams": [
-                "projectId",
-                "historyId",
-                "executionId",
-                "stepId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
         "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries": {
             "baseUrl": "https://toolresults.googleapis.com/",
             "createPath": "toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries",
@@ -34279,39 +33177,6 @@
                 "locationsId",
                 "connectorsId"
             ]
-        },
-        "gcp-native:webrisk/v1:Submission": {
-            "baseUrl": "https://webrisk.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/submissions",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "threatTypes": {},
-                "uri": {}
-            },
-            "idPath": "v1/projects/{projectsId}/submissions",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
-        },
-        "gcp-native:webrisk/v1:Uri": {
-            "baseUrl": "https://webrisk.googleapis.com/",
-            "createPath": "v1/projects/{projectsId}/uris:submit",
-            "createParams": [
-                "projectsId"
-            ],
-            "createProperties": {
-                "submission": {}
-            },
-            "idPath": "v1/projects/{projectsId}/uris:submit",
-            "idParams": [
-                "projectsId"
-            ],
-            "noGet": true,
-            "noDelete": true
         },
         "gcp-native:websecurityscanner/v1:ScanConfig": {
             "baseUrl": "https://websecurityscanner.googleapis.com/",
