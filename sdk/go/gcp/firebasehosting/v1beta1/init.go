@@ -25,14 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewSite(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:firebasehosting/v1beta1:SiteChannel":
 		r, err = NewSiteChannel(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:firebasehosting/v1beta1:SiteChannelRelease":
-		r, err = NewSiteChannelRelease(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:firebasehosting/v1beta1:SiteDomain":
 		r, err = NewSiteDomain(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:firebasehosting/v1beta1:SiteRelease":
-		r, err = NewSiteRelease(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:firebasehosting/v1beta1:SiteVersion":
-		r, err = NewSiteVersion(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -5080,7 +5080,7 @@ type Discovered struct {
 	// The CPE of the resource being scanned.
 	Cpe *string `pulumi:"cpe"`
 	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation *OperationType `pulumi:"operation"`
+	Operation *Operation `pulumi:"operation"`
 }
 
 // DiscoveredInput is an input type that accepts DiscoveredArgs and DiscoveredOutput values.
@@ -5105,7 +5105,7 @@ type DiscoveredArgs struct {
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
 	// An operation that indicates the status of the current scan. This field is deprecated, do not use.
-	Operation OperationTypePtrInput `pulumi:"operation"`
+	Operation OperationPtrInput `pulumi:"operation"`
 }
 
 func (DiscoveredArgs) ElementType() reflect.Type {
@@ -5207,8 +5207,8 @@ func (o DiscoveredOutput) Cpe() pulumi.StringPtrOutput {
 }
 
 // An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredOutput) Operation() OperationTypePtrOutput {
-	return o.ApplyT(func(v Discovered) *OperationType { return v.Operation }).(OperationTypePtrOutput)
+func (o DiscoveredOutput) Operation() OperationPtrOutput {
+	return o.ApplyT(func(v Discovered) *Operation { return v.Operation }).(OperationPtrOutput)
 }
 
 type DiscoveredPtrOutput struct{ *pulumi.OutputState }
@@ -5270,13 +5270,13 @@ func (o DiscoveredPtrOutput) Cpe() pulumi.StringPtrOutput {
 }
 
 // An operation that indicates the status of the current scan. This field is deprecated, do not use.
-func (o DiscoveredPtrOutput) Operation() OperationTypePtrOutput {
-	return o.ApplyT(func(v *Discovered) *OperationType {
+func (o DiscoveredPtrOutput) Operation() OperationPtrOutput {
+	return o.ApplyT(func(v *Discovered) *Operation {
 		if v == nil {
 			return nil
 		}
 		return v.Operation
-	}).(OperationTypePtrOutput)
+	}).(OperationPtrOutput)
 }
 
 // Provides information about the scan status of a discovered resource.
@@ -10215,7 +10215,7 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 }
 
 // This resource represents a long-running operation that is the result of a network API call.
-type OperationType struct {
+type Operation struct {
 	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
 	Done *bool `pulumi:"done"`
 	// The error result of the operation in case of failure or cancellation.
@@ -10228,19 +10228,19 @@ type OperationType struct {
 	Response map[string]string `pulumi:"response"`
 }
 
-// OperationTypeInput is an input type that accepts OperationTypeArgs and OperationTypeOutput values.
-// You can construct a concrete instance of `OperationTypeInput` via:
+// OperationInput is an input type that accepts OperationArgs and OperationOutput values.
+// You can construct a concrete instance of `OperationInput` via:
 //
-//          OperationTypeArgs{...}
-type OperationTypeInput interface {
+//          OperationArgs{...}
+type OperationInput interface {
 	pulumi.Input
 
-	ToOperationTypeOutput() OperationTypeOutput
-	ToOperationTypeOutputWithContext(context.Context) OperationTypeOutput
+	ToOperationOutput() OperationOutput
+	ToOperationOutputWithContext(context.Context) OperationOutput
 }
 
 // This resource represents a long-running operation that is the result of a network API call.
-type OperationTypeArgs struct {
+type OperationArgs struct {
 	// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
 	Done pulumi.BoolPtrInput `pulumi:"done"`
 	// The error result of the operation in case of failure or cancellation.
@@ -10253,130 +10253,130 @@ type OperationTypeArgs struct {
 	Response pulumi.StringMapInput `pulumi:"response"`
 }
 
-func (OperationTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationType)(nil)).Elem()
+func (OperationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operation)(nil)).Elem()
 }
 
-func (i OperationTypeArgs) ToOperationTypeOutput() OperationTypeOutput {
-	return i.ToOperationTypeOutputWithContext(context.Background())
+func (i OperationArgs) ToOperationOutput() OperationOutput {
+	return i.ToOperationOutputWithContext(context.Background())
 }
 
-func (i OperationTypeArgs) ToOperationTypeOutputWithContext(ctx context.Context) OperationTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationTypeOutput)
+func (i OperationArgs) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput)
 }
 
-func (i OperationTypeArgs) ToOperationTypePtrOutput() OperationTypePtrOutput {
-	return i.ToOperationTypePtrOutputWithContext(context.Background())
+func (i OperationArgs) ToOperationPtrOutput() OperationPtrOutput {
+	return i.ToOperationPtrOutputWithContext(context.Background())
 }
 
-func (i OperationTypeArgs) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationTypeOutput).ToOperationTypePtrOutputWithContext(ctx)
+func (i OperationArgs) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationOutput).ToOperationPtrOutputWithContext(ctx)
 }
 
-// OperationTypePtrInput is an input type that accepts OperationTypeArgs, OperationTypePtr and OperationTypePtrOutput values.
-// You can construct a concrete instance of `OperationTypePtrInput` via:
+// OperationPtrInput is an input type that accepts OperationArgs, OperationPtr and OperationPtrOutput values.
+// You can construct a concrete instance of `OperationPtrInput` via:
 //
-//          OperationTypeArgs{...}
+//          OperationArgs{...}
 //
 //  or:
 //
 //          nil
-type OperationTypePtrInput interface {
+type OperationPtrInput interface {
 	pulumi.Input
 
-	ToOperationTypePtrOutput() OperationTypePtrOutput
-	ToOperationTypePtrOutputWithContext(context.Context) OperationTypePtrOutput
+	ToOperationPtrOutput() OperationPtrOutput
+	ToOperationPtrOutputWithContext(context.Context) OperationPtrOutput
 }
 
-type operationTypePtrType OperationTypeArgs
+type operationPtrType OperationArgs
 
-func OperationTypePtr(v *OperationTypeArgs) OperationTypePtrInput {
-	return (*operationTypePtrType)(v)
+func OperationPtr(v *OperationArgs) OperationPtrInput {
+	return (*operationPtrType)(v)
 }
 
-func (*operationTypePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationType)(nil)).Elem()
+func (*operationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Operation)(nil)).Elem()
 }
 
-func (i *operationTypePtrType) ToOperationTypePtrOutput() OperationTypePtrOutput {
-	return i.ToOperationTypePtrOutputWithContext(context.Background())
+func (i *operationPtrType) ToOperationPtrOutput() OperationPtrOutput {
+	return i.ToOperationPtrOutputWithContext(context.Background())
 }
 
-func (i *operationTypePtrType) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(OperationTypePtrOutput)
+func (i *operationPtrType) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OperationPtrOutput)
 }
 
 // This resource represents a long-running operation that is the result of a network API call.
-type OperationTypeOutput struct{ *pulumi.OutputState }
+type OperationOutput struct{ *pulumi.OutputState }
 
-func (OperationTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*OperationType)(nil)).Elem()
+func (OperationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Operation)(nil)).Elem()
 }
 
-func (o OperationTypeOutput) ToOperationTypeOutput() OperationTypeOutput {
+func (o OperationOutput) ToOperationOutput() OperationOutput {
 	return o
 }
 
-func (o OperationTypeOutput) ToOperationTypeOutputWithContext(ctx context.Context) OperationTypeOutput {
+func (o OperationOutput) ToOperationOutputWithContext(ctx context.Context) OperationOutput {
 	return o
 }
 
-func (o OperationTypeOutput) ToOperationTypePtrOutput() OperationTypePtrOutput {
-	return o.ToOperationTypePtrOutputWithContext(context.Background())
+func (o OperationOutput) ToOperationPtrOutput() OperationPtrOutput {
+	return o.ToOperationPtrOutputWithContext(context.Background())
 }
 
-func (o OperationTypeOutput) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
-	return o.ApplyT(func(v OperationType) *OperationType {
+func (o OperationOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
+	return o.ApplyT(func(v Operation) *Operation {
 		return &v
-	}).(OperationTypePtrOutput)
+	}).(OperationPtrOutput)
 }
 
 // If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationTypeOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v OperationType) *bool { return v.Done }).(pulumi.BoolPtrOutput)
+func (o OperationOutput) Done() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Operation) *bool { return v.Done }).(pulumi.BoolPtrOutput)
 }
 
 // The error result of the operation in case of failure or cancellation.
-func (o OperationTypeOutput) Error() StatusPtrOutput {
-	return o.ApplyT(func(v OperationType) *Status { return v.Error }).(StatusPtrOutput)
+func (o OperationOutput) Error() StatusPtrOutput {
+	return o.ApplyT(func(v Operation) *Status { return v.Error }).(StatusPtrOutput)
 }
 
 // Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationTypeOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationType) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
+func (o OperationOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Operation) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
 // The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationTypeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OperationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o OperationOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Operation) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationTypeOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationType) map[string]string { return v.Response }).(pulumi.StringMapOutput)
+func (o OperationOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v Operation) map[string]string { return v.Response }).(pulumi.StringMapOutput)
 }
 
-type OperationTypePtrOutput struct{ *pulumi.OutputState }
+type OperationPtrOutput struct{ *pulumi.OutputState }
 
-func (OperationTypePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**OperationType)(nil)).Elem()
+func (OperationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Operation)(nil)).Elem()
 }
 
-func (o OperationTypePtrOutput) ToOperationTypePtrOutput() OperationTypePtrOutput {
+func (o OperationPtrOutput) ToOperationPtrOutput() OperationPtrOutput {
 	return o
 }
 
-func (o OperationTypePtrOutput) ToOperationTypePtrOutputWithContext(ctx context.Context) OperationTypePtrOutput {
+func (o OperationPtrOutput) ToOperationPtrOutputWithContext(ctx context.Context) OperationPtrOutput {
 	return o
 }
 
-func (o OperationTypePtrOutput) Elem() OperationTypeOutput {
-	return o.ApplyT(func(v *OperationType) OperationType { return *v }).(OperationTypeOutput)
+func (o OperationPtrOutput) Elem() OperationOutput {
+	return o.ApplyT(func(v *Operation) Operation { return *v }).(OperationOutput)
 }
 
 // If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
-func (o OperationTypePtrOutput) Done() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *OperationType) *bool {
+func (o OperationPtrOutput) Done() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Operation) *bool {
 		if v == nil {
 			return nil
 		}
@@ -10385,8 +10385,8 @@ func (o OperationTypePtrOutput) Done() pulumi.BoolPtrOutput {
 }
 
 // The error result of the operation in case of failure or cancellation.
-func (o OperationTypePtrOutput) Error() StatusPtrOutput {
-	return o.ApplyT(func(v *OperationType) *Status {
+func (o OperationPtrOutput) Error() StatusPtrOutput {
+	return o.ApplyT(func(v *Operation) *Status {
 		if v == nil {
 			return nil
 		}
@@ -10395,8 +10395,8 @@ func (o OperationTypePtrOutput) Error() StatusPtrOutput {
 }
 
 // Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
-func (o OperationTypePtrOutput) Metadata() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationType) map[string]string {
+func (o OperationPtrOutput) Metadata() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Operation) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -10405,8 +10405,8 @@ func (o OperationTypePtrOutput) Metadata() pulumi.StringMapOutput {
 }
 
 // The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
-func (o OperationTypePtrOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OperationType) *string {
+func (o OperationPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Operation) *string {
 		if v == nil {
 			return nil
 		}
@@ -10415,8 +10415,8 @@ func (o OperationTypePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // The normal response of the operation in case of success. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
-func (o OperationTypePtrOutput) Response() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationType) map[string]string {
+func (o OperationPtrOutput) Response() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Operation) map[string]string {
 		if v == nil {
 			return nil
 		}
@@ -16359,8 +16359,8 @@ func init() {
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
-	pulumi.RegisterOutputType(OperationTypeOutput{})
-	pulumi.RegisterOutputType(OperationTypePtrOutput{})
+	pulumi.RegisterOutputType(OperationOutput{})
+	pulumi.RegisterOutputType(OperationPtrOutput{})
 	pulumi.RegisterOutputType(OperationResponseOutput{})
 	pulumi.RegisterOutputType(OperationResponsePtrOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})

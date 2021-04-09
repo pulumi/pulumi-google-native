@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOrganizationNotificationConfig(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:securitycenter/v1:OrganizationSource":
 		r, err = NewOrganizationSource(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:securitycenter/v1:OrganizationSourceFinding":
-		r, err = NewOrganizationSourceFinding(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:securitycenter/v1:OrganizationSourceIamPolicy":
 		r, err = NewOrganizationSourceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:

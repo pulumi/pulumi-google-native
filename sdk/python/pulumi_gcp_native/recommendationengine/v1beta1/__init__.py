@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .catalog_catalog_item import *
-from .catalog_event_store_prediction_api_key_registration import *
 from ._inputs import *
 from . import outputs
 
@@ -22,8 +21,6 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp-native:recommendationengine/v1beta1:CatalogCatalogItem":
                 return CatalogCatalogItem(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
-                return CatalogEventStorePredictionApiKeyRegistration(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:sqladmin/v1beta4:SslCert":
 		r, err = NewSslCert(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:sqladmin/v1beta4:User":
-		r, err = NewUser(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

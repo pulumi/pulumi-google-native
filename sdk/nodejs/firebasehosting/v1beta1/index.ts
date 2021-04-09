@@ -7,18 +7,12 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./site";
 export * from "./siteChannel";
-export * from "./siteChannelRelease";
 export * from "./siteDomain";
-export * from "./siteRelease";
-export * from "./siteVersion";
 
 // Import resources to register:
 import { Site } from "./site";
 import { SiteChannel } from "./siteChannel";
-import { SiteChannelRelease } from "./siteChannelRelease";
 import { SiteDomain } from "./siteDomain";
-import { SiteRelease } from "./siteRelease";
-import { SiteVersion } from "./siteVersion";
 
 const _module = {
     version: utilities.getVersion(),
@@ -28,14 +22,8 @@ const _module = {
                 return new Site(name, <any>undefined, { urn })
             case "gcp-native:firebasehosting/v1beta1:SiteChannel":
                 return new SiteChannel(name, <any>undefined, { urn })
-            case "gcp-native:firebasehosting/v1beta1:SiteChannelRelease":
-                return new SiteChannelRelease(name, <any>undefined, { urn })
             case "gcp-native:firebasehosting/v1beta1:SiteDomain":
                 return new SiteDomain(name, <any>undefined, { urn })
-            case "gcp-native:firebasehosting/v1beta1:SiteRelease":
-                return new SiteRelease(name, <any>undefined, { urn })
-            case "gcp-native:firebasehosting/v1beta1:SiteVersion":
-                return new SiteVersion(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

@@ -7,7 +7,6 @@ from .backup_run import *
 from .database import *
 from .instance import *
 from .ssl_cert import *
-from .user import *
 from ._inputs import *
 from . import outputs
 
@@ -31,8 +30,6 @@ def _register_module():
                 return Instance(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:sqladmin/v1beta4:SslCert":
                 return SslCert(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:sqladmin/v1beta4:User":
-                return User(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

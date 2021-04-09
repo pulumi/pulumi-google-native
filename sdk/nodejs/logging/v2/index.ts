@@ -5,8 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./billingAccountBucket";
-export * from "./billingAccountBucketView";
 export * from "./billingAccountExclusion";
 export * from "./billingAccountSink";
 export * from "./bucket";
@@ -24,8 +22,6 @@ export * from "./organizationSink";
 export * from "./sink";
 
 // Import resources to register:
-import { BillingAccountBucket } from "./billingAccountBucket";
-import { BillingAccountBucketView } from "./billingAccountBucketView";
 import { BillingAccountExclusion } from "./billingAccountExclusion";
 import { BillingAccountSink } from "./billingAccountSink";
 import { Bucket } from "./bucket";
@@ -46,10 +42,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:logging/v2:BillingAccountBucket":
-                return new BillingAccountBucket(name, <any>undefined, { urn })
-            case "gcp-native:logging/v2:BillingAccountBucketView":
-                return new BillingAccountBucketView(name, <any>undefined, { urn })
             case "gcp-native:logging/v2:BillingAccountExclusion":
                 return new BillingAccountExclusion(name, <any>undefined, { urn })
             case "gcp-native:logging/v2:BillingAccountSink":

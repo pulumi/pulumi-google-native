@@ -8,14 +8,12 @@ import * as utilities from "../../utilities";
 export * from "./history";
 export * from "./historyExecution";
 export * from "./historyExecutionStep";
-export * from "./historyExecutionStepPerfMetricsSummary";
 export * from "./historyExecutionStepPerfSampleSeries";
 
 // Import resources to register:
 import { History } from "./history";
 import { HistoryExecution } from "./historyExecution";
 import { HistoryExecutionStep } from "./historyExecutionStep";
-import { HistoryExecutionStepPerfMetricsSummary } from "./historyExecutionStepPerfMetricsSummary";
 import { HistoryExecutionStepPerfSampleSeries } from "./historyExecutionStepPerfSampleSeries";
 
 const _module = {
@@ -28,8 +26,6 @@ const _module = {
                 return new HistoryExecution(name, <any>undefined, { urn })
             case "gcp-native:toolresults/v1beta3:HistoryExecutionStep":
                 return new HistoryExecutionStep(name, <any>undefined, { urn })
-            case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
-                return new HistoryExecutionStepPerfMetricsSummary(name, <any>undefined, { urn })
             case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
                 return new HistoryExecutionStepPerfSampleSeries(name, <any>undefined, { urn })
             default:

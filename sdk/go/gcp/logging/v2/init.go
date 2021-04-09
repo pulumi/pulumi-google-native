@@ -21,10 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp-native:logging/v2:BillingAccountBucket":
-		r, err = NewBillingAccountBucket(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:logging/v2:BillingAccountBucketView":
-		r, err = NewBillingAccountBucketView(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:logging/v2:BillingAccountExclusion":
 		r, err = NewBillingAccountExclusion(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:logging/v2:BillingAccountSink":

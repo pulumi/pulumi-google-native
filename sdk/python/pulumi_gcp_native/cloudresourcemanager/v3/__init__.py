@@ -9,7 +9,6 @@ from .lien import *
 from .organization_iam_policy import *
 from .project import *
 from .project_iam_policy import *
-from .tag_binding import *
 from .tag_key import *
 from .tag_key_iam_policy import *
 from .tag_value import *
@@ -41,8 +40,6 @@ def _register_module():
                 return Project(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:cloudresourcemanager/v3:ProjectIamPolicy":
                 return ProjectIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:cloudresourcemanager/v3:TagBinding":
-                return TagBinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:cloudresourcemanager/v3:TagKey":
                 return TagKey(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy":

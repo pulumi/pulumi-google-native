@@ -6,7 +6,6 @@
 from .history import *
 from .history_execution import *
 from .history_execution_step import *
-from .history_execution_step_perf_metrics_summary import *
 from .history_execution_step_perf_sample_series import *
 from ._inputs import *
 from . import outputs
@@ -29,8 +28,6 @@ def _register_module():
                 return HistoryExecution(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:toolresults/v1beta3:HistoryExecutionStep":
                 return HistoryExecutionStep(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
-                return HistoryExecutionStepPerfMetricsSummary(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
                 return HistoryExecutionStepPerfSampleSeries(name, pulumi.ResourceOptions(urn=urn))
             else:

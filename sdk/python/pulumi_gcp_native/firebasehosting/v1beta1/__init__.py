@@ -5,10 +5,7 @@
 # Export this package's modules as members:
 from .site import *
 from .site_channel import *
-from .site_channel_release import *
 from .site_domain import *
-from .site_release import *
-from .site_version import *
 from ._inputs import *
 from . import outputs
 
@@ -28,14 +25,8 @@ def _register_module():
                 return Site(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:firebasehosting/v1beta1:SiteChannel":
                 return SiteChannel(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:firebasehosting/v1beta1:SiteChannelRelease":
-                return SiteChannelRelease(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:firebasehosting/v1beta1:SiteDomain":
                 return SiteDomain(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:firebasehosting/v1beta1:SiteRelease":
-                return SiteRelease(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:firebasehosting/v1beta1:SiteVersion":
-                return SiteVersion(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

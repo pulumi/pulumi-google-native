@@ -5,7 +5,6 @@
 # Export this package's modules as members:
 from .capacity_commitment import *
 from .reservation import *
-from .reservation_assignment import *
 from . import outputs
 
 def _register_module():
@@ -24,8 +23,6 @@ def _register_module():
                 return CapacityCommitment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:bigqueryreservation/v1beta1:Reservation":
                 return Reservation(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:bigqueryreservation/v1beta1:ReservationAssignment":
-                return ReservationAssignment(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

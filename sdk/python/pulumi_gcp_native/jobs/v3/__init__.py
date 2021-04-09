@@ -3,7 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .client_event import *
 from .company import *
 from .job import *
 from ._inputs import *
@@ -21,9 +20,7 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp-native:jobs/v3:ClientEvent":
-                return ClientEvent(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:jobs/v3:Company":
+            if typ == "gcp-native:jobs/v3:Company":
                 return Company(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:jobs/v3:Job":
                 return Job(name, pulumi.ResourceOptions(urn=urn))

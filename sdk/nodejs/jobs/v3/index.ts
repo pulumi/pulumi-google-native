@@ -5,12 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./clientEvent";
 export * from "./company";
 export * from "./job";
 
 // Import resources to register:
-import { ClientEvent } from "./clientEvent";
 import { Company } from "./company";
 import { Job } from "./job";
 
@@ -18,8 +16,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:jobs/v3:ClientEvent":
-                return new ClientEvent(name, <any>undefined, { urn })
             case "gcp-native:jobs/v3:Company":
                 return new Company(name, <any>undefined, { urn })
             case "gcp-native:jobs/v3:Job":

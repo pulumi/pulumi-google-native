@@ -25,12 +25,10 @@ import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudchannel from "./cloudchannel";
-import * as clouddebugger from "./clouddebugger";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudiot from "./cloudiot";
 import * as cloudkms from "./cloudkms";
-import * as cloudprofiler from "./cloudprofiler";
 import * as cloudresourcemanager from "./cloudresourcemanager";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudsearch from "./cloudsearch";
@@ -56,7 +54,6 @@ import * as eventarc from "./eventarc";
 import * as file from "./file";
 import * as firebase from "./firebase";
 import * as firebasedatabase from "./firebasedatabase";
-import * as firebasedynamiclinks from "./firebasedynamiclinks";
 import * as firebasehosting from "./firebasehosting";
 import * as firebaseml from "./firebaseml";
 import * as firebaserules from "./firebaserules";
@@ -91,11 +88,8 @@ import * as run from "./run";
 import * as runtimeconfig from "./runtimeconfig";
 import * as secretmanager from "./secretmanager";
 import * as securitycenter from "./securitycenter";
-import * as serviceconsumermanagement from "./serviceconsumermanagement";
 import * as servicedirectory from "./servicedirectory";
 import * as servicemanagement from "./servicemanagement";
-import * as servicenetworking from "./servicenetworking";
-import * as serviceusage from "./serviceusage";
 import * as sourcerepo from "./sourcerepo";
 import * as spanner from "./spanner";
 import * as sqladmin from "./sqladmin";
@@ -109,7 +103,6 @@ import * as translate from "./translate";
 import * as types from "./types";
 import * as vision from "./vision";
 import * as vpcaccess from "./vpcaccess";
-import * as webrisk from "./webrisk";
 import * as websecurityscanner from "./websecurityscanner";
 import * as workflowexecutions from "./workflowexecutions";
 import * as workflows from "./workflows";
@@ -132,12 +125,10 @@ export {
     cloudbilling,
     cloudbuild,
     cloudchannel,
-    clouddebugger,
     cloudfunctions,
     cloudidentity,
     cloudiot,
     cloudkms,
-    cloudprofiler,
     cloudresourcemanager,
     cloudscheduler,
     cloudsearch,
@@ -163,7 +154,6 @@ export {
     file,
     firebase,
     firebasedatabase,
-    firebasedynamiclinks,
     firebasehosting,
     firebaseml,
     firebaserules,
@@ -198,11 +188,8 @@ export {
     runtimeconfig,
     secretmanager,
     securitycenter,
-    serviceconsumermanagement,
     servicedirectory,
     servicemanagement,
-    servicenetworking,
-    serviceusage,
     sourcerepo,
     spanner,
     sqladmin,
@@ -216,7 +203,6 @@ export {
     types,
     vision,
     vpcaccess,
-    webrisk,
     websecurityscanner,
     workflowexecutions,
     workflows,

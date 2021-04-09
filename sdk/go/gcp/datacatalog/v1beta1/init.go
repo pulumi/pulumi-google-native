@@ -25,16 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewEntryGroup(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
 		r, err = NewEntryGroupEntry(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:datacatalog/v1beta1:EntryGroupEntryTag":
-		r, err = NewEntryGroupEntryTag(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
 		r, err = NewEntryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:datacatalog/v1beta1:EntryGroupTag":
-		r, err = NewEntryGroupTag(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:datacatalog/v1beta1:TagTemplate":
 		r, err = NewTagTemplate(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:datacatalog/v1beta1:TagTemplateField":
-		r, err = NewTagTemplateField(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
 		r, err = NewTagTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:datacatalog/v1beta1:Taxonomy":

@@ -5,11 +5,8 @@
 # Export this package's modules as members:
 from .entry_group import *
 from .entry_group_entry import *
-from .entry_group_entry_tag import *
 from .entry_group_iam_policy import *
-from .entry_group_tag import *
 from .tag_template import *
-from .tag_template_field import *
 from .tag_template_iam_policy import *
 from .taxonomy import *
 from .taxonomy_iam_policy import *
@@ -34,16 +31,10 @@ def _register_module():
                 return EntryGroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
                 return EntryGroupEntry(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:datacatalog/v1beta1:EntryGroupEntryTag":
-                return EntryGroupEntryTag(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return EntryGroupIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:datacatalog/v1beta1:EntryGroupTag":
-                return EntryGroupTag(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:datacatalog/v1beta1:TagTemplate":
                 return TagTemplate(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:datacatalog/v1beta1:TagTemplateField":
-                return TagTemplateField(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
                 return TagTemplateIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:datacatalog/v1beta1:Taxonomy":

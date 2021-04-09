@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOrganizationAnalyticDatastore(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationApi":
 		r, err = NewOrganizationApi(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:apigee/v1:OrganizationApiKeyvaluemap":
-		r, err = NewOrganizationApiKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationApiproduct":
 		r, err = NewOrganizationApiproduct(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationDatacollector":
@@ -39,8 +37,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOrganizationDeveloperApp(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationDeveloperAppKey":
 		r, err = NewOrganizationDeveloperAppKey(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:apigee/v1:OrganizationDeveloperAppKeyCreate":
-		r, err = NewOrganizationDeveloperAppKeyCreate(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationEnvgroup":
 		r, err = NewOrganizationEnvgroup(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationEnvgroupAttachment":
@@ -57,8 +53,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOrganizationEnvironmentKeystore(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
 		r, err = NewOrganizationEnvironmentKeystoreAlias(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:apigee/v1:OrganizationEnvironmentKeyvaluemap":
-		r, err = NewOrganizationEnvironmentKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationEnvironmentQuery":
 		r, err = NewOrganizationEnvironmentQuery(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationEnvironmentReference":
@@ -79,8 +73,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOrganizationInstanceCanaryevaluation(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationInstanceNatAddress":
 		r, err = NewOrganizationInstanceNatAddress(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:apigee/v1:OrganizationKeyvaluemap":
-		r, err = NewOrganizationKeyvaluemap(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationReport":
 		r, err = NewOrganizationReport(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:apigee/v1:OrganizationSharedflow":

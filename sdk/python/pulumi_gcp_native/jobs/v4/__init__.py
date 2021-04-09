@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .tenant import *
-from .tenant_client_event import *
 from .tenant_company import *
 from .tenant_job import *
 from ._inputs import *
@@ -24,8 +23,6 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp-native:jobs/v4:Tenant":
                 return Tenant(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:jobs/v4:TenantClientEvent":
-                return TenantClientEvent(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:jobs/v4:TenantCompany":
                 return TenantCompany(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:jobs/v4:TenantJob":

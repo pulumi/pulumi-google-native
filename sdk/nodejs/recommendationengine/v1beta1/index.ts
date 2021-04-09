@@ -6,11 +6,9 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./catalogCatalogItem";
-export * from "./catalogEventStorePredictionApiKeyRegistration";
 
 // Import resources to register:
 import { CatalogCatalogItem } from "./catalogCatalogItem";
-import { CatalogEventStorePredictionApiKeyRegistration } from "./catalogEventStorePredictionApiKeyRegistration";
 
 const _module = {
     version: utilities.getVersion(),
@@ -18,8 +16,6 @@ const _module = {
         switch (type) {
             case "gcp-native:recommendationengine/v1beta1:CatalogCatalogItem":
                 return new CatalogCatalogItem(name, <any>undefined, { urn })
-            case "gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
-                return new CatalogEventStorePredictionApiKeyRegistration(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

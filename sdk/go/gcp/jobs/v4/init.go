@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp-native:jobs/v4:Tenant":
 		r, err = NewTenant(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:jobs/v4:TenantClientEvent":
-		r, err = NewTenantClientEvent(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:jobs/v4:TenantCompany":
 		r, err = NewTenantCompany(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:jobs/v4:TenantJob":

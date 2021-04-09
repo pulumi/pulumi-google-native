@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewHistoryExecution(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:toolresults/v1beta3:HistoryExecutionStep":
 		r, err = NewHistoryExecutionStep(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfMetricsSummary":
-		r, err = NewHistoryExecutionStepPerfMetricsSummary(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
 		r, err = NewHistoryExecutionStepPerfSampleSeries(ctx, name, nil, pulumi.URN_(urn))
 	default:

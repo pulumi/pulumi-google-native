@@ -3,8 +3,6 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
-from .billing_account_bucket import *
-from .billing_account_bucket_view import *
 from .billing_account_exclusion import *
 from .billing_account_sink import *
 from .bucket import *
@@ -35,11 +33,7 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp-native:logging/v2:BillingAccountBucket":
-                return BillingAccountBucket(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:logging/v2:BillingAccountBucketView":
-                return BillingAccountBucketView(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:logging/v2:BillingAccountExclusion":
+            if typ == "gcp-native:logging/v2:BillingAccountExclusion":
                 return BillingAccountExclusion(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:logging/v2:BillingAccountSink":
                 return BillingAccountSink(name, pulumi.ResourceOptions(urn=urn))

@@ -29,7 +29,6 @@ __all__ = [
     'SqlActiveDirectoryConfigArgs',
     'SqlScheduledMaintenanceArgs',
     'SqlServerDatabaseDetailsArgs',
-    'SqlServerUserDetailsArgs',
     'SslCertArgs',
 ]
 
@@ -1771,46 +1770,6 @@ class SqlServerDatabaseDetailsArgs:
     @recovery_model.setter
     def recovery_model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recovery_model", value)
-
-
-@pulumi.input_type
-class SqlServerUserDetailsArgs:
-    def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[bool]] = None,
-                 server_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Represents a Sql Server user on the Cloud SQL instance.
-        :param pulumi.Input[bool] disabled: If the user has been disabled
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] server_roles: The server roles for this user
-        """
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
-        if server_roles is not None:
-            pulumi.set(__self__, "server_roles", server_roles)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If the user has been disabled
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "disabled", value)
-
-    @property
-    @pulumi.getter(name="serverRoles")
-    def server_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The server roles for this user
-        """
-        return pulumi.get(self, "server_roles")
-
-    @server_roles.setter
-    def server_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "server_roles", value)
 
 
 @pulumi.input_type

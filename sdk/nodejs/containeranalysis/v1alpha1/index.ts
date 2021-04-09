@@ -9,7 +9,6 @@ export * from "./note";
 export * from "./noteIamPolicy";
 export * from "./occurrence";
 export * from "./occurrenceIamPolicy";
-export * from "./operation";
 export * from "./providerNote";
 export * from "./providerNoteIamPolicy";
 
@@ -18,7 +17,6 @@ import { Note } from "./note";
 import { NoteIamPolicy } from "./noteIamPolicy";
 import { Occurrence } from "./occurrence";
 import { OccurrenceIamPolicy } from "./occurrenceIamPolicy";
-import { Operation } from "./operation";
 import { ProviderNote } from "./providerNote";
 import { ProviderNoteIamPolicy } from "./providerNoteIamPolicy";
 
@@ -34,8 +32,6 @@ const _module = {
                 return new Occurrence(name, <any>undefined, { urn })
             case "gcp-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
                 return new OccurrenceIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:containeranalysis/v1alpha1:Operation":
-                return new Operation(name, <any>undefined, { urn })
             case "gcp-native:containeranalysis/v1alpha1:ProviderNote":
                 return new ProviderNote(name, <any>undefined, { urn })
             case "gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":

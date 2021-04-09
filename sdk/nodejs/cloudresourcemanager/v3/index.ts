@@ -11,7 +11,6 @@ export * from "./lien";
 export * from "./organizationIamPolicy";
 export * from "./project";
 export * from "./projectIamPolicy";
-export * from "./tagBinding";
 export * from "./tagKey";
 export * from "./tagKeyIamPolicy";
 export * from "./tagValue";
@@ -24,7 +23,6 @@ import { Lien } from "./lien";
 import { OrganizationIamPolicy } from "./organizationIamPolicy";
 import { Project } from "./project";
 import { ProjectIamPolicy } from "./projectIamPolicy";
-import { TagBinding } from "./tagBinding";
 import { TagKey } from "./tagKey";
 import { TagKeyIamPolicy } from "./tagKeyIamPolicy";
 import { TagValue } from "./tagValue";
@@ -46,8 +44,6 @@ const _module = {
                 return new Project(name, <any>undefined, { urn })
             case "gcp-native:cloudresourcemanager/v3:ProjectIamPolicy":
                 return new ProjectIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:cloudresourcemanager/v3:TagBinding":
-                return new TagBinding(name, <any>undefined, { urn })
             case "gcp-native:cloudresourcemanager/v3:TagKey":
                 return new TagKey(name, <any>undefined, { urn })
             case "gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy":

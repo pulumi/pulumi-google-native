@@ -13,7 +13,6 @@ __all__ = [
     'CompensationEntryArgs',
     'CompensationInfoArgs',
     'CompensationRangeArgs',
-    'JobEventArgs',
     'MoneyArgs',
     'ProcessingOptionsArgs',
 ]
@@ -240,46 +239,6 @@ class CompensationRangeArgs:
     @min_compensation.setter
     def min_compensation(self, value: Optional[pulumi.Input['MoneyArgs']]):
         pulumi.set(self, "min_compensation", value)
-
-
-@pulumi.input_type
-class JobEventArgs:
-    def __init__(__self__, *,
-                 jobs: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        An event issued when a job seeker interacts with the application that implements Cloud Talent Solution.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] jobs: Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example, "projects/foo/tenants/bar/jobs/baz".
-        :param pulumi.Input[str] type: Required. The type of the event (see JobEventType).
-        """
-        if jobs is not None:
-            pulumi.set(__self__, "jobs", jobs)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. The job name(s) associated with this event. For example, if this is an impression event, this field contains the identifiers of all jobs shown to the job seeker. If this was a view event, this field contains the identifier of the viewed job. The format is "projects/{project_id}/tenants/{tenant_id}/jobs/{job_id}", for example, "projects/foo/tenants/bar/jobs/baz".
-        """
-        return pulumi.get(self, "jobs")
-
-    @jobs.setter
-    def jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "jobs", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The type of the event (see JobEventType).
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
