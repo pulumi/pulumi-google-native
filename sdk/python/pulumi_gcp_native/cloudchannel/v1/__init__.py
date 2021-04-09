@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .account import *
 from .account_channel_partner_link import *
 from .account_channel_partner_link_customer import *
 from .account_customer import *
@@ -22,7 +23,9 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp-native:cloudchannel/v1:AccountChannelPartnerLink":
+            if typ == "gcp-native:cloudchannel/v1:Account":
+                return Account(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp-native:cloudchannel/v1:AccountChannelPartnerLink":
                 return AccountChannelPartnerLink(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
                 return AccountChannelPartnerLinkCustomer(name, pulumi.ResourceOptions(urn=urn))

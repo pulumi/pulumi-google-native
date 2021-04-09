@@ -84,6 +84,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			rest:         document,
 			mod:          module,
 			visitedTypes: codegen.NewStringSet(),
+			docName:      fileName,
 		}
 		csharpNamespaces[document.Name] = csharpNamespace(document)
 		csharpNamespaces[module] = csharpVersionedNamespace(document)
@@ -129,12 +130,13 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 
 var titleReplacer = strings.NewReplacer(" ", "", "-", "")
 var versionReplacer = strings.NewReplacer("alpha", "Alpha", "beta", "Beta", "v", "V")
+
 func csharpNamespace(document *discovery.RestDescription) string {
 	moduleName := strings.Title(document.Name)
 	title := titleReplacer.Replace(document.Title)
 	idx := strings.Index(strings.ToLower(title), document.Name)
 	if idx >= 0 {
-		moduleName = title[idx:idx+len(document.Name)]
+		moduleName = title[idx : idx+len(document.Name)]
 	}
 	return moduleName
 }
@@ -170,6 +172,7 @@ type packageGenerator struct {
 	rest         *discovery.RestDescription
 	mod          string
 	visitedTypes codegen.StringSet
+	docName      string
 }
 
 func (g *packageGenerator) findResources(parent string, resources map[string]discovery.RestResource) error {
@@ -178,16 +181,24 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 		names = append(names, name)
 	}
 	sort.Strings(names)
-	for _, name := range names {
-		res := resources[name]
-		name = ToUpperCamel(inflector.Singularize(name))
+	var postMethods []discovery.RestMethod
+	for _, resourceName := range names {
+		res := resources[resourceName]
+		name := ToUpperCamel(inflector.Singularize(resourceName))
 		var createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod
 		for methodName, value := range res.Methods {
 			restMethod := value
+			if restMethod.HttpMethod == "POST" {
+				postMethods = append(postMethods, restMethod)
+			}
 			switch methodName {
 			case "create", "insert":
 				createMethod = &restMethod
-			case "update", "replaceService"/*special case for Cloud Run*/:
+			case "submit", "register":
+				if createMethod == nil {
+					createMethod = &restMethod
+				}
+			case "update", "replaceService" /*special case for Cloud Run*/ :
 				updateMethod = &restMethod
 			case "patch":
 				if updateMethod == nil {
@@ -208,11 +219,21 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 			}
 		}
 
+		typeName := fmt.Sprintf("%s%s", parent, name)
 		if createMethod != nil {
-			typeName := fmt.Sprintf("%s%s", parent, name)
 			err := g.genResource(typeName, createMethod, getMethod, updateMethod, deleteMethod)
 			if err != nil {
 				return err
+			}
+		} else {
+			if deleteMethod != nil || updateMethod != nil && len(postMethods) > 0 {
+				if strings.Contains(typeName, "Operation") {
+					// Operation variants don't need to be made resources.
+					continue
+				}
+				// It can be useful to look at this output and look for potential missing resources with unexpected
+				// HTTP POST method names.
+				fmt.Printf("No create method for resource: %s (%s), skipping.\n", typeName, g.docName)
 			}
 		}
 
@@ -233,8 +254,12 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 var pathRegex = regexp.MustCompile(`{([A-Za-z0-9]*)}`)
 
+func (g *packageGenerator) genToken(typeName string) string {
+	return fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
+}
+
 func (g *packageGenerator) genResource(typeName string, createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod) error {
-	resourceTok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, typeName)
+	resourceTok := g.genToken(typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()

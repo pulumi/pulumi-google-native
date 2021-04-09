@@ -682,6 +682,1674 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// Details required for a contact associated with a `Registration`.
+type Contact struct {
+	// Required. Email address of the contact.
+	Email *string `pulumi:"email"`
+	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+	FaxNumber *string `pulumi:"faxNumber"`
+	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber *string `pulumi:"phoneNumber"`
+	// Required. Postal address of the contact.
+	PostalAddress *PostalAddress `pulumi:"postalAddress"`
+}
+
+// ContactInput is an input type that accepts ContactArgs and ContactOutput values.
+// You can construct a concrete instance of `ContactInput` via:
+//
+//          ContactArgs{...}
+type ContactInput interface {
+	pulumi.Input
+
+	ToContactOutput() ContactOutput
+	ToContactOutputWithContext(context.Context) ContactOutput
+}
+
+// Details required for a contact associated with a `Registration`.
+type ContactArgs struct {
+	// Required. Email address of the contact.
+	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+	FaxNumber pulumi.StringPtrInput `pulumi:"faxNumber"`
+	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
+	// Required. Postal address of the contact.
+	PostalAddress PostalAddressPtrInput `pulumi:"postalAddress"`
+}
+
+func (ContactArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Contact)(nil)).Elem()
+}
+
+func (i ContactArgs) ToContactOutput() ContactOutput {
+	return i.ToContactOutputWithContext(context.Background())
+}
+
+func (i ContactArgs) ToContactOutputWithContext(ctx context.Context) ContactOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput)
+}
+
+func (i ContactArgs) ToContactPtrOutput() ContactPtrOutput {
+	return i.ToContactPtrOutputWithContext(context.Background())
+}
+
+func (i ContactArgs) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactOutput).ToContactPtrOutputWithContext(ctx)
+}
+
+// ContactPtrInput is an input type that accepts ContactArgs, ContactPtr and ContactPtrOutput values.
+// You can construct a concrete instance of `ContactPtrInput` via:
+//
+//          ContactArgs{...}
+//
+//  or:
+//
+//          nil
+type ContactPtrInput interface {
+	pulumi.Input
+
+	ToContactPtrOutput() ContactPtrOutput
+	ToContactPtrOutputWithContext(context.Context) ContactPtrOutput
+}
+
+type contactPtrType ContactArgs
+
+func ContactPtr(v *ContactArgs) ContactPtrInput {
+	return (*contactPtrType)(v)
+}
+
+func (*contactPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Contact)(nil)).Elem()
+}
+
+func (i *contactPtrType) ToContactPtrOutput() ContactPtrOutput {
+	return i.ToContactPtrOutputWithContext(context.Background())
+}
+
+func (i *contactPtrType) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactPtrOutput)
+}
+
+// Details required for a contact associated with a `Registration`.
+type ContactOutput struct{ *pulumi.OutputState }
+
+func (ContactOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Contact)(nil)).Elem()
+}
+
+func (o ContactOutput) ToContactOutput() ContactOutput {
+	return o
+}
+
+func (o ContactOutput) ToContactOutputWithContext(ctx context.Context) ContactOutput {
+	return o
+}
+
+func (o ContactOutput) ToContactPtrOutput() ContactPtrOutput {
+	return o.ToContactPtrOutputWithContext(context.Background())
+}
+
+func (o ContactOutput) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
+	return o.ApplyT(func(v Contact) *Contact {
+		return &v
+	}).(ContactPtrOutput)
+}
+
+// Required. Email address of the contact.
+func (o ContactOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.Email }).(pulumi.StringPtrOutput)
+}
+
+// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactOutput) FaxNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.FaxNumber }).(pulumi.StringPtrOutput)
+}
+
+// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Contact) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+}
+
+// Required. Postal address of the contact.
+func (o ContactOutput) PostalAddress() PostalAddressPtrOutput {
+	return o.ApplyT(func(v Contact) *PostalAddress { return v.PostalAddress }).(PostalAddressPtrOutput)
+}
+
+type ContactPtrOutput struct{ *pulumi.OutputState }
+
+func (ContactPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Contact)(nil)).Elem()
+}
+
+func (o ContactPtrOutput) ToContactPtrOutput() ContactPtrOutput {
+	return o
+}
+
+func (o ContactPtrOutput) ToContactPtrOutputWithContext(ctx context.Context) ContactPtrOutput {
+	return o
+}
+
+func (o ContactPtrOutput) Elem() ContactOutput {
+	return o.ApplyT(func(v *Contact) Contact { return *v }).(ContactOutput)
+}
+
+// Required. Email address of the contact.
+func (o ContactPtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Contact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactPtrOutput) FaxNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Contact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FaxNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Contact) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Postal address of the contact.
+func (o ContactPtrOutput) PostalAddress() PostalAddressPtrOutput {
+	return o.ApplyT(func(v *Contact) *PostalAddress {
+		if v == nil {
+			return nil
+		}
+		return v.PostalAddress
+	}).(PostalAddressPtrOutput)
+}
+
+// Details required for a contact associated with a `Registration`.
+type ContactResponse struct {
+	// Required. Email address of the contact.
+	Email string `pulumi:"email"`
+	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+	FaxNumber string `pulumi:"faxNumber"`
+	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber string `pulumi:"phoneNumber"`
+	// Required. Postal address of the contact.
+	PostalAddress PostalAddressResponse `pulumi:"postalAddress"`
+}
+
+// ContactResponseInput is an input type that accepts ContactResponseArgs and ContactResponseOutput values.
+// You can construct a concrete instance of `ContactResponseInput` via:
+//
+//          ContactResponseArgs{...}
+type ContactResponseInput interface {
+	pulumi.Input
+
+	ToContactResponseOutput() ContactResponseOutput
+	ToContactResponseOutputWithContext(context.Context) ContactResponseOutput
+}
+
+// Details required for a contact associated with a `Registration`.
+type ContactResponseArgs struct {
+	// Required. Email address of the contact.
+	Email pulumi.StringInput `pulumi:"email"`
+	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+	FaxNumber pulumi.StringInput `pulumi:"faxNumber"`
+	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+	// Required. Postal address of the contact.
+	PostalAddress PostalAddressResponseInput `pulumi:"postalAddress"`
+}
+
+func (ContactResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactResponse)(nil)).Elem()
+}
+
+func (i ContactResponseArgs) ToContactResponseOutput() ContactResponseOutput {
+	return i.ToContactResponseOutputWithContext(context.Background())
+}
+
+func (i ContactResponseArgs) ToContactResponseOutputWithContext(ctx context.Context) ContactResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactResponseOutput)
+}
+
+func (i ContactResponseArgs) ToContactResponsePtrOutput() ContactResponsePtrOutput {
+	return i.ToContactResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ContactResponseArgs) ToContactResponsePtrOutputWithContext(ctx context.Context) ContactResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactResponseOutput).ToContactResponsePtrOutputWithContext(ctx)
+}
+
+// ContactResponsePtrInput is an input type that accepts ContactResponseArgs, ContactResponsePtr and ContactResponsePtrOutput values.
+// You can construct a concrete instance of `ContactResponsePtrInput` via:
+//
+//          ContactResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ContactResponsePtrInput interface {
+	pulumi.Input
+
+	ToContactResponsePtrOutput() ContactResponsePtrOutput
+	ToContactResponsePtrOutputWithContext(context.Context) ContactResponsePtrOutput
+}
+
+type contactResponsePtrType ContactResponseArgs
+
+func ContactResponsePtr(v *ContactResponseArgs) ContactResponsePtrInput {
+	return (*contactResponsePtrType)(v)
+}
+
+func (*contactResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactResponse)(nil)).Elem()
+}
+
+func (i *contactResponsePtrType) ToContactResponsePtrOutput() ContactResponsePtrOutput {
+	return i.ToContactResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *contactResponsePtrType) ToContactResponsePtrOutputWithContext(ctx context.Context) ContactResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactResponsePtrOutput)
+}
+
+// Details required for a contact associated with a `Registration`.
+type ContactResponseOutput struct{ *pulumi.OutputState }
+
+func (ContactResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactResponse)(nil)).Elem()
+}
+
+func (o ContactResponseOutput) ToContactResponseOutput() ContactResponseOutput {
+	return o
+}
+
+func (o ContactResponseOutput) ToContactResponseOutputWithContext(ctx context.Context) ContactResponseOutput {
+	return o
+}
+
+func (o ContactResponseOutput) ToContactResponsePtrOutput() ContactResponsePtrOutput {
+	return o.ToContactResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ContactResponseOutput) ToContactResponsePtrOutputWithContext(ctx context.Context) ContactResponsePtrOutput {
+	return o.ApplyT(func(v ContactResponse) *ContactResponse {
+		return &v
+	}).(ContactResponsePtrOutput)
+}
+
+// Required. Email address of the contact.
+func (o ContactResponseOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v ContactResponse) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactResponseOutput) FaxNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v ContactResponse) string { return v.FaxNumber }).(pulumi.StringOutput)
+}
+
+// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactResponseOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v ContactResponse) string { return v.PhoneNumber }).(pulumi.StringOutput)
+}
+
+// Required. Postal address of the contact.
+func (o ContactResponseOutput) PostalAddress() PostalAddressResponseOutput {
+	return o.ApplyT(func(v ContactResponse) PostalAddressResponse { return v.PostalAddress }).(PostalAddressResponseOutput)
+}
+
+type ContactResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContactResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactResponse)(nil)).Elem()
+}
+
+func (o ContactResponsePtrOutput) ToContactResponsePtrOutput() ContactResponsePtrOutput {
+	return o
+}
+
+func (o ContactResponsePtrOutput) ToContactResponsePtrOutputWithContext(ctx context.Context) ContactResponsePtrOutput {
+	return o
+}
+
+func (o ContactResponsePtrOutput) Elem() ContactResponseOutput {
+	return o.ApplyT(func(v *ContactResponse) ContactResponse { return *v }).(ContactResponseOutput)
+}
+
+// Required. Email address of the contact.
+func (o ContactResponsePtrOutput) Email() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Email
+	}).(pulumi.StringPtrOutput)
+}
+
+// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactResponsePtrOutput) FaxNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FaxNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactResponsePtrOutput) PhoneNumber() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContactResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PhoneNumber
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. Postal address of the contact.
+func (o ContactResponsePtrOutput) PostalAddress() PostalAddressResponsePtrOutput {
+	return o.ApplyT(func(v *ContactResponse) *PostalAddressResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.PostalAddress
+	}).(PostalAddressResponsePtrOutput)
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettings struct {
+	// Required. The administrative contact for the `Registration`.
+	AdminContact *Contact `pulumi:"adminContact"`
+	// Required. Privacy setting for the contacts associated with the `Registration`.
+	Privacy *string `pulumi:"privacy"`
+	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact *Contact `pulumi:"registrantContact"`
+	// Required. The technical contact for the `Registration`.
+	TechnicalContact *Contact `pulumi:"technicalContact"`
+}
+
+// ContactSettingsInput is an input type that accepts ContactSettingsArgs and ContactSettingsOutput values.
+// You can construct a concrete instance of `ContactSettingsInput` via:
+//
+//          ContactSettingsArgs{...}
+type ContactSettingsInput interface {
+	pulumi.Input
+
+	ToContactSettingsOutput() ContactSettingsOutput
+	ToContactSettingsOutputWithContext(context.Context) ContactSettingsOutput
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettingsArgs struct {
+	// Required. The administrative contact for the `Registration`.
+	AdminContact ContactPtrInput `pulumi:"adminContact"`
+	// Required. Privacy setting for the contacts associated with the `Registration`.
+	Privacy pulumi.StringPtrInput `pulumi:"privacy"`
+	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact ContactPtrInput `pulumi:"registrantContact"`
+	// Required. The technical contact for the `Registration`.
+	TechnicalContact ContactPtrInput `pulumi:"technicalContact"`
+}
+
+func (ContactSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactSettings)(nil)).Elem()
+}
+
+func (i ContactSettingsArgs) ToContactSettingsOutput() ContactSettingsOutput {
+	return i.ToContactSettingsOutputWithContext(context.Background())
+}
+
+func (i ContactSettingsArgs) ToContactSettingsOutputWithContext(ctx context.Context) ContactSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsOutput)
+}
+
+func (i ContactSettingsArgs) ToContactSettingsPtrOutput() ContactSettingsPtrOutput {
+	return i.ToContactSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ContactSettingsArgs) ToContactSettingsPtrOutputWithContext(ctx context.Context) ContactSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsOutput).ToContactSettingsPtrOutputWithContext(ctx)
+}
+
+// ContactSettingsPtrInput is an input type that accepts ContactSettingsArgs, ContactSettingsPtr and ContactSettingsPtrOutput values.
+// You can construct a concrete instance of `ContactSettingsPtrInput` via:
+//
+//          ContactSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type ContactSettingsPtrInput interface {
+	pulumi.Input
+
+	ToContactSettingsPtrOutput() ContactSettingsPtrOutput
+	ToContactSettingsPtrOutputWithContext(context.Context) ContactSettingsPtrOutput
+}
+
+type contactSettingsPtrType ContactSettingsArgs
+
+func ContactSettingsPtr(v *ContactSettingsArgs) ContactSettingsPtrInput {
+	return (*contactSettingsPtrType)(v)
+}
+
+func (*contactSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactSettings)(nil)).Elem()
+}
+
+func (i *contactSettingsPtrType) ToContactSettingsPtrOutput() ContactSettingsPtrOutput {
+	return i.ToContactSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *contactSettingsPtrType) ToContactSettingsPtrOutputWithContext(ctx context.Context) ContactSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsPtrOutput)
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettingsOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactSettings)(nil)).Elem()
+}
+
+func (o ContactSettingsOutput) ToContactSettingsOutput() ContactSettingsOutput {
+	return o
+}
+
+func (o ContactSettingsOutput) ToContactSettingsOutputWithContext(ctx context.Context) ContactSettingsOutput {
+	return o
+}
+
+func (o ContactSettingsOutput) ToContactSettingsPtrOutput() ContactSettingsPtrOutput {
+	return o.ToContactSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsOutput) ToContactSettingsPtrOutputWithContext(ctx context.Context) ContactSettingsPtrOutput {
+	return o.ApplyT(func(v ContactSettings) *ContactSettings {
+		return &v
+	}).(ContactSettingsPtrOutput)
+}
+
+// Required. The administrative contact for the `Registration`.
+func (o ContactSettingsOutput) AdminContact() ContactPtrOutput {
+	return o.ApplyT(func(v ContactSettings) *Contact { return v.AdminContact }).(ContactPtrOutput)
+}
+
+// Required. Privacy setting for the contacts associated with the `Registration`.
+func (o ContactSettingsOutput) Privacy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ContactSettings) *string { return v.Privacy }).(pulumi.StringPtrOutput)
+}
+
+// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+func (o ContactSettingsOutput) RegistrantContact() ContactPtrOutput {
+	return o.ApplyT(func(v ContactSettings) *Contact { return v.RegistrantContact }).(ContactPtrOutput)
+}
+
+// Required. The technical contact for the `Registration`.
+func (o ContactSettingsOutput) TechnicalContact() ContactPtrOutput {
+	return o.ApplyT(func(v ContactSettings) *Contact { return v.TechnicalContact }).(ContactPtrOutput)
+}
+
+type ContactSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactSettings)(nil)).Elem()
+}
+
+func (o ContactSettingsPtrOutput) ToContactSettingsPtrOutput() ContactSettingsPtrOutput {
+	return o
+}
+
+func (o ContactSettingsPtrOutput) ToContactSettingsPtrOutputWithContext(ctx context.Context) ContactSettingsPtrOutput {
+	return o
+}
+
+func (o ContactSettingsPtrOutput) Elem() ContactSettingsOutput {
+	return o.ApplyT(func(v *ContactSettings) ContactSettings { return *v }).(ContactSettingsOutput)
+}
+
+// Required. The administrative contact for the `Registration`.
+func (o ContactSettingsPtrOutput) AdminContact() ContactPtrOutput {
+	return o.ApplyT(func(v *ContactSettings) *Contact {
+		if v == nil {
+			return nil
+		}
+		return v.AdminContact
+	}).(ContactPtrOutput)
+}
+
+// Required. Privacy setting for the contacts associated with the `Registration`.
+func (o ContactSettingsPtrOutput) Privacy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContactSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Privacy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+func (o ContactSettingsPtrOutput) RegistrantContact() ContactPtrOutput {
+	return o.ApplyT(func(v *ContactSettings) *Contact {
+		if v == nil {
+			return nil
+		}
+		return v.RegistrantContact
+	}).(ContactPtrOutput)
+}
+
+// Required. The technical contact for the `Registration`.
+func (o ContactSettingsPtrOutput) TechnicalContact() ContactPtrOutput {
+	return o.ApplyT(func(v *ContactSettings) *Contact {
+		if v == nil {
+			return nil
+		}
+		return v.TechnicalContact
+	}).(ContactPtrOutput)
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettingsResponse struct {
+	// Required. The administrative contact for the `Registration`.
+	AdminContact ContactResponse `pulumi:"adminContact"`
+	// Required. Privacy setting for the contacts associated with the `Registration`.
+	Privacy string `pulumi:"privacy"`
+	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact ContactResponse `pulumi:"registrantContact"`
+	// Required. The technical contact for the `Registration`.
+	TechnicalContact ContactResponse `pulumi:"technicalContact"`
+}
+
+// ContactSettingsResponseInput is an input type that accepts ContactSettingsResponseArgs and ContactSettingsResponseOutput values.
+// You can construct a concrete instance of `ContactSettingsResponseInput` via:
+//
+//          ContactSettingsResponseArgs{...}
+type ContactSettingsResponseInput interface {
+	pulumi.Input
+
+	ToContactSettingsResponseOutput() ContactSettingsResponseOutput
+	ToContactSettingsResponseOutputWithContext(context.Context) ContactSettingsResponseOutput
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettingsResponseArgs struct {
+	// Required. The administrative contact for the `Registration`.
+	AdminContact ContactResponseInput `pulumi:"adminContact"`
+	// Required. Privacy setting for the contacts associated with the `Registration`.
+	Privacy pulumi.StringInput `pulumi:"privacy"`
+	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact ContactResponseInput `pulumi:"registrantContact"`
+	// Required. The technical contact for the `Registration`.
+	TechnicalContact ContactResponseInput `pulumi:"technicalContact"`
+}
+
+func (ContactSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactSettingsResponse)(nil)).Elem()
+}
+
+func (i ContactSettingsResponseArgs) ToContactSettingsResponseOutput() ContactSettingsResponseOutput {
+	return i.ToContactSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i ContactSettingsResponseArgs) ToContactSettingsResponseOutputWithContext(ctx context.Context) ContactSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsResponseOutput)
+}
+
+func (i ContactSettingsResponseArgs) ToContactSettingsResponsePtrOutput() ContactSettingsResponsePtrOutput {
+	return i.ToContactSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ContactSettingsResponseArgs) ToContactSettingsResponsePtrOutputWithContext(ctx context.Context) ContactSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsResponseOutput).ToContactSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// ContactSettingsResponsePtrInput is an input type that accepts ContactSettingsResponseArgs, ContactSettingsResponsePtr and ContactSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `ContactSettingsResponsePtrInput` via:
+//
+//          ContactSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ContactSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToContactSettingsResponsePtrOutput() ContactSettingsResponsePtrOutput
+	ToContactSettingsResponsePtrOutputWithContext(context.Context) ContactSettingsResponsePtrOutput
+}
+
+type contactSettingsResponsePtrType ContactSettingsResponseArgs
+
+func ContactSettingsResponsePtr(v *ContactSettingsResponseArgs) ContactSettingsResponsePtrInput {
+	return (*contactSettingsResponsePtrType)(v)
+}
+
+func (*contactSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactSettingsResponse)(nil)).Elem()
+}
+
+func (i *contactSettingsResponsePtrType) ToContactSettingsResponsePtrOutput() ContactSettingsResponsePtrOutput {
+	return i.ToContactSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *contactSettingsResponsePtrType) ToContactSettingsResponsePtrOutputWithContext(ctx context.Context) ContactSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ContactSettingsResponsePtrOutput)
+}
+
+// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+type ContactSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactSettingsResponse)(nil)).Elem()
+}
+
+func (o ContactSettingsResponseOutput) ToContactSettingsResponseOutput() ContactSettingsResponseOutput {
+	return o
+}
+
+func (o ContactSettingsResponseOutput) ToContactSettingsResponseOutputWithContext(ctx context.Context) ContactSettingsResponseOutput {
+	return o
+}
+
+func (o ContactSettingsResponseOutput) ToContactSettingsResponsePtrOutput() ContactSettingsResponsePtrOutput {
+	return o.ToContactSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsResponseOutput) ToContactSettingsResponsePtrOutputWithContext(ctx context.Context) ContactSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ContactSettingsResponse) *ContactSettingsResponse {
+		return &v
+	}).(ContactSettingsResponsePtrOutput)
+}
+
+// Required. The administrative contact for the `Registration`.
+func (o ContactSettingsResponseOutput) AdminContact() ContactResponseOutput {
+	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.AdminContact }).(ContactResponseOutput)
+}
+
+// Required. Privacy setting for the contacts associated with the `Registration`.
+func (o ContactSettingsResponseOutput) Privacy() pulumi.StringOutput {
+	return o.ApplyT(func(v ContactSettingsResponse) string { return v.Privacy }).(pulumi.StringOutput)
+}
+
+// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+func (o ContactSettingsResponseOutput) RegistrantContact() ContactResponseOutput {
+	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.RegistrantContact }).(ContactResponseOutput)
+}
+
+// Required. The technical contact for the `Registration`.
+func (o ContactSettingsResponseOutput) TechnicalContact() ContactResponseOutput {
+	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.TechnicalContact }).(ContactResponseOutput)
+}
+
+type ContactSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ContactSettingsResponse)(nil)).Elem()
+}
+
+func (o ContactSettingsResponsePtrOutput) ToContactSettingsResponsePtrOutput() ContactSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ContactSettingsResponsePtrOutput) ToContactSettingsResponsePtrOutputWithContext(ctx context.Context) ContactSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ContactSettingsResponsePtrOutput) Elem() ContactSettingsResponseOutput {
+	return o.ApplyT(func(v *ContactSettingsResponse) ContactSettingsResponse { return *v }).(ContactSettingsResponseOutput)
+}
+
+// Required. The administrative contact for the `Registration`.
+func (o ContactSettingsResponsePtrOutput) AdminContact() ContactResponsePtrOutput {
+	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AdminContact
+	}).(ContactResponsePtrOutput)
+}
+
+// Required. Privacy setting for the contacts associated with the `Registration`.
+func (o ContactSettingsResponsePtrOutput) Privacy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ContactSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Privacy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+func (o ContactSettingsResponsePtrOutput) RegistrantContact() ContactResponsePtrOutput {
+	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.RegistrantContact
+	}).(ContactResponsePtrOutput)
+}
+
+// Required. The technical contact for the `Registration`.
+func (o ContactSettingsResponsePtrOutput) TechnicalContact() ContactResponsePtrOutput {
+	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.TechnicalContact
+	}).(ContactResponsePtrOutput)
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDns struct {
+	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+	DsRecords []DsRecord `pulumi:"dsRecords"`
+	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	NameServers []string `pulumi:"nameServers"`
+}
+
+// CustomDnsInput is an input type that accepts CustomDnsArgs and CustomDnsOutput values.
+// You can construct a concrete instance of `CustomDnsInput` via:
+//
+//          CustomDnsArgs{...}
+type CustomDnsInput interface {
+	pulumi.Input
+
+	ToCustomDnsOutput() CustomDnsOutput
+	ToCustomDnsOutputWithContext(context.Context) CustomDnsOutput
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDnsArgs struct {
+	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+	DsRecords DsRecordArrayInput `pulumi:"dsRecords"`
+	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+}
+
+func (CustomDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDns)(nil)).Elem()
+}
+
+func (i CustomDnsArgs) ToCustomDnsOutput() CustomDnsOutput {
+	return i.ToCustomDnsOutputWithContext(context.Background())
+}
+
+func (i CustomDnsArgs) ToCustomDnsOutputWithContext(ctx context.Context) CustomDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsOutput)
+}
+
+func (i CustomDnsArgs) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
+	return i.ToCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i CustomDnsArgs) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsOutput).ToCustomDnsPtrOutputWithContext(ctx)
+}
+
+// CustomDnsPtrInput is an input type that accepts CustomDnsArgs, CustomDnsPtr and CustomDnsPtrOutput values.
+// You can construct a concrete instance of `CustomDnsPtrInput` via:
+//
+//          CustomDnsArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomDnsPtrInput interface {
+	pulumi.Input
+
+	ToCustomDnsPtrOutput() CustomDnsPtrOutput
+	ToCustomDnsPtrOutputWithContext(context.Context) CustomDnsPtrOutput
+}
+
+type customDnsPtrType CustomDnsArgs
+
+func CustomDnsPtr(v *CustomDnsArgs) CustomDnsPtrInput {
+	return (*customDnsPtrType)(v)
+}
+
+func (*customDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDns)(nil)).Elem()
+}
+
+func (i *customDnsPtrType) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
+	return i.ToCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *customDnsPtrType) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsPtrOutput)
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDnsOutput struct{ *pulumi.OutputState }
+
+func (CustomDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDns)(nil)).Elem()
+}
+
+func (o CustomDnsOutput) ToCustomDnsOutput() CustomDnsOutput {
+	return o
+}
+
+func (o CustomDnsOutput) ToCustomDnsOutputWithContext(ctx context.Context) CustomDnsOutput {
+	return o
+}
+
+func (o CustomDnsOutput) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
+	return o.ToCustomDnsPtrOutputWithContext(context.Background())
+}
+
+func (o CustomDnsOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
+	return o.ApplyT(func(v CustomDns) *CustomDns {
+		return &v
+	}).(CustomDnsPtrOutput)
+}
+
+// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+func (o CustomDnsOutput) DsRecords() DsRecordArrayOutput {
+	return o.ApplyT(func(v CustomDns) []DsRecord { return v.DsRecords }).(DsRecordArrayOutput)
+}
+
+// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+func (o CustomDnsOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomDns) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+type CustomDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDns)(nil)).Elem()
+}
+
+func (o CustomDnsPtrOutput) ToCustomDnsPtrOutput() CustomDnsPtrOutput {
+	return o
+}
+
+func (o CustomDnsPtrOutput) ToCustomDnsPtrOutputWithContext(ctx context.Context) CustomDnsPtrOutput {
+	return o
+}
+
+func (o CustomDnsPtrOutput) Elem() CustomDnsOutput {
+	return o.ApplyT(func(v *CustomDns) CustomDns { return *v }).(CustomDnsOutput)
+}
+
+// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+func (o CustomDnsPtrOutput) DsRecords() DsRecordArrayOutput {
+	return o.ApplyT(func(v *CustomDns) []DsRecord {
+		if v == nil {
+			return nil
+		}
+		return v.DsRecords
+	}).(DsRecordArrayOutput)
+}
+
+// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+func (o CustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomDns) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDnsResponse struct {
+	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
+	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	NameServers []string `pulumi:"nameServers"`
+}
+
+// CustomDnsResponseInput is an input type that accepts CustomDnsResponseArgs and CustomDnsResponseOutput values.
+// You can construct a concrete instance of `CustomDnsResponseInput` via:
+//
+//          CustomDnsResponseArgs{...}
+type CustomDnsResponseInput interface {
+	pulumi.Input
+
+	ToCustomDnsResponseOutput() CustomDnsResponseOutput
+	ToCustomDnsResponseOutputWithContext(context.Context) CustomDnsResponseOutput
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDnsResponseArgs struct {
+	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+	DsRecords DsRecordResponseArrayInput `pulumi:"dsRecords"`
+	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+}
+
+func (CustomDnsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDnsResponse)(nil)).Elem()
+}
+
+func (i CustomDnsResponseArgs) ToCustomDnsResponseOutput() CustomDnsResponseOutput {
+	return i.ToCustomDnsResponseOutputWithContext(context.Background())
+}
+
+func (i CustomDnsResponseArgs) ToCustomDnsResponseOutputWithContext(ctx context.Context) CustomDnsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsResponseOutput)
+}
+
+func (i CustomDnsResponseArgs) ToCustomDnsResponsePtrOutput() CustomDnsResponsePtrOutput {
+	return i.ToCustomDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CustomDnsResponseArgs) ToCustomDnsResponsePtrOutputWithContext(ctx context.Context) CustomDnsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsResponseOutput).ToCustomDnsResponsePtrOutputWithContext(ctx)
+}
+
+// CustomDnsResponsePtrInput is an input type that accepts CustomDnsResponseArgs, CustomDnsResponsePtr and CustomDnsResponsePtrOutput values.
+// You can construct a concrete instance of `CustomDnsResponsePtrInput` via:
+//
+//          CustomDnsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CustomDnsResponsePtrInput interface {
+	pulumi.Input
+
+	ToCustomDnsResponsePtrOutput() CustomDnsResponsePtrOutput
+	ToCustomDnsResponsePtrOutputWithContext(context.Context) CustomDnsResponsePtrOutput
+}
+
+type customDnsResponsePtrType CustomDnsResponseArgs
+
+func CustomDnsResponsePtr(v *CustomDnsResponseArgs) CustomDnsResponsePtrInput {
+	return (*customDnsResponsePtrType)(v)
+}
+
+func (*customDnsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDnsResponse)(nil)).Elem()
+}
+
+func (i *customDnsResponsePtrType) ToCustomDnsResponsePtrOutput() CustomDnsResponsePtrOutput {
+	return i.ToCustomDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *customDnsResponsePtrType) ToCustomDnsResponsePtrOutputWithContext(ctx context.Context) CustomDnsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDnsResponsePtrOutput)
+}
+
+// Configuration for an arbitrary DNS provider.
+type CustomDnsResponseOutput struct{ *pulumi.OutputState }
+
+func (CustomDnsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDnsResponse)(nil)).Elem()
+}
+
+func (o CustomDnsResponseOutput) ToCustomDnsResponseOutput() CustomDnsResponseOutput {
+	return o
+}
+
+func (o CustomDnsResponseOutput) ToCustomDnsResponseOutputWithContext(ctx context.Context) CustomDnsResponseOutput {
+	return o
+}
+
+func (o CustomDnsResponseOutput) ToCustomDnsResponsePtrOutput() CustomDnsResponsePtrOutput {
+	return o.ToCustomDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CustomDnsResponseOutput) ToCustomDnsResponsePtrOutputWithContext(ctx context.Context) CustomDnsResponsePtrOutput {
+	return o.ApplyT(func(v CustomDnsResponse) *CustomDnsResponse {
+		return &v
+	}).(CustomDnsResponsePtrOutput)
+}
+
+// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+func (o CustomDnsResponseOutput) DsRecords() DsRecordResponseArrayOutput {
+	return o.ApplyT(func(v CustomDnsResponse) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
+}
+
+// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+func (o CustomDnsResponseOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomDnsResponse) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+type CustomDnsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CustomDnsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CustomDnsResponse)(nil)).Elem()
+}
+
+func (o CustomDnsResponsePtrOutput) ToCustomDnsResponsePtrOutput() CustomDnsResponsePtrOutput {
+	return o
+}
+
+func (o CustomDnsResponsePtrOutput) ToCustomDnsResponsePtrOutputWithContext(ctx context.Context) CustomDnsResponsePtrOutput {
+	return o
+}
+
+func (o CustomDnsResponsePtrOutput) Elem() CustomDnsResponseOutput {
+	return o.ApplyT(func(v *CustomDnsResponse) CustomDnsResponse { return *v }).(CustomDnsResponseOutput)
+}
+
+// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+func (o CustomDnsResponsePtrOutput) DsRecords() DsRecordResponseArrayOutput {
+	return o.ApplyT(func(v *CustomDnsResponse) []DsRecordResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DsRecords
+	}).(DsRecordResponseArrayOutput)
+}
+
+// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+func (o CustomDnsResponsePtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CustomDnsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettings struct {
+	// An arbitrary DNS provider identified by its name servers.
+	CustomDns *CustomDns `pulumi:"customDns"`
+	// The list of glue records for this `Registration`. Commonly empty.
+	GlueRecords []GlueRecord `pulumi:"glueRecords"`
+	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	GoogleDomainsDns *GoogleDomainsDns `pulumi:"googleDomainsDns"`
+}
+
+// DnsSettingsInput is an input type that accepts DnsSettingsArgs and DnsSettingsOutput values.
+// You can construct a concrete instance of `DnsSettingsInput` via:
+//
+//          DnsSettingsArgs{...}
+type DnsSettingsInput interface {
+	pulumi.Input
+
+	ToDnsSettingsOutput() DnsSettingsOutput
+	ToDnsSettingsOutputWithContext(context.Context) DnsSettingsOutput
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettingsArgs struct {
+	// An arbitrary DNS provider identified by its name servers.
+	CustomDns CustomDnsPtrInput `pulumi:"customDns"`
+	// The list of glue records for this `Registration`. Commonly empty.
+	GlueRecords GlueRecordArrayInput `pulumi:"glueRecords"`
+	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	GoogleDomainsDns GoogleDomainsDnsPtrInput `pulumi:"googleDomainsDns"`
+}
+
+func (DnsSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSettings)(nil)).Elem()
+}
+
+func (i DnsSettingsArgs) ToDnsSettingsOutput() DnsSettingsOutput {
+	return i.ToDnsSettingsOutputWithContext(context.Background())
+}
+
+func (i DnsSettingsArgs) ToDnsSettingsOutputWithContext(ctx context.Context) DnsSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsOutput)
+}
+
+func (i DnsSettingsArgs) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
+	return i.ToDnsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i DnsSettingsArgs) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsOutput).ToDnsSettingsPtrOutputWithContext(ctx)
+}
+
+// DnsSettingsPtrInput is an input type that accepts DnsSettingsArgs, DnsSettingsPtr and DnsSettingsPtrOutput values.
+// You can construct a concrete instance of `DnsSettingsPtrInput` via:
+//
+//          DnsSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type DnsSettingsPtrInput interface {
+	pulumi.Input
+
+	ToDnsSettingsPtrOutput() DnsSettingsPtrOutput
+	ToDnsSettingsPtrOutputWithContext(context.Context) DnsSettingsPtrOutput
+}
+
+type dnsSettingsPtrType DnsSettingsArgs
+
+func DnsSettingsPtr(v *DnsSettingsArgs) DnsSettingsPtrInput {
+	return (*dnsSettingsPtrType)(v)
+}
+
+func (*dnsSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsSettings)(nil)).Elem()
+}
+
+func (i *dnsSettingsPtrType) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
+	return i.ToDnsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsSettingsPtrType) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsPtrOutput)
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettingsOutput struct{ *pulumi.OutputState }
+
+func (DnsSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSettings)(nil)).Elem()
+}
+
+func (o DnsSettingsOutput) ToDnsSettingsOutput() DnsSettingsOutput {
+	return o
+}
+
+func (o DnsSettingsOutput) ToDnsSettingsOutputWithContext(ctx context.Context) DnsSettingsOutput {
+	return o
+}
+
+func (o DnsSettingsOutput) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
+	return o.ToDnsSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o DnsSettingsOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
+	return o.ApplyT(func(v DnsSettings) *DnsSettings {
+		return &v
+	}).(DnsSettingsPtrOutput)
+}
+
+// An arbitrary DNS provider identified by its name servers.
+func (o DnsSettingsOutput) CustomDns() CustomDnsPtrOutput {
+	return o.ApplyT(func(v DnsSettings) *CustomDns { return v.CustomDns }).(CustomDnsPtrOutput)
+}
+
+// The list of glue records for this `Registration`. Commonly empty.
+func (o DnsSettingsOutput) GlueRecords() GlueRecordArrayOutput {
+	return o.ApplyT(func(v DnsSettings) []GlueRecord { return v.GlueRecords }).(GlueRecordArrayOutput)
+}
+
+// The free DNS zone provided by [Google Domains](https://domains.google/).
+func (o DnsSettingsOutput) GoogleDomainsDns() GoogleDomainsDnsPtrOutput {
+	return o.ApplyT(func(v DnsSettings) *GoogleDomainsDns { return v.GoogleDomainsDns }).(GoogleDomainsDnsPtrOutput)
+}
+
+type DnsSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsSettings)(nil)).Elem()
+}
+
+func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutput() DnsSettingsPtrOutput {
+	return o
+}
+
+func (o DnsSettingsPtrOutput) ToDnsSettingsPtrOutputWithContext(ctx context.Context) DnsSettingsPtrOutput {
+	return o
+}
+
+func (o DnsSettingsPtrOutput) Elem() DnsSettingsOutput {
+	return o.ApplyT(func(v *DnsSettings) DnsSettings { return *v }).(DnsSettingsOutput)
+}
+
+// An arbitrary DNS provider identified by its name servers.
+func (o DnsSettingsPtrOutput) CustomDns() CustomDnsPtrOutput {
+	return o.ApplyT(func(v *DnsSettings) *CustomDns {
+		if v == nil {
+			return nil
+		}
+		return v.CustomDns
+	}).(CustomDnsPtrOutput)
+}
+
+// The list of glue records for this `Registration`. Commonly empty.
+func (o DnsSettingsPtrOutput) GlueRecords() GlueRecordArrayOutput {
+	return o.ApplyT(func(v *DnsSettings) []GlueRecord {
+		if v == nil {
+			return nil
+		}
+		return v.GlueRecords
+	}).(GlueRecordArrayOutput)
+}
+
+// The free DNS zone provided by [Google Domains](https://domains.google/).
+func (o DnsSettingsPtrOutput) GoogleDomainsDns() GoogleDomainsDnsPtrOutput {
+	return o.ApplyT(func(v *DnsSettings) *GoogleDomainsDns {
+		if v == nil {
+			return nil
+		}
+		return v.GoogleDomainsDns
+	}).(GoogleDomainsDnsPtrOutput)
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettingsResponse struct {
+	// An arbitrary DNS provider identified by its name servers.
+	CustomDns CustomDnsResponse `pulumi:"customDns"`
+	// The list of glue records for this `Registration`. Commonly empty.
+	GlueRecords []GlueRecordResponse `pulumi:"glueRecords"`
+	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	GoogleDomainsDns GoogleDomainsDnsResponse `pulumi:"googleDomainsDns"`
+}
+
+// DnsSettingsResponseInput is an input type that accepts DnsSettingsResponseArgs and DnsSettingsResponseOutput values.
+// You can construct a concrete instance of `DnsSettingsResponseInput` via:
+//
+//          DnsSettingsResponseArgs{...}
+type DnsSettingsResponseInput interface {
+	pulumi.Input
+
+	ToDnsSettingsResponseOutput() DnsSettingsResponseOutput
+	ToDnsSettingsResponseOutputWithContext(context.Context) DnsSettingsResponseOutput
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettingsResponseArgs struct {
+	// An arbitrary DNS provider identified by its name servers.
+	CustomDns CustomDnsResponseInput `pulumi:"customDns"`
+	// The list of glue records for this `Registration`. Commonly empty.
+	GlueRecords GlueRecordResponseArrayInput `pulumi:"glueRecords"`
+	// The free DNS zone provided by [Google Domains](https://domains.google/).
+	GoogleDomainsDns GoogleDomainsDnsResponseInput `pulumi:"googleDomainsDns"`
+}
+
+func (DnsSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSettingsResponse)(nil)).Elem()
+}
+
+func (i DnsSettingsResponseArgs) ToDnsSettingsResponseOutput() DnsSettingsResponseOutput {
+	return i.ToDnsSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i DnsSettingsResponseArgs) ToDnsSettingsResponseOutputWithContext(ctx context.Context) DnsSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsResponseOutput)
+}
+
+func (i DnsSettingsResponseArgs) ToDnsSettingsResponsePtrOutput() DnsSettingsResponsePtrOutput {
+	return i.ToDnsSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DnsSettingsResponseArgs) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsResponseOutput).ToDnsSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// DnsSettingsResponsePtrInput is an input type that accepts DnsSettingsResponseArgs, DnsSettingsResponsePtr and DnsSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `DnsSettingsResponsePtrInput` via:
+//
+//          DnsSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DnsSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToDnsSettingsResponsePtrOutput() DnsSettingsResponsePtrOutput
+	ToDnsSettingsResponsePtrOutputWithContext(context.Context) DnsSettingsResponsePtrOutput
+}
+
+type dnsSettingsResponsePtrType DnsSettingsResponseArgs
+
+func DnsSettingsResponsePtr(v *DnsSettingsResponseArgs) DnsSettingsResponsePtrInput {
+	return (*dnsSettingsResponsePtrType)(v)
+}
+
+func (*dnsSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsSettingsResponse)(nil)).Elem()
+}
+
+func (i *dnsSettingsResponsePtrType) ToDnsSettingsResponsePtrOutput() DnsSettingsResponsePtrOutput {
+	return i.ToDnsSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dnsSettingsResponsePtrType) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsSettingsResponsePtrOutput)
+}
+
+// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+type DnsSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (DnsSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsSettingsResponse)(nil)).Elem()
+}
+
+func (o DnsSettingsResponseOutput) ToDnsSettingsResponseOutput() DnsSettingsResponseOutput {
+	return o
+}
+
+func (o DnsSettingsResponseOutput) ToDnsSettingsResponseOutputWithContext(ctx context.Context) DnsSettingsResponseOutput {
+	return o
+}
+
+func (o DnsSettingsResponseOutput) ToDnsSettingsResponsePtrOutput() DnsSettingsResponsePtrOutput {
+	return o.ToDnsSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DnsSettingsResponseOutput) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
+	return o.ApplyT(func(v DnsSettingsResponse) *DnsSettingsResponse {
+		return &v
+	}).(DnsSettingsResponsePtrOutput)
+}
+
+// An arbitrary DNS provider identified by its name servers.
+func (o DnsSettingsResponseOutput) CustomDns() CustomDnsResponseOutput {
+	return o.ApplyT(func(v DnsSettingsResponse) CustomDnsResponse { return v.CustomDns }).(CustomDnsResponseOutput)
+}
+
+// The list of glue records for this `Registration`. Commonly empty.
+func (o DnsSettingsResponseOutput) GlueRecords() GlueRecordResponseArrayOutput {
+	return o.ApplyT(func(v DnsSettingsResponse) []GlueRecordResponse { return v.GlueRecords }).(GlueRecordResponseArrayOutput)
+}
+
+// The free DNS zone provided by [Google Domains](https://domains.google/).
+func (o DnsSettingsResponseOutput) GoogleDomainsDns() GoogleDomainsDnsResponseOutput {
+	return o.ApplyT(func(v DnsSettingsResponse) GoogleDomainsDnsResponse { return v.GoogleDomainsDns }).(GoogleDomainsDnsResponseOutput)
+}
+
+type DnsSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DnsSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsSettingsResponse)(nil)).Elem()
+}
+
+func (o DnsSettingsResponsePtrOutput) ToDnsSettingsResponsePtrOutput() DnsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DnsSettingsResponsePtrOutput) ToDnsSettingsResponsePtrOutputWithContext(ctx context.Context) DnsSettingsResponsePtrOutput {
+	return o
+}
+
+func (o DnsSettingsResponsePtrOutput) Elem() DnsSettingsResponseOutput {
+	return o.ApplyT(func(v *DnsSettingsResponse) DnsSettingsResponse { return *v }).(DnsSettingsResponseOutput)
+}
+
+// An arbitrary DNS provider identified by its name servers.
+func (o DnsSettingsResponsePtrOutput) CustomDns() CustomDnsResponsePtrOutput {
+	return o.ApplyT(func(v *DnsSettingsResponse) *CustomDnsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CustomDns
+	}).(CustomDnsResponsePtrOutput)
+}
+
+// The list of glue records for this `Registration`. Commonly empty.
+func (o DnsSettingsResponsePtrOutput) GlueRecords() GlueRecordResponseArrayOutput {
+	return o.ApplyT(func(v *DnsSettingsResponse) []GlueRecordResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GlueRecords
+	}).(GlueRecordResponseArrayOutput)
+}
+
+// The free DNS zone provided by [Google Domains](https://domains.google/).
+func (o DnsSettingsResponsePtrOutput) GoogleDomainsDns() GoogleDomainsDnsResponsePtrOutput {
+	return o.ApplyT(func(v *DnsSettingsResponse) *GoogleDomainsDnsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GoogleDomainsDns
+	}).(GoogleDomainsDnsResponsePtrOutput)
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecord struct {
+	// The algorithm used to generate the referenced DNSKEY.
+	Algorithm *string `pulumi:"algorithm"`
+	// The digest generated from the referenced DNSKEY.
+	Digest *string `pulumi:"digest"`
+	// The hash function used to generate the digest of the referenced DNSKEY.
+	DigestType *string `pulumi:"digestType"`
+	// The key tag of the record. Must be set in range 0 -- 65535.
+	KeyTag *int `pulumi:"keyTag"`
+}
+
+// DsRecordInput is an input type that accepts DsRecordArgs and DsRecordOutput values.
+// You can construct a concrete instance of `DsRecordInput` via:
+//
+//          DsRecordArgs{...}
+type DsRecordInput interface {
+	pulumi.Input
+
+	ToDsRecordOutput() DsRecordOutput
+	ToDsRecordOutputWithContext(context.Context) DsRecordOutput
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecordArgs struct {
+	// The algorithm used to generate the referenced DNSKEY.
+	Algorithm pulumi.StringPtrInput `pulumi:"algorithm"`
+	// The digest generated from the referenced DNSKEY.
+	Digest pulumi.StringPtrInput `pulumi:"digest"`
+	// The hash function used to generate the digest of the referenced DNSKEY.
+	DigestType pulumi.StringPtrInput `pulumi:"digestType"`
+	// The key tag of the record. Must be set in range 0 -- 65535.
+	KeyTag pulumi.IntPtrInput `pulumi:"keyTag"`
+}
+
+func (DsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecord)(nil)).Elem()
+}
+
+func (i DsRecordArgs) ToDsRecordOutput() DsRecordOutput {
+	return i.ToDsRecordOutputWithContext(context.Background())
+}
+
+func (i DsRecordArgs) ToDsRecordOutputWithContext(ctx context.Context) DsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DsRecordOutput)
+}
+
+// DsRecordArrayInput is an input type that accepts DsRecordArray and DsRecordArrayOutput values.
+// You can construct a concrete instance of `DsRecordArrayInput` via:
+//
+//          DsRecordArray{ DsRecordArgs{...} }
+type DsRecordArrayInput interface {
+	pulumi.Input
+
+	ToDsRecordArrayOutput() DsRecordArrayOutput
+	ToDsRecordArrayOutputWithContext(context.Context) DsRecordArrayOutput
+}
+
+type DsRecordArray []DsRecordInput
+
+func (DsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DsRecord)(nil)).Elem()
+}
+
+func (i DsRecordArray) ToDsRecordArrayOutput() DsRecordArrayOutput {
+	return i.ToDsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i DsRecordArray) ToDsRecordArrayOutputWithContext(ctx context.Context) DsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DsRecordArrayOutput)
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecordOutput struct{ *pulumi.OutputState }
+
+func (DsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecord)(nil)).Elem()
+}
+
+func (o DsRecordOutput) ToDsRecordOutput() DsRecordOutput {
+	return o
+}
+
+func (o DsRecordOutput) ToDsRecordOutputWithContext(ctx context.Context) DsRecordOutput {
+	return o
+}
+
+// The algorithm used to generate the referenced DNSKEY.
+func (o DsRecordOutput) Algorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DsRecord) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+}
+
+// The digest generated from the referenced DNSKEY.
+func (o DsRecordOutput) Digest() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DsRecord) *string { return v.Digest }).(pulumi.StringPtrOutput)
+}
+
+// The hash function used to generate the digest of the referenced DNSKEY.
+func (o DsRecordOutput) DigestType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DsRecord) *string { return v.DigestType }).(pulumi.StringPtrOutput)
+}
+
+// The key tag of the record. Must be set in range 0 -- 65535.
+func (o DsRecordOutput) KeyTag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v DsRecord) *int { return v.KeyTag }).(pulumi.IntPtrOutput)
+}
+
+type DsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (DsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DsRecord)(nil)).Elem()
+}
+
+func (o DsRecordArrayOutput) ToDsRecordArrayOutput() DsRecordArrayOutput {
+	return o
+}
+
+func (o DsRecordArrayOutput) ToDsRecordArrayOutputWithContext(ctx context.Context) DsRecordArrayOutput {
+	return o
+}
+
+func (o DsRecordArrayOutput) Index(i pulumi.IntInput) DsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DsRecord {
+		return vs[0].([]DsRecord)[vs[1].(int)]
+	}).(DsRecordOutput)
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecordResponse struct {
+	// The algorithm used to generate the referenced DNSKEY.
+	Algorithm string `pulumi:"algorithm"`
+	// The digest generated from the referenced DNSKEY.
+	Digest string `pulumi:"digest"`
+	// The hash function used to generate the digest of the referenced DNSKEY.
+	DigestType string `pulumi:"digestType"`
+	// The key tag of the record. Must be set in range 0 -- 65535.
+	KeyTag int `pulumi:"keyTag"`
+}
+
+// DsRecordResponseInput is an input type that accepts DsRecordResponseArgs and DsRecordResponseOutput values.
+// You can construct a concrete instance of `DsRecordResponseInput` via:
+//
+//          DsRecordResponseArgs{...}
+type DsRecordResponseInput interface {
+	pulumi.Input
+
+	ToDsRecordResponseOutput() DsRecordResponseOutput
+	ToDsRecordResponseOutputWithContext(context.Context) DsRecordResponseOutput
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecordResponseArgs struct {
+	// The algorithm used to generate the referenced DNSKEY.
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	// The digest generated from the referenced DNSKEY.
+	Digest pulumi.StringInput `pulumi:"digest"`
+	// The hash function used to generate the digest of the referenced DNSKEY.
+	DigestType pulumi.StringInput `pulumi:"digestType"`
+	// The key tag of the record. Must be set in range 0 -- 65535.
+	KeyTag pulumi.IntInput `pulumi:"keyTag"`
+}
+
+func (DsRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecordResponse)(nil)).Elem()
+}
+
+func (i DsRecordResponseArgs) ToDsRecordResponseOutput() DsRecordResponseOutput {
+	return i.ToDsRecordResponseOutputWithContext(context.Background())
+}
+
+func (i DsRecordResponseArgs) ToDsRecordResponseOutputWithContext(ctx context.Context) DsRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DsRecordResponseOutput)
+}
+
+// DsRecordResponseArrayInput is an input type that accepts DsRecordResponseArray and DsRecordResponseArrayOutput values.
+// You can construct a concrete instance of `DsRecordResponseArrayInput` via:
+//
+//          DsRecordResponseArray{ DsRecordResponseArgs{...} }
+type DsRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToDsRecordResponseArrayOutput() DsRecordResponseArrayOutput
+	ToDsRecordResponseArrayOutputWithContext(context.Context) DsRecordResponseArrayOutput
+}
+
+type DsRecordResponseArray []DsRecordResponseInput
+
+func (DsRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DsRecordResponse)(nil)).Elem()
+}
+
+func (i DsRecordResponseArray) ToDsRecordResponseArrayOutput() DsRecordResponseArrayOutput {
+	return i.ToDsRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DsRecordResponseArray) ToDsRecordResponseArrayOutputWithContext(ctx context.Context) DsRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DsRecordResponseArrayOutput)
+}
+
+// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+type DsRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (DsRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecordResponse)(nil)).Elem()
+}
+
+func (o DsRecordResponseOutput) ToDsRecordResponseOutput() DsRecordResponseOutput {
+	return o
+}
+
+func (o DsRecordResponseOutput) ToDsRecordResponseOutputWithContext(ctx context.Context) DsRecordResponseOutput {
+	return o
+}
+
+// The algorithm used to generate the referenced DNSKEY.
+func (o DsRecordResponseOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v DsRecordResponse) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+// The digest generated from the referenced DNSKEY.
+func (o DsRecordResponseOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v DsRecordResponse) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+// The hash function used to generate the digest of the referenced DNSKEY.
+func (o DsRecordResponseOutput) DigestType() pulumi.StringOutput {
+	return o.ApplyT(func(v DsRecordResponse) string { return v.DigestType }).(pulumi.StringOutput)
+}
+
+// The key tag of the record. Must be set in range 0 -- 65535.
+func (o DsRecordResponseOutput) KeyTag() pulumi.IntOutput {
+	return o.ApplyT(func(v DsRecordResponse) int { return v.KeyTag }).(pulumi.IntOutput)
+}
+
+type DsRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DsRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DsRecordResponse)(nil)).Elem()
+}
+
+func (o DsRecordResponseArrayOutput) ToDsRecordResponseArrayOutput() DsRecordResponseArrayOutput {
+	return o
+}
+
+func (o DsRecordResponseArrayOutput) ToDsRecordResponseArrayOutputWithContext(ctx context.Context) DsRecordResponseArrayOutput {
+	return o
+}
+
+func (o DsRecordResponseArrayOutput) Index(i pulumi.IntInput) DsRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DsRecordResponse {
+		return vs[0].([]DsRecordResponse)[vs[1].(int)]
+	}).(DsRecordResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -955,6 +2623,1655 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecord struct {
+	// Required. Domain name of the host in Punycode format.
+	HostName *string `pulumi:"hostName"`
+	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+}
+
+// GlueRecordInput is an input type that accepts GlueRecordArgs and GlueRecordOutput values.
+// You can construct a concrete instance of `GlueRecordInput` via:
+//
+//          GlueRecordArgs{...}
+type GlueRecordInput interface {
+	pulumi.Input
+
+	ToGlueRecordOutput() GlueRecordOutput
+	ToGlueRecordOutputWithContext(context.Context) GlueRecordOutput
+}
+
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecordArgs struct {
+	// Required. Domain name of the host in Punycode format.
+	HostName pulumi.StringPtrInput `pulumi:"hostName"`
+	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+}
+
+func (GlueRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlueRecord)(nil)).Elem()
+}
+
+func (i GlueRecordArgs) ToGlueRecordOutput() GlueRecordOutput {
+	return i.ToGlueRecordOutputWithContext(context.Background())
+}
+
+func (i GlueRecordArgs) ToGlueRecordOutputWithContext(ctx context.Context) GlueRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordOutput)
+}
+
+// GlueRecordArrayInput is an input type that accepts GlueRecordArray and GlueRecordArrayOutput values.
+// You can construct a concrete instance of `GlueRecordArrayInput` via:
+//
+//          GlueRecordArray{ GlueRecordArgs{...} }
+type GlueRecordArrayInput interface {
+	pulumi.Input
+
+	ToGlueRecordArrayOutput() GlueRecordArrayOutput
+	ToGlueRecordArrayOutputWithContext(context.Context) GlueRecordArrayOutput
+}
+
+type GlueRecordArray []GlueRecordInput
+
+func (GlueRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlueRecord)(nil)).Elem()
+}
+
+func (i GlueRecordArray) ToGlueRecordArrayOutput() GlueRecordArrayOutput {
+	return i.ToGlueRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GlueRecordArray) ToGlueRecordArrayOutputWithContext(ctx context.Context) GlueRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordArrayOutput)
+}
+
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecordOutput struct{ *pulumi.OutputState }
+
+func (GlueRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlueRecord)(nil)).Elem()
+}
+
+func (o GlueRecordOutput) ToGlueRecordOutput() GlueRecordOutput {
+	return o
+}
+
+func (o GlueRecordOutput) ToGlueRecordOutputWithContext(ctx context.Context) GlueRecordOutput {
+	return o
+}
+
+// Required. Domain name of the host in Punycode format.
+func (o GlueRecordOutput) HostName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlueRecord) *string { return v.HostName }).(pulumi.StringPtrOutput)
+}
+
+// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+func (o GlueRecordOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlueRecord) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+func (o GlueRecordOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlueRecord) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+type GlueRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GlueRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlueRecord)(nil)).Elem()
+}
+
+func (o GlueRecordArrayOutput) ToGlueRecordArrayOutput() GlueRecordArrayOutput {
+	return o
+}
+
+func (o GlueRecordArrayOutput) ToGlueRecordArrayOutputWithContext(ctx context.Context) GlueRecordArrayOutput {
+	return o
+}
+
+func (o GlueRecordArrayOutput) Index(i pulumi.IntInput) GlueRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlueRecord {
+		return vs[0].([]GlueRecord)[vs[1].(int)]
+	}).(GlueRecordOutput)
+}
+
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecordResponse struct {
+	// Required. Domain name of the host in Punycode format.
+	HostName string `pulumi:"hostName"`
+	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
+	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv6Addresses []string `pulumi:"ipv6Addresses"`
+}
+
+// GlueRecordResponseInput is an input type that accepts GlueRecordResponseArgs and GlueRecordResponseOutput values.
+// You can construct a concrete instance of `GlueRecordResponseInput` via:
+//
+//          GlueRecordResponseArgs{...}
+type GlueRecordResponseInput interface {
+	pulumi.Input
+
+	ToGlueRecordResponseOutput() GlueRecordResponseOutput
+	ToGlueRecordResponseOutputWithContext(context.Context) GlueRecordResponseOutput
+}
+
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecordResponseArgs struct {
+	// Required. Domain name of the host in Punycode format.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
+	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+	Ipv6Addresses pulumi.StringArrayInput `pulumi:"ipv6Addresses"`
+}
+
+func (GlueRecordResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlueRecordResponse)(nil)).Elem()
+}
+
+func (i GlueRecordResponseArgs) ToGlueRecordResponseOutput() GlueRecordResponseOutput {
+	return i.ToGlueRecordResponseOutputWithContext(context.Background())
+}
+
+func (i GlueRecordResponseArgs) ToGlueRecordResponseOutputWithContext(ctx context.Context) GlueRecordResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordResponseOutput)
+}
+
+// GlueRecordResponseArrayInput is an input type that accepts GlueRecordResponseArray and GlueRecordResponseArrayOutput values.
+// You can construct a concrete instance of `GlueRecordResponseArrayInput` via:
+//
+//          GlueRecordResponseArray{ GlueRecordResponseArgs{...} }
+type GlueRecordResponseArrayInput interface {
+	pulumi.Input
+
+	ToGlueRecordResponseArrayOutput() GlueRecordResponseArrayOutput
+	ToGlueRecordResponseArrayOutputWithContext(context.Context) GlueRecordResponseArrayOutput
+}
+
+type GlueRecordResponseArray []GlueRecordResponseInput
+
+func (GlueRecordResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlueRecordResponse)(nil)).Elem()
+}
+
+func (i GlueRecordResponseArray) ToGlueRecordResponseArrayOutput() GlueRecordResponseArrayOutput {
+	return i.ToGlueRecordResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GlueRecordResponseArray) ToGlueRecordResponseArrayOutputWithContext(ctx context.Context) GlueRecordResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlueRecordResponseArrayOutput)
+}
+
+// Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+type GlueRecordResponseOutput struct{ *pulumi.OutputState }
+
+func (GlueRecordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlueRecordResponse)(nil)).Elem()
+}
+
+func (o GlueRecordResponseOutput) ToGlueRecordResponseOutput() GlueRecordResponseOutput {
+	return o
+}
+
+func (o GlueRecordResponseOutput) ToGlueRecordResponseOutputWithContext(ctx context.Context) GlueRecordResponseOutput {
+	return o
+}
+
+// Required. Domain name of the host in Punycode format.
+func (o GlueRecordResponseOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GlueRecordResponse) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+func (o GlueRecordResponseOutput) Ipv4Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlueRecordResponse) []string { return v.Ipv4Addresses }).(pulumi.StringArrayOutput)
+}
+
+// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+func (o GlueRecordResponseOutput) Ipv6Addresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GlueRecordResponse) []string { return v.Ipv6Addresses }).(pulumi.StringArrayOutput)
+}
+
+type GlueRecordResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GlueRecordResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlueRecordResponse)(nil)).Elem()
+}
+
+func (o GlueRecordResponseArrayOutput) ToGlueRecordResponseArrayOutput() GlueRecordResponseArrayOutput {
+	return o
+}
+
+func (o GlueRecordResponseArrayOutput) ToGlueRecordResponseArrayOutputWithContext(ctx context.Context) GlueRecordResponseArrayOutput {
+	return o
+}
+
+func (o GlueRecordResponseArrayOutput) Index(i pulumi.IntInput) GlueRecordResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlueRecordResponse {
+		return vs[0].([]GlueRecordResponse)[vs[1].(int)]
+	}).(GlueRecordResponseOutput)
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDns struct {
+	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState *string `pulumi:"dsState"`
+}
+
+// GoogleDomainsDnsInput is an input type that accepts GoogleDomainsDnsArgs and GoogleDomainsDnsOutput values.
+// You can construct a concrete instance of `GoogleDomainsDnsInput` via:
+//
+//          GoogleDomainsDnsArgs{...}
+type GoogleDomainsDnsInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsOutput() GoogleDomainsDnsOutput
+	ToGoogleDomainsDnsOutputWithContext(context.Context) GoogleDomainsDnsOutput
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDnsArgs struct {
+	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState pulumi.StringPtrInput `pulumi:"dsState"`
+}
+
+func (GoogleDomainsDnsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDomainsDns)(nil)).Elem()
+}
+
+func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsOutput() GoogleDomainsDnsOutput {
+	return i.ToGoogleDomainsDnsOutputWithContext(context.Background())
+}
+
+func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsOutputWithContext(ctx context.Context) GoogleDomainsDnsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsOutput)
+}
+
+func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput {
+	return i.ToGoogleDomainsDnsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsOutput).ToGoogleDomainsDnsPtrOutputWithContext(ctx)
+}
+
+// GoogleDomainsDnsPtrInput is an input type that accepts GoogleDomainsDnsArgs, GoogleDomainsDnsPtr and GoogleDomainsDnsPtrOutput values.
+// You can construct a concrete instance of `GoogleDomainsDnsPtrInput` via:
+//
+//          GoogleDomainsDnsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDomainsDnsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput
+	ToGoogleDomainsDnsPtrOutputWithContext(context.Context) GoogleDomainsDnsPtrOutput
+}
+
+type googleDomainsDnsPtrType GoogleDomainsDnsArgs
+
+func GoogleDomainsDnsPtr(v *GoogleDomainsDnsArgs) GoogleDomainsDnsPtrInput {
+	return (*googleDomainsDnsPtrType)(v)
+}
+
+func (*googleDomainsDnsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDomainsDns)(nil)).Elem()
+}
+
+func (i *googleDomainsDnsPtrType) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput {
+	return i.ToGoogleDomainsDnsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleDomainsDnsPtrType) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsPtrOutput)
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDnsOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDomainsDns)(nil)).Elem()
+}
+
+func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsOutput() GoogleDomainsDnsOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsOutputWithContext(ctx context.Context) GoogleDomainsDnsOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput {
+	return o.ToGoogleDomainsDnsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
+	return o.ApplyT(func(v GoogleDomainsDns) *GoogleDomainsDns {
+		return &v
+	}).(GoogleDomainsDnsPtrOutput)
+}
+
+// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+func (o GoogleDomainsDnsOutput) DsState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleDomainsDns) *string { return v.DsState }).(pulumi.StringPtrOutput)
+}
+
+type GoogleDomainsDnsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDomainsDns)(nil)).Elem()
+}
+
+func (o GoogleDomainsDnsPtrOutput) ToGoogleDomainsDnsPtrOutput() GoogleDomainsDnsPtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsPtrOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx context.Context) GoogleDomainsDnsPtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsPtrOutput) Elem() GoogleDomainsDnsOutput {
+	return o.ApplyT(func(v *GoogleDomainsDns) GoogleDomainsDns { return *v }).(GoogleDomainsDnsOutput)
+}
+
+// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+func (o GoogleDomainsDnsPtrOutput) DsState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDomainsDns) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DsState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDnsResponse struct {
+	// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
+	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState string `pulumi:"dsState"`
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+	NameServers []string `pulumi:"nameServers"`
+}
+
+// GoogleDomainsDnsResponseInput is an input type that accepts GoogleDomainsDnsResponseArgs and GoogleDomainsDnsResponseOutput values.
+// You can construct a concrete instance of `GoogleDomainsDnsResponseInput` via:
+//
+//          GoogleDomainsDnsResponseArgs{...}
+type GoogleDomainsDnsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsResponseOutput() GoogleDomainsDnsResponseOutput
+	ToGoogleDomainsDnsResponseOutputWithContext(context.Context) GoogleDomainsDnsResponseOutput
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDnsResponseArgs struct {
+	// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+	DsRecords DsRecordResponseArrayInput `pulumi:"dsRecords"`
+	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState pulumi.StringInput `pulumi:"dsState"`
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
+}
+
+func (GoogleDomainsDnsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDomainsDnsResponse)(nil)).Elem()
+}
+
+func (i GoogleDomainsDnsResponseArgs) ToGoogleDomainsDnsResponseOutput() GoogleDomainsDnsResponseOutput {
+	return i.ToGoogleDomainsDnsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleDomainsDnsResponseArgs) ToGoogleDomainsDnsResponseOutputWithContext(ctx context.Context) GoogleDomainsDnsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsResponseOutput)
+}
+
+func (i GoogleDomainsDnsResponseArgs) ToGoogleDomainsDnsResponsePtrOutput() GoogleDomainsDnsResponsePtrOutput {
+	return i.ToGoogleDomainsDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleDomainsDnsResponseArgs) ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsResponseOutput).ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleDomainsDnsResponsePtrInput is an input type that accepts GoogleDomainsDnsResponseArgs, GoogleDomainsDnsResponsePtr and GoogleDomainsDnsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleDomainsDnsResponsePtrInput` via:
+//
+//          GoogleDomainsDnsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleDomainsDnsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsResponsePtrOutput() GoogleDomainsDnsResponsePtrOutput
+	ToGoogleDomainsDnsResponsePtrOutputWithContext(context.Context) GoogleDomainsDnsResponsePtrOutput
+}
+
+type googleDomainsDnsResponsePtrType GoogleDomainsDnsResponseArgs
+
+func GoogleDomainsDnsResponsePtr(v *GoogleDomainsDnsResponseArgs) GoogleDomainsDnsResponsePtrInput {
+	return (*googleDomainsDnsResponsePtrType)(v)
+}
+
+func (*googleDomainsDnsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDomainsDnsResponse)(nil)).Elem()
+}
+
+func (i *googleDomainsDnsResponsePtrType) ToGoogleDomainsDnsResponsePtrOutput() GoogleDomainsDnsResponsePtrOutput {
+	return i.ToGoogleDomainsDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleDomainsDnsResponsePtrType) ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleDomainsDnsResponsePtrOutput)
+}
+
+// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+type GoogleDomainsDnsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDomainsDnsResponse)(nil)).Elem()
+}
+
+func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponseOutput() GoogleDomainsDnsResponseOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponseOutputWithContext(ctx context.Context) GoogleDomainsDnsResponseOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponsePtrOutput() GoogleDomainsDnsResponsePtrOutput {
+	return o.ToGoogleDomainsDnsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsResponseOutput) ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleDomainsDnsResponse) *GoogleDomainsDnsResponse {
+		return &v
+	}).(GoogleDomainsDnsResponsePtrOutput)
+}
+
+// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+func (o GoogleDomainsDnsResponseOutput) DsRecords() DsRecordResponseArrayOutput {
+	return o.ApplyT(func(v GoogleDomainsDnsResponse) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
+}
+
+// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+func (o GoogleDomainsDnsResponseOutput) DsState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDomainsDnsResponse) string { return v.DsState }).(pulumi.StringOutput)
+}
+
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+func (o GoogleDomainsDnsResponseOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleDomainsDnsResponse) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+type GoogleDomainsDnsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleDomainsDnsResponse)(nil)).Elem()
+}
+
+func (o GoogleDomainsDnsResponsePtrOutput) ToGoogleDomainsDnsResponsePtrOutput() GoogleDomainsDnsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsResponsePtrOutput) ToGoogleDomainsDnsResponsePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsResponsePtrOutput) Elem() GoogleDomainsDnsResponseOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsResponse) GoogleDomainsDnsResponse { return *v }).(GoogleDomainsDnsResponseOutput)
+}
+
+// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+func (o GoogleDomainsDnsResponsePtrOutput) DsRecords() DsRecordResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsResponse) []DsRecordResponse {
+		if v == nil {
+			return nil
+		}
+		return v.DsRecords
+	}).(DsRecordResponseArrayOutput)
+}
+
+// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+func (o GoogleDomainsDnsResponsePtrOutput) DsState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DsState
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+func (o GoogleDomainsDnsResponsePtrOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NameServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettings struct {
+	// Controls whether the domain can be transferred to another registrar.
+	TransferLockState *string `pulumi:"transferLockState"`
+}
+
+// ManagementSettingsInput is an input type that accepts ManagementSettingsArgs and ManagementSettingsOutput values.
+// You can construct a concrete instance of `ManagementSettingsInput` via:
+//
+//          ManagementSettingsArgs{...}
+type ManagementSettingsInput interface {
+	pulumi.Input
+
+	ToManagementSettingsOutput() ManagementSettingsOutput
+	ToManagementSettingsOutputWithContext(context.Context) ManagementSettingsOutput
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettingsArgs struct {
+	// Controls whether the domain can be transferred to another registrar.
+	TransferLockState pulumi.StringPtrInput `pulumi:"transferLockState"`
+}
+
+func (ManagementSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettings)(nil)).Elem()
+}
+
+func (i ManagementSettingsArgs) ToManagementSettingsOutput() ManagementSettingsOutput {
+	return i.ToManagementSettingsOutputWithContext(context.Background())
+}
+
+func (i ManagementSettingsArgs) ToManagementSettingsOutputWithContext(ctx context.Context) ManagementSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsOutput)
+}
+
+func (i ManagementSettingsArgs) ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput {
+	return i.ToManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i ManagementSettingsArgs) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsOutput).ToManagementSettingsPtrOutputWithContext(ctx)
+}
+
+// ManagementSettingsPtrInput is an input type that accepts ManagementSettingsArgs, ManagementSettingsPtr and ManagementSettingsPtrOutput values.
+// You can construct a concrete instance of `ManagementSettingsPtrInput` via:
+//
+//          ManagementSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagementSettingsPtrInput interface {
+	pulumi.Input
+
+	ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput
+	ToManagementSettingsPtrOutputWithContext(context.Context) ManagementSettingsPtrOutput
+}
+
+type managementSettingsPtrType ManagementSettingsArgs
+
+func ManagementSettingsPtr(v *ManagementSettingsArgs) ManagementSettingsPtrInput {
+	return (*managementSettingsPtrType)(v)
+}
+
+func (*managementSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementSettings)(nil)).Elem()
+}
+
+func (i *managementSettingsPtrType) ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput {
+	return i.ToManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *managementSettingsPtrType) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsPtrOutput)
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettingsOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettings)(nil)).Elem()
+}
+
+func (o ManagementSettingsOutput) ToManagementSettingsOutput() ManagementSettingsOutput {
+	return o
+}
+
+func (o ManagementSettingsOutput) ToManagementSettingsOutputWithContext(ctx context.Context) ManagementSettingsOutput {
+	return o
+}
+
+func (o ManagementSettingsOutput) ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput {
+	return o.ToManagementSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsOutput) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
+	return o.ApplyT(func(v ManagementSettings) *ManagementSettings {
+		return &v
+	}).(ManagementSettingsPtrOutput)
+}
+
+// Controls whether the domain can be transferred to another registrar.
+func (o ManagementSettingsOutput) TransferLockState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagementSettings) *string { return v.TransferLockState }).(pulumi.StringPtrOutput)
+}
+
+type ManagementSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementSettings)(nil)).Elem()
+}
+
+func (o ManagementSettingsPtrOutput) ToManagementSettingsPtrOutput() ManagementSettingsPtrOutput {
+	return o
+}
+
+func (o ManagementSettingsPtrOutput) ToManagementSettingsPtrOutputWithContext(ctx context.Context) ManagementSettingsPtrOutput {
+	return o
+}
+
+func (o ManagementSettingsPtrOutput) Elem() ManagementSettingsOutput {
+	return o.ApplyT(func(v *ManagementSettings) ManagementSettings { return *v }).(ManagementSettingsOutput)
+}
+
+// Controls whether the domain can be transferred to another registrar.
+func (o ManagementSettingsPtrOutput) TransferLockState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TransferLockState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettingsResponse struct {
+	// The renewal method for this `Registration`.
+	RenewalMethod string `pulumi:"renewalMethod"`
+	// Controls whether the domain can be transferred to another registrar.
+	TransferLockState string `pulumi:"transferLockState"`
+}
+
+// ManagementSettingsResponseInput is an input type that accepts ManagementSettingsResponseArgs and ManagementSettingsResponseOutput values.
+// You can construct a concrete instance of `ManagementSettingsResponseInput` via:
+//
+//          ManagementSettingsResponseArgs{...}
+type ManagementSettingsResponseInput interface {
+	pulumi.Input
+
+	ToManagementSettingsResponseOutput() ManagementSettingsResponseOutput
+	ToManagementSettingsResponseOutputWithContext(context.Context) ManagementSettingsResponseOutput
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettingsResponseArgs struct {
+	// The renewal method for this `Registration`.
+	RenewalMethod pulumi.StringInput `pulumi:"renewalMethod"`
+	// Controls whether the domain can be transferred to another registrar.
+	TransferLockState pulumi.StringInput `pulumi:"transferLockState"`
+}
+
+func (ManagementSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettingsResponse)(nil)).Elem()
+}
+
+func (i ManagementSettingsResponseArgs) ToManagementSettingsResponseOutput() ManagementSettingsResponseOutput {
+	return i.ToManagementSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i ManagementSettingsResponseArgs) ToManagementSettingsResponseOutputWithContext(ctx context.Context) ManagementSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsResponseOutput)
+}
+
+func (i ManagementSettingsResponseArgs) ToManagementSettingsResponsePtrOutput() ManagementSettingsResponsePtrOutput {
+	return i.ToManagementSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ManagementSettingsResponseArgs) ToManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ManagementSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsResponseOutput).ToManagementSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// ManagementSettingsResponsePtrInput is an input type that accepts ManagementSettingsResponseArgs, ManagementSettingsResponsePtr and ManagementSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `ManagementSettingsResponsePtrInput` via:
+//
+//          ManagementSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ManagementSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToManagementSettingsResponsePtrOutput() ManagementSettingsResponsePtrOutput
+	ToManagementSettingsResponsePtrOutputWithContext(context.Context) ManagementSettingsResponsePtrOutput
+}
+
+type managementSettingsResponsePtrType ManagementSettingsResponseArgs
+
+func ManagementSettingsResponsePtr(v *ManagementSettingsResponseArgs) ManagementSettingsResponsePtrInput {
+	return (*managementSettingsResponsePtrType)(v)
+}
+
+func (*managementSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementSettingsResponse)(nil)).Elem()
+}
+
+func (i *managementSettingsResponsePtrType) ToManagementSettingsResponsePtrOutput() ManagementSettingsResponsePtrOutput {
+	return i.ToManagementSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *managementSettingsResponsePtrType) ToManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ManagementSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagementSettingsResponsePtrOutput)
+}
+
+// Defines renewal, billing, and transfer settings for a `Registration`.
+type ManagementSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettingsResponse)(nil)).Elem()
+}
+
+func (o ManagementSettingsResponseOutput) ToManagementSettingsResponseOutput() ManagementSettingsResponseOutput {
+	return o
+}
+
+func (o ManagementSettingsResponseOutput) ToManagementSettingsResponseOutputWithContext(ctx context.Context) ManagementSettingsResponseOutput {
+	return o
+}
+
+func (o ManagementSettingsResponseOutput) ToManagementSettingsResponsePtrOutput() ManagementSettingsResponsePtrOutput {
+	return o.ToManagementSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsResponseOutput) ToManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ManagementSettingsResponsePtrOutput {
+	return o.ApplyT(func(v ManagementSettingsResponse) *ManagementSettingsResponse {
+		return &v
+	}).(ManagementSettingsResponsePtrOutput)
+}
+
+// The renewal method for this `Registration`.
+func (o ManagementSettingsResponseOutput) RenewalMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementSettingsResponse) string { return v.RenewalMethod }).(pulumi.StringOutput)
+}
+
+// Controls whether the domain can be transferred to another registrar.
+func (o ManagementSettingsResponseOutput) TransferLockState() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagementSettingsResponse) string { return v.TransferLockState }).(pulumi.StringOutput)
+}
+
+type ManagementSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ManagementSettingsResponse)(nil)).Elem()
+}
+
+func (o ManagementSettingsResponsePtrOutput) ToManagementSettingsResponsePtrOutput() ManagementSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagementSettingsResponsePtrOutput) ToManagementSettingsResponsePtrOutputWithContext(ctx context.Context) ManagementSettingsResponsePtrOutput {
+	return o
+}
+
+func (o ManagementSettingsResponsePtrOutput) Elem() ManagementSettingsResponseOutput {
+	return o.ApplyT(func(v *ManagementSettingsResponse) ManagementSettingsResponse { return *v }).(ManagementSettingsResponseOutput)
+}
+
+// The renewal method for this `Registration`.
+func (o ManagementSettingsResponsePtrOutput) RenewalMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RenewalMethod
+	}).(pulumi.StringPtrOutput)
+}
+
+// Controls whether the domain can be transferred to another registrar.
+func (o ManagementSettingsResponsePtrOutput) TransferLockState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ManagementSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TransferLockState
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type Money struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// MoneyInput is an input type that accepts MoneyArgs and MoneyOutput values.
+// You can construct a concrete instance of `MoneyInput` via:
+//
+//          MoneyArgs{...}
+type MoneyInput interface {
+	pulumi.Input
+
+	ToMoneyOutput() MoneyOutput
+	ToMoneyOutputWithContext(context.Context) MoneyOutput
+}
+
+// Represents an amount of money with its currency type.
+type MoneyArgs struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (MoneyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Money)(nil)).Elem()
+}
+
+func (i MoneyArgs) ToMoneyOutput() MoneyOutput {
+	return i.ToMoneyOutputWithContext(context.Background())
+}
+
+func (i MoneyArgs) ToMoneyOutputWithContext(ctx context.Context) MoneyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyOutput)
+}
+
+func (i MoneyArgs) ToMoneyPtrOutput() MoneyPtrOutput {
+	return i.ToMoneyPtrOutputWithContext(context.Background())
+}
+
+func (i MoneyArgs) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyOutput).ToMoneyPtrOutputWithContext(ctx)
+}
+
+// MoneyPtrInput is an input type that accepts MoneyArgs, MoneyPtr and MoneyPtrOutput values.
+// You can construct a concrete instance of `MoneyPtrInput` via:
+//
+//          MoneyArgs{...}
+//
+//  or:
+//
+//          nil
+type MoneyPtrInput interface {
+	pulumi.Input
+
+	ToMoneyPtrOutput() MoneyPtrOutput
+	ToMoneyPtrOutputWithContext(context.Context) MoneyPtrOutput
+}
+
+type moneyPtrType MoneyArgs
+
+func MoneyPtr(v *MoneyArgs) MoneyPtrInput {
+	return (*moneyPtrType)(v)
+}
+
+func (*moneyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Money)(nil)).Elem()
+}
+
+func (i *moneyPtrType) ToMoneyPtrOutput() MoneyPtrOutput {
+	return i.ToMoneyPtrOutputWithContext(context.Background())
+}
+
+func (i *moneyPtrType) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MoneyPtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type MoneyOutput struct{ *pulumi.OutputState }
+
+func (MoneyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Money)(nil)).Elem()
+}
+
+func (o MoneyOutput) ToMoneyOutput() MoneyOutput {
+	return o
+}
+
+func (o MoneyOutput) ToMoneyOutputWithContext(ctx context.Context) MoneyOutput {
+	return o
+}
+
+func (o MoneyOutput) ToMoneyPtrOutput() MoneyPtrOutput {
+	return o.ToMoneyPtrOutputWithContext(context.Background())
+}
+
+func (o MoneyOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
+	return o.ApplyT(func(v Money) *Money {
+		return &v
+	}).(MoneyPtrOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o MoneyOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Money) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o MoneyOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Money) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o MoneyOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Money) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type MoneyPtrOutput struct{ *pulumi.OutputState }
+
+func (MoneyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Money)(nil)).Elem()
+}
+
+func (o MoneyPtrOutput) ToMoneyPtrOutput() MoneyPtrOutput {
+	return o
+}
+
+func (o MoneyPtrOutput) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutput {
+	return o
+}
+
+func (o MoneyPtrOutput) Elem() MoneyOutput {
+	return o.ApplyT(func(v *Money) Money { return *v }).(MoneyOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o MoneyPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Money) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o MoneyPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Money) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o MoneyPtrOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Money) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddress struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines []string `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea *string `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode *string `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality *string `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization *string `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode *string `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients []string `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode *string `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision *int `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode *string `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality *string `pulumi:"sublocality"`
+}
+
+// PostalAddressInput is an input type that accepts PostalAddressArgs and PostalAddressOutput values.
+// You can construct a concrete instance of `PostalAddressInput` via:
+//
+//          PostalAddressArgs{...}
+type PostalAddressInput interface {
+	pulumi.Input
+
+	ToPostalAddressOutput() PostalAddressOutput
+	ToPostalAddressOutputWithContext(context.Context) PostalAddressOutput
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressArgs struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines pulumi.StringArrayInput `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea pulumi.StringPtrInput `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality pulumi.StringPtrInput `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization pulumi.StringPtrInput `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode pulumi.StringPtrInput `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision pulumi.IntPtrInput `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode pulumi.StringPtrInput `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality pulumi.StringPtrInput `pulumi:"sublocality"`
+}
+
+func (PostalAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddress)(nil)).Elem()
+}
+
+func (i PostalAddressArgs) ToPostalAddressOutput() PostalAddressOutput {
+	return i.ToPostalAddressOutputWithContext(context.Background())
+}
+
+func (i PostalAddressArgs) ToPostalAddressOutputWithContext(ctx context.Context) PostalAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressOutput)
+}
+
+func (i PostalAddressArgs) ToPostalAddressPtrOutput() PostalAddressPtrOutput {
+	return i.ToPostalAddressPtrOutputWithContext(context.Background())
+}
+
+func (i PostalAddressArgs) ToPostalAddressPtrOutputWithContext(ctx context.Context) PostalAddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressOutput).ToPostalAddressPtrOutputWithContext(ctx)
+}
+
+// PostalAddressPtrInput is an input type that accepts PostalAddressArgs, PostalAddressPtr and PostalAddressPtrOutput values.
+// You can construct a concrete instance of `PostalAddressPtrInput` via:
+//
+//          PostalAddressArgs{...}
+//
+//  or:
+//
+//          nil
+type PostalAddressPtrInput interface {
+	pulumi.Input
+
+	ToPostalAddressPtrOutput() PostalAddressPtrOutput
+	ToPostalAddressPtrOutputWithContext(context.Context) PostalAddressPtrOutput
+}
+
+type postalAddressPtrType PostalAddressArgs
+
+func PostalAddressPtr(v *PostalAddressArgs) PostalAddressPtrInput {
+	return (*postalAddressPtrType)(v)
+}
+
+func (*postalAddressPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddress)(nil)).Elem()
+}
+
+func (i *postalAddressPtrType) ToPostalAddressPtrOutput() PostalAddressPtrOutput {
+	return i.ToPostalAddressPtrOutputWithContext(context.Background())
+}
+
+func (i *postalAddressPtrType) ToPostalAddressPtrOutputWithContext(ctx context.Context) PostalAddressPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressPtrOutput)
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddress)(nil)).Elem()
+}
+
+func (o PostalAddressOutput) ToPostalAddressOutput() PostalAddressOutput {
+	return o
+}
+
+func (o PostalAddressOutput) ToPostalAddressOutputWithContext(ctx context.Context) PostalAddressOutput {
+	return o
+}
+
+func (o PostalAddressOutput) ToPostalAddressPtrOutput() PostalAddressPtrOutput {
+	return o.ToPostalAddressPtrOutputWithContext(context.Background())
+}
+
+func (o PostalAddressOutput) ToPostalAddressPtrOutputWithContext(ctx context.Context) PostalAddressPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *PostalAddress {
+		return &v
+	}).(PostalAddressPtrOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddress) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressOutput) AdministrativeArea() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.AdministrativeArea }).(pulumi.StringPtrOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.Locality }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.Organization }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.PostalCode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressOutput) RegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.RegionCode }).(pulumi.StringPtrOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *int { return v.Revision }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressOutput) SortingCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.SortingCode }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressOutput) Sublocality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostalAddress) *string { return v.Sublocality }).(pulumi.StringPtrOutput)
+}
+
+type PostalAddressPtrOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddress)(nil)).Elem()
+}
+
+func (o PostalAddressPtrOutput) ToPostalAddressPtrOutput() PostalAddressPtrOutput {
+	return o
+}
+
+func (o PostalAddressPtrOutput) ToPostalAddressPtrOutputWithContext(ctx context.Context) PostalAddressPtrOutput {
+	return o
+}
+
+func (o PostalAddressPtrOutput) Elem() PostalAddressOutput {
+	return o.ApplyT(func(v *PostalAddress) PostalAddress { return *v }).(PostalAddressOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressPtrOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddress) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressPtrOutput) AdministrativeArea() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdministrativeArea
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressPtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressPtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressPtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddress) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Recipients
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RegionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressPtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Revision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressPtrOutput) SortingCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SortingCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressPtrOutput) Sublocality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddress) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Sublocality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponse struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines []string `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea string `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode string `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality string `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization string `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode string `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients []string `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode string `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision int `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode string `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality string `pulumi:"sublocality"`
+}
+
+// PostalAddressResponseInput is an input type that accepts PostalAddressResponseArgs and PostalAddressResponseOutput values.
+// You can construct a concrete instance of `PostalAddressResponseInput` via:
+//
+//          PostalAddressResponseArgs{...}
+type PostalAddressResponseInput interface {
+	pulumi.Input
+
+	ToPostalAddressResponseOutput() PostalAddressResponseOutput
+	ToPostalAddressResponseOutputWithContext(context.Context) PostalAddressResponseOutput
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponseArgs struct {
+	// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+	AddressLines pulumi.StringArrayInput `pulumi:"addressLines"`
+	// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+	AdministrativeArea pulumi.StringInput `pulumi:"administrativeArea"`
+	// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+	// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+	Locality pulumi.StringInput `pulumi:"locality"`
+	// Optional. The name of the organization at the address.
+	Organization pulumi.StringInput `pulumi:"organization"`
+	// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+	PostalCode pulumi.StringInput `pulumi:"postalCode"`
+	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
+	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode pulumi.StringInput `pulumi:"regionCode"`
+	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+	Revision pulumi.IntInput `pulumi:"revision"`
+	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+	SortingCode pulumi.StringInput `pulumi:"sortingCode"`
+	// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+	Sublocality pulumi.StringInput `pulumi:"sublocality"`
+}
+
+func (PostalAddressResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddressResponse)(nil)).Elem()
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponseOutput() PostalAddressResponseOutput {
+	return i.ToPostalAddressResponseOutputWithContext(context.Background())
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponseOutput)
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return i.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PostalAddressResponseArgs) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponseOutput).ToPostalAddressResponsePtrOutputWithContext(ctx)
+}
+
+// PostalAddressResponsePtrInput is an input type that accepts PostalAddressResponseArgs, PostalAddressResponsePtr and PostalAddressResponsePtrOutput values.
+// You can construct a concrete instance of `PostalAddressResponsePtrInput` via:
+//
+//          PostalAddressResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PostalAddressResponsePtrInput interface {
+	pulumi.Input
+
+	ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput
+	ToPostalAddressResponsePtrOutputWithContext(context.Context) PostalAddressResponsePtrOutput
+}
+
+type postalAddressResponsePtrType PostalAddressResponseArgs
+
+func PostalAddressResponsePtr(v *PostalAddressResponseArgs) PostalAddressResponsePtrInput {
+	return (*postalAddressResponsePtrType)(v)
+}
+
+func (*postalAddressResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddressResponse)(nil)).Elem()
+}
+
+func (i *postalAddressResponsePtrType) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return i.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *postalAddressResponsePtrType) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostalAddressResponsePtrOutput)
+}
+
+// Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+type PostalAddressResponseOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostalAddressResponse)(nil)).Elem()
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponseOutput() PostalAddressResponseOutput {
+	return o
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponseOutputWithContext(ctx context.Context) PostalAddressResponseOutput {
+	return o
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return o.ToPostalAddressResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PostalAddressResponseOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return o.ApplyT(func(v PostalAddressResponse) *PostalAddressResponse {
+		return &v
+	}).(PostalAddressResponsePtrOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressResponseOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddressResponse) []string { return v.AddressLines }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressResponseOutput) AdministrativeArea() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.AdministrativeArea }).(pulumi.StringOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressResponseOutput) Locality() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Locality }).(pulumi.StringOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressResponseOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Organization }).(pulumi.StringOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressResponseOutput) PostalCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.PostalCode }).(pulumi.StringOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressResponseOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostalAddressResponse) []string { return v.Recipients }).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressResponseOutput) RegionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.RegionCode }).(pulumi.StringOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressResponseOutput) Revision() pulumi.IntOutput {
+	return o.ApplyT(func(v PostalAddressResponse) int { return v.Revision }).(pulumi.IntOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressResponseOutput) SortingCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.SortingCode }).(pulumi.StringOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressResponseOutput) Sublocality() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddressResponse) string { return v.Sublocality }).(pulumi.StringOutput)
+}
+
+type PostalAddressResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PostalAddressResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostalAddressResponse)(nil)).Elem()
+}
+
+func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutput() PostalAddressResponsePtrOutput {
+	return o
+}
+
+func (o PostalAddressResponsePtrOutput) ToPostalAddressResponsePtrOutputWithContext(ctx context.Context) PostalAddressResponsePtrOutput {
+	return o
+}
+
+func (o PostalAddressResponsePtrOutput) Elem() PostalAddressResponseOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) PostalAddressResponse { return *v }).(PostalAddressResponseOutput)
+}
+
+// Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+func (o PostalAddressResponsePtrOutput) AddressLines() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AddressLines
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+func (o PostalAddressResponsePtrOutput) AdministrativeArea() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AdministrativeArea
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+func (o PostalAddressResponsePtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+func (o PostalAddressResponsePtrOutput) Locality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Locality
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The name of the organization at the address.
+func (o PostalAddressResponsePtrOutput) Organization() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Organization
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+func (o PostalAddressResponsePtrOutput) PostalCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PostalCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+func (o PostalAddressResponsePtrOutput) Recipients() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Recipients
+	}).(pulumi.StringArrayOutput)
+}
+
+// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RegionCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+func (o PostalAddressResponsePtrOutput) Revision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Revision
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+func (o PostalAddressResponsePtrOutput) SortingCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SortingCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+func (o PostalAddressResponsePtrOutput) Sublocality() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostalAddressResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Sublocality
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
@@ -968,7 +4285,45 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ContactOutput{})
+	pulumi.RegisterOutputType(ContactPtrOutput{})
+	pulumi.RegisterOutputType(ContactResponseOutput{})
+	pulumi.RegisterOutputType(ContactResponsePtrOutput{})
+	pulumi.RegisterOutputType(ContactSettingsOutput{})
+	pulumi.RegisterOutputType(ContactSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ContactSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ContactSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(CustomDnsOutput{})
+	pulumi.RegisterOutputType(CustomDnsPtrOutput{})
+	pulumi.RegisterOutputType(CustomDnsResponseOutput{})
+	pulumi.RegisterOutputType(CustomDnsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DnsSettingsOutput{})
+	pulumi.RegisterOutputType(DnsSettingsPtrOutput{})
+	pulumi.RegisterOutputType(DnsSettingsResponseOutput{})
+	pulumi.RegisterOutputType(DnsSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(DsRecordOutput{})
+	pulumi.RegisterOutputType(DsRecordArrayOutput{})
+	pulumi.RegisterOutputType(DsRecordResponseOutput{})
+	pulumi.RegisterOutputType(DsRecordResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(GlueRecordOutput{})
+	pulumi.RegisterOutputType(GlueRecordArrayOutput{})
+	pulumi.RegisterOutputType(GlueRecordResponseOutput{})
+	pulumi.RegisterOutputType(GlueRecordResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsResponsePtrOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsPtrOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsResponseOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsResponsePtrOutput{})
+	pulumi.RegisterOutputType(MoneyOutput{})
+	pulumi.RegisterOutputType(MoneyPtrOutput{})
+	pulumi.RegisterOutputType(PostalAddressOutput{})
+	pulumi.RegisterOutputType(PostalAddressPtrOutput{})
+	pulumi.RegisterOutputType(PostalAddressResponseOutput{})
+	pulumi.RegisterOutputType(PostalAddressResponsePtrOutput{})
 }

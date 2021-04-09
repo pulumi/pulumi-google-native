@@ -9,6 +9,7 @@ from .region_autoscaling_policy import *
 from .region_autoscaling_policy_iam_policy import *
 from .region_cluster import *
 from .region_cluster_iam_policy import *
+from .region_job import *
 from .region_job_iam_policy import *
 from .region_operation_iam_policy import *
 from .region_workflow_template import *
@@ -42,6 +43,8 @@ def _register_module():
                 return RegionCluster(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:dataproc/v1beta2:RegionClusterIamPolicy":
                 return RegionClusterIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp-native:dataproc/v1beta2:RegionJob":
+                return RegionJob(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:dataproc/v1beta2:RegionJobIamPolicy":
                 return RegionJobIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:dataproc/v1beta2:RegionOperationIamPolicy":

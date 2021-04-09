@@ -3615,6 +3615,22 @@
                 "workerPoolsId"
             ]
         },
+        "gcp-native:cloudchannel/v1:Account": {
+            "baseUrl": "https://cloudchannel.googleapis.com/",
+            "createPath": "v1/accounts/{accountsId}:register",
+            "createParams": [
+                "accountsId"
+            ],
+            "createProperties": {
+                "serviceAccount": {}
+            },
+            "idPath": "v1/accounts/{accountsId}:register",
+            "idParams": [
+                "accountsId"
+            ],
+            "noGet": true,
+            "noDelete": true
+        },
         "gcp-native:cloudchannel/v1:AccountChannelPartnerLink": {
             "baseUrl": "https://cloudchannel.googleapis.com/",
             "createPath": "v1/accounts/{accountsId}/channelPartnerLinks",
@@ -3736,6 +3752,17 @@
                 "customersId",
                 "entitlementsId"
             ],
+            "noDelete": true
+        },
+        "gcp-native:clouddebugger/v2:ControllerDebuggee": {
+            "baseUrl": "https://clouddebugger.googleapis.com/",
+            "createPath": "v2/controller/debuggees/register",
+            "createParams": null,
+            "createProperties": {
+                "debuggee": {}
+            },
+            "idPath": "v2/controller/debuggees/register",
+            "noGet": true,
             "noDelete": true
         },
         "gcp-native:cloudfunctions/v1:Function": {
@@ -20306,6 +20333,74 @@
             ],
             "noDelete": true
         },
+        "gcp-native:dataproc/v1:RegionJob": {
+            "baseUrl": "https://dataproc.googleapis.com/",
+            "createPath": "v1/projects/{projectId}/regions/{region}/jobs:submit",
+            "createParams": [
+                "projectId",
+                "region"
+            ],
+            "createProperties": {
+                "hadoopJob": {
+                    "container": "job"
+                },
+                "hiveJob": {
+                    "container": "job"
+                },
+                "labels": {
+                    "container": "job"
+                },
+                "pigJob": {
+                    "container": "job"
+                },
+                "placement": {
+                    "container": "job"
+                },
+                "prestoJob": {
+                    "container": "job"
+                },
+                "pysparkJob": {
+                    "container": "job"
+                },
+                "reference": {
+                    "container": "job"
+                },
+                "requestId": {},
+                "scheduling": {
+                    "container": "job"
+                },
+                "sparkJob": {
+                    "container": "job"
+                },
+                "sparkRJob": {
+                    "container": "job"
+                },
+                "sparkSqlJob": {
+                    "container": "job"
+                }
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "hadoopJob": {},
+                "hiveJob": {},
+                "labels": {},
+                "pigJob": {},
+                "placement": {},
+                "prestoJob": {},
+                "pysparkJob": {},
+                "reference": {},
+                "scheduling": {},
+                "sparkJob": {},
+                "sparkRJob": {},
+                "sparkSqlJob": {}
+            },
+            "idPath": "v1/projects/{projectId}/regions/{region}/jobs/{jobId}",
+            "idParams": [
+                "projectId",
+                "region",
+                "jobId"
+            ]
+        },
         "gcp-native:dataproc/v1:RegionJobIamPolicy": {
             "baseUrl": "https://dataproc.googleapis.com/",
             "createPath": "v1/projects/{projectsId}/regions/{regionsId}/jobs/{jobsId}:setIamPolicy",
@@ -20725,6 +20820,74 @@
                 "clustersId"
             ],
             "noDelete": true
+        },
+        "gcp-native:dataproc/v1beta2:RegionJob": {
+            "baseUrl": "https://dataproc.googleapis.com/",
+            "createPath": "v1beta2/projects/{projectId}/regions/{region}/jobs:submit",
+            "createParams": [
+                "projectId",
+                "region"
+            ],
+            "createProperties": {
+                "hadoopJob": {
+                    "container": "job"
+                },
+                "hiveJob": {
+                    "container": "job"
+                },
+                "labels": {
+                    "container": "job"
+                },
+                "pigJob": {
+                    "container": "job"
+                },
+                "placement": {
+                    "container": "job"
+                },
+                "prestoJob": {
+                    "container": "job"
+                },
+                "pysparkJob": {
+                    "container": "job"
+                },
+                "reference": {
+                    "container": "job"
+                },
+                "requestId": {},
+                "scheduling": {
+                    "container": "job"
+                },
+                "sparkJob": {
+                    "container": "job"
+                },
+                "sparkRJob": {
+                    "container": "job"
+                },
+                "sparkSqlJob": {
+                    "container": "job"
+                }
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "hadoopJob": {},
+                "hiveJob": {},
+                "labels": {},
+                "pigJob": {},
+                "placement": {},
+                "prestoJob": {},
+                "pysparkJob": {},
+                "reference": {},
+                "scheduling": {},
+                "sparkJob": {},
+                "sparkRJob": {},
+                "sparkSqlJob": {}
+            },
+            "idPath": "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}",
+            "idParams": [
+                "projectId",
+                "region",
+                "jobId"
+            ]
         },
         "gcp-native:dataproc/v1beta2:RegionJobIamPolicy": {
             "baseUrl": "https://dataproc.googleapis.com/",
@@ -23816,6 +23979,49 @@
                 "responsePolicyRule"
             ]
         },
+        "gcp-native:domains/v1alpha2:Registration": {
+            "baseUrl": "https://domains.googleapis.com/",
+            "createPath": "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations:register",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createProperties": {
+                "contactNotices": {},
+                "contactSettings": {
+                    "container": "registration"
+                },
+                "dnsSettings": {
+                    "container": "registration"
+                },
+                "domainName": {
+                    "container": "registration"
+                },
+                "domainNotices": {},
+                "labels": {
+                    "container": "registration"
+                },
+                "managementSettings": {
+                    "container": "registration"
+                },
+                "validateOnly": {},
+                "yearlyPrice": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "contactSettings": {},
+                "dnsSettings": {},
+                "domainName": {},
+                "labels": {},
+                "managementSettings": {}
+            },
+            "idPath": "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "registrationsId"
+            ]
+        },
         "gcp-native:domains/v1alpha2:RegistrationIamPolicy": {
             "baseUrl": "https://domains.googleapis.com/",
             "createPath": "v1alpha2/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}:setIamPolicy",
@@ -23862,6 +24068,49 @@
                 "registrationsId"
             ],
             "noDelete": true
+        },
+        "gcp-native:domains/v1beta1:Registration": {
+            "baseUrl": "https://domains.googleapis.com/",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations:register",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createProperties": {
+                "contactNotices": {},
+                "contactSettings": {
+                    "container": "registration"
+                },
+                "dnsSettings": {
+                    "container": "registration"
+                },
+                "domainName": {
+                    "container": "registration"
+                },
+                "domainNotices": {},
+                "labels": {
+                    "container": "registration"
+                },
+                "managementSettings": {
+                    "container": "registration"
+                },
+                "validateOnly": {},
+                "yearlyPrice": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "contactSettings": {},
+                "dnsSettings": {},
+                "domainName": {},
+                "labels": {},
+                "managementSettings": {}
+            },
+            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/registrations/{registrationsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "registrationsId"
+            ]
         },
         "gcp-native:domains/v1beta1:RegistrationIamPolicy": {
             "baseUrl": "https://domains.googleapis.com/",
@@ -34042,6 +34291,22 @@
                 "uri": {}
             },
             "idPath": "v1/projects/{projectsId}/submissions",
+            "idParams": [
+                "projectsId"
+            ],
+            "noGet": true,
+            "noDelete": true
+        },
+        "gcp-native:webrisk/v1:Uri": {
+            "baseUrl": "https://webrisk.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/uris:submit",
+            "createParams": [
+                "projectsId"
+            ],
+            "createProperties": {
+                "submission": {}
+            },
+            "idPath": "v1/projects/{projectsId}/uris:submit",
             "idParams": [
                 "projectsId"
             ],

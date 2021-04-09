@@ -4,6 +4,8 @@
 
 # Export this package's modules as members:
 from .submission import *
+from .uri import *
+from ._inputs import *
 
 def _register_module():
     import pulumi
@@ -19,6 +21,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp-native:webrisk/v1:Submission":
                 return Submission(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp-native:webrisk/v1:Uri":
+                return Uri(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 

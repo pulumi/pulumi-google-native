@@ -64,7 +64,7 @@ func main() {
 			err = emitPackage(pkgSpec, language, dir)
 		}
 		if err != nil {
-			panic(err)
+			panic(fmt.Sprintf("%+v", err))
 		}
 	}
 }
@@ -88,10 +88,10 @@ func emitDiscoveryFiles(outDir string) error {
 	}
 
 	// TODO: this one item is not found in the directory list - figure out why.
-	list.Items = append(list.Items, &discovery.DirectoryListItems {
+	list.Items = append(list.Items, &discovery.DirectoryListItems{
 		DiscoveryRestUrl: "https://vpcaccess.googleapis.com/$discovery/rest?version=v1",
-		Title: "Cloud VPC Access",
-		Id: "vpcaccess:v1",
+		Title:            "Cloud VPC Access",
+		Id:               "vpcaccess:v1",
 	})
 
 	// TODO: getting access denied from https://essentialcontacts.googleapis.com/$discovery/rest?version=v1beta1
@@ -105,7 +105,7 @@ func emitDiscoveryFiles(outDir string) error {
 			!strings.HasPrefix(item.Title, "Cloud") &&
 			!strings.HasPrefix(item.Title, "Firebase") &&
 			!strings.HasPrefix(item.Title, "Identity Toolkit") &&
-			!strings.HasPrefix(item.Title, "Compute"){
+			!strings.HasPrefix(item.Title, "Compute") {
 			continue
 		}
 

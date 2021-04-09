@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp-native:webrisk/v1:Submission":
 		r, err = NewSubmission(ctx, name, nil, pulumi.URN_(urn))
+	case "gcp-native:webrisk/v1:Uri":
+		r, err = NewUri(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

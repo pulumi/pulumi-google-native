@@ -25,6 +25,7 @@ import * as cloudasset from "./cloudasset";
 import * as cloudbilling from "./cloudbilling";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudchannel from "./cloudchannel";
+import * as clouddebugger from "./clouddebugger";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudidentity from "./cloudidentity";
 import * as cloudiot from "./cloudiot";
@@ -131,6 +132,7 @@ export {
     cloudbilling,
     cloudbuild,
     cloudchannel,
+    clouddebugger,
     cloudfunctions,
     cloudidentity,
     cloudiot,

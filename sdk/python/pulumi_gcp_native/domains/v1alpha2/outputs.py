@@ -13,7 +13,16 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'ContactResponse',
+    'ContactSettingsResponse',
+    'CustomDnsResponse',
+    'DnsSettingsResponse',
+    'DsRecordResponse',
     'ExprResponse',
+    'GlueRecordResponse',
+    'GoogleDomainsDnsResponse',
+    'ManagementSettingsResponse',
+    'PostalAddressResponse',
 ]
 
 @pulumi.output_type
@@ -136,6 +145,263 @@ class BindingResponse(dict):
 
 
 @pulumi.output_type
+class ContactResponse(dict):
+    """
+    Details required for a contact associated with a `Registration`.
+    """
+    def __init__(__self__, *,
+                 email: str,
+                 fax_number: str,
+                 phone_number: str,
+                 postal_address: 'outputs.PostalAddressResponse'):
+        """
+        Details required for a contact associated with a `Registration`.
+        :param str email: Required. Email address of the contact.
+        :param str fax_number: Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param str phone_number: Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param 'PostalAddressResponseArgs' postal_address: Required. Postal address of the contact.
+        """
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "fax_number", fax_number)
+        pulumi.set(__self__, "phone_number", phone_number)
+        pulumi.set(__self__, "postal_address", postal_address)
+
+    @property
+    @pulumi.getter
+    def email(self) -> str:
+        """
+        Required. Email address of the contact.
+        """
+        return pulumi.get(self, "email")
+
+    @property
+    @pulumi.getter(name="faxNumber")
+    def fax_number(self) -> str:
+        """
+        Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
+        """
+        return pulumi.get(self, "fax_number")
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> str:
+        """
+        Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @property
+    @pulumi.getter(name="postalAddress")
+    def postal_address(self) -> 'outputs.PostalAddressResponse':
+        """
+        Required. Postal address of the contact.
+        """
+        return pulumi.get(self, "postal_address")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ContactSettingsResponse(dict):
+    """
+    Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+    """
+    def __init__(__self__, *,
+                 admin_contact: 'outputs.ContactResponse',
+                 privacy: str,
+                 registrant_contact: 'outputs.ContactResponse',
+                 technical_contact: 'outputs.ContactResponse'):
+        """
+        Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+        :param 'ContactResponseArgs' admin_contact: Required. The administrative contact for the `Registration`.
+        :param str privacy: Required. Privacy setting for the contacts associated with the `Registration`.
+        :param 'ContactResponseArgs' registrant_contact: Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        :param 'ContactResponseArgs' technical_contact: Required. The technical contact for the `Registration`.
+        """
+        pulumi.set(__self__, "admin_contact", admin_contact)
+        pulumi.set(__self__, "privacy", privacy)
+        pulumi.set(__self__, "registrant_contact", registrant_contact)
+        pulumi.set(__self__, "technical_contact", technical_contact)
+
+    @property
+    @pulumi.getter(name="adminContact")
+    def admin_contact(self) -> 'outputs.ContactResponse':
+        """
+        Required. The administrative contact for the `Registration`.
+        """
+        return pulumi.get(self, "admin_contact")
+
+    @property
+    @pulumi.getter
+    def privacy(self) -> str:
+        """
+        Required. Privacy setting for the contacts associated with the `Registration`.
+        """
+        return pulumi.get(self, "privacy")
+
+    @property
+    @pulumi.getter(name="registrantContact")
+    def registrant_contact(self) -> 'outputs.ContactResponse':
+        """
+        Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        """
+        return pulumi.get(self, "registrant_contact")
+
+    @property
+    @pulumi.getter(name="technicalContact")
+    def technical_contact(self) -> 'outputs.ContactResponse':
+        """
+        Required. The technical contact for the `Registration`.
+        """
+        return pulumi.get(self, "technical_contact")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class CustomDnsResponse(dict):
+    """
+    Configuration for an arbitrary DNS provider.
+    """
+    def __init__(__self__, *,
+                 ds_records: Sequence['outputs.DsRecordResponse'],
+                 name_servers: Sequence[str]):
+        """
+        Configuration for an arbitrary DNS provider.
+        :param Sequence['DsRecordResponseArgs'] ds_records: The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+        :param Sequence[str] name_servers: Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        """
+        pulumi.set(__self__, "ds_records", ds_records)
+        pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="dsRecords")
+    def ds_records(self) -> Sequence['outputs.DsRecordResponse']:
+        """
+        The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
+        """
+        return pulumi.get(self, "ds_records")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[str]:
+        """
+        Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        """
+        return pulumi.get(self, "name_servers")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DnsSettingsResponse(dict):
+    """
+    Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+    """
+    def __init__(__self__, *,
+                 custom_dns: 'outputs.CustomDnsResponse',
+                 glue_records: Sequence['outputs.GlueRecordResponse'],
+                 google_domains_dns: 'outputs.GoogleDomainsDnsResponse'):
+        """
+        Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
+        :param 'CustomDnsResponseArgs' custom_dns: An arbitrary DNS provider identified by its name servers.
+        :param Sequence['GlueRecordResponseArgs'] glue_records: The list of glue records for this `Registration`. Commonly empty.
+        :param 'GoogleDomainsDnsResponseArgs' google_domains_dns: The free DNS zone provided by [Google Domains](https://domains.google/).
+        """
+        pulumi.set(__self__, "custom_dns", custom_dns)
+        pulumi.set(__self__, "glue_records", glue_records)
+        pulumi.set(__self__, "google_domains_dns", google_domains_dns)
+
+    @property
+    @pulumi.getter(name="customDns")
+    def custom_dns(self) -> 'outputs.CustomDnsResponse':
+        """
+        An arbitrary DNS provider identified by its name servers.
+        """
+        return pulumi.get(self, "custom_dns")
+
+    @property
+    @pulumi.getter(name="glueRecords")
+    def glue_records(self) -> Sequence['outputs.GlueRecordResponse']:
+        """
+        The list of glue records for this `Registration`. Commonly empty.
+        """
+        return pulumi.get(self, "glue_records")
+
+    @property
+    @pulumi.getter(name="googleDomainsDns")
+    def google_domains_dns(self) -> 'outputs.GoogleDomainsDnsResponse':
+        """
+        The free DNS zone provided by [Google Domains](https://domains.google/).
+        """
+        return pulumi.get(self, "google_domains_dns")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class DsRecordResponse(dict):
+    """
+    Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+    """
+    def __init__(__self__, *,
+                 algorithm: str,
+                 digest: str,
+                 digest_type: str,
+                 key_tag: int):
+        """
+        Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
+        :param str algorithm: The algorithm used to generate the referenced DNSKEY.
+        :param str digest: The digest generated from the referenced DNSKEY.
+        :param str digest_type: The hash function used to generate the digest of the referenced DNSKEY.
+        :param int key_tag: The key tag of the record. Must be set in range 0 -- 65535.
+        """
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "digest", digest)
+        pulumi.set(__self__, "digest_type", digest_type)
+        pulumi.set(__self__, "key_tag", key_tag)
+
+    @property
+    @pulumi.getter
+    def algorithm(self) -> str:
+        """
+        The algorithm used to generate the referenced DNSKEY.
+        """
+        return pulumi.get(self, "algorithm")
+
+    @property
+    @pulumi.getter
+    def digest(self) -> str:
+        """
+        The digest generated from the referenced DNSKEY.
+        """
+        return pulumi.get(self, "digest")
+
+    @property
+    @pulumi.getter(name="digestType")
+    def digest_type(self) -> str:
+        """
+        The hash function used to generate the digest of the referenced DNSKEY.
+        """
+        return pulumi.get(self, "digest_type")
+
+    @property
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> int:
+        """
+        The key tag of the record. Must be set in range 0 -- 65535.
+        """
+        return pulumi.get(self, "key_tag")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
 class ExprResponse(dict):
     """
     Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -188,6 +454,271 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GlueRecordResponse(dict):
+    """
+    Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+    """
+    def __init__(__self__, *,
+                 host_name: str,
+                 ipv4_addresses: Sequence[str],
+                 ipv6_addresses: Sequence[str]):
+        """
+        Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
+        :param str host_name: Required. Domain name of the host in Punycode format.
+        :param Sequence[str] ipv4_addresses: List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+        :param Sequence[str] ipv6_addresses: List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+        """
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
+        pulumi.set(__self__, "ipv6_addresses", ipv6_addresses)
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        Required. Domain name of the host in Punycode format.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="ipv4Addresses")
+    def ipv4_addresses(self) -> Sequence[str]:
+        """
+        List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
+        """
+        return pulumi.get(self, "ipv4_addresses")
+
+    @property
+    @pulumi.getter(name="ipv6Addresses")
+    def ipv6_addresses(self) -> Sequence[str]:
+        """
+        List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
+        """
+        return pulumi.get(self, "ipv6_addresses")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class GoogleDomainsDnsResponse(dict):
+    """
+    Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+    """
+    def __init__(__self__, *,
+                 ds_records: Sequence['outputs.DsRecordResponse'],
+                 ds_state: str,
+                 name_servers: Sequence[str]):
+        """
+        Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
+        :param Sequence['DsRecordResponseArgs'] ds_records: The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+        :param str ds_state: Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        :param Sequence[str] name_servers: A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+        """
+        pulumi.set(__self__, "ds_records", ds_records)
+        pulumi.set(__self__, "ds_state", ds_state)
+        pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="dsRecords")
+    def ds_records(self) -> Sequence['outputs.DsRecordResponse']:
+        """
+        The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
+        """
+        return pulumi.get(self, "ds_records")
+
+    @property
+    @pulumi.getter(name="dsState")
+    def ds_state(self) -> str:
+        """
+        Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        """
+        return pulumi.get(self, "ds_state")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[str]:
+        """
+        A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
+        """
+        return pulumi.get(self, "name_servers")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ManagementSettingsResponse(dict):
+    """
+    Defines renewal, billing, and transfer settings for a `Registration`.
+    """
+    def __init__(__self__, *,
+                 renewal_method: str,
+                 transfer_lock_state: str):
+        """
+        Defines renewal, billing, and transfer settings for a `Registration`.
+        :param str renewal_method: The renewal method for this `Registration`.
+        :param str transfer_lock_state: Controls whether the domain can be transferred to another registrar.
+        """
+        pulumi.set(__self__, "renewal_method", renewal_method)
+        pulumi.set(__self__, "transfer_lock_state", transfer_lock_state)
+
+    @property
+    @pulumi.getter(name="renewalMethod")
+    def renewal_method(self) -> str:
+        """
+        The renewal method for this `Registration`.
+        """
+        return pulumi.get(self, "renewal_method")
+
+    @property
+    @pulumi.getter(name="transferLockState")
+    def transfer_lock_state(self) -> str:
+        """
+        Controls whether the domain can be transferred to another registrar.
+        """
+        return pulumi.get(self, "transfer_lock_state")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class PostalAddressResponse(dict):
+    """
+    Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+    """
+    def __init__(__self__, *,
+                 address_lines: Sequence[str],
+                 administrative_area: str,
+                 language_code: str,
+                 locality: str,
+                 organization: str,
+                 postal_code: str,
+                 recipients: Sequence[str],
+                 region_code: str,
+                 revision: int,
+                 sorting_code: str,
+                 sublocality: str):
+        """
+        Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+        :param Sequence[str] address_lines: Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+        :param str administrative_area: Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+        :param str language_code: Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+        :param str locality: Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+        :param str organization: Optional. The name of the organization at the address.
+        :param str postal_code: Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+        :param Sequence[str] recipients: Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+        :param str region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        :param int revision: The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+        :param str sorting_code: Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+        :param str sublocality: Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+        """
+        pulumi.set(__self__, "address_lines", address_lines)
+        pulumi.set(__self__, "administrative_area", administrative_area)
+        pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "locality", locality)
+        pulumi.set(__self__, "organization", organization)
+        pulumi.set(__self__, "postal_code", postal_code)
+        pulumi.set(__self__, "recipients", recipients)
+        pulumi.set(__self__, "region_code", region_code)
+        pulumi.set(__self__, "revision", revision)
+        pulumi.set(__self__, "sorting_code", sorting_code)
+        pulumi.set(__self__, "sublocality", sublocality)
+
+    @property
+    @pulumi.getter(name="addressLines")
+    def address_lines(self) -> Sequence[str]:
+        """
+        Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
+        """
+        return pulumi.get(self, "address_lines")
+
+    @property
+    @pulumi.getter(name="administrativeArea")
+    def administrative_area(self) -> str:
+        """
+        Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
+        """
+        return pulumi.get(self, "administrative_area")
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def locality(self) -> str:
+        """
+        Optional. Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world where localities are not well defined or do not fit into this structure well, leave locality empty and use address_lines.
+        """
+        return pulumi.get(self, "locality")
+
+    @property
+    @pulumi.getter
+    def organization(self) -> str:
+        """
+        Optional. The name of the organization at the address.
+        """
+        return pulumi.get(self, "organization")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> str:
+        """
+        Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+        """
+        return pulumi.get(self, "postal_code")
+
+    @property
+    @pulumi.getter
+    def recipients(self) -> Sequence[str]:
+        """
+        Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
+        """
+        return pulumi.get(self, "recipients")
+
+    @property
+    @pulumi.getter(name="regionCode")
+    def region_code(self) -> str:
+        """
+        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        """
+        return pulumi.get(self, "region_code")
+
+    @property
+    @pulumi.getter
+    def revision(self) -> int:
+        """
+        The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
+        """
+        return pulumi.get(self, "revision")
+
+    @property
+    @pulumi.getter(name="sortingCode")
+    def sorting_code(self) -> str:
+        """
+        Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
+        """
+        return pulumi.get(self, "sorting_code")
+
+    @property
+    @pulumi.getter
+    def sublocality(self) -> str:
+        """
+        Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
+        """
+        return pulumi.get(self, "sublocality")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

@@ -5,15 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./registration";
 export * from "./registrationIamPolicy";
 
 // Import resources to register:
+import { Registration } from "./registration";
 import { RegistrationIamPolicy } from "./registrationIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp-native:domains/v1alpha2:Registration":
+                return new Registration(name, <any>undefined, { urn })
             case "gcp-native:domains/v1alpha2:RegistrationIamPolicy":
                 return new RegistrationIamPolicy(name, <any>undefined, { urn })
             default:
