@@ -7,11 +7,8 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./entryGroup";
 export * from "./entryGroupEntry";
-export * from "./entryGroupEntryTag";
 export * from "./entryGroupIamPolicy";
-export * from "./entryGroupTag";
 export * from "./tagTemplate";
-export * from "./tagTemplateField";
 export * from "./tagTemplateIamPolicy";
 export * from "./taxonomy";
 export * from "./taxonomyIamPolicy";
@@ -21,11 +18,8 @@ export * from "./taxonomyPolicyTagIamPolicy";
 // Import resources to register:
 import { EntryGroup } from "./entryGroup";
 import { EntryGroupEntry } from "./entryGroupEntry";
-import { EntryGroupEntryTag } from "./entryGroupEntryTag";
 import { EntryGroupIamPolicy } from "./entryGroupIamPolicy";
-import { EntryGroupTag } from "./entryGroupTag";
 import { TagTemplate } from "./tagTemplate";
-import { TagTemplateField } from "./tagTemplateField";
 import { TagTemplateIamPolicy } from "./tagTemplateIamPolicy";
 import { Taxonomy } from "./taxonomy";
 import { TaxonomyIamPolicy } from "./taxonomyIamPolicy";
@@ -40,16 +34,10 @@ const _module = {
                 return new EntryGroup(name, <any>undefined, { urn })
             case "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
                 return new EntryGroupEntry(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:EntryGroupEntryTag":
-                return new EntryGroupEntryTag(name, <any>undefined, { urn })
             case "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:EntryGroupTag":
-                return new EntryGroupTag(name, <any>undefined, { urn })
             case "gcp-native:datacatalog/v1beta1:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TagTemplateField":
-                return new TagTemplateField(name, <any>undefined, { urn })
             case "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
                 return new TagTemplateIamPolicy(name, <any>undefined, { urn })
             case "gcp-native:datacatalog/v1beta1:Taxonomy":

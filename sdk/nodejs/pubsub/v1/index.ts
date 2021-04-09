@@ -7,21 +7,15 @@ import * as utilities from "../../utilities";
 // Export members:
 export * from "./schema";
 export * from "./schemaIamPolicy";
-export * from "./snapshot";
 export * from "./snapshotIamPolicy";
-export * from "./subscription";
 export * from "./subscriptionIamPolicy";
-export * from "./topic";
 export * from "./topicIamPolicy";
 
 // Import resources to register:
 import { Schema } from "./schema";
 import { SchemaIamPolicy } from "./schemaIamPolicy";
-import { Snapshot } from "./snapshot";
 import { SnapshotIamPolicy } from "./snapshotIamPolicy";
-import { Subscription } from "./subscription";
 import { SubscriptionIamPolicy } from "./subscriptionIamPolicy";
-import { Topic } from "./topic";
 import { TopicIamPolicy } from "./topicIamPolicy";
 
 const _module = {
@@ -32,16 +26,10 @@ const _module = {
                 return new Schema(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1:SchemaIamPolicy":
                 return new SchemaIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:pubsub/v1:Snapshot":
-                return new Snapshot(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:pubsub/v1:Subscription":
-                return new Subscription(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1:SubscriptionIamPolicy":
                 return new SubscriptionIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:pubsub/v1:Topic":
-                return new Topic(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1:TopicIamPolicy":
                 return new TopicIamPolicy(name, <any>undefined, { urn })
             default:

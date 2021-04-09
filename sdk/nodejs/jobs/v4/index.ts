@@ -6,13 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./tenant";
-export * from "./tenantClientEvent";
 export * from "./tenantCompany";
 export * from "./tenantJob";
 
 // Import resources to register:
 import { Tenant } from "./tenant";
-import { TenantClientEvent } from "./tenantClientEvent";
 import { TenantCompany } from "./tenantCompany";
 import { TenantJob } from "./tenantJob";
 
@@ -22,8 +20,6 @@ const _module = {
         switch (type) {
             case "gcp-native:jobs/v4:Tenant":
                 return new Tenant(name, <any>undefined, { urn })
-            case "gcp-native:jobs/v4:TenantClientEvent":
-                return new TenantClientEvent(name, <any>undefined, { urn })
             case "gcp-native:jobs/v4:TenantCompany":
                 return new TenantCompany(name, <any>undefined, { urn })
             case "gcp-native:jobs/v4:TenantJob":

@@ -6,13 +6,11 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./androidApp";
-export * from "./androidAppSha";
 export * from "./iosApp";
 export * from "./webApp";
 
 // Import resources to register:
 import { AndroidApp } from "./androidApp";
-import { AndroidAppSha } from "./androidAppSha";
 import { IosApp } from "./iosApp";
 import { WebApp } from "./webApp";
 
@@ -22,8 +20,6 @@ const _module = {
         switch (type) {
             case "gcp-native:firebase/v1beta1:AndroidApp":
                 return new AndroidApp(name, <any>undefined, { urn })
-            case "gcp-native:firebase/v1beta1:AndroidAppSha":
-                return new AndroidAppSha(name, <any>undefined, { urn })
             case "gcp-native:firebase/v1beta1:IosApp":
                 return new IosApp(name, <any>undefined, { urn })
             case "gcp-native:firebase/v1beta1:WebApp":

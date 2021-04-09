@@ -6,12 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./organizationSource";
-export * from "./organizationSourceFinding";
 export * from "./organizationSourceIamPolicy";
 
 // Import resources to register:
 import { OrganizationSource } from "./organizationSource";
-import { OrganizationSourceFinding } from "./organizationSourceFinding";
 import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
 
 const _module = {
@@ -20,8 +18,6 @@ const _module = {
         switch (type) {
             case "gcp-native:securitycenter/v1beta1:OrganizationSource":
                 return new OrganizationSource(name, <any>undefined, { urn })
-            case "gcp-native:securitycenter/v1beta1:OrganizationSourceFinding":
-                return new OrganizationSourceFinding(name, <any>undefined, { urn })
             case "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             default:

@@ -8,13 +8,11 @@ import * as utilities from "../../utilities";
 export * from "./organization";
 export * from "./organizationAnalyticDatastore";
 export * from "./organizationApi";
-export * from "./organizationApiKeyvaluemap";
 export * from "./organizationApiproduct";
 export * from "./organizationDatacollector";
 export * from "./organizationDeveloper";
 export * from "./organizationDeveloperApp";
 export * from "./organizationDeveloperAppKey";
-export * from "./organizationDeveloperAppKeyCreate";
 export * from "./organizationEnvgroup";
 export * from "./organizationEnvgroupAttachment";
 export * from "./organizationEnvironment";
@@ -23,7 +21,6 @@ export * from "./organizationEnvironmentApiRevisionDebugsession";
 export * from "./organizationEnvironmentIamPolicy";
 export * from "./organizationEnvironmentKeystore";
 export * from "./organizationEnvironmentKeystoreAlias";
-export * from "./organizationEnvironmentKeyvaluemap";
 export * from "./organizationEnvironmentQuery";
 export * from "./organizationEnvironmentReference";
 export * from "./organizationEnvironmentResourcefile";
@@ -34,7 +31,6 @@ export * from "./organizationInstance";
 export * from "./organizationInstanceAttachment";
 export * from "./organizationInstanceCanaryevaluation";
 export * from "./organizationInstanceNatAddress";
-export * from "./organizationKeyvaluemap";
 export * from "./organizationReport";
 export * from "./organizationSharedflow";
 export * from "./organizationSiteApicategory";
@@ -43,13 +39,11 @@ export * from "./organizationSiteApicategory";
 import { Organization } from "./organization";
 import { OrganizationAnalyticDatastore } from "./organizationAnalyticDatastore";
 import { OrganizationApi } from "./organizationApi";
-import { OrganizationApiKeyvaluemap } from "./organizationApiKeyvaluemap";
 import { OrganizationApiproduct } from "./organizationApiproduct";
 import { OrganizationDatacollector } from "./organizationDatacollector";
 import { OrganizationDeveloper } from "./organizationDeveloper";
 import { OrganizationDeveloperApp } from "./organizationDeveloperApp";
 import { OrganizationDeveloperAppKey } from "./organizationDeveloperAppKey";
-import { OrganizationDeveloperAppKeyCreate } from "./organizationDeveloperAppKeyCreate";
 import { OrganizationEnvgroup } from "./organizationEnvgroup";
 import { OrganizationEnvgroupAttachment } from "./organizationEnvgroupAttachment";
 import { OrganizationEnvironment } from "./organizationEnvironment";
@@ -58,7 +52,6 @@ import { OrganizationEnvironmentApiRevisionDebugsession } from "./organizationEn
 import { OrganizationEnvironmentIamPolicy } from "./organizationEnvironmentIamPolicy";
 import { OrganizationEnvironmentKeystore } from "./organizationEnvironmentKeystore";
 import { OrganizationEnvironmentKeystoreAlias } from "./organizationEnvironmentKeystoreAlias";
-import { OrganizationEnvironmentKeyvaluemap } from "./organizationEnvironmentKeyvaluemap";
 import { OrganizationEnvironmentQuery } from "./organizationEnvironmentQuery";
 import { OrganizationEnvironmentReference } from "./organizationEnvironmentReference";
 import { OrganizationEnvironmentResourcefile } from "./organizationEnvironmentResourcefile";
@@ -69,7 +62,6 @@ import { OrganizationInstance } from "./organizationInstance";
 import { OrganizationInstanceAttachment } from "./organizationInstanceAttachment";
 import { OrganizationInstanceCanaryevaluation } from "./organizationInstanceCanaryevaluation";
 import { OrganizationInstanceNatAddress } from "./organizationInstanceNatAddress";
-import { OrganizationKeyvaluemap } from "./organizationKeyvaluemap";
 import { OrganizationReport } from "./organizationReport";
 import { OrganizationSharedflow } from "./organizationSharedflow";
 import { OrganizationSiteApicategory } from "./organizationSiteApicategory";
@@ -84,8 +76,6 @@ const _module = {
                 return new OrganizationAnalyticDatastore(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationApi":
                 return new OrganizationApi(name, <any>undefined, { urn })
-            case "gcp-native:apigee/v1:OrganizationApiKeyvaluemap":
-                return new OrganizationApiKeyvaluemap(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationApiproduct":
                 return new OrganizationApiproduct(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationDatacollector":
@@ -96,8 +86,6 @@ const _module = {
                 return new OrganizationDeveloperApp(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationDeveloperAppKey":
                 return new OrganizationDeveloperAppKey(name, <any>undefined, { urn })
-            case "gcp-native:apigee/v1:OrganizationDeveloperAppKeyCreate":
-                return new OrganizationDeveloperAppKeyCreate(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationEnvgroup":
                 return new OrganizationEnvgroup(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationEnvgroupAttachment":
@@ -114,8 +102,6 @@ const _module = {
                 return new OrganizationEnvironmentKeystore(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
                 return new OrganizationEnvironmentKeystoreAlias(name, <any>undefined, { urn })
-            case "gcp-native:apigee/v1:OrganizationEnvironmentKeyvaluemap":
-                return new OrganizationEnvironmentKeyvaluemap(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationEnvironmentQuery":
                 return new OrganizationEnvironmentQuery(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationEnvironmentReference":
@@ -136,8 +122,6 @@ const _module = {
                 return new OrganizationInstanceCanaryevaluation(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationInstanceNatAddress":
                 return new OrganizationInstanceNatAddress(name, <any>undefined, { urn })
-            case "gcp-native:apigee/v1:OrganizationKeyvaluemap":
-                return new OrganizationKeyvaluemap(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationReport":
                 return new OrganizationReport(name, <any>undefined, { urn })
             case "gcp-native:apigee/v1:OrganizationSharedflow":

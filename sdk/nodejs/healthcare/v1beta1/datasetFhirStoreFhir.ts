@@ -34,6 +34,18 @@ export class DatasetFhirStoreFhir extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatasetFhirStoreFhir.__pulumiType;
     }
 
+    /**
+     * The HTTP Content-Type header value specifying the content type of the body.
+     */
+    public readonly contentType!: pulumi.Output<string>;
+    /**
+     * The HTTP request/response body as raw binary.
+     */
+    public readonly data!: pulumi.Output<string>;
+    /**
+     * Application specific response metadata. Must be set in the first response for streaming APIs.
+     */
+    public readonly extensions!: pulumi.Output<{[key: string]: string}[]>;
 
     /**
      * Create a DatasetFhirStoreFhir resource with the given unique name, arguments, and options.
@@ -74,6 +86,9 @@ export class DatasetFhirStoreFhir extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
+            inputs["contentType"] = undefined /*out*/;
+            inputs["data"] = undefined /*out*/;
+            inputs["extensions"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
