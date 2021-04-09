@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp-native:firebase/v1beta1:AndroidApp":
 		r, err = NewAndroidApp(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:firebase/v1beta1:AndroidAppSha":
-		r, err = NewAndroidAppSha(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:firebase/v1beta1:IosApp":
 		r, err = NewIosApp(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:firebase/v1beta1:WebApp":

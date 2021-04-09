@@ -29,8 +29,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewOccurrence(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
 		r, err = NewOccurrenceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:containeranalysis/v1alpha1:Operation":
-		r, err = NewOperation(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:containeranalysis/v1alpha1:ProviderNote":
 		r, err = NewProviderNote(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":

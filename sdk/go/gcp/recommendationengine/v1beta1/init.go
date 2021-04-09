@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp-native:recommendationengine/v1beta1:CatalogCatalogItem":
 		r, err = NewCatalogCatalogItem(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:recommendationengine/v1beta1:CatalogEventStorePredictionApiKeyRegistration":
-		r, err = NewCatalogEventStorePredictionApiKeyRegistration(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

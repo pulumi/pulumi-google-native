@@ -33,8 +33,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewProject(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:cloudresourcemanager/v3:ProjectIamPolicy":
 		r, err = NewProjectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:cloudresourcemanager/v3:TagBinding":
-		r, err = NewTagBinding(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:cloudresourcemanager/v3:TagKey":
 		r, err = NewTagKey(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy":

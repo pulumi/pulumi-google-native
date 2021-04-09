@@ -23,8 +23,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp-native:securitycenter/v1beta1:OrganizationSource":
 		r, err = NewOrganizationSource(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:securitycenter/v1beta1:OrganizationSourceFinding":
-		r, err = NewOrganizationSourceFinding(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
 		r, err = NewOrganizationSourceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:

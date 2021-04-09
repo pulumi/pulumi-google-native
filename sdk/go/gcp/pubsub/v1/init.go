@@ -25,16 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewSchema(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:pubsub/v1:SchemaIamPolicy":
 		r, err = NewSchemaIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:pubsub/v1:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:pubsub/v1:SnapshotIamPolicy":
 		r, err = NewSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:pubsub/v1:Subscription":
-		r, err = NewSubscription(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:pubsub/v1:SubscriptionIamPolicy":
 		r, err = NewSubscriptionIamPolicy(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:pubsub/v1:Topic":
-		r, err = NewTopic(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:pubsub/v1:TopicIamPolicy":
 		r, err = NewTopicIamPolicy(ctx, name, nil, pulumi.URN_(urn))
 	default:

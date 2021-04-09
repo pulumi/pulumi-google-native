@@ -25,8 +25,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r, err = NewCapacityCommitment(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:bigqueryreservation/v1beta1:Reservation":
 		r, err = NewReservation(ctx, name, nil, pulumi.URN_(urn))
-	case "gcp-native:bigqueryreservation/v1beta1:ReservationAssignment":
-		r, err = NewReservationAssignment(ctx, name, nil, pulumi.URN_(urn))
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

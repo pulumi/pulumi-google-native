@@ -21,8 +21,6 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
-	case "gcp-native:jobs/v3:ClientEvent":
-		r, err = NewClientEvent(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:jobs/v3:Company":
 		r, err = NewCompany(ctx, name, nil, pulumi.URN_(urn))
 	case "gcp-native:jobs/v3:Job":
