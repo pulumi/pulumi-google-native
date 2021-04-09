@@ -390,10 +390,6 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 	}
 
 	id := req.GetId()
-	if res.NoGet {
-		return &rpc.ReadResponse{Id: id}, nil
-	}
-
 	uri := res.RelativePath(id)
 
 	// Retrieve the old state.

@@ -22,7 +22,6 @@ type CloudAPIResource struct {
 	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
 	IdPath           string                      `json:"idPath,omitempty"`
 	IdParams         []string                    `json:"idParams,omitempty"`
-	NoGet            bool                        `json:"noGet,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
 }
 
