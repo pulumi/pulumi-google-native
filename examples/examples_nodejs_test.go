@@ -4,15 +4,29 @@
 package examples
 
 import (
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 	"path/filepath"
 	"testing"
-	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
 func TestCloudRunTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: filepath.Join(getCwd(t), "cloudrun-ts"),
+			Dir:         filepath.Join(getCwd(t), "cloudrun-ts"),
+			SkipRefresh: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func TestFunctionsTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "functions-ts"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				assertHTTPHelloWorld(t, stack.Outputs["functionUrl"].(string), nil)
+			},
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)

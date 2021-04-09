@@ -2,6 +2,11 @@
 
 package resources
 
+import (
+	"fmt"
+	"strings"
+)
+
 // CloudAPIMetadata is a collection of all resources and functions in the Google Cloud REST API.
 type CloudAPIMetadata struct {
 	Resources map[string]CloudAPIResource `json:"resources"`
@@ -20,6 +25,12 @@ type CloudAPIResource struct {
 	NoGet            bool                        `json:"noGet,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
 }
+
+// RelativePath joins the resource base URL with the given path.
+func (r *CloudAPIResource) RelativePath(rel string) string {
+	return fmt.Sprintf("%s/%s", strings.TrimRight(r.BaseUrl, "/"), strings.TrimLeft(rel, "/"))
+}
+
 // CloudAPIProperty is a property of a body of an API call payload.
 type CloudAPIProperty struct {
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists

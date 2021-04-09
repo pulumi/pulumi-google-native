@@ -256,13 +256,14 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			"selfLink":  obj.SelfLink,
 		}
 	default:
-		uri = fmt.Sprintf("%s%s", res.BaseUrl, res.CreatePath)
+		path := res.CreatePath
 		for _, param := range res.CreateParams {
 			key := resource.PropertyKey(param)
 			value := inputs[key].StringValue()
-			uri = strings.Replace(uri, fmt.Sprintf("{%s}", param), value, 1)
+			path = strings.Replace(path, fmt.Sprintf("{%s}", param), value, 1)
 			delete(inputs, key)
 		}
+		uri = res.RelativePath(path)
 		for _, param := range res.IdParams {
 			key := resource.PropertyKey(param)
 			delete(inputs, key)
@@ -393,7 +394,7 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 		return &rpc.ReadResponse{Id: id}, nil
 	}
 
-	uri := fmt.Sprintf("%s%s", res.BaseUrl, id)
+	uri := res.RelativePath(id)
 
 	// Retrieve the old state.
 	oldState, err := plugin.UnmarshalProperties(req.GetProperties(), plugin.MarshalOptions{
@@ -462,7 +463,7 @@ func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		parent[name] = inputsMap[name]
 	}
 
-	uri := res.BaseUrl + req.Id
+	uri := res.RelativePath(req.GetId())
 	op, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
@@ -509,8 +510,7 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 		return &empty.Empty{}, nil
 	}
 
-	id := req.GetId()
-	uri := fmt.Sprintf("%s/%s", res.BaseUrl, id)
+	uri := res.RelativePath(req.GetId())
 
 	resp, err := sendRequestWithTimeout(ctx, "DELETE", uri, nil, 0)
 	if err != nil {
