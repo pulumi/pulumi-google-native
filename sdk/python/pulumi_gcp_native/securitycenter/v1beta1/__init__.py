@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .organization_source import *
-from .organization_source_finding import *
 from .organization_source_iam_policy import *
 from ._inputs import *
 from . import outputs
@@ -23,8 +22,6 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp-native:securitycenter/v1beta1:OrganizationSource":
                 return OrganizationSource(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:securitycenter/v1beta1:OrganizationSourceFinding":
-                return OrganizationSourceFinding(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return OrganizationSourceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:

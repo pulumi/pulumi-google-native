@@ -12,8 +12,6 @@ from . import outputs
 __all__ = [
     'BindingResponse',
     'ExprResponse',
-    'OidcTokenResponse',
-    'PushConfigResponse',
 ]
 
 @pulumi.output_type
@@ -116,89 +114,6 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class OidcTokenResponse(dict):
-    """
-    Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-    """
-    def __init__(__self__, *,
-                 audience: str,
-                 service_account_email: str):
-        """
-        Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
-        :param str audience: Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-        :param str service_account_email: [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-        """
-        pulumi.set(__self__, "audience", audience)
-        pulumi.set(__self__, "service_account_email", service_account_email)
-
-    @property
-    @pulumi.getter
-    def audience(self) -> str:
-        """
-        Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
-        """
-        return pulumi.get(self, "audience")
-
-    @property
-    @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> str:
-        """
-        [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
-        """
-        return pulumi.get(self, "service_account_email")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-
-@pulumi.output_type
-class PushConfigResponse(dict):
-    """
-    Configuration for a push delivery endpoint.
-    """
-    def __init__(__self__, *,
-                 attributes: Mapping[str, str],
-                 oidc_token: 'outputs.OidcTokenResponse',
-                 push_endpoint: str):
-        """
-        Configuration for a push delivery endpoint.
-        :param Mapping[str, str] attributes: Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-        :param 'OidcTokenResponseArgs' oidc_token: If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-        :param str push_endpoint: A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-        """
-        pulumi.set(__self__, "attributes", attributes)
-        pulumi.set(__self__, "oidc_token", oidc_token)
-        pulumi.set(__self__, "push_endpoint", push_endpoint)
-
-    @property
-    @pulumi.getter
-    def attributes(self) -> Mapping[str, str]:
-        """
-        Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
-        """
-        return pulumi.get(self, "attributes")
-
-    @property
-    @pulumi.getter(name="oidcToken")
-    def oidc_token(self) -> 'outputs.OidcTokenResponse':
-        """
-        If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
-        """
-        return pulumi.get(self, "oidc_token")
-
-    @property
-    @pulumi.getter(name="pushEndpoint")
-    def push_endpoint(self) -> str:
-        """
-        A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-        """
-        return pulumi.get(self, "push_endpoint")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop

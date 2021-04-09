@@ -7,7 +7,6 @@ from .note import *
 from .note_iam_policy import *
 from .occurrence import *
 from .occurrence_iam_policy import *
-from .operation import *
 from .provider_note import *
 from .provider_note_iam_policy import *
 from ._inputs import *
@@ -33,8 +32,6 @@ def _register_module():
                 return Occurrence(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:containeranalysis/v1alpha1:OccurrenceIamPolicy":
                 return OccurrenceIamPolicy(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:containeranalysis/v1alpha1:Operation":
-                return Operation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:containeranalysis/v1alpha1:ProviderNote":
                 return ProviderNote(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy":

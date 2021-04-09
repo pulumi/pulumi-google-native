@@ -15,14 +15,10 @@ __all__ = [
     'AndroidTestArgs',
     'AndroidTestLoopArgs',
     'AnyArgs',
-    'AppStartTimeArgs',
     'BasicPerfSampleSeriesArgs',
-    'CPUInfoArgs',
     'DurationArgs',
     'FailureDetailArgs',
     'FileReferenceArgs',
-    'GraphicsStatsArgs',
-    'GraphicsStatsBucketArgs',
     'InconclusiveDetailArgs',
     'IndividualOutcomeArgs',
     'IosAppInfoArgs',
@@ -31,10 +27,8 @@ __all__ = [
     'IosTestLoopArgs',
     'IosXcTestArgs',
     'MatrixDimensionDefinitionArgs',
-    'MemoryInfoArgs',
     'MultiStepArgs',
     'OutcomeArgs',
-    'PerfEnvironmentArgs',
     'PrimaryStepArgs',
     'SkippedDetailArgs',
     'SpecificationArgs',
@@ -424,45 +418,6 @@ class AnyArgs:
 
 
 @pulumi.input_type
-class AppStartTimeArgs:
-    def __init__(__self__, *,
-                 fully_drawn_time: Optional[pulumi.Input['DurationArgs']] = None,
-                 initial_display_time: Optional[pulumi.Input['DurationArgs']] = None):
-        """
-        :param pulumi.Input['DurationArgs'] fully_drawn_time: Optional. The time from app start to reaching the developer-reported "fully drawn" time. This is only stored if the app includes a call to Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full
-        :param pulumi.Input['DurationArgs'] initial_display_time: The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial
-        """
-        if fully_drawn_time is not None:
-            pulumi.set(__self__, "fully_drawn_time", fully_drawn_time)
-        if initial_display_time is not None:
-            pulumi.set(__self__, "initial_display_time", initial_display_time)
-
-    @property
-    @pulumi.getter(name="fullyDrawnTime")
-    def fully_drawn_time(self) -> Optional[pulumi.Input['DurationArgs']]:
-        """
-        Optional. The time from app start to reaching the developer-reported "fully drawn" time. This is only stored if the app includes a call to Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full
-        """
-        return pulumi.get(self, "fully_drawn_time")
-
-    @fully_drawn_time.setter
-    def fully_drawn_time(self, value: Optional[pulumi.Input['DurationArgs']]):
-        pulumi.set(self, "fully_drawn_time", value)
-
-    @property
-    @pulumi.getter(name="initialDisplayTime")
-    def initial_display_time(self) -> Optional[pulumi.Input['DurationArgs']]:
-        """
-        The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial
-        """
-        return pulumi.get(self, "initial_display_time")
-
-    @initial_display_time.setter
-    def initial_display_time(self, value: Optional[pulumi.Input['DurationArgs']]):
-        pulumi.set(self, "initial_display_time", value)
-
-
-@pulumi.input_type
 class BasicPerfSampleSeriesArgs:
     def __init__(__self__, *,
                  perf_metric_type: Optional[pulumi.Input[str]] = None,
@@ -504,61 +459,6 @@ class BasicPerfSampleSeriesArgs:
     @sample_series_label.setter
     def sample_series_label(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sample_series_label", value)
-
-
-@pulumi.input_type
-class CPUInfoArgs:
-    def __init__(__self__, *,
-                 cpu_processor: Optional[pulumi.Input[str]] = None,
-                 cpu_speed_in_ghz: Optional[pulumi.Input[float]] = None,
-                 number_of_cores: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] cpu_processor: description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
-        :param pulumi.Input[float] cpu_speed_in_ghz: the CPU clock speed in GHz
-        :param pulumi.Input[int] number_of_cores: the number of CPU cores
-        """
-        if cpu_processor is not None:
-            pulumi.set(__self__, "cpu_processor", cpu_processor)
-        if cpu_speed_in_ghz is not None:
-            pulumi.set(__self__, "cpu_speed_in_ghz", cpu_speed_in_ghz)
-        if number_of_cores is not None:
-            pulumi.set(__self__, "number_of_cores", number_of_cores)
-
-    @property
-    @pulumi.getter(name="cpuProcessor")
-    def cpu_processor(self) -> Optional[pulumi.Input[str]]:
-        """
-        description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A'
-        """
-        return pulumi.get(self, "cpu_processor")
-
-    @cpu_processor.setter
-    def cpu_processor(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cpu_processor", value)
-
-    @property
-    @pulumi.getter(name="cpuSpeedInGhz")
-    def cpu_speed_in_ghz(self) -> Optional[pulumi.Input[float]]:
-        """
-        the CPU clock speed in GHz
-        """
-        return pulumi.get(self, "cpu_speed_in_ghz")
-
-    @cpu_speed_in_ghz.setter
-    def cpu_speed_in_ghz(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "cpu_speed_in_ghz", value)
-
-    @property
-    @pulumi.getter(name="numberOfCores")
-    def number_of_cores(self) -> Optional[pulumi.Input[int]]:
-        """
-        the number of CPU cores
-        """
-        return pulumi.get(self, "number_of_cores")
-
-    @number_of_cores.setter
-    def number_of_cores(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "number_of_cores", value)
 
 
 @pulumi.input_type
@@ -743,245 +643,6 @@ class FileReferenceArgs:
     @file_uri.setter
     def file_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "file_uri", value)
-
-
-@pulumi.input_type
-class GraphicsStatsArgs:
-    def __init__(__self__, *,
-                 buckets: Optional[pulumi.Input[Sequence[pulumi.Input['GraphicsStatsBucketArgs']]]] = None,
-                 high_input_latency_count: Optional[pulumi.Input[str]] = None,
-                 janky_frames: Optional[pulumi.Input[str]] = None,
-                 missed_vsync_count: Optional[pulumi.Input[str]] = None,
-                 p50_millis: Optional[pulumi.Input[str]] = None,
-                 p90_millis: Optional[pulumi.Input[str]] = None,
-                 p95_millis: Optional[pulumi.Input[str]] = None,
-                 p99_millis: Optional[pulumi.Input[str]] = None,
-                 slow_bitmap_upload_count: Optional[pulumi.Input[str]] = None,
-                 slow_draw_count: Optional[pulumi.Input[str]] = None,
-                 slow_ui_thread_count: Optional[pulumi.Input[str]] = None,
-                 total_frames: Optional[pulumi.Input[str]] = None):
-        """
-        Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'. For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be present for API 23+.
-        :param pulumi.Input[Sequence[pulumi.Input['GraphicsStatsBucketArgs']]] buckets: Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)
-        :param pulumi.Input[str] high_input_latency_count: Total "high input latency" events.
-        :param pulumi.Input[str] janky_frames: Total frames with slow render time. Should be <= total_frames.
-        :param pulumi.Input[str] missed_vsync_count: Total "missed vsync" events.
-        :param pulumi.Input[str] p50_millis: 50th percentile frame render time in milliseconds.
-        :param pulumi.Input[str] p90_millis: 90th percentile frame render time in milliseconds.
-        :param pulumi.Input[str] p95_millis: 95th percentile frame render time in milliseconds.
-        :param pulumi.Input[str] p99_millis: 99th percentile frame render time in milliseconds.
-        :param pulumi.Input[str] slow_bitmap_upload_count: Total "slow bitmap upload" events.
-        :param pulumi.Input[str] slow_draw_count: Total "slow draw" events.
-        :param pulumi.Input[str] slow_ui_thread_count: Total "slow UI thread" events.
-        :param pulumi.Input[str] total_frames: Total frames rendered by package.
-        """
-        if buckets is not None:
-            pulumi.set(__self__, "buckets", buckets)
-        if high_input_latency_count is not None:
-            pulumi.set(__self__, "high_input_latency_count", high_input_latency_count)
-        if janky_frames is not None:
-            pulumi.set(__self__, "janky_frames", janky_frames)
-        if missed_vsync_count is not None:
-            pulumi.set(__self__, "missed_vsync_count", missed_vsync_count)
-        if p50_millis is not None:
-            pulumi.set(__self__, "p50_millis", p50_millis)
-        if p90_millis is not None:
-            pulumi.set(__self__, "p90_millis", p90_millis)
-        if p95_millis is not None:
-            pulumi.set(__self__, "p95_millis", p95_millis)
-        if p99_millis is not None:
-            pulumi.set(__self__, "p99_millis", p99_millis)
-        if slow_bitmap_upload_count is not None:
-            pulumi.set(__self__, "slow_bitmap_upload_count", slow_bitmap_upload_count)
-        if slow_draw_count is not None:
-            pulumi.set(__self__, "slow_draw_count", slow_draw_count)
-        if slow_ui_thread_count is not None:
-            pulumi.set(__self__, "slow_ui_thread_count", slow_ui_thread_count)
-        if total_frames is not None:
-            pulumi.set(__self__, "total_frames", total_frames)
-
-    @property
-    @pulumi.getter
-    def buckets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GraphicsStatsBucketArgs']]]]:
-        """
-        Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms, infinity)
-        """
-        return pulumi.get(self, "buckets")
-
-    @buckets.setter
-    def buckets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GraphicsStatsBucketArgs']]]]):
-        pulumi.set(self, "buckets", value)
-
-    @property
-    @pulumi.getter(name="highInputLatencyCount")
-    def high_input_latency_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total "high input latency" events.
-        """
-        return pulumi.get(self, "high_input_latency_count")
-
-    @high_input_latency_count.setter
-    def high_input_latency_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "high_input_latency_count", value)
-
-    @property
-    @pulumi.getter(name="jankyFrames")
-    def janky_frames(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total frames with slow render time. Should be <= total_frames.
-        """
-        return pulumi.get(self, "janky_frames")
-
-    @janky_frames.setter
-    def janky_frames(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "janky_frames", value)
-
-    @property
-    @pulumi.getter(name="missedVsyncCount")
-    def missed_vsync_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total "missed vsync" events.
-        """
-        return pulumi.get(self, "missed_vsync_count")
-
-    @missed_vsync_count.setter
-    def missed_vsync_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "missed_vsync_count", value)
-
-    @property
-    @pulumi.getter(name="p50Millis")
-    def p50_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        50th percentile frame render time in milliseconds.
-        """
-        return pulumi.get(self, "p50_millis")
-
-    @p50_millis.setter
-    def p50_millis(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "p50_millis", value)
-
-    @property
-    @pulumi.getter(name="p90Millis")
-    def p90_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        90th percentile frame render time in milliseconds.
-        """
-        return pulumi.get(self, "p90_millis")
-
-    @p90_millis.setter
-    def p90_millis(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "p90_millis", value)
-
-    @property
-    @pulumi.getter(name="p95Millis")
-    def p95_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        95th percentile frame render time in milliseconds.
-        """
-        return pulumi.get(self, "p95_millis")
-
-    @p95_millis.setter
-    def p95_millis(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "p95_millis", value)
-
-    @property
-    @pulumi.getter(name="p99Millis")
-    def p99_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        99th percentile frame render time in milliseconds.
-        """
-        return pulumi.get(self, "p99_millis")
-
-    @p99_millis.setter
-    def p99_millis(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "p99_millis", value)
-
-    @property
-    @pulumi.getter(name="slowBitmapUploadCount")
-    def slow_bitmap_upload_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total "slow bitmap upload" events.
-        """
-        return pulumi.get(self, "slow_bitmap_upload_count")
-
-    @slow_bitmap_upload_count.setter
-    def slow_bitmap_upload_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "slow_bitmap_upload_count", value)
-
-    @property
-    @pulumi.getter(name="slowDrawCount")
-    def slow_draw_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total "slow draw" events.
-        """
-        return pulumi.get(self, "slow_draw_count")
-
-    @slow_draw_count.setter
-    def slow_draw_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "slow_draw_count", value)
-
-    @property
-    @pulumi.getter(name="slowUiThreadCount")
-    def slow_ui_thread_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total "slow UI thread" events.
-        """
-        return pulumi.get(self, "slow_ui_thread_count")
-
-    @slow_ui_thread_count.setter
-    def slow_ui_thread_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "slow_ui_thread_count", value)
-
-    @property
-    @pulumi.getter(name="totalFrames")
-    def total_frames(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total frames rendered by package.
-        """
-        return pulumi.get(self, "total_frames")
-
-    @total_frames.setter
-    def total_frames(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "total_frames", value)
-
-
-@pulumi.input_type
-class GraphicsStatsBucketArgs:
-    def __init__(__self__, *,
-                 frame_count: Optional[pulumi.Input[str]] = None,
-                 render_millis: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] frame_count: Number of frames in the bucket.
-        :param pulumi.Input[str] render_millis: Lower bound of render time in milliseconds.
-        """
-        if frame_count is not None:
-            pulumi.set(__self__, "frame_count", frame_count)
-        if render_millis is not None:
-            pulumi.set(__self__, "render_millis", render_millis)
-
-    @property
-    @pulumi.getter(name="frameCount")
-    def frame_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Number of frames in the bucket.
-        """
-        return pulumi.get(self, "frame_count")
-
-    @frame_count.setter
-    def frame_count(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "frame_count", value)
-
-    @property
-    @pulumi.getter(name="renderMillis")
-    def render_millis(self) -> Optional[pulumi.Input[str]]:
-        """
-        Lower bound of render time in milliseconds.
-        """
-        return pulumi.get(self, "render_millis")
-
-    @render_millis.setter
-    def render_millis(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "render_millis", value)
 
 
 @pulumi.input_type
@@ -1299,45 +960,6 @@ class MatrixDimensionDefinitionArgs:
 
 
 @pulumi.input_type
-class MemoryInfoArgs:
-    def __init__(__self__, *,
-                 memory_cap_in_kibibyte: Optional[pulumi.Input[str]] = None,
-                 memory_total_in_kibibyte: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] memory_cap_in_kibibyte: Maximum memory that can be allocated to the process in KiB
-        :param pulumi.Input[str] memory_total_in_kibibyte: Total memory available on the device in KiB
-        """
-        if memory_cap_in_kibibyte is not None:
-            pulumi.set(__self__, "memory_cap_in_kibibyte", memory_cap_in_kibibyte)
-        if memory_total_in_kibibyte is not None:
-            pulumi.set(__self__, "memory_total_in_kibibyte", memory_total_in_kibibyte)
-
-    @property
-    @pulumi.getter(name="memoryCapInKibibyte")
-    def memory_cap_in_kibibyte(self) -> Optional[pulumi.Input[str]]:
-        """
-        Maximum memory that can be allocated to the process in KiB
-        """
-        return pulumi.get(self, "memory_cap_in_kibibyte")
-
-    @memory_cap_in_kibibyte.setter
-    def memory_cap_in_kibibyte(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "memory_cap_in_kibibyte", value)
-
-    @property
-    @pulumi.getter(name="memoryTotalInKibibyte")
-    def memory_total_in_kibibyte(self) -> Optional[pulumi.Input[str]]:
-        """
-        Total memory available on the device in KiB
-        """
-        return pulumi.get(self, "memory_total_in_kibibyte")
-
-    @memory_total_in_kibibyte.setter
-    def memory_total_in_kibibyte(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "memory_total_in_kibibyte", value)
-
-
-@pulumi.input_type
 class MultiStepArgs:
     def __init__(__self__, *,
                  multistep_number: Optional[pulumi.Input[int]] = None,
@@ -1479,46 +1101,6 @@ class OutcomeArgs:
     @summary.setter
     def summary(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "summary", value)
-
-
-@pulumi.input_type
-class PerfEnvironmentArgs:
-    def __init__(__self__, *,
-                 cpu_info: Optional[pulumi.Input['CPUInfoArgs']] = None,
-                 memory_info: Optional[pulumi.Input['MemoryInfoArgs']] = None):
-        """
-        Encapsulates performance environment info
-        :param pulumi.Input['CPUInfoArgs'] cpu_info: CPU related environment info
-        :param pulumi.Input['MemoryInfoArgs'] memory_info: Memory related environment info
-        """
-        if cpu_info is not None:
-            pulumi.set(__self__, "cpu_info", cpu_info)
-        if memory_info is not None:
-            pulumi.set(__self__, "memory_info", memory_info)
-
-    @property
-    @pulumi.getter(name="cpuInfo")
-    def cpu_info(self) -> Optional[pulumi.Input['CPUInfoArgs']]:
-        """
-        CPU related environment info
-        """
-        return pulumi.get(self, "cpu_info")
-
-    @cpu_info.setter
-    def cpu_info(self, value: Optional[pulumi.Input['CPUInfoArgs']]):
-        pulumi.set(self, "cpu_info", value)
-
-    @property
-    @pulumi.getter(name="memoryInfo")
-    def memory_info(self) -> Optional[pulumi.Input['MemoryInfoArgs']]:
-        """
-        Memory related environment info
-        """
-        return pulumi.get(self, "memory_info")
-
-    @memory_info.setter
-    def memory_info(self, value: Optional[pulumi.Input['MemoryInfoArgs']]):
-        pulumi.set(self, "memory_info", value)
 
 
 @pulumi.input_type

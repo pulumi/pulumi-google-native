@@ -4,7 +4,6 @@
 
 # Export this package's modules as members:
 from .android_app import *
-from .android_app_sha import *
 from .ios_app import *
 from .web_app import *
 
@@ -22,8 +21,6 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "gcp-native:firebase/v1beta1:AndroidApp":
                 return AndroidApp(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:firebase/v1beta1:AndroidAppSha":
-                return AndroidAppSha(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:firebase/v1beta1:IosApp":
                 return IosApp(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:firebase/v1beta1:WebApp":

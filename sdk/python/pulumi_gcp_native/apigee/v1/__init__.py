@@ -6,13 +6,11 @@
 from .organization import *
 from .organization_analytic_datastore import *
 from .organization_api import *
-from .organization_api_keyvaluemap import *
 from .organization_apiproduct import *
 from .organization_datacollector import *
 from .organization_developer import *
 from .organization_developer_app import *
 from .organization_developer_app_key import *
-from .organization_developer_app_key_create import *
 from .organization_envgroup import *
 from .organization_envgroup_attachment import *
 from .organization_environment import *
@@ -21,7 +19,6 @@ from .organization_environment_api_revision_debugsession import *
 from .organization_environment_iam_policy import *
 from .organization_environment_keystore import *
 from .organization_environment_keystore_alias import *
-from .organization_environment_keyvaluemap import *
 from .organization_environment_query import *
 from .organization_environment_reference import *
 from .organization_environment_resourcefile import *
@@ -32,7 +29,6 @@ from .organization_instance import *
 from .organization_instance_attachment import *
 from .organization_instance_canaryevaluation import *
 from .organization_instance_nat_address import *
-from .organization_keyvaluemap import *
 from .organization_report import *
 from .organization_sharedflow import *
 from .organization_site_apicategory import *
@@ -57,8 +53,6 @@ def _register_module():
                 return OrganizationAnalyticDatastore(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationApi":
                 return OrganizationApi(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:apigee/v1:OrganizationApiKeyvaluemap":
-                return OrganizationApiKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationApiproduct":
                 return OrganizationApiproduct(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationDatacollector":
@@ -69,8 +63,6 @@ def _register_module():
                 return OrganizationDeveloperApp(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationDeveloperAppKey":
                 return OrganizationDeveloperAppKey(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:apigee/v1:OrganizationDeveloperAppKeyCreate":
-                return OrganizationDeveloperAppKeyCreate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationEnvgroup":
                 return OrganizationEnvgroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationEnvgroupAttachment":
@@ -87,8 +79,6 @@ def _register_module():
                 return OrganizationEnvironmentKeystore(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
                 return OrganizationEnvironmentKeystoreAlias(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:apigee/v1:OrganizationEnvironmentKeyvaluemap":
-                return OrganizationEnvironmentKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationEnvironmentQuery":
                 return OrganizationEnvironmentQuery(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationEnvironmentReference":
@@ -109,8 +99,6 @@ def _register_module():
                 return OrganizationInstanceCanaryevaluation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationInstanceNatAddress":
                 return OrganizationInstanceNatAddress(name, pulumi.ResourceOptions(urn=urn))
-            elif typ == "gcp-native:apigee/v1:OrganizationKeyvaluemap":
-                return OrganizationKeyvaluemap(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationReport":
                 return OrganizationReport(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:apigee/v1:OrganizationSharedflow":

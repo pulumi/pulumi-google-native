@@ -12,7 +12,6 @@ __all__ = [
     'GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs',
     'GoogleCloudRecommendationengineV1beta1FeatureMapArgs',
     'GoogleCloudRecommendationengineV1beta1ImageArgs',
-    'GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationArgs',
     'GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs',
     'GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs',
     'GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs',
@@ -136,30 +135,6 @@ class GoogleCloudRecommendationengineV1beta1ImageArgs:
     @width.setter
     def width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width", value)
-
-
-@pulumi.input_type
-class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistrationArgs:
-    def __init__(__self__, *,
-                 api_key: Optional[pulumi.Input[str]] = None):
-        """
-        Registered Api Key.
-        :param pulumi.Input[str] api_key: The API key.
-        """
-        if api_key is not None:
-            pulumi.set(__self__, "api_key", api_key)
-
-    @property
-    @pulumi.getter(name="apiKey")
-    def api_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The API key.
-        """
-        return pulumi.get(self, "api_key")
-
-    @api_key.setter
-    def api_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "api_key", value)
 
 
 @pulumi.input_type

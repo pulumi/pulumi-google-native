@@ -14,9 +14,6 @@ __all__ = [
     'GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs',
     'GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs',
     'GoogleCloudDatacatalogV1beta1ColumnSchemaArgs',
-    'GoogleCloudDatacatalogV1beta1FieldTypeArgs',
-    'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs',
-    'GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs',
     'GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs',
     'GoogleCloudDatacatalogV1beta1SchemaArgs',
     'GoogleCloudDatacatalogV1beta1TableSpecArgs',
@@ -286,85 +283,6 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1beta1FieldTypeArgs:
-    def __init__(__self__, *,
-                 enum_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']] = None,
-                 primitive_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs'] enum_type: Represents an enum type.
-        :param pulumi.Input[str] primitive_type: Represents primitive types - string, bool etc.
-        """
-        if enum_type is not None:
-            pulumi.set(__self__, "enum_type", enum_type)
-        if primitive_type is not None:
-            pulumi.set(__self__, "primitive_type", primitive_type)
-
-    @property
-    @pulumi.getter(name="enumType")
-    def enum_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']]:
-        """
-        Represents an enum type.
-        """
-        return pulumi.get(self, "enum_type")
-
-    @enum_type.setter
-    def enum_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs']]):
-        pulumi.set(self, "enum_type", value)
-
-    @property
-    @pulumi.getter(name="primitiveType")
-    def primitive_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Represents primitive types - string, bool etc.
-        """
-        return pulumi.get(self, "primitive_type")
-
-    @primitive_type.setter
-    def primitive_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "primitive_type", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeArgs:
-    def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]] = None):
-        if allowed_values is not None:
-            pulumi.set(__self__, "allowed_values", allowed_values)
-
-    @property
-    @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]]:
-        return pulumi.get(self, "allowed_values")
-
-    @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs']]]]):
-        pulumi.set(self, "allowed_values", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValueArgs:
-    def __init__(__self__, *,
-                 display_name: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] display_name: Required. The display name of the enum value. Must not be an empty string.
-        """
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the enum value. Must not be an empty string.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
 
 @pulumi.input_type
