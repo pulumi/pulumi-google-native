@@ -17,7 +17,6 @@ import (
 	"path"
 	"path/filepath"
 	"regexp"
-	"sort"
 	"strings"
 )
 
@@ -176,13 +175,8 @@ type packageGenerator struct {
 }
 
 func (g *packageGenerator) findResources(parent string, resources map[string]discovery.RestResource) error {
-	var names []string
-	for name := range resources {
-		names = append(names, name)
-	}
-	sort.Strings(names)
 	var postMethods []discovery.RestMethod
-	for _, resourceName := range names {
+	for _, resourceName := range codegen.SortedKeys(resources) {
 		res := resources[resourceName]
 		name := ToUpperCamel(inflector.Singularize(resourceName))
 		var createMethod, getMethod, updateMethod, deleteMethod *discovery.RestMethod
@@ -431,7 +425,8 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatt
 		requiredSpecs: codegen.NewStringSet(),
 		properties:    map[string]resources.CloudAPIProperty{},
 	}
-	for name, value := range typeSchema.Properties {
+	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
+		value := typeSchema.Properties[name]
 		if strings.Contains(value.Description, "Deprecated.") {
 			continue
 		}
