@@ -47240,6 +47240,30 @@ export namespace pubsub {
         }
 
         /**
+         * Dead lettering is done on a best effort basis. The same message might be dead lettered multiple times. If validation on any of the fields fails at subscription creation/updation, the create/update subscription request will fail.
+         */
+        export interface DeadLetterPolicy {
+            /**
+             * The name of the topic to which dead letter messages should be published. Format is `projects/{project}/topics/{topic}`.The Cloud Pub/Sub service account associated with the enclosing subscription's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Publish() to this topic. The operation will fail if the topic does not exist. Users should ensure that there is a subscription attached to this topic since messages published to a topic with no subscriptions are lost.
+             */
+            deadLetterTopic?: pulumi.Input<string>;
+            /**
+             * The maximum number of delivery attempts for any message. The value must be between 5 and 100. The number of delivery attempts is defined as 1 + (the sum of number of NACKs and number of times the acknowledgement deadline has been exceeded for the message). A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that client libraries may automatically extend ack_deadlines. This field will be honored on a best effort basis. If this parameter is 0, a default value of 5 is used.
+             */
+            maxDeliveryAttempts?: pulumi.Input<number>;
+        }
+
+        /**
+         * A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
+         */
+        export interface ExpirationPolicy {
+            /**
+             * Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
+             */
+            ttl?: pulumi.Input<string>;
+        }
+
+        /**
          * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
          */
         export interface Expr {
@@ -47259,6 +47283,76 @@ export namespace pubsub {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title?: pulumi.Input<string>;
+        }
+
+        /**
+         * A policy constraining the storage of messages published to the topic.
+         */
+        export interface MessageStoragePolicy {
+            /**
+             * A list of IDs of GCP regions where messages that are published to the topic may be persisted in storage. Messages published by publishers running in non-allowed GCP regions (or running outside of GCP altogether) will be routed for storage in one of the allowed regions. An empty list means that no regions are allowed, and is not a valid configuration.
+             */
+            allowedPersistenceRegions?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
+         */
+        export interface OidcToken {
+            /**
+             * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
+             */
+            audience?: pulumi.Input<string>;
+            /**
+             * [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for a push delivery endpoint.
+         */
+        export interface PushConfig {
+            /**
+             * Endpoint configuration attributes that can be used to control different aspects of the message delivery. The only currently supported attribute is `x-goog-version`, which you can use to change the format of the pushed message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the pushed message (i.e., its fields and metadata). If not present during the `CreateSubscription` call, it will default to the version of the Pub/Sub API used to make such call. If not present in a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The only supported values for the `x-goog-version` attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API. For example: attributes { "x-goog-version": "v1" } 
+             */
+            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
+             */
+            oidcToken?: pulumi.Input<inputs.pubsub.v1.OidcToken>;
+            /**
+             * A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.
+             */
+            pushEndpoint?: pulumi.Input<string>;
+        }
+
+        /**
+         * A policy that specifies how Cloud Pub/Sub retries message delivery. Retry delay will be exponential based on provided minimum and maximum backoffs. https://en.wikipedia.org/wiki/Exponential_backoff. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message. Retry Policy is implemented on a best effort basis. At times, the delay between consecutive deliveries may not match the configuration. That is, delay can be more or less than configured backoff.
+         */
+        export interface RetryPolicy {
+            /**
+             * The maximum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 600 seconds.
+             */
+            maximumBackoff?: pulumi.Input<string>;
+            /**
+             * The minimum delay between consecutive deliveries of a given message. Value should be between 0 and 600 seconds. Defaults to 10 seconds.
+             */
+            minimumBackoff?: pulumi.Input<string>;
+        }
+
+        /**
+         * Settings for validating messages published against a schema.
+         */
+        export interface SchemaSettings {
+            /**
+             * The encoding of messages validated against `schema`.
+             */
+            encoding?: pulumi.Input<string>;
+            /**
+             * Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+             */
+            schema?: pulumi.Input<string>;
         }
 
     }
@@ -47315,6 +47409,38 @@ export namespace pubsub {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title?: pulumi.Input<string>;
+        }
+
+        /**
+         * Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
+         */
+        export interface OidcToken {
+            /**
+             * Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
+             */
+            audience?: pulumi.Input<string>;
+            /**
+             * [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating the OIDC token. The caller (for CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must have the iam.serviceAccounts.actAs permission for the service account.
+             */
+            serviceAccountEmail?: pulumi.Input<string>;
+        }
+
+        /**
+         * Configuration for a push delivery endpoint.
+         */
+        export interface PushConfig {
+            /**
+             * Endpoint configuration attributes. Every endpoint has a set of API supported attributes that can be used to control different aspects of the message delivery. The currently supported attribute is `x-goog-version`, which you can use to change the format of the push message. This attribute indicates the version of the data expected by the endpoint. This controls the shape of the envelope (i.e. its fields and metadata). The endpoint version is based on the version of the Pub/Sub API. If not present during the `CreateSubscription` call, it will default to the version of the API used to make such call. If not present during a `ModifyPushConfig` call, its value will not be changed. `GetSubscription` calls will always return a valid version, even if the subscription was created without this attribute. The possible values for this attribute are: * `v1beta1`: uses the push format defined in the v1beta1 Pub/Sub API. * `v1` or `v1beta2`: uses the push format defined in the v1 Pub/Sub API.
+             */
+            attributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            /**
+             * If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
+             */
+            oidcToken?: pulumi.Input<inputs.pubsub.v1beta2.OidcToken>;
+            /**
+             * A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
+             */
+            pushEndpoint?: pulumi.Input<string>;
         }
 
     }

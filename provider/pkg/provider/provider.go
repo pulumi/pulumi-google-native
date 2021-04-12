@@ -284,7 +284,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			parent[name] = inputsMap[name]
 		}
 
-		op, err := sendRequestWithTimeout(ctx, "POST", uri, body, 0)
+		op, err := sendRequestWithTimeout(ctx, res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}

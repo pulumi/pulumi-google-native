@@ -3,7 +3,9 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .subscription import *
 from .subscription_iam_policy import *
+from .topic import *
 from .topic_iam_policy import *
 from ._inputs import *
 from . import outputs
@@ -20,8 +22,12 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "gcp-native:pubsub/v1beta2:SubscriptionIamPolicy":
+            if typ == "gcp-native:pubsub/v1beta2:Subscription":
+                return Subscription(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp-native:pubsub/v1beta2:SubscriptionIamPolicy":
                 return SubscriptionIamPolicy(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "gcp-native:pubsub/v1beta2:Topic":
+                return Topic(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "gcp-native:pubsub/v1beta2:TopicIamPolicy":
                 return TopicIamPolicy(name, pulumi.ResourceOptions(urn=urn))
             else:

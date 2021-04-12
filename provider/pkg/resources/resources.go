@@ -17,6 +17,7 @@ type CloudAPIResource struct {
 	BaseUrl          string                      `json:"baseUrl"`
 	CreatePath       string                      `json:"createPath"`
 	CreateParams     []string                    `json:"createParams"`
+	CreateVerb       string                      `json:"createVerb,omitempty"`
 	CreateProperties map[string]CloudAPIProperty `json:"createProperties,omitempty"`
 	UpdateVerb       string                      `json:"updateVerb,omitempty"`
 	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
