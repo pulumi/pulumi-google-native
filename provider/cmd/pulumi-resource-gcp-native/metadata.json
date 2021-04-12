@@ -32102,8 +32102,7 @@
                 "projectsId",
                 "instancesId",
                 "databasesId"
-            ],
-            "noDelete": true
+            ]
         },
         "gcp-native:spanner/v1:InstanceDatabaseIamPolicy": {
             "baseUrl": "https://spanner.googleapis.com/",
