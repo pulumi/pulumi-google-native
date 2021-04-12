@@ -5,19 +5,27 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./subscription";
 export * from "./subscriptionIamPolicy";
+export * from "./topic";
 export * from "./topicIamPolicy";
 
 // Import resources to register:
+import { Subscription } from "./subscription";
 import { SubscriptionIamPolicy } from "./subscriptionIamPolicy";
+import { Topic } from "./topic";
 import { TopicIamPolicy } from "./topicIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp-native:pubsub/v1beta2:Subscription":
+                return new Subscription(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1beta2:SubscriptionIamPolicy":
                 return new SubscriptionIamPolicy(name, <any>undefined, { urn })
+            case "gcp-native:pubsub/v1beta2:Topic":
+                return new Topic(name, <any>undefined, { urn })
             case "gcp-native:pubsub/v1beta2:TopicIamPolicy":
                 return new TopicIamPolicy(name, <any>undefined, { urn })
             default:

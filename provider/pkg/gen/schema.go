@@ -221,9 +221,6 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 
 		typeName := fmt.Sprintf("%s%s", parent, name)
 		switch {
-		case createMethod != nil && getMethod != nil && createMethod.HttpMethod != "POST":
-			// We support create with POST method only. Warn about others.
-			fmt.Printf("Create method %q is not supported: %s (%s), skipping.\n", createMethod.HttpMethod, typeName, g.docName)
 		case createMethod != nil && getMethod != nil && getMethod.HttpMethod != "GET":
 			// We support read with GET method only. Warn about others.
 			fmt.Printf("Get method %q is not supported: %s (%s), skipping.\n", getMethod.HttpMethod, typeName, g.docName)
@@ -291,6 +288,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	resourceMeta := resources.CloudAPIResource{
 		BaseUrl:    g.rest.BaseUrl,
 		CreatePath: createPath,
+		CreateVerb: createMethod.HttpMethod,
 		NoDelete:   deleteMethod == nil,
 	}
 
