@@ -214,7 +214,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 						return err
 					}
 				}
-			case "delete":
+			case "delete", "dropDatabase" /*special case for Spanner Database*/ :
 				deleteMethod = &restMethod
 			}
 		}

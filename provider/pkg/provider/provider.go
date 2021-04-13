@@ -460,6 +460,10 @@ func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	}
 
 	uri := res.RelativePath(req.GetId())
+	if strings.HasSuffix(uri, ":getIamPolicy") {
+		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
+	}
+
 	op, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
@@ -501,12 +505,31 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
 
-	if res.NoDelete {
-		// TODO: delete with Set (e.g. Policy resources)
+	uri := res.RelativePath(req.GetId())
+
+	if strings.HasSuffix(uri, ":getIamPolicy") {
+		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
+
+		resp, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, map[string]interface{}{}, 0)
+		if err != nil {
+			return nil, fmt.Errorf("error sending request: %s", err)
+		}
+
+		_, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, resp)
+		if err != nil {
+			return nil, errors.Wrapf(err, "waiting for completion")
+		}
+
 		return &empty.Empty{}, nil
 	}
 
-	uri := res.RelativePath(req.GetId())
+	if res.NoDelete {
+		// At the time of writing, the classic GCP provider has the same behavior and warning for 10 resources.
+		glog.V(4).Infof("%q resources"+
+			" cannot be deleted from Google Cloud. The resource %s will be removed from Pulumi"+
+			" state, but will still be present on Google Cloud.", resourceKey, uri)
+		return &empty.Empty{}, nil
+	}
 
 	resp, err := sendRequestWithTimeout(ctx, "DELETE", uri, nil, 0)
 	if err != nil {
