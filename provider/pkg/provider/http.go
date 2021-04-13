@@ -7,18 +7,46 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/golang/glog"
 	"github.com/hashicorp/go-cleanhttp"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/logging"
+	"github.com/mitchellh/go-homedir"
+	"github.com/pkg/errors"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 	"google.golang.org/api/googleapi"
+	"google.golang.org/api/option"
+	"google.golang.org/api/transport"
+	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"time"
 )
 
+func newGoogleHttpClient(ctx context.Context, config credentialsConfig) (*googleHttpClient, error) {
+	client, err := newClient(ctx, config)
+	if err != nil {
+		return nil, err
+	}
+
+	return &googleHttpClient{http: client}, nil
+}
+
+type credentialsConfig struct {
+	Credentials                        string
+	AccessToken                        string
+	ImpersonateServiceAccount          string
+	ImpersonateServiceAccountDelegates []string
+	Scopes                             []string
+}
+
+type googleHttpClient struct {
+	http *http.Client
+}
+
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
-func sendRequestWithTimeout(ctx context.Context, method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
+func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", "pulumi") // TODO: Pulumi UA
 	reqHeaders.Set("Content-Type", "application/json")
@@ -44,10 +72,9 @@ func sendRequestWithTimeout(ctx context.Context, method, rawurl string, body map
 	if err != nil {
 		return nil, err
 	}
-
 	req.Header = reqHeaders
-	client := newClient(ctx)
-	res, err = client.Do(req)
+
+	res, err = c.http.Do(req)
 	if err != nil {
 		return nil, err
 	}
@@ -86,93 +113,20 @@ var defaultClientScopes = []string{
 	"https://www.googleapis.com/auth/userinfo.email",
 }
 
-func GetCredentials(clientScopes []string) (google.Credentials, error) {
-
-	//if c.AccessToken != "" {
-	//	contents, _, err := pathOrContents(c.AccessToken)
-	//	if err != nil {
-	//		return googleoauth.Credentials{}, fmt.Errorf("Error loading access token: %s", err)
-	//	}
-	//	token := &oauth2.Token{AccessToken: contents}
-	//
-	//	if c.ImpersonateServiceAccount != "" {
-	//		opts := []option.ClientOption{option.WithTokenSource(oauth2.StaticTokenSource(token)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(clientScopes...)}
-	//		creds, err := transport.Creds(context.TODO(), opts...)
-	//		if err != nil {
-	//			return googleoauth.Credentials{}, err
-	//		}
-	//		return *creds, nil
-	//	}
-	//
-	//	log.Printf("[INFO] Authenticating using configured Google JSON 'access_token'...")
-	//	log.Printf("[INFO]   -- Scopes: %s", clientScopes)
-	//
-	//	return googleoauth.Credentials{
-	//		TokenSource: staticTokenSource{oauth2.StaticTokenSource(token)},
-	//	}, nil
-	//}
-	//
-	//if c.Credentials != "" {
-	//	contents, _, err := pathOrContents(c.Credentials)
-	//	if err != nil {
-	//		return googleoauth.Credentials{}, fmt.Errorf("error loading credentials: %s", err)
-	//	}
-	//	if c.ImpersonateServiceAccount != "" {
-	//		opts := []option.ClientOption{option.WithCredentialsJSON([]byte(contents)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(clientScopes...)}
-	//		creds, err := transport.Creds(context.TODO(), opts...)
-	//		if err != nil {
-	//			return googleoauth.Credentials{}, err
-	//		}
-	//		return *creds, nil
-	//	}
-	//	creds, err := googleoauth.CredentialsFromJSON(c.context, []byte(contents), clientScopes...)
-	//	if err != nil {
-	//		return googleoauth.Credentials{}, fmt.Errorf("unable to parse credentials from '%s': %s", contents, err)
-	//	}
-	//
-	//	log.Printf("[INFO] Authenticating using configured Google JSON 'credentials'...")
-	//	log.Printf("[INFO]   -- Scopes: %s", clientScopes)
-	//	return *creds, nil
-	//}
-	//
-	//if c.ImpersonateServiceAccount != "" {
-	//	opts := option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...)
-	//	creds, err := transport.Creds(context.TODO(), opts, option.WithScopes(clientScopes...))
-	//	if err != nil {
-	//		return googleoauth.Credentials{}, err
-	//	}
-	//	return *creds, nil
-	//}
-
-	defaultTS, err := google.DefaultTokenSource(context.Background(), clientScopes...)
-	if err != nil {
-		return google.Credentials{}, fmt.Errorf("Attempted to load application default credentials since neither `credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: %w", err)
+func newClient(ctx context.Context, config credentialsConfig) (*http.Client, error) {
+	if len(config.Scopes) == 0 {
+		config.Scopes = defaultClientScopes
 	}
-	return google.Credentials{
-		TokenSource: defaultTS,
-	}, err
-}
 
-func getTokenSource(clientScopes []string) (oauth2.TokenSource, error) {
-	creds, err := GetCredentials(clientScopes)
+	credentials, err := getCredentials(ctx, config)
 	if err != nil {
-		return nil, fmt.Errorf("%s", err)
-	}
-	return creds.TokenSource, nil
-}
-
-func newClient(ctx context.Context) *http.Client {
-	scopes := defaultClientScopes
-
-	tokenSource, err := getTokenSource(scopes)
-	if err != nil {
-		panic(err)
+		return nil, errors.Wrapf(err, "getting credentials")
 	}
 
 	cleanCtx := context.WithValue(ctx, oauth2.HTTPClient, cleanhttp.DefaultClient())
 
 	// 1. OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
-	client := oauth2.NewClient(cleanCtx, tokenSource)
+	client := oauth2.NewClient(cleanCtx, credentials.TokenSource)
 
 	// 2. Logging Transport - ensure we log HTTP requests to GCP APIs.
 	loggingTransport := logging.NewTransport("Google", client.Transport)
@@ -192,7 +146,82 @@ func newClient(ctx context.Context) *http.Client {
 	// This timeout is a timeout per HTTP request, not per logical operation.
 	client.Timeout = 30 * time.Second
 
-	return client
+	return client, nil
+}
+
+func getCredentials(ctx context.Context, c credentialsConfig) (*google.Credentials, error) {
+	if c.AccessToken != "" {
+		contents, _, err := pathOrContents(c.AccessToken)
+		if err != nil {
+			return nil, errors.Wrapf(err, "Error loading access token")
+		}
+		token := &oauth2.Token{AccessToken: contents}
+
+		if c.ImpersonateServiceAccount != "" {
+			opts := []option.ClientOption{option.WithTokenSource(oauth2.StaticTokenSource(token)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(c.Scopes...)}
+			creds, err := transport.Creds(ctx, opts...)
+			if err != nil {
+				return nil, err
+			}
+			return creds, nil
+		}
+
+		glog.V(9).Info("Authenticating using configured Google JSON Access Token...")
+		glog.V(9).Infof("  -- Scopes: %s", c.Scopes)
+
+		return &google.Credentials{
+			TokenSource: staticTokenSource{oauth2.StaticTokenSource(token)},
+		}, nil
+	}
+
+	if c.Credentials != "" {
+		contents, _, err := pathOrContents(c.Credentials)
+		if err != nil {
+			return nil, errors.Wrapf(err, "error loading credentials")
+		}
+		if c.ImpersonateServiceAccount != "" {
+			opts := []option.ClientOption{option.WithCredentialsJSON([]byte(contents)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(c.Scopes...)}
+			creds, err := transport.Creds(ctx, opts...)
+			if err != nil {
+				return nil, err
+			}
+
+			glog.V(9).Info("Authenticating using configured Google JSON Credentials and Impersonate Service Account...")
+			glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
+			return creds, nil
+		}
+		creds, err := google.CredentialsFromJSON(ctx, []byte(contents), c.Scopes...)
+		if err != nil {
+			return nil, errors.Wrapf(err, "unable to parse credentials from '%s'", contents)
+		}
+
+		glog.V(9).Info("Authenticating using configured Google JSON Credentials...")
+		glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
+		return creds, nil
+	}
+
+	if c.ImpersonateServiceAccount != "" {
+		opts := option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...)
+		creds, err := transport.Creds(ctx, opts, option.WithScopes(c.Scopes...))
+		if err != nil {
+			return nil, err
+		}
+
+		glog.V(9).Info("Authenticating using configured Impersonate Service Account...")
+		glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
+		return creds, nil
+	}
+
+	glog.V(9).Info("Authenticating using DefaultClient...")
+	glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
+
+	defaultTS, err := google.DefaultTokenSource(context.Background(), c.Scopes...)
+	if err != nil {
+		return nil, fmt.Errorf("Attempted to load application default credentials since neither `credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: %w", err)
+	}
+	return &google.Credentials{
+		TokenSource: defaultTS,
+	}, err
 }
 
 func addQueryParams(rawurl string, params map[string]string) (string, error) {
@@ -206,4 +235,40 @@ func addQueryParams(rawurl string, params map[string]string) (string, error) {
 	}
 	u.RawQuery = q.Encode()
 	return u.String(), nil
+}
+
+// staticTokenSource is used to be able to identify static token sources without reflection.
+type staticTokenSource struct {
+	oauth2.TokenSource
+}
+
+// If the argument is a path, pathOrContents loads it and returns the contents,
+// otherwise the argument is assumed to be the desired contents and is simply
+// returned.
+//
+// The boolean second return value can be called `wasPath` - it indicates if a
+// path was detected and a file loaded.
+func pathOrContents(poc string) (string, bool, error) {
+	if len(poc) == 0 {
+		return poc, false, nil
+	}
+
+	path := poc
+	if path[0] == '~' {
+		var err error
+		path, err = homedir.Expand(path)
+		if err != nil {
+			return path, true, err
+		}
+	}
+
+	if _, err := os.Stat(path); err == nil {
+		contents, err := ioutil.ReadFile(path)
+		if err != nil {
+			return string(contents), true, err
+		}
+		return string(contents), true, nil
+	}
+
+	return poc, false, nil
 }

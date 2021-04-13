@@ -35,6 +35,7 @@ type googleCloudProvider struct {
 	version     string
 	config      map[string]string
 	schemaBytes []byte
+	client      *googleHttpClient
 	resourceMap *resources.CloudAPIMetadata
 }
 
@@ -74,13 +75,45 @@ func loadMetadata(azureAPIResourcesBytes []byte) (*resources.CloudAPIMetadata, e
 }
 
 // Configure configures the resource provider with "globals" that control its behavior.
-func (k *googleCloudProvider) Configure(ctx context.Context,
+func (p *googleCloudProvider) Configure(ctx context.Context,
 	req *rpc.ConfigureRequest) (*rpc.ConfigureResponse, error) {
 	for key, val := range req.GetVariables() {
-		k.config[strings.TrimPrefix(key, "gcp-native:config:")] = val
+		p.config[strings.TrimPrefix(key, "gcp-native:config:")] = val
 	}
 
-	k.setLoggingContext(ctx)
+	p.setLoggingContext(ctx)
+
+	impersonateServiceAccountDelegatesString := p.getConfig("impersonateServiceAccountDelegates", "")
+	var impersonateServiceAccountDelegates []string
+	if impersonateServiceAccountDelegatesString != "" {
+		err := json.Unmarshal([]byte(impersonateServiceAccountDelegatesString), &impersonateServiceAccountDelegates)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to unmarshal '%s' as Impersonate Service Account Delegates", impersonateServiceAccountDelegatesString)
+		}
+	}
+
+	scopesString := p.getConfig("scopes", "")
+	var scopes []string
+	if scopesString != "" {
+		err := json.Unmarshal([]byte(scopesString), &scopes)
+		if err != nil {
+			return nil, errors.Wrapf(err, "failed to unmarshal '%s' as Scopes", scopesString)
+		}
+	}
+
+	config := credentialsConfig{
+		Credentials:                        p.getConfig("credentials", "GOOGLE_CREDENTIALS"),
+		AccessToken:                        p.getConfig("accessToken", "GOOGLE_OAUTH_ACCESS_TOKEN"),
+		ImpersonateServiceAccount:          p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"),
+		ImpersonateServiceAccountDelegates: impersonateServiceAccountDelegates,
+		Scopes:                             scopes,
+	}
+
+	client, err := newGoogleHttpClient(ctx, config)
+	if err != nil {
+		return nil, err
+	}
+	p.client = client
 
 	return &rpc.ConfigureResponse{
 		AcceptSecrets: true,
@@ -88,13 +121,13 @@ func (k *googleCloudProvider) Configure(ctx context.Context,
 }
 
 // Invoke dynamically executes a built-in function in the provider.
-func (k *googleCloudProvider) Invoke(_ context.Context, _ *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
+func (p *googleCloudProvider) Invoke(_ context.Context, _ *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
 	panic("Invoke not implemented")
 }
 
 // StreamInvoke dynamically executes a built-in function in the provider. The result is streamed
 // back as a series of messages.
-func (k *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceProvider_StreamInvokeServer) error {
+func (p *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceProvider_StreamInvokeServer) error {
 	panic("StreamInvoke not implemented")
 }
 
@@ -104,9 +137,9 @@ func (k *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceP
 // representation of the properties as present in the program inputs. Though this rule is not
 // required for correctness, violations thereof can negatively impact the end-user experience, as
 // the provider inputs are using for detecting and rendering diffs.
-func (k *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
+func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
 	urn := resource.URN(req.GetUrn())
-	label := fmt.Sprintf("%s.Check(%s)", k.name, urn)
+	label := fmt.Sprintf("%s.Check(%s)", p.name, urn)
 	glog.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs.
@@ -115,21 +148,21 @@ func (k *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	return &rpc.CheckResponse{Inputs: newResInputs}, nil
 }
 
-func (k *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaRequest) (*rpc.GetSchemaResponse, error) {
+func (p *googleCloudProvider) GetSchema(_ context.Context, req *rpc.GetSchemaRequest) (*rpc.GetSchemaResponse, error) {
 	if v := req.GetVersion(); v != 0 {
 		return nil, fmt.Errorf("unsupported schema version %d", v)
 	}
 
-	return &rpc.GetSchemaResponse{Schema: string(k.schemaBytes)}, nil
+	return &rpc.GetSchemaResponse{Schema: string(p.schemaBytes)}, nil
 }
 
 // CheckConfig validates the configuration for this provider.
-func (k *googleCloudProvider) CheckConfig(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
+func (p *googleCloudProvider) CheckConfig(_ context.Context, req *rpc.CheckRequest) (*rpc.CheckResponse, error) {
 	return &rpc.CheckResponse{Inputs: req.GetNews()}, nil
 }
 
 // DiffConfig diffs the configuration for this provider.
-func (k *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rpc.DiffResponse, error) {
+func (p *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rpc.DiffResponse, error) {
 	return &rpc.DiffResponse{
 		Changes:             0,
 		Replaces:            []string{},
@@ -139,13 +172,13 @@ func (k *googleCloudProvider) DiffConfig(context.Context, *rpc.DiffRequest) (*rp
 }
 
 // Diff checks what impacts a hypothetical update will have on the resource's properties.
-func (k *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rpc.DiffResponse, error) {
+func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rpc.DiffResponse, error) {
 	urn := resource.URN(req.GetUrn())
-	label := fmt.Sprintf("%s.Diff(%s)", k.name, urn)
+	label := fmt.Sprintf("%s.Diff(%s)", p.name, urn)
 	glog.V(9).Infof("%s executing", label)
 
 	resourceKey := string(urn.Type())
-	res, ok := k.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -189,9 +222,9 @@ func (k *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
-func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest) (*rpc.CreateResponse, error) {
+func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest) (*rpc.CreateResponse, error) {
 	urn := resource.URN(req.GetUrn())
-	label := fmt.Sprintf("%s.Create(%s)", k.name, urn)
+	label := fmt.Sprintf("%s.Create(%s)", p.name, urn)
 	glog.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs
@@ -203,7 +236,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}
 
 	resourceKey := string(urn.Type())
-	res, ok := k.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -223,8 +256,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		// TODO: We may be able to do that based purely on Discovery API.
 		opts := []option.ClientOption{option.WithScopes(defaultClientScopes...)}
 		opts = append(opts, internaloption.WithDefaultEndpoint(res.BaseUrl))
-		client := newClient(ctx)
-		clientStorage, err := storage.NewService(ctx, option.WithHTTPClient(client))
+		clientStorage, err := storage.NewService(ctx, option.WithHTTPClient(p.client.http))
 		if err != nil {
 			return nil, err
 		}
@@ -284,12 +316,12 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			parent[name] = inputsMap[name]
 		}
 
-		op, err := sendRequestWithTimeout(ctx, res.CreateVerb, uri, body, 0)
+		op, err := p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 
-		resp, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
+		resp, err = p.waitForResourceOpCompletion(res.BaseUrl, op)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
@@ -307,7 +339,7 @@ func (k *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}, nil
 }
 
-func (p *googleCloudProvider) waitForResourceOpCompletion(ctx context.Context, baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
+func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
 		Max:    15 * time.Second,
@@ -334,7 +366,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(ctx context.Context, b
 				return resp, nil
 			}
 			if targetLink, has := resp["targetLink"].(string); has {
-				return sendRequestWithTimeout(ctx, "GET", targetLink, nil, 0)
+				return p.client.sendRequestWithTimeout("GET", targetLink, nil, 0)
 			}
 			return resp, nil
 		}
@@ -354,7 +386,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(ctx context.Context, b
 
 		time.Sleep(retryPolicy.Duration())
 
-		op, err := sendRequestWithTimeout(ctx, "GET", pollUri, nil, 0)
+		op, err := p.client.sendRequestWithTimeout("GET", pollUri, nil, 0)
 		if err != nil {
 			return nil, errors.Wrapf(err, "polling operation status")
 		}
@@ -380,11 +412,11 @@ func evalParam(inputs resource.PropertyMap, param string) string {
 }
 
 // Read the current live state associated with a resource.
-func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*rpc.ReadResponse, error) {
+func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rpc.ReadResponse, error) {
 	urn := resource.URN(req.GetUrn())
-	label := fmt.Sprintf("%s.Read(%s)", k.name, urn)
+	label := fmt.Sprintf("%s.Read(%s)", p.name, urn)
 	resourceKey := string(urn.Type())
-	res, ok := k.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -403,7 +435,7 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 	// Extract old inputs from the `__inputs` field of the old state.
 	inputs := parseCheckpointObject(oldState)
 
-	resp, err := sendRequestWithTimeout(ctx, "GET", uri, nil, 0)
+	resp, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -425,9 +457,9 @@ func (k *googleCloudProvider) Read(ctx context.Context, req *rpc.ReadRequest) (*
 }
 
 // Update updates an existing resource with new values.
-func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
 	urn := resource.URN(req.GetUrn())
-	label := fmt.Sprintf("%s.Update(%s)", k.name, urn)
+	label := fmt.Sprintf("%s.Update(%s)", p.name, urn)
 	glog.V(9).Infof("%s executing", label)
 
 	// Deserialize RPC inputs
@@ -439,7 +471,7 @@ func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	}
 
 	resourceKey := string(urn.Type())
-	res, ok := k.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -464,12 +496,12 @@ func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 	}
 
-	op, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, body, 0)
+	op, err := p.client.sendRequestWithTimeout(res.UpdateVerb, uri, body, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 	}
 
-	resp, err := k.waitForResourceOpCompletion(ctx, res.BaseUrl, op)
+	resp, err := p.waitForResourceOpCompletion(res.BaseUrl, op)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -497,10 +529,10 @@ func (k *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
 // to still exist.
-func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
+func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) (*empty.Empty, error) {
 	urn := resource.URN(req.GetUrn())
 	resourceKey := string(urn.Type())
-	res, ok := k.resourceMap.Resources[resourceKey]
+	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
 		return nil, errors.Errorf("resource '%s' not found", resourceKey)
 	}
@@ -510,12 +542,12 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 	if strings.HasSuffix(uri, ":getIamPolicy") {
 		uri = strings.ReplaceAll(uri, ":getIamPolicy", ":setIamPolicy")
 
-		resp, err := sendRequestWithTimeout(ctx, res.UpdateVerb, uri, map[string]interface{}{}, 0)
+		resp, err := p.client.sendRequestWithTimeout(res.UpdateVerb, uri, map[string]interface{}{}, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
 		}
 
-		_, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, resp)
+		_, err = p.waitForResourceOpCompletion(res.BaseUrl, resp)
 		if err != nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
 		}
@@ -531,12 +563,12 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := sendRequestWithTimeout(ctx, "DELETE", uri, nil, 0)
+	resp, err := p.client.sendRequestWithTimeout("DELETE", uri, nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = k.waitForResourceOpCompletion(ctx, res.BaseUrl, resp)
+	_, err = p.waitForResourceOpCompletion(res.BaseUrl, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -545,14 +577,14 @@ func (k *googleCloudProvider) Delete(ctx context.Context, req *rpc.DeleteRequest
 }
 
 // Construct creates a new component resource.
-func (k *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructRequest) (*rpc.ConstructResponse, error) {
+func (p *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructRequest) (*rpc.ConstructResponse, error) {
 	panic("Construct not implemented")
 }
 
 // GetPluginInfo returns generic information about this plugin, like its version.
-func (k *googleCloudProvider) GetPluginInfo(context.Context, *empty.Empty) (*rpc.PluginInfo, error) {
+func (p *googleCloudProvider) GetPluginInfo(context.Context, *empty.Empty) (*rpc.PluginInfo, error) {
 	return &rpc.PluginInfo{
-		Version: k.version,
+		Version: p.version,
 	}, nil
 }
 
@@ -561,25 +593,25 @@ func (k *googleCloudProvider) GetPluginInfo(context.Context, *empty.Empty) (*rpc
 // creation error or an initialization error). Since Cancel is advisory and non-blocking, it is up
 // to the host to decide how long to wait after Cancel is called before (e.g.)
 // hard-closing any gRPC connection.
-func (k *googleCloudProvider) Cancel(context.Context, *empty.Empty) (*empty.Empty, error) {
+func (p *googleCloudProvider) Cancel(context.Context, *empty.Empty) (*empty.Empty, error) {
 	// TODO
 	return &empty.Empty{}, nil
 }
 
-func (k *googleCloudProvider) setLoggingContext(ctx context.Context) {
+func (p *googleCloudProvider) setLoggingContext(ctx context.Context) {
 	log.SetOutput(&LogRedirector{
 		writers: map[string]func(string) error{
-			tfTracePrefix: func(msg string) error { return k.host.Log(ctx, diag.Debug, "", msg) },
-			tfDebugPrefix: func(msg string) error { return k.host.Log(ctx, diag.Debug, "", msg) },
-			tfInfoPrefix:  func(msg string) error { return k.host.Log(ctx, diag.Info, "", msg) },
-			tfWarnPrefix:  func(msg string) error { return k.host.Log(ctx, diag.Warning, "", msg) },
-			tfErrorPrefix: func(msg string) error { return k.host.Log(ctx, diag.Error, "", msg) },
+			tfTracePrefix: func(msg string) error { return p.host.Log(ctx, diag.Debug, "", msg) },
+			tfDebugPrefix: func(msg string) error { return p.host.Log(ctx, diag.Debug, "", msg) },
+			tfInfoPrefix:  func(msg string) error { return p.host.Log(ctx, diag.Info, "", msg) },
+			tfWarnPrefix:  func(msg string) error { return p.host.Log(ctx, diag.Warning, "", msg) },
+			tfErrorPrefix: func(msg string) error { return p.host.Log(ctx, diag.Error, "", msg) },
 		},
 	})
 }
 
-func (k *googleCloudProvider) getConfig(configName, envName string) string {
-	if val, ok := k.config[configName]; ok {
+func (p *googleCloudProvider) getConfig(configName, envName string) string {
+	if val, ok := p.config[configName]; ok {
 		return val
 	}
 
