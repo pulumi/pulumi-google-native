@@ -192,7 +192,7 @@ func getCredentials(ctx context.Context, c credentialsConfig) (*google.Credentia
 		}
 		creds, err := google.CredentialsFromJSON(ctx, []byte(contents), c.Scopes...)
 		if err != nil {
-			return nil, errors.Wrapf(err, "unable to parse credentials from '%s'", contents)
+			return nil, errors.Wrapf(err, "unable to parse credentials from %q", contents)
 		}
 
 		glog.V(9).Info("Authenticating using configured Google JSON Credentials...")
@@ -258,7 +258,7 @@ func pathOrContents(poc string) (string, bool, error) {
 		var err error
 		path, err = homedir.Expand(path)
 		if err != nil {
-			return path, true, err
+			return "", true, err
 		}
 	}
 

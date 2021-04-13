@@ -22,6 +22,8 @@ import (
 	"google.golang.org/api/option"
 	"google.golang.org/api/option/internaloption"
 	"google.golang.org/api/storage/v1"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 	"log"
 	"net/http"
 	"os"
@@ -88,7 +90,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	if impersonateServiceAccountDelegatesString != "" {
 		err := json.Unmarshal([]byte(impersonateServiceAccountDelegatesString), &impersonateServiceAccountDelegates)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to unmarshal '%s' as Impersonate Service Account Delegates", impersonateServiceAccountDelegatesString)
+			return nil, errors.Wrapf(err, "failed to unmarshal %q as Impersonate Service Account Delegates", impersonateServiceAccountDelegatesString)
 		}
 	}
 
@@ -97,7 +99,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	if scopesString != "" {
 		err := json.Unmarshal([]byte(scopesString), &scopes)
 		if err != nil {
-			return nil, errors.Wrapf(err, "failed to unmarshal '%s' as Scopes", scopesString)
+			return nil, errors.Wrapf(err, "failed to unmarshal %q as Scopes", scopesString)
 		}
 	}
 
@@ -122,13 +124,13 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 
 // Invoke dynamically executes a built-in function in the provider.
 func (p *googleCloudProvider) Invoke(_ context.Context, _ *rpc.InvokeRequest) (*rpc.InvokeResponse, error) {
-	panic("Invoke not implemented")
+	return nil, status.Error(codes.Unimplemented, "Invoke is not yet implemented")
 }
 
 // StreamInvoke dynamically executes a built-in function in the provider. The result is streamed
 // back as a series of messages.
 func (p *googleCloudProvider) StreamInvoke(_ *rpc.InvokeRequest, _ rpc.ResourceProvider_StreamInvokeServer) error {
-	panic("StreamInvoke not implemented")
+	return status.Error(codes.Unimplemented, "StreamInvoke is not yet implemented")
 }
 
 // Check validates that the given property bag is valid for a resource of the given type and returns
@@ -180,7 +182,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
-		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
 	oldState, err := plugin.UnmarshalProperties(req.GetOlds(), plugin.MarshalOptions{
@@ -238,7 +240,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
-		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
 	id := res.IdPath
@@ -408,7 +410,7 @@ func evalParam(inputs resource.PropertyMap, param string) string {
 			current = value.ObjectValue()
 		}
 	}
-	panic(fmt.Sprintf("'%s' not found", param))
+	panic(fmt.Sprintf("%q not found", param))
 }
 
 // Read the current live state associated with a resource.
@@ -418,7 +420,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
-		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
 	id := req.GetId()
@@ -473,7 +475,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
-		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
 	inputsMap := inputs.Mappable()
@@ -534,7 +536,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
-		return nil, errors.Errorf("resource '%s' not found", resourceKey)
+		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
 	uri := res.RelativePath(req.GetId())
@@ -578,7 +580,7 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 // Construct creates a new component resource.
 func (p *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructRequest) (*rpc.ConstructResponse, error) {
-	panic("Construct not implemented")
+	return nil, status.Error(codes.Unimplemented, "Construct is not yet implemented")
 }
 
 // GetPluginInfo returns generic information about this plugin, like its version.
