@@ -11,9 +11,11 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.1.0
 	github.com/jpillora/backoff v1.0.0
 	github.com/mattn/go-runewidth v0.0.9 // indirect
+	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/pkg/errors v0.9.1
 	github.com/pulumi/pulumi/pkg/v3 v3.0.0-beta.1
 	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.1
 	golang.org/x/oauth2 v0.0.0-20201203001011-0b49973bad19
 	google.golang.org/api v0.36.0
+	google.golang.org/grpc v1.34.0 // indirect
 )
