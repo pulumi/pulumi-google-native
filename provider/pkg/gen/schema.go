@@ -491,6 +491,13 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool
 	case prop.Type == "any":
 		return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
 	case prop.Type != "":
+		if prop.Type == "object" {
+			for _, p := range prop.Properties {
+				if p.Type != "" && p.Type != "string" {
+					return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
+				}
+			}
+		}
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
 		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, prop.Ref)
