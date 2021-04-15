@@ -4541,7 +4541,7 @@ type Operation struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime *string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error map[string]string `pulumi:"error"`
+	Error interface{} `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage *string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -4577,7 +4577,7 @@ type Operation struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User *string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone *string `pulumi:"zone"`
 }
@@ -4604,7 +4604,7 @@ type OperationArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error pulumi.StringMapInput `pulumi:"error"`
+	Error pulumi.Input `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringPtrInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -4640,7 +4640,7 @@ type OperationArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringPtrInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings pulumi.StringMapArrayInput `pulumi:"warnings"`
+	Warnings pulumi.ArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -4744,8 +4744,8 @@ func (o OperationOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Error }).(pulumi.StringMapOutput)
+func (o OperationOutput) Error() pulumi.AnyOutput {
+	return o.ApplyT(func(v Operation) interface{} { return v.Error }).(pulumi.AnyOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -4834,8 +4834,8 @@ func (o OperationOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Operation) []map[string]string { return v.Warnings }).(pulumi.StringMapArrayOutput)
+func (o OperationOutput) Warnings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v Operation) []interface{} { return v.Warnings }).(pulumi.ArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -4902,13 +4902,13 @@ func (o OperationPtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Operation) map[string]string {
+func (o OperationPtrOutput) Error() pulumi.AnyOutput {
+	return o.ApplyT(func(v *Operation) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Error
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5082,13 +5082,13 @@ func (o OperationPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Operation) []map[string]string {
+func (o OperationPtrOutput) Warnings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *Operation) []interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.ArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5112,7 +5112,7 @@ type OperationResponse struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error map[string]string `pulumi:"error"`
+	Error interface{} `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -5146,7 +5146,7 @@ type OperationResponse struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone string `pulumi:"zone"`
 }
@@ -5173,7 +5173,7 @@ type OperationResponseArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error pulumi.StringMapInput `pulumi:"error"`
+	Error pulumi.Input `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -5207,7 +5207,7 @@ type OperationResponseArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings pulumi.StringMapArrayInput `pulumi:"warnings"`
+	Warnings pulumi.ArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -5311,8 +5311,8 @@ func (o OperationResponseOutput) EndTime() pulumi.StringOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Error }).(pulumi.StringMapOutput)
+func (o OperationResponseOutput) Error() pulumi.AnyOutput {
+	return o.ApplyT(func(v OperationResponse) interface{} { return v.Error }).(pulumi.AnyOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5396,8 +5396,8 @@ func (o OperationResponseOutput) User() pulumi.StringOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v OperationResponse) []map[string]string { return v.Warnings }).(pulumi.StringMapArrayOutput)
+func (o OperationResponseOutput) Warnings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v OperationResponse) []interface{} { return v.Warnings }).(pulumi.ArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -5464,13 +5464,13 @@ func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationResponse) map[string]string {
+func (o OperationResponsePtrOutput) Error() pulumi.AnyOutput {
+	return o.ApplyT(func(v *OperationResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Error
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -5634,13 +5634,13 @@ func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *OperationResponse) []map[string]string {
+func (o OperationResponsePtrOutput) Warnings() pulumi.ArrayOutput {
+	return o.ApplyT(func(v *OperationResponse) []interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(pulumi.StringMapArrayOutput)
+	}).(pulumi.ArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.

@@ -16,11 +16,11 @@ type Firewall struct {
 	pulumi.CustomResourceState
 
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed pulumi.StringMapArrayOutput `pulumi:"allowed"`
+	Allowed pulumi.ArrayOutput `pulumi:"allowed"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied pulumi.StringMapArrayOutput `pulumi:"denied"`
+	Denied pulumi.ArrayOutput `pulumi:"denied"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
@@ -94,11 +94,11 @@ func GetFirewall(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Firewall resources.
 type firewallState struct {
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed []map[string]string `pulumi:"allowed"`
+	Allowed []interface{} `pulumi:"allowed"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied []map[string]string `pulumi:"denied"`
+	Denied []interface{} `pulumi:"denied"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
@@ -138,11 +138,11 @@ type firewallState struct {
 
 type FirewallState struct {
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed pulumi.StringMapArrayInput
+	Allowed pulumi.ArrayInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied pulumi.StringMapArrayInput
+	Denied pulumi.ArrayInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
@@ -186,11 +186,11 @@ func (FirewallState) ElementType() reflect.Type {
 
 type firewallArgs struct {
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed []map[string]string `pulumi:"allowed"`
+	Allowed []interface{} `pulumi:"allowed"`
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied []map[string]string `pulumi:"denied"`
+	Denied []interface{} `pulumi:"denied"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
@@ -235,11 +235,11 @@ type firewallArgs struct {
 // The set of arguments for constructing a Firewall resource.
 type FirewallArgs struct {
 	// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
-	Allowed pulumi.StringMapArrayInput
+	Allowed pulumi.ArrayInput
 	// [Output Only] Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
-	Denied pulumi.StringMapArrayInput
+	Denied pulumi.ArrayInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.

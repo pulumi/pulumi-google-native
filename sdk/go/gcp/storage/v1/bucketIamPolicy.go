@@ -16,7 +16,7 @@ type BucketIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayOutput `pulumi:"bindings"`
+	Bindings pulumi.ArrayOutput `pulumi:"bindings"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -60,7 +60,7 @@ func GetBucketIamPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering BucketIamPolicy resources.
 type bucketIamPolicyState struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings []map[string]string `pulumi:"bindings"`
+	Bindings []interface{} `pulumi:"bindings"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -73,7 +73,7 @@ type bucketIamPolicyState struct {
 
 type BucketIamPolicyState struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayInput
+	Bindings pulumi.ArrayInput
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringPtrInput
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -90,8 +90,8 @@ func (BucketIamPolicyState) ElementType() reflect.Type {
 
 type bucketIamPolicyArgs struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings []map[string]string `pulumi:"bindings"`
-	Bucket   string              `pulumi:"bucket"`
+	Bindings []interface{} `pulumi:"bindings"`
+	Bucket   string        `pulumi:"bucket"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -105,7 +105,7 @@ type bucketIamPolicyArgs struct {
 // The set of arguments for constructing a BucketIamPolicy resource.
 type BucketIamPolicyArgs struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayInput
+	Bindings pulumi.ArrayInput
 	Bucket   pulumi.StringInput
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringPtrInput

@@ -2392,7 +2392,7 @@ type BqmlTrainingRun struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State *string `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions map[string]string `pulumi:"trainingOptions"`
+	TrainingOptions interface{} `pulumi:"trainingOptions"`
 }
 
 // BqmlTrainingRunInput is an input type that accepts BqmlTrainingRunArgs and BqmlTrainingRunOutput values.
@@ -2414,7 +2414,7 @@ type BqmlTrainingRunArgs struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State pulumi.StringPtrInput `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions pulumi.StringMapInput `pulumi:"trainingOptions"`
+	TrainingOptions pulumi.Input `pulumi:"trainingOptions"`
 }
 
 func (BqmlTrainingRunArgs) ElementType() reflect.Type {
@@ -2484,8 +2484,8 @@ func (o BqmlTrainingRunOutput) State() pulumi.StringPtrOutput {
 }
 
 // [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-func (o BqmlTrainingRunOutput) TrainingOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BqmlTrainingRun) map[string]string { return v.TrainingOptions }).(pulumi.StringMapOutput)
+func (o BqmlTrainingRunOutput) TrainingOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v BqmlTrainingRun) interface{} { return v.TrainingOptions }).(pulumi.AnyOutput)
 }
 
 type BqmlTrainingRunArrayOutput struct{ *pulumi.OutputState }
@@ -2516,7 +2516,7 @@ type BqmlTrainingRunResponse struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State string `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions map[string]string `pulumi:"trainingOptions"`
+	TrainingOptions interface{} `pulumi:"trainingOptions"`
 }
 
 // BqmlTrainingRunResponseInput is an input type that accepts BqmlTrainingRunResponseArgs and BqmlTrainingRunResponseOutput values.
@@ -2538,7 +2538,7 @@ type BqmlTrainingRunResponseArgs struct {
 	// [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
 	State pulumi.StringInput `pulumi:"state"`
 	// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-	TrainingOptions pulumi.StringMapInput `pulumi:"trainingOptions"`
+	TrainingOptions pulumi.Input `pulumi:"trainingOptions"`
 }
 
 func (BqmlTrainingRunResponseArgs) ElementType() reflect.Type {
@@ -2608,8 +2608,8 @@ func (o BqmlTrainingRunResponseOutput) State() pulumi.StringOutput {
 }
 
 // [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-func (o BqmlTrainingRunResponseOutput) TrainingOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v BqmlTrainingRunResponse) map[string]string { return v.TrainingOptions }).(pulumi.StringMapOutput)
+func (o BqmlTrainingRunResponseOutput) TrainingOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v BqmlTrainingRunResponse) interface{} { return v.TrainingOptions }).(pulumi.AnyOutput)
 }
 
 type BqmlTrainingRunResponseArrayOutput struct{ *pulumi.OutputState }
@@ -15496,7 +15496,7 @@ func (o MaterializedViewDefinitionResponsePtrOutput) RefreshIntervalMs() pulumi.
 
 type ModelDefinition struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions map[string]string `pulumi:"modelOptions"`
+	ModelOptions interface{} `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns []BqmlTrainingRun `pulumi:"trainingRuns"`
 }
@@ -15514,7 +15514,7 @@ type ModelDefinitionInput interface {
 
 type ModelDefinitionArgs struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions pulumi.StringMapInput `pulumi:"modelOptions"`
+	ModelOptions pulumi.Input `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns BqmlTrainingRunArrayInput `pulumi:"trainingRuns"`
 }
@@ -15597,8 +15597,8 @@ func (o ModelDefinitionOutput) ToModelDefinitionPtrOutputWithContext(ctx context
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionOutput) ModelOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ModelDefinition) map[string]string { return v.ModelOptions }).(pulumi.StringMapOutput)
+func (o ModelDefinitionOutput) ModelOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v ModelDefinition) interface{} { return v.ModelOptions }).(pulumi.AnyOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -15625,13 +15625,13 @@ func (o ModelDefinitionPtrOutput) Elem() ModelDefinitionOutput {
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionPtrOutput) ModelOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ModelDefinition) map[string]string {
+func (o ModelDefinitionPtrOutput) ModelOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ModelDefinition) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ModelOptions
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -15646,7 +15646,7 @@ func (o ModelDefinitionPtrOutput) TrainingRuns() BqmlTrainingRunArrayOutput {
 
 type ModelDefinitionResponse struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions map[string]string `pulumi:"modelOptions"`
+	ModelOptions interface{} `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns []BqmlTrainingRunResponse `pulumi:"trainingRuns"`
 }
@@ -15664,7 +15664,7 @@ type ModelDefinitionResponseInput interface {
 
 type ModelDefinitionResponseArgs struct {
 	// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-	ModelOptions pulumi.StringMapInput `pulumi:"modelOptions"`
+	ModelOptions pulumi.Input `pulumi:"modelOptions"`
 	// [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
 	TrainingRuns BqmlTrainingRunResponseArrayInput `pulumi:"trainingRuns"`
 }
@@ -15747,8 +15747,8 @@ func (o ModelDefinitionResponseOutput) ToModelDefinitionResponsePtrOutputWithCon
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionResponseOutput) ModelOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v ModelDefinitionResponse) map[string]string { return v.ModelOptions }).(pulumi.StringMapOutput)
+func (o ModelDefinitionResponseOutput) ModelOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v ModelDefinitionResponse) interface{} { return v.ModelOptions }).(pulumi.AnyOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -15775,13 +15775,13 @@ func (o ModelDefinitionResponsePtrOutput) Elem() ModelDefinitionResponseOutput {
 }
 
 // [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-func (o ModelDefinitionResponsePtrOutput) ModelOptions() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *ModelDefinitionResponse) map[string]string {
+func (o ModelDefinitionResponsePtrOutput) ModelOptions() pulumi.AnyOutput {
+	return o.ApplyT(func(v *ModelDefinitionResponse) interface{} {
 		if v == nil {
 			return nil
 		}
 		return v.ModelOptions
-	}).(pulumi.StringMapOutput)
+	}).(pulumi.AnyOutput)
 }
 
 // [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
@@ -21430,7 +21430,7 @@ func (o StreamingbufferResponsePtrOutput) OldestEntryTime() pulumi.StringPtrOutp
 
 type TableFieldSchema struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories map[string]string `pulumi:"categories"`
+	Categories interface{} `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description *string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -21440,8 +21440,8 @@ type TableFieldSchema struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode *string `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
-	Name       *string           `pulumi:"name"`
-	PolicyTags map[string]string `pulumi:"policyTags"`
+	Name       *string     `pulumi:"name"`
+	PolicyTags interface{} `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision *string `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -21463,7 +21463,7 @@ type TableFieldSchemaInput interface {
 
 type TableFieldSchemaArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories pulumi.StringMapInput `pulumi:"categories"`
+	Categories pulumi.Input `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -21474,7 +21474,7 @@ type TableFieldSchemaArgs struct {
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
 	Name       pulumi.StringPtrInput `pulumi:"name"`
-	PolicyTags pulumi.StringMapInput `pulumi:"policyTags"`
+	PolicyTags pulumi.Input          `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringPtrInput `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -21535,8 +21535,8 @@ func (o TableFieldSchemaOutput) ToTableFieldSchemaOutputWithContext(ctx context.
 }
 
 // [Optional] The categories attached to this field, used for field-level access control.
-func (o TableFieldSchemaOutput) Categories() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableFieldSchema) map[string]string { return v.Categories }).(pulumi.StringMapOutput)
+func (o TableFieldSchemaOutput) Categories() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableFieldSchema) interface{} { return v.Categories }).(pulumi.AnyOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.
@@ -21564,8 +21564,8 @@ func (o TableFieldSchemaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TableFieldSchema) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-func (o TableFieldSchemaOutput) PolicyTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableFieldSchema) map[string]string { return v.PolicyTags }).(pulumi.StringMapOutput)
+func (o TableFieldSchemaOutput) PolicyTags() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableFieldSchema) interface{} { return v.PolicyTags }).(pulumi.AnyOutput)
 }
 
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
@@ -21605,7 +21605,7 @@ func (o TableFieldSchemaArrayOutput) Index(i pulumi.IntInput) TableFieldSchemaOu
 
 type TableFieldSchemaResponse struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories map[string]string `pulumi:"categories"`
+	Categories interface{} `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description string `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -21615,8 +21615,8 @@ type TableFieldSchemaResponse struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode string `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
-	Name       string            `pulumi:"name"`
-	PolicyTags map[string]string `pulumi:"policyTags"`
+	Name       string      `pulumi:"name"`
+	PolicyTags interface{} `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision string `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -21638,7 +21638,7 @@ type TableFieldSchemaResponseInput interface {
 
 type TableFieldSchemaResponseArgs struct {
 	// [Optional] The categories attached to this field, used for field-level access control.
-	Categories pulumi.StringMapInput `pulumi:"categories"`
+	Categories pulumi.Input `pulumi:"categories"`
 	// [Optional] The field description. The maximum length is 1,024 characters.
 	Description pulumi.StringInput `pulumi:"description"`
 	// [Optional] Describes the nested schema fields if the type property is set to RECORD.
@@ -21648,8 +21648,8 @@ type TableFieldSchemaResponseArgs struct {
 	// [Optional] The field mode. Possible values include NULLABLE, REQUIRED and REPEATED. The default value is NULLABLE.
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
-	Name       pulumi.StringInput    `pulumi:"name"`
-	PolicyTags pulumi.StringMapInput `pulumi:"policyTags"`
+	Name       pulumi.StringInput `pulumi:"name"`
+	PolicyTags pulumi.Input       `pulumi:"policyTags"`
 	// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
 	Precision pulumi.StringInput `pulumi:"precision"`
 	// [Optional] See documentation for precision.
@@ -21710,8 +21710,8 @@ func (o TableFieldSchemaResponseOutput) ToTableFieldSchemaResponseOutputWithCont
 }
 
 // [Optional] The categories attached to this field, used for field-level access control.
-func (o TableFieldSchemaResponseOutput) Categories() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableFieldSchemaResponse) map[string]string { return v.Categories }).(pulumi.StringMapOutput)
+func (o TableFieldSchemaResponseOutput) Categories() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) interface{} { return v.Categories }).(pulumi.AnyOutput)
 }
 
 // [Optional] The field description. The maximum length is 1,024 characters.
@@ -21739,8 +21739,8 @@ func (o TableFieldSchemaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TableFieldSchemaResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o TableFieldSchemaResponseOutput) PolicyTags() pulumi.StringMapOutput {
-	return o.ApplyT(func(v TableFieldSchemaResponse) map[string]string { return v.PolicyTags }).(pulumi.StringMapOutput)
+func (o TableFieldSchemaResponseOutput) PolicyTags() pulumi.AnyOutput {
+	return o.ApplyT(func(v TableFieldSchemaResponse) interface{} { return v.PolicyTags }).(pulumi.AnyOutput)
 }
 
 // [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.

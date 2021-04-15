@@ -43,7 +43,7 @@ type SslPolicy struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsResponseOutput `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayOutput `pulumi:"warnings"`
+	Warnings pulumi.ArrayOutput `pulumi:"warnings"`
 }
 
 // NewSslPolicy registers a new resource with the given unique name, arguments, and options.
@@ -109,7 +109,7 @@ type sslPolicyState struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings *ServerTlsSettingsResponse `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 type SslPolicyState struct {
@@ -141,7 +141,7 @@ type SslPolicyState struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsResponsePtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (SslPolicyState) ElementType() reflect.Type {
@@ -181,7 +181,7 @@ type sslPolicyArgs struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings *ServerTlsSettings `pulumi:"tlsSettings"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 // The set of arguments for constructing a SslPolicy resource.
@@ -218,7 +218,7 @@ type SslPolicyArgs struct {
 	// Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
 	TlsSettings ServerTlsSettingsPtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (SslPolicyArgs) ElementType() reflect.Type {

@@ -54,7 +54,7 @@ type Route struct {
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayOutput `pulumi:"warnings"`
+	Warnings pulumi.ArrayOutput `pulumi:"warnings"`
 }
 
 // NewRoute registers a new resource with the given unique name, arguments, and options.
@@ -131,7 +131,7 @@ type routeState struct {
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 type RouteState struct {
@@ -174,7 +174,7 @@ type RouteState struct {
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (RouteState) ElementType() reflect.Type {
@@ -225,7 +225,7 @@ type routeArgs struct {
 	// A list of instance tags to which this route applies.
 	Tags []string `pulumi:"tags"`
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 // The set of arguments for constructing a Route resource.
@@ -273,7 +273,7 @@ type RouteArgs struct {
 	// A list of instance tags to which this route applies.
 	Tags pulumi.StringArrayInput
 	// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (RouteArgs) ElementType() reflect.Type {

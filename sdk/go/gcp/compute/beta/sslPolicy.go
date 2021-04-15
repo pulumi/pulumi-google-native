@@ -39,7 +39,7 @@ type SslPolicy struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayOutput `pulumi:"warnings"`
+	Warnings pulumi.ArrayOutput `pulumi:"warnings"`
 }
 
 // NewSslPolicy registers a new resource with the given unique name, arguments, and options.
@@ -101,7 +101,7 @@ type sslPolicyState struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 type SslPolicyState struct {
@@ -129,7 +129,7 @@ type SslPolicyState struct {
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (SslPolicyState) ElementType() reflect.Type {
@@ -165,7 +165,7 @@ type sslPolicyArgs struct {
 	SelfLink  *string `pulumi:"selfLink"`
 	SslPolicy string  `pulumi:"sslPolicy"`
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []interface{} `pulumi:"warnings"`
 }
 
 // The set of arguments for constructing a SslPolicy resource.
@@ -198,7 +198,7 @@ type SslPolicyArgs struct {
 	SelfLink  pulumi.StringPtrInput
 	SslPolicy pulumi.StringInput
 	// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-	Warnings pulumi.StringMapArrayInput
+	Warnings pulumi.ArrayInput
 }
 
 func (SslPolicyArgs) ElementType() reflect.Type {
