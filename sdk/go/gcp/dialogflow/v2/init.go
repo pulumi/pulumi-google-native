@@ -22,35 +22,36 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:dialogflow/v2:AgentEntityType":
-		r, err = NewAgentEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEntityType{}
 	case "gcp-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
-		r, err = NewAgentEnvironmentUserSessionContext(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEnvironmentUserSessionContext{}
 	case "gcp-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
-		r, err = NewAgentEnvironmentUserSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEnvironmentUserSessionEntityType{}
 	case "gcp-native:dialogflow/v2:AgentIntent":
-		r, err = NewAgentIntent(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentIntent{}
 	case "gcp-native:dialogflow/v2:AgentKnowledgeBase":
-		r, err = NewAgentKnowledgeBase(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentKnowledgeBase{}
 	case "gcp-native:dialogflow/v2:AgentKnowledgeBaseDocument":
-		r, err = NewAgentKnowledgeBaseDocument(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentKnowledgeBaseDocument{}
 	case "gcp-native:dialogflow/v2:AgentSessionContext":
-		r, err = NewAgentSessionContext(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentSessionContext{}
 	case "gcp-native:dialogflow/v2:AgentSessionEntityType":
-		r, err = NewAgentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentSessionEntityType{}
 	case "gcp-native:dialogflow/v2:Conversation":
-		r, err = NewConversation(ctx, name, nil, pulumi.URN_(urn))
+		r = &Conversation{}
 	case "gcp-native:dialogflow/v2:ConversationParticipant":
-		r, err = NewConversationParticipant(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConversationParticipant{}
 	case "gcp-native:dialogflow/v2:ConversationProfile":
-		r, err = NewConversationProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConversationProfile{}
 	case "gcp-native:dialogflow/v2:KnowledgeBase":
-		r, err = NewKnowledgeBase(ctx, name, nil, pulumi.URN_(urn))
+		r = &KnowledgeBase{}
 	case "gcp-native:dialogflow/v2:KnowledgeBaseDocument":
-		r, err = NewKnowledgeBaseDocument(ctx, name, nil, pulumi.URN_(urn))
+		r = &KnowledgeBaseDocument{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

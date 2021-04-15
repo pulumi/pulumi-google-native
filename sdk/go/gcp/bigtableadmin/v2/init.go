@@ -22,25 +22,26 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:bigtableadmin/v2:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp-native:bigtableadmin/v2:InstanceAppProfile":
-		r, err = NewInstanceAppProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceAppProfile{}
 	case "gcp-native:bigtableadmin/v2:InstanceCluster":
-		r, err = NewInstanceCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceCluster{}
 	case "gcp-native:bigtableadmin/v2:InstanceClusterBackup":
-		r, err = NewInstanceClusterBackup(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceClusterBackup{}
 	case "gcp-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy":
-		r, err = NewInstanceClusterBackupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceClusterBackupIamPolicy{}
 	case "gcp-native:bigtableadmin/v2:InstanceIamPolicy":
-		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamPolicy{}
 	case "gcp-native:bigtableadmin/v2:InstanceTable":
-		r, err = NewInstanceTable(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceTable{}
 	case "gcp-native:bigtableadmin/v2:InstanceTableIamPolicy":
-		r, err = NewInstanceTableIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceTableIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:apigateway/v1:Api":
-		r, err = NewApi(ctx, name, nil, pulumi.URN_(urn))
+		r = &Api{}
 	case "gcp-native:apigateway/v1:ApiConfig":
-		r, err = NewApiConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfig{}
 	case "gcp-native:apigateway/v1:ApiConfigIamPolicy":
-		r, err = NewApiConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiConfigIamPolicy{}
 	case "gcp-native:apigateway/v1:ApiIamPolicy":
-		r, err = NewApiIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ApiIamPolicy{}
 	case "gcp-native:apigateway/v1:Gateway":
-		r, err = NewGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &Gateway{}
 	case "gcp-native:apigateway/v1:GatewayIamPolicy":
-		r, err = NewGatewayIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &GatewayIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

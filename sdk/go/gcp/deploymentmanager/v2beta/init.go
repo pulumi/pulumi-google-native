@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:deploymentmanager/v2beta:CompositeType":
-		r, err = NewCompositeType(ctx, name, nil, pulumi.URN_(urn))
+		r = &CompositeType{}
 	case "gcp-native:deploymentmanager/v2beta:Deployment":
-		r, err = NewDeployment(ctx, name, nil, pulumi.URN_(urn))
+		r = &Deployment{}
 	case "gcp-native:deploymentmanager/v2beta:DeploymentIamPolicy":
-		r, err = NewDeploymentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DeploymentIamPolicy{}
 	case "gcp-native:deploymentmanager/v2beta:TypeProvider":
-		r, err = NewTypeProvider(ctx, name, nil, pulumi.URN_(urn))
+		r = &TypeProvider{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

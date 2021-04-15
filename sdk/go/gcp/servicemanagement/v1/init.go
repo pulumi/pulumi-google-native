@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:servicemanagement/v1:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "gcp-native:servicemanagement/v1:ServiceConfig":
-		r, err = NewServiceConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceConfig{}
 	case "gcp-native:servicemanagement/v1:ServiceConsumerIamPolicy":
-		r, err = NewServiceConsumerIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceConsumerIamPolicy{}
 	case "gcp-native:servicemanagement/v1:ServiceIamPolicy":
-		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamPolicy{}
 	case "gcp-native:servicemanagement/v1:ServiceRollout":
-		r, err = NewServiceRollout(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceRollout{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

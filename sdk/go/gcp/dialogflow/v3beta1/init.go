@@ -22,37 +22,38 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:dialogflow/v3beta1:Agent":
-		r, err = NewAgent(ctx, name, nil, pulumi.URN_(urn))
+		r = &Agent{}
 	case "gcp-native:dialogflow/v3beta1:AgentEntityType":
-		r, err = NewAgentEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEntityType{}
 	case "gcp-native:dialogflow/v3beta1:AgentEnvironment":
-		r, err = NewAgentEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEnvironment{}
 	case "gcp-native:dialogflow/v3beta1:AgentEnvironmentExperiment":
-		r, err = NewAgentEnvironmentExperiment(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEnvironmentExperiment{}
 	case "gcp-native:dialogflow/v3beta1:AgentEnvironmentSessionEntityType":
-		r, err = NewAgentEnvironmentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentEnvironmentSessionEntityType{}
 	case "gcp-native:dialogflow/v3beta1:AgentFlow":
-		r, err = NewAgentFlow(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentFlow{}
 	case "gcp-native:dialogflow/v3beta1:AgentFlowPage":
-		r, err = NewAgentFlowPage(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentFlowPage{}
 	case "gcp-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup":
-		r, err = NewAgentFlowTransitionRouteGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentFlowTransitionRouteGroup{}
 	case "gcp-native:dialogflow/v3beta1:AgentFlowVersion":
-		r, err = NewAgentFlowVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentFlowVersion{}
 	case "gcp-native:dialogflow/v3beta1:AgentIntent":
-		r, err = NewAgentIntent(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentIntent{}
 	case "gcp-native:dialogflow/v3beta1:AgentSessionEntityType":
-		r, err = NewAgentSessionEntityType(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentSessionEntityType{}
 	case "gcp-native:dialogflow/v3beta1:AgentTestCase":
-		r, err = NewAgentTestCase(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentTestCase{}
 	case "gcp-native:dialogflow/v3beta1:AgentWebhook":
-		r, err = NewAgentWebhook(ctx, name, nil, pulumi.URN_(urn))
+		r = &AgentWebhook{}
 	case "gcp-native:dialogflow/v3beta1:SecuritySetting":
-		r, err = NewSecuritySetting(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecuritySetting{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

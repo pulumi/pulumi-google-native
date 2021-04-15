@@ -22,41 +22,42 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:healthcare/v1:Dataset":
-		r, err = NewDataset(ctx, name, nil, pulumi.URN_(urn))
+		r = &Dataset{}
 	case "gcp-native:healthcare/v1:DatasetConsentStore":
-		r, err = NewDatasetConsentStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStore{}
 	case "gcp-native:healthcare/v1:DatasetConsentStoreAttributeDefinition":
-		r, err = NewDatasetConsentStoreAttributeDefinition(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStoreAttributeDefinition{}
 	case "gcp-native:healthcare/v1:DatasetConsentStoreConsent":
-		r, err = NewDatasetConsentStoreConsent(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStoreConsent{}
 	case "gcp-native:healthcare/v1:DatasetConsentStoreConsentArtifact":
-		r, err = NewDatasetConsentStoreConsentArtifact(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStoreConsentArtifact{}
 	case "gcp-native:healthcare/v1:DatasetConsentStoreIamPolicy":
-		r, err = NewDatasetConsentStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStoreIamPolicy{}
 	case "gcp-native:healthcare/v1:DatasetConsentStoreUserDataMapping":
-		r, err = NewDatasetConsentStoreUserDataMapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetConsentStoreUserDataMapping{}
 	case "gcp-native:healthcare/v1:DatasetDicomStore":
-		r, err = NewDatasetDicomStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetDicomStore{}
 	case "gcp-native:healthcare/v1:DatasetDicomStoreIamPolicy":
-		r, err = NewDatasetDicomStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetDicomStoreIamPolicy{}
 	case "gcp-native:healthcare/v1:DatasetFhirStore":
-		r, err = NewDatasetFhirStore(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetFhirStore{}
 	case "gcp-native:healthcare/v1:DatasetFhirStoreFhir":
-		r, err = NewDatasetFhirStoreFhir(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetFhirStoreFhir{}
 	case "gcp-native:healthcare/v1:DatasetFhirStoreIamPolicy":
-		r, err = NewDatasetFhirStoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetFhirStoreIamPolicy{}
 	case "gcp-native:healthcare/v1:DatasetHl7V2Store":
-		r, err = NewDatasetHl7V2Store(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetHl7V2Store{}
 	case "gcp-native:healthcare/v1:DatasetHl7V2StoreIamPolicy":
-		r, err = NewDatasetHl7V2StoreIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetHl7V2StoreIamPolicy{}
 	case "gcp-native:healthcare/v1:DatasetHl7V2StoreMessage":
-		r, err = NewDatasetHl7V2StoreMessage(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetHl7V2StoreMessage{}
 	case "gcp-native:healthcare/v1:DatasetIamPolicy":
-		r, err = NewDatasetIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DatasetIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

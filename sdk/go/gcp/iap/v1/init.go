@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:iap/v1:Brand":
-		r, err = NewBrand(ctx, name, nil, pulumi.URN_(urn))
+		r = &Brand{}
 	case "gcp-native:iap/v1:BrandIdentityAwareProxyClient":
-		r, err = NewBrandIdentityAwareProxyClient(ctx, name, nil, pulumi.URN_(urn))
+		r = &BrandIdentityAwareProxyClient{}
 	case "gcp-native:iap/v1:V1IamPolicy":
-		r, err = NewV1IamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &V1IamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

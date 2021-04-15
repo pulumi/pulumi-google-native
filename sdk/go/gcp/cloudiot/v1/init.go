@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudiot/v1:Registry":
-		r, err = NewRegistry(ctx, name, nil, pulumi.URN_(urn))
+		r = &Registry{}
 	case "gcp-native:cloudiot/v1:RegistryDevice":
-		r, err = NewRegistryDevice(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryDevice{}
 	case "gcp-native:cloudiot/v1:RegistryGroupIamPolicy":
-		r, err = NewRegistryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryGroupIamPolicy{}
 	case "gcp-native:cloudiot/v1:RegistryIamPolicy":
-		r, err = NewRegistryIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegistryIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

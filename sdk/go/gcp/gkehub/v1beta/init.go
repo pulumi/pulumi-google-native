@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:gkehub/v1beta:Feature":
-		r, err = NewFeature(ctx, name, nil, pulumi.URN_(urn))
+		r = &Feature{}
 	case "gcp-native:gkehub/v1beta:FeatureIamPolicy":
-		r, err = NewFeatureIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FeatureIamPolicy{}
 	case "gcp-native:gkehub/v1beta:MembershipIamPolicy":
-		r, err = NewMembershipIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &MembershipIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

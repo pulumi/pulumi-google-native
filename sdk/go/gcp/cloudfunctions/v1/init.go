@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudfunctions/v1:Function":
-		r, err = NewFunction(ctx, name, nil, pulumi.URN_(urn))
+		r = &Function{}
 	case "gcp-native:cloudfunctions/v1:FunctionIamPolicy":
-		r, err = NewFunctionIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FunctionIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

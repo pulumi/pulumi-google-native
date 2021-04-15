@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:container/v1:Cluster":
-		r, err = NewCluster(ctx, name, nil, pulumi.URN_(urn))
+		r = &Cluster{}
 	case "gcp-native:container/v1:ClusterNodePool":
-		r, err = NewClusterNodePool(ctx, name, nil, pulumi.URN_(urn))
+		r = &ClusterNodePool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

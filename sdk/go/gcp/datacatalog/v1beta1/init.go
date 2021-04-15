@@ -22,27 +22,28 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:datacatalog/v1beta1:EntryGroup":
-		r, err = NewEntryGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroup{}
 	case "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
-		r, err = NewEntryGroupEntry(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroupEntry{}
 	case "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
-		r, err = NewEntryGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &EntryGroupIamPolicy{}
 	case "gcp-native:datacatalog/v1beta1:TagTemplate":
-		r, err = NewTagTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplate{}
 	case "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
-		r, err = NewTagTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TagTemplateIamPolicy{}
 	case "gcp-native:datacatalog/v1beta1:Taxonomy":
-		r, err = NewTaxonomy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Taxonomy{}
 	case "gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy":
-		r, err = NewTaxonomyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyIamPolicy{}
 	case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag":
-		r, err = NewTaxonomyPolicyTag(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyPolicyTag{}
 	case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
-		r, err = NewTaxonomyPolicyTagIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TaxonomyPolicyTagIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

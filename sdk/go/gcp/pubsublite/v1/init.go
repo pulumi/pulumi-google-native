@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:pubsublite/v1:AdminSubscription":
-		r, err = NewAdminSubscription(ctx, name, nil, pulumi.URN_(urn))
+		r = &AdminSubscription{}
 	case "gcp-native:pubsublite/v1:AdminTopic":
-		r, err = NewAdminTopic(ctx, name, nil, pulumi.URN_(urn))
+		r = &AdminTopic{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

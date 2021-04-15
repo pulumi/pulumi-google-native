@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:datamigration/v1beta1:ConnectionProfile":
-		r, err = NewConnectionProfile(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConnectionProfile{}
 	case "gcp-native:datamigration/v1beta1:ConnectionProfileIamPolicy":
-		r, err = NewConnectionProfileIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConnectionProfileIamPolicy{}
 	case "gcp-native:datamigration/v1beta1:MigrationJob":
-		r, err = NewMigrationJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &MigrationJob{}
 	case "gcp-native:datamigration/v1beta1:MigrationJobIamPolicy":
-		r, err = NewMigrationJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &MigrationJobIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
