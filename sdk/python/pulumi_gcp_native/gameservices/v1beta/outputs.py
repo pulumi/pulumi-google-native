@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -36,6 +36,25 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+        elif key == "exemptedMembers":
+            suggest = "exempted_members"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  exempted_members: Sequence[str],
@@ -70,15 +89,33 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "ignoreChildExemptions":
+            suggest = "ignore_child_exemptions"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  ignore_child_exemptions: bool,
@@ -113,15 +150,29 @@ class AuditLogConfigResponse(dict):
         """
         return pulumi.get(self, "log_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuthorizationLoggingOptionsResponse(dict):
     """
     Authorization-related information used by Cloud Audit Logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "permissionType":
+            suggest = "permission_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthorizationLoggingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthorizationLoggingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthorizationLoggingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  permission_type: str):
         """
@@ -138,15 +189,29 @@ class AuthorizationLoggingOptionsResponse(dict):
         """
         return pulumi.get(self, "permission_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BindingResponse(dict):
     """
     Associates `members` with a `role`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bindingId":
+            suggest = "binding_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BindingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BindingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BindingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binding_id: str,
                  condition: 'outputs.ExprResponse',
@@ -192,15 +257,31 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudAuditOptionsResponse(dict):
     """
     Write a Cloud Audit log
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationLoggingOptions":
+            suggest = "authorization_logging_options"
+        elif key == "logName":
+            suggest = "log_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudAuditOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudAuditOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudAuditOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_logging_options: 'outputs.AuthorizationLoggingOptionsResponse',
                  log_name: str):
@@ -227,9 +308,6 @@ class CloudAuditOptionsResponse(dict):
         The log_name to populate in the Cloud Audit Record.
         """
         return pulumi.get(self, "log_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -297,15 +375,29 @@ class ConditionResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CounterOptionsResponse(dict):
     """
     Increment a streamz counter with the specified metric and field names. Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not contain an initial slash. The actual exported metric names will have "/iam/policy" prepended. Field names correspond to IAM request parameters and field values are their respective values. Supported field names: - "authority", which is "[token]" if IAMContext.token is present, otherwise the value of IAMContext.authority_selector if present, and otherwise a representation of IAMContext.principal; or - "iam_principal", a representation of IAMContext.principal even if a token or authority selector is present; or - "" (empty string), resulting in a counter with no fields. Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter /iam/policy/debug_access_count {iam_principal=[value of IAMContext.principal]}
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customFields":
+            suggest = "custom_fields"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CounterOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CounterOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CounterOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_fields: Sequence['outputs.CustomFieldResponse'],
                  field: str,
@@ -344,9 +436,6 @@ class CounterOptionsResponse(dict):
         """
         return pulumi.get(self, "metric")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomFieldResponse(dict):
@@ -380,15 +469,29 @@ class CustomFieldResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataAccessOptionsResponse(dict):
     """
     Write a Data Access (Gin) log
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logMode":
+            suggest = "log_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAccessOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAccessOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAccessOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_mode: str):
         """
@@ -400,9 +503,6 @@ class DataAccessOptionsResponse(dict):
     @pulumi.getter(name="logMode")
     def log_mode(self) -> str:
         return pulumi.get(self, "log_mode")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -459,15 +559,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FleetConfigResponse(dict):
     """
     Fleet configs for Agones.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fleetSpec":
+            suggest = "fleet_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fleet_spec: str,
                  name: str):
@@ -495,15 +609,31 @@ class FleetConfigResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GameServerClusterConnectionInfoResponse(dict):
     """
     The game server cluster connection information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterReference":
+            suggest = "gke_cluster_reference"
+        elif key == "gkeHubClusterReference":
+            suggest = "gke_hub_cluster_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GameServerClusterConnectionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GameServerClusterConnectionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GameServerClusterConnectionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gke_cluster_reference: 'outputs.GkeClusterReferenceResponse',
                  gke_hub_cluster_reference: 'outputs.GkeHubClusterReferenceResponse',
@@ -542,9 +672,6 @@ class GameServerClusterConnectionInfoResponse(dict):
         """
         return pulumi.get(self, "namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GkeClusterReferenceResponse(dict):
@@ -566,9 +693,6 @@ class GkeClusterReferenceResponse(dict):
         The full or partial name of a GKE cluster, using one of the following forms: * `projects/{project}/locations/{location}/clusters/{cluster}` * `locations/{location}/clusters/{cluster}` * `{cluster}` If project and location are not specified, the project and location of the GameServerCluster resource are used to generate the full name of the GKE cluster.
         """
         return pulumi.get(self, "cluster")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -592,9 +716,6 @@ class GkeHubClusterReferenceResponse(dict):
         """
         return pulumi.get(self, "membership")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LabelSelectorResponse(dict):
@@ -617,15 +738,31 @@ class LabelSelectorResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogConfigResponse(dict):
     """
     Specifies what kind of log the caller must write
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudAudit":
+            suggest = "cloud_audit"
+        elif key == "dataAccess":
+            suggest = "data_access"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_audit: 'outputs.CloudAuditOptionsResponse',
                  counter: 'outputs.CounterOptionsResponse',
@@ -664,15 +801,33 @@ class LogConfigResponse(dict):
         """
         return pulumi.get(self, "data_access")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuleResponse(dict):
     """
     A rule to be applied in a Policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "in":
+            suggest = "in_"
+        elif key == "logConfig":
+            suggest = "log_config"
+        elif key == "notIn":
+            suggest = "not_in"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  conditions: Sequence['outputs.ConditionResponse'],
@@ -755,15 +910,29 @@ class RuleResponse(dict):
         """
         return pulumi.get(self, "permissions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScalingConfigResponse(dict):
     """
     Autoscaling config for an Agones fleet.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fleetAutoscalerSpec":
+            suggest = "fleet_autoscaler_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fleet_autoscaler_spec: str,
                  name: str,
@@ -813,15 +982,35 @@ class ScalingConfigResponse(dict):
         """
         return pulumi.get(self, "selectors")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
     The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than the cron_spec + cron_job_duration, the event will be recurring. If only cron_spec + cron_job_duration are specified, the event is effective starting at the local time specified by cron_spec, and is recurring. start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cronJobDuration":
+            suggest = "cron_job_duration"
+        elif key == "cronSpec":
+            suggest = "cron_spec"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cron_job_duration: str,
                  cron_spec: str,
@@ -870,8 +1059,5 @@ class ScheduleResponse(dict):
         The start time of the event.
         """
         return pulumi.get(self, "start_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

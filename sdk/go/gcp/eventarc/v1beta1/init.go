@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:eventarc/v1beta1:Trigger":
-		r, err = NewTrigger(ctx, name, nil, pulumi.URN_(urn))
+		r = &Trigger{}
 	case "gcp-native:eventarc/v1beta1:TriggerIamPolicy":
-		r, err = NewTriggerIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TriggerIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

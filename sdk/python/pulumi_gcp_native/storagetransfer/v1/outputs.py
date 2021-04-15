@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -30,6 +30,25 @@ class AwsAccessKeyResponse(dict):
     """
     AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsAccessKeyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsAccessKeyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsAccessKeyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_key_id: str,
                  secret_access_key: str):
@@ -57,15 +76,31 @@ class AwsAccessKeyResponse(dict):
         """
         return pulumi.get(self, "secret_access_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AwsS3DataResponse(dict):
     """
     An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsAccessKey":
+            suggest = "aws_access_key"
+        elif key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AwsS3DataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AwsS3DataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AwsS3DataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aws_access_key: 'outputs.AwsAccessKeyResponse',
                  bucket_name: str,
@@ -104,15 +139,31 @@ class AwsS3DataResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureBlobStorageDataResponse(dict):
     """
     An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "azureCredentials":
+            suggest = "azure_credentials"
+        elif key == "storageAccount":
+            suggest = "storage_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureBlobStorageDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureBlobStorageDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureBlobStorageDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  azure_credentials: 'outputs.AzureCredentialsResponse',
                  container: str,
@@ -162,15 +213,29 @@ class AzureBlobStorageDataResponse(dict):
         """
         return pulumi.get(self, "storage_account")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AzureCredentialsResponse(dict):
     """
     Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sasToken":
+            suggest = "sas_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AzureCredentialsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AzureCredentialsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AzureCredentialsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sas_token: str):
         """
@@ -186,9 +251,6 @@ class AzureCredentialsResponse(dict):
         Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         """
         return pulumi.get(self, "sas_token")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -234,15 +296,29 @@ class DateResponse(dict):
         """
         return pulumi.get(self, "year")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GcsDataResponse(dict):
     """
     In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcsDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcsDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcsDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str,
                  path: str):
@@ -270,15 +346,29 @@ class GcsDataResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpDataResponse(dict):
     """
     An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "listUrl":
+            suggest = "list_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  list_url: str):
         """
@@ -295,15 +385,33 @@ class HttpDataResponse(dict):
         """
         return pulumi.get(self, "list_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NotificationConfigResponse(dict):
     """
     Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "eventTypes":
+            suggest = "event_types"
+        elif key == "payloadFormat":
+            suggest = "payload_format"
+        elif key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  event_types: Sequence[str],
                  payload_format: str,
@@ -342,15 +450,39 @@ class NotificationConfigResponse(dict):
         """
         return pulumi.get(self, "pubsub_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ObjectConditionsResponse(dict):
     """
     Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludePrefixes":
+            suggest = "exclude_prefixes"
+        elif key == "includePrefixes":
+            suggest = "include_prefixes"
+        elif key == "lastModifiedBefore":
+            suggest = "last_modified_before"
+        elif key == "lastModifiedSince":
+            suggest = "last_modified_since"
+        elif key == "maxTimeElapsedSinceLastModification":
+            suggest = "max_time_elapsed_since_last_modification"
+        elif key == "minTimeElapsedSinceLastModification":
+            suggest = "min_time_elapsed_since_last_modification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ObjectConditionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ObjectConditionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ObjectConditionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exclude_prefixes: Sequence[str],
                  include_prefixes: Sequence[str],
@@ -422,15 +554,37 @@ class ObjectConditionsResponse(dict):
         """
         return pulumi.get(self, "min_time_elapsed_since_last_modification")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
     Transfers can be scheduled to recur or to run just once.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTimeOfDay":
+            suggest = "end_time_of_day"
+        elif key == "repeatInterval":
+            suggest = "repeat_interval"
+        elif key == "scheduleEndDate":
+            suggest = "schedule_end_date"
+        elif key == "scheduleStartDate":
+            suggest = "schedule_start_date"
+        elif key == "startTimeOfDay":
+            suggest = "start_time_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time_of_day: 'outputs.TimeOfDayResponse',
                  repeat_interval: str,
@@ -491,9 +645,6 @@ class ScheduleResponse(dict):
         """
         return pulumi.get(self, "start_time_of_day")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeOfDayResponse(dict):
@@ -549,15 +700,33 @@ class TimeOfDayResponse(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferOptionsResponse(dict):
     """
     TransferOptions define the actions to be performed on objects in a transfer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteObjectsFromSourceAfterTransfer":
+            suggest = "delete_objects_from_source_after_transfer"
+        elif key == "deleteObjectsUniqueInSink":
+            suggest = "delete_objects_unique_in_sink"
+        elif key == "overwriteObjectsAlreadyExistingInSink":
+            suggest = "overwrite_objects_already_existing_in_sink"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delete_objects_from_source_after_transfer: bool,
                  delete_objects_unique_in_sink: bool,
@@ -596,15 +765,41 @@ class TransferOptionsResponse(dict):
         """
         return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransferSpecResponse(dict):
     """
     Configuration for running a transfer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "awsS3DataSource":
+            suggest = "aws_s3_data_source"
+        elif key == "azureBlobStorageDataSource":
+            suggest = "azure_blob_storage_data_source"
+        elif key == "gcsDataSink":
+            suggest = "gcs_data_sink"
+        elif key == "gcsDataSource":
+            suggest = "gcs_data_source"
+        elif key == "httpDataSource":
+            suggest = "http_data_source"
+        elif key == "objectConditions":
+            suggest = "object_conditions"
+        elif key == "transferOptions":
+            suggest = "transfer_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aws_s3_data_source: 'outputs.AwsS3DataResponse',
                  azure_blob_storage_data_source: 'outputs.AzureBlobStorageDataResponse',
@@ -686,8 +881,5 @@ class TransferSpecResponse(dict):
         If the option delete_objects_unique_in_sink is `true` and time-based object conditions such as 'last modification time' are specified, the request fails with an INVALID_ARGUMENT error.
         """
         return pulumi.get(self, "transfer_options")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

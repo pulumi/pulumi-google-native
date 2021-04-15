@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,23 @@ class BoundingPolyResponse(dict):
     """
     A bounding polygon for the detected image annotation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "normalizedVertices":
+            suggest = "normalized_vertices"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BoundingPolyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BoundingPolyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BoundingPolyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  normalized_vertices: Sequence['outputs.NormalizedVertexResponse'],
                  vertices: Sequence['outputs.VertexResponse']):
@@ -48,9 +65,6 @@ class BoundingPolyResponse(dict):
         The bounding polygon vertices.
         """
         return pulumi.get(self, "vertices")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -85,9 +99,6 @@ class KeyValueResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NormalizedVertexResponse(dict):
@@ -120,9 +131,6 @@ class NormalizedVertexResponse(dict):
         Y coordinate.
         """
         return pulumi.get(self, "y")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -168,9 +176,6 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VertexResponse(dict):
@@ -203,8 +208,5 @@ class VertexResponse(dict):
         Y coordinate.
         """
         return pulumi.get(self, "y")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

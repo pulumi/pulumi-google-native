@@ -5,15 +5,283 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NodeGroup']
+__all__ = ['NodeGroupArgs', 'NodeGroup']
+
+@pulumi.input_type
+class NodeGroupArgs:
+    def __init__(__self__, *,
+                 initial_node_count: pulumi.Input[str],
+                 node_group: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 zone: pulumi.Input[str],
+                 autoscaling_policy: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location_hint: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a NodeGroup resource.
+        :param pulumi.Input[str] zone: [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        :param pulumi.Input['NodeGroupAutoscalingPolicyArgs'] autoscaling_policy: Specifies how autoscaling should behave.
+        :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
+        :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
+        :param pulumi.Input[str] id: [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        :param pulumi.Input[str] kind: [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        :param pulumi.Input[str] location_hint: An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        :param pulumi.Input[str] maintenance_policy: Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
+        :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
+        :param pulumi.Input[int] size: [Output Only] The total number of nodes in the node group.
+        """
+        pulumi.set(__self__, "initial_node_count", initial_node_count)
+        pulumi.set(__self__, "node_group", node_group)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "zone", zone)
+        if autoscaling_policy is not None:
+            pulumi.set(__self__, "autoscaling_policy", autoscaling_policy)
+        if creation_timestamp is not None:
+            pulumi.set(__self__, "creation_timestamp", creation_timestamp)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if fingerprint is not None:
+            pulumi.set(__self__, "fingerprint", fingerprint)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if location_hint is not None:
+            pulumi.set(__self__, "location_hint", location_hint)
+        if maintenance_policy is not None:
+            pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_window is not None:
+            pulumi.set(__self__, "maintenance_window", maintenance_window)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_template is not None:
+            pulumi.set(__self__, "node_template", node_template)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+        if size is not None:
+            pulumi.set(__self__, "size", size)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="initialNodeCount")
+    def initial_node_count(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "initial_node_count")
+
+    @initial_node_count.setter
+    def initial_node_count(self, value: pulumi.Input[str]):
+        pulumi.set(self, "initial_node_count", value)
+
+    @property
+    @pulumi.getter(name="nodeGroup")
+    def node_group(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "node_group")
+
+    @node_group.setter
+    def node_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "node_group", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> pulumi.Input[str]:
+        """
+        [Output Only] The name of the zone where the node group resides, such as us-central1-a.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone", value)
+
+    @property
+    @pulumi.getter(name="autoscalingPolicy")
+    def autoscaling_policy(self) -> Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]:
+        """
+        Specifies how autoscaling should behave.
+        """
+        return pulumi.get(self, "autoscaling_policy")
+
+    @autoscaling_policy.setter
+    def autoscaling_policy(self, value: Optional[pulumi.Input['NodeGroupAutoscalingPolicyArgs']]):
+        pulumi.set(self, "autoscaling_policy", value)
+
+    @property
+    @pulumi.getter(name="creationTimestamp")
+    def creation_timestamp(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Creation timestamp in RFC3339 text format.
+        """
+        return pulumi.get(self, "creation_timestamp")
+
+    @creation_timestamp.setter
+    def creation_timestamp(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_timestamp", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        An optional description of this resource. Provide this property when you create the resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def fingerprint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fingerprint")
+
+    @fingerprint.setter
+    def fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] The type of the resource. Always compute#nodeGroup for node group.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="locationHint")
+    def location_hint(self) -> Optional[pulumi.Input[str]]:
+        """
+        An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
+        """
+        return pulumi.get(self, "location_hint")
+
+    @location_hint.setter
+    def location_hint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location_hint", value)
+
+    @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @maintenance_policy.setter
+    def maintenance_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "maintenance_policy", value)
+
+    @property
+    @pulumi.getter(name="maintenanceWindow")
+    def maintenance_window(self) -> Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]:
+        return pulumi.get(self, "maintenance_window")
+
+    @maintenance_window.setter
+    def maintenance_window(self, value: Optional[pulumi.Input['NodeGroupMaintenanceWindowArgs']]):
+        pulumi.set(self, "maintenance_window", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeTemplate")
+    def node_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the node template to create the node group from.
+        """
+        return pulumi.get(self, "node_template")
+
+    @node_template.setter
+    def node_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_template", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output Only] Server-defined URL for the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
+
+    @property
+    @pulumi.getter
+    def size(self) -> Optional[pulumi.Input[int]]:
+        """
+        [Output Only] The total number of nodes in the node group.
+        """
+        return pulumi.get(self, "size")
+
+    @size.setter
+    def size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "size", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
 
 
 class NodeGroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,9 +303,7 @@ class NodeGroup(pulumi.CustomResource):
                  size: Optional[pulumi.Input[int]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a NodeGroup resource in the specified project using the data included in the request.
 
@@ -56,12 +322,49 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[int] size: [Output Only] The total number of nodes in the node group.
         :param pulumi.Input[str] zone: [Output Only] The name of the zone where the node group resides, such as us-central1-a.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NodeGroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a NodeGroup resource in the specified project using the data included in the request.
+
+        :param str resource_name: The name of the resource.
+        :param NodeGroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NodeGroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 autoscaling_policy: Optional[pulumi.Input[pulumi.InputType['NodeGroupAutoscalingPolicyArgs']]] = None,
+                 creation_timestamp: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 fingerprint: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 initial_node_count: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 location_hint: Optional[pulumi.Input[str]] = None,
+                 maintenance_policy: Optional[pulumi.Input[str]] = None,
+                 maintenance_window: Optional[pulumi.Input[pulumi.InputType['NodeGroupMaintenanceWindowArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_group: Optional[pulumi.Input[str]] = None,
+                 node_template: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 size: Optional[pulumi.Input[int]] = None,
+                 status: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -71,34 +374,34 @@ class NodeGroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
-            __props__['autoscaling_policy'] = autoscaling_policy
-            __props__['creation_timestamp'] = creation_timestamp
-            __props__['description'] = description
-            __props__['fingerprint'] = fingerprint
-            __props__['id'] = id
+            __props__.__dict__["autoscaling_policy"] = autoscaling_policy
+            __props__.__dict__["creation_timestamp"] = creation_timestamp
+            __props__.__dict__["description"] = description
+            __props__.__dict__["fingerprint"] = fingerprint
+            __props__.__dict__["id"] = id
             if initial_node_count is None and not opts.urn:
                 raise TypeError("Missing required property 'initial_node_count'")
-            __props__['initial_node_count'] = initial_node_count
-            __props__['kind'] = kind
-            __props__['location_hint'] = location_hint
-            __props__['maintenance_policy'] = maintenance_policy
-            __props__['maintenance_window'] = maintenance_window
-            __props__['name'] = name
+            __props__.__dict__["initial_node_count"] = initial_node_count
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["location_hint"] = location_hint
+            __props__.__dict__["maintenance_policy"] = maintenance_policy
+            __props__.__dict__["maintenance_window"] = maintenance_window
+            __props__.__dict__["name"] = name
             if node_group is None and not opts.urn:
                 raise TypeError("Missing required property 'node_group'")
-            __props__['node_group'] = node_group
-            __props__['node_template'] = node_template
+            __props__.__dict__["node_group"] = node_group
+            __props__.__dict__["node_template"] = node_template
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['self_link'] = self_link
-            __props__['size'] = size
-            __props__['status'] = status
+            __props__.__dict__["project"] = project
+            __props__.__dict__["self_link"] = self_link
+            __props__.__dict__["size"] = size
+            __props__.__dict__["status"] = status
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
-            __props__['zone'] = zone
+            __props__.__dict__["zone"] = zone
         super(NodeGroup, __self__).__init__(
             'gcp-native:compute/v1:NodeGroup',
             resource_name,
@@ -119,22 +422,22 @@ class NodeGroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = NodeGroupArgs.__new__(NodeGroupArgs)
 
-        __props__["autoscaling_policy"] = None
-        __props__["creation_timestamp"] = None
-        __props__["description"] = None
-        __props__["fingerprint"] = None
-        __props__["kind"] = None
-        __props__["location_hint"] = None
-        __props__["maintenance_policy"] = None
-        __props__["maintenance_window"] = None
-        __props__["name"] = None
-        __props__["node_template"] = None
-        __props__["self_link"] = None
-        __props__["size"] = None
-        __props__["status"] = None
-        __props__["zone"] = None
+        __props__.__dict__["autoscaling_policy"] = None
+        __props__.__dict__["creation_timestamp"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["fingerprint"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["location_hint"] = None
+        __props__.__dict__["maintenance_policy"] = None
+        __props__.__dict__["maintenance_window"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["node_template"] = None
+        __props__.__dict__["self_link"] = None
+        __props__.__dict__["size"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["zone"] = None
         return NodeGroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -239,10 +542,4 @@ class NodeGroup(pulumi.CustomResource):
         [Output Only] The name of the zone where the node group resides, such as us-central1-a.
         """
         return pulumi.get(self, "zone")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

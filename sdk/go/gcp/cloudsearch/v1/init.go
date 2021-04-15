@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudsearch/v1:SettingDatasource":
-		r, err = NewSettingDatasource(ctx, name, nil, pulumi.URN_(urn))
+		r = &SettingDatasource{}
 	case "gcp-native:cloudsearch/v1:SettingSearchapplication":
-		r, err = NewSettingSearchapplication(ctx, name, nil, pulumi.URN_(urn))
+		r = &SettingSearchapplication{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

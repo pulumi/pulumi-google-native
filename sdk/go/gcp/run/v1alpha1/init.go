@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:run/v1alpha1:Domainmapping":
-		r, err = NewDomainmapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &Domainmapping{}
 	case "gcp-native:run/v1alpha1:NamespaceDomainmapping":
-		r, err = NewNamespaceDomainmapping(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceDomainmapping{}
 	case "gcp-native:run/v1alpha1:NamespaceJob":
-		r, err = NewNamespaceJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceJob{}
 	case "gcp-native:run/v1alpha1:NamespaceService":
-		r, err = NewNamespaceService(ctx, name, nil, pulumi.URN_(urn))
+		r = &NamespaceService{}
 	case "gcp-native:run/v1alpha1:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "gcp-native:run/v1alpha1:ServiceIamPolicy":
-		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

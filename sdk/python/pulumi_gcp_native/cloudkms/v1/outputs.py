@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -27,6 +27,23 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -54,15 +71,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -89,9 +122,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -137,15 +167,33 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertificateChainsResponse(dict):
     """
     Certificate chains needed to verify the attestation. Certificates in chains are PEM-encoded and are ordered based on https://tools.ietf.org/html/rfc5246#section-7.4.2.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caviumCerts":
+            suggest = "cavium_certs"
+        elif key == "googleCardCerts":
+            suggest = "google_card_certs"
+        elif key == "googlePartitionCerts":
+            suggest = "google_partition_certs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateChainsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateChainsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateChainsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cavium_certs: Sequence[str],
                  google_card_certs: Sequence[str],
@@ -184,15 +232,45 @@ class CertificateChainsResponse(dict):
         """
         return pulumi.get(self, "google_partition_certs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CryptoKeyVersionResponse(dict):
     """
     A CryptoKeyVersion represents an individual cryptographic key, and the associated key material. An ENABLED version can be used for cryptographic operations. For security reasons, the raw cryptographic key material represented by a CryptoKeyVersion can never be viewed or exported. It can only be used to encrypt, decrypt, or sign data when an authorized user or application invokes Cloud KMS.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "destroyEventTime":
+            suggest = "destroy_event_time"
+        elif key == "destroyTime":
+            suggest = "destroy_time"
+        elif key == "externalProtectionLevelOptions":
+            suggest = "external_protection_level_options"
+        elif key == "generateTime":
+            suggest = "generate_time"
+        elif key == "importFailureReason":
+            suggest = "import_failure_reason"
+        elif key == "importJob":
+            suggest = "import_job"
+        elif key == "importTime":
+            suggest = "import_time"
+        elif key == "protectionLevel":
+            suggest = "protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  attestation: 'outputs.KeyOperationAttestationResponse',
@@ -341,15 +419,29 @@ class CryptoKeyVersionResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CryptoKeyVersionTemplateResponse(dict):
     """
     A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "protectionLevel":
+            suggest = "protection_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyVersionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyVersionTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyVersionTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  algorithm: str,
                  protection_level: str):
@@ -376,9 +468,6 @@ class CryptoKeyVersionTemplateResponse(dict):
         ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
         """
         return pulumi.get(self, "protection_level")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -435,15 +524,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExternalProtectionLevelOptionsResponse(dict):
     """
     ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalKeyUri":
+            suggest = "external_key_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalProtectionLevelOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalProtectionLevelOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalProtectionLevelOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  external_key_uri: str):
         """
@@ -460,15 +563,29 @@ class ExternalProtectionLevelOptionsResponse(dict):
         """
         return pulumi.get(self, "external_key_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KeyOperationAttestationResponse(dict):
     """
     Contains an HSM-generated attestation about a key operation. For more information, see [Verifying attestations] (https://cloud.google.com/kms/docs/attest-key).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certChains":
+            suggest = "cert_chains"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KeyOperationAttestationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KeyOperationAttestationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KeyOperationAttestationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_chains: 'outputs.CertificateChainsResponse',
                  content: str,
@@ -507,9 +624,6 @@ class KeyOperationAttestationResponse(dict):
         """
         return pulumi.get(self, "format")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WrappingPublicKeyResponse(dict):
@@ -531,8 +645,5 @@ class WrappingPublicKeyResponse(dict):
         The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13).
         """
         return pulumi.get(self, "pem")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

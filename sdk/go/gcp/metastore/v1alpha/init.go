@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:metastore/v1alpha:Service":
-		r, err = NewService(ctx, name, nil, pulumi.URN_(urn))
+		r = &Service{}
 	case "gcp-native:metastore/v1alpha:ServiceBackup":
-		r, err = NewServiceBackup(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceBackup{}
 	case "gcp-native:metastore/v1alpha:ServiceIamPolicy":
-		r, err = NewServiceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceIamPolicy{}
 	case "gcp-native:metastore/v1alpha:ServiceMetadataImport":
-		r, err = NewServiceMetadataImport(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceMetadataImport{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

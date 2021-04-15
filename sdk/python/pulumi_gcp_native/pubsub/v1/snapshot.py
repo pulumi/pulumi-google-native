@@ -5,13 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Snapshot']
+__all__ = ['SnapshotArgs', 'Snapshot']
+
+@pulumi.input_type
+class SnapshotArgs:
+    def __init__(__self__, *,
+                 projects_id: pulumi.Input[str],
+                 snapshots_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 subscription: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Snapshot resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
+        :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
+        """
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "snapshots_id", snapshots_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if subscription is not None:
+            pulumi.set(__self__, "subscription", subscription)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="snapshotsId")
+    def snapshots_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "snapshots_id")
+
+    @snapshots_id.setter
+    def snapshots_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "snapshots_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        See Creating and managing labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
+        """
+        return pulumi.get(self, "subscription")
+
+    @subscription.setter
+    def subscription(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription", value)
 
 
 class Snapshot(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -19,9 +81,7 @@ class Snapshot(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  snapshots_id: Optional[pulumi.Input[str]] = None,
                  subscription: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
 
@@ -30,12 +90,35 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
         :param pulumi.Input[str] subscription: Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SnapshotArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a snapshot from the requested subscription. Snapshots are used in [Seek](https://cloud.google.com/pubsub/docs/replay-overview) operations, which allow you to manage message acknowledgments in bulk. That is, you can set the acknowledgment state of messages in an existing subscription to the state captured by a snapshot. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Snapshot object. Note that for REST API requests, you must specify a name in the request.
+
+        :param str resource_name: The name of the resource.
+        :param SnapshotArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SnapshotArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 snapshots_id: Optional[pulumi.Input[str]] = None,
+                 subscription: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -45,19 +128,19 @@ class Snapshot(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
-            __props__['labels'] = labels
+            __props__.__dict__["labels"] = labels
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if snapshots_id is None and not opts.urn:
                 raise TypeError("Missing required property 'snapshots_id'")
-            __props__['snapshots_id'] = snapshots_id
-            __props__['subscription'] = subscription
-            __props__['expire_time'] = None
-            __props__['name'] = None
-            __props__['topic'] = None
+            __props__.__dict__["snapshots_id"] = snapshots_id
+            __props__.__dict__["subscription"] = subscription
+            __props__.__dict__["expire_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["topic"] = None
         super(Snapshot, __self__).__init__(
             'gcp-native:pubsub/v1:Snapshot',
             resource_name,
@@ -78,12 +161,12 @@ class Snapshot(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SnapshotArgs.__new__(SnapshotArgs)
 
-        __props__["expire_time"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["topic"] = None
+        __props__.__dict__["expire_time"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["topic"] = None
         return Snapshot(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -117,10 +200,4 @@ class Snapshot(pulumi.CustomResource):
         The name of the topic from which this snapshot is retaining messages.
         """
         return pulumi.get(self, "topic")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

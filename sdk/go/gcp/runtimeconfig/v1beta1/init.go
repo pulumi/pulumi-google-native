@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:runtimeconfig/v1beta1:Config":
-		r, err = NewConfig(ctx, name, nil, pulumi.URN_(urn))
+		r = &Config{}
 	case "gcp-native:runtimeconfig/v1beta1:ConfigIamPolicy":
-		r, err = NewConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConfigIamPolicy{}
 	case "gcp-native:runtimeconfig/v1beta1:ConfigVariable":
-		r, err = NewConfigVariable(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConfigVariable{}
 	case "gcp-native:runtimeconfig/v1beta1:ConfigWaiter":
-		r, err = NewConfigWaiter(ctx, name, nil, pulumi.URN_(urn))
+		r = &ConfigWaiter{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

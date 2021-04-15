@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -96,15 +96,31 @@ class GoogleCloudDialogflowCxV3beta1AudioInputResponse(dict):
         """
         return pulumi.get(self, "config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ConversationTurnResponse(dict):
     """
     One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userInput":
+            suggest = "user_input"
+        elif key == "virtualAgentOutput":
+            suggest = "virtual_agent_output"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ConversationTurnResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  user_input: 'outputs.GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse',
                  virtual_agent_output: 'outputs.GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse'):
@@ -132,15 +148,31 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnResponse(dict):
         """
         return pulumi.get(self, "virtual_agent_output")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
     """
     The input from the human user.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "injectedParameters":
+            suggest = "injected_parameters"
+        elif key == "isWebhookEnabled":
+            suggest = "is_webhook_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  injected_parameters: Mapping[str, str],
                  input: 'outputs.GoogleCloudDialogflowCxV3beta1QueryInputResponse',
@@ -179,15 +211,37 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
         """
         return pulumi.get(self, "is_webhook_enabled")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse(dict):
     """
     The output from the virtual agent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentPage":
+            suggest = "current_page"
+        elif key == "diagnosticInfo":
+            suggest = "diagnostic_info"
+        elif key == "sessionParameters":
+            suggest = "session_parameters"
+        elif key == "textResponses":
+            suggest = "text_responses"
+        elif key == "triggeredIntent":
+            suggest = "triggered_intent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  current_page: 'outputs.GoogleCloudDialogflowCxV3beta1PageResponse',
                  diagnostic_info: Mapping[str, str],
@@ -270,15 +324,29 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse(d
         """
         return pulumi.get(self, "triggered_intent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1DtmfInputResponse(dict):
     """
     Represents the input for dtmf event.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "finishDigit":
+            suggest = "finish_digit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1DtmfInputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1DtmfInputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1DtmfInputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  digits: str,
                  finish_digit: str):
@@ -305,9 +373,6 @@ class GoogleCloudDialogflowCxV3beta1DtmfInputResponse(dict):
         The finish digit (if any).
         """
         return pulumi.get(self, "finish_digit")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -342,9 +407,6 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse(dict):
@@ -366,9 +428,6 @@ class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse(dict):
         Required. The word or phrase to be excluded.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -392,15 +451,33 @@ class GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1EventHandlerResponse(dict):
     """
     An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1EventHandlerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1EventHandlerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1EventHandlerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  event: str,
                  name: str,
@@ -461,9 +538,6 @@ class GoogleCloudDialogflowCxV3beta1EventHandlerResponse(dict):
         """
         return pulumi.get(self, "trigger_fulfillment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1EventInputResponse(dict):
@@ -486,15 +560,29 @@ class GoogleCloudDialogflowCxV3beta1EventInputResponse(dict):
         """
         return pulumi.get(self, "event")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse(dict):
     """
     Definition of the experiment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "versionVariants":
+            suggest = "version_variants"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition: str,
                  version_variants: 'outputs.GoogleCloudDialogflowCxV3beta1VersionVariantsResponse'):
@@ -522,15 +610,33 @@ class GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse(dict):
         """
         return pulumi.get(self, "version_variants")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse(dict):
     """
     A confidence interval is a range of possible values for the experiment objective you are trying to measure.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceLevel":
+            suggest = "confidence_level"
+        elif key == "lowerBound":
+            suggest = "lower_bound"
+        elif key == "upperBound":
+            suggest = "upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  confidence_level: float,
                  lower_bound: float,
@@ -580,15 +686,31 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse(d
         """
         return pulumi.get(self, "upper_bound")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse(dict):
     """
     Metric and corresponding confidence intervals.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "confidenceInterval":
+            suggest = "confidence_interval"
+        elif key == "countType":
+            suggest = "count_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  confidence_interval: 'outputs.GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalResponse',
                  count: float,
@@ -649,15 +771,31 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ExperimentResultResponse(dict):
     """
     The inference result which includes an objective metric to optimize and the confidence interval.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastUpdateTime":
+            suggest = "last_update_time"
+        elif key == "versionMetrics":
+            suggest = "version_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ExperimentResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_update_time: str,
                  version_metrics: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse']):
@@ -685,15 +823,29 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultResponse(dict):
         """
         return pulumi.get(self, "version_metrics")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse(dict):
     """
     Version variant and associated metrics.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sessionCount":
+            suggest = "session_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  metrics: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ExperimentResultMetricResponse'],
                  session_count: int,
@@ -732,15 +884,31 @@ class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsResponse(dict)
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse(dict):
     """
     Configuration for how the filling of a parameter should be handled.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialPromptFulfillment":
+            suggest = "initial_prompt_fulfillment"
+        elif key == "repromptEventHandlers":
+            suggest = "reprompt_event_handlers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  initial_prompt_fulfillment: 'outputs.GoogleCloudDialogflowCxV3beta1FulfillmentResponse',
                  reprompt_event_handlers: Sequence['outputs.GoogleCloudDialogflowCxV3beta1EventHandlerResponse']):
@@ -768,15 +936,37 @@ class GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse(dict):
         """
         return pulumi.get(self, "reprompt_event_handlers")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FormParameterResponse(dict):
     """
     Represents a form parameter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "entityType":
+            suggest = "entity_type"
+        elif key == "fillBehavior":
+            suggest = "fill_behavior"
+        elif key == "isList":
+            suggest = "is_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1FormParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1FormParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1FormParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_value: Any,
                  display_name: str,
@@ -859,9 +1049,6 @@ class GoogleCloudDialogflowCxV3beta1FormParameterResponse(dict):
         """
         return pulumi.get(self, "required")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FormResponse(dict):
@@ -884,15 +1071,29 @@ class GoogleCloudDialogflowCxV3beta1FormResponse(dict):
         """
         return pulumi.get(self, "parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse(dict):
     """
     The list of messages or conditional cases to activate for this case.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalCases":
+            suggest = "additional_cases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  additional_cases: 'outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse',
                  message: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse'):
@@ -920,15 +1121,29 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentRe
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse(dict):
     """
     Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be selected and evaluated recursively.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caseContent":
+            suggest = "case_content"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  case_content: Sequence['outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentResponse'],
                  condition: str):
@@ -956,9 +1171,6 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseResponse(dict
         """
         return pulumi.get(self, "condition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse(dict):
@@ -981,15 +1193,31 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse(dict):
         """
         return pulumi.get(self, "cases")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
     """
     A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionalCases":
+            suggest = "conditional_cases"
+        elif key == "setParameterActions":
+            suggest = "set_parameter_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1FulfillmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1FulfillmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conditional_cases: Sequence['outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse'],
                  messages: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse'],
@@ -1050,9 +1278,6 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
         """
         return pulumi.get(self, "webhook")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse(dict):
@@ -1086,15 +1311,39 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse(dict):
     """
     Instructs the speech recognizer on how to process the audio content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "audioEncoding":
+            suggest = "audio_encoding"
+        elif key == "enableWordInfo":
+            suggest = "enable_word_info"
+        elif key == "modelVariant":
+            suggest = "model_variant"
+        elif key == "phraseHints":
+            suggest = "phrase_hints"
+        elif key == "sampleRateHertz":
+            suggest = "sample_rate_hertz"
+        elif key == "singleUtterance":
+            suggest = "single_utterance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audio_encoding: str,
                  enable_word_info: bool,
@@ -1177,9 +1426,6 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse(dict):
         """
         return pulumi.get(self, "single_utterance")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentInputResponse(dict):
@@ -1202,15 +1448,31 @@ class GoogleCloudDialogflowCxV3beta1IntentInputResponse(dict):
         """
         return pulumi.get(self, "intent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentParameterResponse(dict):
     """
     Represents an intent parameter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityType":
+            suggest = "entity_type"
+        elif key == "isList":
+            suggest = "is_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1IntentParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  entity_type: str,
                  is_list: bool,
@@ -1249,15 +1511,33 @@ class GoogleCloudDialogflowCxV3beta1IntentParameterResponse(dict):
         """
         return pulumi.get(self, "redact")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentResponse(dict):
     """
     An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "isFallback":
+            suggest = "is_fallback"
+        elif key == "trainingPhrases":
+            suggest = "training_phrases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1IntentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -1351,15 +1631,29 @@ class GoogleCloudDialogflowCxV3beta1IntentResponse(dict):
         """
         return pulumi.get(self, "training_phrases")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse(dict):
     """
     Represents a part of a training phrase.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterId":
+            suggest = "parameter_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parameter_id: str,
                  text: str):
@@ -1387,15 +1681,29 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse(dict):
     """
     Represents an example that the agent is trained on to identify the intent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "repeatCount":
+            suggest = "repeat_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  parts: Sequence['outputs.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse'],
                  repeat_count: int):
@@ -1423,15 +1731,33 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse(dict):
         """
         return pulumi.get(self, "repeat_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1NluSettingsResponse(dict):
     """
     Settings related to NLU.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "classificationThreshold":
+            suggest = "classification_threshold"
+        elif key == "modelTrainingMode":
+            suggest = "model_training_mode"
+        elif key == "modelType":
+            suggest = "model_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1NluSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1NluSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1NluSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  classification_threshold: float,
                  model_training_mode: str,
@@ -1470,15 +1796,37 @@ class GoogleCloudDialogflowCxV3beta1NluSettingsResponse(dict):
         """
         return pulumi.get(self, "model_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1PageResponse(dict):
     """
     A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "entryFulfillment":
+            suggest = "entry_fulfillment"
+        elif key == "eventHandlers":
+            suggest = "event_handlers"
+        elif key == "transitionRouteGroups":
+            suggest = "transition_route_groups"
+        elif key == "transitionRoutes":
+            suggest = "transition_routes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1PageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1PageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1PageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str,
                  entry_fulfillment: 'outputs.GoogleCloudDialogflowCxV3beta1FulfillmentResponse',
@@ -1561,15 +1909,29 @@ class GoogleCloudDialogflowCxV3beta1PageResponse(dict):
         """
         return pulumi.get(self, "transition_routes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1QueryInputResponse(dict):
     """
     Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1QueryInputResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1QueryInputResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1QueryInputResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audio: 'outputs.GoogleCloudDialogflowCxV3beta1AudioInputResponse',
                  dtmf: 'outputs.GoogleCloudDialogflowCxV3beta1DtmfInputResponse',
@@ -1641,9 +2003,6 @@ class GoogleCloudDialogflowCxV3beta1QueryInputResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse(dict):
@@ -1666,9 +2025,6 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse(d
         """
         return pulumi.get(self, "metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse(dict):
@@ -1680,9 +2036,6 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse(dict):
         Indicates that interaction with the Dialogflow agent has ended. This message is generated by Dialogflow only and not supposed to be defined by the user.
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1706,9 +2059,6 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoffResponse(dict
         """
         return pulumi.get(self, "metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse(dict):
@@ -1731,15 +2081,29 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse(dict):
         """
         return pulumi.get(self, "segments")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse(dict):
     """
     Represents one segment of audio.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_playback_interruption: bool,
                  audio: str,
@@ -1778,15 +2142,29 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegmentResponse(dic
         """
         return pulumi.get(self, "uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse(dict):
     """
     A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_playback_interruption: bool,
                  ssml: str,
@@ -1825,15 +2203,31 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponse(dict)
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse(dict):
     """
     Specifies an audio clip to be played by the client as part of the response.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+        elif key == "audioUri":
+            suggest = "audio_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_playback_interruption: bool,
                  audio_uri: str):
@@ -1861,15 +2255,39 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse(dict):
         """
         return pulumi.get(self, "audio_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
     """
     Represents a response message that can be returned by a conversational agent. Response messages are also used for output audio synthesis. The approach is as follows: * If at least one OutputAudioText response is present, then all OutputAudioText responses are linearly concatenated, and the result is used for output audio synthesis. * If the OutputAudioText responses are a mixture of text and SSML, then the concatenated result is treated as SSML; otherwise, the result is treated as either text or SSML as appropriate. The agent designer should ideally use either text or SSML consistently throughout the bot design. * Otherwise, all Text responses are linearly concatenated, and the result is used for output audio synthesis. This approach allows for more sophisticated user experience scenarios, where the text displayed to the user may differ from what is heard.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationSuccess":
+            suggest = "conversation_success"
+        elif key == "endInteraction":
+            suggest = "end_interaction"
+        elif key == "liveAgentHandoff":
+            suggest = "live_agent_handoff"
+        elif key == "mixedAudio":
+            suggest = "mixed_audio"
+        elif key == "outputAudioText":
+            suggest = "output_audio_text"
+        elif key == "playAudio":
+            suggest = "play_audio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conversation_success: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccessResponse',
                  end_interaction: 'outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteractionResponse',
@@ -1963,15 +2381,29 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse(dict):
     """
     The text response message.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowPlaybackInterruption":
+            suggest = "allow_playback_interruption"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_playback_interruption: bool,
                  text: Sequence[str]):
@@ -1999,15 +2431,29 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse(dict):
     """
     Settings related to speech recognition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableSpeechAdaptation":
+            suggest = "enable_speech_adaptation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_speech_adaptation: bool):
         """
@@ -2024,15 +2470,33 @@ class GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse(dict):
         """
         return pulumi.get(self, "enable_speech_adaptation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TestCaseResultResponse(dict):
     """
     Represents a result from running a test case in an agent environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conversationTurns":
+            suggest = "conversation_turns"
+        elif key == "testResult":
+            suggest = "test_result"
+        elif key == "testTime":
+            suggest = "test_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1TestCaseResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1TestCaseResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  conversation_turns: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ConversationTurnResponse'],
                  environment: str,
@@ -2093,15 +2557,29 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResultResponse(dict):
         """
         return pulumi.get(self, "test_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TestConfigResponse(dict):
     """
     Represents configurations for a test case.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trackingParameters":
+            suggest = "tracking_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1TestConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1TestConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1TestConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  flow: str,
                  tracking_parameters: Sequence[str]):
@@ -2128,9 +2606,6 @@ class GoogleCloudDialogflowCxV3beta1TestConfigResponse(dict):
         Session parameters to be compared when calculating differences.
         """
         return pulumi.get(self, "tracking_parameters")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2165,9 +2640,6 @@ class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TextInputResponse(dict):
@@ -2190,15 +2662,33 @@ class GoogleCloudDialogflowCxV3beta1TextInputResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1TransitionRouteResponse(dict):
     """
     A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetFlow":
+            suggest = "target_flow"
+        elif key == "targetPage":
+            suggest = "target_page"
+        elif key == "triggerFulfillment":
+            suggest = "trigger_fulfillment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1TransitionRouteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1TransitionRouteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition: str,
                  intent: str,
@@ -2270,15 +2760,31 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteResponse(dict):
         """
         return pulumi.get(self, "trigger_fulfillment")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse(dict):
     """
     The history of variants update.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+        elif key == "versionVariants":
+            suggest = "version_variants"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  update_time: str,
                  version_variants: 'outputs.GoogleCloudDialogflowCxV3beta1VersionVariantsResponse'):
@@ -2306,9 +2812,6 @@ class GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse(dict):
         """
         return pulumi.get(self, "version_variants")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse(dict):
@@ -2331,15 +2834,31 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsResponse(dict):
         """
         return pulumi.get(self, "variants")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse(dict):
     """
     A single flow version with specified traffic allocation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isControlGroup":
+            suggest = "is_control_group"
+        elif key == "trafficAllocation":
+            suggest = "traffic_allocation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_control_group: bool,
                  traffic_allocation: float,
@@ -2378,15 +2897,29 @@ class GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse(dict):
     """
     Represents configuration for a generic web service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestHeaders":
+            suggest = "request_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  password: str,
                  request_headers: Mapping[str, str],
@@ -2436,9 +2969,6 @@ class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleRpcStatusResponse(dict):
@@ -2482,8 +3012,5 @@ class GoogleRpcStatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

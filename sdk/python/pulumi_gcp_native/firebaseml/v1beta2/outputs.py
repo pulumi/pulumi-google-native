@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,23 @@ class ModelStateResponse(dict):
     """
     State common to all model types. Includes publishing and validation information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "validationError":
+            suggest = "validation_error"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  published: bool,
                  validation_error: 'outputs.StatusResponse'):
@@ -47,9 +64,6 @@ class ModelStateResponse(dict):
         Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
         """
         return pulumi.get(self, "validation_error")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -117,9 +131,6 @@ class OperationResponse(dict):
         """
         return pulumi.get(self, "response")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatusResponse(dict):
@@ -164,15 +175,33 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TfLiteModelResponse(dict):
     """
     Information that is specific to TfLite models.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "automlModel":
+            suggest = "automl_model"
+        elif key == "gcsTfliteUri":
+            suggest = "gcs_tflite_uri"
+        elif key == "sizeBytes":
+            suggest = "size_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TfLiteModelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TfLiteModelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TfLiteModelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  automl_model: str,
                  gcs_tflite_uri: str,
@@ -210,8 +239,5 @@ class TfLiteModelResponse(dict):
         The size of the TFLite model
         """
         return pulumi.get(self, "size_bytes")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

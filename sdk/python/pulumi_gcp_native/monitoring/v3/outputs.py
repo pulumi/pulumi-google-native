@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -53,6 +53,29 @@ class AggregationResponse(dict):
     """
     Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alignmentPeriod":
+            suggest = "alignment_period"
+        elif key == "crossSeriesReducer":
+            suggest = "cross_series_reducer"
+        elif key == "groupByFields":
+            suggest = "group_by_fields"
+        elif key == "perSeriesAligner":
+            suggest = "per_series_aligner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alignment_period: str,
                  cross_series_reducer: str,
@@ -102,15 +125,29 @@ class AggregationResponse(dict):
         """
         return pulumi.get(self, "per_series_aligner")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineResponse(dict):
     """
     App Engine service. Learn more at https://cloud.google.com/appengine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "moduleId":
+            suggest = "module_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  module_id: str):
         """
@@ -127,9 +164,6 @@ class AppEngineResponse(dict):
         """
         return pulumi.get(self, "module_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AvailabilityCriteriaResponse(dict):
@@ -141,9 +175,6 @@ class AvailabilityCriteriaResponse(dict):
         Future parameters for the availability SLI.
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -177,9 +208,6 @@ class BasicAuthenticationResponse(dict):
         The username to use when authenticating with the HTTP server.
         """
         return pulumi.get(self, "username")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -247,9 +275,6 @@ class BasicSliResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudEndpointsResponse(dict):
@@ -272,15 +297,33 @@ class CloudEndpointsResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterIstioResponse(dict):
     """
     Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "serviceNamespace":
+            suggest = "service_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterIstioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterIstioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterIstioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_name: str,
                  location: str,
@@ -330,15 +373,35 @@ class ClusterIstioResponse(dict):
         """
         return pulumi.get(self, "service_namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConditionResponse(dict):
     """
     A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "conditionAbsent":
+            suggest = "condition_absent"
+        elif key == "conditionMonitoringQueryLanguage":
+            suggest = "condition_monitoring_query_language"
+        elif key == "conditionThreshold":
+            suggest = "condition_threshold"
+        elif key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  condition_absent: 'outputs.MetricAbsenceResponse',
                  condition_monitoring_query_language: 'outputs.MonitoringQueryLanguageConditionResponse',
@@ -399,9 +462,6 @@ class ConditionResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContentMatcherResponse(dict):
@@ -435,9 +495,6 @@ class ContentMatcherResponse(dict):
         """
         return pulumi.get(self, "matcher")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomResponse(dict):
@@ -450,15 +507,29 @@ class CustomResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DistributionCutResponse(dict):
     """
     A DistributionCut defines a TimeSeries and thresholds used for measuring good service and total service. The TimeSeries must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. The computed good_service will be the count of values x in the Distribution such that range.min <= x < range.max.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionFilter":
+            suggest = "distribution_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DistributionCutResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DistributionCutResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DistributionCutResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_filter: str,
                  range: 'outputs.GoogleMonitoringV3RangeResponse'):
@@ -486,15 +557,29 @@ class DistributionCutResponse(dict):
         """
         return pulumi.get(self, "range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DocumentationResponse(dict):
     """
     A content string and a MIME type that describes the content string's format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DocumentationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DocumentationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DocumentationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  content: str,
                  mime_type: str):
@@ -521,9 +606,6 @@ class DocumentationResponse(dict):
         The format of the content field. Presently, only the value "text/markdown" is supported. See Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.
         """
         return pulumi.get(self, "mime_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -558,15 +640,39 @@ class GoogleMonitoringV3RangeResponse(dict):
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpCheckResponse(dict):
     """
     Information involved in an HTTP/HTTPS Uptime check request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authInfo":
+            suggest = "auth_info"
+        elif key == "contentType":
+            suggest = "content_type"
+        elif key == "maskHeaders":
+            suggest = "mask_headers"
+        elif key == "requestMethod":
+            suggest = "request_method"
+        elif key == "useSsl":
+            suggest = "use_ssl"
+        elif key == "validateSsl":
+            suggest = "validate_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auth_info: 'outputs.BasicAuthenticationResponse',
                  body: str,
@@ -682,15 +788,33 @@ class HttpCheckResponse(dict):
         """
         return pulumi.get(self, "validate_ssl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InternalCheckerResponse(dict):
     """
     An internal checker allows Uptime checks to run on private/internal GCP resources.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "gcpZone":
+            suggest = "gcp_zone"
+        elif key == "peerProjectId":
+            suggest = "peer_project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InternalCheckerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InternalCheckerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InternalCheckerResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str,
                  gcp_zone: str,
@@ -762,15 +886,33 @@ class InternalCheckerResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IstioCanonicalServiceResponse(dict):
     """
     Canonical service scoped to an Istio mesh. Anthos clusters running ASM >= 1.6.8 will have their services ingested as this type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalService":
+            suggest = "canonical_service"
+        elif key == "canonicalServiceNamespace":
+            suggest = "canonical_service_namespace"
+        elif key == "meshUid":
+            suggest = "mesh_uid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IstioCanonicalServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IstioCanonicalServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IstioCanonicalServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  canonical_service: str,
                  canonical_service_namespace: str,
@@ -809,15 +951,29 @@ class IstioCanonicalServiceResponse(dict):
         """
         return pulumi.get(self, "mesh_uid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LabelDescriptorResponse(dict):
     """
     A description of a label.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LabelDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LabelDescriptorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LabelDescriptorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  key: str,
@@ -856,9 +1012,6 @@ class LabelDescriptorResponse(dict):
         """
         return pulumi.get(self, "value_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LatencyCriteriaResponse(dict):
@@ -881,15 +1034,33 @@ class LatencyCriteriaResponse(dict):
         """
         return pulumi.get(self, "threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MeshIstioResponse(dict):
     """
     Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "meshUid":
+            suggest = "mesh_uid"
+        elif key == "serviceName":
+            suggest = "service_name"
+        elif key == "serviceNamespace":
+            suggest = "service_namespace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MeshIstioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MeshIstioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MeshIstioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mesh_uid: str,
                  service_name: str,
@@ -927,9 +1098,6 @@ class MeshIstioResponse(dict):
         The namespace of the Istio service underlying this service. Corresponds to the destination_service_namespace metric label in Istio metrics.
         """
         return pulumi.get(self, "service_namespace")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -986,15 +1154,31 @@ class MetricAbsenceResponse(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDescriptorMetadataResponse(dict):
     """
     Additional annotations that can be used to guide the usage of a metric.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestDelay":
+            suggest = "ingest_delay"
+        elif key == "samplePeriod":
+            suggest = "sample_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDescriptorMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDescriptorMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDescriptorMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingest_delay: str,
                  sample_period: str):
@@ -1022,15 +1206,29 @@ class MetricDescriptorMetadataResponse(dict):
         """
         return pulumi.get(self, "sample_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricRangeResponse(dict):
     """
     A MetricRange is used when each window is good when the value x of a single TimeSeries satisfies range.min <= x < range.max. The provided TimeSeries must have ValueType = INT64 or ValueType = DOUBLE and MetricKind = GAUGE.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeSeries":
+            suggest = "time_series"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  range: 'outputs.GoogleMonitoringV3RangeResponse',
                  time_series: str):
@@ -1058,15 +1256,33 @@ class MetricRangeResponse(dict):
         """
         return pulumi.get(self, "time_series")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricThresholdResponse(dict):
     """
     A condition type that compares a collection of time series against a threshold.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "denominatorAggregations":
+            suggest = "denominator_aggregations"
+        elif key == "denominatorFilter":
+            suggest = "denominator_filter"
+        elif key == "thresholdValue":
+            suggest = "threshold_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricThresholdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricThresholdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricThresholdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aggregations: Sequence['outputs.AggregationResponse'],
                  comparison: str,
@@ -1160,9 +1376,6 @@ class MetricThresholdResponse(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonitoredResourceResponse(dict):
@@ -1195,9 +1408,6 @@ class MonitoredResourceResponse(dict):
         Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1243,15 +1453,31 @@ class MonitoringQueryLanguageConditionResponse(dict):
         """
         return pulumi.get(self, "trigger")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MutationRecordResponse(dict):
     """
     Describes a change made to a configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mutateTime":
+            suggest = "mutate_time"
+        elif key == "mutatedBy":
+            suggest = "mutated_by"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MutationRecordResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MutationRecordResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MutationRecordResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mutate_time: str,
                  mutated_by: str):
@@ -1279,15 +1505,29 @@ class MutationRecordResponse(dict):
         """
         return pulumi.get(self, "mutated_by")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PerformanceThresholdResponse(dict):
     """
     A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicSliPerformance":
+            suggest = "basic_sli_performance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PerformanceThresholdResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PerformanceThresholdResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PerformanceThresholdResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_sli_performance: 'outputs.BasicSliResponse',
                  performance: 'outputs.RequestBasedSliResponse',
@@ -1326,15 +1566,31 @@ class PerformanceThresholdResponse(dict):
         """
         return pulumi.get(self, "threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RequestBasedSliResponse(dict):
     """
     Service Level Indicators for which atomic units of service are counted directly.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "distributionCut":
+            suggest = "distribution_cut"
+        elif key == "goodTotalRatio":
+            suggest = "good_total_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RequestBasedSliResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RequestBasedSliResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RequestBasedSliResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  distribution_cut: 'outputs.DistributionCutResponse',
                  good_total_ratio: 'outputs.TimeSeriesRatioResponse'):
@@ -1362,15 +1618,31 @@ class RequestBasedSliResponse(dict):
         """
         return pulumi.get(self, "good_total_ratio")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceGroupResponse(dict):
     """
     The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupId":
+            suggest = "group_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResourceGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResourceGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResourceGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  group_id: str,
                  resource_type: str):
@@ -1398,15 +1670,33 @@ class ResourceGroupResponse(dict):
         """
         return pulumi.get(self, "resource_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceLevelIndicatorResponse(dict):
     """
     A Service-Level Indicator (SLI) describes the "performance" of a service. For some services, the SLI is well-defined. In such cases, the SLI can be described easily by referencing the well-known SLI and providing the needed parameters. Alternatively, a "custom" SLI can be defined with a query to the underlying metric store. An SLI is defined to be good_service / total_service over any queried time interval. The value of performance always falls into the range 0 <= performance <= 1. A custom SLI describes how to compute this ratio, whether this is by dividing values from a pair of time series, cutting a Distribution into good and bad counts, or counting time windows in which the service complies with a criterion. For separation of concerns, a single Service-Level Indicator measures performance for only one aspect of service quality, such as fraction of successful queries or fast-enough queries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicSli":
+            suggest = "basic_sli"
+        elif key == "requestBased":
+            suggest = "request_based"
+        elif key == "windowsBased":
+            suggest = "windows_based"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceLevelIndicatorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceLevelIndicatorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceLevelIndicatorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_sli: 'outputs.BasicSliResponse',
                  request_based: 'outputs.RequestBasedSliResponse',
@@ -1444,9 +1734,6 @@ class ServiceLevelIndicatorResponse(dict):
         Windows-based SLIs
         """
         return pulumi.get(self, "windows_based")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1492,9 +1779,6 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TcpCheckResponse(dict):
@@ -1517,15 +1801,29 @@ class TcpCheckResponse(dict):
         """
         return pulumi.get(self, "port")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TelemetryResponse(dict):
     """
     Configuration for how to query telemetry on a Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceName":
+            suggest = "resource_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_name: str):
         """
@@ -1542,15 +1840,33 @@ class TelemetryResponse(dict):
         """
         return pulumi.get(self, "resource_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeSeriesRatioResponse(dict):
     """
     A TimeSeriesRatio specifies two TimeSeries to use for computing the good_service / total_service ratio. The specified TimeSeries must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. The TimeSeriesRatio must specify exactly two of good, bad, and total, and the relationship good_service + bad_service = total_service will be assumed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "badServiceFilter":
+            suggest = "bad_service_filter"
+        elif key == "goodServiceFilter":
+            suggest = "good_service_filter"
+        elif key == "totalServiceFilter":
+            suggest = "total_service_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeSeriesRatioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeSeriesRatioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeSeriesRatioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bad_service_filter: str,
                  good_service_filter: str,
@@ -1589,9 +1905,6 @@ class TimeSeriesRatioResponse(dict):
         """
         return pulumi.get(self, "total_service_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TriggerResponse(dict):
@@ -1625,15 +1938,37 @@ class TriggerResponse(dict):
         """
         return pulumi.get(self, "percent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WindowsBasedSliResponse(dict):
     """
     A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "goodBadMetricFilter":
+            suggest = "good_bad_metric_filter"
+        elif key == "goodTotalRatioThreshold":
+            suggest = "good_total_ratio_threshold"
+        elif key == "metricMeanInRange":
+            suggest = "metric_mean_in_range"
+        elif key == "metricSumInRange":
+            suggest = "metric_sum_in_range"
+        elif key == "windowPeriod":
+            suggest = "window_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WindowsBasedSliResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WindowsBasedSliResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WindowsBasedSliResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  good_bad_metric_filter: str,
                  good_total_ratio_threshold: 'outputs.PerformanceThresholdResponse',
@@ -1693,8 +2028,5 @@ class WindowsBasedSliResponse(dict):
         Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
         """
         return pulumi.get(self, "window_period")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudchannel/v1:AccountChannelPartnerLink":
-		r, err = NewAccountChannelPartnerLink(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountChannelPartnerLink{}
 	case "gcp-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer":
-		r, err = NewAccountChannelPartnerLinkCustomer(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountChannelPartnerLinkCustomer{}
 	case "gcp-native:cloudchannel/v1:AccountCustomer":
-		r, err = NewAccountCustomer(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountCustomer{}
 	case "gcp-native:cloudchannel/v1:AccountCustomerEntitlement":
-		r, err = NewAccountCustomerEntitlement(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccountCustomerEntitlement{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

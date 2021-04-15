@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -37,6 +37,23 @@ class AptSettingsResponse(dict):
     """
     Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePackages":
+            suggest = "exclusive_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AptSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AptSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AptSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  excludes: Sequence[str],
                  exclusive_packages: Sequence[str],
@@ -75,15 +92,33 @@ class AptSettingsResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecStepConfigResponse(dict):
     """
     Common configurations for an ExecStep.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedSuccessCodes":
+            suggest = "allowed_success_codes"
+        elif key == "gcsObject":
+            suggest = "gcs_object"
+        elif key == "localPath":
+            suggest = "local_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecStepConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecStepConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecStepConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_success_codes: Sequence[int],
                  gcs_object: 'outputs.GcsObjectResponse',
@@ -133,15 +168,31 @@ class ExecStepConfigResponse(dict):
         """
         return pulumi.get(self, "local_path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecStepResponse(dict):
     """
     A step that runs an executable for a PatchJob.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "linuxExecStepConfig":
+            suggest = "linux_exec_step_config"
+        elif key == "windowsExecStepConfig":
+            suggest = "windows_exec_step_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecStepResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecStepResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecStepResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  linux_exec_step_config: 'outputs.ExecStepConfigResponse',
                  windows_exec_step_config: 'outputs.ExecStepConfigResponse'):
@@ -168,9 +219,6 @@ class ExecStepResponse(dict):
         The ExecStepConfig for all Windows VMs targeted by the PatchJob.
         """
         return pulumi.get(self, "windows_exec_step_config")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -205,15 +253,29 @@ class FixedOrPercentResponse(dict):
         """
         return pulumi.get(self, "percent")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GcsObjectResponse(dict):
     """
     Cloud Storage object representation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "generationNumber":
+            suggest = "generation_number"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcsObjectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcsObjectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcsObjectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket: str,
                  generation_number: str,
@@ -252,9 +314,6 @@ class GcsObjectResponse(dict):
         """
         return pulumi.get(self, "object")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GooSettingsResponse(dict):
@@ -267,15 +326,31 @@ class GooSettingsResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MonthlyScheduleResponse(dict):
     """
     Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "monthDay":
+            suggest = "month_day"
+        elif key == "weekDayOfMonth":
+            suggest = "week_day_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MonthlyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MonthlyScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MonthlyScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  month_day: int,
                  week_day_of_month: 'outputs.WeekDayOfMonthResponse'):
@@ -303,15 +378,29 @@ class MonthlyScheduleResponse(dict):
         """
         return pulumi.get(self, "week_day_of_month")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OneTimeScheduleResponse(dict):
     """
     Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executeTime":
+            suggest = "execute_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OneTimeScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OneTimeScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OneTimeScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  execute_time: str):
         """
@@ -328,15 +417,35 @@ class OneTimeScheduleResponse(dict):
         """
         return pulumi.get(self, "execute_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchConfigResponse(dict):
     """
     Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postStep":
+            suggest = "post_step"
+        elif key == "preStep":
+            suggest = "pre_step"
+        elif key == "rebootConfig":
+            suggest = "reboot_config"
+        elif key == "windowsUpdate":
+            suggest = "windows_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  apt: 'outputs.AptSettingsResponse',
                  goo: 'outputs.GooSettingsResponse',
@@ -430,9 +539,6 @@ class PatchConfigResponse(dict):
         """
         return pulumi.get(self, "zypper")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchInstanceFilterGroupLabelResponse(dict):
@@ -455,15 +561,31 @@ class PatchInstanceFilterGroupLabelResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchInstanceFilterResponse(dict):
     """
     A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupLabels":
+            suggest = "group_labels"
+        elif key == "instanceNamePrefixes":
+            suggest = "instance_name_prefixes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchInstanceFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchInstanceFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchInstanceFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  all: bool,
                  group_labels: Sequence['outputs.PatchInstanceFilterGroupLabelResponse'],
@@ -524,15 +646,29 @@ class PatchInstanceFilterResponse(dict):
         """
         return pulumi.get(self, "zones")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatchRolloutResponse(dict):
     """
     Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disruptionBudget":
+            suggest = "disruption_budget"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PatchRolloutResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PatchRolloutResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PatchRolloutResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disruption_budget: 'outputs.FixedOrPercentResponse',
                  mode: str):
@@ -560,15 +696,39 @@ class PatchRolloutResponse(dict):
         """
         return pulumi.get(self, "mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RecurringScheduleResponse(dict):
     """
     Sets the time for recurring patch deployments.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "lastExecuteTime":
+            suggest = "last_execute_time"
+        elif key == "nextExecuteTime":
+            suggest = "next_execute_time"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "timeOfDay":
+            suggest = "time_of_day"
+        elif key == "timeZone":
+            suggest = "time_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RecurringScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RecurringScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RecurringScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  frequency: str,
@@ -673,9 +833,6 @@ class RecurringScheduleResponse(dict):
         """
         return pulumi.get(self, "weekly")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeOfDayResponse(dict):
@@ -731,9 +888,6 @@ class TimeOfDayResponse(dict):
         """
         return pulumi.get(self, "seconds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeZoneResponse(dict):
@@ -756,15 +910,31 @@ class TimeZoneResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WeekDayOfMonthResponse(dict):
     """
     Represents one week day in a month. An example is "the 4th Sunday".
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "weekOrdinal":
+            suggest = "week_ordinal"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WeekDayOfMonthResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WeekDayOfMonthResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WeekDayOfMonthResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_week: str,
                  week_ordinal: int):
@@ -792,15 +962,29 @@ class WeekDayOfMonthResponse(dict):
         """
         return pulumi.get(self, "week_ordinal")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WeeklyScheduleResponse(dict):
     """
     Represents a weekly schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WeeklyScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WeeklyScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WeeklyScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day_of_week: str):
         """
@@ -817,15 +1001,29 @@ class WeeklyScheduleResponse(dict):
         """
         return pulumi.get(self, "day_of_week")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WindowsUpdateSettingsResponse(dict):
     """
     Windows patching is performed using the Windows Update Agent.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePatches":
+            suggest = "exclusive_patches"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WindowsUpdateSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WindowsUpdateSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WindowsUpdateSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  classifications: Sequence[str],
                  excludes: Sequence[str],
@@ -864,15 +1062,29 @@ class WindowsUpdateSettingsResponse(dict):
         """
         return pulumi.get(self, "exclusive_patches")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class YumSettingsResponse(dict):
     """
     Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePackages":
+            suggest = "exclusive_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in YumSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        YumSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        YumSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  excludes: Sequence[str],
                  exclusive_packages: Sequence[str],
@@ -922,15 +1134,33 @@ class YumSettingsResponse(dict):
         """
         return pulumi.get(self, "security")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ZypperSettingsResponse(dict):
     """
     Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exclusivePatches":
+            suggest = "exclusive_patches"
+        elif key == "withOptional":
+            suggest = "with_optional"
+        elif key == "withUpdate":
+            suggest = "with_update"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ZypperSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ZypperSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ZypperSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categories: Sequence[str],
                  excludes: Sequence[str],
@@ -1001,8 +1231,5 @@ class ZypperSettingsResponse(dict):
         Adds the `--with-update` flag, to `zypper patch`.
         """
         return pulumi.get(self, "with_update")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

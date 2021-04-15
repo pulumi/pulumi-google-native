@@ -5,22 +5,71 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Folder']
+__all__ = ['FolderArgs', 'Folder']
+
+@pulumi.input_type
+class FolderArgs:
+    def __init__(__self__, *,
+                 folders_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Folder resource.
+        :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        """
+        pulumi.set(__self__, "folders_id", folders_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+
+    @property
+    @pulumi.getter(name="foldersId")
+    def folders_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "folders_id")
+
+    @folders_id.setter
+    def folders_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folders_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
 
 
 class Folder(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  folders_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
 
@@ -29,12 +78,34 @@ class Folder(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: FolderArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Folder in the resource hierarchy. Returns an Operation which can be used to track the progress of the folder creation workflow. Upon success the Operation.response field will be populated with the created Folder. In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout constraints. + The Folder's display_name must be distinct from all other Folders that share its parent. + The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 10. Note, the full active + deleted Folder hierarchy is allowed to reach a height of 20; this provides additional headroom when moving folders that contain deleted folders. + The addition of the Folder must not cause the total number of Folders under its parent to exceed 300. If the operation fails due to a folder constraint violation, some errors may be returned by the CreateFolder request, with status code FAILED_PRECONDITION and an error description. Other folder constraint violations will be communicated in the Operation, with the specific PreconditionFailure returned via the details list in the Operation.error field. The caller must have `resourcemanager.folders.create` permission on the identified parent.
+
+        :param str resource_name: The name of the resource.
+        :param FolderArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(FolderArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 folders_id: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -44,16 +115,16 @@ class Folder(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = FolderArgs.__new__(FolderArgs)
 
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if folders_id is None and not opts.urn:
                 raise TypeError("Missing required property 'folders_id'")
-            __props__['folders_id'] = folders_id
-            __props__['parent'] = parent
-            __props__['create_time'] = None
-            __props__['lifecycle_state'] = None
-            __props__['name'] = None
+            __props__.__dict__["folders_id"] = folders_id
+            __props__.__dict__["parent"] = parent
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["lifecycle_state"] = None
+            __props__.__dict__["name"] = None
         super(Folder, __self__).__init__(
             'gcp-native:cloudresourcemanager/v2:Folder',
             resource_name,
@@ -74,13 +145,13 @@ class Folder(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = FolderArgs.__new__(FolderArgs)
 
-        __props__["create_time"] = None
-        __props__["display_name"] = None
-        __props__["lifecycle_state"] = None
-        __props__["name"] = None
-        __props__["parent"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["lifecycle_state"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["parent"] = None
         return Folder(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -122,10 +193,4 @@ class Folder(pulumi.CustomResource):
         Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
         return pulumi.get(self, "parent")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

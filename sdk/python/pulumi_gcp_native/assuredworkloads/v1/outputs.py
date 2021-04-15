@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse',
@@ -18,6 +18,25 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
     """
     Settings specific to the Key Management Service.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nextRotationTime":
+            suggest = "next_rotation_time"
+        elif key == "rotationPeriod":
+            suggest = "rotation_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  next_rotation_time: str,
                  rotation_period: str):
@@ -45,15 +64,31 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse(dict):
         """
         return pulumi.get(self, "rotation_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse(dict):
     """
     Represent the resources that are children of this Workload.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_id: str,
                  resource_type: str):
@@ -80,8 +115,5 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse(dict):
         Indicates the type of resource.
         """
         return pulumi.get(self, "resource_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

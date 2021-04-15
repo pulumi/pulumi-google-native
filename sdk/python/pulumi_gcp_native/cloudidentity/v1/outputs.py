@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -51,15 +51,29 @@ class DynamicGroupMetadataResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicGroupQueryResponse(dict):
     """
     Defines a query on a resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicGroupQueryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicGroupQueryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicGroupQueryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  query: str,
                  resource_type: str):
@@ -87,15 +101,29 @@ class DynamicGroupQueryResponse(dict):
         """
         return pulumi.get(self, "resource_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DynamicGroupStatusResponse(dict):
     """
     The current status of a dynamic group along with timestamp.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusTime":
+            suggest = "status_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DynamicGroupStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DynamicGroupStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DynamicGroupStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  status: str,
                  status_time: str):
@@ -123,9 +151,6 @@ class DynamicGroupStatusResponse(dict):
         """
         return pulumi.get(self, "status_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EntityKeyResponse(dict):
@@ -148,15 +173,29 @@ class EntityKeyResponse(dict):
         """
         return pulumi.get(self, "namespace")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExpiryDetailResponse(dict):
     """
     The `MembershipRole` expiry details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExpiryDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExpiryDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExpiryDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expire_time: str):
         """
@@ -173,15 +212,35 @@ class ExpiryDetailResponse(dict):
         """
         return pulumi.get(self, "expire_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse(dict):
     """
     Resource representing the Android specific attributes of a Device.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enabledUnknownSources":
+            suggest = "enabled_unknown_sources"
+        elif key == "ownerProfileAccount":
+            suggest = "owner_profile_account"
+        elif key == "ownershipPrivilege":
+            suggest = "ownership_privilege"
+        elif key == "supportsWorkProfile":
+            suggest = "supports_work_profile"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enabled_unknown_sources: bool,
                  owner_profile_account: bool,
@@ -231,15 +290,29 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributesResponse(dict):
         """
         return pulumi.get(self, "supports_work_profile")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MembershipRoleResponse(dict):
     """
     A membership role within the Cloud Identity Groups API. A `MembershipRole` defines the privileges granted to a `Membership`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiryDetail":
+            suggest = "expiry_detail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MembershipRoleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MembershipRoleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MembershipRoleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiry_detail: 'outputs.ExpiryDetailResponse',
                  name: str):
@@ -266,8 +339,5 @@ class MembershipRoleResponse(dict):
         The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

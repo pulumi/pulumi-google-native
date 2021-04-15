@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudtasks/v2:Queue":
-		r, err = NewQueue(ctx, name, nil, pulumi.URN_(urn))
+		r = &Queue{}
 	case "gcp-native:cloudtasks/v2:QueueIamPolicy":
-		r, err = NewQueueIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &QueueIamPolicy{}
 	case "gcp-native:cloudtasks/v2:QueueTask":
-		r, err = NewQueueTask(ctx, name, nil, pulumi.URN_(urn))
+		r = &QueueTask{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

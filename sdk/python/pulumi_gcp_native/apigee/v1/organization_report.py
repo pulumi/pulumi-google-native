@@ -5,15 +5,317 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['OrganizationReport']
+__all__ = ['OrganizationReportArgs', 'OrganizationReport']
+
+@pulumi.input_type
+class OrganizationReportArgs:
+    def __init__(__self__, *,
+                 organizations_id: pulumi.Input[str],
+                 reports_id: pulumi.Input[str],
+                 chart_type: Optional[pulumi.Input[str]] = None,
+                 comments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 from_time: Optional[pulumi.Input[str]] = None,
+                 limit: Optional[pulumi.Input[str]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 offset: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]]] = None,
+                 sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sort_order: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_unit: Optional[pulumi.Input[str]] = None,
+                 to_time: Optional[pulumi.Input[str]] = None,
+                 topk: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationReport resource.
+        :param pulumi.Input[str] chart_type: This field contains the chart type for the report
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] comments: Legacy field: not used. This field contains a list of comments associated with custom report
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: This contains the list of dimensions for the report
+        :param pulumi.Input[str] display_name: This is the display name for the report
+        :param pulumi.Input[str] filter: This field contains the filter expression
+        :param pulumi.Input[str] from_time: Legacy field: not used. Contains the from time for the report
+        :param pulumi.Input[str] limit: Legacy field: not used This field contains the limit for the result retrieved
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]] metrics: Required. This contains the list of metrics
+        :param pulumi.Input[str] name: Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        :param pulumi.Input[str] offset: Legacy field: not used. This field contains the offset for the data
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]] properties: This field contains report properties such as ui metadata etc.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sort_by_cols: Legacy field: not used much. Contains the list of sort by columns
+        :param pulumi.Input[str] sort_order: Legacy field: not used much. Contains the sort order for the sort columns
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Legacy field: not used. This field contains a list of tags associated with custom report
+        :param pulumi.Input[str] time_unit: This field contains the time unit of aggregation for the report
+        :param pulumi.Input[str] to_time: Legacy field: not used. Contains the end time for the report
+        :param pulumi.Input[str] topk: Legacy field: not used. This field contains the top k parameter value for restricting the result
+        """
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "reports_id", reports_id)
+        if chart_type is not None:
+            pulumi.set(__self__, "chart_type", chart_type)
+        if comments is not None:
+            pulumi.set(__self__, "comments", comments)
+        if dimensions is not None:
+            pulumi.set(__self__, "dimensions", dimensions)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if from_time is not None:
+            pulumi.set(__self__, "from_time", from_time)
+        if limit is not None:
+            pulumi.set(__self__, "limit", limit)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if offset is not None:
+            pulumi.set(__self__, "offset", offset)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if sort_by_cols is not None:
+            pulumi.set(__self__, "sort_by_cols", sort_by_cols)
+        if sort_order is not None:
+            pulumi.set(__self__, "sort_order", sort_order)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if time_unit is not None:
+            pulumi.set(__self__, "time_unit", time_unit)
+        if to_time is not None:
+            pulumi.set(__self__, "to_time", to_time)
+        if topk is not None:
+            pulumi.set(__self__, "topk", topk)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="reportsId")
+    def reports_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "reports_id")
+
+    @reports_id.setter
+    def reports_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reports_id", value)
+
+    @property
+    @pulumi.getter(name="chartType")
+    def chart_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field contains the chart type for the report
+        """
+        return pulumi.get(self, "chart_type")
+
+    @chart_type.setter
+    def chart_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chart_type", value)
+
+    @property
+    @pulumi.getter
+    def comments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Legacy field: not used. This field contains a list of comments associated with custom report
+        """
+        return pulumi.get(self, "comments")
+
+    @comments.setter
+    def comments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "comments", value)
+
+    @property
+    @pulumi.getter
+    def dimensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        This contains the list of dimensions for the report
+        """
+        return pulumi.get(self, "dimensions")
+
+    @dimensions.setter
+    def dimensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dimensions", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the display name for the report
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field contains the filter expression
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="fromTime")
+    def from_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used. Contains the from time for the report
+        """
+        return pulumi.get(self, "from_time")
+
+    @from_time.setter
+    def from_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "from_time", value)
+
+    @property
+    @pulumi.getter
+    def limit(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used This field contains the limit for the result retrieved
+        """
+        return pulumi.get(self, "limit")
+
+    @limit.setter
+    def limit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def metrics(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]]]:
+        """
+        Required. This contains the list of metrics
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]]]):
+        pulumi.set(self, "metrics", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def offset(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used. This field contains the offset for the data
+        """
+        return pulumi.get(self, "offset")
+
+    @offset.setter
+    def offset(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "offset", value)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]]]:
+        """
+        This field contains report properties such as ui metadata etc.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]]]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter(name="sortByCols")
+    def sort_by_cols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Legacy field: not used much. Contains the list of sort by columns
+        """
+        return pulumi.get(self, "sort_by_cols")
+
+    @sort_by_cols.setter
+    def sort_by_cols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sort_by_cols", value)
+
+    @property
+    @pulumi.getter(name="sortOrder")
+    def sort_order(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used much. Contains the sort order for the sort columns
+        """
+        return pulumi.get(self, "sort_order")
+
+    @sort_order.setter
+    def sort_order(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sort_order", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Legacy field: not used. This field contains a list of tags associated with custom report
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter(name="timeUnit")
+    def time_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field contains the time unit of aggregation for the report
+        """
+        return pulumi.get(self, "time_unit")
+
+    @time_unit.setter
+    def time_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_unit", value)
+
+    @property
+    @pulumi.getter(name="toTime")
+    def to_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used. Contains the end time for the report
+        """
+        return pulumi.get(self, "to_time")
+
+    @to_time.setter
+    def to_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "to_time", value)
+
+    @property
+    @pulumi.getter
+    def topk(self) -> Optional[pulumi.Input[str]]:
+        """
+        Legacy field: not used. This field contains the top k parameter value for restricting the result
+        """
+        return pulumi.get(self, "topk")
+
+    @topk.setter
+    def topk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topk", value)
 
 
 class OrganizationReport(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -36,9 +338,7 @@ class OrganizationReport(pulumi.CustomResource):
                  time_unit: Optional[pulumi.Input[str]] = None,
                  to_time: Optional[pulumi.Input[str]] = None,
                  topk: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
 
@@ -62,12 +362,50 @@ class OrganizationReport(pulumi.CustomResource):
         :param pulumi.Input[str] to_time: Legacy field: not used. Contains the end time for the report
         :param pulumi.Input[str] topk: Legacy field: not used. This field contains the top k parameter value for restricting the result
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationReportArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationReportArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationReportArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 chart_type: Optional[pulumi.Input[str]] = None,
+                 comments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dimensions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
+                 from_time: Optional[pulumi.Input[str]] = None,
+                 limit: Optional[pulumi.Input[str]] = None,
+                 metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CustomReportMetricArgs']]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 offset: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1ReportPropertyArgs']]]]] = None,
+                 reports_id: Optional[pulumi.Input[str]] = None,
+                 sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sort_order: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 time_unit: Optional[pulumi.Input[str]] = None,
+                 to_time: Optional[pulumi.Input[str]] = None,
+                 topk: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -77,36 +415,36 @@ class OrganizationReport(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationReportArgs.__new__(OrganizationReportArgs)
 
-            __props__['chart_type'] = chart_type
-            __props__['comments'] = comments
-            __props__['dimensions'] = dimensions
-            __props__['display_name'] = display_name
-            __props__['filter'] = filter
-            __props__['from_time'] = from_time
-            __props__['limit'] = limit
-            __props__['metrics'] = metrics
-            __props__['name'] = name
-            __props__['offset'] = offset
+            __props__.__dict__["chart_type"] = chart_type
+            __props__.__dict__["comments"] = comments
+            __props__.__dict__["dimensions"] = dimensions
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["filter"] = filter
+            __props__.__dict__["from_time"] = from_time
+            __props__.__dict__["limit"] = limit
+            __props__.__dict__["metrics"] = metrics
+            __props__.__dict__["name"] = name
+            __props__.__dict__["offset"] = offset
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['properties'] = properties
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["properties"] = properties
             if reports_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reports_id'")
-            __props__['reports_id'] = reports_id
-            __props__['sort_by_cols'] = sort_by_cols
-            __props__['sort_order'] = sort_order
-            __props__['tags'] = tags
-            __props__['time_unit'] = time_unit
-            __props__['to_time'] = to_time
-            __props__['topk'] = topk
-            __props__['created_at'] = None
-            __props__['environment'] = None
-            __props__['last_modified_at'] = None
-            __props__['last_viewed_at'] = None
-            __props__['organization'] = None
+            __props__.__dict__["reports_id"] = reports_id
+            __props__.__dict__["sort_by_cols"] = sort_by_cols
+            __props__.__dict__["sort_order"] = sort_order
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["time_unit"] = time_unit
+            __props__.__dict__["to_time"] = to_time
+            __props__.__dict__["topk"] = topk
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["environment"] = None
+            __props__.__dict__["last_modified_at"] = None
+            __props__.__dict__["last_viewed_at"] = None
+            __props__.__dict__["organization"] = None
         super(OrganizationReport, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationReport',
             resource_name,
@@ -127,30 +465,30 @@ class OrganizationReport(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationReportArgs.__new__(OrganizationReportArgs)
 
-        __props__["chart_type"] = None
-        __props__["comments"] = None
-        __props__["created_at"] = None
-        __props__["dimensions"] = None
-        __props__["display_name"] = None
-        __props__["environment"] = None
-        __props__["filter"] = None
-        __props__["from_time"] = None
-        __props__["last_modified_at"] = None
-        __props__["last_viewed_at"] = None
-        __props__["limit"] = None
-        __props__["metrics"] = None
-        __props__["name"] = None
-        __props__["offset"] = None
-        __props__["organization"] = None
-        __props__["properties"] = None
-        __props__["sort_by_cols"] = None
-        __props__["sort_order"] = None
-        __props__["tags"] = None
-        __props__["time_unit"] = None
-        __props__["to_time"] = None
-        __props__["topk"] = None
+        __props__.__dict__["chart_type"] = None
+        __props__.__dict__["comments"] = None
+        __props__.__dict__["created_at"] = None
+        __props__.__dict__["dimensions"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["environment"] = None
+        __props__.__dict__["filter"] = None
+        __props__.__dict__["from_time"] = None
+        __props__.__dict__["last_modified_at"] = None
+        __props__.__dict__["last_viewed_at"] = None
+        __props__.__dict__["limit"] = None
+        __props__.__dict__["metrics"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["offset"] = None
+        __props__.__dict__["organization"] = None
+        __props__.__dict__["properties"] = None
+        __props__.__dict__["sort_by_cols"] = None
+        __props__.__dict__["sort_order"] = None
+        __props__.__dict__["tags"] = None
+        __props__.__dict__["time_unit"] = None
+        __props__.__dict__["to_time"] = None
+        __props__.__dict__["topk"] = None
         return OrganizationReport(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -328,10 +666,4 @@ class OrganizationReport(pulumi.CustomResource):
         Legacy field: not used. This field contains the top k parameter value for restricting the result
         """
         return pulumi.get(self, "topk")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

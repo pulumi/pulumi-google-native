@@ -22,15 +22,16 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:jobs/v4:Tenant":
-		r, err = NewTenant(ctx, name, nil, pulumi.URN_(urn))
+		r = &Tenant{}
 	case "gcp-native:jobs/v4:TenantCompany":
-		r, err = NewTenantCompany(ctx, name, nil, pulumi.URN_(urn))
+		r = &TenantCompany{}
 	case "gcp-native:jobs/v4:TenantJob":
-		r, err = NewTenantJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &TenantJob{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Template']
+__all__ = ['TemplateArgs', 'Template']
+
+@pulumi.input_type
+class TemplateArgs:
+    def __init__(__self__, *,
+                 project_id: pulumi.Input[str],
+                 environment: Optional[pulumi.Input['RuntimeEnvironmentArgs']] = None,
+                 gcs_path: Optional[pulumi.Input[str]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Template resource.
+        :param pulumi.Input['RuntimeEnvironmentArgs'] environment: The runtime environment for the job.
+        :param pulumi.Input[str] gcs_path: Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        :param pulumi.Input[str] job_name: Required. The job name to use for the created job.
+        :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        if environment is not None:
+            pulumi.set(__self__, "environment", environment)
+        if gcs_path is not None:
+            pulumi.set(__self__, "gcs_path", gcs_path)
+        if job_name is not None:
+            pulumi.set(__self__, "job_name", job_name)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def environment(self) -> Optional[pulumi.Input['RuntimeEnvironmentArgs']]:
+        """
+        The runtime environment for the job.
+        """
+        return pulumi.get(self, "environment")
+
+    @environment.setter
+    def environment(self, value: Optional[pulumi.Input['RuntimeEnvironmentArgs']]):
+        pulumi.set(self, "environment", value)
+
+    @property
+    @pulumi.getter(name="gcsPath")
+    def gcs_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        """
+        return pulumi.get(self, "gcs_path")
+
+    @gcs_path.setter
+    def gcs_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_path", value)
+
+    @property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The job name to use for the created job.
+        """
+        return pulumi.get(self, "job_name")
+
+    @job_name.setter
+    def job_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_name", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The runtime parameters to pass to the job.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "parameters", value)
 
 
 class Template(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -23,9 +122,7 @@ class Template(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a Cloud Dataflow job from a template.
 
@@ -37,12 +134,37 @@ class Template(pulumi.CustomResource):
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: TemplateArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Cloud Dataflow job from a template.
+
+        :param str resource_name: The name of the resource.
+        :param TemplateArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(TemplateArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 environment: Optional[pulumi.Input[pulumi.InputType['RuntimeEnvironmentArgs']]] = None,
+                 gcs_path: Optional[pulumi.Input[str]] = None,
+                 job_name: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -52,20 +174,20 @@ class Template(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = TemplateArgs.__new__(TemplateArgs)
 
-            __props__['environment'] = environment
-            __props__['gcs_path'] = gcs_path
-            __props__['job_name'] = job_name
-            __props__['location'] = location
-            __props__['parameters'] = parameters
+            __props__.__dict__["environment"] = environment
+            __props__.__dict__["gcs_path"] = gcs_path
+            __props__.__dict__["job_name"] = job_name
+            __props__.__dict__["location"] = location
+            __props__.__dict__["parameters"] = parameters
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['metadata'] = None
-            __props__['runtime_metadata'] = None
-            __props__['status'] = None
-            __props__['template_type'] = None
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["metadata"] = None
+            __props__.__dict__["runtime_metadata"] = None
+            __props__.__dict__["status"] = None
+            __props__.__dict__["template_type"] = None
         super(Template, __self__).__init__(
             'gcp-native:dataflow/v1b3:Template',
             resource_name,
@@ -86,12 +208,12 @@ class Template(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = TemplateArgs.__new__(TemplateArgs)
 
-        __props__["metadata"] = None
-        __props__["runtime_metadata"] = None
-        __props__["status"] = None
-        __props__["template_type"] = None
+        __props__.__dict__["metadata"] = None
+        __props__.__dict__["runtime_metadata"] = None
+        __props__.__dict__["status"] = None
+        __props__.__dict__["template_type"] = None
         return Template(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -125,10 +247,4 @@ class Template(pulumi.CustomResource):
         Template Type.
         """
         return pulumi.get(self, "template_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

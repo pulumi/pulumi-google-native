@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:containeranalysis/v1beta1:Note":
-		r, err = NewNote(ctx, name, nil, pulumi.URN_(urn))
+		r = &Note{}
 	case "gcp-native:containeranalysis/v1beta1:NoteIamPolicy":
-		r, err = NewNoteIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NoteIamPolicy{}
 	case "gcp-native:containeranalysis/v1beta1:Occurrence":
-		r, err = NewOccurrence(ctx, name, nil, pulumi.URN_(urn))
+		r = &Occurrence{}
 	case "gcp-native:containeranalysis/v1beta1:OccurrenceIamPolicy":
-		r, err = NewOccurrenceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OccurrenceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

@@ -5,15 +5,168 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectionProfile']
+__all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
+
+@pulumi.input_type
+class ConnectionProfileArgs:
+    def __init__(__self__, *,
+                 connection_profiles_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 mysql: Optional[pulumi.Input['MySqlConnectionProfileArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ConnectionProfile resource.
+        :param pulumi.Input['CloudSqlConnectionProfileArgs'] cloudsql: A CloudSQL database connection profile.
+        :param pulumi.Input[str] display_name: The connection profile display name.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        :param pulumi.Input['MySqlConnectionProfileArgs'] mysql: A MySQL database connection profile.
+        :param pulumi.Input[str] name: The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        :param pulumi.Input[str] provider: The database provider.
+        :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        """
+        pulumi.set(__self__, "connection_profiles_id", connection_profiles_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if cloudsql is not None:
+            pulumi.set(__self__, "cloudsql", cloudsql)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if mysql is not None:
+            pulumi.set(__self__, "mysql", mysql)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="connectionProfilesId")
+    def connection_profiles_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connection_profiles_id")
+
+    @connection_profiles_id.setter
+    def connection_profiles_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_profiles_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def cloudsql(self) -> Optional[pulumi.Input['CloudSqlConnectionProfileArgs']]:
+        """
+        A CloudSQL database connection profile.
+        """
+        return pulumi.get(self, "cloudsql")
+
+    @cloudsql.setter
+    def cloudsql(self, value: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']]):
+        pulumi.set(self, "cloudsql", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The connection profile display name.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def mysql(self) -> Optional[pulumi.Input['MySqlConnectionProfileArgs']]:
+        """
+        A MySQL database connection profile.
+        """
+        return pulumi.get(self, "mysql")
+
+    @mysql.setter
+    def mysql(self, value: Optional[pulumi.Input['MySqlConnectionProfileArgs']]):
+        pulumi.set(self, "mysql", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database provider.
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provider", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current connection profile state (e.g. DRAFT, READY, or FAILED).
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class ConnectionProfile(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -27,9 +180,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new connection profile in a given project and location.
 
@@ -43,12 +194,41 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[str] provider: The database provider.
         :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectionProfileArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new connection profile in a given project and location.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectionProfileArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectionProfileArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
+                 connection_profiles_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 mysql: Optional[pulumi.Input[pulumi.InputType['MySqlConnectionProfileArgs']]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 provider: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -58,27 +238,27 @@ class ConnectionProfile(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
-            __props__['cloudsql'] = cloudsql
+            __props__.__dict__["cloudsql"] = cloudsql
             if connection_profiles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profiles_id'")
-            __props__['connection_profiles_id'] = connection_profiles_id
-            __props__['display_name'] = display_name
-            __props__['labels'] = labels
+            __props__.__dict__["connection_profiles_id"] = connection_profiles_id
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['mysql'] = mysql
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["mysql"] = mysql
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['provider'] = provider
-            __props__['state'] = state
-            __props__['create_time'] = None
-            __props__['error'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["provider"] = provider
+            __props__.__dict__["state"] = state
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["error"] = None
+            __props__.__dict__["update_time"] = None
         super(ConnectionProfile, __self__).__init__(
             'gcp-native:datamigration/v1beta1:ConnectionProfile',
             resource_name,
@@ -99,18 +279,18 @@ class ConnectionProfile(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
-        __props__["cloudsql"] = None
-        __props__["create_time"] = None
-        __props__["display_name"] = None
-        __props__["error"] = None
-        __props__["labels"] = None
-        __props__["mysql"] = None
-        __props__["name"] = None
-        __props__["provider"] = None
-        __props__["state"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["cloudsql"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["error"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["mysql"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["provider"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -192,10 +372,4 @@ class ConnectionProfile(pulumi.CustomResource):
         The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

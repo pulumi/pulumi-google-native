@@ -5,15 +5,114 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['HistoryExecutionStepPerfSampleSeries']
+__all__ = ['HistoryExecutionStepPerfSampleSeriesArgs', 'HistoryExecutionStepPerfSampleSeries']
+
+@pulumi.input_type
+class HistoryExecutionStepPerfSampleSeriesArgs:
+    def __init__(__self__, *,
+                 execution_id: pulumi.Input[str],
+                 history_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 sample_series_id: pulumi.Input[str],
+                 step_id: pulumi.Input[str],
+                 basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None):
+        """
+        The set of arguments for constructing a HistoryExecutionStepPerfSampleSeries resource.
+        :param pulumi.Input[str] execution_id: A tool results execution ID. @OutputOnly
+        :param pulumi.Input[str] history_id: A tool results history ID. @OutputOnly
+        :param pulumi.Input[str] project_id: The cloud project @OutputOnly
+        :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
+        :param pulumi.Input[str] step_id: A tool results step ID. @OutputOnly
+        :param pulumi.Input['BasicPerfSampleSeriesArgs'] basic_perf_sample_series: Basic series represented by a line chart
+        """
+        pulumi.set(__self__, "execution_id", execution_id)
+        pulumi.set(__self__, "history_id", history_id)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "sample_series_id", sample_series_id)
+        pulumi.set(__self__, "step_id", step_id)
+        if basic_perf_sample_series is not None:
+            pulumi.set(__self__, "basic_perf_sample_series", basic_perf_sample_series)
+
+    @property
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> pulumi.Input[str]:
+        """
+        A tool results execution ID. @OutputOnly
+        """
+        return pulumi.get(self, "execution_id")
+
+    @execution_id.setter
+    def execution_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "execution_id", value)
+
+    @property
+    @pulumi.getter(name="historyId")
+    def history_id(self) -> pulumi.Input[str]:
+        """
+        A tool results history ID. @OutputOnly
+        """
+        return pulumi.get(self, "history_id")
+
+    @history_id.setter
+    def history_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "history_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        """
+        The cloud project @OutputOnly
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="sampleSeriesId")
+    def sample_series_id(self) -> pulumi.Input[str]:
+        """
+        A sample series id @OutputOnly
+        """
+        return pulumi.get(self, "sample_series_id")
+
+    @sample_series_id.setter
+    def sample_series_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sample_series_id", value)
+
+    @property
+    @pulumi.getter(name="stepId")
+    def step_id(self) -> pulumi.Input[str]:
+        """
+        A tool results step ID. @OutputOnly
+        """
+        return pulumi.get(self, "step_id")
+
+    @step_id.setter
+    def step_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "step_id", value)
+
+    @property
+    @pulumi.getter(name="basicPerfSampleSeries")
+    def basic_perf_sample_series(self) -> Optional[pulumi.Input['BasicPerfSampleSeriesArgs']]:
+        """
+        Basic series represented by a line chart
+        """
+        return pulumi.get(self, "basic_perf_sample_series")
+
+    @basic_perf_sample_series.setter
+    def basic_perf_sample_series(self, value: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']]):
+        pulumi.set(self, "basic_perf_sample_series", value)
 
 
 class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -23,9 +122,7 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  sample_series_id: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
 
@@ -38,12 +135,37 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
         :param pulumi.Input[str] step_id: A tool results step ID. @OutputOnly
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HistoryExecutionStepPerfSampleSeriesArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+
+        :param str resource_name: The name of the resource.
+        :param HistoryExecutionStepPerfSampleSeriesArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HistoryExecutionStepPerfSampleSeriesArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 basic_perf_sample_series: Optional[pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']]] = None,
+                 execution_id: Optional[pulumi.Input[str]] = None,
+                 history_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 sample_series_id: Optional[pulumi.Input[str]] = None,
+                 step_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -53,24 +175,24 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HistoryExecutionStepPerfSampleSeriesArgs.__new__(HistoryExecutionStepPerfSampleSeriesArgs)
 
-            __props__['basic_perf_sample_series'] = basic_perf_sample_series
+            __props__.__dict__["basic_perf_sample_series"] = basic_perf_sample_series
             if execution_id is None and not opts.urn:
                 raise TypeError("Missing required property 'execution_id'")
-            __props__['execution_id'] = execution_id
+            __props__.__dict__["execution_id"] = execution_id
             if history_id is None and not opts.urn:
                 raise TypeError("Missing required property 'history_id'")
-            __props__['history_id'] = history_id
+            __props__.__dict__["history_id"] = history_id
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
+            __props__.__dict__["project_id"] = project_id
             if sample_series_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sample_series_id'")
-            __props__['sample_series_id'] = sample_series_id
+            __props__.__dict__["sample_series_id"] = sample_series_id
             if step_id is None and not opts.urn:
                 raise TypeError("Missing required property 'step_id'")
-            __props__['step_id'] = step_id
+            __props__.__dict__["step_id"] = step_id
         super(HistoryExecutionStepPerfSampleSeries, __self__).__init__(
             'gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries',
             resource_name,
@@ -91,14 +213,14 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = HistoryExecutionStepPerfSampleSeriesArgs.__new__(HistoryExecutionStepPerfSampleSeriesArgs)
 
-        __props__["basic_perf_sample_series"] = None
-        __props__["execution_id"] = None
-        __props__["history_id"] = None
-        __props__["project_id"] = None
-        __props__["sample_series_id"] = None
-        __props__["step_id"] = None
+        __props__.__dict__["basic_perf_sample_series"] = None
+        __props__.__dict__["execution_id"] = None
+        __props__.__dict__["history_id"] = None
+        __props__.__dict__["project_id"] = None
+        __props__.__dict__["sample_series_id"] = None
+        __props__.__dict__["step_id"] = None
         return HistoryExecutionStepPerfSampleSeries(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -148,10 +270,4 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         A tool results step ID. @OutputOnly
         """
         return pulumi.get(self, "step_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

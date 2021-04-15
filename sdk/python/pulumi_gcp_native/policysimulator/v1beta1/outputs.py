@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -20,6 +20,25 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse(dict):
     """
     The configuration used for a Replay.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logSource":
+            suggest = "log_source"
+        elif key == "policyOverlay":
+            suggest = "policy_overlay"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  log_source: str,
                  policy_overlay: Mapping[str, str]):
@@ -47,15 +66,39 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse(dict):
         """
         return pulumi.get(self, "policy_overlay")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse(dict):
     """
     Summary statistics about the replayed log entries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "differenceCount":
+            suggest = "difference_count"
+        elif key == "errorCount":
+            suggest = "error_count"
+        elif key == "logCount":
+            suggest = "log_count"
+        elif key == "newestDate":
+            suggest = "newest_date"
+        elif key == "oldestDate":
+            suggest = "oldest_date"
+        elif key == "unchangedCount":
+            suggest = "unchanged_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  difference_count: int,
                  error_count: int,
@@ -127,9 +170,6 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse(dict):
         """
         return pulumi.get(self, "unchanged_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleTypeDateResponse(dict):
@@ -173,8 +213,5 @@ class GoogleTypeDateResponse(dict):
         Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
         """
         return pulumi.get(self, "year")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

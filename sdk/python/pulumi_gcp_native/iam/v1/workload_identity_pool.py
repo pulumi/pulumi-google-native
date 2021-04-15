@@ -5,13 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['WorkloadIdentityPool']
+__all__ = ['WorkloadIdentityPoolArgs', 'WorkloadIdentityPool']
+
+@pulumi.input_type
+class WorkloadIdentityPoolArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 workload_identity_pools_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a WorkloadIdentityPool resource.
+        :param pulumi.Input[str] description: A description of the pool. Cannot exceed 256 characters.
+        :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "workload_identity_pools_id", workload_identity_pools_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="workloadIdentityPoolsId")
+    def workload_identity_pools_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workload_identity_pools_id")
+
+    @workload_identity_pools_id.setter
+    def workload_identity_pools_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workload_identity_pools_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the pool. Cannot exceed 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A display name for the pool. Cannot exceed 32 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 
 class WorkloadIdentityPool(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -21,9 +110,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pools_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
 
@@ -33,12 +120,37 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         :param pulumi.Input[bool] disabled: Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to access resources. If the pool is re-enabled, existing tokens grant access again.
         :param pulumi.Input[str] display_name: A display name for the pool. Cannot exceed 32 characters.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: WorkloadIdentityPoolArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
+
+        :param str resource_name: The name of the resource.
+        :param WorkloadIdentityPoolArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(WorkloadIdentityPoolArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 workload_identity_pools_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -48,22 +160,22 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = WorkloadIdentityPoolArgs.__new__(WorkloadIdentityPoolArgs)
 
-            __props__['description'] = description
-            __props__['disabled'] = disabled
-            __props__['display_name'] = display_name
+            __props__.__dict__["description"] = description
+            __props__.__dict__["disabled"] = disabled
+            __props__.__dict__["display_name"] = display_name
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if workload_identity_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pools_id'")
-            __props__['workload_identity_pools_id'] = workload_identity_pools_id
-            __props__['name'] = None
-            __props__['state'] = None
+            __props__.__dict__["workload_identity_pools_id"] = workload_identity_pools_id
+            __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
         super(WorkloadIdentityPool, __self__).__init__(
             'gcp-native:iam/v1:WorkloadIdentityPool',
             resource_name,
@@ -84,13 +196,13 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = WorkloadIdentityPoolArgs.__new__(WorkloadIdentityPoolArgs)
 
-        __props__["description"] = None
-        __props__["disabled"] = None
-        __props__["display_name"] = None
-        __props__["name"] = None
-        __props__["state"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["disabled"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
         return WorkloadIdentityPool(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -132,10 +244,4 @@ class WorkloadIdentityPool(pulumi.CustomResource):
         The state of the pool.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

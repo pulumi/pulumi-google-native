@@ -5,13 +5,135 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['DatasetFhirStoreFhir']
+__all__ = ['DatasetFhirStoreFhirArgs', 'DatasetFhirStoreFhir']
+
+@pulumi.input_type
+class DatasetFhirStoreFhirArgs:
+    def __init__(__self__, *,
+                 datasets_id: pulumi.Input[str],
+                 fhir_id: pulumi.Input[str],
+                 fhir_id1: pulumi.Input[str],
+                 fhir_stores_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 data: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+        """
+        The set of arguments for constructing a DatasetFhirStoreFhir resource.
+        :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
+        :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        """
+        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "fhir_id", fhir_id)
+        pulumi.set(__self__, "fhir_id1", fhir_id1)
+        pulumi.set(__self__, "fhir_stores_id", fhir_stores_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if content_type is not None:
+            pulumi.set(__self__, "content_type", content_type)
+        if data is not None:
+            pulumi.set(__self__, "data", data)
+        if extensions is not None:
+            pulumi.set(__self__, "extensions", extensions)
+
+    @property
+    @pulumi.getter(name="datasetsId")
+    def datasets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasets_id")
+
+    @datasets_id.setter
+    def datasets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasets_id", value)
+
+    @property
+    @pulumi.getter(name="fhirId")
+    def fhir_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "fhir_id")
+
+    @fhir_id.setter
+    def fhir_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_id", value)
+
+    @property
+    @pulumi.getter(name="fhirId1")
+    def fhir_id1(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "fhir_id1")
+
+    @fhir_id1.setter
+    def fhir_id1(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_id1", value)
+
+    @property
+    @pulumi.getter(name="fhirStoresId")
+    def fhir_stores_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "fhir_stores_id")
+
+    @fhir_stores_id.setter
+    def fhir_stores_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_stores_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="contentType")
+    def content_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP Content-Type header value specifying the content type of the body.
+        """
+        return pulumi.get(self, "content_type")
+
+    @content_type.setter
+    def content_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "content_type", value)
+
+    @property
+    @pulumi.getter
+    def data(self) -> Optional[pulumi.Input[str]]:
+        """
+        The HTTP request/response body as raw binary.
+        """
+        return pulumi.get(self, "data")
+
+    @data.setter
+    def data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data", value)
+
+    @property
+    @pulumi.getter
+    def extensions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        Application specific response metadata. Must be set in the first response for streaming APIs.
+        """
+        return pulumi.get(self, "extensions")
+
+    @extensions.setter
+    def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "extensions", value)
 
 
 class DatasetFhirStoreFhir(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -24,9 +146,7 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
                  fhir_stores_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which creates a new resource with a server-assigned resource ID. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
 
@@ -36,12 +156,40 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatasetFhirStoreFhirArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which creates a new resource with a server-assigned resource ID. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
+
+        :param str resource_name: The name of the resource.
+        :param DatasetFhirStoreFhirArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetFhirStoreFhirArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 content_type: Optional[pulumi.Input[str]] = None,
+                 data: Optional[pulumi.Input[str]] = None,
+                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 fhir_id: Optional[pulumi.Input[str]] = None,
+                 fhir_id1: Optional[pulumi.Input[str]] = None,
+                 fhir_stores_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -51,29 +199,29 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatasetFhirStoreFhirArgs.__new__(DatasetFhirStoreFhirArgs)
 
-            __props__['content_type'] = content_type
-            __props__['data'] = data
+            __props__.__dict__["content_type"] = content_type
+            __props__.__dict__["data"] = data
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
-            __props__['datasets_id'] = datasets_id
-            __props__['extensions'] = extensions
+            __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["extensions"] = extensions
             if fhir_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_id'")
-            __props__['fhir_id'] = fhir_id
+            __props__.__dict__["fhir_id"] = fhir_id
             if fhir_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_id1'")
-            __props__['fhir_id1'] = fhir_id1
+            __props__.__dict__["fhir_id1"] = fhir_id1
             if fhir_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_stores_id'")
-            __props__['fhir_stores_id'] = fhir_stores_id
+            __props__.__dict__["fhir_stores_id"] = fhir_stores_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
         super(DatasetFhirStoreFhir, __self__).__init__(
             'gcp-native:healthcare/v1:DatasetFhirStoreFhir',
             resource_name,
@@ -94,11 +242,11 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatasetFhirStoreFhirArgs.__new__(DatasetFhirStoreFhirArgs)
 
-        __props__["content_type"] = None
-        __props__["data"] = None
-        __props__["extensions"] = None
+        __props__.__dict__["content_type"] = None
+        __props__.__dict__["data"] = None
+        __props__.__dict__["extensions"] = None
         return DatasetFhirStoreFhir(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -124,10 +272,4 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
         Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         return pulumi.get(self, "extensions")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

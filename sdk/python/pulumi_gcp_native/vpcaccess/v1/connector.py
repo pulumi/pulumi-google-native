@@ -5,15 +5,152 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Connector']
+__all__ = ['ConnectorArgs', 'Connector']
+
+@pulumi.input_type
+class ConnectorArgs:
+    def __init__(__self__, *,
+                 connectors_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_throughput: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 subnet: Optional[pulumi.Input['SubnetArgs']] = None):
+        """
+        The set of arguments for constructing a Connector resource.
+        :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
+        :param pulumi.Input[str] name: The resource name in the format `projects/*/locations/*/connectors/*`.
+        :param pulumi.Input[str] network: Name of a VPC network.
+        :param pulumi.Input['SubnetArgs'] subnet: The subnet in which to house the VPC Access Connector.
+        """
+        pulumi.set(__self__, "connectors_id", connectors_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if ip_cidr_range is not None:
+            pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if max_throughput is not None:
+            pulumi.set(__self__, "max_throughput", max_throughput)
+        if min_throughput is not None:
+            pulumi.set(__self__, "min_throughput", min_throughput)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if subnet is not None:
+            pulumi.set(__self__, "subnet", subnet)
+
+    @property
+    @pulumi.getter(name="connectorsId")
+    def connectors_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connectors_id")
+
+    @connectors_id.setter
+    def connectors_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connectors_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="ipCidrRange")
+    def ip_cidr_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        """
+        return pulumi.get(self, "ip_cidr_range")
+
+    @ip_cidr_range.setter
+    def ip_cidr_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_cidr_range", value)
+
+    @property
+    @pulumi.getter(name="maxThroughput")
+    def max_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        """
+        return pulumi.get(self, "max_throughput")
+
+    @max_throughput.setter
+    def max_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_throughput", value)
+
+    @property
+    @pulumi.getter(name="minThroughput")
+    def min_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum throughput of the connector in Mbps. Default and min is 200.
+        """
+        return pulumi.get(self, "min_throughput")
+
+    @min_throughput.setter
+    def min_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_throughput", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name in the format `projects/*/locations/*/connectors/*`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of a VPC network.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter
+    def subnet(self) -> Optional[pulumi.Input['SubnetArgs']]:
+        """
+        The subnet in which to house the VPC Access Connector.
+        """
+        return pulumi.get(self, "subnet")
+
+    @subnet.setter
+    def subnet(self, value: Optional[pulumi.Input['SubnetArgs']]):
+        pulumi.set(self, "subnet", value)
 
 
 class Connector(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,9 +163,7 @@ class Connector(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a Serverless VPC Access connector, returns an operation.
 
@@ -41,12 +176,40 @@ class Connector(pulumi.CustomResource):
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input[pulumi.InputType['SubnetArgs']] subnet: The subnet in which to house the VPC Access Connector.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectorArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a Serverless VPC Access connector, returns an operation.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectorArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectorArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connectors_id: Optional[pulumi.Input[str]] = None,
+                 ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_throughput: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 subnet: Optional[pulumi.Input[pulumi.InputType['SubnetArgs']]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -56,25 +219,25 @@ class Connector(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
             if connectors_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connectors_id'")
-            __props__['connectors_id'] = connectors_id
-            __props__['ip_cidr_range'] = ip_cidr_range
+            __props__.__dict__["connectors_id"] = connectors_id
+            __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['max_throughput'] = max_throughput
-            __props__['min_throughput'] = min_throughput
-            __props__['name'] = name
-            __props__['network'] = network
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["max_throughput"] = max_throughput
+            __props__.__dict__["min_throughput"] = min_throughput
+            __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['subnet'] = subnet
-            __props__['connected_projects'] = None
-            __props__['state'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["subnet"] = subnet
+            __props__.__dict__["connected_projects"] = None
+            __props__.__dict__["state"] = None
         super(Connector, __self__).__init__(
             'gcp-native:vpcaccess/v1:Connector',
             resource_name,
@@ -95,16 +258,16 @@ class Connector(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
-        __props__["connected_projects"] = None
-        __props__["ip_cidr_range"] = None
-        __props__["max_throughput"] = None
-        __props__["min_throughput"] = None
-        __props__["name"] = None
-        __props__["network"] = None
-        __props__["state"] = None
-        __props__["subnet"] = None
+        __props__.__dict__["connected_projects"] = None
+        __props__.__dict__["ip_cidr_range"] = None
+        __props__.__dict__["max_throughput"] = None
+        __props__.__dict__["min_throughput"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["network"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["subnet"] = None
         return Connector(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -170,10 +333,4 @@ class Connector(pulumi.CustomResource):
         The subnet in which to house the VPC Access Connector.
         """
         return pulumi.get(self, "subnet")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

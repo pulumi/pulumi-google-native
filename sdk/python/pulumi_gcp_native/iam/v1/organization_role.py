@@ -5,13 +5,171 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OrganizationRole']
+__all__ = ['OrganizationRoleArgs', 'OrganizationRole']
+
+@pulumi.input_type
+class OrganizationRoleArgs:
+    def __init__(__self__, *,
+                 organizations_id: pulumi.Input[str],
+                 roles_id: pulumi.Input[str],
+                 deleted: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 included_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationRole resource.
+        :param pulumi.Input[bool] deleted: The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+        :param pulumi.Input[str] description: Optional. A human-readable description for the role.
+        :param pulumi.Input[str] etag: Used to perform a consistent read-modify-write.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_permissions: The names of the permissions this role grants when bound in an IAM policy.
+        :param pulumi.Input[str] name: The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+        :param pulumi.Input[str] role_id: The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
+        :param pulumi.Input[str] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+        """
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "roles_id", roles_id)
+        if deleted is not None:
+            pulumi.set(__self__, "deleted", deleted)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if included_permissions is not None:
+            pulumi.set(__self__, "included_permissions", included_permissions)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if stage is not None:
+            pulumi.set(__self__, "stage", stage)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="rolesId")
+    def roles_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "roles_id")
+
+    @roles_id.setter
+    def roles_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "roles_id", value)
+
+    @property
+    @pulumi.getter
+    def deleted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
+        """
+        return pulumi.get(self, "deleted")
+
+    @deleted.setter
+    def deleted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deleted", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A human-readable description for the role.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Used to perform a consistent read-modify-write.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="includedPermissions")
+    def included_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The names of the permissions this role grants when bound in an IAM policy.
+        """
+        return pulumi.get(self, "included_permissions")
+
+    @included_permissions.setter
+    def included_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_permissions", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
+
+    @property
+    @pulumi.getter
+    def stage(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
+        """
+        return pulumi.get(self, "stage")
+
+    @stage.setter
+    def stage(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "stage", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 class OrganizationRole(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -25,9 +183,7 @@ class OrganizationRole(pulumi.CustomResource):
                  roles_id: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new custom Role.
 
@@ -42,12 +198,41 @@ class OrganizationRole(pulumi.CustomResource):
         :param pulumi.Input[str] stage: The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
         :param pulumi.Input[str] title: Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationRoleArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new custom Role.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationRoleArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 deleted: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 included_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 roles_id: Optional[pulumi.Input[str]] = None,
+                 stage: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -57,22 +242,22 @@ class OrganizationRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationRoleArgs.__new__(OrganizationRoleArgs)
 
-            __props__['deleted'] = deleted
-            __props__['description'] = description
-            __props__['etag'] = etag
-            __props__['included_permissions'] = included_permissions
-            __props__['name'] = name
+            __props__.__dict__["deleted"] = deleted
+            __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["included_permissions"] = included_permissions
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['role_id'] = role_id
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["role_id"] = role_id
             if roles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'roles_id'")
-            __props__['roles_id'] = roles_id
-            __props__['stage'] = stage
-            __props__['title'] = title
+            __props__.__dict__["roles_id"] = roles_id
+            __props__.__dict__["stage"] = stage
+            __props__.__dict__["title"] = title
         super(OrganizationRole, __self__).__init__(
             'gcp-native:iam/v1:OrganizationRole',
             resource_name,
@@ -93,15 +278,15 @@ class OrganizationRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationRoleArgs.__new__(OrganizationRoleArgs)
 
-        __props__["deleted"] = None
-        __props__["description"] = None
-        __props__["etag"] = None
-        __props__["included_permissions"] = None
-        __props__["name"] = None
-        __props__["stage"] = None
-        __props__["title"] = None
+        __props__.__dict__["deleted"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["included_permissions"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["stage"] = None
+        __props__.__dict__["title"] = None
         return OrganizationRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -159,10 +344,4 @@ class OrganizationRole(pulumi.CustomResource):
         Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
         """
         return pulumi.get(self, "title")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

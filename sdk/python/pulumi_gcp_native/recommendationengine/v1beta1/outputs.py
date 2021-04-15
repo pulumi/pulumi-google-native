@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -39,15 +39,31 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse
         """
         return pulumi.get(self, "categories")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudRecommendationengineV1beta1FeatureMapResponse(dict):
     """
     FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "categoricalFeatures":
+            suggest = "categorical_features"
+        elif key == "numericalFeatures":
+            suggest = "numerical_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecommendationengineV1beta1FeatureMapResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecommendationengineV1beta1FeatureMapResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecommendationengineV1beta1FeatureMapResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categorical_features: Mapping[str, str],
                  numerical_features: Mapping[str, str]):
@@ -74,9 +90,6 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapResponse(dict):
         Numerical features. Some examples would be the height/weight of a product, or age of a customer. Feature names must be UTF-8 encoded strings. For example: `{ "lengths_cm": {"value":[2.3, 15.4]}, "heights_cm": {"value":[8.1, 6.4]} }`
         """
         return pulumi.get(self, "numerical_features")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -122,15 +135,31 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse(dict):
         """
         return pulumi.get(self, "width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse(dict):
     """
     Exact product price.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayPrice":
+            suggest = "display_price"
+        elif key == "originalPrice":
+            suggest = "original_price"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_price: float,
                  original_price: float):
@@ -157,9 +186,6 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceResponse
         Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
         """
         return pulumi.get(self, "original_price")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -194,15 +220,39 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
         """
         return pulumi.get(self, "min")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse(dict):
     """
     ProductCatalogItem captures item metadata specific to retail products.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "availableQuantity":
+            suggest = "available_quantity"
+        elif key == "canonicalProductUri":
+            suggest = "canonical_product_uri"
+        elif key == "currencyCode":
+            suggest = "currency_code"
+        elif key == "exactPrice":
+            suggest = "exact_price"
+        elif key == "priceRange":
+            suggest = "price_range"
+        elif key == "stockState":
+            suggest = "stock_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  available_quantity: str,
                  canonical_product_uri: str,
@@ -295,8 +345,5 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse(dict):
         Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
         """
         return pulumi.get(self, "stock_state")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

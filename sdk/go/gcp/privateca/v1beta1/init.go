@@ -22,19 +22,20 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:privateca/v1beta1:CertificateAuthority":
-		r, err = NewCertificateAuthority(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificateAuthority{}
 	case "gcp-native:privateca/v1beta1:CertificateAuthorityCertificate":
-		r, err = NewCertificateAuthorityCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificateAuthorityCertificate{}
 	case "gcp-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
-		r, err = NewCertificateAuthorityCertificateRevocationListIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificateAuthorityCertificateRevocationListIamPolicy{}
 	case "gcp-native:privateca/v1beta1:CertificateAuthorityIamPolicy":
-		r, err = NewCertificateAuthorityIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &CertificateAuthorityIamPolicy{}
 	case "gcp-native:privateca/v1beta1:ReusableConfigIamPolicy":
-		r, err = NewReusableConfigIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReusableConfigIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

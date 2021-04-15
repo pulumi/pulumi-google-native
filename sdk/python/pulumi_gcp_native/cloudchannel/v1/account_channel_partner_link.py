@@ -5,14 +5,76 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['AccountChannelPartnerLink']
+__all__ = ['AccountChannelPartnerLinkArgs', 'AccountChannelPartnerLink']
+
+@pulumi.input_type
+class AccountChannelPartnerLinkArgs:
+    def __init__(__self__, *,
+                 accounts_id: pulumi.Input[str],
+                 channel_partner_links_id: pulumi.Input[str],
+                 link_state: Optional[pulumi.Input[str]] = None,
+                 reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccountChannelPartnerLink resource.
+        :param pulumi.Input[str] link_state: Required. State of the channel partner link.
+        :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
+        """
+        pulumi.set(__self__, "accounts_id", accounts_id)
+        pulumi.set(__self__, "channel_partner_links_id", channel_partner_links_id)
+        if link_state is not None:
+            pulumi.set(__self__, "link_state", link_state)
+        if reseller_cloud_identity_id is not None:
+            pulumi.set(__self__, "reseller_cloud_identity_id", reseller_cloud_identity_id)
+
+    @property
+    @pulumi.getter(name="accountsId")
+    def accounts_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "accounts_id")
+
+    @accounts_id.setter
+    def accounts_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "accounts_id", value)
+
+    @property
+    @pulumi.getter(name="channelPartnerLinksId")
+    def channel_partner_links_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channel_partner_links_id")
+
+    @channel_partner_links_id.setter
+    def channel_partner_links_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channel_partner_links_id", value)
+
+    @property
+    @pulumi.getter(name="linkState")
+    def link_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. State of the channel partner link.
+        """
+        return pulumi.get(self, "link_state")
+
+    @link_state.setter
+    def link_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "link_state", value)
+
+    @property
+    @pulumi.getter(name="resellerCloudIdentityId")
+    def reseller_cloud_identity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Cloud Identity ID of the linked reseller.
+        """
+        return pulumi.get(self, "reseller_cloud_identity_id")
+
+    @reseller_cloud_identity_id.setter
+    def reseller_cloud_identity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reseller_cloud_identity_id", value)
 
 
 class AccountChannelPartnerLink(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -20,9 +82,7 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
                  channel_partner_links_id: Optional[pulumi.Input[str]] = None,
                  link_state: Optional[pulumi.Input[str]] = None,
                  reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource.
 
@@ -31,12 +91,35 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
         :param pulumi.Input[str] link_state: Required. State of the channel partner link.
         :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccountChannelPartnerLinkArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Initiates a channel partner link between a distributor and a reseller, or between resellers in an n-tier reseller channel. Invited partners need to follow the invite_link_uri provided in the response to accept. After accepting the invitation, a link is set up between the two parties. You must be a distributor to call this method. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * ALREADY_EXISTS: The ChannelPartnerLink sent in the request already exists. * NOT_FOUND: No Cloud Identity customer exists for provided domain. * INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support. Return value: The new ChannelPartnerLink resource.
+
+        :param str resource_name: The name of the resource.
+        :param AccountChannelPartnerLinkArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccountChannelPartnerLinkArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 accounts_id: Optional[pulumi.Input[str]] = None,
+                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
+                 link_state: Optional[pulumi.Input[str]] = None,
+                 reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -46,22 +129,22 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccountChannelPartnerLinkArgs.__new__(AccountChannelPartnerLinkArgs)
 
             if accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'accounts_id'")
-            __props__['accounts_id'] = accounts_id
+            __props__.__dict__["accounts_id"] = accounts_id
             if channel_partner_links_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_partner_links_id'")
-            __props__['channel_partner_links_id'] = channel_partner_links_id
-            __props__['link_state'] = link_state
-            __props__['reseller_cloud_identity_id'] = reseller_cloud_identity_id
-            __props__['channel_partner_cloud_identity_info'] = None
-            __props__['create_time'] = None
-            __props__['invite_link_uri'] = None
-            __props__['name'] = None
-            __props__['public_id'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["channel_partner_links_id"] = channel_partner_links_id
+            __props__.__dict__["link_state"] = link_state
+            __props__.__dict__["reseller_cloud_identity_id"] = reseller_cloud_identity_id
+            __props__.__dict__["channel_partner_cloud_identity_info"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["invite_link_uri"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["public_id"] = None
+            __props__.__dict__["update_time"] = None
         super(AccountChannelPartnerLink, __self__).__init__(
             'gcp-native:cloudchannel/v1:AccountChannelPartnerLink',
             resource_name,
@@ -82,16 +165,16 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AccountChannelPartnerLinkArgs.__new__(AccountChannelPartnerLinkArgs)
 
-        __props__["channel_partner_cloud_identity_info"] = None
-        __props__["create_time"] = None
-        __props__["invite_link_uri"] = None
-        __props__["link_state"] = None
-        __props__["name"] = None
-        __props__["public_id"] = None
-        __props__["reseller_cloud_identity_id"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["channel_partner_cloud_identity_info"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["invite_link_uri"] = None
+        __props__.__dict__["link_state"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["public_id"] = None
+        __props__.__dict__["reseller_cloud_identity_id"] = None
+        __props__.__dict__["update_time"] = None
         return AccountChannelPartnerLink(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -157,10 +240,4 @@ class AccountChannelPartnerLink(pulumi.CustomResource):
         Timestamp of when the channel partner link is updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OrganizationEnvgroup']
+__all__ = ['OrganizationEnvgroupArgs', 'OrganizationEnvgroup']
+
+@pulumi.input_type
+class OrganizationEnvgroupArgs:
+    def __init__(__self__, *,
+                 envgroups_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationEnvgroup resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
+        :param pulumi.Input[str] name: ID of the environment group.
+        """
+        pulumi.set(__self__, "envgroups_id", envgroups_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if hostnames is not None:
+            pulumi.set(__self__, "hostnames", hostnames)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="envgroupsId")
+    def envgroups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "envgroups_id")
+
+    @envgroups_id.setter
+    def envgroups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "envgroups_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def hostnames(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Required. Host names for this environment group.
+        """
+        return pulumi.get(self, "hostnames")
+
+    @hostnames.setter
+    def hostnames(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "hostnames", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the environment group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class OrganizationEnvgroup(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -19,9 +81,7 @@ class OrganizationEnvgroup(pulumi.CustomResource):
                  hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new environment group.
 
@@ -30,12 +90,35 @@ class OrganizationEnvgroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] hostnames: Required. Host names for this environment group.
         :param pulumi.Input[str] name: ID of the environment group.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationEnvgroupArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new environment group.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationEnvgroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationEnvgroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 envgroups_id: Optional[pulumi.Input[str]] = None,
+                 hostnames: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -45,19 +128,19 @@ class OrganizationEnvgroup(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationEnvgroupArgs.__new__(OrganizationEnvgroupArgs)
 
             if envgroups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'envgroups_id'")
-            __props__['envgroups_id'] = envgroups_id
-            __props__['hostnames'] = hostnames
-            __props__['name'] = name
+            __props__.__dict__["envgroups_id"] = envgroups_id
+            __props__.__dict__["hostnames"] = hostnames
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['created_at'] = None
-            __props__['last_modified_at'] = None
-            __props__['state'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["created_at"] = None
+            __props__.__dict__["last_modified_at"] = None
+            __props__.__dict__["state"] = None
         super(OrganizationEnvgroup, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationEnvgroup',
             resource_name,
@@ -78,13 +161,13 @@ class OrganizationEnvgroup(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationEnvgroupArgs.__new__(OrganizationEnvgroupArgs)
 
-        __props__["created_at"] = None
-        __props__["hostnames"] = None
-        __props__["last_modified_at"] = None
-        __props__["name"] = None
-        __props__["state"] = None
+        __props__.__dict__["created_at"] = None
+        __props__.__dict__["hostnames"] = None
+        __props__.__dict__["last_modified_at"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
         return OrganizationEnvgroup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -126,10 +209,4 @@ class OrganizationEnvgroup(pulumi.CustomResource):
         State of the environment group. Values other than ACTIVE means the resource is not ready to use.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

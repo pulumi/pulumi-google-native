@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,25 @@ class AuthenticationResponse(dict):
     """
     Scan authentication configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customAccount":
+            suggest = "custom_account"
+        elif key == "googleAccount":
+            suggest = "google_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuthenticationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuthenticationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuthenticationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_account: 'outputs.CustomAccountResponse',
                  google_account: 'outputs.GoogleAccountResponse'):
@@ -49,15 +68,29 @@ class AuthenticationResponse(dict):
         """
         return pulumi.get(self, "google_account")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomAccountResponse(dict):
     """
     Describes authentication configuration that uses a custom account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loginUrl":
+            suggest = "login_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomAccountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomAccountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomAccountResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  login_url: str,
                  password: str,
@@ -96,9 +129,6 @@ class CustomAccountResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleAccountResponse(dict):
@@ -132,15 +162,43 @@ class GoogleAccountResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScanRunResponse(dict):
     """
     A ScanRun is a output-only resource representing an actual run of the scan.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "executionState":
+            suggest = "execution_state"
+        elif key == "hasVulnerabilities":
+            suggest = "has_vulnerabilities"
+        elif key == "progressPercent":
+            suggest = "progress_percent"
+        elif key == "resultState":
+            suggest = "result_state"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "urlsCrawledCount":
+            suggest = "urls_crawled_count"
+        elif key == "urlsTestedCount":
+            suggest = "urls_tested_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScanRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScanRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScanRunResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  execution_state: str,
@@ -245,15 +303,31 @@ class ScanRunResponse(dict):
         """
         return pulumi.get(self, "urls_tested_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleResponse(dict):
     """
     Scan schedule configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "intervalDurationDays":
+            suggest = "interval_duration_days"
+        elif key == "scheduleTime":
+            suggest = "schedule_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interval_duration_days: int,
                  schedule_time: str):
@@ -280,8 +354,5 @@ class ScheduleResponse(dict):
         A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
         """
         return pulumi.get(self, "schedule_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

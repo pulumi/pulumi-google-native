@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudkms/v1:KeyRing":
-		r, err = NewKeyRing(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRing{}
 	case "gcp-native:cloudkms/v1:KeyRingCryptoKey":
-		r, err = NewKeyRingCryptoKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingCryptoKey{}
 	case "gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
-		r, err = NewKeyRingCryptoKeyCryptoKeyVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingCryptoKeyCryptoKeyVersion{}
 	case "gcp-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
-		r, err = NewKeyRingCryptoKeyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingCryptoKeyIamPolicy{}
 	case "gcp-native:cloudkms/v1:KeyRingIamPolicy":
-		r, err = NewKeyRingIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingIamPolicy{}
 	case "gcp-native:cloudkms/v1:KeyRingImportJob":
-		r, err = NewKeyRingImportJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingImportJob{}
 	case "gcp-native:cloudkms/v1:KeyRingImportJobIamPolicy":
-		r, err = NewKeyRingImportJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &KeyRingImportJobIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

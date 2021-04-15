@@ -5,13 +5,166 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['SecuritySetting']
+__all__ = ['SecuritySettingArgs', 'SecuritySetting']
+
+@pulumi.input_type
+class SecuritySettingArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 security_settings_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_template: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redaction_scope: Optional[pulumi.Input[str]] = None,
+                 redaction_strategy: Optional[pulumi.Input[str]] = None,
+                 retention_window_days: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a SecuritySetting resource.
+        :param pulumi.Input[str] display_name: Required. The human-readable name of the security settings, unique within the location.
+        :param pulumi.Input[str] inspect_template: DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        :param pulumi.Input[str] name: Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] purge_data_types: List of types of data to remove when retention settings triggers purge.
+        :param pulumi.Input[str] redaction_scope: Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        :param pulumi.Input[str] redaction_strategy: Strategy that defines how we do redaction.
+        :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "security_settings_id", security_settings_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if inspect_template is not None:
+            pulumi.set(__self__, "inspect_template", inspect_template)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if purge_data_types is not None:
+            pulumi.set(__self__, "purge_data_types", purge_data_types)
+        if redaction_scope is not None:
+            pulumi.set(__self__, "redaction_scope", redaction_scope)
+        if redaction_strategy is not None:
+            pulumi.set(__self__, "redaction_strategy", redaction_strategy)
+        if retention_window_days is not None:
+            pulumi.set(__self__, "retention_window_days", retention_window_days)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="securitySettingsId")
+    def security_settings_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "security_settings_id")
+
+    @security_settings_id.setter
+    def security_settings_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "security_settings_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The human-readable name of the security settings, unique within the location.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="inspectTemplate")
+    def inspect_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        """
+        return pulumi.get(self, "inspect_template")
+
+    @inspect_template.setter
+    def inspect_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "inspect_template", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="purgeDataTypes")
+    def purge_data_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of types of data to remove when retention settings triggers purge.
+        """
+        return pulumi.get(self, "purge_data_types")
+
+    @purge_data_types.setter
+    def purge_data_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "purge_data_types", value)
+
+    @property
+    @pulumi.getter(name="redactionScope")
+    def redaction_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        """
+        return pulumi.get(self, "redaction_scope")
+
+    @redaction_scope.setter
+    def redaction_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redaction_scope", value)
+
+    @property
+    @pulumi.getter(name="redactionStrategy")
+    def redaction_strategy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Strategy that defines how we do redaction.
+        """
+        return pulumi.get(self, "redaction_strategy")
+
+    @redaction_strategy.setter
+    def redaction_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redaction_strategy", value)
+
+    @property
+    @pulumi.getter(name="retentionWindowDays")
+    def retention_window_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        """
+        return pulumi.get(self, "retention_window_days")
+
+    @retention_window_days.setter
+    def retention_window_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "retention_window_days", value)
 
 
 class SecuritySetting(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -25,9 +178,7 @@ class SecuritySetting(pulumi.CustomResource):
                  redaction_strategy: Optional[pulumi.Input[str]] = None,
                  retention_window_days: Optional[pulumi.Input[int]] = None,
                  security_settings_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create security settings in the specified location.
 
@@ -41,12 +192,41 @@ class SecuritySetting(pulumi.CustomResource):
         :param pulumi.Input[str] redaction_strategy: Strategy that defines how we do redaction.
         :param pulumi.Input[int] retention_window_days: Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SecuritySettingArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create security settings in the specified location.
+
+        :param str resource_name: The name of the resource.
+        :param SecuritySettingArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SecuritySettingArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 inspect_template: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 redaction_scope: Optional[pulumi.Input[str]] = None,
+                 redaction_strategy: Optional[pulumi.Input[str]] = None,
+                 retention_window_days: Optional[pulumi.Input[int]] = None,
+                 security_settings_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -56,24 +236,24 @@ class SecuritySetting(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
-            __props__['display_name'] = display_name
-            __props__['inspect_template'] = inspect_template
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["inspect_template"] = inspect_template
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['purge_data_types'] = purge_data_types
-            __props__['redaction_scope'] = redaction_scope
-            __props__['redaction_strategy'] = redaction_strategy
-            __props__['retention_window_days'] = retention_window_days
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["purge_data_types"] = purge_data_types
+            __props__.__dict__["redaction_scope"] = redaction_scope
+            __props__.__dict__["redaction_strategy"] = redaction_strategy
+            __props__.__dict__["retention_window_days"] = retention_window_days
             if security_settings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'security_settings_id'")
-            __props__['security_settings_id'] = security_settings_id
+            __props__.__dict__["security_settings_id"] = security_settings_id
         super(SecuritySetting, __self__).__init__(
             'gcp-native:dialogflow/v3:SecuritySetting',
             resource_name,
@@ -94,15 +274,15 @@ class SecuritySetting(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SecuritySettingArgs.__new__(SecuritySettingArgs)
 
-        __props__["display_name"] = None
-        __props__["inspect_template"] = None
-        __props__["name"] = None
-        __props__["purge_data_types"] = None
-        __props__["redaction_scope"] = None
-        __props__["redaction_strategy"] = None
-        __props__["retention_window_days"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["inspect_template"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["purge_data_types"] = None
+        __props__.__dict__["redaction_scope"] = None
+        __props__.__dict__["redaction_strategy"] = None
+        __props__.__dict__["retention_window_days"] = None
         return SecuritySetting(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -160,10 +340,4 @@ class SecuritySetting(pulumi.CustomResource):
         Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
         """
         return pulumi.get(self, "retention_window_days")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

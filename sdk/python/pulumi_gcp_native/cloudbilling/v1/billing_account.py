@@ -5,22 +5,71 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['BillingAccount']
+__all__ = ['BillingAccountArgs', 'BillingAccount']
+
+@pulumi.input_type
+class BillingAccountArgs:
+    def __init__(__self__, *,
+                 billing_accounts_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 master_billing_account: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a BillingAccount resource.
+        :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+        :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        """
+        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if master_billing_account is not None:
+            pulumi.set(__self__, "master_billing_account", master_billing_account)
+
+    @property
+    @pulumi.getter(name="billingAccountsId")
+    def billing_accounts_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_accounts_id")
+
+    @billing_accounts_id.setter
+    def billing_accounts_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_accounts_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="masterBillingAccount")
+    def master_billing_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
+        """
+        return pulumi.get(self, "master_billing_account")
+
+    @master_billing_account.setter
+    def master_billing_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "master_billing_account", value)
 
 
 class BillingAccount(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  billing_accounts_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
 
@@ -29,12 +78,34 @@ class BillingAccount(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: BillingAccountArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        This method creates [billing subaccounts](https://cloud.google.com/billing/docs/concepts#subaccounts). Google Cloud resellers should use the Channel Services APIs, [accounts.customers.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers/create) and [accounts.customers.entitlements.create](https://cloud.google.com/channel/docs/reference/rest/v1/accounts.customers.entitlements/create). When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM permission on the parent account, which is typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an error if the parent account has not been provisioned as a reseller account.
+
+        :param str resource_name: The name of the resource.
+        :param BillingAccountArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(BillingAccountArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 master_billing_account: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -44,15 +115,15 @@ class BillingAccount(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = BillingAccountArgs.__new__(BillingAccountArgs)
 
             if billing_accounts_id is None and not opts.urn:
                 raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__['billing_accounts_id'] = billing_accounts_id
-            __props__['display_name'] = display_name
-            __props__['master_billing_account'] = master_billing_account
-            __props__['name'] = None
-            __props__['open'] = None
+            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["master_billing_account"] = master_billing_account
+            __props__.__dict__["name"] = None
+            __props__.__dict__["open"] = None
         super(BillingAccount, __self__).__init__(
             'gcp-native:cloudbilling/v1:BillingAccount',
             resource_name,
@@ -73,12 +144,12 @@ class BillingAccount(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = BillingAccountArgs.__new__(BillingAccountArgs)
 
-        __props__["display_name"] = None
-        __props__["master_billing_account"] = None
-        __props__["name"] = None
-        __props__["open"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["master_billing_account"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["open"] = None
         return BillingAccount(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -112,10 +183,4 @@ class BillingAccount(pulumi.CustomResource):
         True if the billing account is open, and will therefore be charged for any usage on associated projects. False if the billing account is closed, and therefore projects associated with it will be unable to use paid services.
         """
         return pulumi.get(self, "open")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

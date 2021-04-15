@@ -22,21 +22,22 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:dns/v1beta2:Change":
-		r, err = NewChange(ctx, name, nil, pulumi.URN_(urn))
+		r = &Change{}
 	case "gcp-native:dns/v1beta2:ManagedZone":
-		r, err = NewManagedZone(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedZone{}
 	case "gcp-native:dns/v1beta2:ManagedZoneRrset":
-		r, err = NewManagedZoneRrset(ctx, name, nil, pulumi.URN_(urn))
+		r = &ManagedZoneRrset{}
 	case "gcp-native:dns/v1beta2:Policy":
-		r, err = NewPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Policy{}
 	case "gcp-native:dns/v1beta2:ResponsePolicy":
-		r, err = NewResponsePolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResponsePolicy{}
 	case "gcp-native:dns/v1beta2:ResponsePolicyRule":
-		r, err = NewResponsePolicyRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResponsePolicyRule{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

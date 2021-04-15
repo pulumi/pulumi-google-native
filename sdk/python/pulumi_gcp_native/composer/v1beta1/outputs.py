@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -56,15 +56,29 @@ class AllowedIpRangeResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseConfigResponse(dict):
     """
     The configuration of Cloud SQL instance that is used by the Apache Airflow software.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  machine_type: str):
         """
@@ -81,15 +95,29 @@ class DatabaseConfigResponse(dict):
         """
         return pulumi.get(self, "machine_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     The encryption options for the Composer environment and its dependencies.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key_name: str):
         """
@@ -106,15 +134,51 @@ class EncryptionConfigResponse(dict):
         """
         return pulumi.get(self, "kms_key_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EnvironmentConfigResponse(dict):
     """
     Configuration information for an environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "airflowUri":
+            suggest = "airflow_uri"
+        elif key == "dagGcsPrefix":
+            suggest = "dag_gcs_prefix"
+        elif key == "databaseConfig":
+            suggest = "database_config"
+        elif key == "encryptionConfig":
+            suggest = "encryption_config"
+        elif key == "gkeCluster":
+            suggest = "gke_cluster"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "nodeConfig":
+            suggest = "node_config"
+        elif key == "nodeCount":
+            suggest = "node_count"
+        elif key == "privateEnvironmentConfig":
+            suggest = "private_environment_config"
+        elif key == "softwareConfig":
+            suggest = "software_config"
+        elif key == "webServerConfig":
+            suggest = "web_server_config"
+        elif key == "webServerNetworkAccessControl":
+            suggest = "web_server_network_access_control"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  airflow_uri: str,
                  dag_gcs_prefix: str,
@@ -252,15 +316,37 @@ class EnvironmentConfigResponse(dict):
         """
         return pulumi.get(self, "web_server_network_access_control")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IPAllocationPolicyResponse(dict):
     """
     Configuration for controlling how IPs are allocated in the GKE cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterIpv4CidrBlock":
+            suggest = "cluster_ipv4_cidr_block"
+        elif key == "clusterSecondaryRangeName":
+            suggest = "cluster_secondary_range_name"
+        elif key == "servicesIpv4CidrBlock":
+            suggest = "services_ipv4_cidr_block"
+        elif key == "servicesSecondaryRangeName":
+            suggest = "services_secondary_range_name"
+        elif key == "useIpAliases":
+            suggest = "use_ip_aliases"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IPAllocationPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IPAllocationPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IPAllocationPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_ipv4_cidr_block: str,
                  cluster_secondary_range_name: str,
@@ -321,15 +407,31 @@ class IPAllocationPolicyResponse(dict):
         """
         return pulumi.get(self, "use_ip_aliases")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MaintenanceWindowResponse(dict):
     """
     The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  recurrence: str,
@@ -368,15 +470,39 @@ class MaintenanceWindowResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
     The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "ipAllocationPolicy":
+            suggest = "ip_allocation_policy"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "maxPodsPerNode":
+            suggest = "max_pods_per_node"
+        elif key == "oauthScopes":
+            suggest = "oauth_scopes"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disk_size_gb: int,
                  ip_allocation_policy: 'outputs.IPAllocationPolicyResponse',
@@ -492,15 +618,33 @@ class NodeConfigResponse(dict):
         """
         return pulumi.get(self, "tags")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateClusterConfigResponse(dict):
     """
     Configuration options for the private GKE cluster in a Cloud Composer environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePrivateEndpoint":
+            suggest = "enable_private_endpoint"
+        elif key == "masterIpv4CidrBlock":
+            suggest = "master_ipv4_cidr_block"
+        elif key == "masterIpv4ReservedRange":
+            suggest = "master_ipv4_reserved_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_private_endpoint: bool,
                  master_ipv4_cidr_block: str,
@@ -539,15 +683,37 @@ class PrivateClusterConfigResponse(dict):
         """
         return pulumi.get(self, "master_ipv4_reserved_range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrivateEnvironmentConfigResponse(dict):
     """
     The configuration information for configuring a Private IP Cloud Composer environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlIpv4CidrBlock":
+            suggest = "cloud_sql_ipv4_cidr_block"
+        elif key == "enablePrivateEnvironment":
+            suggest = "enable_private_environment"
+        elif key == "privateClusterConfig":
+            suggest = "private_cluster_config"
+        elif key == "webServerIpv4CidrBlock":
+            suggest = "web_server_ipv4_cidr_block"
+        elif key == "webServerIpv4ReservedRange":
+            suggest = "web_server_ipv4_reserved_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrivateEnvironmentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrivateEnvironmentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrivateEnvironmentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_sql_ipv4_cidr_block: str,
                  enable_private_environment: bool,
@@ -608,15 +774,37 @@ class PrivateEnvironmentConfigResponse(dict):
         """
         return pulumi.get(self, "web_server_ipv4_reserved_range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SoftwareConfigResponse(dict):
     """
     Specifies the selection and configuration of software inside the environment.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "airflowConfigOverrides":
+            suggest = "airflow_config_overrides"
+        elif key == "envVariables":
+            suggest = "env_variables"
+        elif key == "imageVersion":
+            suggest = "image_version"
+        elif key == "pypiPackages":
+            suggest = "pypi_packages"
+        elif key == "pythonVersion":
+            suggest = "python_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SoftwareConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SoftwareConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SoftwareConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  airflow_config_overrides: Mapping[str, str],
                  env_variables: Mapping[str, str],
@@ -677,15 +865,29 @@ class SoftwareConfigResponse(dict):
         """
         return pulumi.get(self, "python_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebServerConfigResponse(dict):
     """
     The configuration settings for the Airflow web server App Engine instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "machineType":
+            suggest = "machine_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebServerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebServerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebServerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  machine_type: str):
         """
@@ -702,15 +904,29 @@ class WebServerConfigResponse(dict):
         """
         return pulumi.get(self, "machine_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WebServerNetworkAccessControlResponse(dict):
     """
     Network-level access control policy for the Airflow web server.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedIpRanges":
+            suggest = "allowed_ip_ranges"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WebServerNetworkAccessControlResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WebServerNetworkAccessControlResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WebServerNetworkAccessControlResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_ip_ranges: Sequence['outputs.AllowedIpRangeResponse']):
         """
@@ -726,8 +942,5 @@ class WebServerNetworkAccessControlResponse(dict):
         A collection of allowed IP ranges with descriptions.
         """
         return pulumi.get(self, "allowed_ip_ranges")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

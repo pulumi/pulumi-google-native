@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -41,6 +41,25 @@ class AsyncOptionsResponse(dict):
     """
     Async options that determine when a resource should finish.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodMatch":
+            suggest = "method_match"
+        elif key == "pollingOptions":
+            suggest = "polling_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AsyncOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AsyncOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AsyncOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_match: str,
                  polling_options: 'outputs.PollingOptionsResponse'):
@@ -68,15 +87,29 @@ class AsyncOptionsResponse(dict):
         """
         return pulumi.get(self, "polling_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -104,15 +137,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -140,9 +189,6 @@ class AuditLogConfigResponse(dict):
         """
         return pulumi.get(self, "log_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicAuthResponse(dict):
@@ -167,9 +213,6 @@ class BasicAuthResponse(dict):
     @pulumi.getter
     def user(self) -> str:
         return pulumi.get(self, "user")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -215,9 +258,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CollectionOverrideResponse(dict):
@@ -250,9 +290,6 @@ class CollectionOverrideResponse(dict):
         The options to apply to this resource-level override
         """
         return pulumi.get(self, "options")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -287,9 +324,6 @@ class CompositeTypeLabelEntryResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConfigFileResponse(dict):
@@ -308,15 +342,33 @@ class ConfigFileResponse(dict):
         """
         return pulumi.get(self, "content")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CredentialResponse(dict):
     """
     The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "useProjectDefault":
+            suggest = "use_project_default"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_auth: 'outputs.BasicAuthResponse',
                  service_account: 'outputs.ServiceAccountResponse',
@@ -355,9 +407,6 @@ class CredentialResponse(dict):
         """
         return pulumi.get(self, "use_project_default")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeploymentLabelEntryResponse(dict):
@@ -391,9 +440,6 @@ class DeploymentLabelEntryResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeploymentUpdateLabelEntryResponse(dict):
@@ -426,9 +472,6 @@ class DeploymentUpdateLabelEntryResponse(dict):
         Value of the label
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -470,9 +513,6 @@ class DeploymentUpdateResponse(dict):
         """
         return pulumi.get(self, "manifest")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiagnosticResponse(dict):
@@ -501,9 +541,6 @@ class DiagnosticResponse(dict):
         Level to record this diagnostic.
         """
         return pulumi.get(self, "level")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -560,9 +597,6 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImportFileResponse(dict):
@@ -592,15 +626,31 @@ class ImportFileResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InputMappingResponse(dict):
     """
     InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+        elif key == "methodMatch":
+            suggest = "method_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InputMappingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InputMappingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InputMappingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  field_name: str,
                  location: str,
@@ -650,15 +700,53 @@ class InputMappingResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OperationResponse(dict):
     """
     Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientOperationId":
+            suggest = "client_operation_id"
+        elif key == "creationTimestamp":
+            suggest = "creation_timestamp"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "httpErrorMessage":
+            suggest = "http_error_message"
+        elif key == "httpErrorStatusCode":
+            suggest = "http_error_status_code"
+        elif key == "insertTime":
+            suggest = "insert_time"
+        elif key == "operationGroupId":
+            suggest = "operation_group_id"
+        elif key == "operationType":
+            suggest = "operation_type"
+        elif key == "selfLink":
+            suggest = "self_link"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "statusMessage":
+            suggest = "status_message"
+        elif key == "targetId":
+            suggest = "target_id"
+        elif key == "targetLink":
+            suggest = "target_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OperationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OperationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OperationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_operation_id: str,
                  creation_timestamp: str,
@@ -917,15 +1005,35 @@ class OperationResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OptionsResponse(dict):
     """
     Options allows customized resource handling by Deployment Manager.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "asyncOptions":
+            suggest = "async_options"
+        elif key == "inputMappings":
+            suggest = "input_mappings"
+        elif key == "validationOptions":
+            suggest = "validation_options"
+        elif key == "virtualProperties":
+            suggest = "virtual_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  async_options: Sequence['outputs.AsyncOptionsResponse'],
                  input_mappings: Sequence['outputs.InputMappingResponse'],
@@ -975,12 +1083,32 @@ class OptionsResponse(dict):
         """
         return pulumi.get(self, "virtual_properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PollingOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failCondition":
+            suggest = "fail_condition"
+        elif key == "finishCondition":
+            suggest = "finish_condition"
+        elif key == "pollingLink":
+            suggest = "polling_link"
+        elif key == "targetLink":
+            suggest = "target_link"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PollingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PollingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PollingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  diagnostics: Sequence['outputs.DiagnosticResponse'],
                  fail_condition: str,
@@ -1040,9 +1168,6 @@ class PollingOptionsResponse(dict):
         """
         return pulumi.get(self, "target_link")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServiceAccountResponse(dict):
@@ -1064,9 +1189,6 @@ class ServiceAccountResponse(dict):
         The IAM service account email address like test@myproject.iam.gserviceaccount.com
         """
         return pulumi.get(self, "email")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1097,15 +1219,29 @@ class TargetConfigurationResponse(dict):
         """
         return pulumi.get(self, "imports")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TemplateContentsResponse(dict):
     """
     Files that make up the template contents of a template type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mainTemplate":
+            suggest = "main_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TemplateContentsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TemplateContentsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TemplateContentsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  imports: Sequence['outputs.ImportFileResponse'],
                  interpreter: str,
@@ -1166,9 +1302,6 @@ class TemplateContentsResponse(dict):
         """
         return pulumi.get(self, "template")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TypeProviderLabelEntryResponse(dict):
@@ -1202,15 +1335,31 @@ class TypeProviderLabelEntryResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ValidationOptionsResponse(dict):
     """
     Options for how to validate and process properties on a resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "schemaValidation":
+            suggest = "schema_validation"
+        elif key == "undeclaredProperties":
+            suggest = "undeclared_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValidationOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValidationOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValidationOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  schema_validation: str,
                  undeclared_properties: str):
@@ -1237,8 +1386,5 @@ class ValidationOptionsResponse(dict):
         Specify what to do with extra properties when executing a request.
         """
         return pulumi.get(self, "undeclared_properties")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

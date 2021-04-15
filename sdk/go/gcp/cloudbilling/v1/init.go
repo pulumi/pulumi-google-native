@@ -22,13 +22,14 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:cloudbilling/v1:BillingAccount":
-		r, err = NewBillingAccount(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingAccount{}
 	case "gcp-native:cloudbilling/v1:BillingAccountIamPolicy":
-		r, err = NewBillingAccountIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BillingAccountIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

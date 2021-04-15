@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:spanner/v1:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp-native:spanner/v1:InstanceBackup":
-		r, err = NewInstanceBackup(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceBackup{}
 	case "gcp-native:spanner/v1:InstanceBackupIamPolicy":
-		r, err = NewInstanceBackupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceBackupIamPolicy{}
 	case "gcp-native:spanner/v1:InstanceDatabase":
-		r, err = NewInstanceDatabase(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceDatabase{}
 	case "gcp-native:spanner/v1:InstanceDatabaseIamPolicy":
-		r, err = NewInstanceDatabaseIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceDatabaseIamPolicy{}
 	case "gcp-native:spanner/v1:InstanceDatabaseSession":
-		r, err = NewInstanceDatabaseSession(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceDatabaseSession{}
 	case "gcp-native:spanner/v1:InstanceIamPolicy":
-		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

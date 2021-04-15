@@ -5,13 +5,75 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Site']
+__all__ = ['SiteArgs', 'Site']
+
+@pulumi.input_type
+class SiteArgs:
+    def __init__(__self__, *,
+                 projects_id: pulumi.Input[str],
+                 sites_id: pulumi.Input[str],
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Site resource.
+        :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
+        """
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "sites_id", sites_id)
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="sitesId")
+    def sites_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "sites_id")
+
+    @sites_id.setter
+    def sites_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "sites_id", value)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User-specified labels for the Hosting site.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
 
 class Site(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -19,9 +81,7 @@ class Site(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  sites_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.
 
@@ -30,12 +90,35 @@ class Site(pulumi.CustomResource):
         :param pulumi.Input[str] app_id: Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: SiteArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.
+
+        :param str resource_name: The name of the resource.
+        :param SiteArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(SiteArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 sites_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -45,19 +128,19 @@ class Site(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = SiteArgs.__new__(SiteArgs)
 
-            __props__['app_id'] = app_id
-            __props__['labels'] = labels
+            __props__.__dict__["app_id"] = app_id
+            __props__.__dict__["labels"] = labels
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if sites_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sites_id'")
-            __props__['sites_id'] = sites_id
-            __props__['default_url'] = None
-            __props__['name'] = None
-            __props__['type'] = None
+            __props__.__dict__["sites_id"] = sites_id
+            __props__.__dict__["default_url"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["type"] = None
         super(Site, __self__).__init__(
             'gcp-native:firebasehosting/v1beta1:Site',
             resource_name,
@@ -78,13 +161,13 @@ class Site(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = SiteArgs.__new__(SiteArgs)
 
-        __props__["app_id"] = None
-        __props__["default_url"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["type"] = None
+        __props__.__dict__["app_id"] = None
+        __props__.__dict__["default_url"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["type"] = None
         return Site(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -126,10 +209,4 @@ class Site(pulumi.CustomResource):
         The type of Hosting site. Every Firebase project has a `DEFAULT_SITE`, which is created when Hosting is provisioned for the project. All additional sites are `USER_SITE`.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

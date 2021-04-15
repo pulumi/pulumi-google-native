@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -42,6 +42,29 @@ class AggregationResponse(dict):
     """
     Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "alignmentPeriod":
+            suggest = "alignment_period"
+        elif key == "crossSeriesReducer":
+            suggest = "cross_series_reducer"
+        elif key == "groupByFields":
+            suggest = "group_by_fields"
+        elif key == "perSeriesAligner":
+            suggest = "per_series_aligner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AggregationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AggregationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AggregationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  alignment_period: str,
                  cross_series_reducer: str,
@@ -91,9 +114,6 @@ class AggregationResponse(dict):
         """
         return pulumi.get(self, "per_series_aligner")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AxisResponse(dict):
@@ -127,9 +147,6 @@ class AxisResponse(dict):
         """
         return pulumi.get(self, "scale")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ChartOptionsResponse(dict):
@@ -152,9 +169,6 @@ class ChartOptionsResponse(dict):
         """
         return pulumi.get(self, "mode")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ColumnLayoutResponse(dict):
@@ -176,9 +190,6 @@ class ColumnLayoutResponse(dict):
         The columns of content to display.
         """
         return pulumi.get(self, "columns")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -213,15 +224,35 @@ class ColumnResponse(dict):
         """
         return pulumi.get(self, "widgets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataSetResponse(dict):
     """
     Groups a time series query definition with charting options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "legendTemplate":
+            suggest = "legend_template"
+        elif key == "minAlignmentPeriod":
+            suggest = "min_alignment_period"
+        elif key == "plotType":
+            suggest = "plot_type"
+        elif key == "timeSeriesQuery":
+            suggest = "time_series_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  legend_template: str,
                  min_alignment_period: str,
@@ -271,9 +302,6 @@ class DataSetResponse(dict):
         """
         return pulumi.get(self, "time_series_query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EmptyResponse(dict):
@@ -286,15 +314,31 @@ class EmptyResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GaugeViewResponse(dict):
     """
     A gauge chart shows where the current value sits within a pre-defined range. The upper and lower bounds should define the possible range of values for the scorecard's query (inclusive).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lowerBound":
+            suggest = "lower_bound"
+        elif key == "upperBound":
+            suggest = "upper_bound"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GaugeViewResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GaugeViewResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GaugeViewResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  lower_bound: float,
                  upper_bound: float):
@@ -321,9 +365,6 @@ class GaugeViewResponse(dict):
         The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
         """
         return pulumi.get(self, "upper_bound")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -358,9 +399,6 @@ class GridLayoutResponse(dict):
         """
         return pulumi.get(self, "widgets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MosaicLayoutResponse(dict):
@@ -394,15 +432,31 @@ class MosaicLayoutResponse(dict):
         """
         return pulumi.get(self, "tiles")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PickTimeSeriesFilterResponse(dict):
     """
     Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numTimeSeries":
+            suggest = "num_time_series"
+        elif key == "rankingMethod":
+            suggest = "ranking_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PickTimeSeriesFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PickTimeSeriesFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PickTimeSeriesFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  direction: str,
                  num_time_series: int,
@@ -441,9 +495,6 @@ class PickTimeSeriesFilterResponse(dict):
         """
         return pulumi.get(self, "ranking_method")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RatioPartResponse(dict):
@@ -477,9 +528,6 @@ class RatioPartResponse(dict):
         """
         return pulumi.get(self, "filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RowLayoutResponse(dict):
@@ -501,9 +549,6 @@ class RowLayoutResponse(dict):
         The rows of content to display.
         """
         return pulumi.get(self, "rows")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -538,15 +583,33 @@ class RowResponse(dict):
         """
         return pulumi.get(self, "widgets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScorecardResponse(dict):
     """
     A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gaugeView":
+            suggest = "gauge_view"
+        elif key == "sparkChartView":
+            suggest = "spark_chart_view"
+        elif key == "timeSeriesQuery":
+            suggest = "time_series_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScorecardResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScorecardResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScorecardResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gauge_view: 'outputs.GaugeViewResponse',
                  spark_chart_view: 'outputs.SparkChartViewResponse',
@@ -596,15 +659,31 @@ class ScorecardResponse(dict):
         """
         return pulumi.get(self, "time_series_query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkChartViewResponse(dict):
     """
     A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAlignmentPeriod":
+            suggest = "min_alignment_period"
+        elif key == "sparkChartType":
+            suggest = "spark_chart_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkChartViewResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkChartViewResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkChartViewResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  min_alignment_period: str,
                  spark_chart_type: str):
@@ -632,15 +711,31 @@ class SparkChartViewResponse(dict):
         """
         return pulumi.get(self, "spark_chart_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StatisticalTimeSeriesFilterResponse(dict):
     """
     A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numTimeSeries":
+            suggest = "num_time_series"
+        elif key == "rankingMethod":
+            suggest = "ranking_method"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatisticalTimeSeriesFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatisticalTimeSeriesFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatisticalTimeSeriesFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_time_series: int,
                  ranking_method: str):
@@ -667,9 +762,6 @@ class StatisticalTimeSeriesFilterResponse(dict):
         rankingMethod is applied to a set of time series, and then the produced value for each individual time series is used to compare a given time series to others. These are methods that cannot be applied stream-by-stream, but rather require the full context of a request to evaluate time series.
         """
         return pulumi.get(self, "ranking_method")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -703,9 +795,6 @@ class TextResponse(dict):
         How the text content is formatted.
         """
         return pulumi.get(self, "format")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -762,15 +851,31 @@ class ThresholdResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TileResponse(dict):
     """
     A single tile in the mosaic. The placement and size of the tile are configurable.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "xPos":
+            suggest = "x_pos"
+        elif key == "yPos":
+            suggest = "y_pos"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  height: int,
                  widget: 'outputs.WidgetResponse',
@@ -831,15 +936,33 @@ class TileResponse(dict):
         """
         return pulumi.get(self, "y_pos")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeSeriesFilterRatioResponse(dict):
     """
     A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pickTimeSeriesFilter":
+            suggest = "pick_time_series_filter"
+        elif key == "secondaryAggregation":
+            suggest = "secondary_aggregation"
+        elif key == "statisticalTimeSeriesFilter":
+            suggest = "statistical_time_series_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeSeriesFilterRatioResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeSeriesFilterRatioResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeSeriesFilterRatioResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  denominator: 'outputs.RatioPartResponse',
                  numerator: 'outputs.RatioPartResponse',
@@ -900,15 +1023,33 @@ class TimeSeriesFilterRatioResponse(dict):
         """
         return pulumi.get(self, "statistical_time_series_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeSeriesFilterResponse(dict):
     """
     A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pickTimeSeriesFilter":
+            suggest = "pick_time_series_filter"
+        elif key == "secondaryAggregation":
+            suggest = "secondary_aggregation"
+        elif key == "statisticalTimeSeriesFilter":
+            suggest = "statistical_time_series_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeSeriesFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeSeriesFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeSeriesFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  aggregation: 'outputs.AggregationResponse',
                  filter: str,
@@ -969,15 +1110,35 @@ class TimeSeriesFilterResponse(dict):
         """
         return pulumi.get(self, "statistical_time_series_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimeSeriesQueryResponse(dict):
     """
     TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeSeriesFilter":
+            suggest = "time_series_filter"
+        elif key == "timeSeriesFilterRatio":
+            suggest = "time_series_filter_ratio"
+        elif key == "timeSeriesQueryLanguage":
+            suggest = "time_series_query_language"
+        elif key == "unitOverride":
+            suggest = "unit_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimeSeriesQueryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimeSeriesQueryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimeSeriesQueryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  time_series_filter: 'outputs.TimeSeriesFilterResponse',
                  time_series_filter_ratio: 'outputs.TimeSeriesFilterRatioResponse',
@@ -1027,15 +1188,29 @@ class TimeSeriesQueryResponse(dict):
         """
         return pulumi.get(self, "unit_override")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WidgetResponse(dict):
     """
     Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "xyChart":
+            suggest = "xy_chart"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WidgetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WidgetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WidgetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  blank: 'outputs.EmptyResponse',
                  scorecard: 'outputs.ScorecardResponse',
@@ -1096,15 +1271,37 @@ class WidgetResponse(dict):
         """
         return pulumi.get(self, "xy_chart")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class XyChartResponse(dict):
     """
     A chart that displays data on a 2D (X and Y axes) plane.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "chartOptions":
+            suggest = "chart_options"
+        elif key == "dataSets":
+            suggest = "data_sets"
+        elif key == "timeshiftDuration":
+            suggest = "timeshift_duration"
+        elif key == "xAxis":
+            suggest = "x_axis"
+        elif key == "yAxis":
+            suggest = "y_axis"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in XyChartResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        XyChartResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        XyChartResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  chart_options: 'outputs.ChartOptionsResponse',
                  data_sets: Sequence['outputs.DataSetResponse'],
@@ -1175,8 +1372,5 @@ class XyChartResponse(dict):
         The properties applied to the Y axis.
         """
         return pulumi.get(self, "y_axis")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

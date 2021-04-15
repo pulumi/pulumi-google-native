@@ -5,15 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['StudyTrial']
+__all__ = ['StudyTrialArgs', 'StudyTrial']
+
+@pulumi.input_type
+class StudyTrialArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 studies_id: pulumi.Input[str],
+                 trials_id: pulumi.Input[str],
+                 final_measurement: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']] = None,
+                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a StudyTrial resource.
+        :param pulumi.Input['GoogleCloudMlV1__MeasurementArgs'] final_measurement: The final measurement containing the objective value.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]] measurements: A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]] parameters: The parameters of the trial.
+        :param pulumi.Input[str] state: The detailed state of a trial.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "studies_id", studies_id)
+        pulumi.set(__self__, "trials_id", trials_id)
+        if final_measurement is not None:
+            pulumi.set(__self__, "final_measurement", final_measurement)
+        if measurements is not None:
+            pulumi.set(__self__, "measurements", measurements)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="studiesId")
+    def studies_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "studies_id")
+
+    @studies_id.setter
+    def studies_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "studies_id", value)
+
+    @property
+    @pulumi.getter(name="trialsId")
+    def trials_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "trials_id")
+
+    @trials_id.setter
+    def trials_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trials_id", value)
+
+    @property
+    @pulumi.getter(name="finalMeasurement")
+    def final_measurement(self) -> Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]:
+        """
+        The final measurement containing the objective value.
+        """
+        return pulumi.get(self, "final_measurement")
+
+    @final_measurement.setter
+    def final_measurement(self, value: Optional[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]):
+        pulumi.set(self, "final_measurement", value)
+
+    @property
+    @pulumi.getter
+    def measurements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]]:
+        """
+        A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
+        """
+        return pulumi.get(self, "measurements")
+
+    @measurements.setter
+    def measurements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1__MeasurementArgs']]]]):
+        pulumi.set(self, "measurements", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]]:
+        """
+        The parameters of the trial.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_Trial_ParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The detailed state of a trial.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class StudyTrial(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -25,9 +141,7 @@ class StudyTrial(pulumi.CustomResource):
                  state: Optional[pulumi.Input[str]] = None,
                  studies_id: Optional[pulumi.Input[str]] = None,
                  trials_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Adds a user provided trial to a study.
 
@@ -38,12 +152,39 @@ class StudyTrial(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]] parameters: The parameters of the trial.
         :param pulumi.Input[str] state: The detailed state of a trial.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: StudyTrialArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Adds a user provided trial to a study.
+
+        :param str resource_name: The name of the resource.
+        :param StudyTrialArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(StudyTrialArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 final_measurement: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 measurements: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__MeasurementArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudMlV1_Trial_ParameterArgs']]]]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 studies_id: Optional[pulumi.Input[str]] = None,
+                 trials_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -53,30 +194,30 @@ class StudyTrial(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = StudyTrialArgs.__new__(StudyTrialArgs)
 
-            __props__['final_measurement'] = final_measurement
+            __props__.__dict__["final_measurement"] = final_measurement
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['measurements'] = measurements
-            __props__['parameters'] = parameters
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["measurements"] = measurements
+            __props__.__dict__["parameters"] = parameters
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['state'] = state
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["state"] = state
             if studies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'studies_id'")
-            __props__['studies_id'] = studies_id
+            __props__.__dict__["studies_id"] = studies_id
             if trials_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trials_id'")
-            __props__['trials_id'] = trials_id
-            __props__['client_id'] = None
-            __props__['end_time'] = None
-            __props__['infeasible_reason'] = None
-            __props__['name'] = None
-            __props__['start_time'] = None
-            __props__['trial_infeasible'] = None
+            __props__.__dict__["trials_id"] = trials_id
+            __props__.__dict__["client_id"] = None
+            __props__.__dict__["end_time"] = None
+            __props__.__dict__["infeasible_reason"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["start_time"] = None
+            __props__.__dict__["trial_infeasible"] = None
         super(StudyTrial, __self__).__init__(
             'gcp-native:ml/v1:StudyTrial',
             resource_name,
@@ -97,18 +238,18 @@ class StudyTrial(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = StudyTrialArgs.__new__(StudyTrialArgs)
 
-        __props__["client_id"] = None
-        __props__["end_time"] = None
-        __props__["final_measurement"] = None
-        __props__["infeasible_reason"] = None
-        __props__["measurements"] = None
-        __props__["name"] = None
-        __props__["parameters"] = None
-        __props__["start_time"] = None
-        __props__["state"] = None
-        __props__["trial_infeasible"] = None
+        __props__.__dict__["client_id"] = None
+        __props__.__dict__["end_time"] = None
+        __props__.__dict__["final_measurement"] = None
+        __props__.__dict__["infeasible_reason"] = None
+        __props__.__dict__["measurements"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["parameters"] = None
+        __props__.__dict__["start_time"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["trial_infeasible"] = None
         return StudyTrial(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -190,10 +331,4 @@ class StudyTrial(pulumi.CustomResource):
         If true, the parameters in this trial are not attempted again.
         """
         return pulumi.get(self, "trial_infeasible")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeyRingCryptoKey']
+__all__ = ['KeyRingCryptoKeyArgs', 'KeyRingCryptoKey']
+
+@pulumi.input_type
+class KeyRingCryptoKeyArgs:
+    def __init__(__self__, *,
+                 crypto_keys_id: pulumi.Input[str],
+                 key_rings_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 next_rotation_time: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 rotation_period: Optional[pulumi.Input[str]] = None,
+                 version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
+        """
+        The set of arguments for constructing a KeyRingCryptoKey resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+        :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+        :param pulumi.Input[str] purpose: Immutable. The immutable purpose of this CryptoKey.
+        :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+        :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+        """
+        pulumi.set(__self__, "crypto_keys_id", crypto_keys_id)
+        pulumi.set(__self__, "key_rings_id", key_rings_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if next_rotation_time is not None:
+            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        if purpose is not None:
+            pulumi.set(__self__, "purpose", purpose)
+        if rotation_period is not None:
+            pulumi.set(__self__, "rotation_period", rotation_period)
+        if version_template is not None:
+            pulumi.set(__self__, "version_template", version_template)
+
+    @property
+    @pulumi.getter(name="cryptoKeysId")
+    def crypto_keys_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_keys_id")
+
+    @crypto_keys_id.setter
+    def crypto_keys_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_keys_id", value)
+
+    @property
+    @pulumi.getter(name="keyRingsId")
+    def key_rings_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_rings_id")
+
+    @key_rings_id.setter
+    def key_rings_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_rings_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="nextRotationTime")
+    def next_rotation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+        """
+        return pulumi.get(self, "next_rotation_time")
+
+    @next_rotation_time.setter
+    def next_rotation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "next_rotation_time", value)
+
+    @property
+    @pulumi.getter
+    def purpose(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The immutable purpose of this CryptoKey.
+        """
+        return pulumi.get(self, "purpose")
+
+    @purpose.setter
+    def purpose(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "purpose", value)
+
+    @property
+    @pulumi.getter(name="rotationPeriod")
+    def rotation_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
+        """
+        return pulumi.get(self, "rotation_period")
+
+    @rotation_period.setter
+    def rotation_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "rotation_period", value)
+
+    @property
+    @pulumi.getter(name="versionTemplate")
+    def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
+        """
+        A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
+        """
+        return pulumi.get(self, "version_template")
+
+    @version_template.setter
+    def version_template(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]):
+        pulumi.set(self, "version_template", value)
 
 
 class KeyRingCryptoKey(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,9 +158,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
 
@@ -40,12 +170,40 @@ class KeyRingCryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyRingCryptoKeyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
+
+        :param str resource_name: The name of the resource.
+        :param KeyRingCryptoKeyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingCryptoKeyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
+                 key_rings_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 next_rotation_time: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 purpose: Optional[pulumi.Input[str]] = None,
+                 rotation_period: Optional[pulumi.Input[str]] = None,
+                 version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -55,28 +213,28 @@ class KeyRingCryptoKey(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyRingCryptoKeyArgs.__new__(KeyRingCryptoKeyArgs)
 
             if crypto_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_keys_id'")
-            __props__['crypto_keys_id'] = crypto_keys_id
+            __props__.__dict__["crypto_keys_id"] = crypto_keys_id
             if key_rings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_rings_id'")
-            __props__['key_rings_id'] = key_rings_id
-            __props__['labels'] = labels
+            __props__.__dict__["key_rings_id"] = key_rings_id
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['next_rotation_time'] = next_rotation_time
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["next_rotation_time"] = next_rotation_time
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['purpose'] = purpose
-            __props__['rotation_period'] = rotation_period
-            __props__['version_template'] = version_template
-            __props__['create_time'] = None
-            __props__['name'] = None
-            __props__['primary'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["purpose"] = purpose
+            __props__.__dict__["rotation_period"] = rotation_period
+            __props__.__dict__["version_template"] = version_template
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["primary"] = None
         super(KeyRingCryptoKey, __self__).__init__(
             'gcp-native:cloudkms/v1:KeyRingCryptoKey',
             resource_name,
@@ -97,16 +255,16 @@ class KeyRingCryptoKey(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = KeyRingCryptoKeyArgs.__new__(KeyRingCryptoKeyArgs)
 
-        __props__["create_time"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["next_rotation_time"] = None
-        __props__["primary"] = None
-        __props__["purpose"] = None
-        __props__["rotation_period"] = None
-        __props__["version_template"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["next_rotation_time"] = None
+        __props__.__dict__["primary"] = None
+        __props__.__dict__["purpose"] = None
+        __props__.__dict__["rotation_period"] = None
+        __props__.__dict__["version_template"] = None
         return KeyRingCryptoKey(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -172,10 +330,4 @@ class KeyRingCryptoKey(pulumi.CustomResource):
         A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
         return pulumi.get(self, "version_template")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,297 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Dataset']
+__all__ = ['DatasetArgs', 'Dataset']
+
+@pulumi.input_type
+class DatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 dataset_reference: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
+                 default_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
+                 default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Dataset resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[str] creation_time: [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        :param pulumi.Input['DatasetReferenceArgs'] dataset_reference: [Required] A reference that identifies the dataset.
+        :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        :param pulumi.Input[str] default_table_expiration_ms: [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        :param pulumi.Input[str] description: [Optional] A user-friendly description of the dataset.
+        :param pulumi.Input[str] etag: [Output-only] A hash of the resource.
+        :param pulumi.Input[str] friendly_name: [Optional] A descriptive name for the dataset.
+        :param pulumi.Input[str] id: [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+        :param pulumi.Input[str] kind: [Output-only] The resource type.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
+        :param pulumi.Input[str] last_modified_time: [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        :param pulumi.Input[bool] satisfies_pzs: [Output-only] Reserved for future use.
+        :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "project_id", project_id)
+        if access is not None:
+            pulumi.set(__self__, "access", access)
+        if creation_time is not None:
+            pulumi.set(__self__, "creation_time", creation_time)
+        if dataset_reference is not None:
+            pulumi.set(__self__, "dataset_reference", dataset_reference)
+        if default_encryption_configuration is not None:
+            pulumi.set(__self__, "default_encryption_configuration", default_encryption_configuration)
+        if default_partition_expiration_ms is not None:
+            pulumi.set(__self__, "default_partition_expiration_ms", default_partition_expiration_ms)
+        if default_table_expiration_ms is not None:
+            pulumi.set(__self__, "default_table_expiration_ms", default_table_expiration_ms)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if friendly_name is not None:
+            pulumi.set(__self__, "friendly_name", friendly_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if last_modified_time is not None:
+            pulumi.set(__self__, "last_modified_time", last_modified_time)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if satisfies_pzs is not None:
+            pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
+        if self_link is not None:
+            pulumi.set(__self__, "self_link", self_link)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def access(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+        """
+        [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        """
+        return pulumi.get(self, "access")
+
+    @access.setter
+    def access(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+        pulumi.set(self, "access", value)
+
+    @property
+    @pulumi.getter(name="creationTime")
+    def creation_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] The time when this dataset was created, in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "creation_time")
+
+    @creation_time.setter
+    def creation_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "creation_time", value)
+
+    @property
+    @pulumi.getter(name="datasetReference")
+    def dataset_reference(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
+        """
+        [Required] A reference that identifies the dataset.
+        """
+        return pulumi.get(self, "dataset_reference")
+
+    @dataset_reference.setter
+    def dataset_reference(self, value: Optional[pulumi.Input['DatasetReferenceArgs']]):
+        pulumi.set(self, "dataset_reference", value)
+
+    @property
+    @pulumi.getter(name="defaultEncryptionConfiguration")
+    def default_encryption_configuration(self) -> Optional[pulumi.Input['EncryptionConfigurationArgs']]:
+        return pulumi.get(self, "default_encryption_configuration")
+
+    @default_encryption_configuration.setter
+    def default_encryption_configuration(self, value: Optional[pulumi.Input['EncryptionConfigurationArgs']]):
+        pulumi.set(self, "default_encryption_configuration", value)
+
+    @property
+    @pulumi.getter(name="defaultPartitionExpirationMs")
+    def default_partition_expiration_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
+        """
+        return pulumi.get(self, "default_partition_expiration_ms")
+
+    @default_partition_expiration_ms.setter
+    def default_partition_expiration_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_partition_expiration_ms", value)
+
+    @property
+    @pulumi.getter(name="defaultTableExpirationMs")
+    def default_table_expiration_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] The default lifetime of all tables in the dataset, in milliseconds. The minimum value is 3600000 milliseconds (one hour). Once this property is set, all newly-created tables in the dataset will have an expirationTime property set to the creation time plus the value in this property, and changing the value will only affect new tables, not existing ones. When the expirationTime for a given table is reached, that table will be deleted automatically. If a table's expirationTime is modified or removed before the table expires, or if you provide an explicit expirationTime when creating a table, that value takes precedence over the default expiration time indicated by this property.
+        """
+        return pulumi.get(self, "default_table_expiration_ms")
+
+    @default_table_expiration_ms.setter
+    def default_table_expiration_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_table_expiration_ms", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] A user-friendly description of the dataset.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] A hash of the resource.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="friendlyName")
+    def friendly_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] A descriptive name for the dataset.
+        """
+        return pulumi.get(self, "friendly_name")
+
+    @friendly_name.setter
+    def friendly_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "friendly_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] The fully-qualified unique name of the dataset in the format projectId:datasetId. The dataset name without the project name is given in the datasetId field. When creating a new dataset, leave this field blank, and instead specify the datasetId field.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] The resource type.
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this dataset. You can use these to organize and group your datasets. You can set this property when inserting or updating a dataset. See Creating and Updating Dataset Labels for more information.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="lastModifiedTime")
+    def last_modified_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "last_modified_time")
+
+    @last_modified_time.setter
+    def last_modified_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_modified_time", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="satisfiesPZS")
+    def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Output-only] Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @satisfies_pzs.setter
+    def satisfies_pzs(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "satisfies_pzs", value)
+
+    @property
+    @pulumi.getter(name="selfLink")
+    def self_link(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
+        """
+        return pulumi.get(self, "self_link")
+
+    @self_link.setter
+    def self_link(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "self_link", value)
 
 
 class Dataset(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -35,9 +317,7 @@ class Dataset(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new empty dataset.
 
@@ -59,12 +339,49 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[bool] satisfies_pzs: [Output-only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatasetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new empty dataset.
+
+        :param str resource_name: The name of the resource.
+        :param DatasetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 creation_time: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
+                 dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
+                 default_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigurationArgs']]] = None,
+                 default_partition_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 default_table_expiration_ms: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 friendly_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 last_modified_time: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 satisfies_pzs: Optional[pulumi.Input[bool]] = None,
+                 self_link: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -74,30 +391,30 @@ class Dataset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatasetArgs.__new__(DatasetArgs)
 
-            __props__['access'] = access
-            __props__['creation_time'] = creation_time
+            __props__.__dict__["access"] = access
+            __props__.__dict__["creation_time"] = creation_time
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
-            __props__['dataset_id'] = dataset_id
-            __props__['dataset_reference'] = dataset_reference
-            __props__['default_encryption_configuration'] = default_encryption_configuration
-            __props__['default_partition_expiration_ms'] = default_partition_expiration_ms
-            __props__['default_table_expiration_ms'] = default_table_expiration_ms
-            __props__['description'] = description
-            __props__['etag'] = etag
-            __props__['friendly_name'] = friendly_name
-            __props__['id'] = id
-            __props__['kind'] = kind
-            __props__['labels'] = labels
-            __props__['last_modified_time'] = last_modified_time
-            __props__['location'] = location
+            __props__.__dict__["dataset_id"] = dataset_id
+            __props__.__dict__["dataset_reference"] = dataset_reference
+            __props__.__dict__["default_encryption_configuration"] = default_encryption_configuration
+            __props__.__dict__["default_partition_expiration_ms"] = default_partition_expiration_ms
+            __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
+            __props__.__dict__["description"] = description
+            __props__.__dict__["etag"] = etag
+            __props__.__dict__["friendly_name"] = friendly_name
+            __props__.__dict__["id"] = id
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["last_modified_time"] = last_modified_time
+            __props__.__dict__["location"] = location
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
-            __props__['project_id'] = project_id
-            __props__['satisfies_pzs'] = satisfies_pzs
-            __props__['self_link'] = self_link
+            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["satisfies_pzs"] = satisfies_pzs
+            __props__.__dict__["self_link"] = self_link
         super(Dataset, __self__).__init__(
             'gcp-native:bigquery/v2:Dataset',
             resource_name,
@@ -118,23 +435,23 @@ class Dataset(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatasetArgs.__new__(DatasetArgs)
 
-        __props__["access"] = None
-        __props__["creation_time"] = None
-        __props__["dataset_reference"] = None
-        __props__["default_encryption_configuration"] = None
-        __props__["default_partition_expiration_ms"] = None
-        __props__["default_table_expiration_ms"] = None
-        __props__["description"] = None
-        __props__["etag"] = None
-        __props__["friendly_name"] = None
-        __props__["kind"] = None
-        __props__["labels"] = None
-        __props__["last_modified_time"] = None
-        __props__["location"] = None
-        __props__["satisfies_pzs"] = None
-        __props__["self_link"] = None
+        __props__.__dict__["access"] = None
+        __props__.__dict__["creation_time"] = None
+        __props__.__dict__["dataset_reference"] = None
+        __props__.__dict__["default_encryption_configuration"] = None
+        __props__.__dict__["default_partition_expiration_ms"] = None
+        __props__.__dict__["default_table_expiration_ms"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["friendly_name"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["last_modified_time"] = None
+        __props__.__dict__["location"] = None
+        __props__.__dict__["satisfies_pzs"] = None
+        __props__.__dict__["self_link"] = None
         return Dataset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -253,10 +570,4 @@ class Dataset(pulumi.CustomResource):
         [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
         """
         return pulumi.get(self, "self_link")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

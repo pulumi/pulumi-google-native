@@ -5,15 +5,216 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Instance']
+__all__ = ['InstanceArgs', 'Instance']
+
+@pulumi.input_type
+class InstanceArgs:
+    def __init__(__self__, *,
+                 instances_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 authorized_network: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 memcache_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input['MemcacheParametersArgs']] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Instance resource.
+        :param pulumi.Input[str] authorized_network: The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        :param pulumi.Input[str] display_name: User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]] instance_messages: List of messages that describe the current state of the Memcached instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        :param pulumi.Input[str] memcache_version: The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        :param pulumi.Input[str] name: Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        :param pulumi.Input['NodeConfigArgs'] node_config: Required. Configuration for Memcached nodes.
+        :param pulumi.Input[int] node_count: Required. Number of nodes in the Memcached instance.
+        :param pulumi.Input['MemcacheParametersArgs'] parameters: Optional: User defined parameters to apply to the memcached process on each node.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+        """
+        pulumi.set(__self__, "instances_id", instances_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if authorized_network is not None:
+            pulumi.set(__self__, "authorized_network", authorized_network)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if instance_messages is not None:
+            pulumi.set(__self__, "instance_messages", instance_messages)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if memcache_version is not None:
+            pulumi.set(__self__, "memcache_version", memcache_version)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if node_config is not None:
+            pulumi.set(__self__, "node_config", node_config)
+        if node_count is not None:
+            pulumi.set(__self__, "node_count", node_count)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if zones is not None:
+            pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="instancesId")
+    def instances_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instances_id")
+
+    @instances_id.setter
+    def instances_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instances_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="authorizedNetwork")
+    def authorized_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
+        """
+        return pulumi.get(self, "authorized_network")
+
+    @authorized_network.setter
+    def authorized_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "authorized_network", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="instanceMessages")
+    def instance_messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]]:
+        """
+        List of messages that describe the current state of the Memcached instance.
+        """
+        return pulumi.get(self, "instance_messages")
+
+    @instance_messages.setter
+    def instance_messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceMessageArgs']]]]):
+        pulumi.set(self, "instance_messages", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="memcacheVersion")
+    def memcache_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
+        """
+        return pulumi.get(self, "memcache_version")
+
+    @memcache_version.setter
+    def memcache_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "memcache_version", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
+        """
+        Required. Configuration for Memcached nodes.
+        """
+        return pulumi.get(self, "node_config")
+
+    @node_config.setter
+    def node_config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
+        pulumi.set(self, "node_config", value)
+
+    @property
+    @pulumi.getter(name="nodeCount")
+    def node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Required. Number of nodes in the Memcached instance.
+        """
+        return pulumi.get(self, "node_count")
+
+    @node_count.setter
+    def node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "node_count", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input['MemcacheParametersArgs']]:
+        """
+        Optional: User defined parameters to apply to the memcached process on each node.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input['MemcacheParametersArgs']]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter
+    def zones(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
+        """
+        return pulumi.get(self, "zones")
+
+    @zones.setter
+    def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "zones", value)
 
 
 class Instance(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -30,9 +231,7 @@ class Instance(pulumi.CustomResource):
                  parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new Instance in a given location.
 
@@ -49,12 +248,44 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MemcacheParametersArgs']] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: InstanceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Instance in a given location.
+
+        :param str resource_name: The name of the resource.
+        :param InstanceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(InstanceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 authorized_network: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 memcache_version: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
+                 node_count: Optional[pulumi.Input[int]] = None,
+                 parameters: Optional[pulumi.Input[pulumi.InputType['MemcacheParametersArgs']]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -64,34 +295,34 @@ class Instance(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = InstanceArgs.__new__(InstanceArgs)
 
-            __props__['authorized_network'] = authorized_network
-            __props__['display_name'] = display_name
-            __props__['instance_messages'] = instance_messages
+            __props__.__dict__["authorized_network"] = authorized_network
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["instance_messages"] = instance_messages
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
-            __props__['instances_id'] = instances_id
-            __props__['labels'] = labels
+            __props__.__dict__["instances_id"] = instances_id
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['memcache_version'] = memcache_version
-            __props__['name'] = name
-            __props__['node_config'] = node_config
-            __props__['node_count'] = node_count
-            __props__['parameters'] = parameters
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["memcache_version"] = memcache_version
+            __props__.__dict__["name"] = name
+            __props__.__dict__["node_config"] = node_config
+            __props__.__dict__["node_count"] = node_count
+            __props__.__dict__["parameters"] = parameters
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['zones'] = zones
-            __props__['create_time'] = None
-            __props__['discovery_endpoint'] = None
-            __props__['memcache_full_version'] = None
-            __props__['memcache_nodes'] = None
-            __props__['state'] = None
-            __props__['update_available'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["zones"] = zones
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["discovery_endpoint"] = None
+            __props__.__dict__["memcache_full_version"] = None
+            __props__.__dict__["memcache_nodes"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["update_available"] = None
+            __props__.__dict__["update_time"] = None
         super(Instance, __self__).__init__(
             'gcp-native:memcache/v1beta2:Instance',
             resource_name,
@@ -112,25 +343,25 @@ class Instance(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = InstanceArgs.__new__(InstanceArgs)
 
-        __props__["authorized_network"] = None
-        __props__["create_time"] = None
-        __props__["discovery_endpoint"] = None
-        __props__["display_name"] = None
-        __props__["instance_messages"] = None
-        __props__["labels"] = None
-        __props__["memcache_full_version"] = None
-        __props__["memcache_nodes"] = None
-        __props__["memcache_version"] = None
-        __props__["name"] = None
-        __props__["node_config"] = None
-        __props__["node_count"] = None
-        __props__["parameters"] = None
-        __props__["state"] = None
-        __props__["update_available"] = None
-        __props__["update_time"] = None
-        __props__["zones"] = None
+        __props__.__dict__["authorized_network"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["discovery_endpoint"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["instance_messages"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["memcache_full_version"] = None
+        __props__.__dict__["memcache_nodes"] = None
+        __props__.__dict__["memcache_version"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["node_config"] = None
+        __props__.__dict__["node_count"] = None
+        __props__.__dict__["parameters"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["update_available"] = None
+        __props__.__dict__["update_time"] = None
+        __props__.__dict__["zones"] = None
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -268,10 +499,4 @@ class Instance(pulumi.CustomResource):
         Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
         return pulumi.get(self, "zones")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -25,6 +25,29 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(dict):
     """
     AllUpdatesRule defines notifications that are sent based on budget spend and thresholds.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableDefaultIamRecipients":
+            suggest = "disable_default_iam_recipients"
+        elif key == "monitoringNotificationChannels":
+            suggest = "monitoring_notification_channels"
+        elif key == "pubsubTopic":
+            suggest = "pubsub_topic"
+        elif key == "schemaVersion":
+            suggest = "schema_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_default_iam_recipients: bool,
                  monitoring_notification_channels: Sequence[str],
@@ -74,15 +97,31 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse(dict):
         """
         return pulumi.get(self, "schema_version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse(dict):
     """
     The budgeted amount for each usage period.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastPeriodAmount":
+            suggest = "last_period_amount"
+        elif key == "specifiedAmount":
+            suggest = "specified_amount"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_period_amount: 'outputs.GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse',
                  specified_amount: 'outputs.GoogleTypeMoneyResponse'):
@@ -110,15 +149,31 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse(dict):
         """
         return pulumi.get(self, "specified_amount")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse(dict):
     """
     All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endDate":
+            suggest = "end_date"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_date: 'outputs.GoogleTypeDateResponse',
                  start_date: 'outputs.GoogleTypeDateResponse'):
@@ -146,15 +201,35 @@ class GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse(dict):
         """
         return pulumi.get(self, "start_date")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
     """
     A filter for a budget, limiting the scope of the cost to calculate.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "calendarPeriod":
+            suggest = "calendar_period"
+        elif key == "creditTypes":
+            suggest = "credit_types"
+        elif key == "creditTypesTreatment":
+            suggest = "credit_types_treatment"
+        elif key == "customPeriod":
+            suggest = "custom_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1FilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBillingBudgetsV1beta1FilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBillingBudgetsV1beta1FilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  calendar_period: str,
                  credit_types: Sequence[str],
@@ -248,9 +323,6 @@ class GoogleCloudBillingBudgetsV1beta1FilterResponse(dict):
         """
         return pulumi.get(self, "subaccounts")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse(dict):
@@ -263,15 +335,31 @@ class GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse(dict):
     """
     ThresholdRule contains a definition of a threshold which triggers an alert (a notification of a threshold being crossed) to be sent when spend goes above the specified amount. Alerts are automatically e-mailed to users with the Billing Account Administrator role or the Billing Account User role. The thresholds here have no effect on notifications sent to anything configured under `Budget.all_updates_rule`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "spendBasis":
+            suggest = "spend_basis"
+        elif key == "thresholdPercent":
+            suggest = "threshold_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  spend_basis: str,
                  threshold_percent: float):
@@ -298,9 +386,6 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse(dict):
         Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         """
         return pulumi.get(self, "threshold_percent")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -346,15 +431,29 @@ class GoogleTypeDateResponse(dict):
         """
         return pulumi.get(self, "year")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleTypeMoneyResponse(dict):
     """
     Represents an amount of money with its currency type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleTypeMoneyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleTypeMoneyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleTypeMoneyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  currency_code: str,
                  nanos: int,
@@ -392,8 +491,5 @@ class GoogleTypeMoneyResponse(dict):
         The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
         """
         return pulumi.get(self, "units")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

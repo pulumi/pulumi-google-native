@@ -22,17 +22,18 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:accesscontextmanager/v1:AccessPolicy":
-		r, err = NewAccessPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessPolicy{}
 	case "gcp-native:accesscontextmanager/v1:AccessPolicyAccessLevel":
-		r, err = NewAccessPolicyAccessLevel(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessPolicyAccessLevel{}
 	case "gcp-native:accesscontextmanager/v1:AccessPolicyServicePerimeter":
-		r, err = NewAccessPolicyServicePerimeter(ctx, name, nil, pulumi.URN_(urn))
+		r = &AccessPolicyServicePerimeter{}
 	case "gcp-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding":
-		r, err = NewOrganizationGcpUserAccessBinding(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationGcpUserAccessBinding{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

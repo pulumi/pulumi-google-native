@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,23 @@ class ErrorResponse(dict):
     """
     Error describes why the execution was abnormally terminated.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stackTrace":
+            suggest = "stack_trace"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ErrorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ErrorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ErrorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  context: str,
                  payload: str,
@@ -58,9 +75,6 @@ class ErrorResponse(dict):
         Stack trace with detailed information of where error was generated.
         """
         return pulumi.get(self, "stack_trace")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -106,9 +120,6 @@ class PositionResponse(dict):
         """
         return pulumi.get(self, "line")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StackTraceElementResponse(dict):
@@ -153,9 +164,6 @@ class StackTraceElementResponse(dict):
         """
         return pulumi.get(self, "step")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StackTraceResponse(dict):
@@ -177,8 +185,5 @@ class StackTraceResponse(dict):
         An array of Stack elements.
         """
         return pulumi.get(self, "elements")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

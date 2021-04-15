@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -29,6 +29,23 @@ class GoogleCloudChannelV1AssociationInfoResponse(dict):
     """
     Association links that an entitlement has to other entitlements.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseEntitlement":
+            suggest = "base_entitlement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1AssociationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1AssociationInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1AssociationInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_entitlement: str):
         """
@@ -45,15 +62,43 @@ class GoogleCloudChannelV1AssociationInfoResponse(dict):
         """
         return pulumi.get(self, "base_entitlement")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1CloudIdentityInfoResponse(dict):
     """
     Cloud Identity information for the Cloud Channel Customer.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminConsoleUri":
+            suggest = "admin_console_uri"
+        elif key == "alternateEmail":
+            suggest = "alternate_email"
+        elif key == "customerType":
+            suggest = "customer_type"
+        elif key == "eduData":
+            suggest = "edu_data"
+        elif key == "isDomainVerified":
+            suggest = "is_domain_verified"
+        elif key == "languageCode":
+            suggest = "language_code"
+        elif key == "phoneNumber":
+            suggest = "phone_number"
+        elif key == "primaryDomain":
+            suggest = "primary_domain"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1CloudIdentityInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1CloudIdentityInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1CloudIdentityInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_console_uri: str,
                  alternate_email: str,
@@ -147,15 +192,33 @@ class GoogleCloudChannelV1CloudIdentityInfoResponse(dict):
         """
         return pulumi.get(self, "primary_domain")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1CommitmentSettingsResponse(dict):
     """
     Commitment settings for commitment-based offers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "renewalSettings":
+            suggest = "renewal_settings"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1CommitmentSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1CommitmentSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1CommitmentSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  renewal_settings: 'outputs.GoogleCloudChannelV1RenewalSettingsResponse',
@@ -194,15 +257,33 @@ class GoogleCloudChannelV1CommitmentSettingsResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1ContactInfoResponse(dict):
     """
     Contact information for a customer account.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "firstName":
+            suggest = "first_name"
+        elif key == "lastName":
+            suggest = "last_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1ContactInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1ContactInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1ContactInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  display_name: str,
                  email: str,
@@ -274,15 +355,31 @@ class GoogleCloudChannelV1ContactInfoResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1EduDataResponse(dict):
     """
     Required Edu Attributes
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instituteSize":
+            suggest = "institute_size"
+        elif key == "instituteType":
+            suggest = "institute_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1EduDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1EduDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1EduDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  institute_size: str,
                  institute_type: str,
@@ -320,9 +417,6 @@ class GoogleCloudChannelV1EduDataResponse(dict):
         Web address for the edu customer's institution.
         """
         return pulumi.get(self, "website")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -368,15 +462,29 @@ class GoogleCloudChannelV1ParameterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1PeriodResponse(dict):
     """
     Represents period in days/months/years.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "periodType":
+            suggest = "period_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1PeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1PeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1PeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  duration: int,
                  period_type: str):
@@ -404,15 +512,33 @@ class GoogleCloudChannelV1PeriodResponse(dict):
         """
         return pulumi.get(self, "period_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1ProvisionedServiceResponse(dict):
     """
     Service provisioned for an entitlement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "productId":
+            suggest = "product_id"
+        elif key == "provisioningId":
+            suggest = "provisioning_id"
+        elif key == "skuId":
+            suggest = "sku_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1ProvisionedServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1ProvisionedServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1ProvisionedServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  product_id: str,
                  provisioning_id: str,
@@ -451,15 +577,35 @@ class GoogleCloudChannelV1ProvisionedServiceResponse(dict):
         """
         return pulumi.get(self, "sku_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1RenewalSettingsResponse(dict):
     """
     Renewal settings for renewable Offers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableRenewal":
+            suggest = "enable_renewal"
+        elif key == "paymentCycle":
+            suggest = "payment_cycle"
+        elif key == "paymentPlan":
+            suggest = "payment_plan"
+        elif key == "resizeUnitCount":
+            suggest = "resize_unit_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1RenewalSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1RenewalSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1RenewalSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_renewal: bool,
                  payment_cycle: 'outputs.GoogleCloudChannelV1PeriodResponse',
@@ -509,15 +655,29 @@ class GoogleCloudChannelV1RenewalSettingsResponse(dict):
         """
         return pulumi.get(self, "resize_unit_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1TrialSettingsResponse(dict):
     """
     Settings for trial offers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1TrialSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1TrialSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1TrialSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_time: str,
                  trial: bool):
@@ -545,15 +705,37 @@ class GoogleCloudChannelV1TrialSettingsResponse(dict):
         """
         return pulumi.get(self, "trial")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudChannelV1ValueResponse(dict):
     """
     Data type and value of a parameter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boolValue":
+            suggest = "bool_value"
+        elif key == "doubleValue":
+            suggest = "double_value"
+        elif key == "int64Value":
+            suggest = "int64_value"
+        elif key == "protoValue":
+            suggest = "proto_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudChannelV1ValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudChannelV1ValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudChannelV1ValueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bool_value: bool,
                  double_value: float,
@@ -614,15 +796,39 @@ class GoogleCloudChannelV1ValueResponse(dict):
         """
         return pulumi.get(self, "string_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleTypePostalAddressResponse(dict):
     """
     Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressLines":
+            suggest = "address_lines"
+        elif key == "administrativeArea":
+            suggest = "administrative_area"
+        elif key == "languageCode":
+            suggest = "language_code"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "regionCode":
+            suggest = "region_code"
+        elif key == "sortingCode":
+            suggest = "sorting_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleTypePostalAddressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleTypePostalAddressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleTypePostalAddressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address_lines: Sequence[str],
                  administrative_area: str,
@@ -748,8 +954,5 @@ class GoogleTypePostalAddressResponse(dict):
         Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
         """
         return pulumi.get(self, "sublocality")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

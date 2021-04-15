@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -51,6 +51,23 @@ class AnnotationSourceResponse(dict):
     """
     AnnotationSource holds the source information of the annotation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudHealthcareSource":
+            suggest = "cloud_healthcare_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnnotationSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnnotationSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnnotationSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_healthcare_source: 'outputs.CloudHealthcareSourceResponse'):
         """
@@ -67,15 +84,29 @@ class AnnotationSourceResponse(dict):
         """
         return pulumi.get(self, "cloud_healthcare_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttributeResponse(dict):
     """
     An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attributeDefinitionId":
+            suggest = "attribute_definition_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttributeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttributeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttributeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attribute_definition_id: str,
                  values: Sequence[str]):
@@ -103,15 +134,29 @@ class AttributeResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -139,15 +184,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -174,9 +235,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -222,9 +280,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BoundingPolyResponse(dict):
@@ -258,9 +313,6 @@ class BoundingPolyResponse(dict):
         """
         return pulumi.get(self, "vertices")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudHealthcareSourceResponse(dict):
@@ -282,9 +334,6 @@ class CloudHealthcareSourceResponse(dict):
         Full path of a Cloud Healthcare API resource.
         """
         return pulumi.get(self, "name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -341,15 +390,31 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FieldResponse(dict):
     """
     A (sub) field of a type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxOccurs":
+            suggest = "max_occurs"
+        elif key == "minOccurs":
+            suggest = "min_occurs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FieldResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FieldResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FieldResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_occurs: int,
                  min_occurs: int,
@@ -410,15 +475,31 @@ class FieldResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
     """
     Represents a user's consent in terms of the resources that can be accessed and under what conditions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizationRule":
+            suggest = "authorization_rule"
+        elif key == "resourceAttributes":
+            suggest = "resource_attributes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1ConsentPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1ConsentPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1ConsentPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorization_rule: 'outputs.ExprResponse',
                  resource_attributes: Sequence['outputs.AttributeResponse']):
@@ -446,15 +527,31 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
         """
         return pulumi.get(self, "resource_attributes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse(dict):
     """
     The BigQuery table where the server writes output.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableUri":
+            suggest = "table_uri"
+        elif key == "writeDisposition":
+            suggest = "write_disposition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  force: bool,
                  table_uri: str,
@@ -493,15 +590,29 @@ class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse(dict):
         """
         return pulumi.get(self, "write_disposition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudHealthcareV1beta1DicomStreamConfigResponse(dict):
     """
     StreamConfig specifies configuration for a streaming DICOM export.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1DicomStreamConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1DicomStreamConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1DicomStreamConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.GoogleCloudHealthcareV1beta1DicomBigQueryDestinationResponse'):
         """
@@ -518,15 +629,33 @@ class GoogleCloudHealthcareV1beta1DicomStreamConfigResponse(dict):
         """
         return pulumi.get(self, "bigquery_destination")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse(dict):
     """
     The configuration for exporting to BigQuery.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetUri":
+            suggest = "dataset_uri"
+        elif key == "schemaConfig":
+            suggest = "schema_config"
+        elif key == "writeDisposition":
+            suggest = "write_disposition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_uri: str,
                  force: bool,
@@ -576,15 +705,29 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse(dict):
         """
         return pulumi.get(self, "write_disposition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7SchemaConfigResponse(dict):
     """
     Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "messageSchemaConfigs":
+            suggest = "message_schema_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Hl7SchemaConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Hl7SchemaConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Hl7SchemaConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message_schema_configs: Mapping[str, str],
                  version: Sequence['outputs.VersionSourceResponse']):
@@ -611,9 +754,6 @@ class Hl7SchemaConfigResponse(dict):
         Each VersionSource is tested and only if they all match is the schema used for the message.
         """
         return pulumi.get(self, "version")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -648,15 +788,29 @@ class Hl7TypesConfigResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class Hl7V2NotificationConfigResponse(dict):
     """
     Specifies where and whether to send notifications upon changes to a data store.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in Hl7V2NotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        Hl7V2NotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        Hl7V2NotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filter: str,
                  pubsub_topic: str):
@@ -684,15 +838,31 @@ class Hl7V2NotificationConfigResponse(dict):
         """
         return pulumi.get(self, "pubsub_topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImageAnnotationResponse(dict):
     """
     Image annotation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boundingPolys":
+            suggest = "bounding_polys"
+        elif key == "frameIndex":
+            suggest = "frame_index"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageAnnotationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageAnnotationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageAnnotationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bounding_polys: Sequence['outputs.BoundingPolyResponse'],
                  frame_index: int):
@@ -720,15 +890,31 @@ class ImageAnnotationResponse(dict):
         """
         return pulumi.get(self, "frame_index")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ImageResponse(dict):
     """
     Raw bytes representing consent artifact content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsUri":
+            suggest = "gcs_uri"
+        elif key == "rawBytes":
+            suggest = "raw_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gcs_uri: str,
                  raw_bytes: str):
@@ -756,15 +942,29 @@ class ImageResponse(dict):
         """
         return pulumi.get(self, "raw_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NotificationConfigResponse(dict):
     """
     Specifies where to send notifications upon changes to a data store.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopic":
+            suggest = "pubsub_topic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic: str):
         """
@@ -780,9 +980,6 @@ class NotificationConfigResponse(dict):
         The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details.
         """
         return pulumi.get(self, "pubsub_topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -802,15 +999,31 @@ class ParsedDataResponse(dict):
     def segments(self) -> Sequence['outputs.SegmentResponse']:
         return pulumi.get(self, "segments")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParserConfigResponse(dict):
     """
     The configuration for the parser. It determines how the server parses the messages.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowNullHeader":
+            suggest = "allow_null_header"
+        elif key == "segmentTerminator":
+            suggest = "segment_terminator"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParserConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParserConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParserConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_null_header: bool,
                  schema: 'outputs.SchemaPackageResponse',
@@ -860,9 +1073,6 @@ class ParserConfigResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PatientIdResponse(dict):
@@ -896,9 +1106,6 @@ class PatientIdResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ResourceAnnotationResponse(dict):
@@ -921,15 +1128,31 @@ class ResourceAnnotationResponse(dict):
         """
         return pulumi.get(self, "label")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchemaConfigResponse(dict):
     """
     Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recursiveStructureDepth":
+            suggest = "recursive_structure_depth"
+        elif key == "schemaType":
+            suggest = "schema_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  recursive_structure_depth: str,
                  schema_type: str):
@@ -957,15 +1180,33 @@ class SchemaConfigResponse(dict):
         """
         return pulumi.get(self, "schema_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchemaPackageResponse(dict):
     """
     A schema package contains a set of schemas and type definitions.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ignoreMinOccurs":
+            suggest = "ignore_min_occurs"
+        elif key == "schematizedParsingType":
+            suggest = "schematized_parsing_type"
+        elif key == "unexpectedSegmentHandling":
+            suggest = "unexpected_segment_handling"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchemaPackageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchemaPackageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchemaPackageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ignore_min_occurs: bool,
                  schemas: Sequence['outputs.Hl7SchemaConfigResponse'],
@@ -1026,9 +1267,6 @@ class SchemaPackageResponse(dict):
         """
         return pulumi.get(self, "unexpected_segment_handling")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchematizedDataResponse(dict):
@@ -1062,15 +1300,31 @@ class SchematizedDataResponse(dict):
         """
         return pulumi.get(self, "error")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SegmentResponse(dict):
     """
     A segment in a structured format.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "segmentId":
+            suggest = "segment_id"
+        elif key == "setId":
+            suggest = "set_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SegmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SegmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SegmentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  fields: Mapping[str, str],
                  segment_id: str,
@@ -1109,9 +1363,6 @@ class SegmentResponse(dict):
         """
         return pulumi.get(self, "set_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SensitiveTextAnnotationResponse(dict):
@@ -1134,15 +1385,31 @@ class SensitiveTextAnnotationResponse(dict):
         """
         return pulumi.get(self, "details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SignatureResponse(dict):
     """
     User signature.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "signatureTime":
+            suggest = "signature_time"
+        elif key == "userId":
+            suggest = "user_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SignatureResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SignatureResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SignatureResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image: 'outputs.ImageResponse',
                  metadata: Mapping[str, str],
@@ -1192,15 +1459,31 @@ class SignatureResponse(dict):
         """
         return pulumi.get(self, "user_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StreamConfigResponse(dict):
     """
     Contains configuration for streaming FHIR export.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryDestination":
+            suggest = "bigquery_destination"
+        elif key == "resourceTypes":
+            suggest = "resource_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_destination: 'outputs.GoogleCloudHealthcareV1beta1FhirBigQueryDestinationResponse',
                  resource_types: Sequence[str]):
@@ -1227,9 +1510,6 @@ class StreamConfigResponse(dict):
         Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store.
         """
         return pulumi.get(self, "resource_types")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1275,15 +1555,31 @@ class TypeResponse(dict):
         """
         return pulumi.get(self, "primitive")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ValidationConfigResponse(dict):
     """
     Contains the configuration for FHIR profiles and validation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableProfileValidation":
+            suggest = "disable_profile_validation"
+        elif key == "enabledImplementationGuides":
+            suggest = "enabled_implementation_guides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValidationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValidationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValidationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_profile_validation: bool,
                  enabled_implementation_guides: Sequence[str]):
@@ -1311,15 +1607,29 @@ class ValidationConfigResponse(dict):
         """
         return pulumi.get(self, "enabled_implementation_guides")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VersionSourceResponse(dict):
     """
     Describes a selector for extracting and matching an MSH field to a value.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mshField":
+            suggest = "msh_field"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VersionSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VersionSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VersionSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  msh_field: str,
                  value: str):
@@ -1346,9 +1656,6 @@ class VersionSourceResponse(dict):
         The value to match with the field. For example, "My Application Name" or "2.3".
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1382,8 +1689,5 @@ class VertexResponse(dict):
         Y coordinate.
         """
         return pulumi.get(self, "y")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -79,6 +79,25 @@ class ArgumentResponse(dict):
     """
     Input/output argument of a function or a stored procedure.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "argumentKind":
+            suggest = "argument_kind"
+        elif key == "dataType":
+            suggest = "data_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ArgumentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ArgumentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ArgumentResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  argument_kind: str,
                  data_type: 'outputs.StandardSqlDataTypeResponse',
@@ -128,15 +147,29 @@ class ArgumentResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -164,15 +197,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -200,12 +249,28 @@ class AuditLogConfigResponse(dict):
         """
         return pulumi.get(self, "log_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigQueryModelTrainingResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentIteration":
+            suggest = "current_iteration"
+        elif key == "expectedTotalIterations":
+            suggest = "expected_total_iterations"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryModelTrainingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryModelTrainingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryModelTrainingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  current_iteration: int,
                  expected_total_iterations: str):
@@ -232,12 +297,28 @@ class BigQueryModelTrainingResponse(dict):
         """
         return pulumi.get(self, "expected_total_iterations")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigtableColumnFamilyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "familyId":
+            suggest = "family_id"
+        elif key == "onlyReadLatest":
+            suggest = "only_read_latest"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigtableColumnFamilyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigtableColumnFamilyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigtableColumnFamilyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  columns: Sequence['outputs.BigtableColumnResponse'],
                  encoding: str,
@@ -297,12 +378,32 @@ class BigtableColumnFamilyResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigtableColumnResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fieldName":
+            suggest = "field_name"
+        elif key == "onlyReadLatest":
+            suggest = "only_read_latest"
+        elif key == "qualifierEncoded":
+            suggest = "qualifier_encoded"
+        elif key == "qualifierString":
+            suggest = "qualifier_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigtableColumnResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigtableColumnResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigtableColumnResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  encoding: str,
                  field_name: str,
@@ -369,12 +470,30 @@ class BigtableColumnResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BigtableOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "columnFamilies":
+            suggest = "column_families"
+        elif key == "ignoreUnspecifiedColumnFamilies":
+            suggest = "ignore_unspecified_column_families"
+        elif key == "readRowkeyAsString":
+            suggest = "read_rowkey_as_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigtableOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigtableOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigtableOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  column_families: Sequence['outputs.BigtableColumnFamilyResponse'],
                  ignore_unspecified_column_families: bool,
@@ -411,9 +530,6 @@ class BigtableOptionsResponse(dict):
         [Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
         """
         return pulumi.get(self, "read_rowkey_as_string")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -459,12 +575,32 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BqmlIterationResultResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "durationMs":
+            suggest = "duration_ms"
+        elif key == "evalLoss":
+            suggest = "eval_loss"
+        elif key == "learnRate":
+            suggest = "learn_rate"
+        elif key == "trainingLoss":
+            suggest = "training_loss"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BqmlIterationResultResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BqmlIterationResultResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BqmlIterationResultResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  duration_ms: str,
                  eval_loss: float,
@@ -524,12 +660,30 @@ class BqmlIterationResultResponse(dict):
         """
         return pulumi.get(self, "training_loss")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BqmlTrainingRunResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iterationResults":
+            suggest = "iteration_results"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "trainingOptions":
+            suggest = "training_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BqmlTrainingRunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BqmlTrainingRunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BqmlTrainingRunResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  iteration_results: Sequence['outputs.BqmlIterationResultResponse'],
                  start_time: str,
@@ -578,9 +732,6 @@ class BqmlTrainingRunResponse(dict):
         """
         return pulumi.get(self, "training_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusteringResponse(dict):
@@ -598,9 +749,6 @@ class ClusteringResponse(dict):
         [Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. When you cluster a table using multiple columns, the order of columns you specify is important. The order of the specified columns determines the sort order of the data.
         """
         return pulumi.get(self, "fields")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -631,12 +779,32 @@ class ConnectionPropertyResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CsvOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowJaggedRows":
+            suggest = "allow_jagged_rows"
+        elif key == "allowQuotedNewlines":
+            suggest = "allow_quoted_newlines"
+        elif key == "fieldDelimiter":
+            suggest = "field_delimiter"
+        elif key == "skipLeadingRows":
+            suggest = "skip_leading_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CsvOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CsvOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CsvOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_jagged_rows: bool,
                  allow_quoted_newlines: bool,
@@ -707,12 +875,28 @@ class CsvOptionsResponse(dict):
         """
         return pulumi.get(self, "skip_leading_rows")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatasetReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str):
@@ -739,12 +923,26 @@ class DatasetReferenceResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DestinationTablePropertiesResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "friendlyName":
+            suggest = "friendly_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationTablePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationTablePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationTablePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  friendly_name: str,
@@ -782,12 +980,26 @@ class DestinationTablePropertiesResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key_name: str):
         """
@@ -803,12 +1015,26 @@ class EncryptionConfigurationResponse(dict):
         """
         return pulumi.get(self, "kms_key_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ErrorProtoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "debugInfo":
+            suggest = "debug_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ErrorProtoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ErrorProtoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ErrorProtoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  debug_info: str,
                  location: str,
@@ -857,12 +1083,76 @@ class ErrorProtoResponse(dict):
         """
         return pulumi.get(self, "reason")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExplainQueryStageResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "completedParallelInputs":
+            suggest = "completed_parallel_inputs"
+        elif key == "computeMsAvg":
+            suggest = "compute_ms_avg"
+        elif key == "computeMsMax":
+            suggest = "compute_ms_max"
+        elif key == "computeRatioAvg":
+            suggest = "compute_ratio_avg"
+        elif key == "computeRatioMax":
+            suggest = "compute_ratio_max"
+        elif key == "endMs":
+            suggest = "end_ms"
+        elif key == "inputStages":
+            suggest = "input_stages"
+        elif key == "parallelInputs":
+            suggest = "parallel_inputs"
+        elif key == "readMsAvg":
+            suggest = "read_ms_avg"
+        elif key == "readMsMax":
+            suggest = "read_ms_max"
+        elif key == "readRatioAvg":
+            suggest = "read_ratio_avg"
+        elif key == "readRatioMax":
+            suggest = "read_ratio_max"
+        elif key == "recordsRead":
+            suggest = "records_read"
+        elif key == "recordsWritten":
+            suggest = "records_written"
+        elif key == "shuffleOutputBytes":
+            suggest = "shuffle_output_bytes"
+        elif key == "shuffleOutputBytesSpilled":
+            suggest = "shuffle_output_bytes_spilled"
+        elif key == "slotMs":
+            suggest = "slot_ms"
+        elif key == "startMs":
+            suggest = "start_ms"
+        elif key == "waitMsAvg":
+            suggest = "wait_ms_avg"
+        elif key == "waitMsMax":
+            suggest = "wait_ms_max"
+        elif key == "waitRatioAvg":
+            suggest = "wait_ratio_avg"
+        elif key == "waitRatioMax":
+            suggest = "wait_ratio_max"
+        elif key == "writeMsAvg":
+            suggest = "write_ms_avg"
+        elif key == "writeMsMax":
+            suggest = "write_ms_max"
+        elif key == "writeRatioAvg":
+            suggest = "write_ratio_avg"
+        elif key == "writeRatioMax":
+            suggest = "write_ratio_max"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExplainQueryStageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExplainQueryStageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExplainQueryStageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  completed_parallel_inputs: str,
                  compute_ms_avg: str,
@@ -1186,9 +1476,6 @@ class ExplainQueryStageResponse(dict):
         """
         return pulumi.get(self, "write_ratio_max")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExplainQueryStepResponse(dict):
@@ -1217,9 +1504,6 @@ class ExplainQueryStepResponse(dict):
         Human-readable stage descriptions.
         """
         return pulumi.get(self, "substeps")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1276,12 +1560,44 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExternalDataConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigtableOptions":
+            suggest = "bigtable_options"
+        elif key == "connectionId":
+            suggest = "connection_id"
+        elif key == "csvOptions":
+            suggest = "csv_options"
+        elif key == "googleSheetsOptions":
+            suggest = "google_sheets_options"
+        elif key == "hivePartitioningOptions":
+            suggest = "hive_partitioning_options"
+        elif key == "ignoreUnknownValues":
+            suggest = "ignore_unknown_values"
+        elif key == "maxBadRecords":
+            suggest = "max_bad_records"
+        elif key == "parquetOptions":
+            suggest = "parquet_options"
+        elif key == "sourceFormat":
+            suggest = "source_format"
+        elif key == "sourceUris":
+            suggest = "source_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExternalDataConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExternalDataConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExternalDataConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autodetect: bool,
                  bigtable_options: 'outputs.BigtableOptionsResponse',
@@ -1429,12 +1745,26 @@ class ExternalDataConfigurationResponse(dict):
         """
         return pulumi.get(self, "source_uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleSheetsOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "skipLeadingRows":
+            suggest = "skip_leading_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleSheetsOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleSheetsOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleSheetsOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  range: str,
                  skip_leading_rows: str):
@@ -1461,12 +1791,28 @@ class GoogleSheetsOptionsResponse(dict):
         """
         return pulumi.get(self, "skip_leading_rows")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HivePartitioningOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requirePartitionFilter":
+            suggest = "require_partition_filter"
+        elif key == "sourceUriPrefix":
+            suggest = "source_uri_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HivePartitioningOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HivePartitioningOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HivePartitioningOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mode: str,
                  require_partition_filter: bool,
@@ -1504,12 +1850,40 @@ class HivePartitioningOptionsResponse(dict):
         """
         return pulumi.get(self, "source_uri_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobConfigurationExtractResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationFormat":
+            suggest = "destination_format"
+        elif key == "destinationUri":
+            suggest = "destination_uri"
+        elif key == "destinationUris":
+            suggest = "destination_uris"
+        elif key == "fieldDelimiter":
+            suggest = "field_delimiter"
+        elif key == "printHeader":
+            suggest = "print_header"
+        elif key == "sourceModel":
+            suggest = "source_model"
+        elif key == "sourceTable":
+            suggest = "source_table"
+        elif key == "useAvroLogicalTypes":
+            suggest = "use_avro_logical_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobConfigurationExtractResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobConfigurationExtractResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobConfigurationExtractResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  compression: str,
                  destination_format: str,
@@ -1613,12 +1987,74 @@ class JobConfigurationExtractResponse(dict):
         """
         return pulumi.get(self, "use_avro_logical_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobConfigurationLoadResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowJaggedRows":
+            suggest = "allow_jagged_rows"
+        elif key == "allowQuotedNewlines":
+            suggest = "allow_quoted_newlines"
+        elif key == "createDisposition":
+            suggest = "create_disposition"
+        elif key == "decimalTargetTypes":
+            suggest = "decimal_target_types"
+        elif key == "destinationEncryptionConfiguration":
+            suggest = "destination_encryption_configuration"
+        elif key == "destinationTable":
+            suggest = "destination_table"
+        elif key == "destinationTableProperties":
+            suggest = "destination_table_properties"
+        elif key == "fieldDelimiter":
+            suggest = "field_delimiter"
+        elif key == "hivePartitioningOptions":
+            suggest = "hive_partitioning_options"
+        elif key == "ignoreUnknownValues":
+            suggest = "ignore_unknown_values"
+        elif key == "jsonExtension":
+            suggest = "json_extension"
+        elif key == "maxBadRecords":
+            suggest = "max_bad_records"
+        elif key == "nullMarker":
+            suggest = "null_marker"
+        elif key == "parquetOptions":
+            suggest = "parquet_options"
+        elif key == "projectionFields":
+            suggest = "projection_fields"
+        elif key == "rangePartitioning":
+            suggest = "range_partitioning"
+        elif key == "schemaInline":
+            suggest = "schema_inline"
+        elif key == "schemaInlineFormat":
+            suggest = "schema_inline_format"
+        elif key == "schemaUpdateOptions":
+            suggest = "schema_update_options"
+        elif key == "skipLeadingRows":
+            suggest = "skip_leading_rows"
+        elif key == "sourceFormat":
+            suggest = "source_format"
+        elif key == "sourceUris":
+            suggest = "source_uris"
+        elif key == "timePartitioning":
+            suggest = "time_partitioning"
+        elif key == "useAvroLogicalTypes":
+            suggest = "use_avro_logical_types"
+        elif key == "writeDisposition":
+            suggest = "write_disposition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobConfigurationLoadResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobConfigurationLoadResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobConfigurationLoadResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_jagged_rows: bool,
                  allow_quoted_newlines: bool,
@@ -1666,7 +2102,7 @@ class JobConfigurationLoadResponse(dict):
         :param bool ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names
         :param str json_extension: [Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.
         :param int max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.
-        :param str null_marker: [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
+        :param str null_marker: [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
         :param 'ParquetOptionsResponseArgs' parquet_options: [Optional] Options to configure parquet support.
         :param Sequence[str] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
         :param str quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
@@ -1837,7 +2273,7 @@ class JobConfigurationLoadResponse(dict):
     @pulumi.getter(name="nullMarker")
     def null_marker(self) -> str:
         """
-        [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\N", BigQuery interprets "\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
+        [Optional] Specifies a string that represents a null value in a CSV file. For example, if you specify "\\N", BigQuery interprets "\\N" as a null value when loading a CSV file. The default value is the empty string. If you set this property to a custom value, BigQuery throws an error if an empty string is present for all data types except for STRING and BYTE. For STRING and BYTE columns, BigQuery interprets the empty string as an empty value.
         """
         return pulumi.get(self, "null_marker")
 
@@ -1953,12 +2389,66 @@ class JobConfigurationLoadResponse(dict):
         """
         return pulumi.get(self, "write_disposition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobConfigurationQueryResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowLargeResults":
+            suggest = "allow_large_results"
+        elif key == "connectionProperties":
+            suggest = "connection_properties"
+        elif key == "createDisposition":
+            suggest = "create_disposition"
+        elif key == "createSession":
+            suggest = "create_session"
+        elif key == "defaultDataset":
+            suggest = "default_dataset"
+        elif key == "destinationEncryptionConfiguration":
+            suggest = "destination_encryption_configuration"
+        elif key == "destinationTable":
+            suggest = "destination_table"
+        elif key == "flattenResults":
+            suggest = "flatten_results"
+        elif key == "maximumBillingTier":
+            suggest = "maximum_billing_tier"
+        elif key == "maximumBytesBilled":
+            suggest = "maximum_bytes_billed"
+        elif key == "parameterMode":
+            suggest = "parameter_mode"
+        elif key == "preserveNulls":
+            suggest = "preserve_nulls"
+        elif key == "queryParameters":
+            suggest = "query_parameters"
+        elif key == "rangePartitioning":
+            suggest = "range_partitioning"
+        elif key == "schemaUpdateOptions":
+            suggest = "schema_update_options"
+        elif key == "tableDefinitions":
+            suggest = "table_definitions"
+        elif key == "timePartitioning":
+            suggest = "time_partitioning"
+        elif key == "useLegacySql":
+            suggest = "use_legacy_sql"
+        elif key == "useQueryCache":
+            suggest = "use_query_cache"
+        elif key == "userDefinedFunctionResources":
+            suggest = "user_defined_function_resources"
+        elif key == "writeDisposition":
+            suggest = "write_disposition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobConfigurationQueryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobConfigurationQueryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobConfigurationQueryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_large_results: bool,
                  clustering: 'outputs.ClusteringResponse',
@@ -2227,12 +2717,30 @@ class JobConfigurationQueryResponse(dict):
         """
         return pulumi.get(self, "write_disposition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobConfigurationResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dryRun":
+            suggest = "dry_run"
+        elif key == "jobTimeoutMs":
+            suggest = "job_timeout_ms"
+        elif key == "jobType":
+            suggest = "job_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  copy: 'outputs.JobConfigurationTableCopyResponse',
                  dry_run: bool,
@@ -2325,12 +2833,40 @@ class JobConfigurationResponse(dict):
         """
         return pulumi.get(self, "query")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobConfigurationTableCopyResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createDisposition":
+            suggest = "create_disposition"
+        elif key == "destinationEncryptionConfiguration":
+            suggest = "destination_encryption_configuration"
+        elif key == "destinationExpirationTime":
+            suggest = "destination_expiration_time"
+        elif key == "destinationTable":
+            suggest = "destination_table"
+        elif key == "operationType":
+            suggest = "operation_type"
+        elif key == "sourceTable":
+            suggest = "source_table"
+        elif key == "sourceTables":
+            suggest = "source_tables"
+        elif key == "writeDisposition":
+            suggest = "write_disposition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobConfigurationTableCopyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobConfigurationTableCopyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobConfigurationTableCopyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_disposition: str,
                  destination_encryption_configuration: 'outputs.EncryptionConfigurationResponse',
@@ -2423,12 +2959,28 @@ class JobConfigurationTableCopyResponse(dict):
         """
         return pulumi.get(self, "write_disposition")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_id: str,
                  location: str,
@@ -2466,12 +3018,72 @@ class JobReferenceResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatistics2Response(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "billingTier":
+            suggest = "billing_tier"
+        elif key == "cacheHit":
+            suggest = "cache_hit"
+        elif key == "ddlAffectedRowAccessPolicyCount":
+            suggest = "ddl_affected_row_access_policy_count"
+        elif key == "ddlOperationPerformed":
+            suggest = "ddl_operation_performed"
+        elif key == "ddlTargetDataset":
+            suggest = "ddl_target_dataset"
+        elif key == "ddlTargetRoutine":
+            suggest = "ddl_target_routine"
+        elif key == "ddlTargetRowAccessPolicy":
+            suggest = "ddl_target_row_access_policy"
+        elif key == "ddlTargetTable":
+            suggest = "ddl_target_table"
+        elif key == "estimatedBytesProcessed":
+            suggest = "estimated_bytes_processed"
+        elif key == "modelTraining":
+            suggest = "model_training"
+        elif key == "modelTrainingCurrentIteration":
+            suggest = "model_training_current_iteration"
+        elif key == "modelTrainingExpectedTotalIteration":
+            suggest = "model_training_expected_total_iteration"
+        elif key == "numDmlAffectedRows":
+            suggest = "num_dml_affected_rows"
+        elif key == "queryPlan":
+            suggest = "query_plan"
+        elif key == "referencedRoutines":
+            suggest = "referenced_routines"
+        elif key == "referencedTables":
+            suggest = "referenced_tables"
+        elif key == "reservationUsage":
+            suggest = "reservation_usage"
+        elif key == "statementType":
+            suggest = "statement_type"
+        elif key == "totalBytesBilled":
+            suggest = "total_bytes_billed"
+        elif key == "totalBytesProcessed":
+            suggest = "total_bytes_processed"
+        elif key == "totalBytesProcessedAccuracy":
+            suggest = "total_bytes_processed_accuracy"
+        elif key == "totalPartitionsProcessed":
+            suggest = "total_partitions_processed"
+        elif key == "totalSlotMs":
+            suggest = "total_slot_ms"
+        elif key == "undeclaredQueryParameters":
+            suggest = "undeclared_query_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatistics2Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatistics2Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatistics2Response.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  billing_tier: int,
                  cache_hit: bool,
@@ -2762,12 +3374,34 @@ class JobStatistics2Response(dict):
         """
         return pulumi.get(self, "undeclared_query_parameters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatistics3Response(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "badRecords":
+            suggest = "bad_records"
+        elif key == "inputFileBytes":
+            suggest = "input_file_bytes"
+        elif key == "inputFiles":
+            suggest = "input_files"
+        elif key == "outputBytes":
+            suggest = "output_bytes"
+        elif key == "outputRows":
+            suggest = "output_rows"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatistics3Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatistics3Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatistics3Response.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bad_records: str,
                  input_file_bytes: str,
@@ -2827,12 +3461,28 @@ class JobStatistics3Response(dict):
         """
         return pulumi.get(self, "output_rows")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatistics4Response(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "destinationUriFileCounts":
+            suggest = "destination_uri_file_counts"
+        elif key == "inputBytes":
+            suggest = "input_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatistics4Response. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatistics4Response.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatistics4Response.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  destination_uri_file_counts: Sequence[str],
                  input_bytes: str):
@@ -2859,12 +3509,52 @@ class JobStatistics4Response(dict):
         """
         return pulumi.get(self, "input_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "completionRatio":
+            suggest = "completion_ratio"
+        elif key == "creationTime":
+            suggest = "creation_time"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "numChildJobs":
+            suggest = "num_child_jobs"
+        elif key == "parentJobId":
+            suggest = "parent_job_id"
+        elif key == "quotaDeferments":
+            suggest = "quota_deferments"
+        elif key == "reservationUsage":
+            suggest = "reservation_usage"
+        elif key == "rowLevelSecurityStatistics":
+            suggest = "row_level_security_statistics"
+        elif key == "scriptStatistics":
+            suggest = "script_statistics"
+        elif key == "sessionInfoTemplate":
+            suggest = "session_info_template"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "totalBytesProcessed":
+            suggest = "total_bytes_processed"
+        elif key == "totalSlotMs":
+            suggest = "total_slot_ms"
+        elif key == "transactionInfoTemplate":
+            suggest = "transaction_info_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  completion_ratio: float,
                  creation_time: str,
@@ -3067,12 +3757,26 @@ class JobStatisticsResponse(dict):
         """
         return pulumi.get(self, "transaction_info_template")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatusResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "errorResult":
+            suggest = "error_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  error_result: 'outputs.ErrorProtoResponse',
                  errors: Sequence['outputs.ErrorProtoResponse'],
@@ -3110,12 +3814,30 @@ class JobStatusResponse(dict):
         """
         return pulumi.get(self, "state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MaterializedViewDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableRefresh":
+            suggest = "enable_refresh"
+        elif key == "lastRefreshTime":
+            suggest = "last_refresh_time"
+        elif key == "refreshIntervalMs":
+            suggest = "refresh_interval_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaterializedViewDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaterializedViewDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaterializedViewDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_refresh: bool,
                  last_refresh_time: str,
@@ -3164,12 +3886,28 @@ class MaterializedViewDefinitionResponse(dict):
         """
         return pulumi.get(self, "refresh_interval_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ModelDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelOptions":
+            suggest = "model_options"
+        elif key == "trainingRuns":
+            suggest = "training_runs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  model_options: Mapping[str, str],
                  training_runs: Sequence['outputs.BqmlTrainingRunResponse']):
@@ -3196,12 +3934,30 @@ class ModelDefinitionResponse(dict):
         """
         return pulumi.get(self, "training_runs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ModelReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "modelId":
+            suggest = "model_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ModelReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ModelReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ModelReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  model_id: str,
@@ -3239,12 +3995,28 @@ class ModelReferenceResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParquetOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableListInference":
+            suggest = "enable_list_inference"
+        elif key == "enumAsString":
+            suggest = "enum_as_string"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ParquetOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ParquetOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ParquetOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_list_inference: bool,
                  enum_as_string: bool):
@@ -3271,12 +4043,28 @@ class ParquetOptionsResponse(dict):
         """
         return pulumi.get(self, "enum_as_string")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryParameterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "parameterType":
+            suggest = "parameter_type"
+        elif key == "parameterValue":
+            suggest = "parameter_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  parameter_type: 'outputs.QueryParameterTypeResponse',
@@ -3314,12 +4102,28 @@ class QueryParameterResponse(dict):
         """
         return pulumi.get(self, "parameter_value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryParameterTypeResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayType":
+            suggest = "array_type"
+        elif key == "structTypes":
+            suggest = "struct_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  array_type: 'outputs.QueryParameterTypeResponse',
                  struct_types: Sequence[Mapping[str, str]],
@@ -3357,12 +4161,28 @@ class QueryParameterTypeResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryParameterValueResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayValues":
+            suggest = "array_values"
+        elif key == "structValues":
+            suggest = "struct_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryParameterValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryParameterValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryParameterValueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  array_values: Sequence['outputs.QueryParameterValueResponse'],
                  struct_values: Mapping[str, str],
@@ -3400,12 +4220,34 @@ class QueryParameterValueResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryTimelineSampleResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activeUnits":
+            suggest = "active_units"
+        elif key == "completedUnits":
+            suggest = "completed_units"
+        elif key == "elapsedMs":
+            suggest = "elapsed_ms"
+        elif key == "pendingUnits":
+            suggest = "pending_units"
+        elif key == "totalSlotMs":
+            suggest = "total_slot_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueryTimelineSampleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueryTimelineSampleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueryTimelineSampleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  active_units: str,
                  completed_units: str,
@@ -3465,9 +4307,6 @@ class QueryTimelineSampleResponse(dict):
         """
         return pulumi.get(self, "total_slot_ms")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RangePartitioningResponse(dict):
@@ -3497,12 +4336,30 @@ class RangePartitioningResponse(dict):
         """
         return pulumi.get(self, "range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RoutineReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "routineId":
+            suggest = "routine_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutineReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutineReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutineReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -3540,12 +4397,32 @@ class RoutineReferenceResponse(dict):
         """
         return pulumi.get(self, "routine_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RowAccessPolicyReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "policyId":
+            suggest = "policy_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RowAccessPolicyReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RowAccessPolicyReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RowAccessPolicyReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  policy_id: str,
@@ -3594,12 +4471,26 @@ class RowAccessPolicyReferenceResponse(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RowLevelSecurityStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rowLevelSecurityApplied":
+            suggest = "row_level_security_applied"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RowLevelSecurityStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RowLevelSecurityStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RowLevelSecurityStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  row_level_security_applied: bool):
         """
@@ -3615,12 +4506,34 @@ class RowLevelSecurityStatisticsResponse(dict):
         """
         return pulumi.get(self, "row_level_security_applied")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScriptStackFrameResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endColumn":
+            suggest = "end_column"
+        elif key == "endLine":
+            suggest = "end_line"
+        elif key == "procedureId":
+            suggest = "procedure_id"
+        elif key == "startColumn":
+            suggest = "start_column"
+        elif key == "startLine":
+            suggest = "start_line"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScriptStackFrameResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScriptStackFrameResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScriptStackFrameResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_column: int,
                  end_line: int,
@@ -3691,12 +4604,28 @@ class ScriptStackFrameResponse(dict):
         """
         return pulumi.get(self, "text")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScriptStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationKind":
+            suggest = "evaluation_kind"
+        elif key == "stackFrames":
+            suggest = "stack_frames"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScriptStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScriptStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScriptStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  evaluation_kind: str,
                  stack_frames: Sequence['outputs.ScriptStackFrameResponse']):
@@ -3723,12 +4652,26 @@ class ScriptStatisticsResponse(dict):
         """
         return pulumi.get(self, "stack_frames")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SessionInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sessionId":
+            suggest = "session_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SessionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SessionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SessionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  session_id: str):
         """
@@ -3744,12 +4687,28 @@ class SessionInfoResponse(dict):
         """
         return pulumi.get(self, "session_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SnapshotDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "baseTableReference":
+            suggest = "base_table_reference"
+        elif key == "snapshotTime":
+            suggest = "snapshot_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SnapshotDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SnapshotDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SnapshotDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  base_table_reference: 'outputs.TableReferenceResponse',
                  snapshot_time: str):
@@ -3776,15 +4735,33 @@ class SnapshotDefinitionResponse(dict):
         """
         return pulumi.get(self, "snapshot_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardSqlDataTypeResponse(dict):
     """
     The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrayElementType":
+            suggest = "array_element_type"
+        elif key == "structType":
+            suggest = "struct_type"
+        elif key == "typeKind":
+            suggest = "type_kind"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StandardSqlDataTypeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StandardSqlDataTypeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StandardSqlDataTypeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  array_element_type: 'outputs.StandardSqlDataTypeResponse',
                  struct_type: 'outputs.StandardSqlStructTypeResponse',
@@ -3823,9 +4800,6 @@ class StandardSqlDataTypeResponse(dict):
         """
         return pulumi.get(self, "type_kind")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardSqlFieldResponse(dict):
@@ -3859,9 +4833,6 @@ class StandardSqlFieldResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StandardSqlStructTypeResponse(dict):
@@ -3873,9 +4844,6 @@ class StandardSqlStructTypeResponse(dict):
     @pulumi.getter
     def fields(self) -> Sequence['outputs.StandardSqlFieldResponse']:
         return pulumi.get(self, "fields")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -3899,12 +4867,30 @@ class StandardSqlTableTypeResponse(dict):
         """
         return pulumi.get(self, "columns")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StreamingbufferResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "estimatedBytes":
+            suggest = "estimated_bytes"
+        elif key == "estimatedRows":
+            suggest = "estimated_rows"
+        elif key == "oldestEntryTime":
+            suggest = "oldest_entry_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StreamingbufferResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StreamingbufferResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StreamingbufferResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  estimated_bytes: str,
                  estimated_rows: str,
@@ -3942,12 +4928,28 @@ class StreamingbufferResponse(dict):
         """
         return pulumi.get(self, "oldest_entry_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TableFieldSchemaResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxLength":
+            suggest = "max_length"
+        elif key == "policyTags":
+            suggest = "policy_tags"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableFieldSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableFieldSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableFieldSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  categories: Mapping[str, str],
                  description: str,
@@ -4058,12 +5060,30 @@ class TableFieldSchemaResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TableReferenceResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tableId":
+            suggest = "table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset_id: str,
                  project_id: str,
@@ -4101,9 +5121,6 @@ class TableReferenceResponse(dict):
         """
         return pulumi.get(self, "table_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TableSchemaResponse(dict):
@@ -4122,12 +5139,28 @@ class TableSchemaResponse(dict):
         """
         return pulumi.get(self, "fields")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TimePartitioningResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationMs":
+            suggest = "expiration_ms"
+        elif key == "requirePartitionFilter":
+            suggest = "require_partition_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TimePartitioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TimePartitioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TimePartitioningResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiration_ms: str,
                  field: str,
@@ -4172,12 +5205,26 @@ class TimePartitioningResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransactionInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "transactionId":
+            suggest = "transaction_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransactionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransactionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransactionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  transaction_id: str):
         """
@@ -4193,15 +5240,31 @@ class TransactionInfoResponse(dict):
         """
         return pulumi.get(self, "transaction_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UserDefinedFunctionResourceResponse(dict):
     """
     This is used for defining User Defined Function (UDF) resources only when using legacy SQL. Users of Standard SQL should leverage either DDL (e.g. CREATE [TEMPORARY] FUNCTION ... ) or the Routines API to define UDF resources. For additional information on migrating, see: https://cloud.google.com/bigquery/docs/reference/standard-sql/migrating-from-legacy-sql#differences_in_user-defined_javascript_functions
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inlineCode":
+            suggest = "inline_code"
+        elif key == "resourceUri":
+            suggest = "resource_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserDefinedFunctionResourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserDefinedFunctionResourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserDefinedFunctionResourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  inline_code: str,
                  resource_uri: str):
@@ -4229,12 +5292,28 @@ class UserDefinedFunctionResourceResponse(dict):
         """
         return pulumi.get(self, "resource_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ViewDefinitionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "useLegacySql":
+            suggest = "use_legacy_sql"
+        elif key == "userDefinedFunctionResources":
+            suggest = "user_defined_function_resources"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ViewDefinitionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ViewDefinitionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ViewDefinitionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  query: str,
                  use_legacy_sql: bool,
@@ -4271,8 +5350,5 @@ class ViewDefinitionResponse(dict):
         Describes user-defined function resources used in the query.
         """
         return pulumi.get(self, "user_defined_function_resources")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

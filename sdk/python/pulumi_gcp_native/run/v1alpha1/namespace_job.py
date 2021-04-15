@@ -5,15 +5,125 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['NamespaceJob']
+__all__ = ['NamespaceJobArgs', 'NamespaceJob']
+
+@pulumi.input_type
+class NamespaceJobArgs:
+    def __init__(__self__, *,
+                 jobs_id: pulumi.Input[str],
+                 namespaces_id: pulumi.Input[str],
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input['ObjectMetaArgs']] = None,
+                 spec: Optional[pulumi.Input['JobSpecArgs']] = None,
+                 status: Optional[pulumi.Input['JobStatusArgs']] = None):
+        """
+        The set of arguments for constructing a NamespaceJob resource.
+        :param pulumi.Input[str] api_version: Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        :param pulumi.Input[str] kind: Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
+        :param pulumi.Input['ObjectMetaArgs'] metadata: Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        :param pulumi.Input['JobSpecArgs'] spec: Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        :param pulumi.Input['JobStatusArgs'] status: Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        """
+        pulumi.set(__self__, "jobs_id", jobs_id)
+        pulumi.set(__self__, "namespaces_id", namespaces_id)
+        if api_version is not None:
+            pulumi.set(__self__, "api_version", api_version)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if metadata is not None:
+            pulumi.set(__self__, "metadata", metadata)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter(name="jobsId")
+    def jobs_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "jobs_id")
+
+    @jobs_id.setter
+    def jobs_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "jobs_id", value)
+
+    @property
+    @pulumi.getter(name="namespacesId")
+    def namespaces_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespaces_id")
+
+    @namespaces_id.setter
+    def namespaces_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespaces_id", value)
+
+    @property
+    @pulumi.getter(name="apiVersion")
+    def api_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
+        """
+        return pulumi.get(self, "api_version")
+
+    @api_version.setter
+    def api_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api_version", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds +optional
+        """
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> Optional[pulumi.Input['ObjectMetaArgs']]:
+        """
+        Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
+        """
+        return pulumi.get(self, "metadata")
+
+    @metadata.setter
+    def metadata(self, value: Optional[pulumi.Input['ObjectMetaArgs']]):
+        pulumi.set(self, "metadata", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input['JobSpecArgs']]:
+        """
+        Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input['JobSpecArgs']]):
+        pulumi.set(self, "spec", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input['JobStatusArgs']]:
+        """
+        Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input['JobStatusArgs']]):
+        pulumi.set(self, "status", value)
 
 
 class NamespaceJob(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -24,9 +134,7 @@ class NamespaceJob(pulumi.CustomResource):
                  namespaces_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a job.
 
@@ -38,12 +146,38 @@ class NamespaceJob(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['JobSpecArgs']] spec: Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         :param pulumi.Input[pulumi.InputType['JobStatusArgs']] status: Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: NamespaceJobArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a job.
+
+        :param str resource_name: The name of the resource.
+        :param NamespaceJobArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(NamespaceJobArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 api_version: Optional[pulumi.Input[str]] = None,
+                 jobs_id: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
+                 namespaces_id: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[pulumi.InputType['JobSpecArgs']]] = None,
+                 status: Optional[pulumi.Input[pulumi.InputType['JobStatusArgs']]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -53,19 +187,19 @@ class NamespaceJob(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = NamespaceJobArgs.__new__(NamespaceJobArgs)
 
-            __props__['api_version'] = api_version
+            __props__.__dict__["api_version"] = api_version
             if jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'jobs_id'")
-            __props__['jobs_id'] = jobs_id
-            __props__['kind'] = kind
-            __props__['metadata'] = metadata
+            __props__.__dict__["jobs_id"] = jobs_id
+            __props__.__dict__["kind"] = kind
+            __props__.__dict__["metadata"] = metadata
             if namespaces_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespaces_id'")
-            __props__['namespaces_id'] = namespaces_id
-            __props__['spec'] = spec
-            __props__['status'] = status
+            __props__.__dict__["namespaces_id"] = namespaces_id
+            __props__.__dict__["spec"] = spec
+            __props__.__dict__["status"] = status
         super(NamespaceJob, __self__).__init__(
             'gcp-native:run/v1alpha1:NamespaceJob',
             resource_name,
@@ -86,13 +220,13 @@ class NamespaceJob(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = NamespaceJobArgs.__new__(NamespaceJobArgs)
 
-        __props__["api_version"] = None
-        __props__["kind"] = None
-        __props__["metadata"] = None
-        __props__["spec"] = None
-        __props__["status"] = None
+        __props__.__dict__["api_version"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["metadata"] = None
+        __props__.__dict__["spec"] = None
+        __props__.__dict__["status"] = None
         return NamespaceJob(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -134,10 +268,4 @@ class NamespaceJob(pulumi.CustomResource):
         Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
         """
         return pulumi.get(self, "status")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

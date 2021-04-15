@@ -5,13 +5,70 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['OrganizationInstanceNatAddress']
+__all__ = ['OrganizationInstanceNatAddressArgs', 'OrganizationInstanceNatAddress']
+
+@pulumi.input_type
+class OrganizationInstanceNatAddressArgs:
+    def __init__(__self__, *,
+                 instances_id: pulumi.Input[str],
+                 nat_addresses_id: pulumi.Input[str],
+                 organizations_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a OrganizationInstanceNatAddress resource.
+        :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
+        """
+        pulumi.set(__self__, "instances_id", instances_id)
+        pulumi.set(__self__, "nat_addresses_id", nat_addresses_id)
+        pulumi.set(__self__, "organizations_id", organizations_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="instancesId")
+    def instances_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instances_id")
+
+    @instances_id.setter
+    def instances_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instances_id", value)
+
+    @property
+    @pulumi.getter(name="natAddressesId")
+    def nat_addresses_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "nat_addresses_id")
+
+    @nat_addresses_id.setter
+    def nat_addresses_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "nat_addresses_id", value)
+
+    @property
+    @pulumi.getter(name="organizationsId")
+    def organizations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organizations_id")
+
+    @organizations_id.setter
+    def organizations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Resource ID of the NAT address.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class OrganizationInstanceNatAddress(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -19,9 +76,7 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  nat_addresses_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
 
@@ -29,12 +84,35 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: Required. Resource ID of the NAT address.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: OrganizationInstanceNatAddressArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
+
+        :param str resource_name: The name of the resource.
+        :param OrganizationInstanceNatAddressArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(OrganizationInstanceNatAddressArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 instances_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 nat_addresses_id: Optional[pulumi.Input[str]] = None,
+                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -44,20 +122,20 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = OrganizationInstanceNatAddressArgs.__new__(OrganizationInstanceNatAddressArgs)
 
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
-            __props__['instances_id'] = instances_id
-            __props__['name'] = name
+            __props__.__dict__["instances_id"] = instances_id
+            __props__.__dict__["name"] = name
             if nat_addresses_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nat_addresses_id'")
-            __props__['nat_addresses_id'] = nat_addresses_id
+            __props__.__dict__["nat_addresses_id"] = nat_addresses_id
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
-            __props__['organizations_id'] = organizations_id
-            __props__['ip_address'] = None
-            __props__['state'] = None
+            __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["ip_address"] = None
+            __props__.__dict__["state"] = None
         super(OrganizationInstanceNatAddress, __self__).__init__(
             'gcp-native:apigee/v1:OrganizationInstanceNatAddress',
             resource_name,
@@ -78,11 +156,11 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = OrganizationInstanceNatAddressArgs.__new__(OrganizationInstanceNatAddressArgs)
 
-        __props__["ip_address"] = None
-        __props__["name"] = None
-        __props__["state"] = None
+        __props__.__dict__["ip_address"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
         return OrganizationInstanceNatAddress(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -108,10 +186,4 @@ class OrganizationInstanceNatAddress(pulumi.CustomResource):
         State of the nat address.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

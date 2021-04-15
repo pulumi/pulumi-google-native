@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'CertificateRawDataResponse',
@@ -20,6 +20,25 @@ class CertificateRawDataResponse(dict):
     """
     An SSL certificate obtained from a certificate authority.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateKey":
+            suggest = "private_key"
+        elif key == "publicCertificate":
+            suggest = "public_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertificateRawDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertificateRawDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertificateRawDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  private_key: str,
                  public_certificate: str):
@@ -47,15 +66,29 @@ class CertificateRawDataResponse(dict):
         """
         return pulumi.get(self, "public_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedCertificateResponse(dict):
     """
     A certificate managed by App Engine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastRenewalTime":
+            suggest = "last_renewal_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  last_renewal_time: str,
                  status: str):
@@ -82,9 +115,6 @@ class ManagedCertificateResponse(dict):
         Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.@OutputOnly
         """
         return pulumi.get(self, "status")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -130,15 +160,31 @@ class ResourceRecordResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslSettingsResponse(dict):
     """
     SSL configuration for a DomainMapping resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "isManagedCertificate":
+            suggest = "is_managed_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate_id: str,
                  is_managed_certificate: bool):
@@ -165,8 +211,5 @@ class SslSettingsResponse(dict):
         Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly
         """
         return pulumi.get(self, "is_managed_certificate")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

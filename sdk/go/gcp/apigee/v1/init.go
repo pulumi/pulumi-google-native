@@ -22,67 +22,68 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:apigee/v1:Organization":
-		r, err = NewOrganization(ctx, name, nil, pulumi.URN_(urn))
+		r = &Organization{}
 	case "gcp-native:apigee/v1:OrganizationAnalyticDatastore":
-		r, err = NewOrganizationAnalyticDatastore(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationAnalyticDatastore{}
 	case "gcp-native:apigee/v1:OrganizationApi":
-		r, err = NewOrganizationApi(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationApi{}
 	case "gcp-native:apigee/v1:OrganizationApiproduct":
-		r, err = NewOrganizationApiproduct(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationApiproduct{}
 	case "gcp-native:apigee/v1:OrganizationDatacollector":
-		r, err = NewOrganizationDatacollector(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationDatacollector{}
 	case "gcp-native:apigee/v1:OrganizationDeveloper":
-		r, err = NewOrganizationDeveloper(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationDeveloper{}
 	case "gcp-native:apigee/v1:OrganizationDeveloperApp":
-		r, err = NewOrganizationDeveloperApp(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationDeveloperApp{}
 	case "gcp-native:apigee/v1:OrganizationDeveloperAppKey":
-		r, err = NewOrganizationDeveloperAppKey(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationDeveloperAppKey{}
 	case "gcp-native:apigee/v1:OrganizationEnvgroup":
-		r, err = NewOrganizationEnvgroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvgroup{}
 	case "gcp-native:apigee/v1:OrganizationEnvgroupAttachment":
-		r, err = NewOrganizationEnvgroupAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvgroupAttachment{}
 	case "gcp-native:apigee/v1:OrganizationEnvironment":
-		r, err = NewOrganizationEnvironment(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironment{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport":
-		r, err = NewOrganizationEnvironmentAnalyticExport(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentAnalyticExport{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession":
-		r, err = NewOrganizationEnvironmentApiRevisionDebugsession(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentApiRevisionDebugsession{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentIamPolicy":
-		r, err = NewOrganizationEnvironmentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentIamPolicy{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentKeystore":
-		r, err = NewOrganizationEnvironmentKeystore(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentKeystore{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias":
-		r, err = NewOrganizationEnvironmentKeystoreAlias(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentKeystoreAlias{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentQuery":
-		r, err = NewOrganizationEnvironmentQuery(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentQuery{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentReference":
-		r, err = NewOrganizationEnvironmentReference(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentReference{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentResourcefile":
-		r, err = NewOrganizationEnvironmentResourcefile(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentResourcefile{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentTargetserver":
-		r, err = NewOrganizationEnvironmentTargetserver(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentTargetserver{}
 	case "gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride":
-		r, err = NewOrganizationEnvironmentTraceConfigOverride(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationEnvironmentTraceConfigOverride{}
 	case "gcp-native:apigee/v1:OrganizationHostQuery":
-		r, err = NewOrganizationHostQuery(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationHostQuery{}
 	case "gcp-native:apigee/v1:OrganizationInstance":
-		r, err = NewOrganizationInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationInstance{}
 	case "gcp-native:apigee/v1:OrganizationInstanceAttachment":
-		r, err = NewOrganizationInstanceAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationInstanceAttachment{}
 	case "gcp-native:apigee/v1:OrganizationInstanceCanaryevaluation":
-		r, err = NewOrganizationInstanceCanaryevaluation(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationInstanceCanaryevaluation{}
 	case "gcp-native:apigee/v1:OrganizationInstanceNatAddress":
-		r, err = NewOrganizationInstanceNatAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationInstanceNatAddress{}
 	case "gcp-native:apigee/v1:OrganizationReport":
-		r, err = NewOrganizationReport(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationReport{}
 	case "gcp-native:apigee/v1:OrganizationSharedflow":
-		r, err = NewOrganizationSharedflow(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSharedflow{}
 	case "gcp-native:apigee/v1:OrganizationSiteApicategory":
-		r, err = NewOrganizationSiteApicategory(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSiteApicategory{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

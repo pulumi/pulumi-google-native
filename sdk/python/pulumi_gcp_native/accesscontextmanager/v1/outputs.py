@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -34,6 +34,25 @@ class ApiOperationResponse(dict):
     """
     Identification for an API Operation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "methodSelectors":
+            suggest = "method_selectors"
+        elif key == "serviceName":
+            suggest = "service_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApiOperationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApiOperationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApiOperationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  method_selectors: Sequence['outputs.MethodSelectorResponse'],
                  service_name: str):
@@ -61,15 +80,29 @@ class ApiOperationResponse(dict):
         """
         return pulumi.get(self, "service_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicLevelResponse(dict):
     """
     `BasicLevel` is an `AccessLevel` using a set of recommended features.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "combiningFunction":
+            suggest = "combining_function"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicLevelResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicLevelResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicLevelResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  combining_function: str,
                  conditions: Sequence['outputs.ConditionResponse']):
@@ -97,15 +130,33 @@ class BasicLevelResponse(dict):
         """
         return pulumi.get(self, "conditions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ConditionResponse(dict):
     """
     A condition necessary for an `AccessLevel` to be granted. The Condition is an AND over its fields. So a Condition is true if: 1) the request IP is from one of the listed subnetworks AND 2) the originating device complies with the listed device policy AND 3) all listed access levels are granted AND 4) the request was sent at a time allowed by the DateTimeRestriction.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "devicePolicy":
+            suggest = "device_policy"
+        elif key == "ipSubnetworks":
+            suggest = "ip_subnetworks"
+        elif key == "requiredAccessLevels":
+            suggest = "required_access_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  device_policy: 'outputs.DevicePolicyResponse',
                  ip_subnetworks: Sequence[str],
@@ -177,9 +228,6 @@ class ConditionResponse(dict):
         """
         return pulumi.get(self, "required_access_levels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CustomLevelResponse(dict):
@@ -202,15 +250,39 @@ class CustomLevelResponse(dict):
         """
         return pulumi.get(self, "expr")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DevicePolicyResponse(dict):
     """
     `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedDeviceManagementLevels":
+            suggest = "allowed_device_management_levels"
+        elif key == "allowedEncryptionStatuses":
+            suggest = "allowed_encryption_statuses"
+        elif key == "osConstraints":
+            suggest = "os_constraints"
+        elif key == "requireAdminApproval":
+            suggest = "require_admin_approval"
+        elif key == "requireCorpOwned":
+            suggest = "require_corp_owned"
+        elif key == "requireScreenlock":
+            suggest = "require_screenlock"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DevicePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DevicePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DevicePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_device_management_levels: Sequence[str],
                  allowed_encryption_statuses: Sequence[str],
@@ -282,15 +354,29 @@ class DevicePolicyResponse(dict):
         """
         return pulumi.get(self, "require_screenlock")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EgressFromResponse(dict):
     """
     Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EgressFromResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EgressFromResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EgressFromResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Sequence[str],
                  identity_type: str):
@@ -318,15 +404,31 @@ class EgressFromResponse(dict):
         """
         return pulumi.get(self, "identity_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EgressPolicyResponse(dict):
     """
     Policy for egress from perimeter. EgressPolicies match requests based on `egress_from` and `egress_to` stanzas. For an EgressPolicy to match, both `egress_from` and `egress_to` stanzas must be matched. If an EgressPolicy matches a request, the request is allowed to span the ServicePerimeter boundary. For example, an EgressPolicy can be used to allow VMs on networks within the ServicePerimeter to access a defined set of projects outside the perimeter in certain contexts (e.g. to read data from a Cloud Storage bucket or query against a BigQuery dataset). EgressPolicies are concerned with the *resources* that a request relates as well as the API services and API actions being used. They do not related to the direction of data movement. More detailed documentation for this concept can be found in the descriptions of EgressFrom and EgressTo.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "egressFrom":
+            suggest = "egress_from"
+        elif key == "egressTo":
+            suggest = "egress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EgressPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EgressPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EgressPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  egress_from: 'outputs.EgressFromResponse',
                  egress_to: 'outputs.EgressToResponse'):
@@ -353,9 +455,6 @@ class EgressPolicyResponse(dict):
         Defines the conditions on the ApiOperation and destination resources that cause this EgressPolicy to apply.
         """
         return pulumi.get(self, "egress_to")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -389,9 +488,6 @@ class EgressToResponse(dict):
         A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
         """
         return pulumi.get(self, "resources")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -448,15 +544,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IngressFromResponse(dict):
     """
     Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "identityType":
+            suggest = "identity_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IngressFromResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IngressFromResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IngressFromResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  identities: Sequence[str],
                  identity_type: str,
@@ -495,15 +605,31 @@ class IngressFromResponse(dict):
         """
         return pulumi.get(self, "sources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IngressPolicyResponse(dict):
     """
     Policy for ingress into ServicePerimeter. IngressPolicies match requests based on `ingress_from` and `ingress_to` stanzas. For an ingress policy to match, both the `ingress_from` and `ingress_to` stanzas must be matched. If an IngressPolicy matches a request, the request is allowed through the perimeter boundary from outside the perimeter. For example, access from the internet can be allowed either based on an AccessLevel or, for traffic hosted on Google Cloud, the project of the source network. For access from private networks, using the project of the hosting network is required. Individual ingress policies can be limited by restricting which services and/or actions they match using the `ingress_to` field.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingressFrom":
+            suggest = "ingress_from"
+        elif key == "ingressTo":
+            suggest = "ingress_to"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IngressPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IngressPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IngressPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingress_from: 'outputs.IngressFromResponse',
                  ingress_to: 'outputs.IngressToResponse'):
@@ -531,15 +657,29 @@ class IngressPolicyResponse(dict):
         """
         return pulumi.get(self, "ingress_to")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IngressSourceResponse(dict):
     """
     The source that IngressPolicy authorizes access from.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevel":
+            suggest = "access_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IngressSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IngressSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IngressSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_level: str,
                  resource: str):
@@ -566,9 +706,6 @@ class IngressSourceResponse(dict):
         A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
         """
         return pulumi.get(self, "resource")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -603,9 +740,6 @@ class IngressToResponse(dict):
         """
         return pulumi.get(self, "resources")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MethodSelectorResponse(dict):
@@ -639,15 +773,33 @@ class MethodSelectorResponse(dict):
         """
         return pulumi.get(self, "permission")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OsConstraintResponse(dict):
     """
     A restriction on the OS type and version of devices making requests.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minimumVersion":
+            suggest = "minimum_version"
+        elif key == "osType":
+            suggest = "os_type"
+        elif key == "requireVerifiedChromeOs":
+            suggest = "require_verified_chrome_os"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OsConstraintResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OsConstraintResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OsConstraintResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  minimum_version: str,
                  os_type: str,
@@ -686,15 +838,37 @@ class OsConstraintResponse(dict):
         """
         return pulumi.get(self, "require_verified_chrome_os")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePerimeterConfigResponse(dict):
     """
     `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessLevels":
+            suggest = "access_levels"
+        elif key == "egressPolicies":
+            suggest = "egress_policies"
+        elif key == "ingressPolicies":
+            suggest = "ingress_policies"
+        elif key == "restrictedServices":
+            suggest = "restricted_services"
+        elif key == "vpcAccessibleServices":
+            suggest = "vpc_accessible_services"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePerimeterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePerimeterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePerimeterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_levels: Sequence[str],
                  egress_policies: Sequence['outputs.EgressPolicyResponse'],
@@ -766,15 +940,31 @@ class ServicePerimeterConfigResponse(dict):
         """
         return pulumi.get(self, "vpc_accessible_services")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VpcAccessibleServicesResponse(dict):
     """
     Specifies how APIs are allowed to communicate within the Service Perimeter.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedServices":
+            suggest = "allowed_services"
+        elif key == "enableRestriction":
+            suggest = "enable_restriction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcAccessibleServicesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcAccessibleServicesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcAccessibleServicesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_services: Sequence[str],
                  enable_restriction: bool):
@@ -801,8 +991,5 @@ class VpcAccessibleServicesResponse(dict):
         Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'.
         """
         return pulumi.get(self, "enable_restriction")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

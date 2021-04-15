@@ -5,15 +5,174 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatasetAnnotationStoreAnnotation']
+__all__ = ['DatasetAnnotationStoreAnnotationArgs', 'DatasetAnnotationStoreAnnotation']
+
+@pulumi.input_type
+class DatasetAnnotationStoreAnnotationArgs:
+    def __init__(__self__, *,
+                 annotation_stores_id: pulumi.Input[str],
+                 annotations_id: pulumi.Input[str],
+                 datasets_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 annotation_source: Optional[pulumi.Input['AnnotationSourceArgs']] = None,
+                 custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 image_annotation: Optional[pulumi.Input['ImageAnnotationArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 resource_annotation: Optional[pulumi.Input['ResourceAnnotationArgs']] = None,
+                 text_annotation: Optional[pulumi.Input['SensitiveTextAnnotationArgs']] = None):
+        """
+        The set of arguments for constructing a DatasetAnnotationStoreAnnotation resource.
+        :param pulumi.Input['AnnotationSourceArgs'] annotation_source: Details of the source.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_data: Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        :param pulumi.Input['ImageAnnotationArgs'] image_annotation: Annotations for images. For example, bounding polygons.
+        :param pulumi.Input[str] name: Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        :param pulumi.Input['ResourceAnnotationArgs'] resource_annotation: Annotations for resource. For example, classification tags.
+        :param pulumi.Input['SensitiveTextAnnotationArgs'] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+        """
+        pulumi.set(__self__, "annotation_stores_id", annotation_stores_id)
+        pulumi.set(__self__, "annotations_id", annotations_id)
+        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if annotation_source is not None:
+            pulumi.set(__self__, "annotation_source", annotation_source)
+        if custom_data is not None:
+            pulumi.set(__self__, "custom_data", custom_data)
+        if image_annotation is not None:
+            pulumi.set(__self__, "image_annotation", image_annotation)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if resource_annotation is not None:
+            pulumi.set(__self__, "resource_annotation", resource_annotation)
+        if text_annotation is not None:
+            pulumi.set(__self__, "text_annotation", text_annotation)
+
+    @property
+    @pulumi.getter(name="annotationStoresId")
+    def annotation_stores_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "annotation_stores_id")
+
+    @annotation_stores_id.setter
+    def annotation_stores_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotation_stores_id", value)
+
+    @property
+    @pulumi.getter(name="annotationsId")
+    def annotations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "annotations_id")
+
+    @annotations_id.setter
+    def annotations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "annotations_id", value)
+
+    @property
+    @pulumi.getter(name="datasetsId")
+    def datasets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasets_id")
+
+    @datasets_id.setter
+    def datasets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasets_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="annotationSource")
+    def annotation_source(self) -> Optional[pulumi.Input['AnnotationSourceArgs']]:
+        """
+        Details of the source.
+        """
+        return pulumi.get(self, "annotation_source")
+
+    @annotation_source.setter
+    def annotation_source(self, value: Optional[pulumi.Input['AnnotationSourceArgs']]):
+        pulumi.set(self, "annotation_source", value)
+
+    @property
+    @pulumi.getter(name="customData")
+    def custom_data(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Additional information for this annotation record, such as annotator and verifier information or study campaign.
+        """
+        return pulumi.get(self, "custom_data")
+
+    @custom_data.setter
+    def custom_data(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_data", value)
+
+    @property
+    @pulumi.getter(name="imageAnnotation")
+    def image_annotation(self) -> Optional[pulumi.Input['ImageAnnotationArgs']]:
+        """
+        Annotations for images. For example, bounding polygons.
+        """
+        return pulumi.get(self, "image_annotation")
+
+    @image_annotation.setter
+    def image_annotation(self, value: Optional[pulumi.Input['ImageAnnotationArgs']]):
+        pulumi.set(self, "image_annotation", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourceAnnotation")
+    def resource_annotation(self) -> Optional[pulumi.Input['ResourceAnnotationArgs']]:
+        """
+        Annotations for resource. For example, classification tags.
+        """
+        return pulumi.get(self, "resource_annotation")
+
+    @resource_annotation.setter
+    def resource_annotation(self, value: Optional[pulumi.Input['ResourceAnnotationArgs']]):
+        pulumi.set(self, "resource_annotation", value)
+
+    @property
+    @pulumi.getter(name="textAnnotation")
+    def text_annotation(self) -> Optional[pulumi.Input['SensitiveTextAnnotationArgs']]:
+        """
+        Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
+        """
+        return pulumi.get(self, "text_annotation")
+
+    @text_annotation.setter
+    def text_annotation(self, value: Optional[pulumi.Input['SensitiveTextAnnotationArgs']]):
+        pulumi.set(self, "text_annotation", value)
 
 
 class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -28,9 +187,7 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
                  text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
 
@@ -43,12 +200,42 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']] resource_annotation: Annotations for resource. For example, classification tags.
         :param pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']] text_annotation: Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatasetAnnotationStoreAnnotationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
+
+        :param str resource_name: The name of the resource.
+        :param DatasetAnnotationStoreAnnotationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatasetAnnotationStoreAnnotationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_source: Optional[pulumi.Input[pulumi.InputType['AnnotationSourceArgs']]] = None,
+                 annotation_stores_id: Optional[pulumi.Input[str]] = None,
+                 annotations_id: Optional[pulumi.Input[str]] = None,
+                 custom_data: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 image_annotation: Optional[pulumi.Input[pulumi.InputType['ImageAnnotationArgs']]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 resource_annotation: Optional[pulumi.Input[pulumi.InputType['ResourceAnnotationArgs']]] = None,
+                 text_annotation: Optional[pulumi.Input[pulumi.InputType['SensitiveTextAnnotationArgs']]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -58,29 +245,29 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatasetAnnotationStoreAnnotationArgs.__new__(DatasetAnnotationStoreAnnotationArgs)
 
-            __props__['annotation_source'] = annotation_source
+            __props__.__dict__["annotation_source"] = annotation_source
             if annotation_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'annotation_stores_id'")
-            __props__['annotation_stores_id'] = annotation_stores_id
+            __props__.__dict__["annotation_stores_id"] = annotation_stores_id
             if annotations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'annotations_id'")
-            __props__['annotations_id'] = annotations_id
-            __props__['custom_data'] = custom_data
+            __props__.__dict__["annotations_id"] = annotations_id
+            __props__.__dict__["custom_data"] = custom_data
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
-            __props__['datasets_id'] = datasets_id
-            __props__['image_annotation'] = image_annotation
+            __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["image_annotation"] = image_annotation
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['resource_annotation'] = resource_annotation
-            __props__['text_annotation'] = text_annotation
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["resource_annotation"] = resource_annotation
+            __props__.__dict__["text_annotation"] = text_annotation
         super(DatasetAnnotationStoreAnnotation, __self__).__init__(
             'gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation',
             resource_name,
@@ -101,14 +288,14 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatasetAnnotationStoreAnnotationArgs.__new__(DatasetAnnotationStoreAnnotationArgs)
 
-        __props__["annotation_source"] = None
-        __props__["custom_data"] = None
-        __props__["image_annotation"] = None
-        __props__["name"] = None
-        __props__["resource_annotation"] = None
-        __props__["text_annotation"] = None
+        __props__.__dict__["annotation_source"] = None
+        __props__.__dict__["custom_data"] = None
+        __props__.__dict__["image_annotation"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["resource_annotation"] = None
+        __props__.__dict__["text_annotation"] = None
         return DatasetAnnotationStoreAnnotation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -158,10 +345,4 @@ class DatasetAnnotationStoreAnnotation(pulumi.CustomResource):
         Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
         """
         return pulumi.get(self, "text_annotation")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,102 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['KnowledgeBase']
+__all__ = ['KnowledgeBaseArgs', 'KnowledgeBase']
+
+@pulumi.input_type
+class KnowledgeBaseArgs:
+    def __init__(__self__, *,
+                 knowledge_bases_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a KnowledgeBase resource.
+        :param pulumi.Input[str] display_name: Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+        :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+        """
+        pulumi.set(__self__, "knowledge_bases_id", knowledge_bases_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="knowledgeBasesId")
+    def knowledge_bases_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "knowledge_bases_id")
+
+    @knowledge_bases_id.setter
+    def knowledge_bases_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "knowledge_bases_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class KnowledgeBase(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -21,9 +110,7 @@ class KnowledgeBase(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a knowledge base.
 
@@ -33,12 +120,37 @@ class KnowledgeBase(pulumi.CustomResource):
         :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KnowledgeBaseArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a knowledge base.
+
+        :param str resource_name: The name of the resource.
+        :param KnowledgeBaseArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KnowledgeBaseArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 knowledge_bases_id: Optional[pulumi.Input[str]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -48,20 +160,20 @@ class KnowledgeBase(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KnowledgeBaseArgs.__new__(KnowledgeBaseArgs)
 
-            __props__['display_name'] = display_name
+            __props__.__dict__["display_name"] = display_name
             if knowledge_bases_id is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_bases_id'")
-            __props__['knowledge_bases_id'] = knowledge_bases_id
-            __props__['language_code'] = language_code
+            __props__.__dict__["knowledge_bases_id"] = knowledge_bases_id
+            __props__.__dict__["language_code"] = language_code
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
         super(KnowledgeBase, __self__).__init__(
             'gcp-native:dialogflow/v2:KnowledgeBase',
             resource_name,
@@ -82,11 +194,11 @@ class KnowledgeBase(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = KnowledgeBaseArgs.__new__(KnowledgeBaseArgs)
 
-        __props__["display_name"] = None
-        __props__["language_code"] = None
-        __props__["name"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["language_code"] = None
+        __props__.__dict__["name"] = None
         return KnowledgeBase(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -112,10 +224,4 @@ class KnowledgeBase(pulumi.CustomResource):
         The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
         return pulumi.get(self, "name")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

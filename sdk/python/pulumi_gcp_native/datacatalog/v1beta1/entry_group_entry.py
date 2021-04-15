@@ -5,15 +5,227 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['EntryGroupEntry']
+__all__ = ['EntryGroupEntryArgs', 'EntryGroupEntry']
+
+@pulumi.input_type
+class EntryGroupEntryArgs:
+    def __init__(__self__, *,
+                 entries_id: pulumi.Input[str],
+                 entry_groups_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']] = None,
+                 bigquery_table_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']] = None,
+                 linked_resource: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs']] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_specified_system: Optional[pulumi.Input[str]] = None,
+                 user_specified_type: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a EntryGroupEntry resource.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs'] bigquery_date_sharded_spec: Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs'] bigquery_table_spec: Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+        :param pulumi.Input[str] description: Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+        :param pulumi.Input[str] display_name: Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs'] gcs_fileset_spec: Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        :param pulumi.Input[str] linked_resource: The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+        :param pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
+        :param pulumi.Input[str] type: The type of the entry. Only used for Entries with types in the EntryType enum.
+        :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+        """
+        pulumi.set(__self__, "entries_id", entries_id)
+        pulumi.set(__self__, "entry_groups_id", entry_groups_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if bigquery_date_sharded_spec is not None:
+            pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
+        if bigquery_table_spec is not None:
+            pulumi.set(__self__, "bigquery_table_spec", bigquery_table_spec)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if gcs_fileset_spec is not None:
+            pulumi.set(__self__, "gcs_fileset_spec", gcs_fileset_spec)
+        if linked_resource is not None:
+            pulumi.set(__self__, "linked_resource", linked_resource)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if user_specified_system is not None:
+            pulumi.set(__self__, "user_specified_system", user_specified_system)
+        if user_specified_type is not None:
+            pulumi.set(__self__, "user_specified_type", user_specified_type)
+
+    @property
+    @pulumi.getter(name="entriesId")
+    def entries_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entries_id")
+
+    @entries_id.setter
+    def entries_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entries_id", value)
+
+    @property
+    @pulumi.getter(name="entryGroupsId")
+    def entry_groups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_groups_id")
+
+    @entry_groups_id.setter
+    def entry_groups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_groups_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="bigqueryDateShardedSpec")
+    def bigquery_date_sharded_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']]:
+        """
+        Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
+        """
+        return pulumi.get(self, "bigquery_date_sharded_spec")
+
+    @bigquery_date_sharded_spec.setter
+    def bigquery_date_sharded_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']]):
+        pulumi.set(self, "bigquery_date_sharded_spec", value)
+
+    @property
+    @pulumi.getter(name="bigqueryTableSpec")
+    def bigquery_table_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]:
+        """
+        Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
+        """
+        return pulumi.get(self, "bigquery_table_spec")
+
+    @bigquery_table_spec.setter
+    def bigquery_table_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]):
+        pulumi.set(self, "bigquery_table_spec", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="gcsFilesetSpec")
+    def gcs_fileset_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]:
+        """
+        Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
+        """
+        return pulumi.get(self, "gcs_fileset_spec")
+
+    @gcs_fileset_spec.setter
+    def gcs_fileset_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]):
+        pulumi.set(self, "gcs_fileset_spec", value)
+
+    @property
+    @pulumi.getter(name="linkedResource")
+    def linked_resource(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
+        """
+        return pulumi.get(self, "linked_resource")
+
+    @linked_resource.setter
+    def linked_resource(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "linked_resource", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs']]:
+        """
+        Schema of the entry. An entry might not have any schema attached to it.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1SchemaArgs']]):
+        pulumi.set(self, "schema", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the entry. Only used for Entries with types in the EntryType enum.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userSpecifiedSystem")
+    def user_specified_system(self) -> Optional[pulumi.Input[str]]:
+        """
+        This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
+        """
+        return pulumi.get(self, "user_specified_system")
+
+    @user_specified_system.setter
+    def user_specified_system(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_specified_system", value)
+
+    @property
+    @pulumi.getter(name="userSpecifiedType")
+    def user_specified_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
+        """
+        return pulumi.get(self, "user_specified_type")
+
+    @user_specified_type.setter
+    def user_specified_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_specified_type", value)
 
 
 class EntryGroupEntry(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -31,9 +243,7 @@ class EntryGroupEntry(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.
 
@@ -50,12 +260,45 @@ class EntryGroupEntry(pulumi.CustomResource):
         :param pulumi.Input[str] user_specified_system: This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EntryGroupEntryArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.
+
+        :param str resource_name: The name of the resource.
+        :param EntryGroupEntryArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EntryGroupEntryArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_date_sharded_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']]] = None,
+                 bigquery_table_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs']]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 entries_id: Optional[pulumi.Input[str]] = None,
+                 entry_groups_id: Optional[pulumi.Input[str]] = None,
+                 gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
+                 linked_resource: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1SchemaArgs']]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_specified_system: Optional[pulumi.Input[str]] = None,
+                 user_specified_type: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -65,33 +308,33 @@ class EntryGroupEntry(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EntryGroupEntryArgs.__new__(EntryGroupEntryArgs)
 
-            __props__['bigquery_date_sharded_spec'] = bigquery_date_sharded_spec
-            __props__['bigquery_table_spec'] = bigquery_table_spec
-            __props__['description'] = description
-            __props__['display_name'] = display_name
+            __props__.__dict__["bigquery_date_sharded_spec"] = bigquery_date_sharded_spec
+            __props__.__dict__["bigquery_table_spec"] = bigquery_table_spec
+            __props__.__dict__["description"] = description
+            __props__.__dict__["display_name"] = display_name
             if entries_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entries_id'")
-            __props__['entries_id'] = entries_id
+            __props__.__dict__["entries_id"] = entries_id
             if entry_groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_groups_id'")
-            __props__['entry_groups_id'] = entry_groups_id
-            __props__['gcs_fileset_spec'] = gcs_fileset_spec
-            __props__['linked_resource'] = linked_resource
+            __props__.__dict__["entry_groups_id"] = entry_groups_id
+            __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
+            __props__.__dict__["linked_resource"] = linked_resource
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['schema'] = schema
-            __props__['type'] = type
-            __props__['user_specified_system'] = user_specified_system
-            __props__['user_specified_type'] = user_specified_type
-            __props__['integrated_system'] = None
-            __props__['name'] = None
-            __props__['source_system_timestamps'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["schema"] = schema
+            __props__.__dict__["type"] = type
+            __props__.__dict__["user_specified_system"] = user_specified_system
+            __props__.__dict__["user_specified_type"] = user_specified_type
+            __props__.__dict__["integrated_system"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["source_system_timestamps"] = None
         super(EntryGroupEntry, __self__).__init__(
             'gcp-native:datacatalog/v1beta1:EntryGroupEntry',
             resource_name,
@@ -112,21 +355,21 @@ class EntryGroupEntry(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = EntryGroupEntryArgs.__new__(EntryGroupEntryArgs)
 
-        __props__["bigquery_date_sharded_spec"] = None
-        __props__["bigquery_table_spec"] = None
-        __props__["description"] = None
-        __props__["display_name"] = None
-        __props__["gcs_fileset_spec"] = None
-        __props__["integrated_system"] = None
-        __props__["linked_resource"] = None
-        __props__["name"] = None
-        __props__["schema"] = None
-        __props__["source_system_timestamps"] = None
-        __props__["type"] = None
-        __props__["user_specified_system"] = None
-        __props__["user_specified_type"] = None
+        __props__.__dict__["bigquery_date_sharded_spec"] = None
+        __props__.__dict__["bigquery_table_spec"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["gcs_fileset_spec"] = None
+        __props__.__dict__["integrated_system"] = None
+        __props__.__dict__["linked_resource"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["schema"] = None
+        __props__.__dict__["source_system_timestamps"] = None
+        __props__.__dict__["type"] = None
+        __props__.__dict__["user_specified_system"] = None
+        __props__.__dict__["user_specified_type"] = None
         return EntryGroupEntry(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -232,10 +475,4 @@ class EntryGroupEntry(pulumi.CustomResource):
         Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
         """
         return pulumi.get(self, "user_specified_type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

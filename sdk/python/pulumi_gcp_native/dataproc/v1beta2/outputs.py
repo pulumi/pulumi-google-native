@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -68,6 +68,25 @@ class AcceleratorConfigResponse(dict):
     """
     Specifies the type and number of accelerator cards attached to the instances of an instance group (see GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/)).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorTypeUri":
+            suggest = "accelerator_type_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_count: int,
                  accelerator_type_uri: str):
@@ -95,15 +114,29 @@ class AcceleratorConfigResponse(dict):
         """
         return pulumi.get(self, "accelerator_type_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AutoscalingConfigResponse(dict):
     """
     Autoscaling Policy config associated with the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyUri":
+            suggest = "policy_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AutoscalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AutoscalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AutoscalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  policy_uri: str):
         """
@@ -120,15 +153,31 @@ class AutoscalingConfigResponse(dict):
         """
         return pulumi.get(self, "policy_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicAutoscalingAlgorithmResponse(dict):
     """
     Basic algorithm for autoscaling.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cooldownPeriod":
+            suggest = "cooldown_period"
+        elif key == "yarnConfig":
+            suggest = "yarn_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicAutoscalingAlgorithmResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicAutoscalingAlgorithmResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicAutoscalingAlgorithmResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cooldown_period: str,
                  yarn_config: 'outputs.BasicYarnAutoscalingConfigResponse'):
@@ -156,15 +205,37 @@ class BasicAutoscalingAlgorithmResponse(dict):
         """
         return pulumi.get(self, "yarn_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BasicYarnAutoscalingConfigResponse(dict):
     """
     Basic autoscaling configurations for YARN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gracefulDecommissionTimeout":
+            suggest = "graceful_decommission_timeout"
+        elif key == "scaleDownFactor":
+            suggest = "scale_down_factor"
+        elif key == "scaleDownMinWorkerFraction":
+            suggest = "scale_down_min_worker_fraction"
+        elif key == "scaleUpFactor":
+            suggest = "scale_up_factor"
+        elif key == "scaleUpMinWorkerFraction":
+            suggest = "scale_up_min_worker_fraction"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BasicYarnAutoscalingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BasicYarnAutoscalingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BasicYarnAutoscalingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  graceful_decommission_timeout: str,
                  scale_down_factor: float,
@@ -225,9 +296,6 @@ class BasicYarnAutoscalingConfigResponse(dict):
         """
         return pulumi.get(self, "scale_up_min_worker_fraction")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BindingResponse(dict):
@@ -272,15 +340,57 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterConfigResponse(dict):
     """
     The cluster config.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoscalingConfig":
+            suggest = "autoscaling_config"
+        elif key == "configBucket":
+            suggest = "config_bucket"
+        elif key == "encryptionConfig":
+            suggest = "encryption_config"
+        elif key == "endpointConfig":
+            suggest = "endpoint_config"
+        elif key == "gceClusterConfig":
+            suggest = "gce_cluster_config"
+        elif key == "gkeClusterConfig":
+            suggest = "gke_cluster_config"
+        elif key == "initializationActions":
+            suggest = "initialization_actions"
+        elif key == "lifecycleConfig":
+            suggest = "lifecycle_config"
+        elif key == "masterConfig":
+            suggest = "master_config"
+        elif key == "metastoreConfig":
+            suggest = "metastore_config"
+        elif key == "secondaryWorkerConfig":
+            suggest = "secondary_worker_config"
+        elif key == "securityConfig":
+            suggest = "security_config"
+        elif key == "softwareConfig":
+            suggest = "software_config"
+        elif key == "tempBucket":
+            suggest = "temp_bucket"
+        elif key == "workerConfig":
+            suggest = "worker_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  autoscaling_config: 'outputs.AutoscalingConfigResponse',
                  config_bucket: str,
@@ -451,15 +561,31 @@ class ClusterConfigResponse(dict):
         """
         return pulumi.get(self, "worker_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterMetricsResponse(dict):
     """
     Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hdfsMetrics":
+            suggest = "hdfs_metrics"
+        elif key == "yarnMetrics":
+            suggest = "yarn_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterMetricsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterMetricsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterMetricsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hdfs_metrics: Mapping[str, str],
                  yarn_metrics: Mapping[str, str]):
@@ -487,15 +613,29 @@ class ClusterMetricsResponse(dict):
         """
         return pulumi.get(self, "yarn_metrics")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterSelectorResponse(dict):
     """
     A selector that chooses target cluster for jobs based on metadata.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterLabels":
+            suggest = "cluster_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterSelectorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterSelectorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterSelectorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_labels: Mapping[str, str],
                  zone: str):
@@ -523,15 +663,29 @@ class ClusterSelectorResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ClusterStatusResponse(dict):
     """
     The status of a cluster and its instances.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stateStartTime":
+            suggest = "state_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  detail: str,
                  state: str,
@@ -581,15 +735,33 @@ class ClusterStatusResponse(dict):
         """
         return pulumi.get(self, "substate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskConfigResponse(dict):
     """
     Specifies the config of disk options for a group of VM instances.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "bootDiskType":
+            suggest = "boot_disk_type"
+        elif key == "numLocalSsds":
+            suggest = "num_local_ssds"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boot_disk_size_gb: int,
                  boot_disk_type: str,
@@ -628,15 +800,29 @@ class DiskConfigResponse(dict):
         """
         return pulumi.get(self, "num_local_ssds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     Encryption settings for the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcePdKmsKeyName":
+            suggest = "gce_pd_kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gce_pd_kms_key_name: str):
         """
@@ -653,15 +839,31 @@ class EncryptionConfigResponse(dict):
         """
         return pulumi.get(self, "gce_pd_kms_key_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EndpointConfigResponse(dict):
     """
     Endpoint config for this cluster
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHttpPortAccess":
+            suggest = "enable_http_port_access"
+        elif key == "httpPorts":
+            suggest = "http_ports"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_http_port_access: bool,
                  http_ports: Mapping[str, str]):
@@ -688,9 +890,6 @@ class EndpointConfigResponse(dict):
         The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
         """
         return pulumi.get(self, "http_ports")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -747,15 +946,47 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GceClusterConfigResponse(dict):
     """
     Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalIpOnly":
+            suggest = "internal_ip_only"
+        elif key == "networkUri":
+            suggest = "network_uri"
+        elif key == "nodeGroupAffinity":
+            suggest = "node_group_affinity"
+        elif key == "privateIpv6GoogleAccess":
+            suggest = "private_ipv6_google_access"
+        elif key == "reservationAffinity":
+            suggest = "reservation_affinity"
+        elif key == "serviceAccount":
+            suggest = "service_account"
+        elif key == "serviceAccountScopes":
+            suggest = "service_account_scopes"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+        elif key == "subnetworkUri":
+            suggest = "subnetwork_uri"
+        elif key == "zoneUri":
+            suggest = "zone_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GceClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GceClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GceClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  internal_ip_only: bool,
                  metadata: Mapping[str, str],
@@ -893,15 +1124,29 @@ class GceClusterConfigResponse(dict):
         """
         return pulumi.get(self, "zone_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GkeClusterConfigResponse(dict):
     """
     The GKE config for this cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "namespacedGkeDeploymentTarget":
+            suggest = "namespaced_gke_deployment_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GkeClusterConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GkeClusterConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GkeClusterConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  namespaced_gke_deployment_target: 'outputs.NamespacedGkeDeploymentTargetResponse'):
         """
@@ -918,15 +1163,39 @@ class GkeClusterConfigResponse(dict):
         """
         return pulumi.get(self, "namespaced_gke_deployment_target")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HadoopJobResponse(dict):
     """
     A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainJarFileUri":
+            suggest = "main_jar_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HadoopJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HadoopJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HadoopJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_uris: Sequence[str],
                  args: Sequence[str],
@@ -1020,15 +1289,37 @@ class HadoopJobResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HiveJobResponse(dict):
     """
     A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "continueOnFailure":
+            suggest = "continue_on_failure"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+        elif key == "scriptVariables":
+            suggest = "script_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HiveJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HiveJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HiveJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  continue_on_failure: bool,
                  jar_file_uris: Sequence[str],
@@ -1100,15 +1391,31 @@ class HiveJobResponse(dict):
         """
         return pulumi.get(self, "script_variables")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupAutoscalingPolicyConfigResponse(dict):
     """
     Configuration for the size bounds of an instance group, including its proportional size to other groups.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxInstances":
+            suggest = "max_instances"
+        elif key == "minInstances":
+            suggest = "min_instances"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupAutoscalingPolicyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupAutoscalingPolicyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupAutoscalingPolicyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_instances: int,
                  min_instances: int,
@@ -1147,15 +1454,45 @@ class InstanceGroupAutoscalingPolicyConfigResponse(dict):
         """
         return pulumi.get(self, "weight")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceGroupConfigResponse(dict):
     """
     The config settings for Compute Engine resources in an instance group, such as a master or worker group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskConfig":
+            suggest = "disk_config"
+        elif key == "imageUri":
+            suggest = "image_uri"
+        elif key == "instanceNames":
+            suggest = "instance_names"
+        elif key == "instanceReferences":
+            suggest = "instance_references"
+        elif key == "isPreemptible":
+            suggest = "is_preemptible"
+        elif key == "machineTypeUri":
+            suggest = "machine_type_uri"
+        elif key == "managedGroupConfig":
+            suggest = "managed_group_config"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "numInstances":
+            suggest = "num_instances"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceGroupConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceGroupConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceGroupConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerators: Sequence['outputs.AcceleratorConfigResponse'],
                  disk_config: 'outputs.DiskConfigResponse',
@@ -1282,15 +1619,33 @@ class InstanceGroupConfigResponse(dict):
         """
         return pulumi.get(self, "preemptibility")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InstanceReferenceResponse(dict):
     """
     A reference to a Compute Engine instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceName":
+            suggest = "instance_name"
+        elif key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstanceReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstanceReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstanceReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_id: str,
                  instance_name: str,
@@ -1329,15 +1684,33 @@ class InstanceReferenceResponse(dict):
         """
         return pulumi.get(self, "public_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobPlacementResponse(dict):
     """
     Dataproc job config.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterLabels":
+            suggest = "cluster_labels"
+        elif key == "clusterName":
+            suggest = "cluster_name"
+        elif key == "clusterUuid":
+            suggest = "cluster_uuid"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobPlacementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobPlacementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobPlacementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_labels: Mapping[str, str],
                  cluster_name: str,
@@ -1376,15 +1749,31 @@ class JobPlacementResponse(dict):
         """
         return pulumi.get(self, "cluster_uuid")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobReferenceResponse(dict):
     """
     Encapsulates the full scoping used to reference a job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobId":
+            suggest = "job_id"
+        elif key == "projectId":
+            suggest = "project_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobReferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobReferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobReferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_id: str,
                  project_id: str):
@@ -1412,15 +1801,31 @@ class JobReferenceResponse(dict):
         """
         return pulumi.get(self, "project_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobSchedulingResponse(dict):
     """
     Job scheduling options.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxFailuresPerHour":
+            suggest = "max_failures_per_hour"
+        elif key == "maxFailuresTotal":
+            suggest = "max_failures_total"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobSchedulingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobSchedulingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobSchedulingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_failures_per_hour: int,
                  max_failures_total: int):
@@ -1448,15 +1853,29 @@ class JobSchedulingResponse(dict):
         """
         return pulumi.get(self, "max_failures_total")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobStatusResponse(dict):
     """
     Dataproc job status.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "stateStartTime":
+            suggest = "state_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  details: str,
                  state: str,
@@ -1506,15 +1925,55 @@ class JobStatusResponse(dict):
         """
         return pulumi.get(self, "substate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class KerberosConfigResponse(dict):
     """
     Specifies Kerberos related configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crossRealmTrustAdminServer":
+            suggest = "cross_realm_trust_admin_server"
+        elif key == "crossRealmTrustKdc":
+            suggest = "cross_realm_trust_kdc"
+        elif key == "crossRealmTrustRealm":
+            suggest = "cross_realm_trust_realm"
+        elif key == "crossRealmTrustSharedPasswordUri":
+            suggest = "cross_realm_trust_shared_password_uri"
+        elif key == "enableKerberos":
+            suggest = "enable_kerberos"
+        elif key == "kdcDbKeyUri":
+            suggest = "kdc_db_key_uri"
+        elif key == "keyPasswordUri":
+            suggest = "key_password_uri"
+        elif key == "keystorePasswordUri":
+            suggest = "keystore_password_uri"
+        elif key == "keystoreUri":
+            suggest = "keystore_uri"
+        elif key == "kmsKeyUri":
+            suggest = "kms_key_uri"
+        elif key == "rootPrincipalPasswordUri":
+            suggest = "root_principal_password_uri"
+        elif key == "tgtLifetimeHours":
+            suggest = "tgt_lifetime_hours"
+        elif key == "truststorePasswordUri":
+            suggest = "truststore_password_uri"
+        elif key == "truststoreUri":
+            suggest = "truststore_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KerberosConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KerberosConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KerberosConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cross_realm_trust_admin_server: str,
                  cross_realm_trust_kdc: str,
@@ -1685,15 +2144,35 @@ class KerberosConfigResponse(dict):
         """
         return pulumi.get(self, "truststore_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LifecycleConfigResponse(dict):
     """
     Specifies the cluster auto-delete schedule configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDeleteTime":
+            suggest = "auto_delete_time"
+        elif key == "autoDeleteTtl":
+            suggest = "auto_delete_ttl"
+        elif key == "idleDeleteTtl":
+            suggest = "idle_delete_ttl"
+        elif key == "idleStartTime":
+            suggest = "idle_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LifecycleConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LifecycleConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LifecycleConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_delete_time: str,
                  auto_delete_ttl: str,
@@ -1743,15 +2222,29 @@ class LifecycleConfigResponse(dict):
         """
         return pulumi.get(self, "idle_start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LoggingConfigResponse(dict):
     """
     The runtime logging config of the job.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "driverLogLevels":
+            suggest = "driver_log_levels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  driver_log_levels: Mapping[str, str]):
         """
@@ -1768,15 +2261,29 @@ class LoggingConfigResponse(dict):
         """
         return pulumi.get(self, "driver_log_levels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedClusterResponse(dict):
     """
     Cluster that is managed by the workflow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterName":
+            suggest = "cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_name: str,
                  config: 'outputs.ClusterConfigResponse',
@@ -1815,15 +2322,31 @@ class ManagedClusterResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ManagedGroupConfigResponse(dict):
     """
     Specifies the resources used to actively manage an instance group.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceGroupManagerName":
+            suggest = "instance_group_manager_name"
+        elif key == "instanceTemplateName":
+            suggest = "instance_template_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedGroupConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedGroupConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedGroupConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_group_manager_name: str,
                  instance_template_name: str):
@@ -1851,15 +2374,29 @@ class ManagedGroupConfigResponse(dict):
         """
         return pulumi.get(self, "instance_template_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetastoreConfigResponse(dict):
     """
     Specifies a Metastore configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocMetastoreService":
+            suggest = "dataproc_metastore_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetastoreConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetastoreConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetastoreConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataproc_metastore_service: str):
         """
@@ -1876,15 +2413,31 @@ class MetastoreConfigResponse(dict):
         """
         return pulumi.get(self, "dataproc_metastore_service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NamespacedGkeDeploymentTargetResponse(dict):
     """
     A full, namespace-isolated deployment target for an existing GKE cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterNamespace":
+            suggest = "cluster_namespace"
+        elif key == "targetGkeCluster":
+            suggest = "target_gke_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NamespacedGkeDeploymentTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NamespacedGkeDeploymentTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NamespacedGkeDeploymentTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_namespace: str,
                  target_gke_cluster: str):
@@ -1912,15 +2465,29 @@ class NamespacedGkeDeploymentTargetResponse(dict):
         """
         return pulumi.get(self, "target_gke_cluster")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeGroupAffinityResponse(dict):
     """
     Node Group Affinity for clusters using sole-tenant node groups.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeGroupUri":
+            suggest = "node_group_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeGroupAffinityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeGroupAffinityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeGroupAffinityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  node_group_uri: str):
         """
@@ -1937,15 +2504,31 @@ class NodeGroupAffinityResponse(dict):
         """
         return pulumi.get(self, "node_group_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeInitializationActionResponse(dict):
     """
     Specifies an executable to run on a fully configured node and a timeout period for executable completion.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "executableFile":
+            suggest = "executable_file"
+        elif key == "executionTimeout":
+            suggest = "execution_timeout"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeInitializationActionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeInitializationActionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeInitializationActionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  executable_file: str,
                  execution_timeout: str):
@@ -1973,15 +2556,47 @@ class NodeInitializationActionResponse(dict):
         """
         return pulumi.get(self, "execution_timeout")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OrderedJobResponse(dict):
     """
     A job executed by the workflow.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hadoopJob":
+            suggest = "hadoop_job"
+        elif key == "hiveJob":
+            suggest = "hive_job"
+        elif key == "pigJob":
+            suggest = "pig_job"
+        elif key == "prerequisiteStepIds":
+            suggest = "prerequisite_step_ids"
+        elif key == "prestoJob":
+            suggest = "presto_job"
+        elif key == "pysparkJob":
+            suggest = "pyspark_job"
+        elif key == "sparkJob":
+            suggest = "spark_job"
+        elif key == "sparkRJob":
+            suggest = "spark_r_job"
+        elif key == "sparkSqlJob":
+            suggest = "spark_sql_job"
+        elif key == "stepId":
+            suggest = "step_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrderedJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrderedJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrderedJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  hadoop_job: 'outputs.HadoopJobResponse',
                  hive_job: 'outputs.HiveJobResponse',
@@ -2119,9 +2734,6 @@ class OrderedJobResponse(dict):
         """
         return pulumi.get(self, "step_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ParameterValidationResponse(dict):
@@ -2155,15 +2767,39 @@ class ParameterValidationResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PigJobResponse(dict):
     """
     A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "continueOnFailure":
+            suggest = "continue_on_failure"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+        elif key == "scriptVariables":
+            suggest = "script_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PigJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PigJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PigJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  continue_on_failure: bool,
                  jar_file_uris: Sequence[str],
@@ -2246,15 +2882,39 @@ class PigJobResponse(dict):
         """
         return pulumi.get(self, "script_variables")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PrestoJobResponse(dict):
     """
     A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientTags":
+            suggest = "client_tags"
+        elif key == "continueOnFailure":
+            suggest = "continue_on_failure"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "outputFormat":
+            suggest = "output_format"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrestoJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrestoJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrestoJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  client_tags: Sequence[str],
                  continue_on_failure: bool,
@@ -2337,15 +2997,39 @@ class PrestoJobResponse(dict):
         """
         return pulumi.get(self, "query_list")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PySparkJobResponse(dict):
     """
     A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "mainPythonFileUri":
+            suggest = "main_python_file_uri"
+        elif key == "pythonFileUris":
+            suggest = "python_file_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PySparkJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PySparkJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PySparkJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_uris: Sequence[str],
                  args: Sequence[str],
@@ -2439,9 +3123,6 @@ class PySparkJobResponse(dict):
         """
         return pulumi.get(self, "python_file_uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueryListResponse(dict):
@@ -2463,9 +3144,6 @@ class QueryListResponse(dict):
         Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
         """
         return pulumi.get(self, "queries")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -2489,15 +3167,29 @@ class RegexValidationResponse(dict):
         """
         return pulumi.get(self, "regexes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReservationAffinityResponse(dict):
     """
     Reservation Affinity for consuming Zonal reservation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumeReservationType":
+            suggest = "consume_reservation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReservationAffinityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReservationAffinityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReservationAffinityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  consume_reservation_type: str,
                  key: str,
@@ -2536,15 +3228,29 @@ class ReservationAffinityResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SecurityConfigResponse(dict):
     """
     Security related configuration, including encryption, Kerberos, etc.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kerberosConfig":
+            suggest = "kerberos_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kerberos_config: 'outputs.KerberosConfigResponse'):
         """
@@ -2561,15 +3267,33 @@ class SecurityConfigResponse(dict):
         """
         return pulumi.get(self, "kerberos_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShieldedInstanceConfigResponse(dict):
     """
     Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShieldedInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -2608,15 +3332,31 @@ class ShieldedInstanceConfigResponse(dict):
         """
         return pulumi.get(self, "enable_vtpm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SoftwareConfigResponse(dict):
     """
     Specifies the selection and config of software inside the cluster.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageVersion":
+            suggest = "image_version"
+        elif key == "optionalComponents":
+            suggest = "optional_components"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SoftwareConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SoftwareConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SoftwareConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_version: str,
                  optional_components: Sequence[str],
@@ -2655,15 +3395,39 @@ class SoftwareConfigResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkJobResponse(dict):
     """
     A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The specification of the main method to call to drive the job. Specify either the jar file that contains the main class or the main class name. To pass both a main jar and a main class in that jar, add the jar to CommonJob.jar_file_uris, and then specify the main class name in main_class.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainJarFileUri":
+            suggest = "main_jar_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_uris: Sequence[str],
                  args: Sequence[str],
@@ -2757,15 +3521,35 @@ class SparkJobResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkRJobResponse(dict):
     """
     A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "mainRFileUri":
+            suggest = "main_r_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkRJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkRJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkRJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  archive_uris: Sequence[str],
                  args: Sequence[str],
@@ -2837,15 +3621,37 @@ class SparkRJobResponse(dict):
         """
         return pulumi.get(self, "properties")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SparkSqlJobResponse(dict):
     """
     A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+        elif key == "scriptVariables":
+            suggest = "script_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkSqlJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkSqlJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkSqlJobResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  jar_file_uris: Sequence[str],
                  logging_config: 'outputs.LoggingConfigResponse',
@@ -2917,9 +3723,6 @@ class SparkSqlJobResponse(dict):
         """
         return pulumi.get(self, "script_variables")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TemplateParameterResponse(dict):
@@ -2975,9 +3778,6 @@ class TemplateParameterResponse(dict):
         """
         return pulumi.get(self, "validation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ValueValidationResponse(dict):
@@ -3000,15 +3800,31 @@ class ValueValidationResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class WorkflowTemplatePlacementResponse(dict):
     """
     Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterSelector":
+            suggest = "cluster_selector"
+        elif key == "managedCluster":
+            suggest = "managed_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkflowTemplatePlacementResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkflowTemplatePlacementResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkflowTemplatePlacementResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cluster_selector: 'outputs.ClusterSelectorResponse',
                  managed_cluster: 'outputs.ManagedClusterResponse'):
@@ -3036,15 +3852,29 @@ class WorkflowTemplatePlacementResponse(dict):
         """
         return pulumi.get(self, "managed_cluster")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class YarnApplicationResponse(dict):
     """
     A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "trackingUrl":
+            suggest = "tracking_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in YarnApplicationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        YarnApplicationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        YarnApplicationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  progress: float,
@@ -3093,8 +3923,5 @@ class YarnApplicationResponse(dict):
         The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
         """
         return pulumi.get(self, "tracking_url")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

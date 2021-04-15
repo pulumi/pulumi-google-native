@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -66,9 +66,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExprResponse(dict):
@@ -124,15 +121,31 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse(dict):
     """
     Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "shardCount":
+            suggest = "shard_count"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: str,
                  shard_count: str,
@@ -171,15 +184,33 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse(dict):
         """
         return pulumi.get(self, "table_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse(dict):
     """
     Describes a BigQuery table.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "tableSourceType":
+            suggest = "table_source_type"
+        elif key == "tableSpec":
+            suggest = "table_spec"
+        elif key == "viewSpec":
+            suggest = "view_spec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  table_source_type: str,
                  table_spec: 'outputs.GoogleCloudDatacatalogV1beta1TableSpecResponse',
@@ -217,9 +248,6 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse(dict):
         Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`.
         """
         return pulumi.get(self, "view_spec")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -287,15 +315,33 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse(dict):
     """
     Specifications of a single file in Cloud Storage.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePath":
+            suggest = "file_path"
+        elif key == "gcsTimestamps":
+            suggest = "gcs_timestamps"
+        elif key == "sizeBytes":
+            suggest = "size_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1GcsFileSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1GcsFileSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1GcsFileSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_path: str,
                  gcs_timestamps: 'outputs.GoogleCloudDatacatalogV1beta1SystemTimestampsResponse',
@@ -334,15 +380,31 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse(dict):
         """
         return pulumi.get(self, "size_bytes")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse(dict):
     """
     Describes a Cloud Storage fileset entry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filePatterns":
+            suggest = "file_patterns"
+        elif key == "sampleGcsFileSpecs":
+            suggest = "sample_gcs_file_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  file_patterns: Sequence[str],
                  sample_gcs_file_specs: Sequence['outputs.GoogleCloudDatacatalogV1beta1GcsFileSpecResponse']):
@@ -370,9 +432,6 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse(dict):
         """
         return pulumi.get(self, "sample_gcs_file_specs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1SchemaResponse(dict):
@@ -395,15 +454,33 @@ class GoogleCloudDatacatalogV1beta1SchemaResponse(dict):
         """
         return pulumi.get(self, "columns")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse(dict):
     """
     Timestamps about this resource according to a particular system.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "expireTime":
+            suggest = "expire_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1SystemTimestampsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1SystemTimestampsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  expire_time: str,
@@ -442,15 +519,29 @@ class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1TableSpecResponse(dict):
     """
     Normal BigQuery table spec.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "groupedEntry":
+            suggest = "grouped_entry"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1TableSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1TableSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1TableSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  grouped_entry: str):
         """
@@ -467,15 +558,29 @@ class GoogleCloudDatacatalogV1beta1TableSpecResponse(dict):
         """
         return pulumi.get(self, "grouped_entry")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatacatalogV1beta1ViewSpecResponse(dict):
     """
     Table view specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "viewQuery":
+            suggest = "view_query"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatacatalogV1beta1ViewSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatacatalogV1beta1ViewSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatacatalogV1beta1ViewSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  view_query: str):
         """
@@ -491,8 +596,5 @@ class GoogleCloudDatacatalogV1beta1ViewSpecResponse(dict):
         The query that defines the table view.
         """
         return pulumi.get(self, "view_query")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

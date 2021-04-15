@@ -22,23 +22,24 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:ml/v1:Job":
-		r, err = NewJob(ctx, name, nil, pulumi.URN_(urn))
+		r = &Job{}
 	case "gcp-native:ml/v1:JobIamPolicy":
-		r, err = NewJobIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &JobIamPolicy{}
 	case "gcp-native:ml/v1:Model":
-		r, err = NewModel(ctx, name, nil, pulumi.URN_(urn))
+		r = &Model{}
 	case "gcp-native:ml/v1:ModelIamPolicy":
-		r, err = NewModelIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ModelIamPolicy{}
 	case "gcp-native:ml/v1:ModelVersion":
-		r, err = NewModelVersion(ctx, name, nil, pulumi.URN_(urn))
+		r = &ModelVersion{}
 	case "gcp-native:ml/v1:Study":
-		r, err = NewStudy(ctx, name, nil, pulumi.URN_(urn))
+		r = &Study{}
 	case "gcp-native:ml/v1:StudyTrial":
-		r, err = NewStudyTrial(ctx, name, nil, pulumi.URN_(urn))
+		r = &StudyTrial{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 

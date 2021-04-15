@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -70,15 +70,33 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceConfigResponse(dict):
     """
     The device configuration. Eventually delivered to devices.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryData":
+            suggest = "binary_data"
+        elif key == "cloudUpdateTime":
+            suggest = "cloud_update_time"
+        elif key == "deviceAckTime":
+            suggest = "device_ack_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binary_data: str,
                  cloud_update_time: str,
@@ -128,15 +146,31 @@ class DeviceConfigResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceCredentialResponse(dict):
     """
     A server-stored device credential used for authentication.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationTime":
+            suggest = "expiration_time"
+        elif key == "publicKey":
+            suggest = "public_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceCredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceCredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceCredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiration_time: str,
                  public_key: 'outputs.PublicKeyCredentialResponse'):
@@ -164,15 +198,31 @@ class DeviceCredentialResponse(dict):
         """
         return pulumi.get(self, "public_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeviceStateResponse(dict):
     """
     The device state, as reported by the device.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryData":
+            suggest = "binary_data"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeviceStateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeviceStateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeviceStateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  binary_data: str,
                  update_time: str):
@@ -200,15 +250,31 @@ class DeviceStateResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EventNotificationConfigResponse(dict):
     """
     The configuration for forwarding telemetry events.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopicName":
+            suggest = "pubsub_topic_name"
+        elif key == "subfolderMatches":
+            suggest = "subfolder_matches"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EventNotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EventNotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EventNotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic_name: str,
                  subfolder_matches: str):
@@ -235,9 +301,6 @@ class EventNotificationConfigResponse(dict):
         If the subfolder name matches this string exactly, this configuration will be used. The string must not include the leading '/' character. If empty, all strings are matched. This field is used only for telemetry events; subfolders are not supported for state changes.
         """
         return pulumi.get(self, "subfolder_matches")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -294,15 +357,35 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GatewayConfigResponse(dict):
     """
     Gateway-related configuration and state.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gatewayAuthMethod":
+            suggest = "gateway_auth_method"
+        elif key == "gatewayType":
+            suggest = "gateway_type"
+        elif key == "lastAccessedGatewayId":
+            suggest = "last_accessed_gateway_id"
+        elif key == "lastAccessedGatewayTime":
+            suggest = "last_accessed_gateway_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GatewayConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GatewayConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GatewayConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gateway_auth_method: str,
                  gateway_type: str,
@@ -352,15 +435,29 @@ class GatewayConfigResponse(dict):
         """
         return pulumi.get(self, "last_accessed_gateway_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpConfigResponse(dict):
     """
     The configuration of the HTTP bridge for a device registry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpEnabledState":
+            suggest = "http_enabled_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  http_enabled_state: str):
         """
@@ -377,15 +474,29 @@ class HttpConfigResponse(dict):
         """
         return pulumi.get(self, "http_enabled_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MqttConfigResponse(dict):
     """
     The configuration of MQTT for a device registry.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mqttEnabledState":
+            suggest = "mqtt_enabled_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MqttConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MqttConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MqttConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mqtt_enabled_state: str):
         """
@@ -402,15 +513,29 @@ class MqttConfigResponse(dict):
         """
         return pulumi.get(self, "mqtt_enabled_state")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublicKeyCertificateResponse(dict):
     """
     A public key certificate format and data.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "x509Details":
+            suggest = "x509_details"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PublicKeyCertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PublicKeyCertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PublicKeyCertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  certificate: str,
                  format: str,
@@ -449,9 +574,6 @@ class PublicKeyCertificateResponse(dict):
         """
         return pulumi.get(self, "x509_details")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PublicKeyCredentialResponse(dict):
@@ -485,15 +607,29 @@ class PublicKeyCredentialResponse(dict):
         """
         return pulumi.get(self, "key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RegistryCredentialResponse(dict):
     """
     A server-stored registry credential used to validate device credentials.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publicKeyCertificate":
+            suggest = "public_key_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RegistryCredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RegistryCredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RegistryCredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  public_key_certificate: 'outputs.PublicKeyCertificateResponse'):
         """
@@ -510,15 +646,29 @@ class RegistryCredentialResponse(dict):
         """
         return pulumi.get(self, "public_key_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StateNotificationConfigResponse(dict):
     """
     The configuration for notification of new states received from the device.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubTopicName":
+            suggest = "pubsub_topic_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StateNotificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StateNotificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StateNotificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_topic_name: str):
         """
@@ -534,9 +684,6 @@ class StateNotificationConfigResponse(dict):
         A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
         """
         return pulumi.get(self, "pubsub_topic_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -582,15 +729,35 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class X509CertificateDetailsResponse(dict):
     """
     Details of an X.509 certificate. For informational purposes only.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiryTime":
+            suggest = "expiry_time"
+        elif key == "publicKeyType":
+            suggest = "public_key_type"
+        elif key == "signatureAlgorithm":
+            suggest = "signature_algorithm"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in X509CertificateDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        X509CertificateDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        X509CertificateDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiry_time: str,
                  issuer: str,
@@ -661,8 +828,5 @@ class X509CertificateDetailsResponse(dict):
         The entity the certificate and public key belong to.
         """
         return pulumi.get(self, "subject")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

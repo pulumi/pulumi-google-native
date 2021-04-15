@@ -22,205 +22,206 @@ func (m *module) Version() semver.Version {
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
 	case "gcp-native:compute/alpha:Address":
-		r, err = NewAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &Address{}
 	case "gcp-native:compute/alpha:Autoscaler":
-		r, err = NewAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+		r = &Autoscaler{}
 	case "gcp-native:compute/alpha:BackendBucket":
-		r, err = NewBackendBucket(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendBucket{}
 	case "gcp-native:compute/alpha:BackendBucketIamPolicy":
-		r, err = NewBackendBucketIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendBucketIamPolicy{}
 	case "gcp-native:compute/alpha:BackendService":
-		r, err = NewBackendService(ctx, name, nil, pulumi.URN_(urn))
+		r = &BackendService{}
 	case "gcp-native:compute/alpha:Disk":
-		r, err = NewDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &Disk{}
 	case "gcp-native:compute/alpha:DiskIamPolicy":
-		r, err = NewDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &DiskIamPolicy{}
 	case "gcp-native:compute/alpha:ExternalVpnGateway":
-		r, err = NewExternalVpnGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &ExternalVpnGateway{}
 	case "gcp-native:compute/alpha:Firewall":
-		r, err = NewFirewall(ctx, name, nil, pulumi.URN_(urn))
+		r = &Firewall{}
 	case "gcp-native:compute/alpha:FirewallPolicy":
-		r, err = NewFirewallPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FirewallPolicy{}
 	case "gcp-native:compute/alpha:FirewallPolicyIamPolicy":
-		r, err = NewFirewallPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &FirewallPolicyIamPolicy{}
 	case "gcp-native:compute/alpha:ForwardingRule":
-		r, err = NewForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &ForwardingRule{}
 	case "gcp-native:compute/alpha:GlobalAddress":
-		r, err = NewGlobalAddress(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalAddress{}
 	case "gcp-native:compute/alpha:GlobalForwardingRule":
-		r, err = NewGlobalForwardingRule(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalForwardingRule{}
 	case "gcp-native:compute/alpha:GlobalNetworkEndpointGroup":
-		r, err = NewGlobalNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalNetworkEndpointGroup{}
 	case "gcp-native:compute/alpha:GlobalPublicDelegatedPrefix":
-		r, err = NewGlobalPublicDelegatedPrefix(ctx, name, nil, pulumi.URN_(urn))
+		r = &GlobalPublicDelegatedPrefix{}
 	case "gcp-native:compute/alpha:HealthCheck":
-		r, err = NewHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HealthCheck{}
 	case "gcp-native:compute/alpha:HttpHealthCheck":
-		r, err = NewHttpHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HttpHealthCheck{}
 	case "gcp-native:compute/alpha:HttpsHealthCheck":
-		r, err = NewHttpsHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &HttpsHealthCheck{}
 	case "gcp-native:compute/alpha:Image":
-		r, err = NewImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &Image{}
 	case "gcp-native:compute/alpha:ImageIamPolicy":
-		r, err = NewImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ImageIamPolicy{}
 	case "gcp-native:compute/alpha:Instance":
-		r, err = NewInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &Instance{}
 	case "gcp-native:compute/alpha:InstanceGroup":
-		r, err = NewInstanceGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGroup{}
 	case "gcp-native:compute/alpha:InstanceGroupManager":
-		r, err = NewInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceGroupManager{}
 	case "gcp-native:compute/alpha:InstanceIamPolicy":
-		r, err = NewInstanceIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceIamPolicy{}
 	case "gcp-native:compute/alpha:InstanceTemplate":
-		r, err = NewInstanceTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceTemplate{}
 	case "gcp-native:compute/alpha:InstanceTemplateIamPolicy":
-		r, err = NewInstanceTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InstanceTemplateIamPolicy{}
 	case "gcp-native:compute/alpha:Interconnect":
-		r, err = NewInterconnect(ctx, name, nil, pulumi.URN_(urn))
+		r = &Interconnect{}
 	case "gcp-native:compute/alpha:InterconnectAttachment":
-		r, err = NewInterconnectAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &InterconnectAttachment{}
 	case "gcp-native:compute/alpha:InterconnectAttachmentIamPolicy":
-		r, err = NewInterconnectAttachmentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InterconnectAttachmentIamPolicy{}
 	case "gcp-native:compute/alpha:InterconnectIamPolicy":
-		r, err = NewInterconnectIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &InterconnectIamPolicy{}
 	case "gcp-native:compute/alpha:License":
-		r, err = NewLicense(ctx, name, nil, pulumi.URN_(urn))
+		r = &License{}
 	case "gcp-native:compute/alpha:LicenseCodeIamPolicy":
-		r, err = NewLicenseCodeIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &LicenseCodeIamPolicy{}
 	case "gcp-native:compute/alpha:LicenseIamPolicy":
-		r, err = NewLicenseIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &LicenseIamPolicy{}
 	case "gcp-native:compute/alpha:MachineImage":
-		r, err = NewMachineImage(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImage{}
 	case "gcp-native:compute/alpha:MachineImageIamPolicy":
-		r, err = NewMachineImageIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &MachineImageIamPolicy{}
 	case "gcp-native:compute/alpha:Network":
-		r, err = NewNetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Network{}
 	case "gcp-native:compute/alpha:NetworkEndpointGroup":
-		r, err = NewNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkEndpointGroup{}
 	case "gcp-native:compute/alpha:NetworkFirewallPolicy":
-		r, err = NewNetworkFirewallPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkFirewallPolicy{}
 	case "gcp-native:compute/alpha:NetworkFirewallPolicyIamPolicy":
-		r, err = NewNetworkFirewallPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NetworkFirewallPolicyIamPolicy{}
 	case "gcp-native:compute/alpha:NodeGroup":
-		r, err = NewNodeGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeGroup{}
 	case "gcp-native:compute/alpha:NodeGroupIamPolicy":
-		r, err = NewNodeGroupIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeGroupIamPolicy{}
 	case "gcp-native:compute/alpha:NodeTemplate":
-		r, err = NewNodeTemplate(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeTemplate{}
 	case "gcp-native:compute/alpha:NodeTemplateIamPolicy":
-		r, err = NewNodeTemplateIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &NodeTemplateIamPolicy{}
 	case "gcp-native:compute/alpha:OrganizationSecurityPolicy":
-		r, err = NewOrganizationSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &OrganizationSecurityPolicy{}
 	case "gcp-native:compute/alpha:PacketMirroring":
-		r, err = NewPacketMirroring(ctx, name, nil, pulumi.URN_(urn))
+		r = &PacketMirroring{}
 	case "gcp-native:compute/alpha:PublicAdvertisedPrefix":
-		r, err = NewPublicAdvertisedPrefix(ctx, name, nil, pulumi.URN_(urn))
+		r = &PublicAdvertisedPrefix{}
 	case "gcp-native:compute/alpha:PublicDelegatedPrefix":
-		r, err = NewPublicDelegatedPrefix(ctx, name, nil, pulumi.URN_(urn))
+		r = &PublicDelegatedPrefix{}
 	case "gcp-native:compute/alpha:RegionAutoscaler":
-		r, err = NewRegionAutoscaler(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionAutoscaler{}
 	case "gcp-native:compute/alpha:RegionBackendService":
-		r, err = NewRegionBackendService(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionBackendService{}
 	case "gcp-native:compute/alpha:RegionCommitment":
-		r, err = NewRegionCommitment(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionCommitment{}
 	case "gcp-native:compute/alpha:RegionDisk":
-		r, err = NewRegionDisk(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDisk{}
 	case "gcp-native:compute/alpha:RegionDiskIamPolicy":
-		r, err = NewRegionDiskIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionDiskIamPolicy{}
 	case "gcp-native:compute/alpha:RegionHealthCheck":
-		r, err = NewRegionHealthCheck(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionHealthCheck{}
 	case "gcp-native:compute/alpha:RegionHealthCheckService":
-		r, err = NewRegionHealthCheckService(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionHealthCheckService{}
 	case "gcp-native:compute/alpha:RegionInPlaceSnapshot":
-		r, err = NewRegionInPlaceSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInPlaceSnapshot{}
 	case "gcp-native:compute/alpha:RegionInPlaceSnapshotIamPolicy":
-		r, err = NewRegionInPlaceSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInPlaceSnapshotIamPolicy{}
 	case "gcp-native:compute/alpha:RegionInstanceGroupManager":
-		r, err = NewRegionInstanceGroupManager(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInstanceGroupManager{}
 	case "gcp-native:compute/alpha:RegionInstantSnapshot":
-		r, err = NewRegionInstantSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInstantSnapshot{}
 	case "gcp-native:compute/alpha:RegionInstantSnapshotIamPolicy":
-		r, err = NewRegionInstantSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionInstantSnapshotIamPolicy{}
 	case "gcp-native:compute/alpha:RegionNetworkEndpointGroup":
-		r, err = NewRegionNetworkEndpointGroup(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionNetworkEndpointGroup{}
 	case "gcp-native:compute/alpha:RegionNetworkFirewallPolicy":
-		r, err = NewRegionNetworkFirewallPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionNetworkFirewallPolicy{}
 	case "gcp-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
-		r, err = NewRegionNetworkFirewallPolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "gcp-native:compute/alpha:RegionNotificationEndpoint":
-		r, err = NewRegionNotificationEndpoint(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionNotificationEndpoint{}
 	case "gcp-native:compute/alpha:RegionSslCertificate":
-		r, err = NewRegionSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionSslCertificate{}
 	case "gcp-native:compute/alpha:RegionTargetHttpProxy":
-		r, err = NewRegionTargetHttpProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionTargetHttpProxy{}
 	case "gcp-native:compute/alpha:RegionTargetHttpsProxy":
-		r, err = NewRegionTargetHttpsProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionTargetHttpsProxy{}
 	case "gcp-native:compute/alpha:RegionUrlMap":
-		r, err = NewRegionUrlMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &RegionUrlMap{}
 	case "gcp-native:compute/alpha:Reservation":
-		r, err = NewReservation(ctx, name, nil, pulumi.URN_(urn))
+		r = &Reservation{}
 	case "gcp-native:compute/alpha:ReservationIamPolicy":
-		r, err = NewReservationIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ReservationIamPolicy{}
 	case "gcp-native:compute/alpha:ResourcePolicy":
-		r, err = NewResourcePolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourcePolicy{}
 	case "gcp-native:compute/alpha:ResourcePolicyIamPolicy":
-		r, err = NewResourcePolicyIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ResourcePolicyIamPolicy{}
 	case "gcp-native:compute/alpha:Route":
-		r, err = NewRoute(ctx, name, nil, pulumi.URN_(urn))
+		r = &Route{}
 	case "gcp-native:compute/alpha:Router":
-		r, err = NewRouter(ctx, name, nil, pulumi.URN_(urn))
+		r = &Router{}
 	case "gcp-native:compute/alpha:SecurityPolicy":
-		r, err = NewSecurityPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SecurityPolicy{}
 	case "gcp-native:compute/alpha:ServiceAttachment":
-		r, err = NewServiceAttachment(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceAttachment{}
 	case "gcp-native:compute/alpha:ServiceAttachmentIamPolicy":
-		r, err = NewServiceAttachmentIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ServiceAttachmentIamPolicy{}
 	case "gcp-native:compute/alpha:Snapshot":
-		r, err = NewSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &Snapshot{}
 	case "gcp-native:compute/alpha:SnapshotIamPolicy":
-		r, err = NewSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SnapshotIamPolicy{}
 	case "gcp-native:compute/alpha:SslCertificate":
-		r, err = NewSslCertificate(ctx, name, nil, pulumi.URN_(urn))
+		r = &SslCertificate{}
 	case "gcp-native:compute/alpha:SslPolicy":
-		r, err = NewSslPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SslPolicy{}
 	case "gcp-native:compute/alpha:Subnetwork":
-		r, err = NewSubnetwork(ctx, name, nil, pulumi.URN_(urn))
+		r = &Subnetwork{}
 	case "gcp-native:compute/alpha:SubnetworkIamPolicy":
-		r, err = NewSubnetworkIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &SubnetworkIamPolicy{}
 	case "gcp-native:compute/alpha:TargetGrpcProxy":
-		r, err = NewTargetGrpcProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetGrpcProxy{}
 	case "gcp-native:compute/alpha:TargetHttpProxy":
-		r, err = NewTargetHttpProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetHttpProxy{}
 	case "gcp-native:compute/alpha:TargetHttpsProxy":
-		r, err = NewTargetHttpsProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetHttpsProxy{}
 	case "gcp-native:compute/alpha:TargetInstance":
-		r, err = NewTargetInstance(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetInstance{}
 	case "gcp-native:compute/alpha:TargetPool":
-		r, err = NewTargetPool(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetPool{}
 	case "gcp-native:compute/alpha:TargetSslProxy":
-		r, err = NewTargetSslProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetSslProxy{}
 	case "gcp-native:compute/alpha:TargetTcpProxy":
-		r, err = NewTargetTcpProxy(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetTcpProxy{}
 	case "gcp-native:compute/alpha:TargetVpnGateway":
-		r, err = NewTargetVpnGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &TargetVpnGateway{}
 	case "gcp-native:compute/alpha:UrlMap":
-		r, err = NewUrlMap(ctx, name, nil, pulumi.URN_(urn))
+		r = &UrlMap{}
 	case "gcp-native:compute/alpha:VpnGateway":
-		r, err = NewVpnGateway(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpnGateway{}
 	case "gcp-native:compute/alpha:VpnTunnel":
-		r, err = NewVpnTunnel(ctx, name, nil, pulumi.URN_(urn))
+		r = &VpnTunnel{}
 	case "gcp-native:compute/alpha:ZoneInPlaceSnapshot":
-		r, err = NewZoneInPlaceSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneInPlaceSnapshot{}
 	case "gcp-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy":
-		r, err = NewZoneInPlaceSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneInPlaceSnapshotIamPolicy{}
 	case "gcp-native:compute/alpha:ZoneInstantSnapshot":
-		r, err = NewZoneInstantSnapshot(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneInstantSnapshot{}
 	case "gcp-native:compute/alpha:ZoneInstantSnapshotIamPolicy":
-		r, err = NewZoneInstantSnapshotIamPolicy(ctx, name, nil, pulumi.URN_(urn))
+		r = &ZoneInstantSnapshotIamPolicy{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
 
+	err = ctx.RegisterResource(typ, name, nil, r, pulumi.URN_(urn))
 	return
 }
 
