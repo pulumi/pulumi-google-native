@@ -32,6 +32,19 @@ func TestFunctionsTs(t *testing.T) {
 	integration.ProgramTest(t, &test)
 }
 
+func TestWebserverTs(t *testing.T) {
+	test := getJSBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir: filepath.Join(getCwd(t), "webserver-ts"),
+			ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+				assertHTTPMatchesContent(t, stack.Outputs["instanceIP"].(string), "Hello, World!\n", nil)
+			},
+			SkipRefresh: true,
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
 func TestPubSubTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{

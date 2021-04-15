@@ -150,7 +150,11 @@ func assertHTTPResultShapeWithRetry(t *testing.T, output interface{}, headers ma
 }
 
 func assertHTTPHelloWorld(t *testing.T, output interface{}, headers map[string]string) bool {
+	return assertHTTPMatchesContent(t, output, "Hello, World!", headers)
+}
+
+func assertHTTPMatchesContent(t *testing.T, output interface{}, content string, headers map[string]string) bool {
 	return assertHTTPResult(t, output, headers, func(s string) bool {
-		return assert.Equal(t, "Hello, World!", s)
+		return assert.Equal(t, content, s)
 	})
 }
