@@ -5,13 +5,133 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['ManagedZoneRrset']
+__all__ = ['ManagedZoneRrsetArgs', 'ManagedZoneRrset']
+
+@pulumi.input_type
+class ManagedZoneRrsetArgs:
+    def __init__(__self__, *,
+                 managed_zone: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 kind: Optional[pulumi.Input[str]] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a ManagedZoneRrset resource.
+        :param pulumi.Input[str] name: For example, www.example.com.
+        :param pulumi.Input[str] type: The identifier of a supported record type. See the list of Supported DNS record types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] rrdatas: As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] signature_rrdatas: As defined in RFC 4034 (section 3.2).
+        :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        """
+        pulumi.set(__self__, "managed_zone", managed_zone)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "type", type)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if rrdatas is not None:
+            pulumi.set(__self__, "rrdatas", rrdatas)
+        if signature_rrdatas is not None:
+            pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="managedZone")
+    def managed_zone(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "managed_zone")
+
+    @managed_zone.setter
+    def managed_zone(self, value: pulumi.Input[str]):
+        pulumi.set(self, "managed_zone", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        For example, www.example.com.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The identifier of a supported record type. See the list of Supported DNS record types.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
+        """
+        return pulumi.get(self, "rrdatas")
+
+    @rrdatas.setter
+    def rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "rrdatas", value)
+
+    @property
+    @pulumi.getter(name="signatureRrdatas")
+    def signature_rrdatas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        As defined in RFC 4034 (section 3.2).
+        """
+        return pulumi.get(self, "signature_rrdatas")
+
+    @signature_rrdatas.setter
+    def signature_rrdatas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "signature_rrdatas", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of seconds that this ResourceRecordSet can be cached by resolvers.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ttl", value)
 
 
 class ManagedZoneRrset(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -23,9 +143,7 @@ class ManagedZoneRrset(pulumi.CustomResource):
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new ResourceRecordSet.
 
@@ -37,12 +155,39 @@ class ManagedZoneRrset(pulumi.CustomResource):
         :param pulumi.Input[int] ttl: Number of seconds that this ResourceRecordSet can be cached by resolvers.
         :param pulumi.Input[str] type: The identifier of a supported record type. See the list of Supported DNS record types.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ManagedZoneRrsetArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new ResourceRecordSet.
+
+        :param str resource_name: The name of the resource.
+        :param ManagedZoneRrsetArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ManagedZoneRrsetArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 managed_zone: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -52,24 +197,24 @@ class ManagedZoneRrset(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ManagedZoneRrsetArgs.__new__(ManagedZoneRrsetArgs)
 
-            __props__['kind'] = kind
+            __props__.__dict__["kind"] = kind
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")
-            __props__['managed_zone'] = managed_zone
+            __props__.__dict__["managed_zone"] = managed_zone
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
+            __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
-            __props__['project'] = project
-            __props__['rrdatas'] = rrdatas
-            __props__['signature_rrdatas'] = signature_rrdatas
-            __props__['ttl'] = ttl
+            __props__.__dict__["project"] = project
+            __props__.__dict__["rrdatas"] = rrdatas
+            __props__.__dict__["signature_rrdatas"] = signature_rrdatas
+            __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
         super(ManagedZoneRrset, __self__).__init__(
             'gcp-native:dns/v1:ManagedZoneRrset',
             resource_name,
@@ -90,14 +235,14 @@ class ManagedZoneRrset(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ManagedZoneRrsetArgs.__new__(ManagedZoneRrsetArgs)
 
-        __props__["kind"] = None
-        __props__["name"] = None
-        __props__["rrdatas"] = None
-        __props__["signature_rrdatas"] = None
-        __props__["ttl"] = None
-        __props__["type"] = None
+        __props__.__dict__["kind"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["rrdatas"] = None
+        __props__.__dict__["signature_rrdatas"] = None
+        __props__.__dict__["ttl"] = None
+        __props__.__dict__["type"] = None
         return ManagedZoneRrset(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -144,10 +289,4 @@ class ManagedZoneRrset(pulumi.CustomResource):
         The identifier of a supported record type. See the list of Supported DNS record types.
         """
         return pulumi.get(self, "type")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

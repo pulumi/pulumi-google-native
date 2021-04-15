@@ -5,15 +5,147 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RowAccessPolicyIamPolicy']
+__all__ = ['RowAccessPolicyIamPolicyArgs', 'RowAccessPolicyIamPolicy']
+
+@pulumi.input_type
+class RowAccessPolicyIamPolicyArgs:
+    def __init__(__self__, *,
+                 datasets_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 row_access_policies_id: pulumi.Input[str],
+                 tables_id: pulumi.Input[str],
+                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 update_mask: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None):
+        """
+        The set of arguments for constructing a RowAccessPolicyIamPolicy resource.
+        :param pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]] audit_configs: Specifies cloud audit logging configuration for this policy.
+        :param pulumi.Input[Sequence[pulumi.Input['BindingArgs']]] bindings: Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+        :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+        :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        """
+        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "row_access_policies_id", row_access_policies_id)
+        pulumi.set(__self__, "tables_id", tables_id)
+        if audit_configs is not None:
+            pulumi.set(__self__, "audit_configs", audit_configs)
+        if bindings is not None:
+            pulumi.set(__self__, "bindings", bindings)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if update_mask is not None:
+            pulumi.set(__self__, "update_mask", update_mask)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="datasetsId")
+    def datasets_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasets_id")
+
+    @datasets_id.setter
+    def datasets_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasets_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="rowAccessPoliciesId")
+    def row_access_policies_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "row_access_policies_id")
+
+    @row_access_policies_id.setter
+    def row_access_policies_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "row_access_policies_id", value)
+
+    @property
+    @pulumi.getter(name="tablesId")
+    def tables_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tables_id")
+
+    @tables_id.setter
+    def tables_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tables_id", value)
+
+    @property
+    @pulumi.getter(name="auditConfigs")
+    def audit_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]:
+        """
+        Specifies cloud audit logging configuration for this policy.
+        """
+        return pulumi.get(self, "audit_configs")
+
+    @audit_configs.setter
+    def audit_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]]):
+        pulumi.set(self, "audit_configs", value)
+
+    @property
+    @pulumi.getter
+    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]:
+        """
+        Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
+        """
+        return pulumi.get(self, "bindings")
+
+    @bindings.setter
+    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]]):
+        pulumi.set(self, "bindings", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
+
+    @property
+    @pulumi.getter(name="updateMask")
+    def update_mask(self) -> Optional[pulumi.Input[str]]:
+        """
+        OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+        """
+        return pulumi.get(self, "update_mask")
+
+    @update_mask.setter
+    def update_mask(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_mask", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[int]]:
+        """
+        Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "version", value)
 
 
 class RowAccessPolicyIamPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,9 +158,7 @@ class RowAccessPolicyIamPolicy(pulumi.CustomResource):
                  tables_id: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
@@ -40,12 +170,40 @@ class RowAccessPolicyIamPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RowAccessPolicyIamPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+
+        :param str resource_name: The name of the resource.
+        :param RowAccessPolicyIamPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RowAccessPolicyIamPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
+                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 row_access_policies_id: Optional[pulumi.Input[str]] = None,
+                 tables_id: Optional[pulumi.Input[str]] = None,
+                 update_mask: Optional[pulumi.Input[str]] = None,
+                 version: Optional[pulumi.Input[int]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -55,25 +213,25 @@ class RowAccessPolicyIamPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RowAccessPolicyIamPolicyArgs.__new__(RowAccessPolicyIamPolicyArgs)
 
-            __props__['audit_configs'] = audit_configs
-            __props__['bindings'] = bindings
+            __props__.__dict__["audit_configs"] = audit_configs
+            __props__.__dict__["bindings"] = bindings
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
-            __props__['datasets_id'] = datasets_id
-            __props__['etag'] = etag
+            __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["etag"] = etag
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if row_access_policies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'row_access_policies_id'")
-            __props__['row_access_policies_id'] = row_access_policies_id
+            __props__.__dict__["row_access_policies_id"] = row_access_policies_id
             if tables_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tables_id'")
-            __props__['tables_id'] = tables_id
-            __props__['update_mask'] = update_mask
-            __props__['version'] = version
+            __props__.__dict__["tables_id"] = tables_id
+            __props__.__dict__["update_mask"] = update_mask
+            __props__.__dict__["version"] = version
         super(RowAccessPolicyIamPolicy, __self__).__init__(
             'gcp-native:bigquery/v2:RowAccessPolicyIamPolicy',
             resource_name,
@@ -94,12 +252,12 @@ class RowAccessPolicyIamPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = RowAccessPolicyIamPolicyArgs.__new__(RowAccessPolicyIamPolicyArgs)
 
-        __props__["audit_configs"] = None
-        __props__["bindings"] = None
-        __props__["etag"] = None
-        __props__["version"] = None
+        __props__.__dict__["audit_configs"] = None
+        __props__.__dict__["bindings"] = None
+        __props__.__dict__["etag"] = None
+        __props__.__dict__["version"] = None
         return RowAccessPolicyIamPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -133,10 +291,4 @@ class RowAccessPolicyIamPolicy(pulumi.CustomResource):
         Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
         return pulumi.get(self, "version")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,13 +5,80 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['AccessPolicy']
+__all__ = ['AccessPolicyArgs', 'AccessPolicy']
+
+@pulumi.input_type
+class AccessPolicyArgs:
+    def __init__(__self__, *,
+                 access_policies_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AccessPolicy resource.
+        :param pulumi.Input[str] name: Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
+        """
+        pulumi.set(__self__, "access_policies_id", access_policies_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="accessPoliciesId")
+    def access_policies_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_policies_id")
+
+    @access_policies_id.setter
+    def access_policies_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_policies_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Human readable title. Does not affect behavior.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
 
 
 class AccessPolicy(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -19,9 +86,7 @@ class AccessPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
 
@@ -31,12 +96,35 @@ class AccessPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] parent: Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
         :param pulumi.Input[str] title: Required. Human readable title. Does not affect behavior.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AccessPolicyArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
+
+        :param str resource_name: The name of the resource.
+        :param AccessPolicyArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AccessPolicyArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 access_policies_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -46,14 +134,14 @@ class AccessPolicy(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
             if access_policies_id is None and not opts.urn:
                 raise TypeError("Missing required property 'access_policies_id'")
-            __props__['access_policies_id'] = access_policies_id
-            __props__['name'] = name
-            __props__['parent'] = parent
-            __props__['title'] = title
+            __props__.__dict__["access_policies_id"] = access_policies_id
+            __props__.__dict__["name"] = name
+            __props__.__dict__["parent"] = parent
+            __props__.__dict__["title"] = title
         super(AccessPolicy, __self__).__init__(
             'gcp-native:accesscontextmanager/v1beta:AccessPolicy',
             resource_name,
@@ -74,11 +162,11 @@ class AccessPolicy(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AccessPolicyArgs.__new__(AccessPolicyArgs)
 
-        __props__["name"] = None
-        __props__["parent"] = None
-        __props__["title"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["parent"] = None
+        __props__.__dict__["title"] = None
         return AccessPolicy(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -104,10 +192,4 @@ class AccessPolicy(pulumi.CustomResource):
         Required. Human readable title. Does not affect behavior.
         """
         return pulumi.get(self, "title")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

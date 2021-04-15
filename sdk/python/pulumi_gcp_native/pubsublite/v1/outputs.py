@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,25 @@ class CapacityResponse(dict):
     """
     The throughput capacity configuration for each partition.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "publishMibPerSec":
+            suggest = "publish_mib_per_sec"
+        elif key == "subscribeMibPerSec":
+            suggest = "subscribe_mib_per_sec"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CapacityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CapacityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CapacityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  publish_mib_per_sec: int,
                  subscribe_mib_per_sec: int):
@@ -48,15 +67,29 @@ class CapacityResponse(dict):
         """
         return pulumi.get(self, "subscribe_mib_per_sec")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DeliveryConfigResponse(dict):
     """
     The settings for a subscription's message delivery.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deliveryRequirement":
+            suggest = "delivery_requirement"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DeliveryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DeliveryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DeliveryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  delivery_requirement: str):
         """
@@ -72,9 +105,6 @@ class DeliveryConfigResponse(dict):
         The DeliveryRequirement for this subscription.
         """
         return pulumi.get(self, "delivery_requirement")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -120,15 +150,29 @@ class PartitionConfigResponse(dict):
         """
         return pulumi.get(self, "scale")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetentionConfigResponse(dict):
     """
     The settings for a topic's message retention.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "perPartitionBytes":
+            suggest = "per_partition_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetentionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetentionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetentionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  per_partition_bytes: str,
                  period: str):
@@ -155,8 +199,5 @@ class RetentionConfigResponse(dict):
         How long a published message is retained. If unset, messages will be retained as long as the bytes retained for each partition is below `per_partition_bytes`.
         """
         return pulumi.get(self, "period")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

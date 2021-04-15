@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,23 @@ class GcsSourceResponse(dict):
     """
     The Google Cloud Storage location for the input content.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputUri":
+            suggest = "input_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GcsSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GcsSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GcsSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  input_uri: str):
         """
@@ -37,15 +54,29 @@ class GcsSourceResponse(dict):
         """
         return pulumi.get(self, "input_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GlossaryInputConfigResponse(dict):
     """
     Input configuration for glossaries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsSource":
+            suggest = "gcs_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GlossaryInputConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GlossaryInputConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GlossaryInputConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gcs_source: 'outputs.GcsSourceResponse'):
         """
@@ -62,15 +93,31 @@ class GlossaryInputConfigResponse(dict):
         """
         return pulumi.get(self, "gcs_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LanguageCodePairResponse(dict):
     """
     Used with unidirectional glossaries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceLanguageCode":
+            suggest = "source_language_code"
+        elif key == "targetLanguageCode":
+            suggest = "target_language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LanguageCodePairResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LanguageCodePairResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LanguageCodePairResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_language_code: str,
                  target_language_code: str):
@@ -98,15 +145,29 @@ class LanguageCodePairResponse(dict):
         """
         return pulumi.get(self, "target_language_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LanguageCodesSetResponse(dict):
     """
     Used with equivalent term set glossaries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCodes":
+            suggest = "language_codes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LanguageCodesSetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LanguageCodesSetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LanguageCodesSetResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  language_codes: Sequence[str]):
         """
@@ -122,8 +183,5 @@ class LanguageCodesSetResponse(dict):
         The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "language_codes")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

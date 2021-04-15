@@ -5,15 +5,120 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['Environment']
+__all__ = ['EnvironmentArgs', 'Environment']
+
+@pulumi.input_type
+class EnvironmentArgs:
+    def __init__(__self__, *,
+                 environments_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 config: Optional[pulumi.Input['EnvironmentConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Environment resource.
+        :param pulumi.Input['EnvironmentConfigArgs'] config: Configuration parameters for this environment.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        :param pulumi.Input[str] name: The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        :param pulumi.Input[str] state: The current state of the environment.
+        """
+        pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="environmentsId")
+    def environments_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environments_id")
+
+    @environments_id.setter
+    def environments_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environments_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input['EnvironmentConfigArgs']]:
+        """
+        Configuration parameters for this environment.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input['EnvironmentConfigArgs']]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current state of the environment.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class Environment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -24,9 +129,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a new environment.
 
@@ -37,12 +140,38 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
         :param pulumi.Input[str] state: The current state of the environment.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: EnvironmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a new environment.
+
+        :param str resource_name: The name of the resource.
+        :param EnvironmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(EnvironmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 config: Optional[pulumi.Input[pulumi.InputType['EnvironmentConfigArgs']]] = None,
+                 environments_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -52,24 +181,24 @@ class Environment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-            __props__['config'] = config
+            __props__.__dict__["config"] = config
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
-            __props__['environments_id'] = environments_id
-            __props__['labels'] = labels
+            __props__.__dict__["environments_id"] = environments_id
+            __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['create_time'] = None
-            __props__['update_time'] = None
-            __props__['uuid'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["state"] = state
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["update_time"] = None
+            __props__.__dict__["uuid"] = None
         super(Environment, __self__).__init__(
             'gcp-native:composer/v1beta1:Environment',
             resource_name,
@@ -90,15 +219,15 @@ class Environment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = EnvironmentArgs.__new__(EnvironmentArgs)
 
-        __props__["config"] = None
-        __props__["create_time"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["state"] = None
-        __props__["update_time"] = None
-        __props__["uuid"] = None
+        __props__.__dict__["config"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["update_time"] = None
+        __props__.__dict__["uuid"] = None
         return Environment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -156,10 +285,4 @@ class Environment(pulumi.CustomResource):
         The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
         """
         return pulumi.get(self, "uuid")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

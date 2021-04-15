@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -44,9 +44,6 @@ class InstanceMessageResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MemcacheParametersResponse(dict):
@@ -69,15 +66,31 @@ class MemcacheParametersResponse(dict):
         """
         return pulumi.get(self, "params")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeConfigResponse(dict):
     """
     Configuration for a Memcached Node.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuCount":
+            suggest = "cpu_count"
+        elif key == "memorySizeMb":
+            suggest = "memory_size_mb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cpu_count: int,
                  memory_size_mb: int):
@@ -105,12 +118,26 @@ class NodeConfigResponse(dict):
         """
         return pulumi.get(self, "memory_size_mb")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NodeResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  host: str,
                  node_id: str,
@@ -180,8 +207,5 @@ class NodeResponse(dict):
         Location (GCP Zone) for the Memcached node.
         """
         return pulumi.get(self, "zone")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

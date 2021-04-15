@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -38,6 +38,23 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecResponse(dict):
     """
     Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1AnnotationSpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1AnnotationSpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1AnnotationSpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -76,15 +93,31 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecResponse(dict):
         """
         return pulumi.get(self, "index")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1AttemptResponse(dict):
     """
     Records a failed evaluation job run.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "attemptTime":
+            suggest = "attempt_time"
+        elif key == "partialFailures":
+            suggest = "partial_failures"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1AttemptResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1AttemptResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1AttemptResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  attempt_time: str,
                  partial_failures: Sequence['outputs.GoogleRpcStatusResponse']):
@@ -108,15 +141,29 @@ class GoogleCloudDatalabelingV1beta1AttemptResponse(dict):
         """
         return pulumi.get(self, "partial_failures")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse(dict):
     """
     The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputUri":
+            suggest = "input_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1BigQuerySourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1BigQuerySourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  input_uri: str):
         """
@@ -133,15 +180,29 @@ class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse(dict):
         """
         return pulumi.get(self, "input_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse(dict):
     """
     Options regarding evaluation between bounding boxes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "iouThreshold":
+            suggest = "iou_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  iou_threshold: float):
         """
@@ -158,15 +219,31 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse(dict):
         """
         return pulumi.get(self, "iou_threshold")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(dict):
     """
     Config for image bounding poly (and bounding box) human labeling task.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "annotationSpecSet":
+            suggest = "annotation_spec_set"
+        elif key == "instructionMessage":
+            suggest = "instruction_message"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotation_spec_set: str,
                  instruction_message: str):
@@ -194,15 +271,29 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(dict):
         """
         return pulumi.get(self, "instruction_message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse(dict):
     """
     Metadata for classification annotations.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isMultiLabel":
+            suggest = "is_multi_label"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  is_multi_label: bool):
         """
@@ -219,15 +310,29 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse(dict):
         """
         return pulumi.get(self, "is_multi_label")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1CsvInstructionResponse(dict):
     """
     Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsFileUri":
+            suggest = "gcs_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1CsvInstructionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1CsvInstructionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1CsvInstructionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gcs_file_uri: str):
         """
@@ -244,15 +349,29 @@ class GoogleCloudDatalabelingV1beta1CsvInstructionResponse(dict):
         """
         return pulumi.get(self, "gcs_file_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1EvaluationConfigResponse(dict):
     """
     Configuration details used for calculating evaluation metrics and creating an Evaluation.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "boundingBoxEvaluationOptions":
+            suggest = "bounding_box_evaluation_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1EvaluationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bounding_box_evaluation_options: 'outputs.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponse'):
         """
@@ -269,15 +388,29 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfigResponse(dict):
         """
         return pulumi.get(self, "bounding_box_evaluation_options")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(dict):
     """
     Provides details for how an evaluation job sends email alerts based on the results of a run.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "minAcceptableMeanAveragePrecision":
+            suggest = "min_acceptable_mean_average_precision"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: str,
                  min_acceptable_mean_average_precision: float):
@@ -305,15 +438,47 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(dict):
         """
         return pulumi.get(self, "min_acceptable_mean_average_precision")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
     """
     Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigqueryImportKeys":
+            suggest = "bigquery_import_keys"
+        elif key == "boundingPolyConfig":
+            suggest = "bounding_poly_config"
+        elif key == "evaluationConfig":
+            suggest = "evaluation_config"
+        elif key == "evaluationJobAlertConfig":
+            suggest = "evaluation_job_alert_config"
+        elif key == "exampleCount":
+            suggest = "example_count"
+        elif key == "exampleSamplePercentage":
+            suggest = "example_sample_percentage"
+        elif key == "humanAnnotationConfig":
+            suggest = "human_annotation_config"
+        elif key == "imageClassificationConfig":
+            suggest = "image_classification_config"
+        elif key == "inputConfig":
+            suggest = "input_config"
+        elif key == "textClassificationConfig":
+            suggest = "text_classification_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bigquery_import_keys: Mapping[str, str],
                  bounding_poly_config: 'outputs.GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse',
@@ -429,15 +594,31 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
         """
         return pulumi.get(self, "text_classification_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1GcsSourceResponse(dict):
     """
     Source of the Cloud Storage file to be imported.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputUri":
+            suggest = "input_uri"
+        elif key == "mimeType":
+            suggest = "mime_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1GcsSourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1GcsSourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1GcsSourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  input_uri: str,
                  mime_type: str):
@@ -465,15 +646,43 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse(dict):
         """
         return pulumi.get(self, "mime_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse(dict):
     """
     Configuration for how human labeling task should be done.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "annotatedDatasetDescription":
+            suggest = "annotated_dataset_description"
+        elif key == "annotatedDatasetDisplayName":
+            suggest = "annotated_dataset_display_name"
+        elif key == "contributorEmails":
+            suggest = "contributor_emails"
+        elif key == "labelGroup":
+            suggest = "label_group"
+        elif key == "languageCode":
+            suggest = "language_code"
+        elif key == "questionDuration":
+            suggest = "question_duration"
+        elif key == "replicaCount":
+            suggest = "replica_count"
+        elif key == "userEmailAddress":
+            suggest = "user_email_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotated_dataset_description: str,
                  annotated_dataset_display_name: str,
@@ -578,15 +787,33 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse(dict):
         """
         return pulumi.get(self, "user_email_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse(dict):
     """
     Config for image classification human labeling task.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowMultiLabel":
+            suggest = "allow_multi_label"
+        elif key == "annotationSpecSet":
+            suggest = "annotation_spec_set"
+        elif key == "answerAggregationType":
+            suggest = "answer_aggregation_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_multi_label: bool,
                  annotation_spec_set: str,
@@ -625,15 +852,39 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse(dict):
         """
         return pulumi.get(self, "answer_aggregation_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1InputConfigResponse(dict):
     """
     The configuration of input data, including data type, location, etc.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "annotationType":
+            suggest = "annotation_type"
+        elif key == "bigquerySource":
+            suggest = "bigquery_source"
+        elif key == "classificationMetadata":
+            suggest = "classification_metadata"
+        elif key == "dataType":
+            suggest = "data_type"
+        elif key == "gcsSource":
+            suggest = "gcs_source"
+        elif key == "textMetadata":
+            suggest = "text_metadata"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1InputConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1InputConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1InputConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annotation_type: str,
                  bigquery_source: 'outputs.GoogleCloudDatalabelingV1beta1BigQuerySourceResponse',
@@ -705,9 +956,6 @@ class GoogleCloudDatalabelingV1beta1InputConfigResponse(dict):
         """
         return pulumi.get(self, "text_metadata")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse(dict):
@@ -720,15 +968,29 @@ class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1PdfInstructionResponse(dict):
     """
     Instruction from a PDF file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsFileUri":
+            suggest = "gcs_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1PdfInstructionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1PdfInstructionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1PdfInstructionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gcs_file_uri: str):
         """
@@ -745,9 +1007,6 @@ class GoogleCloudDatalabelingV1beta1PdfInstructionResponse(dict):
         """
         return pulumi.get(self, "gcs_file_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse(dict):
@@ -760,15 +1019,29 @@ class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse(dict):
         """
         pass
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1SentimentConfigResponse(dict):
     """
     Config for setting up sentiments.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableLabelSentimentSelection":
+            suggest = "enable_label_sentiment_selection"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1SentimentConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1SentimentConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1SentimentConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_label_sentiment_selection: bool):
         """
@@ -785,15 +1058,33 @@ class GoogleCloudDatalabelingV1beta1SentimentConfigResponse(dict):
         """
         return pulumi.get(self, "enable_label_sentiment_selection")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse(dict):
     """
     Config for text classification human labeling task.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowMultiLabel":
+            suggest = "allow_multi_label"
+        elif key == "annotationSpecSet":
+            suggest = "annotation_spec_set"
+        elif key == "sentimentConfig":
+            suggest = "sentiment_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_multi_label: bool,
                  annotation_spec_set: str,
@@ -832,15 +1123,29 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse(dict):
         """
         return pulumi.get(self, "sentiment_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudDatalabelingV1beta1TextMetadataResponse(dict):
     """
     Metadata for the text.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDatalabelingV1beta1TextMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDatalabelingV1beta1TextMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDatalabelingV1beta1TextMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  language_code: str):
         """
@@ -856,9 +1161,6 @@ class GoogleCloudDatalabelingV1beta1TextMetadataResponse(dict):
         The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
         """
         return pulumi.get(self, "language_code")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -903,8 +1205,5 @@ class GoogleRpcStatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

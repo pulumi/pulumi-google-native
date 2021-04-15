@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -32,6 +32,23 @@ class AppEngineHttpQueueResponse(dict):
     """
     App Engine HTTP queue. The task will be delivered to the App Engine application hostname specified by its AppEngineHttpQueue and AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is constructed. Using AppEngineHttpQueue requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform`
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appEngineRoutingOverride":
+            suggest = "app_engine_routing_override"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineHttpQueueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineHttpQueueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineHttpQueueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_engine_routing_override: 'outputs.AppEngineRoutingResponse'):
         """
@@ -48,15 +65,33 @@ class AppEngineHttpQueueResponse(dict):
         """
         return pulumi.get(self, "app_engine_routing_override")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineHttpRequestResponse(dict):
     """
     App Engine HTTP request. The message defines the HTTP request that is sent to an App Engine app when the task is dispatched. Using AppEngineHttpRequest requires [`appengine.applications.get`](https://cloud.google.com/appengine/docs/admin-api/access-control) Google IAM permission for the project and the following scope: `https://www.googleapis.com/auth/cloud-platform` The task will be delivered to the App Engine app which belongs to the same project as the queue. For more information, see [How Requests are Routed](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch files](https://cloud.google.com/appengine/docs/python/config/dispatchref). Traffic is encrypted during transport and never leaves Google datacenters. Because this traffic is carried over a communication mechanism internal to Google, you cannot explicitly set the protocol (for example, HTTP or HTTPS). The request to the handler, however, will appear to have used the HTTP protocol. The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or task-level: * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing. The `url` that the task will be sent to is: * `url =` host `+` relative_uri Tasks can be dispatched to secure app handlers, unsecure app handlers, and URIs restricted with [`login: admin`](https://cloud.google.com/appengine/docs/standard/python/config/appref). Because tasks are not run as any user, they cannot be dispatched to URIs restricted with [`login: required`](https://cloud.google.com/appengine/docs/standard/python/config/appref) Task dispatches also do not follow redirects. The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` - `299`]. The task attempt has failed if the app's handler returns a non-2xx response code or Cloud Tasks does not receive response before the deadline. Failed tasks will be retried according to the retry configuration. `503` (Service Unavailable) is considered an App Engine system error instead of an application error and will cause Cloud Tasks' traffic congestion control to temporarily throttle the queue's dispatches. Unlike other types of task targets, a `429` (Too Many Requests) response from an app handler does not cause traffic congestion control to throttle the queue.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appEngineRouting":
+            suggest = "app_engine_routing"
+        elif key == "httpMethod":
+            suggest = "http_method"
+        elif key == "relativeUri":
+            suggest = "relative_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppEngineHttpRequestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppEngineHttpRequestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppEngineHttpRequestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_engine_routing: 'outputs.AppEngineRoutingResponse',
                  body: str,
@@ -117,9 +152,6 @@ class AppEngineHttpRequestResponse(dict):
         """
         return pulumi.get(self, "relative_uri")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AppEngineRoutingResponse(dict):
@@ -175,15 +207,35 @@ class AppEngineRoutingResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AttemptResponse(dict):
     """
     The status of a task attempt.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dispatchTime":
+            suggest = "dispatch_time"
+        elif key == "responseStatus":
+            suggest = "response_status"
+        elif key == "responseTime":
+            suggest = "response_time"
+        elif key == "scheduleTime":
+            suggest = "schedule_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AttemptResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AttemptResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AttemptResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dispatch_time: str,
                  response_status: 'outputs.StatusResponse',
@@ -233,9 +285,6 @@ class AttemptResponse(dict):
         """
         return pulumi.get(self, "schedule_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BindingResponse(dict):
@@ -279,9 +328,6 @@ class BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -338,15 +384,33 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class HttpRequestResponse(dict):
     """
     HTTP request. The task will be pushed to the worker as an HTTP request. If the worker or the redirected worker acknowledges the task by returning a successful HTTP response code ([`200` - `299`]), the task will be removed from the queue. If any other HTTP response code is returned or no response is received, the task will be retried according to the following: * User-specified throttling: retry configuration, rate limits, and the queue's state. * System throttling: To prevent the worker from overloading, Cloud Tasks may temporarily reduce the queue's effective rate. User-specified settings will not be changed. System throttling happens because: * Cloud Tasks backs off on all errors. Normally the backoff specified in rate limits will be used. But if the worker returns `429` (Too Many Requests), `503` (Service Unavailable), or the rate of errors is high, Cloud Tasks will use a higher backoff rate. The retry specified in the `Retry-After` HTTP response header is considered. * To prevent traffic spikes and to smooth sudden increases in traffic, dispatches ramp up slowly when the queue is newly created or idle and if large numbers of tasks suddenly become available to dispatch (due to spikes in create task rates, the queue being unpaused, or many tasks that are scheduled at the same time).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "httpMethod":
+            suggest = "http_method"
+        elif key == "oauthToken":
+            suggest = "oauth_token"
+        elif key == "oidcToken":
+            suggest = "oidc_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in HttpRequestResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        HttpRequestResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        HttpRequestResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  body: str,
                  headers: Mapping[str, str],
@@ -418,15 +482,29 @@ class HttpRequestResponse(dict):
         """
         return pulumi.get(self, "url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OAuthTokenResponse(dict):
     """
     Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OAuthTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OAuthTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  scope: str,
                  service_account_email: str):
@@ -454,15 +532,29 @@ class OAuthTokenResponse(dict):
         """
         return pulumi.get(self, "service_account_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OidcTokenResponse(dict):
     """
     Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OidcTokenResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OidcTokenResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audience: str,
                  service_account_email: str):
@@ -489,9 +581,6 @@ class OidcTokenResponse(dict):
         [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
         """
         return pulumi.get(self, "service_account_email")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -526,15 +615,37 @@ class PullMessageResponse(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class QueueStatsResponse(dict):
     """
     Statistics for a queue.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "concurrentDispatchesCount":
+            suggest = "concurrent_dispatches_count"
+        elif key == "effectiveExecutionRate":
+            suggest = "effective_execution_rate"
+        elif key == "executedLastMinuteCount":
+            suggest = "executed_last_minute_count"
+        elif key == "oldestEstimatedArrivalTime":
+            suggest = "oldest_estimated_arrival_time"
+        elif key == "tasksCount":
+            suggest = "tasks_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QueueStatsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QueueStatsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QueueStatsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  concurrent_dispatches_count: str,
                  effective_execution_rate: float,
@@ -595,15 +706,33 @@ class QueueStatsResponse(dict):
         """
         return pulumi.get(self, "tasks_count")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RateLimitsResponse(dict):
     """
     Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxBurstSize":
+            suggest = "max_burst_size"
+        elif key == "maxConcurrentDispatches":
+            suggest = "max_concurrent_dispatches"
+        elif key == "maxDispatchesPerSecond":
+            suggest = "max_dispatches_per_second"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RateLimitsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RateLimitsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RateLimitsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_burst_size: int,
                  max_concurrent_dispatches: int,
@@ -642,15 +771,37 @@ class RateLimitsResponse(dict):
         """
         return pulumi.get(self, "max_dispatches_per_second")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RetryConfigResponse(dict):
     """
     Retry config. These settings determine when a failed task attempt is retried.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxAttempts":
+            suggest = "max_attempts"
+        elif key == "maxBackoff":
+            suggest = "max_backoff"
+        elif key == "maxDoublings":
+            suggest = "max_doublings"
+        elif key == "maxRetryDuration":
+            suggest = "max_retry_duration"
+        elif key == "minBackoff":
+            suggest = "min_backoff"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_attempts: int,
                  max_backoff: str,
@@ -711,15 +862,29 @@ class RetryConfigResponse(dict):
         """
         return pulumi.get(self, "min_backoff")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StackdriverLoggingConfigResponse(dict):
     """
     Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRatio":
+            suggest = "sampling_ratio"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StackdriverLoggingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StackdriverLoggingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StackdriverLoggingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sampling_ratio: float):
         """
@@ -735,9 +900,6 @@ class StackdriverLoggingConfigResponse(dict):
         Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
         """
         return pulumi.get(self, "sampling_ratio")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -782,8 +944,5 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

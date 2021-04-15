@@ -5,14 +5,97 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['Device']
+__all__ = ['DeviceArgs', 'Device']
+
+@pulumi.input_type
+class DeviceArgs:
+    def __init__(__self__, *,
+                 devices_id: pulumi.Input[str],
+                 asset_tag: Optional[pulumi.Input[str]] = None,
+                 last_sync_time: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The set of arguments for constructing a Device resource.
+        :param pulumi.Input[str] asset_tag: Asset tag of the device.
+        :param pulumi.Input[str] last_sync_time: Most recent time when device synced with this service.
+        :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
+        """
+        pulumi.set(__self__, "devices_id", devices_id)
+        if asset_tag is not None:
+            pulumi.set(__self__, "asset_tag", asset_tag)
+        if last_sync_time is not None:
+            pulumi.set(__self__, "last_sync_time", last_sync_time)
+        if serial_number is not None:
+            pulumi.set(__self__, "serial_number", serial_number)
+        if wifi_mac_addresses is not None:
+            pulumi.set(__self__, "wifi_mac_addresses", wifi_mac_addresses)
+
+    @property
+    @pulumi.getter(name="devicesId")
+    def devices_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "devices_id")
+
+    @devices_id.setter
+    def devices_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "devices_id", value)
+
+    @property
+    @pulumi.getter(name="assetTag")
+    def asset_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        Asset tag of the device.
+        """
+        return pulumi.get(self, "asset_tag")
+
+    @asset_tag.setter
+    def asset_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "asset_tag", value)
+
+    @property
+    @pulumi.getter(name="lastSyncTime")
+    def last_sync_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Most recent time when device synced with this service.
+        """
+        return pulumi.get(self, "last_sync_time")
+
+    @last_sync_time.setter
+    def last_sync_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_sync_time", value)
+
+    @property
+    @pulumi.getter(name="serialNumber")
+    def serial_number(self) -> Optional[pulumi.Input[str]]:
+        """
+        Serial Number of device. Example: HT82V1A01076.
+        """
+        return pulumi.get(self, "serial_number")
+
+    @serial_number.setter
+    def serial_number(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "serial_number", value)
+
+    @property
+    @pulumi.getter(name="wifiMacAddresses")
+    def wifi_mac_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        WiFi MAC addresses of device.
+        """
+        return pulumi.get(self, "wifi_mac_addresses")
+
+    @wifi_mac_addresses.setter
+    def wifi_mac_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "wifi_mac_addresses", value)
 
 
 class Device(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -21,9 +104,7 @@ class Device(pulumi.CustomResource):
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium
 
@@ -34,12 +115,36 @@ class Device(pulumi.CustomResource):
         :param pulumi.Input[str] serial_number: Serial Number of device. Example: HT82V1A01076.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wifi_mac_addresses: WiFi MAC addresses of device.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DeviceArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium
+
+        :param str resource_name: The name of the resource.
+        :param DeviceArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DeviceArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 asset_tag: Optional[pulumi.Input[str]] = None,
+                 devices_id: Optional[pulumi.Input[str]] = None,
+                 last_sync_time: Optional[pulumi.Input[str]] = None,
+                 serial_number: Optional[pulumi.Input[str]] = None,
+                 wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -49,39 +154,39 @@ class Device(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DeviceArgs.__new__(DeviceArgs)
 
-            __props__['asset_tag'] = asset_tag
+            __props__.__dict__["asset_tag"] = asset_tag
             if devices_id is None and not opts.urn:
                 raise TypeError("Missing required property 'devices_id'")
-            __props__['devices_id'] = devices_id
-            __props__['last_sync_time'] = last_sync_time
-            __props__['serial_number'] = serial_number
-            __props__['wifi_mac_addresses'] = wifi_mac_addresses
-            __props__['android_specific_attributes'] = None
-            __props__['baseband_version'] = None
-            __props__['bootloader_version'] = None
-            __props__['brand'] = None
-            __props__['build_number'] = None
-            __props__['compromised_state'] = None
-            __props__['create_time'] = None
-            __props__['device_type'] = None
-            __props__['enabled_developer_options'] = None
-            __props__['enabled_usb_debugging'] = None
-            __props__['encryption_state'] = None
-            __props__['imei'] = None
-            __props__['kernel_version'] = None
-            __props__['management_state'] = None
-            __props__['manufacturer'] = None
-            __props__['meid'] = None
-            __props__['model'] = None
-            __props__['name'] = None
-            __props__['network_operator'] = None
-            __props__['os_version'] = None
-            __props__['other_accounts'] = None
-            __props__['owner_type'] = None
-            __props__['release_version'] = None
-            __props__['security_patch_time'] = None
+            __props__.__dict__["devices_id"] = devices_id
+            __props__.__dict__["last_sync_time"] = last_sync_time
+            __props__.__dict__["serial_number"] = serial_number
+            __props__.__dict__["wifi_mac_addresses"] = wifi_mac_addresses
+            __props__.__dict__["android_specific_attributes"] = None
+            __props__.__dict__["baseband_version"] = None
+            __props__.__dict__["bootloader_version"] = None
+            __props__.__dict__["brand"] = None
+            __props__.__dict__["build_number"] = None
+            __props__.__dict__["compromised_state"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["device_type"] = None
+            __props__.__dict__["enabled_developer_options"] = None
+            __props__.__dict__["enabled_usb_debugging"] = None
+            __props__.__dict__["encryption_state"] = None
+            __props__.__dict__["imei"] = None
+            __props__.__dict__["kernel_version"] = None
+            __props__.__dict__["management_state"] = None
+            __props__.__dict__["manufacturer"] = None
+            __props__.__dict__["meid"] = None
+            __props__.__dict__["model"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["network_operator"] = None
+            __props__.__dict__["os_version"] = None
+            __props__.__dict__["other_accounts"] = None
+            __props__.__dict__["owner_type"] = None
+            __props__.__dict__["release_version"] = None
+            __props__.__dict__["security_patch_time"] = None
         super(Device, __self__).__init__(
             'gcp-native:cloudidentity/v1:Device',
             resource_name,
@@ -102,36 +207,36 @@ class Device(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DeviceArgs.__new__(DeviceArgs)
 
-        __props__["android_specific_attributes"] = None
-        __props__["asset_tag"] = None
-        __props__["baseband_version"] = None
-        __props__["bootloader_version"] = None
-        __props__["brand"] = None
-        __props__["build_number"] = None
-        __props__["compromised_state"] = None
-        __props__["create_time"] = None
-        __props__["device_type"] = None
-        __props__["enabled_developer_options"] = None
-        __props__["enabled_usb_debugging"] = None
-        __props__["encryption_state"] = None
-        __props__["imei"] = None
-        __props__["kernel_version"] = None
-        __props__["last_sync_time"] = None
-        __props__["management_state"] = None
-        __props__["manufacturer"] = None
-        __props__["meid"] = None
-        __props__["model"] = None
-        __props__["name"] = None
-        __props__["network_operator"] = None
-        __props__["os_version"] = None
-        __props__["other_accounts"] = None
-        __props__["owner_type"] = None
-        __props__["release_version"] = None
-        __props__["security_patch_time"] = None
-        __props__["serial_number"] = None
-        __props__["wifi_mac_addresses"] = None
+        __props__.__dict__["android_specific_attributes"] = None
+        __props__.__dict__["asset_tag"] = None
+        __props__.__dict__["baseband_version"] = None
+        __props__.__dict__["bootloader_version"] = None
+        __props__.__dict__["brand"] = None
+        __props__.__dict__["build_number"] = None
+        __props__.__dict__["compromised_state"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["device_type"] = None
+        __props__.__dict__["enabled_developer_options"] = None
+        __props__.__dict__["enabled_usb_debugging"] = None
+        __props__.__dict__["encryption_state"] = None
+        __props__.__dict__["imei"] = None
+        __props__.__dict__["kernel_version"] = None
+        __props__.__dict__["last_sync_time"] = None
+        __props__.__dict__["management_state"] = None
+        __props__.__dict__["manufacturer"] = None
+        __props__.__dict__["meid"] = None
+        __props__.__dict__["model"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["network_operator"] = None
+        __props__.__dict__["os_version"] = None
+        __props__.__dict__["other_accounts"] = None
+        __props__.__dict__["owner_type"] = None
+        __props__.__dict__["release_version"] = None
+        __props__.__dict__["security_patch_time"] = None
+        __props__.__dict__["serial_number"] = None
+        __props__.__dict__["wifi_mac_addresses"] = None
         return Device(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -357,10 +462,4 @@ class Device(pulumi.CustomResource):
         WiFi MAC addresses of device.
         """
         return pulumi.get(self, "wifi_mac_addresses")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

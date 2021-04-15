@@ -5,13 +5,118 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Reservation']
+__all__ = ['ReservationArgs', 'Reservation']
+
+@pulumi.input_type
+class ReservationArgs:
+    def __init__(__self__, *,
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 reservations_id: pulumi.Input[str],
+                 ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 max_concurrency: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 slot_capacity: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Reservation resource.
+        :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        :param pulumi.Input[str] max_concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+        :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+        """
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "reservations_id", reservations_id)
+        if ignore_idle_slots is not None:
+            pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
+        if max_concurrency is not None:
+            pulumi.set(__self__, "max_concurrency", max_concurrency)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if slot_capacity is not None:
+            pulumi.set(__self__, "slot_capacity", slot_capacity)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="reservationsId")
+    def reservations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "reservations_id")
+
+    @reservations_id.setter
+    def reservations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "reservations_id", value)
+
+    @property
+    @pulumi.getter(name="ignoreIdleSlots")
+    def ignore_idle_slots(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
+        """
+        return pulumi.get(self, "ignore_idle_slots")
+
+    @ignore_idle_slots.setter
+    def ignore_idle_slots(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_idle_slots", value)
+
+    @property
+    @pulumi.getter(name="maxConcurrency")
+    def max_concurrency(self) -> Optional[pulumi.Input[str]]:
+        """
+        Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
+        """
+        return pulumi.get(self, "max_concurrency")
+
+    @max_concurrency.setter
+    def max_concurrency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_concurrency", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="slotCapacity")
+    def slot_capacity(self) -> Optional[pulumi.Input[str]]:
+        """
+        Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
+        """
+        return pulumi.get(self, "slot_capacity")
+
+    @slot_capacity.setter
+    def slot_capacity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slot_capacity", value)
 
 
 class Reservation(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -22,9 +127,7 @@ class Reservation(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new reservation resource.
 
@@ -35,12 +138,38 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ReservationArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new reservation resource.
+
+        :param str resource_name: The name of the resource.
+        :param ReservationArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 max_concurrency: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 reservations_id: Optional[pulumi.Input[str]] = None,
+                 slot_capacity: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -50,23 +179,23 @@ class Reservation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ReservationArgs.__new__(ReservationArgs)
 
-            __props__['ignore_idle_slots'] = ignore_idle_slots
+            __props__.__dict__["ignore_idle_slots"] = ignore_idle_slots
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['max_concurrency'] = max_concurrency
-            __props__['name'] = name
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["max_concurrency"] = max_concurrency
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
+            __props__.__dict__["projects_id"] = projects_id
             if reservations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reservations_id'")
-            __props__['reservations_id'] = reservations_id
-            __props__['slot_capacity'] = slot_capacity
-            __props__['creation_time'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["reservations_id"] = reservations_id
+            __props__.__dict__["slot_capacity"] = slot_capacity
+            __props__.__dict__["creation_time"] = None
+            __props__.__dict__["update_time"] = None
         super(Reservation, __self__).__init__(
             'gcp-native:bigqueryreservation/v1beta1:Reservation',
             resource_name,
@@ -87,14 +216,14 @@ class Reservation(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ReservationArgs.__new__(ReservationArgs)
 
-        __props__["creation_time"] = None
-        __props__["ignore_idle_slots"] = None
-        __props__["max_concurrency"] = None
-        __props__["name"] = None
-        __props__["slot_capacity"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["creation_time"] = None
+        __props__.__dict__["ignore_idle_slots"] = None
+        __props__.__dict__["max_concurrency"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["slot_capacity"] = None
+        __props__.__dict__["update_time"] = None
         return Reservation(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -144,10 +273,4 @@ class Reservation(pulumi.CustomResource):
         Last update time of the reservation.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

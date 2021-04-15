@@ -5,13 +5,123 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
-__all__ = ['Hub']
+__all__ = ['HubArgs', 'Hub']
+
+@pulumi.input_type
+class HubArgs:
+    def __init__(__self__, *,
+                 hubs_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a Hub resource.
+        :param pulumi.Input[str] create_time: Time when the Hub was created.
+        :param pulumi.Input[str] description: Short description of the hub resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels.
+        :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
+        :param pulumi.Input[str] update_time: Time when the Hub was updated.
+        """
+        pulumi.set(__self__, "hubs_id", hubs_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="hubsId")
+    def hubs_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "hubs_id")
+
+    @hubs_id.setter
+    def hubs_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hubs_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time when the Hub was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Short description of the hub resource.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-defined labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Immutable. The name of a Hub resource.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Time when the Hub was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "update_time", value)
 
 
 class Hub(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -22,9 +132,7 @@ class Hub(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new Hub in a given project and location.
 
@@ -36,12 +144,38 @@ class Hub(pulumi.CustomResource):
         :param pulumi.Input[str] name: Immutable. The name of a Hub resource.
         :param pulumi.Input[str] update_time: Time when the Hub was updated.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: HubArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Hub in a given project and location.
+
+        :param str resource_name: The name of the resource.
+        :param HubArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(HubArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 hubs_id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -51,22 +185,22 @@ class Hub(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = HubArgs.__new__(HubArgs)
 
-            __props__['create_time'] = create_time
-            __props__['description'] = description
+            __props__.__dict__["create_time"] = create_time
+            __props__.__dict__["description"] = description
             if hubs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hubs_id'")
-            __props__['hubs_id'] = hubs_id
-            __props__['labels'] = labels
-            __props__['name'] = name
+            __props__.__dict__["hubs_id"] = hubs_id
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['update_time'] = update_time
-            __props__['spokes'] = None
-            __props__['state'] = None
-            __props__['unique_id'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["update_time"] = update_time
+            __props__.__dict__["spokes"] = None
+            __props__.__dict__["state"] = None
+            __props__.__dict__["unique_id"] = None
         super(Hub, __self__).__init__(
             'gcp-native:networkconnectivity/v1alpha1:Hub',
             resource_name,
@@ -87,16 +221,16 @@ class Hub(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = HubArgs.__new__(HubArgs)
 
-        __props__["create_time"] = None
-        __props__["description"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["spokes"] = None
-        __props__["state"] = None
-        __props__["unique_id"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["spokes"] = None
+        __props__.__dict__["state"] = None
+        __props__.__dict__["unique_id"] = None
+        __props__.__dict__["update_time"] = None
         return Hub(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -162,10 +296,4 @@ class Hub(pulumi.CustomResource):
         Time when the Hub was updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

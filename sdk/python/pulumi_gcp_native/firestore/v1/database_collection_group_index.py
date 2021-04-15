@@ -5,15 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatabaseCollectionGroupIndex']
+__all__ = ['DatabaseCollectionGroupIndexArgs', 'DatabaseCollectionGroupIndex']
+
+@pulumi.input_type
+class DatabaseCollectionGroupIndexArgs:
+    def __init__(__self__, *,
+                 collection_groups_id: pulumi.Input[str],
+                 databases_id: pulumi.Input[str],
+                 indexes_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 query_scope: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DatabaseCollectionGroupIndex resource.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]] fields: The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
+        :param pulumi.Input[str] name: A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
+        :param pulumi.Input[str] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
+        :param pulumi.Input[str] state: The serving state of the index.
+        """
+        pulumi.set(__self__, "collection_groups_id", collection_groups_id)
+        pulumi.set(__self__, "databases_id", databases_id)
+        pulumi.set(__self__, "indexes_id", indexes_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if query_scope is not None:
+            pulumi.set(__self__, "query_scope", query_scope)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="collectionGroupsId")
+    def collection_groups_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "collection_groups_id")
+
+    @collection_groups_id.setter
+    def collection_groups_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "collection_groups_id", value)
+
+    @property
+    @pulumi.getter(name="databasesId")
+    def databases_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "databases_id")
+
+    @databases_id.setter
+    def databases_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "databases_id", value)
+
+    @property
+    @pulumi.getter(name="indexesId")
+    def indexes_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "indexes_id")
+
+    @indexes_id.setter
+    def indexes_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "indexes_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]]:
+        """
+        The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="queryScope")
+    def query_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
+        """
+        return pulumi.get(self, "query_scope")
+
+    @query_scope.setter
+    def query_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "query_scope", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The serving state of the index.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class DatabaseCollectionGroupIndex(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -25,9 +141,7 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
 
@@ -38,12 +152,39 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
         :param pulumi.Input[str] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         :param pulumi.Input[str] state: The serving state of the index.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseCollectionGroupIndexArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseCollectionGroupIndexArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseCollectionGroupIndexArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 collection_groups_id: Optional[pulumi.Input[str]] = None,
+                 databases_id: Optional[pulumi.Input[str]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
+                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 query_scope: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -53,24 +194,24 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseCollectionGroupIndexArgs.__new__(DatabaseCollectionGroupIndexArgs)
 
             if collection_groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'collection_groups_id'")
-            __props__['collection_groups_id'] = collection_groups_id
+            __props__.__dict__["collection_groups_id"] = collection_groups_id
             if databases_id is None and not opts.urn:
                 raise TypeError("Missing required property 'databases_id'")
-            __props__['databases_id'] = databases_id
-            __props__['fields'] = fields
+            __props__.__dict__["databases_id"] = databases_id
+            __props__.__dict__["fields"] = fields
             if indexes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'indexes_id'")
-            __props__['indexes_id'] = indexes_id
-            __props__['name'] = name
+            __props__.__dict__["indexes_id"] = indexes_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['query_scope'] = query_scope
-            __props__['state'] = state
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["query_scope"] = query_scope
+            __props__.__dict__["state"] = state
         super(DatabaseCollectionGroupIndex, __self__).__init__(
             'gcp-native:firestore/v1:DatabaseCollectionGroupIndex',
             resource_name,
@@ -91,12 +232,12 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatabaseCollectionGroupIndexArgs.__new__(DatabaseCollectionGroupIndexArgs)
 
-        __props__["fields"] = None
-        __props__["name"] = None
-        __props__["query_scope"] = None
-        __props__["state"] = None
+        __props__.__dict__["fields"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["query_scope"] = None
+        __props__.__dict__["state"] = None
         return DatabaseCollectionGroupIndex(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -130,10 +271,4 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
         The serving state of the index.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -5,15 +5,120 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['DatabaseIndex']
+__all__ = ['DatabaseIndexArgs', 'DatabaseIndex']
+
+@pulumi.input_type
+class DatabaseIndexArgs:
+    def __init__(__self__, *,
+                 databases_id: pulumi.Input[str],
+                 indexes_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 collection_id: Optional[pulumi.Input[str]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a DatabaseIndex resource.
+        :param pulumi.Input[str] collection_id: The collection ID to which this index applies. Required.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]] fields: The fields to index.
+        :param pulumi.Input[str] name: The resource name of the index. Output only.
+        :param pulumi.Input[str] state: The state of the index. Output only.
+        """
+        pulumi.set(__self__, "databases_id", databases_id)
+        pulumi.set(__self__, "indexes_id", indexes_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if collection_id is not None:
+            pulumi.set(__self__, "collection_id", collection_id)
+        if fields is not None:
+            pulumi.set(__self__, "fields", fields)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="databasesId")
+    def databases_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "databases_id")
+
+    @databases_id.setter
+    def databases_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "databases_id", value)
+
+    @property
+    @pulumi.getter(name="indexesId")
+    def indexes_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "indexes_id")
+
+    @indexes_id.setter
+    def indexes_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "indexes_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="collectionId")
+    def collection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The collection ID to which this index applies. Required.
+        """
+        return pulumi.get(self, "collection_id")
+
+    @collection_id.setter
+    def collection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "collection_id", value)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]:
+        """
+        The fields to index.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the index. Output only.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the index. Output only.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class DatabaseIndex(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -24,9 +129,7 @@ class DatabaseIndex(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
 
@@ -37,12 +140,38 @@ class DatabaseIndex(pulumi.CustomResource):
         :param pulumi.Input[str] name: The resource name of the index. Output only.
         :param pulumi.Input[str] state: The state of the index. Output only.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: DatabaseIndexArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
+
+        :param str resource_name: The name of the resource.
+        :param DatabaseIndexArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(DatabaseIndexArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 collection_id: Optional[pulumi.Input[str]] = None,
+                 databases_id: Optional[pulumi.Input[str]] = None,
+                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1beta1IndexFieldArgs']]]]] = None,
+                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -52,21 +181,21 @@ class DatabaseIndex(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = DatabaseIndexArgs.__new__(DatabaseIndexArgs)
 
-            __props__['collection_id'] = collection_id
+            __props__.__dict__["collection_id"] = collection_id
             if databases_id is None and not opts.urn:
                 raise TypeError("Missing required property 'databases_id'")
-            __props__['databases_id'] = databases_id
-            __props__['fields'] = fields
+            __props__.__dict__["databases_id"] = databases_id
+            __props__.__dict__["fields"] = fields
             if indexes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'indexes_id'")
-            __props__['indexes_id'] = indexes_id
-            __props__['name'] = name
+            __props__.__dict__["indexes_id"] = indexes_id
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['state'] = state
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["state"] = state
         super(DatabaseIndex, __self__).__init__(
             'gcp-native:firestore/v1beta1:DatabaseIndex',
             resource_name,
@@ -87,12 +216,12 @@ class DatabaseIndex(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = DatabaseIndexArgs.__new__(DatabaseIndexArgs)
 
-        __props__["collection_id"] = None
-        __props__["fields"] = None
-        __props__["name"] = None
-        __props__["state"] = None
+        __props__.__dict__["collection_id"] = None
+        __props__.__dict__["fields"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["state"] = None
         return DatabaseIndex(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -126,10 +255,4 @@ class DatabaseIndex(pulumi.CustomResource):
         The state of the index. Output only.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

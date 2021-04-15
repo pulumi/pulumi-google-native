@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -40,6 +40,23 @@ class AcceleratorConfigResponse(dict):
     """
     Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreCount":
+            suggest = "core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  core_count: str,
                  type: str):
@@ -66,9 +83,6 @@ class AcceleratorConfigResponse(dict):
         Type of this accelerator.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -114,9 +128,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ContainerImageResponse(dict):
@@ -150,15 +161,35 @@ class ContainerImageResponse(dict):
         """
         return pulumi.get(self, "tag")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskResponse(dict):
     """
     An instance-attached disk resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_delete: bool,
                  boot: bool,
@@ -296,15 +327,29 @@ class DiskResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class EncryptionConfigResponse(dict):
     """
     Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kms_key: str):
         """
@@ -321,15 +366,37 @@ class EncryptionConfigResponse(dict):
         """
         return pulumi.get(self, "kms_key")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutionResponse(dict):
     """
     The definition of a single executed notebook.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "executionTemplate":
+            suggest = "execution_template"
+        elif key == "outputNotebookFile":
+            suggest = "output_notebook_file"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  description: str,
@@ -423,15 +490,41 @@ class ExecutionResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExecutionTemplateResponse(dict):
     """
     The description a notebook execution workload.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorConfig":
+            suggest = "accelerator_config"
+        elif key == "containerImageUri":
+            suggest = "container_image_uri"
+        elif key == "inputNotebookFile":
+            suggest = "input_notebook_file"
+        elif key == "masterType":
+            suggest = "master_type"
+        elif key == "outputNotebookFolder":
+            suggest = "output_notebook_folder"
+        elif key == "paramsYamlFile":
+            suggest = "params_yaml_file"
+        elif key == "scaleTier":
+            suggest = "scale_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExecutionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExecutionTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExecutionTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_config: 'outputs.SchedulerAcceleratorConfigResponse',
                  container_image_uri: str,
@@ -536,9 +629,6 @@ class ExecutionTemplateResponse(dict):
         """
         return pulumi.get(self, "scale_tier")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExprResponse(dict):
@@ -594,9 +684,6 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GuestOsFeatureResponse(dict):
@@ -619,15 +706,33 @@ class GuestOsFeatureResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocalDiskInitializeParamsResponse(dict):
     """
     [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskName":
+            suggest = "disk_name"
+        elif key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocalDiskInitializeParamsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocalDiskInitializeParamsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocalDiskInitializeParamsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  disk_name: str,
@@ -688,15 +793,35 @@ class LocalDiskInitializeParamsResponse(dict):
         """
         return pulumi.get(self, "labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocalDiskResponse(dict):
     """
     An Local attached disk resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoDelete":
+            suggest = "auto_delete"
+        elif key == "deviceName":
+            suggest = "device_name"
+        elif key == "guestOsFeatures":
+            suggest = "guest_os_features"
+        elif key == "initializeParams":
+            suggest = "initialize_params"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocalDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocalDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocalDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  auto_delete: bool,
                  boot: bool,
@@ -834,15 +959,29 @@ class LocalDiskResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeAcceleratorConfigResponse(dict):
     """
     Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreCount":
+            suggest = "core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeAcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeAcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeAcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  core_count: str,
                  type: str):
@@ -870,15 +1009,33 @@ class RuntimeAcceleratorConfigResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeAccessConfigResponse(dict):
     """
     Specifies the login configuration for Runtime
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessType":
+            suggest = "access_type"
+        elif key == "proxyUri":
+            suggest = "proxy_uri"
+        elif key == "runtimeOwner":
+            suggest = "runtime_owner"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeAccessConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeAccessConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeAccessConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_type: str,
                  proxy_uri: str,
@@ -917,9 +1074,6 @@ class RuntimeAccessConfigResponse(dict):
         """
         return pulumi.get(self, "runtime_owner")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeGuestOsFeatureResponse(dict):
@@ -942,15 +1096,29 @@ class RuntimeGuestOsFeatureResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeMetricsResponse(dict):
     """
     Contains runtime daemon metrics, such as OS and kernels and sessions stats.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "systemMetrics":
+            suggest = "system_metrics"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeMetricsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeMetricsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeMetricsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  system_metrics: Mapping[str, str]):
         """
@@ -967,15 +1135,33 @@ class RuntimeMetricsResponse(dict):
         """
         return pulumi.get(self, "system_metrics")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeShieldedInstanceConfigResponse(dict):
     """
     A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeShieldedInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeShieldedInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeShieldedInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -1014,15 +1200,41 @@ class RuntimeShieldedInstanceConfigResponse(dict):
         """
         return pulumi.get(self, "enable_vtpm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RuntimeSoftwareConfigResponse(dict):
     """
     Specifies the selection and config of software inside the runtime. / The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * idle_shutdown: idle_shutdown=true * idle_shutdown_timeout: idle_shutdown_timeout=180 * report-system-health: report-system-health=true
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customGpuDriverPath":
+            suggest = "custom_gpu_driver_path"
+        elif key == "enableHealthMonitoring":
+            suggest = "enable_health_monitoring"
+        elif key == "idleShutdown":
+            suggest = "idle_shutdown"
+        elif key == "idleShutdownTimeout":
+            suggest = "idle_shutdown_timeout"
+        elif key == "installGpuDriver":
+            suggest = "install_gpu_driver"
+        elif key == "notebookUpgradeSchedule":
+            suggest = "notebook_upgrade_schedule"
+        elif key == "postStartupScript":
+            suggest = "post_startup_script"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeSoftwareConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeSoftwareConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeSoftwareConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  custom_gpu_driver_path: str,
                  enable_health_monitoring: bool,
@@ -1105,15 +1317,29 @@ class RuntimeSoftwareConfigResponse(dict):
         """
         return pulumi.get(self, "post_startup_script")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SchedulerAcceleratorConfigResponse(dict):
     """
     Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "coreCount":
+            suggest = "core_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchedulerAcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchedulerAcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchedulerAcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  core_count: str,
                  type: str):
@@ -1141,15 +1367,33 @@ class SchedulerAcceleratorConfigResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ShieldedInstanceConfigResponse(dict):
     """
     A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableIntegrityMonitoring":
+            suggest = "enable_integrity_monitoring"
+        elif key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+        elif key == "enableVtpm":
+            suggest = "enable_vtpm"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShieldedInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_integrity_monitoring: bool,
                  enable_secure_boot: bool,
@@ -1188,15 +1432,37 @@ class ShieldedInstanceConfigResponse(dict):
         """
         return pulumi.get(self, "enable_vtpm")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class UpgradeHistoryEntryResponse(dict):
     """
     The entry of VM image upgrade history.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImage":
+            suggest = "container_image"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "targetImage":
+            suggest = "target_image"
+        elif key == "targetVersion":
+            suggest = "target_version"
+        elif key == "vmImage":
+            suggest = "vm_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UpgradeHistoryEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UpgradeHistoryEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UpgradeHistoryEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  action: str,
                  container_image: str,
@@ -1312,15 +1578,43 @@ class UpgradeHistoryEntryResponse(dict):
         """
         return pulumi.get(self, "vm_image")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineConfigResponse(dict):
     """
     The config settings for virtual machine.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorConfig":
+            suggest = "accelerator_config"
+        elif key == "containerImages":
+            suggest = "container_images"
+        elif key == "dataDisk":
+            suggest = "data_disk"
+        elif key == "encryptionConfig":
+            suggest = "encryption_config"
+        elif key == "guestAttributes":
+            suggest = "guest_attributes"
+        elif key == "internalIpOnly":
+            suggest = "internal_ip_only"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "shieldedInstanceConfig":
+            suggest = "shielded_instance_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_config: 'outputs.RuntimeAcceleratorConfigResponse',
                  container_images: Sequence['outputs.ContainerImageResponse'],
@@ -1480,15 +1774,33 @@ class VirtualMachineConfigResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VirtualMachineResponse(dict):
     """
     Runtime using Virtual Machine for computing.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+        elif key == "instanceName":
+            suggest = "instance_name"
+        elif key == "virtualMachineConfig":
+            suggest = "virtual_machine_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VirtualMachineResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VirtualMachineResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VirtualMachineResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  instance_id: str,
                  instance_name: str,
@@ -1527,15 +1839,31 @@ class VirtualMachineResponse(dict):
         """
         return pulumi.get(self, "virtual_machine_config")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VmImageResponse(dict):
     """
     Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageFamily":
+            suggest = "image_family"
+        elif key == "imageName":
+            suggest = "image_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VmImageResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VmImageResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VmImageResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  image_family: str,
                  image_name: str,
@@ -1573,8 +1901,5 @@ class VmImageResponse(dict):
         Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
         """
         return pulumi.get(self, "project")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

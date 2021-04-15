@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -31,6 +31,23 @@ class ActingUserResponse(dict):
     """
     Contains metadata about the user who performed an action, such as creating a release or finalizing a version.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageUrl":
+            suggest = "image_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ActingUserResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ActingUserResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ActingUserResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  email: str,
                  image_url: str):
@@ -58,15 +75,29 @@ class ActingUserResponse(dict):
         """
         return pulumi.get(self, "image_url")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CertDnsChallengeResponse(dict):
     """
     Represents a DNS certificate challenge.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CertDnsChallengeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CertDnsChallengeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CertDnsChallengeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain_name: str,
                  token: str):
@@ -93,9 +124,6 @@ class CertDnsChallengeResponse(dict):
         The value that must be present as a TXT record on the domain name to satisfy the challenge.
         """
         return pulumi.get(self, "token")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -130,15 +158,29 @@ class CertHttpChallengeResponse(dict):
         """
         return pulumi.get(self, "token")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudRunRewriteResponse(dict):
     """
     A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceId":
+            suggest = "service_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudRunRewriteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudRunRewriteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudRunRewriteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  region: str,
                  service_id: str):
@@ -166,15 +208,43 @@ class CloudRunRewriteResponse(dict):
         """
         return pulumi.get(self, "service_id")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainProvisioningResponse(dict):
     """
     The current certificate provisioning status information for a domain.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certChallengeDiscoveredTxt":
+            suggest = "cert_challenge_discovered_txt"
+        elif key == "certChallengeDns":
+            suggest = "cert_challenge_dns"
+        elif key == "certChallengeHttp":
+            suggest = "cert_challenge_http"
+        elif key == "certStatus":
+            suggest = "cert_status"
+        elif key == "discoveredIps":
+            suggest = "discovered_ips"
+        elif key == "dnsFetchTime":
+            suggest = "dns_fetch_time"
+        elif key == "dnsStatus":
+            suggest = "dns_status"
+        elif key == "expectedIps":
+            suggest = "expected_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainProvisioningResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainProvisioningResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainProvisioningResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_challenge_discovered_txt: Sequence[str],
                  cert_challenge_dns: 'outputs.CertDnsChallengeResponse',
@@ -268,15 +338,29 @@ class DomainProvisioningResponse(dict):
         """
         return pulumi.get(self, "expected_ips")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DomainRedirectResponse(dict):
     """
     Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "domainName":
+            suggest = "domain_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DomainRedirectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DomainRedirectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DomainRedirectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  domain_name: str,
                  type: str):
@@ -303,9 +387,6 @@ class DomainRedirectResponse(dict):
         Required. The redirect status code.
         """
         return pulumi.get(self, "type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -351,9 +432,6 @@ class HeaderResponse(dict):
         """
         return pulumi.get(self, "regex")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class I18nConfigResponse(dict):
@@ -376,15 +454,29 @@ class I18nConfigResponse(dict):
         """
         return pulumi.get(self, "root")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PreviewConfigResponse(dict):
     """
     Deprecated in favor of [site channels](sites.channels).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PreviewConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PreviewConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PreviewConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  active: bool,
                  expire_time: str):
@@ -412,15 +504,29 @@ class PreviewConfigResponse(dict):
         """
         return pulumi.get(self, "expire_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RedirectResponse(dict):
     """
     A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusCode":
+            suggest = "status_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RedirectResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RedirectResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RedirectResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  glob: str,
                  location: str,
@@ -470,15 +576,31 @@ class RedirectResponse(dict):
         """
         return pulumi.get(self, "status_code")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReleaseResponse(dict):
     """
      A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "releaseTime":
+            suggest = "release_time"
+        elif key == "releaseUser":
+            suggest = "release_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReleaseResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReleaseResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReleaseResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  message: str,
                  name: str,
@@ -550,15 +672,29 @@ class ReleaseResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class RewriteResponse(dict):
     """
     A [`Rewrite`](https://firebase.google.com/docs/hosting/full-config#rewrites) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dynamicLinks":
+            suggest = "dynamic_links"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RewriteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RewriteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RewriteResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dynamic_links: bool,
                  function: str,
@@ -630,15 +766,33 @@ class RewriteResponse(dict):
         """
         return pulumi.get(self, "run")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServingConfigResponse(dict):
     """
     The configuration for how incoming requests to a site should be routed and processed before serving content. The URL request paths are matched against the specified URL patterns in the configuration, then Hosting applies the applicable configuration according to a specific [priority order](https://firebase.google.com/docs/hosting/full-config#hosting_priority_order).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appAssociation":
+            suggest = "app_association"
+        elif key == "cleanUrls":
+            suggest = "clean_urls"
+        elif key == "trailingSlashBehavior":
+            suggest = "trailing_slash_behavior"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  app_association: str,
                  clean_urls: bool,
@@ -721,15 +875,43 @@ class ServingConfigResponse(dict):
         """
         return pulumi.get(self, "trailing_slash_behavior")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VersionResponse(dict):
     """
     A `Version` is a configuration and a collection of static files which determine how a site is displayed.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "createUser":
+            suggest = "create_user"
+        elif key == "deleteTime":
+            suggest = "delete_time"
+        elif key == "deleteUser":
+            suggest = "delete_user"
+        elif key == "fileCount":
+            suggest = "file_count"
+        elif key == "finalizeTime":
+            suggest = "finalize_time"
+        elif key == "finalizeUser":
+            suggest = "finalize_user"
+        elif key == "versionBytes":
+            suggest = "version_bytes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VersionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  config: 'outputs.ServingConfigResponse',
                  create_time: str,
@@ -877,8 +1059,5 @@ class VersionResponse(dict):
         The total stored bytesize of the version. This value is calculated after a version is `FINALIZED`.
         """
         return pulumi.get(self, "version_bytes")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

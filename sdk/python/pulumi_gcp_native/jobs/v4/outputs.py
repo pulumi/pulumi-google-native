@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -66,15 +66,29 @@ class ApplicationInfoResponse(dict):
         """
         return pulumi.get(self, "uris")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CompanyDerivedInfoResponse(dict):
     """
     Derived details about the company.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "headquartersLocation":
+            suggest = "headquarters_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompanyDerivedInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompanyDerivedInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompanyDerivedInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  headquarters_location: 'outputs.LocationResponse'):
         """
@@ -91,15 +105,29 @@ class CompanyDerivedInfoResponse(dict):
         """
         return pulumi.get(self, "headquarters_location")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CompensationEntryResponse(dict):
     """
     A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expectedUnitsPerYear":
+            suggest = "expected_units_per_year"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompensationEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompensationEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompensationEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  amount: 'outputs.MoneyResponse',
                  description: str,
@@ -171,15 +199,31 @@ class CompensationEntryResponse(dict):
         """
         return pulumi.get(self, "unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CompensationInfoResponse(dict):
     """
     Job compensation details.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "annualizedBaseCompensationRange":
+            suggest = "annualized_base_compensation_range"
+        elif key == "annualizedTotalCompensationRange":
+            suggest = "annualized_total_compensation_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompensationInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompensationInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompensationInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  annualized_base_compensation_range: 'outputs.CompensationRangeResponse',
                  annualized_total_compensation_range: 'outputs.CompensationRangeResponse',
@@ -218,15 +262,31 @@ class CompensationInfoResponse(dict):
         """
         return pulumi.get(self, "entries")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CompensationRangeResponse(dict):
     """
     Compensation range.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxCompensation":
+            suggest = "max_compensation"
+        elif key == "minCompensation":
+            suggest = "min_compensation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompensationRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompensationRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompensationRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_compensation: 'outputs.MoneyResponse',
                  min_compensation: 'outputs.MoneyResponse'):
@@ -254,15 +314,29 @@ class CompensationRangeResponse(dict):
         """
         return pulumi.get(self, "min_compensation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class JobDerivedInfoResponse(dict):
     """
     Derived details about the job posting.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jobCategories":
+            suggest = "job_categories"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in JobDerivedInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        JobDerivedInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        JobDerivedInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  job_categories: Sequence[str],
                  locations: Sequence['outputs.LocationResponse']):
@@ -289,9 +363,6 @@ class JobDerivedInfoResponse(dict):
         Structured locations of the job, resolved from Job.addresses. locations are exactly matched to Job.addresses in the same order.
         """
         return pulumi.get(self, "locations")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -326,15 +397,35 @@ class LatLngResponse(dict):
         """
         return pulumi.get(self, "longitude")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocationResponse(dict):
     """
     A resource that represents a location with full geographic information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "latLng":
+            suggest = "lat_lng"
+        elif key == "locationType":
+            suggest = "location_type"
+        elif key == "postalAddress":
+            suggest = "postal_address"
+        elif key == "radiusMiles":
+            suggest = "radius_miles"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  lat_lng: 'outputs.LatLngResponse',
                  location_type: str,
@@ -384,15 +475,29 @@ class LocationResponse(dict):
         """
         return pulumi.get(self, "radius_miles")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MoneyResponse(dict):
     """
     Represents an amount of money with its currency type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MoneyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MoneyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MoneyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  currency_code: str,
                  nanos: int,
@@ -431,15 +536,39 @@ class MoneyResponse(dict):
         """
         return pulumi.get(self, "units")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PostalAddressResponse(dict):
     """
     Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "addressLines":
+            suggest = "address_lines"
+        elif key == "administrativeArea":
+            suggest = "administrative_area"
+        elif key == "languageCode":
+            suggest = "language_code"
+        elif key == "postalCode":
+            suggest = "postal_code"
+        elif key == "regionCode":
+            suggest = "region_code"
+        elif key == "sortingCode":
+            suggest = "sorting_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostalAddressResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostalAddressResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostalAddressResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address_lines: Sequence[str],
                  administrative_area: str,
@@ -566,15 +695,31 @@ class PostalAddressResponse(dict):
         """
         return pulumi.get(self, "sublocality")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ProcessingOptionsResponse(dict):
     """
     Options for job processing.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableStreetAddressResolution":
+            suggest = "disable_street_address_resolution"
+        elif key == "htmlSanitization":
+            suggest = "html_sanitization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ProcessingOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ProcessingOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ProcessingOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_street_address_resolution: bool,
                  html_sanitization: str):
@@ -601,8 +746,5 @@ class ProcessingOptionsResponse(dict):
         Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation isn't disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
         """
         return pulumi.get(self, "html_sanitization")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

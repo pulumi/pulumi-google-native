@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,25 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse(di
     """
     AcceleratorConfig defines the accelerator cards to attach to the VM.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_count: str,
                  accelerator_type: str):
@@ -49,15 +68,31 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse(di
         """
         return pulumi.get(self, "accelerator_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse(dict):
     """
     Autoscale defines the autoscaling policy of a worker pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxSize":
+            suggest = "max_size"
+        elif key == "minSize":
+            suggest = "min_size"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  max_size: str,
                  min_size: str):
@@ -85,15 +120,29 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse(dict):
         """
         return pulumi.get(self, "min_size")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse(dict):
     """
     Defines whether a feature can be used or what values are accepted.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_values: Sequence[str],
                  policy: str):
@@ -121,15 +170,45 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse
         """
         return pulumi.get(self, "policy")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse(dict):
     """
     FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerImageSources":
+            suggest = "container_image_sources"
+        elif key == "dockerAddCapabilities":
+            suggest = "docker_add_capabilities"
+        elif key == "dockerChrootPath":
+            suggest = "docker_chroot_path"
+        elif key == "dockerNetwork":
+            suggest = "docker_network"
+        elif key == "dockerPrivileged":
+            suggest = "docker_privileged"
+        elif key == "dockerRunAsRoot":
+            suggest = "docker_run_as_root"
+        elif key == "dockerRuntime":
+            suggest = "docker_runtime"
+        elif key == "dockerSiblingContainers":
+            suggest = "docker_sibling_containers"
+        elif key == "linuxIsolation":
+            suggest = "linux_isolation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  container_image_sources: 'outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse',
                  docker_add_capabilities: 'outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureResponse',
@@ -234,15 +313,43 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponse(dict):
         """
         return pulumi.get(self, "linux_isolation")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
     """
     Defines the configuration to be used for creating workers in the worker pool.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "diskSizeGb":
+            suggest = "disk_size_gb"
+        elif key == "diskType":
+            suggest = "disk_type"
+        elif key == "machineType":
+            suggest = "machine_type"
+        elif key == "maxConcurrentActions":
+            suggest = "max_concurrent_actions"
+        elif key == "minCpuPlatform":
+            suggest = "min_cpu_platform"
+        elif key == "networkAccess":
+            suggest = "network_access"
+        elif key == "soleTenantNodeType":
+            suggest = "sole_tenant_node_type"
+        elif key == "vmImage":
+            suggest = "vm_image"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator: 'outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse',
                  disk_size_gb: str,
@@ -368,8 +475,5 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse(dict):
         The name of the image used by each VM.
         """
         return pulumi.get(self, "vm_image")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

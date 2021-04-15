@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -21,6 +21,25 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
     """
     A rule used to express this policy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowAll":
+            suggest = "allow_all"
+        elif key == "denyAll":
+            suggest = "deny_all"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allow_all: bool,
                  condition: 'outputs.GoogleTypeExprResponse',
@@ -81,15 +100,31 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleResponse(dict):
         """
         return pulumi.get(self, "values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
     """
     A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedValues":
+            suggest = "allowed_values"
+        elif key == "deniedValues":
+            suggest = "denied_values"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_values: Sequence[str],
                  denied_values: Sequence[str]):
@@ -117,15 +152,31 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesResponse(dict):
         """
         return pulumi.get(self, "denied_values")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
     """
     Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inheritFromParent":
+            suggest = "inherit_from_parent"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudOrgpolicyV2PolicySpecResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudOrgpolicyV2PolicySpecResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  etag: str,
                  inherit_from_parent: bool,
@@ -186,9 +237,6 @@ class GoogleCloudOrgpolicyV2PolicySpecResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleTypeExprResponse(dict):
@@ -243,8 +291,5 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

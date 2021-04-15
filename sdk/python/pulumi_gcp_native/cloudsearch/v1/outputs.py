@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -29,6 +29,25 @@ __all__ = [
 
 @pulumi.output_type
 class CompositeFilterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "logicOperator":
+            suggest = "logic_operator"
+        elif key == "subFilters":
+            suggest = "sub_filters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CompositeFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CompositeFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CompositeFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  logic_operator: str,
                  sub_filters: Sequence['outputs.FilterResponse']):
@@ -55,15 +74,29 @@ class CompositeFilterResponse(dict):
         """
         return pulumi.get(self, "sub_filters")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DataSourceRestrictionResponse(dict):
     """
     Restriction on Datasource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "filterOptions":
+            suggest = "filter_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataSourceRestrictionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataSourceRestrictionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataSourceRestrictionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filter_options: Sequence['outputs.FilterOptionsResponse'],
                  source: 'outputs.SourceResponse'):
@@ -90,9 +123,6 @@ class DataSourceRestrictionResponse(dict):
         The source of restriction.
         """
         return pulumi.get(self, "source")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -138,15 +168,35 @@ class DateResponse(dict):
         """
         return pulumi.get(self, "year")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FacetOptionsResponse(dict):
     """
     Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numFacetBuckets":
+            suggest = "num_facet_buckets"
+        elif key == "objectType":
+            suggest = "object_type"
+        elif key == "operatorName":
+            suggest = "operator_name"
+        elif key == "sourceName":
+            suggest = "source_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FacetOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FacetOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FacetOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_facet_buckets: int,
                  object_type: str,
@@ -196,15 +246,29 @@ class FacetOptionsResponse(dict):
         """
         return pulumi.get(self, "source_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FilterOptionsResponse(dict):
     """
     Filter options to be applied on query.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "objectType":
+            suggest = "object_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  filter: 'outputs.FilterResponse',
                  object_type: str):
@@ -232,15 +296,31 @@ class FilterOptionsResponse(dict):
         """
         return pulumi.get(self, "object_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FilterResponse(dict):
     """
     A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compositeFilter":
+            suggest = "composite_filter"
+        elif key == "valueFilter":
+            suggest = "value_filter"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  composite_filter: 'outputs.CompositeFilterResponse',
                  value_filter: 'outputs.ValueFilterResponse'):
@@ -260,12 +340,30 @@ class FilterResponse(dict):
     def value_filter(self) -> 'outputs.ValueFilterResponse':
         return pulumi.get(self, "value_filter")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GSuitePrincipalResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gsuiteDomain":
+            suggest = "gsuite_domain"
+        elif key == "gsuiteGroupEmail":
+            suggest = "gsuite_group_email"
+        elif key == "gsuiteUserEmail":
+            suggest = "gsuite_user_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GSuitePrincipalResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GSuitePrincipalResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GSuitePrincipalResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  gsuite_domain: bool,
                  gsuite_group_email: str,
@@ -303,15 +401,31 @@ class GSuitePrincipalResponse(dict):
         """
         return pulumi.get(self, "gsuite_user_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScoringConfigResponse(dict):
     """
     Scoring configurations for a source while processing a Search or Suggest request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableFreshness":
+            suggest = "disable_freshness"
+        elif key == "disablePersonalization":
+            suggest = "disable_personalization"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_freshness: bool,
                  disable_personalization: bool):
@@ -339,12 +453,28 @@ class ScoringConfigResponse(dict):
         """
         return pulumi.get(self, "disable_personalization")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SortOptionsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatorName":
+            suggest = "operator_name"
+        elif key == "sortOrder":
+            suggest = "sort_order"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SortOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SortOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SortOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operator_name: str,
                  sort_order: str):
@@ -371,15 +501,31 @@ class SortOptionsResponse(dict):
         """
         return pulumi.get(self, "sort_order")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceConfigResponse(dict):
     """
     Configurations for a source while processing a Search or Suggest request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "crowdingConfig":
+            suggest = "crowding_config"
+        elif key == "scoringConfig":
+            suggest = "scoring_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  crowding_config: 'outputs.SourceCrowdingConfigResponse',
                  scoring_config: 'outputs.SourceScoringConfigResponse',
@@ -418,15 +564,31 @@ class SourceConfigResponse(dict):
         """
         return pulumi.get(self, "source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceCrowdingConfigResponse(dict):
     """
     Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numResults":
+            suggest = "num_results"
+        elif key == "numSuggestions":
+            suggest = "num_suggestions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceCrowdingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceCrowdingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceCrowdingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_results: int,
                  num_suggestions: int):
@@ -454,15 +616,29 @@ class SourceCrowdingConfigResponse(dict):
         """
         return pulumi.get(self, "num_suggestions")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceResponse(dict):
     """
     Defines sources for the suggest/search APIs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedSource":
+            suggest = "predefined_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  predefined_source: str):
@@ -490,15 +666,29 @@ class SourceResponse(dict):
         """
         return pulumi.get(self, "predefined_source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SourceScoringConfigResponse(dict):
     """
     Set the scoring configuration. This allows modifying the ranking of results for a source.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceImportance":
+            suggest = "source_importance"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceScoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceScoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceScoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  source_importance: str):
         """
@@ -515,12 +705,26 @@ class SourceScoringConfigResponse(dict):
         """
         return pulumi.get(self, "source_importance")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ValueFilterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operatorName":
+            suggest = "operator_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValueFilterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValueFilterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValueFilterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operator_name: str,
                  value: 'outputs.ValueResponse'):
@@ -547,15 +751,39 @@ class ValueFilterResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ValueResponse(dict):
     """
     Definition of a single value with generic type.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "booleanValue":
+            suggest = "boolean_value"
+        elif key == "dateValue":
+            suggest = "date_value"
+        elif key == "doubleValue":
+            suggest = "double_value"
+        elif key == "integerValue":
+            suggest = "integer_value"
+        elif key == "stringValue":
+            suggest = "string_value"
+        elif key == "timestampValue":
+            suggest = "timestamp_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ValueResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ValueResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ValueResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  boolean_value: bool,
                  date_value: 'outputs.DateResponse',
@@ -602,8 +830,5 @@ class ValueResponse(dict):
     @pulumi.getter(name="timestampValue")
     def timestamp_value(self) -> str:
         return pulumi.get(self, "timestamp_value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

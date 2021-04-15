@@ -5,15 +5,110 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['KeyRingCryptoKeyCryptoKeyVersion']
+__all__ = ['KeyRingCryptoKeyCryptoKeyVersionArgs', 'KeyRingCryptoKeyCryptoKeyVersion']
+
+@pulumi.input_type
+class KeyRingCryptoKeyCryptoKeyVersionArgs:
+    def __init__(__self__, *,
+                 crypto_key_versions_id: pulumi.Input[str],
+                 crypto_keys_id: pulumi.Input[str],
+                 key_rings_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 external_protection_level_options: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
+        :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
+        """
+        pulumi.set(__self__, "crypto_key_versions_id", crypto_key_versions_id)
+        pulumi.set(__self__, "crypto_keys_id", crypto_keys_id)
+        pulumi.set(__self__, "key_rings_id", key_rings_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if external_protection_level_options is not None:
+            pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="cryptoKeyVersionsId")
+    def crypto_key_versions_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_key_versions_id")
+
+    @crypto_key_versions_id.setter
+    def crypto_key_versions_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_versions_id", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeysId")
+    def crypto_keys_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_keys_id")
+
+    @crypto_keys_id.setter
+    def crypto_keys_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_keys_id", value)
+
+    @property
+    @pulumi.getter(name="keyRingsId")
+    def key_rings_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_rings_id")
+
+    @key_rings_id.setter
+    def key_rings_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_rings_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="externalProtectionLevelOptions")
+    def external_protection_level_options(self) -> Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']]:
+        """
+        ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
+        """
+        return pulumi.get(self, "external_protection_level_options")
+
+    @external_protection_level_options.setter
+    def external_protection_level_options(self, value: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']]):
+        pulumi.set(self, "external_protection_level_options", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The current state of the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -24,9 +119,7 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
 
@@ -35,12 +128,38 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: KeyRingCryptoKeyCryptoKeyVersionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
+
+        :param str resource_name: The name of the resource.
+        :param KeyRingCryptoKeyCryptoKeyVersionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(KeyRingCryptoKeyCryptoKeyVersionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_versions_id: Optional[pulumi.Input[str]] = None,
+                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
+                 external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
+                 key_rings_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -50,36 +169,36 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = KeyRingCryptoKeyCryptoKeyVersionArgs.__new__(KeyRingCryptoKeyCryptoKeyVersionArgs)
 
             if crypto_key_versions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key_versions_id'")
-            __props__['crypto_key_versions_id'] = crypto_key_versions_id
+            __props__.__dict__["crypto_key_versions_id"] = crypto_key_versions_id
             if crypto_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_keys_id'")
-            __props__['crypto_keys_id'] = crypto_keys_id
-            __props__['external_protection_level_options'] = external_protection_level_options
+            __props__.__dict__["crypto_keys_id"] = crypto_keys_id
+            __props__.__dict__["external_protection_level_options"] = external_protection_level_options
             if key_rings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_rings_id'")
-            __props__['key_rings_id'] = key_rings_id
+            __props__.__dict__["key_rings_id"] = key_rings_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
+            __props__.__dict__["locations_id"] = locations_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['state'] = state
-            __props__['algorithm'] = None
-            __props__['attestation'] = None
-            __props__['create_time'] = None
-            __props__['destroy_event_time'] = None
-            __props__['destroy_time'] = None
-            __props__['generate_time'] = None
-            __props__['import_failure_reason'] = None
-            __props__['import_job'] = None
-            __props__['import_time'] = None
-            __props__['name'] = None
-            __props__['protection_level'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["state"] = state
+            __props__.__dict__["algorithm"] = None
+            __props__.__dict__["attestation"] = None
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["destroy_event_time"] = None
+            __props__.__dict__["destroy_time"] = None
+            __props__.__dict__["generate_time"] = None
+            __props__.__dict__["import_failure_reason"] = None
+            __props__.__dict__["import_job"] = None
+            __props__.__dict__["import_time"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["protection_level"] = None
         super(KeyRingCryptoKeyCryptoKeyVersion, __self__).__init__(
             'gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion',
             resource_name,
@@ -100,21 +219,21 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = KeyRingCryptoKeyCryptoKeyVersionArgs.__new__(KeyRingCryptoKeyCryptoKeyVersionArgs)
 
-        __props__["algorithm"] = None
-        __props__["attestation"] = None
-        __props__["create_time"] = None
-        __props__["destroy_event_time"] = None
-        __props__["destroy_time"] = None
-        __props__["external_protection_level_options"] = None
-        __props__["generate_time"] = None
-        __props__["import_failure_reason"] = None
-        __props__["import_job"] = None
-        __props__["import_time"] = None
-        __props__["name"] = None
-        __props__["protection_level"] = None
-        __props__["state"] = None
+        __props__.__dict__["algorithm"] = None
+        __props__.__dict__["attestation"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["destroy_event_time"] = None
+        __props__.__dict__["destroy_time"] = None
+        __props__.__dict__["external_protection_level_options"] = None
+        __props__.__dict__["generate_time"] = None
+        __props__.__dict__["import_failure_reason"] = None
+        __props__.__dict__["import_job"] = None
+        __props__.__dict__["import_time"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["protection_level"] = None
+        __props__.__dict__["state"] = None
         return KeyRingCryptoKeyCryptoKeyVersion(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -220,10 +339,4 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
         The current state of the CryptoKeyVersion.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

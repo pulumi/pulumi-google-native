@@ -5,15 +5,360 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['AgentIntent']
+__all__ = ['AgentIntentArgs', 'AgentIntent']
+
+@pulumi.input_type
+class AgentIntentArgs:
+    def __init__(__self__, *,
+                 intents_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 action: Optional[pulumi.Input[str]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 end_interaction: Optional[pulumi.Input[bool]] = None,
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 is_fallback: Optional[pulumi.Input[bool]] = None,
+                 live_agent_handoff: Optional[pulumi.Input[bool]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]] = None,
+                 ml_disabled: Optional[pulumi.Input[bool]] = None,
+                 ml_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]] = None,
+                 parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 reset_contexts: Optional[pulumi.Input[bool]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]] = None,
+                 webhook_state: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a AgentIntent resource.
+        :param pulumi.Input[str] action: Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] default_response_platforms: Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+        :param pulumi.Input[str] display_name: Required. The name of this intent.
+        :param pulumi.Input[bool] end_interaction: Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] events: Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] input_context_names: Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
+        :param pulumi.Input[bool] is_fallback: Optional. Indicates whether this is a fallback intent.
+        :param pulumi.Input[bool] live_agent_handoff: Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]] messages: Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
+        :param pulumi.Input[bool] ml_disabled: Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
+        :param pulumi.Input[bool] ml_enabled: Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+        :param pulumi.Input[str] name: Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]] output_contexts: Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]] parameters: Optional. The collection of parameters associated with the intent.
+        :param pulumi.Input[str] parent_followup_intent_name: Optional. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
+        :param pulumi.Input[int] priority: Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+        :param pulumi.Input[bool] reset_contexts: Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]] training_phrases: Optional. The collection of examples that the agent is trained on.
+        :param pulumi.Input[str] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
+        """
+        pulumi.set(__self__, "intents_id", intents_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
+        if default_response_platforms is not None:
+            pulumi.set(__self__, "default_response_platforms", default_response_platforms)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if end_interaction is not None:
+            pulumi.set(__self__, "end_interaction", end_interaction)
+        if events is not None:
+            pulumi.set(__self__, "events", events)
+        if input_context_names is not None:
+            pulumi.set(__self__, "input_context_names", input_context_names)
+        if is_fallback is not None:
+            pulumi.set(__self__, "is_fallback", is_fallback)
+        if live_agent_handoff is not None:
+            pulumi.set(__self__, "live_agent_handoff", live_agent_handoff)
+        if messages is not None:
+            pulumi.set(__self__, "messages", messages)
+        if ml_disabled is not None:
+            pulumi.set(__self__, "ml_disabled", ml_disabled)
+        if ml_enabled is not None:
+            pulumi.set(__self__, "ml_enabled", ml_enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if output_contexts is not None:
+            pulumi.set(__self__, "output_contexts", output_contexts)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if parent_followup_intent_name is not None:
+            pulumi.set(__self__, "parent_followup_intent_name", parent_followup_intent_name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if reset_contexts is not None:
+            pulumi.set(__self__, "reset_contexts", reset_contexts)
+        if training_phrases is not None:
+            pulumi.set(__self__, "training_phrases", training_phrases)
+        if webhook_state is not None:
+            pulumi.set(__self__, "webhook_state", webhook_state)
+
+    @property
+    @pulumi.getter(name="intentsId")
+    def intents_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "intents_id")
+
+    @intents_id.setter
+    def intents_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "intents_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="defaultResponsePlatforms")
+    def default_response_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
+        """
+        return pulumi.get(self, "default_response_platforms")
+
+    @default_response_platforms.setter
+    def default_response_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "default_response_platforms", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The name of this intent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="endInteraction")
+    def end_interaction(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
+        """
+        return pulumi.get(self, "end_interaction")
+
+    @end_interaction.setter
+    def end_interaction(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "end_interaction", value)
+
+    @property
+    @pulumi.getter
+    def events(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
+        """
+        return pulumi.get(self, "events")
+
+    @events.setter
+    def events(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "events", value)
+
+    @property
+    @pulumi.getter(name="inputContextNames")
+    def input_context_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
+        """
+        return pulumi.get(self, "input_context_names")
+
+    @input_context_names.setter
+    def input_context_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "input_context_names", value)
+
+    @property
+    @pulumi.getter(name="isFallback")
+    def is_fallback(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether this is a fallback intent.
+        """
+        return pulumi.get(self, "is_fallback")
+
+    @is_fallback.setter
+    def is_fallback(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_fallback", value)
+
+    @property
+    @pulumi.getter(name="liveAgentHandoff")
+    def live_agent_handoff(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
+        """
+        return pulumi.get(self, "live_agent_handoff")
+
+    @live_agent_handoff.setter
+    def live_agent_handoff(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "live_agent_handoff", value)
+
+    @property
+    @pulumi.getter
+    def messages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]]:
+        """
+        Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
+        """
+        return pulumi.get(self, "messages")
+
+    @messages.setter
+    def messages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]]):
+        pulumi.set(self, "messages", value)
+
+    @property
+    @pulumi.getter(name="mlDisabled")
+    def ml_disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
+        """
+        return pulumi.get(self, "ml_disabled")
+
+    @ml_disabled.setter
+    def ml_disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ml_disabled", value)
+
+    @property
+    @pulumi.getter(name="mlEnabled")
+    def ml_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether Machine Learning is enabled for the intent. Note: If `ml_enabled` setting is set to false, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off. DEPRECATED! Please use `ml_disabled` field instead. NOTE: If both `ml_enabled` and `ml_disabled` are either not set or false, then the default value is determined as follows: - Before April 15th, 2018 the default is: ml_enabled = false / ml_disabled = true. - After April 15th, 2018 the default is: ml_enabled = true / ml_disabled = false.
+        """
+        return pulumi.get(self, "ml_enabled")
+
+    @ml_enabled.setter
+    def ml_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ml_enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The unique identifier of this intent. Required for Intents.UpdateIntent and Intents.BatchUpdateIntents methods. Supported formats: - `projects//agent/intents/` - `projects//locations//agent/intents/`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="outputContexts")
+    def output_contexts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]]]:
+        """
+        Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
+        """
+        return pulumi.get(self, "output_contexts")
+
+    @output_contexts.setter
+    def output_contexts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1ContextArgs']]]]):
+        pulumi.set(self, "output_contexts", value)
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]]:
+        """
+        Optional. The collection of parameters associated with the intent.
+        """
+        return pulumi.get(self, "parameters")
+
+    @parameters.setter
+    def parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]]):
+        pulumi.set(self, "parameters", value)
+
+    @property
+    @pulumi.getter(name="parentFollowupIntentName")
+    def parent_followup_intent_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
+        """
+        return pulumi.get(self, "parent_followup_intent_name")
+
+    @parent_followup_intent_name.setter
+    def parent_followup_intent_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_followup_intent_name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="resetContexts")
+    def reset_contexts(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
+        """
+        return pulumi.get(self, "reset_contexts")
+
+    @reset_contexts.setter
+    def reset_contexts(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset_contexts", value)
+
+    @property
+    @pulumi.getter(name="trainingPhrases")
+    def training_phrases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]]:
+        """
+        Optional. The collection of examples that the agent is trained on.
+        """
+        return pulumi.get(self, "training_phrases")
+
+    @training_phrases.setter
+    def training_phrases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]]):
+        pulumi.set(self, "training_phrases", value)
+
+    @property
+    @pulumi.getter(name="webhookState")
+    def webhook_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Indicates whether webhooks are enabled for the intent.
+        """
+        return pulumi.get(self, "webhook_state")
+
+    @webhook_state.setter
+    def webhook_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_state", value)
 
 
 class AgentIntent(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -39,9 +384,7 @@ class AgentIntent(pulumi.CustomResource):
                  reset_contexts: Optional[pulumi.Input[bool]] = None,
                  training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]]] = None,
                  webhook_state: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates an intent in the specified agent.
 
@@ -67,12 +410,53 @@ class AgentIntent(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]] training_phrases: Optional. The collection of examples that the agent is trained on.
         :param pulumi.Input[str] webhook_state: Optional. Indicates whether webhooks are enabled for the intent.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: AgentIntentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates an intent in the specified agent.
+
+        :param str resource_name: The name of the resource.
+        :param AgentIntentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(AgentIntentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
+                 default_response_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 end_interaction: Optional[pulumi.Input[bool]] = None,
+                 events: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 input_context_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 intents_id: Optional[pulumi.Input[str]] = None,
+                 is_fallback: Optional[pulumi.Input[bool]] = None,
+                 live_agent_handoff: Optional[pulumi.Input[bool]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentMessageArgs']]]]] = None,
+                 ml_disabled: Optional[pulumi.Input[bool]] = None,
+                 ml_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 output_contexts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1ContextArgs']]]]] = None,
+                 parameters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentParameterArgs']]]]] = None,
+                 parent_followup_intent_name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 reset_contexts: Optional[pulumi.Input[bool]] = None,
+                 training_phrases: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs']]]]] = None,
+                 webhook_state: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -82,38 +466,38 @@ class AgentIntent(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = AgentIntentArgs.__new__(AgentIntentArgs)
 
-            __props__['action'] = action
-            __props__['default_response_platforms'] = default_response_platforms
-            __props__['display_name'] = display_name
-            __props__['end_interaction'] = end_interaction
-            __props__['events'] = events
-            __props__['input_context_names'] = input_context_names
+            __props__.__dict__["action"] = action
+            __props__.__dict__["default_response_platforms"] = default_response_platforms
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["end_interaction"] = end_interaction
+            __props__.__dict__["events"] = events
+            __props__.__dict__["input_context_names"] = input_context_names
             if intents_id is None and not opts.urn:
                 raise TypeError("Missing required property 'intents_id'")
-            __props__['intents_id'] = intents_id
-            __props__['is_fallback'] = is_fallback
-            __props__['live_agent_handoff'] = live_agent_handoff
+            __props__.__dict__["intents_id"] = intents_id
+            __props__.__dict__["is_fallback"] = is_fallback
+            __props__.__dict__["live_agent_handoff"] = live_agent_handoff
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['messages'] = messages
-            __props__['ml_disabled'] = ml_disabled
-            __props__['ml_enabled'] = ml_enabled
-            __props__['name'] = name
-            __props__['output_contexts'] = output_contexts
-            __props__['parameters'] = parameters
-            __props__['parent_followup_intent_name'] = parent_followup_intent_name
-            __props__['priority'] = priority
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["messages"] = messages
+            __props__.__dict__["ml_disabled"] = ml_disabled
+            __props__.__dict__["ml_enabled"] = ml_enabled
+            __props__.__dict__["name"] = name
+            __props__.__dict__["output_contexts"] = output_contexts
+            __props__.__dict__["parameters"] = parameters
+            __props__.__dict__["parent_followup_intent_name"] = parent_followup_intent_name
+            __props__.__dict__["priority"] = priority
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['reset_contexts'] = reset_contexts
-            __props__['training_phrases'] = training_phrases
-            __props__['webhook_state'] = webhook_state
-            __props__['followup_intent_info'] = None
-            __props__['root_followup_intent_name'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["reset_contexts"] = reset_contexts
+            __props__.__dict__["training_phrases"] = training_phrases
+            __props__.__dict__["webhook_state"] = webhook_state
+            __props__.__dict__["followup_intent_info"] = None
+            __props__.__dict__["root_followup_intent_name"] = None
         super(AgentIntent, __self__).__init__(
             'gcp-native:dialogflow/v2beta1:AgentIntent',
             resource_name,
@@ -134,29 +518,29 @@ class AgentIntent(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = AgentIntentArgs.__new__(AgentIntentArgs)
 
-        __props__["action"] = None
-        __props__["default_response_platforms"] = None
-        __props__["display_name"] = None
-        __props__["end_interaction"] = None
-        __props__["events"] = None
-        __props__["followup_intent_info"] = None
-        __props__["input_context_names"] = None
-        __props__["is_fallback"] = None
-        __props__["live_agent_handoff"] = None
-        __props__["messages"] = None
-        __props__["ml_disabled"] = None
-        __props__["ml_enabled"] = None
-        __props__["name"] = None
-        __props__["output_contexts"] = None
-        __props__["parameters"] = None
-        __props__["parent_followup_intent_name"] = None
-        __props__["priority"] = None
-        __props__["reset_contexts"] = None
-        __props__["root_followup_intent_name"] = None
-        __props__["training_phrases"] = None
-        __props__["webhook_state"] = None
+        __props__.__dict__["action"] = None
+        __props__.__dict__["default_response_platforms"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["end_interaction"] = None
+        __props__.__dict__["events"] = None
+        __props__.__dict__["followup_intent_info"] = None
+        __props__.__dict__["input_context_names"] = None
+        __props__.__dict__["is_fallback"] = None
+        __props__.__dict__["live_agent_handoff"] = None
+        __props__.__dict__["messages"] = None
+        __props__.__dict__["ml_disabled"] = None
+        __props__.__dict__["ml_enabled"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["output_contexts"] = None
+        __props__.__dict__["parameters"] = None
+        __props__.__dict__["parent_followup_intent_name"] = None
+        __props__.__dict__["priority"] = None
+        __props__.__dict__["reset_contexts"] = None
+        __props__.__dict__["root_followup_intent_name"] = None
+        __props__.__dict__["training_phrases"] = None
+        __props__.__dict__["webhook_state"] = None
         return AgentIntent(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -326,10 +710,4 @@ class AgentIntent(pulumi.CustomResource):
         Optional. Indicates whether webhooks are enabled for the intent.
         """
         return pulumi.get(self, "webhook_state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

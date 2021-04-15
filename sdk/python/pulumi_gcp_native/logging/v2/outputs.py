@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -26,6 +26,25 @@ class BigQueryOptionsResponse(dict):
     """
     Options that change functionality of a sink exporting data to BigQuery.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usePartitionedTables":
+            suggest = "use_partitioned_tables"
+        elif key == "usesTimestampColumnPartitioning":
+            suggest = "uses_timestamp_column_partitioning"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  use_partitioned_tables: bool,
                  uses_timestamp_column_partitioning: bool):
@@ -53,15 +72,33 @@ class BigQueryOptionsResponse(dict):
         """
         return pulumi.get(self, "uses_timestamp_column_partitioning")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BucketOptionsResponse(dict):
     """
     BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly. BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1). The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1. The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are finite.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "explicitBuckets":
+            suggest = "explicit_buckets"
+        elif key == "exponentialBuckets":
+            suggest = "exponential_buckets"
+        elif key == "linearBuckets":
+            suggest = "linear_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  explicit_buckets: 'outputs.ExplicitResponse',
                  exponential_buckets: 'outputs.ExponentialResponse',
@@ -100,9 +137,6 @@ class BucketOptionsResponse(dict):
         """
         return pulumi.get(self, "linear_buckets")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExplicitResponse(dict):
@@ -125,15 +159,31 @@ class ExplicitResponse(dict):
         """
         return pulumi.get(self, "bounds")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ExponentialResponse(dict):
     """
     Specifies an exponential sequence of buckets that have a width that is proportional to the value of the lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale * (growth_factor ^ i). Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "growthFactor":
+            suggest = "growth_factor"
+        elif key == "numFiniteBuckets":
+            suggest = "num_finite_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ExponentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ExponentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ExponentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  growth_factor: float,
                  num_finite_buckets: int,
@@ -172,15 +222,29 @@ class ExponentialResponse(dict):
         """
         return pulumi.get(self, "scale")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LabelDescriptorResponse(dict):
     """
     A description of a label.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LabelDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LabelDescriptorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LabelDescriptorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  key: str,
@@ -219,15 +283,29 @@ class LabelDescriptorResponse(dict):
         """
         return pulumi.get(self, "value_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LinearResponse(dict):
     """
     Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset + (width * i). Lower bound (1 <= i < N): offset + (width * (i - 1)).
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "numFiniteBuckets":
+            suggest = "num_finite_buckets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LinearResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LinearResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LinearResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  num_finite_buckets: int,
                  offset: float,
@@ -266,15 +344,31 @@ class LinearResponse(dict):
         """
         return pulumi.get(self, "width")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LogExclusionResponse(dict):
     """
     Specifies a set of log entries that are not to be stored in Logging. If your GCP resource receives a large volume of logs, you can use exclusions to reduce your chargeable logs. Exclusions are processed after log sinks, so you can export log entries before they are excluded. Note that organization-level and folder-level exclusions don't apply to child resources, and that you can't exclude audit log entries.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogExclusionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogExclusionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogExclusionResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  create_time: str,
                  description: str,
@@ -346,15 +440,31 @@ class LogExclusionResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDescriptorMetadataResponse(dict):
     """
     Additional annotations that can be used to guide the usage of a metric.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestDelay":
+            suggest = "ingest_delay"
+        elif key == "samplePeriod":
+            suggest = "sample_period"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDescriptorMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDescriptorMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDescriptorMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ingest_delay: str,
                  sample_period: str):
@@ -382,15 +492,37 @@ class MetricDescriptorMetadataResponse(dict):
         """
         return pulumi.get(self, "sample_period")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MetricDescriptorResponse(dict):
     """
     Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "launchStage":
+            suggest = "launch_stage"
+        elif key == "metricKind":
+            suggest = "metric_kind"
+        elif key == "monitoredResourceTypes":
+            suggest = "monitored_resource_types"
+        elif key == "valueType":
+            suggest = "value_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MetricDescriptorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MetricDescriptorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MetricDescriptorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  description: str,
                  display_name: str,
@@ -516,8 +648,5 @@ class MetricDescriptorResponse(dict):
         Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
         """
         return pulumi.get(self, "value_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

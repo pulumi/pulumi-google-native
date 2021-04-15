@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -38,6 +38,23 @@ class AclEntryResponse(dict):
     """
     An entry for an Access Control list.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expirationTime":
+            suggest = "expiration_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AclEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AclEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AclEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expiration_time: str,
                  kind: str,
@@ -87,15 +104,39 @@ class AclEntryResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackupConfigurationResponse(dict):
     """
     Database instance backup configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupRetentionSettings":
+            suggest = "backup_retention_settings"
+        elif key == "binaryLogEnabled":
+            suggest = "binary_log_enabled"
+        elif key == "pointInTimeRecoveryEnabled":
+            suggest = "point_in_time_recovery_enabled"
+        elif key == "replicationLogArchivingEnabled":
+            suggest = "replication_log_archiving_enabled"
+        elif key == "startTime":
+            suggest = "start_time"
+        elif key == "transactionLogRetentionDays":
+            suggest = "transaction_log_retention_days"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  backup_retention_settings: 'outputs.BackupRetentionSettingsResponse',
                  binary_log_enabled: bool,
@@ -200,15 +241,31 @@ class BackupConfigurationResponse(dict):
         """
         return pulumi.get(self, "transaction_log_retention_days")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class BackupRetentionSettingsResponse(dict):
     """
     We currently only support backup retention by specifying the number of backups we will retain.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retainedBackups":
+            suggest = "retained_backups"
+        elif key == "retentionUnit":
+            suggest = "retention_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupRetentionSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupRetentionSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupRetentionSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  retained_backups: int,
                  retention_unit: str):
@@ -235,9 +292,6 @@ class BackupRetentionSettingsResponse(dict):
         The unit that 'retained_backups' represents.
         """
         return pulumi.get(self, "retention_unit")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -272,15 +326,31 @@ class DatabaseFlagsResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DenyMaintenancePeriodResponse(dict):
     """
     Deny Maintenance Periods. This specifies a date range during when all CSA rollout will be denied.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endDate":
+            suggest = "end_date"
+        elif key == "startDate":
+            suggest = "start_date"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DenyMaintenancePeriodResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DenyMaintenancePeriodResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DenyMaintenancePeriodResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  end_date: str,
                  start_date: str,
@@ -319,15 +389,29 @@ class DenyMaintenancePeriodResponse(dict):
         """
         return pulumi.get(self, "time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskEncryptionConfigurationResponse(dict):
     """
     Disk encryption configuration for an instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskEncryptionConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskEncryptionConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskEncryptionConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: str,
                  kms_key_name: str):
@@ -355,15 +439,29 @@ class DiskEncryptionConfigurationResponse(dict):
         """
         return pulumi.get(self, "kms_key_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DiskEncryptionStatusResponse(dict):
     """
     Disk encryption status for an instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKeyVersionName":
+            suggest = "kms_key_version_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskEncryptionStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskEncryptionStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskEncryptionStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  kind: str,
                  kms_key_version_name: str):
@@ -391,15 +489,35 @@ class DiskEncryptionStatusResponse(dict):
         """
         return pulumi.get(self, "kms_key_version_name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class InsightsConfigResponse(dict):
     """
     Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "queryInsightsEnabled":
+            suggest = "query_insights_enabled"
+        elif key == "queryStringLength":
+            suggest = "query_string_length"
+        elif key == "recordApplicationTags":
+            suggest = "record_application_tags"
+        elif key == "recordClientAddress":
+            suggest = "record_client_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InsightsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InsightsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InsightsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  query_insights_enabled: bool,
                  query_string_length: int,
@@ -449,15 +567,35 @@ class InsightsConfigResponse(dict):
         """
         return pulumi.get(self, "record_client_address")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IpConfigurationResponse(dict):
     """
     IP Management configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedNetworks":
+            suggest = "authorized_networks"
+        elif key == "ipv4Enabled":
+            suggest = "ipv4_enabled"
+        elif key == "privateNetwork":
+            suggest = "private_network"
+        elif key == "requireSsl":
+            suggest = "require_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorized_networks: Sequence['outputs.AclEntryResponse'],
                  ipv4_enabled: bool,
@@ -507,15 +645,31 @@ class IpConfigurationResponse(dict):
         """
         return pulumi.get(self, "require_ssl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class IpMappingResponse(dict):
     """
     Database instance IP Mapping.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "timeToRetire":
+            suggest = "time_to_retire"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in IpMappingResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        IpMappingResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        IpMappingResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_address: str,
                  time_to_retire: str,
@@ -554,15 +708,31 @@ class IpMappingResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class LocationPreferenceResponse(dict):
     """
     Preferred location. This specifies where a Cloud SQL instance is located, either in a specific Compute Engine zone, or co-located with an App Engine application. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "followGaeApplication":
+            suggest = "follow_gae_application"
+        elif key == "secondaryZone":
+            suggest = "secondary_zone"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LocationPreferenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LocationPreferenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LocationPreferenceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  follow_gae_application: str,
                  kind: str,
@@ -612,15 +782,29 @@ class LocationPreferenceResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MaintenanceWindowResponse(dict):
     """
     Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTrack":
+            suggest = "update_track"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MaintenanceWindowResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MaintenanceWindowResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  day: int,
                  hour: int,
@@ -670,15 +854,43 @@ class MaintenanceWindowResponse(dict):
         """
         return pulumi.get(self, "update_track")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlReplicaConfigurationResponse(dict):
     """
     Read-replica configuration specific to MySQL databases.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "connectRetryInterval":
+            suggest = "connect_retry_interval"
+        elif key == "dumpFilePath":
+            suggest = "dump_file_path"
+        elif key == "masterHeartbeatPeriod":
+            suggest = "master_heartbeat_period"
+        elif key == "sslCipher":
+            suggest = "ssl_cipher"
+        elif key == "verifyServerCertificate":
+            suggest = "verify_server_certificate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlReplicaConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlReplicaConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlReplicaConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate: str,
                  client_certificate: str,
@@ -805,15 +1017,37 @@ class MySqlReplicaConfigurationResponse(dict):
         """
         return pulumi.get(self, "verify_server_certificate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OnPremisesConfigurationResponse(dict):
     """
     On-premises instance configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+        elif key == "dumpFilePath":
+            suggest = "dump_file_path"
+        elif key == "hostPort":
+            suggest = "host_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OnPremisesConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OnPremisesConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OnPremisesConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate: str,
                  client_certificate: str,
@@ -907,9 +1141,6 @@ class OnPremisesConfigurationResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class OperationErrorResponse(dict):
@@ -954,15 +1185,31 @@ class OperationErrorResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReplicaConfigurationResponse(dict):
     """
     Read-replica configuration for connecting to the primary instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "failoverTarget":
+            suggest = "failover_target"
+        elif key == "mysqlReplicaConfiguration":
+            suggest = "mysql_replica_configuration"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReplicaConfigurationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReplicaConfigurationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReplicaConfigurationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  failover_target: bool,
                  kind: str,
@@ -1001,15 +1248,69 @@ class ReplicaConfigurationResponse(dict):
         """
         return pulumi.get(self, "mysql_replica_configuration")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SettingsResponse(dict):
     """
     Database instance settings.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activationPolicy":
+            suggest = "activation_policy"
+        elif key == "activeDirectoryConfig":
+            suggest = "active_directory_config"
+        elif key == "authorizedGaeApplications":
+            suggest = "authorized_gae_applications"
+        elif key == "availabilityType":
+            suggest = "availability_type"
+        elif key == "backupConfiguration":
+            suggest = "backup_configuration"
+        elif key == "crashSafeReplicationEnabled":
+            suggest = "crash_safe_replication_enabled"
+        elif key == "dataDiskSizeGb":
+            suggest = "data_disk_size_gb"
+        elif key == "dataDiskType":
+            suggest = "data_disk_type"
+        elif key == "databaseFlags":
+            suggest = "database_flags"
+        elif key == "databaseReplicationEnabled":
+            suggest = "database_replication_enabled"
+        elif key == "denyMaintenancePeriods":
+            suggest = "deny_maintenance_periods"
+        elif key == "insightsConfig":
+            suggest = "insights_config"
+        elif key == "ipConfiguration":
+            suggest = "ip_configuration"
+        elif key == "locationPreference":
+            suggest = "location_preference"
+        elif key == "maintenanceWindow":
+            suggest = "maintenance_window"
+        elif key == "pricingPlan":
+            suggest = "pricing_plan"
+        elif key == "replicationType":
+            suggest = "replication_type"
+        elif key == "settingsVersion":
+            suggest = "settings_version"
+        elif key == "storageAutoResize":
+            suggest = "storage_auto_resize"
+        elif key == "storageAutoResizeLimit":
+            suggest = "storage_auto_resize_limit"
+        elif key == "userLabels":
+            suggest = "user_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  activation_policy: str,
                  active_directory_config: 'outputs.SqlActiveDirectoryConfigResponse',
@@ -1279,9 +1580,6 @@ class SettingsResponse(dict):
         """
         return pulumi.get(self, "user_labels")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlActiveDirectoryConfigResponse(dict):
@@ -1315,15 +1613,33 @@ class SqlActiveDirectoryConfigResponse(dict):
         """
         return pulumi.get(self, "kind")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlScheduledMaintenanceResponse(dict):
     """
     Any scheduled maintenancce for this instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canDefer":
+            suggest = "can_defer"
+        elif key == "canReschedule":
+            suggest = "can_reschedule"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlScheduledMaintenanceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlScheduledMaintenanceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlScheduledMaintenanceResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  can_defer: bool,
                  can_reschedule: bool,
@@ -1358,15 +1674,31 @@ class SqlScheduledMaintenanceResponse(dict):
         """
         return pulumi.get(self, "start_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlServerDatabaseDetailsResponse(dict):
     """
     Represents a Sql Server database on the Cloud SQL instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "compatibilityLevel":
+            suggest = "compatibility_level"
+        elif key == "recoveryModel":
+            suggest = "recovery_model"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlServerDatabaseDetailsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlServerDatabaseDetailsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlServerDatabaseDetailsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  compatibility_level: int,
                  recovery_model: str):
@@ -1394,15 +1726,39 @@ class SqlServerDatabaseDetailsResponse(dict):
         """
         return pulumi.get(self, "recovery_model")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslCertResponse(dict):
     """
     SslCerts Resource
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certSerialNumber":
+            suggest = "cert_serial_number"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "createTime":
+            suggest = "create_time"
+        elif key == "expirationTime":
+            suggest = "expiration_time"
+        elif key == "selfLink":
+            suggest = "self_link"
+        elif key == "sha1Fingerprint":
+            suggest = "sha1_fingerprint"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslCertResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslCertResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslCertResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert: str,
                  cert_serial_number: str,
@@ -1506,8 +1862,5 @@ class SslCertResponse(dict):
         Sha1 Fingerprint.
         """
         return pulumi.get(self, "sha1_fingerprint")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

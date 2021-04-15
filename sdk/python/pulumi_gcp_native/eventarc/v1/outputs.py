@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -26,6 +26,23 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -53,15 +70,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -88,9 +121,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -136,9 +166,6 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudRunResponse(dict):
@@ -183,15 +210,29 @@ class CloudRunResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DestinationResponse(dict):
     """
     Represents a target of an invocation over HTTP.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudRun":
+            suggest = "cloud_run"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DestinationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DestinationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DestinationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_run: 'outputs.CloudRunResponse'):
         """
@@ -207,9 +248,6 @@ class DestinationResponse(dict):
         Cloud Run fully-managed service that receives the events. The service should be running in the same project of the trigger.
         """
         return pulumi.get(self, "cloud_run")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -243,9 +281,6 @@ class EventFilterResponse(dict):
         Required. The value for the attribute.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -302,9 +337,6 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PubsubResponse(dict):
@@ -338,9 +370,6 @@ class PubsubResponse(dict):
         """
         return pulumi.get(self, "topic")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class TransportResponse(dict):
@@ -362,8 +391,5 @@ class TransportResponse(dict):
         The Pub/Sub topic and subscription used by Eventarc as delivery intermediary.
         """
         return pulumi.get(self, "pubsub")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

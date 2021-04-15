@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -33,6 +33,23 @@ class AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.AuditLogConfigResponse'],
                  service: str):
@@ -60,15 +77,31 @@ class AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -95,9 +128,6 @@ class AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -143,15 +173,33 @@ class BindingResponse(dict):
         """
         return pulumi.get(self, "role")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudSqlConnectionProfileResponse(dict):
     """
     Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlId":
+            suggest = "cloud_sql_id"
+        elif key == "privateIp":
+            suggest = "private_ip"
+        elif key == "publicIp":
+            suggest = "public_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSqlConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSqlConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSqlConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_sql_id: str,
                  private_ip: str,
@@ -201,15 +249,51 @@ class CloudSqlConnectionProfileResponse(dict):
         """
         return pulumi.get(self, "settings")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class CloudSqlSettingsResponse(dict):
     """
     Settings for creating a Cloud SQL database instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "activationPolicy":
+            suggest = "activation_policy"
+        elif key == "autoStorageIncrease":
+            suggest = "auto_storage_increase"
+        elif key == "dataDiskSizeGb":
+            suggest = "data_disk_size_gb"
+        elif key == "dataDiskType":
+            suggest = "data_disk_type"
+        elif key == "databaseFlags":
+            suggest = "database_flags"
+        elif key == "databaseVersion":
+            suggest = "database_version"
+        elif key == "ipConfig":
+            suggest = "ip_config"
+        elif key == "rootPassword":
+            suggest = "root_password"
+        elif key == "rootPasswordSet":
+            suggest = "root_password_set"
+        elif key == "sourceId":
+            suggest = "source_id"
+        elif key == "storageAutoResizeLimit":
+            suggest = "storage_auto_resize_limit"
+        elif key == "userLabels":
+            suggest = "user_labels"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSqlSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSqlSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSqlSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  activation_policy: str,
                  auto_storage_increase: bool,
@@ -380,9 +464,6 @@ class CloudSqlSettingsResponse(dict):
         """
         return pulumi.get(self, "zone")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DatabaseTypeResponse(dict):
@@ -415,9 +496,6 @@ class DatabaseTypeResponse(dict):
         The database provider.
         """
         return pulumi.get(self, "provider")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -474,15 +552,31 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class MySqlConnectionProfileResponse(dict):
     """
     Specifies connection parameters required specifically for MySQL databases.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlId":
+            suggest = "cloud_sql_id"
+        elif key == "passwordSet":
+            suggest = "password_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MySqlConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MySqlConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MySqlConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_sql_id: str,
                  host: str,
@@ -565,15 +659,31 @@ class MySqlConnectionProfileResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PostgreSqlConnectionProfileResponse(dict):
     """
     Specifies connection parameters required specifically for PostgreSQL databases.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudSqlId":
+            suggest = "cloud_sql_id"
+        elif key == "passwordSet":
+            suggest = "password_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgreSqlConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgreSqlConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgreSqlConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cloud_sql_id: str,
                  host: str,
@@ -656,15 +766,31 @@ class PostgreSqlConnectionProfileResponse(dict):
         """
         return pulumi.get(self, "username")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ReverseSshConnectivityResponse(dict):
     """
     The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vmIp":
+            suggest = "vm_ip"
+        elif key == "vmPort":
+            suggest = "vm_port"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReverseSshConnectivityResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReverseSshConnectivityResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReverseSshConnectivityResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  vm: str,
                  vm_ip: str,
@@ -714,15 +840,29 @@ class ReverseSshConnectivityResponse(dict):
         """
         return pulumi.get(self, "vpc")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlAclEntryResponse(dict):
     """
     An entry for an Access Control list.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlAclEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlAclEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlAclEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  expire_time: str,
                  label: str,
@@ -772,15 +912,35 @@ class SqlAclEntryResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SqlIpConfigResponse(dict):
     """
     IP Management configuration.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorizedNetworks":
+            suggest = "authorized_networks"
+        elif key == "enableIpv4":
+            suggest = "enable_ipv4"
+        elif key == "privateNetwork":
+            suggest = "private_network"
+        elif key == "requireSsl":
+            suggest = "require_ssl"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlIpConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlIpConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlIpConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  authorized_networks: Sequence['outputs.SqlAclEntryResponse'],
                  enable_ipv4: bool,
@@ -830,15 +990,33 @@ class SqlIpConfigResponse(dict):
         """
         return pulumi.get(self, "require_ssl")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class SslConfigResponse(dict):
     """
     SSL configuration information.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "caCertificate":
+            suggest = "ca_certificate"
+        elif key == "clientCertificate":
+            suggest = "client_certificate"
+        elif key == "clientKey":
+            suggest = "client_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SslConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SslConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SslConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ca_certificate: str,
                  client_certificate: str,
@@ -888,9 +1066,6 @@ class SslConfigResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class StaticIpConnectivityResponse(dict):
@@ -902,9 +1077,6 @@ class StaticIpConnectivityResponse(dict):
         The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
         """
         pass
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -950,9 +1122,6 @@ class StatusResponse(dict):
         """
         return pulumi.get(self, "message")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class VpcPeeringConnectivityResponse(dict):
@@ -974,8 +1143,5 @@ class VpcPeeringConnectivityResponse(dict):
         The name of the VPC network to peer with the Cloud SQL private network.
         """
         return pulumi.get(self, "vpc")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

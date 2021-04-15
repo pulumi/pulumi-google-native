@@ -5,15 +5,157 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['ConnectivityTest']
+__all__ = ['ConnectivityTestArgs', 'ConnectivityTest']
+
+@pulumi.input_type
+class ConnectivityTestArgs:
+    def __init__(__self__, *,
+                 connectivity_tests_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination: Optional[pulumi.Input['EndpointArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source: Optional[pulumi.Input['EndpointArgs']] = None):
+        """
+        The set of arguments for constructing a ConnectivityTest resource.
+        :param pulumi.Input[str] description: The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        :param pulumi.Input['EndpointArgs'] destination: Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
+        :param pulumi.Input[str] name: Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
+        :param pulumi.Input[str] protocol: IP Protocol of the test. When not provided, "TCP" is assumed.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
+        :param pulumi.Input['EndpointArgs'] source: Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
+        """
+        pulumi.set(__self__, "connectivity_tests_id", connectivity_tests_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+        if related_projects is not None:
+            pulumi.set(__self__, "related_projects", related_projects)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="connectivityTestsId")
+    def connectivity_tests_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connectivity_tests_id")
+
+    @connectivity_tests_id.setter
+    def connectivity_tests_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connectivity_tests_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-supplied description of the Connectivity Test. Maximum of 512 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input['EndpointArgs']]:
+        """
+        Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input['EndpointArgs']]):
+        pulumi.set(self, "destination", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource labels to represent user-provided metadata.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        IP Protocol of the test. When not provided, "TCP" is assumed.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+    @property
+    @pulumi.getter(name="relatedProjects")
+    def related_projects(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
+        """
+        return pulumi.get(self, "related_projects")
+
+    @related_projects.setter
+    def related_projects(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "related_projects", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input['EndpointArgs']]:
+        """
+        Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input['EndpointArgs']]):
+        pulumi.set(self, "source", value)
 
 
 class ConnectivityTest(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -26,9 +168,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.
 
@@ -42,12 +182,40 @@ class ConnectivityTest(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
         :param pulumi.Input[pulumi.InputType['EndpointArgs']] source: Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ConnectivityTestArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.
+
+        :param str resource_name: The name of the resource.
+        :param ConnectivityTestArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ConnectivityTestArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 connectivity_tests_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None,
+                 related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -57,25 +225,25 @@ class ConnectivityTest(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
             if connectivity_tests_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connectivity_tests_id'")
-            __props__['connectivity_tests_id'] = connectivity_tests_id
-            __props__['description'] = description
-            __props__['destination'] = destination
-            __props__['labels'] = labels
-            __props__['name'] = name
+            __props__.__dict__["connectivity_tests_id"] = connectivity_tests_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["destination"] = destination
+            __props__.__dict__["labels"] = labels
+            __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['protocol'] = protocol
-            __props__['related_projects'] = related_projects
-            __props__['source'] = source
-            __props__['create_time'] = None
-            __props__['display_name'] = None
-            __props__['reachability_details'] = None
-            __props__['update_time'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["related_projects"] = related_projects
+            __props__.__dict__["source"] = source
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["display_name"] = None
+            __props__.__dict__["reachability_details"] = None
+            __props__.__dict__["update_time"] = None
         super(ConnectivityTest, __self__).__init__(
             'gcp-native:networkmanagement/v1:ConnectivityTest',
             resource_name,
@@ -96,19 +264,19 @@ class ConnectivityTest(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
-        __props__["create_time"] = None
-        __props__["description"] = None
-        __props__["destination"] = None
-        __props__["display_name"] = None
-        __props__["labels"] = None
-        __props__["name"] = None
-        __props__["protocol"] = None
-        __props__["reachability_details"] = None
-        __props__["related_projects"] = None
-        __props__["source"] = None
-        __props__["update_time"] = None
+        __props__.__dict__["create_time"] = None
+        __props__.__dict__["description"] = None
+        __props__.__dict__["destination"] = None
+        __props__.__dict__["display_name"] = None
+        __props__.__dict__["labels"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["protocol"] = None
+        __props__.__dict__["reachability_details"] = None
+        __props__.__dict__["related_projects"] = None
+        __props__.__dict__["source"] = None
+        __props__.__dict__["update_time"] = None
         return ConnectivityTest(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -198,10 +366,4 @@ class ConnectivityTest(pulumi.CustomResource):
         The time the test's configuration was updated.
         """
         return pulumi.get(self, "update_time")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

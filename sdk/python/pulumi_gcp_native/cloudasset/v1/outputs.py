@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -69,15 +69,29 @@ class ExprResponse(dict):
         """
         return pulumi.get(self, "title")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class FeedOutputConfigResponse(dict):
     """
     Output configuration for asset feed destination.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pubsubDestination":
+            suggest = "pubsub_destination"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeedOutputConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeedOutputConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeedOutputConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  pubsub_destination: 'outputs.PubsubDestinationResponse'):
         """
@@ -93,9 +107,6 @@ class FeedOutputConfigResponse(dict):
         Destination on Pub/Sub.
         """
         return pulumi.get(self, "pubsub_destination")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -118,8 +129,5 @@ class PubsubDestinationResponse(dict):
         The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
         """
         return pulumi.get(self, "topic")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

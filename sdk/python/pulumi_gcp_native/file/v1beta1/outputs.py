@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -20,6 +20,27 @@ class FileShareConfigResponse(dict):
     """
     File share configuration for the instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "capacityGb":
+            suggest = "capacity_gb"
+        elif key == "nfsExportOptions":
+            suggest = "nfs_export_options"
+        elif key == "sourceBackup":
+            suggest = "source_backup"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FileShareConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FileShareConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FileShareConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  capacity_gb: str,
                  name: str,
@@ -69,15 +90,31 @@ class FileShareConfigResponse(dict):
         """
         return pulumi.get(self, "source_backup")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NetworkConfigResponse(dict):
     """
     Network configuration for the instance.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddresses":
+            suggest = "ip_addresses"
+        elif key == "reservedIpRange":
+            suggest = "reserved_ip_range"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ip_addresses: Sequence[str],
                  modes: Sequence[str],
@@ -127,15 +164,37 @@ class NetworkConfigResponse(dict):
         """
         return pulumi.get(self, "reserved_ip_range")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class NfsExportOptionsResponse(dict):
     """
     NFS export options specifications.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessMode":
+            suggest = "access_mode"
+        elif key == "anonGid":
+            suggest = "anon_gid"
+        elif key == "anonUid":
+            suggest = "anon_uid"
+        elif key == "ipRanges":
+            suggest = "ip_ranges"
+        elif key == "squashMode":
+            suggest = "squash_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NfsExportOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NfsExportOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NfsExportOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_mode: str,
                  anon_gid: str,
@@ -195,8 +254,5 @@ class NfsExportOptionsResponse(dict):
         Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
         """
         return pulumi.get(self, "squash_mode")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

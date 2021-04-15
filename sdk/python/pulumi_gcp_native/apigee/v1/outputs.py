@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -46,6 +46,25 @@ class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
     """
     the Api category resource.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "siteId":
+            suggest = "site_id"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1ApiCategoryDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1ApiCategoryDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1ApiCategoryDataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  site_id: str,
@@ -84,9 +103,6 @@ class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
         """
         return pulumi.get(self, "update_time")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1ApiProductRefResponse(dict):
@@ -116,9 +132,6 @@ class GoogleCloudApigeeV1ApiProductRefResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1AsyncQueryResultResponse(dict):
@@ -147,9 +160,6 @@ class GoogleCloudApigeeV1AsyncQueryResultResponse(dict):
         Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result`
         """
         return pulumi.get(self, "self")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -183,9 +193,6 @@ class GoogleCloudApigeeV1AttributeResponse(dict):
         Value of the attribute.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -231,15 +238,43 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
         """
         return pulumi.get(self, "location")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1CertInfoResponse(dict):
     """
     X.509 certificate as defined in RFC 5280.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicConstraints":
+            suggest = "basic_constraints"
+        elif key == "expiryDate":
+            suggest = "expiry_date"
+        elif key == "isValid":
+            suggest = "is_valid"
+        elif key == "publicKey":
+            suggest = "public_key"
+        elif key == "serialNumber":
+            suggest = "serial_number"
+        elif key == "sigAlgName":
+            suggest = "sig_alg_name"
+        elif key == "subjectAlternativeNames":
+            suggest = "subject_alternative_names"
+        elif key == "validFrom":
+            suggest = "valid_from"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1CertInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1CertInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1CertInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  basic_constraints: str,
                  expiry_date: str,
@@ -366,12 +401,26 @@ class GoogleCloudApigeeV1CertInfoResponse(dict):
         """
         return pulumi.get(self, "version")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1CertificateResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "certInfo":
+            suggest = "cert_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1CertificateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1CertificateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1CertificateResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cert_info: Sequence['outputs.GoogleCloudApigeeV1CertInfoResponse']):
         """
@@ -387,12 +436,34 @@ class GoogleCloudApigeeV1CertificateResponse(dict):
         """
         return pulumi.get(self, "cert_info")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1CredentialResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiProducts":
+            suggest = "api_products"
+        elif key == "consumerKey":
+            suggest = "consumer_key"
+        elif key == "consumerSecret":
+            suggest = "consumer_secret"
+        elif key == "expiresAt":
+            suggest = "expires_at"
+        elif key == "issuedAt":
+            suggest = "issued_at"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1CredentialResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1CredentialResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1CredentialResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_products: Sequence['outputs.GoogleCloudApigeeV1ApiProductRefResponse'],
                  attributes: Sequence['outputs.GoogleCloudApigeeV1AttributeResponse'],
@@ -485,9 +556,6 @@ class GoogleCloudApigeeV1CredentialResponse(dict):
         """
         return pulumi.get(self, "status")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1CustomReportMetricResponse(dict):
@@ -521,15 +589,35 @@ class GoogleCloudApigeeV1CustomReportMetricResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
     """
     Configuration detail for datastore
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+        elif key == "datasetName":
+            suggest = "dataset_name"
+        elif key == "projectId":
+            suggest = "project_id"
+        elif key == "tablePrefix":
+            suggest = "table_prefix"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1DatastoreConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1DatastoreConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1DatastoreConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  bucket_name: str,
                  dataset_name: str,
@@ -590,15 +678,33 @@ class GoogleCloudApigeeV1DatastoreConfigResponse(dict):
         """
         return pulumi.get(self, "table_prefix")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1EntityMetadataResponse(dict):
     """
     Metadata common to many entities in this API.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createdAt":
+            suggest = "created_at"
+        elif key == "lastModifiedAt":
+            suggest = "last_modified_at"
+        elif key == "subType":
+            suggest = "sub_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1EntityMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1EntityMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1EntityMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  created_at: str,
                  last_modified_at: str,
@@ -637,15 +743,29 @@ class GoogleCloudApigeeV1EntityMetadataResponse(dict):
         """
         return pulumi.get(self, "sub_type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1GraphQLOperationConfigResponse(dict):
     """
     GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiSource":
+            suggest = "api_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1GraphQLOperationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_source: str,
                  attributes: Sequence['outputs.GoogleCloudApigeeV1AttributeResponse'],
@@ -695,15 +815,31 @@ class GoogleCloudApigeeV1GraphQLOperationConfigResponse(dict):
         """
         return pulumi.get(self, "quota")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1GraphQLOperationGroupResponse(dict):
     """
     List of graphQL operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationConfigType":
+            suggest = "operation_config_type"
+        elif key == "operationConfigs":
+            suggest = "operation_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1GraphQLOperationGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operation_config_type: str,
                  operation_configs: Sequence['outputs.GoogleCloudApigeeV1GraphQLOperationConfigResponse']):
@@ -731,15 +867,29 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse(dict):
         """
         return pulumi.get(self, "operation_configs")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
     """
     GraphQLOperation represents the pairing of graphQL operation types and the graphQL operation name.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationTypes":
+            suggest = "operation_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1GraphQLOperationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1GraphQLOperationResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operation: str,
                  operation_types: Sequence[str]):
@@ -767,15 +917,29 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
         """
         return pulumi.get(self, "operation_types")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1OperationConfigResponse(dict):
     """
     OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "apiSource":
+            suggest = "api_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1OperationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1OperationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1OperationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  api_source: str,
                  attributes: Sequence['outputs.GoogleCloudApigeeV1AttributeResponse'],
@@ -825,15 +989,31 @@ class GoogleCloudApigeeV1OperationConfigResponse(dict):
         """
         return pulumi.get(self, "quota")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1OperationGroupResponse(dict):
     """
     List of operation configuration details associated with Apigee API proxies or remote services. Remote services are non-Apigee proxies, such as Istio-Envoy.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "operationConfigType":
+            suggest = "operation_config_type"
+        elif key == "operationConfigs":
+            suggest = "operation_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1OperationGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1OperationGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1OperationGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  operation_config_type: str,
                  operation_configs: Sequence['outputs.GoogleCloudApigeeV1OperationConfigResponse']):
@@ -860,9 +1040,6 @@ class GoogleCloudApigeeV1OperationGroupResponse(dict):
         Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         """
         return pulumi.get(self, "operation_configs")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -897,9 +1074,6 @@ class GoogleCloudApigeeV1OperationResponse(dict):
         """
         return pulumi.get(self, "resource")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1PropertiesResponse(dict):
@@ -921,9 +1095,6 @@ class GoogleCloudApigeeV1PropertiesResponse(dict):
         List of all properties in the object
         """
         return pulumi.get(self, "property")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -958,12 +1129,32 @@ class GoogleCloudApigeeV1PropertyResponse(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1QueryMetadataResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTimestamp":
+            suggest = "end_timestamp"
+        elif key == "outputFormat":
+            suggest = "output_format"
+        elif key == "startTimestamp":
+            suggest = "start_timestamp"
+        elif key == "timeUnit":
+            suggest = "time_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1QueryMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1QueryMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1QueryMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dimensions: Sequence[str],
                  end_timestamp: str,
@@ -1034,15 +1225,29 @@ class GoogleCloudApigeeV1QueryMetadataResponse(dict):
         """
         return pulumi.get(self, "time_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1QuotaResponse(dict):
     """
     Quota contains the essential parameters needed that can be applied on a proxy/remote service, resources and methods combination associated with this API product. While setting of Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "timeUnit":
+            suggest = "time_unit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1QuotaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1QuotaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1QuotaResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  interval: str,
                  limit: str,
@@ -1081,9 +1286,6 @@ class GoogleCloudApigeeV1QuotaResponse(dict):
         """
         return pulumi.get(self, "time_unit")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1ReportPropertyResponse(dict):
@@ -1113,12 +1315,26 @@ class GoogleCloudApigeeV1ReportPropertyResponse(dict):
         """
         return pulumi.get(self, "property")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1TlsInfoCommonNameResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wildcardMatch":
+            suggest = "wildcard_match"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1TlsInfoCommonNameResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1TlsInfoCommonNameResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1TlsInfoCommonNameResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  value: str,
                  wildcard_match: bool):
@@ -1145,15 +1361,39 @@ class GoogleCloudApigeeV1TlsInfoCommonNameResponse(dict):
         """
         return pulumi.get(self, "wildcard_match")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1TlsInfoResponse(dict):
     """
     TLS configuration information for VirtualHosts and TargetServers.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientAuthEnabled":
+            suggest = "client_auth_enabled"
+        elif key == "commonName":
+            suggest = "common_name"
+        elif key == "ignoreValidationErrors":
+            suggest = "ignore_validation_errors"
+        elif key == "keyAlias":
+            suggest = "key_alias"
+        elif key == "keyStore":
+            suggest = "key_store"
+        elif key == "trustStore":
+            suggest = "trust_store"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1TlsInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1TlsInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1TlsInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  ciphers: Sequence[str],
                  client_auth_enabled: bool,
@@ -1258,15 +1498,29 @@ class GoogleCloudApigeeV1TlsInfoResponse(dict):
         """
         return pulumi.get(self, "trust_store")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleCloudApigeeV1TraceSamplingConfigResponse(dict):
     """
     TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "samplingRate":
+            suggest = "sampling_rate"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1TraceSamplingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1TraceSamplingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1TraceSamplingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  sampler: str,
                  sampling_rate: float):
@@ -1294,15 +1548,29 @@ class GoogleCloudApigeeV1TraceSamplingConfigResponse(dict):
         """
         return pulumi.get(self, "sampling_rate")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleIamV1AuditConfigResponse(dict):
     """
     Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditLogConfigs":
+            suggest = "audit_log_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamV1AuditConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamV1AuditConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamV1AuditConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  audit_log_configs: Sequence['outputs.GoogleIamV1AuditLogConfigResponse'],
                  service: str):
@@ -1330,15 +1598,31 @@ class GoogleIamV1AuditConfigResponse(dict):
         """
         return pulumi.get(self, "service")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class GoogleIamV1AuditLogConfigResponse(dict):
     """
     Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedMembers":
+            suggest = "exempted_members"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleIamV1AuditLogConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleIamV1AuditLogConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleIamV1AuditLogConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  exempted_members: Sequence[str],
                  log_type: str):
@@ -1365,9 +1649,6 @@ class GoogleIamV1AuditLogConfigResponse(dict):
         The log type that this config enables.
         """
         return pulumi.get(self, "log_type")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1412,9 +1693,6 @@ class GoogleIamV1BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -1470,8 +1748,5 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

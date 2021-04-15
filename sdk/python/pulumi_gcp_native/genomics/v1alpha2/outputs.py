@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
 __all__ = [
@@ -22,6 +22,27 @@ class DiskResponse(dict):
     """
     A Google Compute Engine disk resource specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mountPoint":
+            suggest = "mount_point"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DiskResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  mount_point: str,
                  name: str,
@@ -93,15 +114,29 @@ class DiskResponse(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class DockerExecutorResponse(dict):
     """
     The Docker execuctor specification.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "imageName":
+            suggest = "image_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DockerExecutorResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DockerExecutorResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DockerExecutorResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  cmd: str,
                  image_name: str):
@@ -128,9 +163,6 @@ class DockerExecutorResponse(dict):
         Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
         """
         return pulumi.get(self, "image_name")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -165,15 +197,31 @@ class LocalCopyResponse(dict):
         """
         return pulumi.get(self, "path")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PipelineParameterResponse(dict):
     """
     Parameters facilitate setting and delivering data into the pipeline's execution environment. They are defined at create time, with optional defaults, and can be overridden at run time. If `localCopy` is unset, then the parameter specifies a string that is passed as-is into the pipeline, as the value of the environment variable with the given name. A default value can be optionally specified at create time. The default can be overridden at run time using the inputs map. If no default is given, a value must be supplied at runtime. If `localCopy` is defined, then the parameter specifies a data source or sink, both in Google Cloud Storage and on the Docker container where the pipeline computation is run. The service account associated with the Pipeline (by default the project's Compute Engine service account) must have access to the Google Cloud Storage paths. At run time, the Google Cloud Storage paths can be overridden if a default was provided at create time, or must be set otherwise. The pipeline runner should add a key/value pair to either the inputs or outputs map. The indicated data copies will be carried out before/after pipeline execution, just as if the corresponding arguments were provided to `gsutil cp`. For example: Given the following `PipelineParameter`, specified in the `inputParameters` list: ``` {name: "input_file", localCopy: {path: "file.txt", disk: "pd1"}} ``` where `disk` is defined in the `PipelineResources` object as: ``` {name: "pd1", mountPoint: "/mnt/disk/"} ``` We create a disk named `pd1`, mount it on the host VM, and map `/mnt/pd1` to `/mnt/disk` in the docker container. At runtime, an entry for `input_file` would be required in the inputs map, such as: ``` inputs["input_file"] = "gs://my-bucket/bar.txt" ``` This would generate the following gsutil call: ``` gsutil cp gs://my-bucket/bar.txt /mnt/pd1/file.txt ``` The file `/mnt/pd1/file.txt` maps to `/mnt/disk/file.txt` in the Docker container. Acceptable paths are: Google Cloud storage pathLocal path file file glob directory For outputs, the direction of the copy is reversed: ``` gsutil cp /mnt/disk/file.txt gs://my-bucket/bar.txt ``` Acceptable paths are: Local pathGoogle Cloud Storage path file file file directory - directory must already exist glob directory - directory will be created if it doesn't exist One restriction due to docker limitations, is that for outputs that are found on the boot disk, the local path cannot be a glob and must be a file.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultValue":
+            suggest = "default_value"
+        elif key == "localCopy":
+            suggest = "local_copy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  default_value: str,
                  description: str,
@@ -223,15 +271,39 @@ class PipelineParameterResponse(dict):
         """
         return pulumi.get(self, "name")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class PipelineResourcesResponse(dict):
     """
     The system resources for the pipeline run.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorCount":
+            suggest = "accelerator_count"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+        elif key == "bootDiskSizeGb":
+            suggest = "boot_disk_size_gb"
+        elif key == "minimumCpuCores":
+            suggest = "minimum_cpu_cores"
+        elif key == "minimumRamGb":
+            suggest = "minimum_ram_gb"
+        elif key == "noAddress":
+            suggest = "no_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PipelineResourcesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PipelineResourcesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PipelineResourcesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  accelerator_count: str,
                  accelerator_type: str,
@@ -335,8 +407,5 @@ class PipelineResourcesResponse(dict):
         List of Google Compute Engine availability zones to which resource creation will restricted. If empty, any zone may be chosen.
         """
         return pulumi.get(self, "zones")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

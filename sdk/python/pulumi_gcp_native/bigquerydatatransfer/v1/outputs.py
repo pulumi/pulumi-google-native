@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 
 __all__ = [
     'EmailPreferencesResponse',
@@ -18,6 +18,23 @@ class EmailPreferencesResponse(dict):
     """
     Represents preferences for sending email notifications for transfer run events.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableFailureEmail":
+            suggest = "enable_failure_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EmailPreferencesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EmailPreferencesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EmailPreferencesResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  enable_failure_email: bool):
         """
@@ -34,15 +51,33 @@ class EmailPreferencesResponse(dict):
         """
         return pulumi.get(self, "enable_failure_email")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ScheduleOptionsResponse(dict):
     """
     Options customizing the data transfer schedule.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableAutoScheduling":
+            suggest = "disable_auto_scheduling"
+        elif key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ScheduleOptionsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ScheduleOptionsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ScheduleOptionsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  disable_auto_scheduling: bool,
                  end_time: str,
@@ -80,8 +115,5 @@ class ScheduleOptionsResponse(dict):
         Specifies time to start scheduling transfer runs. The first run will be scheduled at or after the start time according to a recurrence pattern defined in the schedule string. The start time can be changed at any moment. The time when a data transfer can be trigerred manually is not limited by this option.
         """
         return pulumi.get(self, "start_time")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 

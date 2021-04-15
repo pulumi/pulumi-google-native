@@ -5,14 +5,103 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from ... import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from ... import _utilities
 from . import outputs
 
-__all__ = ['CapacityCommitment']
+__all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
+
+@pulumi.input_type
+class CapacityCommitmentArgs:
+    def __init__(__self__, *,
+                 capacity_commitments_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
+                 plan: Optional[pulumi.Input[str]] = None,
+                 renewal_plan: Optional[pulumi.Input[str]] = None,
+                 slot_count: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a CapacityCommitment resource.
+        :param pulumi.Input[str] plan: Capacity commitment commitment plan.
+        :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+        :param pulumi.Input[str] slot_count: Number of slots in this commitment.
+        """
+        pulumi.set(__self__, "capacity_commitments_id", capacity_commitments_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
+        if plan is not None:
+            pulumi.set(__self__, "plan", plan)
+        if renewal_plan is not None:
+            pulumi.set(__self__, "renewal_plan", renewal_plan)
+        if slot_count is not None:
+            pulumi.set(__self__, "slot_count", slot_count)
+
+    @property
+    @pulumi.getter(name="capacityCommitmentsId")
+    def capacity_commitments_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "capacity_commitments_id")
+
+    @capacity_commitments_id.setter
+    def capacity_commitments_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "capacity_commitments_id", value)
+
+    @property
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
+
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter
+    def plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        Capacity commitment commitment plan.
+        """
+        return pulumi.get(self, "plan")
+
+    @plan.setter
+    def plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "plan", value)
+
+    @property
+    @pulumi.getter(name="renewalPlan")
+    def renewal_plan(self) -> Optional[pulumi.Input[str]]:
+        """
+        The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
+        """
+        return pulumi.get(self, "renewal_plan")
+
+    @renewal_plan.setter
+    def renewal_plan(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "renewal_plan", value)
+
+    @property
+    @pulumi.getter(name="slotCount")
+    def slot_count(self) -> Optional[pulumi.Input[str]]:
+        """
+        Number of slots in this commitment.
+        """
+        return pulumi.get(self, "slot_count")
+
+    @slot_count.setter
+    def slot_count(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slot_count", value)
 
 
 class CapacityCommitment(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -22,9 +111,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  renewal_plan: Optional[pulumi.Input[str]] = None,
                  slot_count: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Creates a new capacity commitment resource.
 
@@ -34,12 +121,37 @@ class CapacityCommitment(pulumi.CustomResource):
         :param pulumi.Input[str] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
         :param pulumi.Input[str] slot_count: Number of slots in this commitment.
         """
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: CapacityCommitmentArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Creates a new capacity commitment resource.
+
+        :param str resource_name: The name of the resource.
+        :param CapacityCommitmentArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(CapacityCommitmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 capacity_commitments_id: Optional[pulumi.Input[str]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
+                 plan: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
+                 renewal_plan: Optional[pulumi.Input[str]] = None,
+                 slot_count: Optional[pulumi.Input[str]] = None,
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -49,25 +161,25 @@ class CapacityCommitment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
             if capacity_commitments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_commitments_id'")
-            __props__['capacity_commitments_id'] = capacity_commitments_id
+            __props__.__dict__["capacity_commitments_id"] = capacity_commitments_id
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
-            __props__['locations_id'] = locations_id
-            __props__['plan'] = plan
+            __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["plan"] = plan
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
-            __props__['projects_id'] = projects_id
-            __props__['renewal_plan'] = renewal_plan
-            __props__['slot_count'] = slot_count
-            __props__['commitment_end_time'] = None
-            __props__['commitment_start_time'] = None
-            __props__['failure_status'] = None
-            __props__['name'] = None
-            __props__['state'] = None
+            __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["renewal_plan"] = renewal_plan
+            __props__.__dict__["slot_count"] = slot_count
+            __props__.__dict__["commitment_end_time"] = None
+            __props__.__dict__["commitment_start_time"] = None
+            __props__.__dict__["failure_status"] = None
+            __props__.__dict__["name"] = None
+            __props__.__dict__["state"] = None
         super(CapacityCommitment, __self__).__init__(
             'gcp-native:bigqueryreservation/v1beta1:CapacityCommitment',
             resource_name,
@@ -88,16 +200,16 @@ class CapacityCommitment(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = CapacityCommitmentArgs.__new__(CapacityCommitmentArgs)
 
-        __props__["commitment_end_time"] = None
-        __props__["commitment_start_time"] = None
-        __props__["failure_status"] = None
-        __props__["name"] = None
-        __props__["plan"] = None
-        __props__["renewal_plan"] = None
-        __props__["slot_count"] = None
-        __props__["state"] = None
+        __props__.__dict__["commitment_end_time"] = None
+        __props__.__dict__["commitment_start_time"] = None
+        __props__.__dict__["failure_status"] = None
+        __props__.__dict__["name"] = None
+        __props__.__dict__["plan"] = None
+        __props__.__dict__["renewal_plan"] = None
+        __props__.__dict__["slot_count"] = None
+        __props__.__dict__["state"] = None
         return CapacityCommitment(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -163,10 +275,4 @@ class CapacityCommitment(pulumi.CustomResource):
         State of the commitment.
         """
         return pulumi.get(self, "state")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
