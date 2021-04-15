@@ -105,7 +105,7 @@ export class Route extends pulumi.CustomResource {
     /**
      * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
-    public readonly warnings!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly warnings!: pulumi.Output<any[]>;
 
     /**
      * Create a Route resource with the given unique name, arguments, and options.
@@ -251,5 +251,5 @@ export interface RouteArgs {
     /**
      * [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
      */
-    readonly warnings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly warnings?: pulumi.Input<any[]>;
 }

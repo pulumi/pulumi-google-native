@@ -42,11 +42,11 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's billing configuration.
      */
-    public readonly billing!: pulumi.Output<{[key: string]: string}>;
+    public readonly billing!: pulumi.Output<any>;
     /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
-    public readonly cors!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly cors!: pulumi.Output<any[]>;
     /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
@@ -66,7 +66,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's IAM configuration.
      */
-    public readonly iamConfiguration!: pulumi.Output<{[key: string]: string}>;
+    public readonly iamConfiguration!: pulumi.Output<any>;
     /**
      * The kind of item this is. For buckets, this is always storage#bucket.
      */
@@ -78,7 +78,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's lifecycle configuration. See lifecycle management for more information.
      */
-    public readonly lifecycle!: pulumi.Output<{[key: string]: string}>;
+    public readonly lifecycle!: pulumi.Output<any>;
     /**
      * The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
      */
@@ -110,7 +110,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
-    public readonly retentionPolicy!: pulumi.Output<{[key: string]: string}>;
+    public readonly retentionPolicy!: pulumi.Output<any>;
     /**
      * Reserved for future use.
      */
@@ -134,7 +134,7 @@ export class Bucket extends pulumi.CustomResource {
     /**
      * The bucket's versioning configuration.
      */
-    public readonly versioning!: pulumi.Output<{[key: string]: string}>;
+    public readonly versioning!: pulumi.Output<any>;
     /**
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */
@@ -238,12 +238,12 @@ export interface BucketArgs {
     /**
      * The bucket's billing configuration.
      */
-    readonly billing?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly billing?: any;
     readonly bucket: pulumi.Input<string>;
     /**
      * The bucket's Cross-Origin Resource Sharing (CORS) configuration.
      */
-    readonly cors?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly cors?: pulumi.Input<any[]>;
     /**
      * The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
      */
@@ -263,7 +263,7 @@ export interface BucketArgs {
     /**
      * The bucket's IAM configuration.
      */
-    readonly iamConfiguration?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly iamConfiguration?: any;
     /**
      * The ID of the bucket. For buckets, the id and name properties are the same.
      */
@@ -279,7 +279,7 @@ export interface BucketArgs {
     /**
      * The bucket's lifecycle configuration. See lifecycle management for more information.
      */
-    readonly lifecycle?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly lifecycle?: any;
     /**
      * The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
      */
@@ -312,7 +312,7 @@ export interface BucketArgs {
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
-    readonly retentionPolicy?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly retentionPolicy?: any;
     /**
      * Reserved for future use.
      */
@@ -336,7 +336,7 @@ export interface BucketArgs {
     /**
      * The bucket's versioning configuration.
      */
-    readonly versioning?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly versioning?: any;
     /**
      * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
      */

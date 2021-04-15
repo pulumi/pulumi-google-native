@@ -37,7 +37,7 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    public readonly bindings!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly bindings!: pulumi.Output<any[]>;
     /**
      * HTTP 1.1  Entity tag for the policy.
      */
@@ -100,7 +100,7 @@ export interface ObjectIamPolicyArgs {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly bindings?: pulumi.Input<any[]>;
     readonly bucket: pulumi.Input<string>;
     /**
      * HTTP 1.1  Entity tag for the policy.

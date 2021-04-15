@@ -38,7 +38,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
      */
-    public readonly allowed!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly allowed!: pulumi.Output<any[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -46,7 +46,7 @@ export class Firewall extends pulumi.CustomResource {
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
      */
-    public readonly denied!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly denied!: pulumi.Output<any[]>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */
@@ -191,7 +191,7 @@ export interface FirewallArgs {
     /**
      * The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
      */
-    readonly allowed?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly allowed?: pulumi.Input<any[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -199,7 +199,7 @@ export interface FirewallArgs {
     /**
      * The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
      */
-    readonly denied?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly denied?: pulumi.Input<any[]>;
     /**
      * An optional description of this resource. Provide this field when you create the resource.
      */

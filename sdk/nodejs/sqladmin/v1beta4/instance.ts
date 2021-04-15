@@ -66,7 +66,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The name and status of the failover replica. This property is applicable only to Second Generation instances.
      */
-    public readonly failoverReplica!: pulumi.Output<{[key: string]: string}>;
+    public readonly failoverReplica!: pulumi.Output<any>;
     /**
      * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
      */
@@ -284,7 +284,7 @@ export interface InstanceArgs {
     /**
      * The name and status of the failover replica. This property is applicable only to Second Generation instances.
      */
-    readonly failoverReplica?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly failoverReplica?: any;
     /**
      * The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
      */

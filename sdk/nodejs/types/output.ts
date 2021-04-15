@@ -3095,7 +3095,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
              */
-            trainingOptions: {[key: string]: string};
+            trainingOptions: any;
         }
 
         export interface ClusteringResponse {
@@ -4028,7 +4028,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
              */
-            modelOptions: {[key: string]: string};
+            modelOptions: any;
             /**
              * [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
              */
@@ -4302,7 +4302,7 @@ export namespace bigquery {
             /**
              * [Optional] The categories attached to this field, used for field-level access control.
              */
-            categories: {[key: string]: string};
+            categories: any;
             /**
              * [Optional] The field description. The maximum length is 1,024 characters.
              */
@@ -4323,7 +4323,7 @@ export namespace bigquery {
              * [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
              */
             name: string;
-            policyTags: {[key: string]: string};
+            policyTags: any;
             /**
              * [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
              */
@@ -32485,7 +32485,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: any;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -32553,7 +32553,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: any[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -32834,7 +32834,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: any;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -32902,7 +32902,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: any[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -33175,7 +33175,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: any;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -33243,7 +33243,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: any[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
