@@ -19,7 +19,7 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         /// </summary>
         [Output("allowed")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Allowed { get; private set; } = null!;
+        public Output<ImmutableArray<object>> Allowed { get; private set; } = null!;
 
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -31,7 +31,7 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         /// </summary>
         [Output("denied")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Denied { get; private set; } = null!;
+        public Output<ImmutableArray<object>> Denied { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of this resource. Provide this field when you create the resource.
@@ -180,14 +180,14 @@ namespace Pulumi.GcpNative.Compute.Beta
     public sealed class FirewallArgs : Pulumi.ResourceArgs
     {
         [Input("allowed")]
-        private InputList<ImmutableDictionary<string, string>>? _allowed;
+        private InputList<object>? _allowed;
 
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Allowed
+        public InputList<object> Allowed
         {
-            get => _allowed ?? (_allowed = new InputList<ImmutableDictionary<string, string>>());
+            get => _allowed ?? (_allowed = new InputList<object>());
             set => _allowed = value;
         }
 
@@ -198,14 +198,14 @@ namespace Pulumi.GcpNative.Compute.Beta
         public Input<string>? CreationTimestamp { get; set; }
 
         [Input("denied")]
-        private InputList<ImmutableDictionary<string, string>>? _denied;
+        private InputList<object>? _denied;
 
         /// <summary>
         /// The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Denied
+        public InputList<object> Denied
         {
-            get => _denied ?? (_denied = new InputList<ImmutableDictionary<string, string>>());
+            get => _denied ?? (_denied = new InputList<object>());
             set => _denied = value;
         }
 

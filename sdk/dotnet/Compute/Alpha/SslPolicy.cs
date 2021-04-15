@@ -94,7 +94,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
         [Output("warnings")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Warnings { get; private set; } = null!;
+        public Output<ImmutableArray<object>> Warnings { get; private set; } = null!;
 
 
         /// <summary>
@@ -241,14 +241,14 @@ namespace Pulumi.GcpNative.Compute.Alpha
         public Input<Inputs.ServerTlsSettingsArgs>? TlsSettings { get; set; }
 
         [Input("warnings")]
-        private InputList<ImmutableDictionary<string, string>>? _warnings;
+        private InputList<object>? _warnings;
 
         /// <summary>
         /// [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Warnings
+        public InputList<object> Warnings
         {
-            get => _warnings ?? (_warnings = new InputList<ImmutableDictionary<string, string>>());
+            get => _warnings ?? (_warnings = new InputList<object>());
             set => _warnings = value;
         }
 

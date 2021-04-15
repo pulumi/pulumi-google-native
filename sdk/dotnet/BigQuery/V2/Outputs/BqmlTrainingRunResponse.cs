@@ -28,7 +28,7 @@ namespace Pulumi.GcpNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> TrainingOptions;
+        public readonly object TrainingOptions;
 
         [OutputConstructor]
         private BqmlTrainingRunResponse(
@@ -38,7 +38,7 @@ namespace Pulumi.GcpNative.BigQuery.V2.Outputs
 
             string state,
 
-            ImmutableDictionary<string, string> trainingOptions)
+            object trainingOptions)
         {
             IterationResults = iterationResults;
             StartTime = startTime;

@@ -32,7 +32,7 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha.Outputs
         /// <summary>
         /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Error;
+        public readonly object Error;
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         /// </summary>
@@ -100,7 +100,7 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha.Outputs
         /// <summary>
         /// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> Warnings;
+        public readonly ImmutableArray<object> Warnings;
         /// <summary>
         /// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha.Outputs
 
             string endTime,
 
-            ImmutableDictionary<string, string> error,
+            object error,
 
             string httpErrorMessage,
 
@@ -150,7 +150,7 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha.Outputs
 
             string user,
 
-            ImmutableArray<ImmutableDictionary<string, string>> warnings,
+            ImmutableArray<object> warnings,
 
             string zone)
         {

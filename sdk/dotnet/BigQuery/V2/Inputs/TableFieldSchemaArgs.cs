@@ -12,17 +12,11 @@ namespace Pulumi.GcpNative.BigQuery.V2.Inputs
 
     public sealed class TableFieldSchemaArgs : Pulumi.ResourceArgs
     {
-        [Input("categories")]
-        private InputMap<string>? _categories;
-
         /// <summary>
         /// [Optional] The categories attached to this field, used for field-level access control.
         /// </summary>
-        public InputMap<string> Categories
-        {
-            get => _categories ?? (_categories = new InputMap<string>());
-            set => _categories = value;
-        }
+        [Input("categories")]
+        public Input<object>? Categories { get; set; }
 
         /// <summary>
         /// [Optional] The field description. The maximum length is 1,024 characters.
@@ -61,12 +55,7 @@ namespace Pulumi.GcpNative.BigQuery.V2.Inputs
         public Input<string>? Name { get; set; }
 
         [Input("policyTags")]
-        private InputMap<string>? _policyTags;
-        public InputMap<string> PolicyTags
-        {
-            get => _policyTags ?? (_policyTags = new InputMap<string>());
-            set => _policyTags = value;
-        }
+        public Input<object>? PolicyTags { get; set; }
 
         /// <summary>
         /// [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.

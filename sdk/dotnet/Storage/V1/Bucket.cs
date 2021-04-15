@@ -25,13 +25,13 @@ namespace Pulumi.GcpNative.Storage.V1
         /// The bucket's billing configuration.
         /// </summary>
         [Output("billing")]
-        public Output<ImmutableDictionary<string, string>> Billing { get; private set; } = null!;
+        public Output<object> Billing { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         /// </summary>
         [Output("cors")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Cors { get; private set; } = null!;
+        public Output<ImmutableArray<object>> Cors { get; private set; } = null!;
 
         /// <summary>
         /// The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
@@ -61,7 +61,7 @@ namespace Pulumi.GcpNative.Storage.V1
         /// The bucket's IAM configuration.
         /// </summary>
         [Output("iamConfiguration")]
-        public Output<ImmutableDictionary<string, string>> IamConfiguration { get; private set; } = null!;
+        public Output<object> IamConfiguration { get; private set; } = null!;
 
         /// <summary>
         /// The kind of item this is. For buckets, this is always storage#bucket.
@@ -79,7 +79,7 @@ namespace Pulumi.GcpNative.Storage.V1
         /// The bucket's lifecycle configuration. See lifecycle management for more information.
         /// </summary>
         [Output("lifecycle")]
-        public Output<ImmutableDictionary<string, string>> Lifecycle { get; private set; } = null!;
+        public Output<object> Lifecycle { get; private set; } = null!;
 
         /// <summary>
         /// The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
@@ -127,7 +127,7 @@ namespace Pulumi.GcpNative.Storage.V1
         /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         /// </summary>
         [Output("retentionPolicy")]
-        public Output<ImmutableDictionary<string, string>> RetentionPolicy { get; private set; } = null!;
+        public Output<object> RetentionPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Reserved for future use.
@@ -163,7 +163,7 @@ namespace Pulumi.GcpNative.Storage.V1
         /// The bucket's versioning configuration.
         /// </summary>
         [Output("versioning")]
-        public Output<ImmutableDictionary<string, string>> Versioning { get; private set; } = null!;
+        public Output<object> Versioning { get; private set; } = null!;
 
         /// <summary>
         /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
@@ -234,30 +234,24 @@ namespace Pulumi.GcpNative.Storage.V1
             set => _acl = value;
         }
 
-        [Input("billing")]
-        private InputMap<string>? _billing;
-
         /// <summary>
         /// The bucket's billing configuration.
         /// </summary>
-        public InputMap<string> Billing
-        {
-            get => _billing ?? (_billing = new InputMap<string>());
-            set => _billing = value;
-        }
+        [Input("billing")]
+        public Input<object>? Billing { get; set; }
 
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
         [Input("cors")]
-        private InputList<ImmutableDictionary<string, string>>? _cors;
+        private InputList<object>? _cors;
 
         /// <summary>
         /// The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Cors
+        public InputList<object> Cors
         {
-            get => _cors ?? (_cors = new InputList<ImmutableDictionary<string, string>>());
+            get => _cors ?? (_cors = new InputList<object>());
             set => _cors = value;
         }
 
@@ -297,17 +291,11 @@ namespace Pulumi.GcpNative.Storage.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("iamConfiguration")]
-        private InputMap<string>? _iamConfiguration;
-
         /// <summary>
         /// The bucket's IAM configuration.
         /// </summary>
-        public InputMap<string> IamConfiguration
-        {
-            get => _iamConfiguration ?? (_iamConfiguration = new InputMap<string>());
-            set => _iamConfiguration = value;
-        }
+        [Input("iamConfiguration")]
+        public Input<object>? IamConfiguration { get; set; }
 
         /// <summary>
         /// The ID of the bucket. For buckets, the id and name properties are the same.
@@ -333,17 +321,11 @@ namespace Pulumi.GcpNative.Storage.V1
             set => _labels = value;
         }
 
-        [Input("lifecycle")]
-        private InputMap<string>? _lifecycle;
-
         /// <summary>
         /// The bucket's lifecycle configuration. See lifecycle management for more information.
         /// </summary>
-        public InputMap<string> Lifecycle
-        {
-            get => _lifecycle ?? (_lifecycle = new InputMap<string>());
-            set => _lifecycle = value;
-        }
+        [Input("lifecycle")]
+        public Input<object>? Lifecycle { get; set; }
 
         /// <summary>
         /// The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
@@ -402,17 +384,11 @@ namespace Pulumi.GcpNative.Storage.V1
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
 
-        [Input("retentionPolicy")]
-        private InputMap<string>? _retentionPolicy;
-
         /// <summary>
         /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         /// </summary>
-        public InputMap<string> RetentionPolicy
-        {
-            get => _retentionPolicy ?? (_retentionPolicy = new InputMap<string>());
-            set => _retentionPolicy = value;
-        }
+        [Input("retentionPolicy")]
+        public Input<object>? RetentionPolicy { get; set; }
 
         /// <summary>
         /// Reserved for future use.
@@ -444,17 +420,11 @@ namespace Pulumi.GcpNative.Storage.V1
         [Input("updated")]
         public Input<string>? Updated { get; set; }
 
-        [Input("versioning")]
-        private InputMap<string>? _versioning;
-
         /// <summary>
         /// The bucket's versioning configuration.
         /// </summary>
-        public InputMap<string> Versioning
-        {
-            get => _versioning ?? (_versioning = new InputMap<string>());
-            set => _versioning = value;
-        }
+        [Input("versioning")]
+        public Input<object>? Versioning { get; set; }
 
         [Input("website")]
         private InputMap<string>? _website;
