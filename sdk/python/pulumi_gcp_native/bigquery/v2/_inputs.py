@@ -654,12 +654,12 @@ class BqmlTrainingRunArgs:
                  iteration_results: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 training_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 training_options: Optional[Any] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: [Output-only, Beta] List of each iteration results.
         :param pulumi.Input[str] start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
         :param pulumi.Input[str] state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        :param Any training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         if iteration_results is not None:
             pulumi.set(__self__, "iteration_results", iteration_results)
@@ -708,14 +708,14 @@ class BqmlTrainingRunArgs:
 
     @property
     @pulumi.getter(name="trainingOptions")
-    def training_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def training_options(self) -> Optional[Any]:
         """
         [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         return pulumi.get(self, "training_options")
 
     @training_options.setter
-    def training_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def training_options(self, value: Optional[Any]):
         pulumi.set(self, "training_options", value)
 
 
@@ -4306,10 +4306,10 @@ class MaterializedViewDefinitionArgs:
 @pulumi.input_type
 class ModelDefinitionArgs:
     def __init__(__self__, *,
-                 model_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 model_options: Optional[Any] = None,
                  training_runs: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        :param Any model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
         """
         if model_options is not None:
@@ -4319,14 +4319,14 @@ class ModelDefinitionArgs:
 
     @property
     @pulumi.getter(name="modelOptions")
-    def model_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def model_options(self) -> Optional[Any]:
         """
         [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         """
         return pulumi.get(self, "model_options")
 
     @model_options.setter
-    def model_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def model_options(self, value: Optional[Any]):
         pulumi.set(self, "model_options", value)
 
     @property
@@ -5275,18 +5275,18 @@ class StreamingbufferArgs:
 @pulumi.input_type
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 categories: Optional[Any] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
                  max_length: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 policy_tags: Optional[Any] = None,
                  precision: Optional[pulumi.Input[str]] = None,
                  scale: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param Any categories: [Optional] The categories attached to this field, used for field-level access control.
         :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -5319,14 +5319,14 @@ class TableFieldSchemaArgs:
 
     @property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def categories(self) -> Optional[Any]:
         """
         [Optional] The categories attached to this field, used for field-level access control.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def categories(self, value: Optional[Any]):
         pulumi.set(self, "categories", value)
 
     @property
@@ -5391,11 +5391,11 @@ class TableFieldSchemaArgs:
 
     @property
     @pulumi.getter(name="policyTags")
-    def policy_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def policy_tags(self) -> Optional[Any]:
         return pulumi.get(self, "policy_tags")
 
     @policy_tags.setter
-    def policy_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def policy_tags(self, value: Optional[Any]):
         pulumi.set(self, "policy_tags", value)
 
     @property

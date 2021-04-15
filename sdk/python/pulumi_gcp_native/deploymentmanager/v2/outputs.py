@@ -378,7 +378,7 @@ class OperationResponse(dict):
                  creation_timestamp: str,
                  description: str,
                  end_time: str,
-                 error: Mapping[str, str],
+                 error: Any,
                  http_error_message: str,
                  http_error_status_code: int,
                  insert_time: str,
@@ -395,7 +395,7 @@ class OperationResponse(dict):
                  target_id: str,
                  target_link: str,
                  user: str,
-                 warnings: Sequence[Mapping[str, str]],
+                 warnings: Sequence[Any],
                  zone: str):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
@@ -403,7 +403,7 @@ class OperationResponse(dict):
         :param str creation_timestamp: [Deprecated] This field is deprecated.
         :param str description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param str end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-        :param Mapping[str, str] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param Any error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
         :param str http_error_message: [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param int http_error_status_code: [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         :param str insert_time: [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
@@ -420,7 +420,7 @@ class OperationResponse(dict):
         :param str target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
         :param str target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
         :param str user: [Output Only] User who requested the operation, for example: `user@example.com`.
-        :param Sequence[Mapping[str, str]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+        :param Sequence[Any] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         :param str zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
@@ -481,7 +481,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def error(self) -> Mapping[str, str]:
+    def error(self) -> Any:
         """
         [Output Only] If errors are generated during processing of the operation, this field will be populated.
         """
@@ -617,7 +617,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def warnings(self) -> Sequence[Mapping[str, str]]:
+    def warnings(self) -> Sequence[Any]:
         """
         [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         """

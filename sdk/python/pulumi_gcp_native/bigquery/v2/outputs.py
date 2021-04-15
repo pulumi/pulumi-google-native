@@ -534,12 +534,12 @@ class BqmlTrainingRunResponse(dict):
                  iteration_results: Sequence['outputs.BqmlIterationResultResponse'],
                  start_time: str,
                  state: str,
-                 training_options: Mapping[str, str]):
+                 training_options: Any):
         """
         :param Sequence['BqmlIterationResultResponseArgs'] iteration_results: [Output-only, Beta] List of each iteration results.
         :param str start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
         :param str state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param Mapping[str, str] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        :param Any training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         pulumi.set(__self__, "iteration_results", iteration_results)
         pulumi.set(__self__, "start_time", start_time)
@@ -572,7 +572,7 @@ class BqmlTrainingRunResponse(dict):
 
     @property
     @pulumi.getter(name="trainingOptions")
-    def training_options(self) -> Mapping[str, str]:
+    def training_options(self) -> Any:
         """
         [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
@@ -3171,10 +3171,10 @@ class MaterializedViewDefinitionResponse(dict):
 @pulumi.output_type
 class ModelDefinitionResponse(dict):
     def __init__(__self__, *,
-                 model_options: Mapping[str, str],
+                 model_options: Any,
                  training_runs: Sequence['outputs.BqmlTrainingRunResponse']):
         """
-        :param Mapping[str, str] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        :param Any model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         :param Sequence['BqmlTrainingRunResponseArgs'] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
         """
         pulumi.set(__self__, "model_options", model_options)
@@ -3182,7 +3182,7 @@ class ModelDefinitionResponse(dict):
 
     @property
     @pulumi.getter(name="modelOptions")
-    def model_options(self) -> Mapping[str, str]:
+    def model_options(self) -> Any:
         """
         [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         """
@@ -3949,18 +3949,18 @@ class StreamingbufferResponse(dict):
 @pulumi.output_type
 class TableFieldSchemaResponse(dict):
     def __init__(__self__, *,
-                 categories: Mapping[str, str],
+                 categories: Any,
                  description: str,
                  fields: Sequence['outputs.TableFieldSchemaResponse'],
                  max_length: str,
                  mode: str,
                  name: str,
-                 policy_tags: Mapping[str, str],
+                 policy_tags: Any,
                  precision: str,
                  scale: str,
                  type: str):
         """
-        :param Mapping[str, str] categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param Any categories: [Optional] The categories attached to this field, used for field-level access control.
         :param str description: [Optional] The field description. The maximum length is 1,024 characters.
         :param Sequence['TableFieldSchemaResponseArgs'] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param str max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -3983,7 +3983,7 @@ class TableFieldSchemaResponse(dict):
 
     @property
     @pulumi.getter
-    def categories(self) -> Mapping[str, str]:
+    def categories(self) -> Any:
         """
         [Optional] The categories attached to this field, used for field-level access control.
         """
@@ -4031,7 +4031,7 @@ class TableFieldSchemaResponse(dict):
 
     @property
     @pulumi.getter(name="policyTags")
-    def policy_tags(self) -> Mapping[str, str]:
+    def policy_tags(self) -> Any:
         return pulumi.get(self, "policy_tags")
 
     @property

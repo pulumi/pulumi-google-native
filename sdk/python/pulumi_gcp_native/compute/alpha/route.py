@@ -37,7 +37,7 @@ class Route(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -70,7 +70,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[Any]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -318,7 +318,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def warnings(self) -> pulumi.Output[Sequence[Any]]:
         """
         [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """

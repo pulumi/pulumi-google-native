@@ -32,7 +32,7 @@ class SslPolicy(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  tls_settings: Optional[pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -57,7 +57,7 @@ class SslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[Any]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -234,7 +234,7 @@ class SslPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def warnings(self) -> pulumi.Output[Sequence[Any]]:
         """
         [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """

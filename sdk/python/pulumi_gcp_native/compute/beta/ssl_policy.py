@@ -28,7 +28,7 @@ class SslPolicy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[Any]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -51,7 +51,7 @@ class SslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] profile: Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[Any]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -208,7 +208,7 @@ class SslPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def warnings(self) -> pulumi.Output[Sequence[Any]]:
         """
         [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """

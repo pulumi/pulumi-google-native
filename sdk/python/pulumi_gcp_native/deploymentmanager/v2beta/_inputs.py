@@ -766,7 +766,7 @@ class OperationArgs:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 error: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 error: Optional[Any] = None,
                  http_error_message: Optional[pulumi.Input[str]] = None,
                  http_error_status_code: Optional[pulumi.Input[int]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -784,7 +784,7 @@ class OperationArgs:
                  target_id: Optional[pulumi.Input[str]] = None,
                  target_link: Optional[pulumi.Input[str]] = None,
                  user: Optional[pulumi.Input[str]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[Any]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
@@ -792,7 +792,7 @@ class OperationArgs:
         :param pulumi.Input[str] creation_timestamp: [Deprecated] This field is deprecated.
         :param pulumi.Input[str] description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param pulumi.Input[str] end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param Any error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
         :param pulumi.Input[str] http_error_message: [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param pulumi.Input[int] http_error_status_code: [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         :param pulumi.Input[str] id: [Output Only] The unique identifier for the operation. This identifier is defined by the server.
@@ -810,7 +810,7 @@ class OperationArgs:
         :param pulumi.Input[str] target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
         :param pulumi.Input[str] target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
         :param pulumi.Input[str] user: [Output Only] User who requested the operation, for example: `user@example.com`.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+        :param pulumi.Input[Sequence[Any]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         :param pulumi.Input[str] zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         if client_operation_id is not None:
@@ -912,14 +912,14 @@ class OperationArgs:
 
     @property
     @pulumi.getter
-    def error(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def error(self) -> Optional[Any]:
         """
         [Output Only] If errors are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "error")
 
     @error.setter
-    def error(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def error(self, value: Optional[Any]):
         pulumi.set(self, "error", value)
 
     @property
@@ -1128,14 +1128,14 @@ class OperationArgs:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def warnings(self) -> Optional[pulumi.Input[Sequence[Any]]]:
         """
         [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         """
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def warnings(self, value: Optional[pulumi.Input[Sequence[Any]]]):
         pulumi.set(self, "warnings", value)
 
     @property

@@ -24,7 +24,7 @@ class Instance(pulumi.CustomResource):
                  disk_encryption_configuration: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']]] = None,
                  disk_encryption_status: Optional[pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 failover_replica: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 failover_replica: Optional[Any] = None,
                  gce_zone: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
@@ -64,7 +64,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['DiskEncryptionConfigurationArgs']] disk_encryption_configuration: Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input[pulumi.InputType['DiskEncryptionStatusArgs']] disk_encryption_status: Disk encryption status specific to an instance. Applies only to Second Generation instances.
         :param pulumi.Input[str] etag: This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param Any failover_replica: The name and status of the failover replica. This property is applicable only to Second Generation instances.
         :param pulumi.Input[str] gce_zone: The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
         :param pulumi.Input[str] instance_type: The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['IpMappingArgs']]]] ip_addresses: The assigned IP addresses for the instance.
@@ -255,7 +255,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="failoverReplica")
-    def failover_replica(self) -> pulumi.Output[Mapping[str, str]]:
+    def failover_replica(self) -> pulumi.Output[Any]:
         """
         The name and status of the failover replica. This property is applicable only to Second Generation instances.
         """

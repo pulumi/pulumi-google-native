@@ -18,18 +18,18 @@ class Bucket(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]]] = None,
-                 billing: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 billing: Optional[Any] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
-                 cors: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 cors: Optional[pulumi.Input[Sequence[Any]]] = None,
                  default_event_based_hold: Optional[pulumi.Input[bool]] = None,
                  default_object_acl: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]]] = None,
                  encryption: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 iam_configuration: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 iam_configuration: Optional[Any] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 lifecycle: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 lifecycle: Optional[Any] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  location_type: Optional[pulumi.Input[str]] = None,
                  logging: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -38,13 +38,13 @@ class Bucket(pulumi.CustomResource):
                  owner: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 retention_policy: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 retention_policy: Optional[Any] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
-                 versioning: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 versioning: Optional[Any] = None,
                  website: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
@@ -56,17 +56,17 @@ class Bucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketAccessControlArgs']]]] acl: Access controls on the bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] billing: The bucket's billing configuration.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
+        :param Any billing: The bucket's billing configuration.
+        :param pulumi.Input[Sequence[Any]] cors: The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         :param pulumi.Input[bool] default_event_based_hold: The default value for event-based hold on newly created objects in this bucket. Event-based hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After being released, such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false. Objects under event-based hold cannot be deleted, overwritten or archived until the hold is removed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectAccessControlArgs']]]] default_object_acl: Default access controls to apply to new objects when no ACL is provided.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] encryption: Encryption configuration for a bucket.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the bucket.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] iam_configuration: The bucket's IAM configuration.
+        :param Any iam_configuration: The bucket's IAM configuration.
         :param pulumi.Input[str] id: The ID of the bucket. For buckets, the id and name properties are the same.
         :param pulumi.Input[str] kind: The kind of item this is. For buckets, this is always storage#bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-provided labels, in key/value pairs.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
+        :param Any lifecycle: The bucket's lifecycle configuration. See lifecycle management for more information.
         :param pulumi.Input[str] location: The location of the bucket. Object data for objects in the bucket resides in physical storage within this region. Defaults to US. See the developer's guide for the authoritative list.
         :param pulumi.Input[str] location_type: The type of the bucket location.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] logging: The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
@@ -74,13 +74,13 @@ class Bucket(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] owner: The owner of the bucket. This is always the project team's owner group.
         :param pulumi.Input[str] project_number: The project number of the project the bucket belongs to.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+        :param Any retention_policy: The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use.
         :param pulumi.Input[str] self_link: The URI of this bucket.
         :param pulumi.Input[str] storage_class: The bucket's default storage class, used whenever no storageClass is specified for a newly-created object. This defines how objects in the bucket are stored and determines the SLA and the cost of storage. Values include MULTI_REGIONAL, REGIONAL, STANDARD, NEARLINE, COLDLINE, ARCHIVE, and DURABLE_REDUCED_AVAILABILITY. If this value is not specified when the bucket is created, it will default to STANDARD. For more information, see storage classes.
         :param pulumi.Input[str] time_created: The creation time of the bucket in RFC 3339 format.
         :param pulumi.Input[str] updated: The modification time of the bucket in RFC 3339 format.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] versioning: The bucket's versioning configuration.
+        :param Any versioning: The bucket's versioning configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] website: The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_affinity: The zone or zones from which the bucket is intended to use zonal quota. Requests for data from outside the specified affinities are still allowed but won't be able to use zonal quota. The zone or zones need to be within the bucket location otherwise the requests will fail with a 400 Bad Request response.
         """
@@ -196,7 +196,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def billing(self) -> pulumi.Output[Mapping[str, str]]:
+    def billing(self) -> pulumi.Output[Any]:
         """
         The bucket's billing configuration.
         """
@@ -204,7 +204,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def cors(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def cors(self) -> pulumi.Output[Sequence[Any]]:
         """
         The bucket's Cross-Origin Resource Sharing (CORS) configuration.
         """
@@ -244,7 +244,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="iamConfiguration")
-    def iam_configuration(self) -> pulumi.Output[Mapping[str, str]]:
+    def iam_configuration(self) -> pulumi.Output[Any]:
         """
         The bucket's IAM configuration.
         """
@@ -268,7 +268,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def lifecycle(self) -> pulumi.Output[Mapping[str, str]]:
+    def lifecycle(self) -> pulumi.Output[Any]:
         """
         The bucket's lifecycle configuration. See lifecycle management for more information.
         """
@@ -332,7 +332,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="retentionPolicy")
-    def retention_policy(self) -> pulumi.Output[Mapping[str, str]]:
+    def retention_policy(self) -> pulumi.Output[Any]:
         """
         The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
         """
@@ -380,7 +380,7 @@ class Bucket(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def versioning(self) -> pulumi.Output[Mapping[str, str]]:
+    def versioning(self) -> pulumi.Output[Any]:
         """
         The bucket's versioning configuration.
         """
