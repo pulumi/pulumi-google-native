@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataflow.V1b3
     /// <summary>
     /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataflow/v1b3:Job")]
+    [GcpNativeResourceType("google-native:dataflow/v1b3:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
@@ -162,12 +162,12 @@ namespace Pulumi.GcpNative.Dataflow.V1b3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Job(string name, JobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataflow/v1b3:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataflow/v1b3:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Job(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataflow/v1b3:Job", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataflow/v1b3:Job", name, null, MakeResourceOptions(options, id))
         {
         }
 

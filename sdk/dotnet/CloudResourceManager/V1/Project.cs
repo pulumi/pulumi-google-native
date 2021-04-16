@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V1
     /// <summary>
     /// Request that a new Project be created. The result is an Operation which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking Operation is automatically deleted after a few hours, so there is no need to call DeleteOperation. Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent for the new project. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v1:Project")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v1:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v1:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Project(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v1:Project", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v1:Project", name, null, MakeResourceOptions(options, id))
         {
         }
 

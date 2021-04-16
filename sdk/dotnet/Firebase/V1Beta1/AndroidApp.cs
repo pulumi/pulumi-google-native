@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Firebase.V1Beta1
     /// <summary>
     /// Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:firebase/v1beta1:AndroidApp")]
+    [GcpNativeResourceType("google-native:firebase/v1beta1:AndroidApp")]
     public partial class AndroidApp : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Firebase.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AndroidApp(string name, AndroidAppArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:firebase/v1beta1:AndroidApp", name, args ?? new AndroidAppArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:firebase/v1beta1:AndroidApp", name, args ?? new AndroidAppArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AndroidApp(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:firebase/v1beta1:AndroidApp", name, null, MakeResourceOptions(options, id))
+            : base("google-native:firebase/v1beta1:AndroidApp", name, null, MakeResourceOptions(options, id))
         {
         }
 

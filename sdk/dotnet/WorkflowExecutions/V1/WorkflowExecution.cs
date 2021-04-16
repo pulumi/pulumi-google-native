@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.WorkflowExecutions.V1
     /// <summary>
     /// Creates a new execution using the latest revision of the given workflow.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:workflowexecutions/v1:WorkflowExecution")]
+    [GcpNativeResourceType("google-native:workflowexecutions/v1:WorkflowExecution")]
     public partial class WorkflowExecution : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.WorkflowExecutions.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkflowExecution(string name, WorkflowExecutionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:workflowexecutions/v1:WorkflowExecution", name, args ?? new WorkflowExecutionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:workflowexecutions/v1:WorkflowExecution", name, args ?? new WorkflowExecutionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkflowExecution(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:workflowexecutions/v1:WorkflowExecution", name, null, MakeResourceOptions(options, id))
+            : base("google-native:workflowexecutions/v1:WorkflowExecution", name, null, MakeResourceOptions(options, id))
         {
         }
 

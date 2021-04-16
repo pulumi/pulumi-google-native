@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
     /// <summary>
     /// Inserts a resource containing information about a database inside a Cloud SQL instance.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:sqladmin/v1beta4:Database")]
+    [GcpNativeResourceType("google-native:sqladmin/v1beta4:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>
@@ -75,12 +75,12 @@ namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Database(string name, DatabaseArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:sqladmin/v1beta4:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:sqladmin/v1beta4:Database", name, args ?? new DatabaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Database(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:sqladmin/v1beta4:Database", name, null, MakeResourceOptions(options, id))
+            : base("google-native:sqladmin/v1beta4:Database", name, null, MakeResourceOptions(options, id))
         {
         }
 

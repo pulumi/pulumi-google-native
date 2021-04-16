@@ -14,7 +14,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// 
     /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:InstanceGroupManager")]
+    [GcpNativeResourceType("google-native:compute/v1:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>
@@ -156,12 +156,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGroupManager(string name, InstanceGroupManagerArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:InstanceGroupManager", name, args ?? new InstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:InstanceGroupManager", name, args ?? new InstanceGroupManagerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceGroupManager(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:InstanceGroupManager", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:InstanceGroupManager", name, null, MakeResourceOptions(options, id))
         {
         }
 

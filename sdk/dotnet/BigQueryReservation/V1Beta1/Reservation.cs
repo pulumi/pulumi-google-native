@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigQueryReservation.V1Beta1
     /// <summary>
     /// Creates a new reservation resource.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigqueryreservation/v1beta1:Reservation")]
+    [GcpNativeResourceType("google-native:bigqueryreservation/v1beta1:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.BigQueryReservation.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigqueryreservation/v1beta1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigqueryreservation/v1beta1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Reservation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigqueryreservation/v1beta1:Reservation", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigqueryreservation/v1beta1:Reservation", name, null, MakeResourceOptions(options, id))
         {
         }
 

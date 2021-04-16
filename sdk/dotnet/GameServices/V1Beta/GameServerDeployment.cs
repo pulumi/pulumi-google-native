@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GameServices.V1Beta
     /// <summary>
     /// Creates a new game server deployment in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gameservices/v1beta:GameServerDeployment")]
+    [GcpNativeResourceType("google-native:gameservices/v1beta:GameServerDeployment")]
     public partial class GameServerDeployment : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.GameServices.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeployment(string name, GameServerDeploymentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1beta:GameServerDeployment", name, args ?? new GameServerDeploymentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gameservices/v1beta:GameServerDeployment", name, args ?? new GameServerDeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GameServerDeployment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1beta:GameServerDeployment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gameservices/v1beta:GameServerDeployment", name, null, MakeResourceOptions(options, id))
         {
         }
 

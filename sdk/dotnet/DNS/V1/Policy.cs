@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DNS.V1
     /// <summary>
     /// Creates a new Policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dns/v1:Policy")]
+    [GcpNativeResourceType("google-native:dns/v1:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
@@ -63,12 +63,12 @@ namespace Pulumi.GcpNative.DNS.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dns/v1:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Policy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1:Policy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dns/v1:Policy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Run.V1
     /// <summary>
     /// Sets the IAM Access control policy for the specified Service. Overwrites any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:run/v1:ServiceIamPolicy")]
+    [GcpNativeResourceType("google-native:run/v1:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Run.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceIamPolicy(string name, ServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:run/v1:ServiceIamPolicy", name, args ?? new ServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:run/v1:ServiceIamPolicy", name, args ?? new ServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:run/v1:ServiceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:run/v1:ServiceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

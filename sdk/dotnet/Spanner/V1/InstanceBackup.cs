@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Spanner.V1
     /// <summary>
     /// Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:spanner/v1:InstanceBackup")]
+    [GcpNativeResourceType("google-native:spanner/v1:InstanceBackup")]
     public partial class InstanceBackup : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.Spanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceBackup(string name, InstanceBackupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:spanner/v1:InstanceBackup", name, args ?? new InstanceBackupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:spanner/v1:InstanceBackup", name, args ?? new InstanceBackupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceBackup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:spanner/v1:InstanceBackup", name, null, MakeResourceOptions(options, id))
+            : base("google-native:spanner/v1:InstanceBackup", name, null, MakeResourceOptions(options, id))
         {
         }
 

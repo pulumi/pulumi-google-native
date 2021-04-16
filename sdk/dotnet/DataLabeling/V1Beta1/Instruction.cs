@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
     /// <summary>
     /// Creates an instruction for how data should be labeled.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datalabeling/v1beta1:Instruction")]
+    [GcpNativeResourceType("google-native:datalabeling/v1beta1:Instruction")]
     public partial class Instruction : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instruction(string name, InstructionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:Instruction", name, args ?? new InstructionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datalabeling/v1beta1:Instruction", name, args ?? new InstructionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instruction(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:Instruction", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datalabeling/v1beta1:Instruction", name, null, MakeResourceOptions(options, id))
         {
         }
 

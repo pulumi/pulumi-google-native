@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
     /// <summary>
     /// Creates an Environment in the specified Agent.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:AgentEnvironment")]
+    [GcpNativeResourceType("google-native:dialogflow/v3beta1:AgentEnvironment")]
     public partial class AgentEnvironment : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironment(string name, AgentEnvironmentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentEnvironment", name, args ?? new AgentEnvironmentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3beta1:AgentEnvironment", name, args ?? new AgentEnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentEnvironment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3beta1:AgentEnvironment", name, null, MakeResourceOptions(options, id))
         {
         }
 

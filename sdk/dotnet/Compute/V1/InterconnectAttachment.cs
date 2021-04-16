@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates an InterconnectAttachment in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:InterconnectAttachment")]
+    [GcpNativeResourceType("google-native:compute/v1:InterconnectAttachment")]
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {
         /// <summary>
@@ -216,12 +216,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InterconnectAttachment(string name, InterconnectAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:InterconnectAttachment", name, args ?? new InterconnectAttachmentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:InterconnectAttachment", name, args ?? new InterconnectAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InterconnectAttachment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:InterconnectAttachment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:InterconnectAttachment", name, null, MakeResourceOptions(options, id))
         {
         }
 

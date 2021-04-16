@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
     /// <summary>
     /// Creates an entity type in the specified agent.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:AgentEntityType")]
+    [GcpNativeResourceType("google-native:dialogflow/v2beta1:AgentEntityType")]
     public partial class AgentEntityType : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEntityType(string name, AgentEntityTypeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentEntityType", name, args ?? new AgentEntityTypeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2beta1:AgentEntityType", name, args ?? new AgentEntityTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEntityType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentEntityType", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2beta1:AgentEntityType", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.TPU.V1
     /// <summary>
     /// Creates a node.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:tpu/v1:Node")]
+    [GcpNativeResourceType("google-native:tpu/v1:Node")]
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>
@@ -138,12 +138,12 @@ namespace Pulumi.GcpNative.TPU.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Node(string name, NodeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:tpu/v1:Node", name, args ?? new NodeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:tpu/v1:Node", name, args ?? new NodeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Node(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:tpu/v1:Node", name, null, MakeResourceOptions(options, id))
+            : base("google-native:tpu/v1:Node", name, null, MakeResourceOptions(options, id))
         {
         }
 

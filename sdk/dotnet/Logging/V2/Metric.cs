@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Logging.V2
     /// <summary>
     /// Creates a logs-based metric.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:logging/v2:Metric")]
+    [GcpNativeResourceType("google-native:logging/v2:Metric")]
     public partial class Metric : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Metric(string name, MetricArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:Metric", name, args ?? new MetricArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:logging/v2:Metric", name, args ?? new MetricArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Metric(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:Metric", name, null, MakeResourceOptions(options, id))
+            : base("google-native:logging/v2:Metric", name, null, MakeResourceOptions(options, id))
         {
         }
 

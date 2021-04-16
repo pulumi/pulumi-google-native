@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
     /// <summary>
     /// Creates an annotation spec set by providing a set of labels.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datalabeling/v1beta1:AnnotationSpecSet")]
+    [GcpNativeResourceType("google-native:datalabeling/v1beta1:AnnotationSpecSet")]
     public partial class AnnotationSpecSet : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AnnotationSpecSet(string name, AnnotationSpecSetArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:AnnotationSpecSet", name, args ?? new AnnotationSpecSetArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datalabeling/v1beta1:AnnotationSpecSet", name, args ?? new AnnotationSpecSetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AnnotationSpecSet(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:AnnotationSpecSet", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datalabeling/v1beta1:AnnotationSpecSet", name, null, MakeResourceOptions(options, id))
         {
         }
 

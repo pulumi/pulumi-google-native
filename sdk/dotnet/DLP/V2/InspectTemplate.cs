@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DLP.V2
     /// <summary>
     /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dlp/v2:InspectTemplate")]
+    [GcpNativeResourceType("google-native:dlp/v2:InspectTemplate")]
     public partial class InspectTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InspectTemplate(string name, InspectTemplateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:InspectTemplate", name, args ?? new InspectTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dlp/v2:InspectTemplate", name, args ?? new InspectTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InspectTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:InspectTemplate", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dlp/v2:InspectTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

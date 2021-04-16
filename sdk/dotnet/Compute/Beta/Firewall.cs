@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates a firewall rule in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:Firewall")]
+    [GcpNativeResourceType("google-native:compute/beta:Firewall")]
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>
@@ -143,12 +143,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Firewall(string name, FirewallArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:Firewall", name, args ?? new FirewallArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Firewall(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:Firewall", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:Firewall", name, null, MakeResourceOptions(options, id))
         {
         }
 

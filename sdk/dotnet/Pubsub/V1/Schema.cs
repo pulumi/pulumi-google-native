@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Pubsub.V1
     /// <summary>
     /// Creates a schema.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:pubsub/v1:Schema")]
+    [GcpNativeResourceType("google-native:pubsub/v1:Schema")]
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Pubsub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Schema(string name, SchemaArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1:Schema", name, args ?? new SchemaArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:pubsub/v1:Schema", name, args ?? new SchemaArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Schema(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1:Schema", name, null, MakeResourceOptions(options, id))
+            : base("google-native:pubsub/v1:Schema", name, null, MakeResourceOptions(options, id))
         {
         }
 

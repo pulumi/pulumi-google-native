@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:NodeGroupIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/v1:NodeGroupIamPolicy")]
     public partial class NodeGroupIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NodeGroupIamPolicy(string name, NodeGroupIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:NodeGroupIamPolicy", name, args ?? new NodeGroupIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:NodeGroupIamPolicy", name, args ?? new NodeGroupIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NodeGroupIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:NodeGroupIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:NodeGroupIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

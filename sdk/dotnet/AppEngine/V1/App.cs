@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AppEngine.V1
     /// <summary>
     /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID of the target Cloud Platform project. location - The region (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application located.For more information about App Engine applications, see Managing Projects, Applications, and Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:appengine/v1:App")]
+    [GcpNativeResourceType("google-native:appengine/v1:App")]
     public partial class App : Pulumi.CustomResource
     {
         /// <summary>
@@ -99,12 +99,12 @@ namespace Pulumi.GcpNative.AppEngine.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public App(string name, AppArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:appengine/v1:App", name, args ?? new AppArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private App(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1:App", name, null, MakeResourceOptions(options, id))
+            : base("google-native:appengine/v1:App", name, null, MakeResourceOptions(options, id))
         {
         }
 

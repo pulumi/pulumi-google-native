@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Cloudkms.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudkms/v1:KeyRingIamPolicy")]
+    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingIamPolicy")]
     public partial class KeyRingIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Cloudkms.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRingIamPolicy(string name, KeyRingIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudkms/v1:KeyRingIamPolicy", name, args ?? new KeyRingIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudkms/v1:KeyRingIamPolicy", name, args ?? new KeyRingIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KeyRingIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudkms/v1:KeyRingIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudkms/v1:KeyRingIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

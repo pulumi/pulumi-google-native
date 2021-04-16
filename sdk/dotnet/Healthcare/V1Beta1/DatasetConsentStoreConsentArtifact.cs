@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Healthcare.V1Beta1
     /// <summary>
     /// Creates a new Consent artifact in the parent consent store.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact")]
+    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact")]
     public partial class DatasetConsentStoreConsentArtifact : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetConsentStoreConsentArtifact(string name, DatasetConsentStoreConsentArtifactArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact", name, args ?? new DatasetConsentStoreConsentArtifactArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact", name, args ?? new DatasetConsentStoreConsentArtifactArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetConsentStoreConsentArtifact(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact", name, null, MakeResourceOptions(options, id))
+            : base("google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact", name, null, MakeResourceOptions(options, id))
         {
         }
 

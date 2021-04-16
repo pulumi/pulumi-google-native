@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
     /// <summary>
     /// Creates a new Hub in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:Hub")]
+    [GcpNativeResourceType("google-native:networkconnectivity/v1alpha1:Hub")]
     public partial class Hub : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Hub(string name, HubArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:Hub", name, args ?? new HubArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:networkconnectivity/v1alpha1:Hub", name, args ?? new HubArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Hub(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:Hub", name, null, MakeResourceOptions(options, id))
+            : base("google-native:networkconnectivity/v1alpha1:Hub", name, null, MakeResourceOptions(options, id))
         {
         }
 

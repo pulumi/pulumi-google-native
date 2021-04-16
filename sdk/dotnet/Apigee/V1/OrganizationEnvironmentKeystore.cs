@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentKeystore")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentKeystore")]
     public partial class OrganizationEnvironmentKeystore : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentKeystore(string name, OrganizationEnvironmentKeystoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentKeystore", name, args ?? new OrganizationEnvironmentKeystoreArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentKeystore", name, args ?? new OrganizationEnvironmentKeystoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentKeystore(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentKeystore", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentKeystore", name, null, MakeResourceOptions(options, id))
         {
         }
 

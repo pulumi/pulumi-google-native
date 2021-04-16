@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Monitoring.V3
     /// <summary>
     /// Create a ServiceLevelObjective for the given Service.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:monitoring/v3:ServiceServiceLevelObjective")]
+    [GcpNativeResourceType("google-native:monitoring/v3:ServiceServiceLevelObjective")]
     public partial class ServiceServiceLevelObjective : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceServiceLevelObjective(string name, ServiceServiceLevelObjectiveArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:ServiceServiceLevelObjective", name, args ?? new ServiceServiceLevelObjectiveArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:monitoring/v3:ServiceServiceLevelObjective", name, args ?? new ServiceServiceLevelObjectiveArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceServiceLevelObjective(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:ServiceServiceLevelObjective", name, null, MakeResourceOptions(options, id))
+            : base("google-native:monitoring/v3:ServiceServiceLevelObjective", name, null, MakeResourceOptions(options, id))
         {
         }
 

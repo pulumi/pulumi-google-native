@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Storage.V1
     /// <summary>
     /// Creates a new bucket.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:storage/v1:Bucket")]
+    [GcpNativeResourceType("google-native:storage/v1:Bucket")]
     public partial class Bucket : Pulumi.CustomResource
     {
         /// <summary>
@@ -186,12 +186,12 @@ namespace Pulumi.GcpNative.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Bucket(string name, BucketArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:storage/v1:Bucket", name, args ?? new BucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Bucket(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:Bucket", name, null, MakeResourceOptions(options, id))
+            : base("google-native:storage/v1:Bucket", name, null, MakeResourceOptions(options, id))
         {
         }
 

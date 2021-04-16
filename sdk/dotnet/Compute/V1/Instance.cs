@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates an instance resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:Instance")]
+    [GcpNativeResourceType("google-native:compute/v1:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -259,12 +259,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:Instance", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:Instance", name, null, MakeResourceOptions(options, id))
         {
         }
 

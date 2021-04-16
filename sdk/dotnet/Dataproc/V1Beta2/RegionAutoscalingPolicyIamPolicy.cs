@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy")]
+    [GcpNativeResourceType("google-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy")]
     public partial class RegionAutoscalingPolicyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionAutoscalingPolicyIamPolicy(string name, RegionAutoscalingPolicyIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy", name, args ?? new RegionAutoscalingPolicyIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy", name, args ?? new RegionAutoscalingPolicyIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionAutoscalingPolicyIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

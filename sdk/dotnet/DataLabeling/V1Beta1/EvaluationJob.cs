@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
     /// <summary>
     /// Creates an evaluation job.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datalabeling/v1beta1:EvaluationJob")]
+    [GcpNativeResourceType("google-native:datalabeling/v1beta1:EvaluationJob")]
     public partial class EvaluationJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EvaluationJob(string name, EvaluationJobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:EvaluationJob", name, args ?? new EvaluationJobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datalabeling/v1beta1:EvaluationJob", name, args ?? new EvaluationJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private EvaluationJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:EvaluationJob", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datalabeling/v1beta1:EvaluationJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

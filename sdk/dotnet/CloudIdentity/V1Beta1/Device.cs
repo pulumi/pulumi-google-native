@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudIdentity.V1Beta1
     /// <summary>
     /// Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudidentity/v1beta1:Device")]
+    [GcpNativeResourceType("google-native:cloudidentity/v1beta1:Device")]
     public partial class Device : Pulumi.CustomResource
     {
         /// <summary>
@@ -192,12 +192,12 @@ namespace Pulumi.GcpNative.CloudIdentity.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Device(string name, DeviceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudidentity/v1beta1:Device", name, args ?? new DeviceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudidentity/v1beta1:Device", name, args ?? new DeviceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Device(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudidentity/v1beta1:Device", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudidentity/v1beta1:Device", name, null, MakeResourceOptions(options, id))
         {
         }
 

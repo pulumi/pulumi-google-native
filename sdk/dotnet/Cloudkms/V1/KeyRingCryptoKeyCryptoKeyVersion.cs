@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Cloudkms.V1
     /// <summary>
     /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion")]
+    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion")]
     public partial class KeyRingCryptoKeyCryptoKeyVersion : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Cloudkms.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KeyRingCryptoKeyCryptoKeyVersion(string name, KeyRingCryptoKeyCryptoKeyVersionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion", name, args ?? new KeyRingCryptoKeyCryptoKeyVersionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion", name, args ?? new KeyRingCryptoKeyCryptoKeyVersionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KeyRingCryptoKeyCryptoKeyVersion(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion", name, null, MakeResourceOptions(options, id))
         {
         }
 

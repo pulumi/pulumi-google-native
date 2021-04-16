@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GameServices.V1
     /// <summary>
     /// Creates a new game server config in a given project, location, and game server deployment. Game server configs are immutable, and are not applied until referenced in the game server deployment rollout resource.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gameservices/v1:GameServerDeploymentConfig")]
+    [GcpNativeResourceType("google-native:gameservices/v1:GameServerDeploymentConfig")]
     public partial class GameServerDeploymentConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.GameServices.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeploymentConfig(string name, GameServerDeploymentConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1:GameServerDeploymentConfig", name, args ?? new GameServerDeploymentConfigArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gameservices/v1:GameServerDeploymentConfig", name, args ?? new GameServerDeploymentConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GameServerDeploymentConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1:GameServerDeploymentConfig", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gameservices/v1:GameServerDeploymentConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

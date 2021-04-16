@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Composer.V1Beta1
     /// <summary>
     /// Create a new environment.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:composer/v1beta1:Environment")]
+    [GcpNativeResourceType("google-native:composer/v1beta1:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.Composer.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Environment(string name, EnvironmentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:composer/v1beta1:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:composer/v1beta1:Environment", name, args ?? new EnvironmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Environment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:composer/v1beta1:Environment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:composer/v1beta1:Environment", name, null, MakeResourceOptions(options, id))
         {
         }
 

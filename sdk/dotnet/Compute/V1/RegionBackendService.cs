@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:RegionBackendService")]
+    [GcpNativeResourceType("google-native:compute/v1:RegionBackendService")]
     public partial class RegionBackendService : Pulumi.CustomResource
     {
         /// <summary>
@@ -273,12 +273,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionBackendService(string name, RegionBackendServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:RegionBackendService", name, args ?? new RegionBackendServiceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:RegionBackendService", name, args ?? new RegionBackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionBackendService(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:RegionBackendService", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:RegionBackendService", name, null, MakeResourceOptions(options, id))
         {
         }
 

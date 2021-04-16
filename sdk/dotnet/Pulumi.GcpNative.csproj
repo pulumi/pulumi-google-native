@@ -7,7 +7,7 @@
     <Description>A native Pulumi package for creating and managing Google Cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://pulumi.com</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/pulumi/pulumi-gcp-native</RepositoryUrl>
+    <RepositoryUrl>https://github.com/pulumi/pulumi-google-native</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 
     <TargetFramework>netcoreapp3.1</TargetFramework>

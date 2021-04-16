@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Pubsub.V1Beta1a
     /// <summary>
     /// Creates the given topic with the given name.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:pubsub/v1beta1a:Topic")]
+    [GcpNativeResourceType("google-native:pubsub/v1beta1a:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>
@@ -30,12 +30,12 @@ namespace Pulumi.GcpNative.Pubsub.V1Beta1a
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Topic(string name, TopicArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1beta1a:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:pubsub/v1beta1a:Topic", name, args ?? new TopicArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Topic(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1beta1a:Topic", name, null, MakeResourceOptions(options, id))
+            : base("google-native:pubsub/v1beta1a:Topic", name, null, MakeResourceOptions(options, id))
         {
         }
 

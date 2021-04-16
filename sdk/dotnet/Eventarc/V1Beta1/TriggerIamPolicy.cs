@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Eventarc.V1Beta1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:eventarc/v1beta1:TriggerIamPolicy")]
+    [GcpNativeResourceType("google-native:eventarc/v1beta1:TriggerIamPolicy")]
     public partial class TriggerIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Eventarc.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TriggerIamPolicy(string name, TriggerIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:eventarc/v1beta1:TriggerIamPolicy", name, args ?? new TriggerIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:eventarc/v1beta1:TriggerIamPolicy", name, args ?? new TriggerIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TriggerIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:eventarc/v1beta1:TriggerIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:eventarc/v1beta1:TriggerIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V2Beta1
     /// <summary>
     /// Sets the access control policy on a Folder, replacing any existing policy. The `resource` field should be the Folder's resource name, e.g. "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v2beta1:FolderIamPolicy")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v2beta1:FolderIamPolicy")]
     public partial class FolderIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderIamPolicy(string name, FolderIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v2beta1:FolderIamPolicy", name, args ?? new FolderIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v2beta1:FolderIamPolicy", name, args ?? new FolderIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FolderIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v2beta1:FolderIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v2beta1:FolderIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

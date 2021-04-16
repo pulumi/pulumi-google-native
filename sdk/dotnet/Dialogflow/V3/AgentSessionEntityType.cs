@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3
     /// <summary>
     /// Creates a session entity type.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentSessionEntityType")]
+    [GcpNativeResourceType("google-native:dialogflow/v3:AgentSessionEntityType")]
     public partial class AgentSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentSessionEntityType(string name, AgentSessionEntityTypeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentSessionEntityType", name, args ?? new AgentSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3:AgentSessionEntityType", name, args ?? new AgentSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentSessionEntityType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentSessionEntityType", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3:AgentSessionEntityType", name, null, MakeResourceOptions(options, id))
         {
         }
 

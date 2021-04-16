@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Jobs.V3
     /// <summary>
     /// Creates a new company entity.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:jobs/v3:Company")]
+    [GcpNativeResourceType("google-native:jobs/v3:Company")]
     public partial class Company : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Jobs.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Company(string name, CompanyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:jobs/v3:Company", name, args ?? new CompanyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:jobs/v3:Company", name, args ?? new CompanyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Company(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:jobs/v3:Company", name, null, MakeResourceOptions(options, id))
+            : base("google-native:jobs/v3:Company", name, null, MakeResourceOptions(options, id))
         {
         }
 

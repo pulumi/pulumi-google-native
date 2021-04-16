@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Healthcare.V1
     /// <summary>
     /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:healthcare/v1:DatasetHl7V2StoreMessage")]
+    [GcpNativeResourceType("google-native:healthcare/v1:DatasetHl7V2StoreMessage")]
     public partial class DatasetHl7V2StoreMessage : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.Healthcare.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetHl7V2StoreMessage(string name, DatasetHl7V2StoreMessageArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetHl7V2StoreMessage", name, args ?? new DatasetHl7V2StoreMessageArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:healthcare/v1:DatasetHl7V2StoreMessage", name, args ?? new DatasetHl7V2StoreMessageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetHl7V2StoreMessage(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetHl7V2StoreMessage", name, null, MakeResourceOptions(options, id))
+            : base("google-native:healthcare/v1:DatasetHl7V2StoreMessage", name, null, MakeResourceOptions(options, id))
         {
         }
 

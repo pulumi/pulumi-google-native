@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GKEHub.V1Beta
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gkehub/v1beta:FeatureIamPolicy")]
+    [GcpNativeResourceType("google-native:gkehub/v1beta:FeatureIamPolicy")]
     public partial class FeatureIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.GKEHub.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FeatureIamPolicy(string name, FeatureIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1beta:FeatureIamPolicy", name, args ?? new FeatureIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gkehub/v1beta:FeatureIamPolicy", name, args ?? new FeatureIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FeatureIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1beta:FeatureIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gkehub/v1beta:FeatureIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

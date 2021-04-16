@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DNS.V1Beta2
     /// <summary>
     /// Creates a new Response Policy
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dns/v1beta2:ResponsePolicy")]
+    [GcpNativeResourceType("google-native:dns/v1beta2:ResponsePolicy")]
     public partial class ResponsePolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -45,12 +45,12 @@ namespace Pulumi.GcpNative.DNS.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResponsePolicy(string name, ResponsePolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1beta2:ResponsePolicy", name, args ?? new ResponsePolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dns/v1beta2:ResponsePolicy", name, args ?? new ResponsePolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResponsePolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1beta2:ResponsePolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dns/v1beta2:ResponsePolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ToolResults.V1Beta3
     /// <summary>
     /// Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
     /// </summary>
-    [GcpNativeResourceType("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries")]
+    [GcpNativeResourceType("google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries")]
     public partial class HistoryExecutionStepPerfSampleSeries : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.ToolResults.V1Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HistoryExecutionStepPerfSampleSeries(string name, HistoryExecutionStepPerfSampleSeriesArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries", name, args ?? new HistoryExecutionStepPerfSampleSeriesArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries", name, args ?? new HistoryExecutionStepPerfSampleSeriesArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HistoryExecutionStepPerfSampleSeries(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries", name, null, MakeResourceOptions(options, id))
+            : base("google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries", name, null, MakeResourceOptions(options, id))
         {
         }
 

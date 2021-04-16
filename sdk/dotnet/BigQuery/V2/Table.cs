@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigQuery.V2
     /// <summary>
     /// Creates a new, empty table in the dataset.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigquery/v2:Table")]
+    [GcpNativeResourceType("google-native:bigquery/v2:Table")]
     public partial class Table : Pulumi.CustomResource
     {
         /// <summary>
@@ -192,12 +192,12 @@ namespace Pulumi.GcpNative.BigQuery.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Table(string name, TableArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquery/v2:Table", name, args ?? new TableArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigquery/v2:Table", name, args ?? new TableArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Table(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquery/v2:Table", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigquery/v2:Table", name, null, MakeResourceOptions(options, id))
         {
         }
 

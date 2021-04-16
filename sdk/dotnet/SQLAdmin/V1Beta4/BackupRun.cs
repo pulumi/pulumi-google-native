@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
     /// <summary>
     /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:sqladmin/v1beta4:BackupRun")]
+    [GcpNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
     public partial class BackupRun : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackupRun(string name, BackupRunArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:sqladmin/v1beta4:BackupRun", name, args ?? new BackupRunArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:sqladmin/v1beta4:BackupRun", name, args ?? new BackupRunArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BackupRun(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:sqladmin/v1beta4:BackupRun", name, null, MakeResourceOptions(options, id))
+            : base("google-native:sqladmin/v1beta4:BackupRun", name, null, MakeResourceOptions(options, id))
         {
         }
 

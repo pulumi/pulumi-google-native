@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a PacketMirroring resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:PacketMirroring")]
+    [GcpNativeResourceType("google-native:compute/alpha:PacketMirroring")]
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>
@@ -106,12 +106,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PacketMirroring(string name, PacketMirroringArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PacketMirroring", name, args ?? new PacketMirroringArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:PacketMirroring", name, args ?? new PacketMirroringArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PacketMirroring(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PacketMirroring", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:PacketMirroring", name, null, MakeResourceOptions(options, id))
         {
         }
 

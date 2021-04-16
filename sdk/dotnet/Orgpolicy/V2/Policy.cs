@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Orgpolicy.V2
     /// <summary>
     /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:orgpolicy/v2:Policy")]
+    [GcpNativeResourceType("google-native:orgpolicy/v2:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GcpNative.Orgpolicy.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Policy(string name, PolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:orgpolicy/v2:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:orgpolicy/v2:Policy", name, args ?? new PolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Policy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:orgpolicy/v2:Policy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:orgpolicy/v2:Policy", name, null, MakeResourceOptions(options, id))
         {
         }
 

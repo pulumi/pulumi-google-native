@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Ml.V1
     /// <summary>
     /// Creates a training or a batch prediction job.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:ml/v1:Job")]
+    [GcpNativeResourceType("google-native:ml/v1:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Job(string name, JobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:ml/v1:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:ml/v1:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Job(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:ml/v1:Job", name, null, MakeResourceOptions(options, id))
+            : base("google-native:ml/v1:Job", name, null, MakeResourceOptions(options, id))
         {
         }
 

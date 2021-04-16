@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Jobs.V3
     /// <summary>
     /// Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:jobs/v3:Job")]
+    [GcpNativeResourceType("google-native:jobs/v3:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>
@@ -198,12 +198,12 @@ namespace Pulumi.GcpNative.Jobs.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Job(string name, JobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:jobs/v3:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:jobs/v3:Job", name, args ?? new JobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Job(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:jobs/v3:Job", name, null, MakeResourceOptions(options, id))
+            : base("google-native:jobs/v3:Job", name, null, MakeResourceOptions(options, id))
         {
         }
 

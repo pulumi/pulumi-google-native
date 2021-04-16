@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:metastore/v1alpha:ServiceIamPolicy")]
+    [GcpNativeResourceType("google-native:metastore/v1alpha:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceIamPolicy(string name, ServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:ServiceIamPolicy", name, args ?? new ServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:metastore/v1alpha:ServiceIamPolicy", name, args ?? new ServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:ServiceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:metastore/v1alpha:ServiceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

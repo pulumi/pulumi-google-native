@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
     /// <summary>
     /// Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:runtimeconfig/v1beta1:ConfigVariable")]
+    [GcpNativeResourceType("google-native:runtimeconfig/v1beta1:ConfigVariable")]
     public partial class ConfigVariable : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConfigVariable(string name, ConfigVariableArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:runtimeconfig/v1beta1:ConfigVariable", name, args ?? new ConfigVariableArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:runtimeconfig/v1beta1:ConfigVariable", name, args ?? new ConfigVariableArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConfigVariable(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:runtimeconfig/v1beta1:ConfigVariable", name, null, MakeResourceOptions(options, id))
+            : base("google-native:runtimeconfig/v1beta1:ConfigVariable", name, null, MakeResourceOptions(options, id))
         {
         }
 

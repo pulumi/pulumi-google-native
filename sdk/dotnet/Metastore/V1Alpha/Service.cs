@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
     /// <summary>
     /// Creates a metastore service in a project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:metastore/v1alpha:Service")]
+    [GcpNativeResourceType("google-native:metastore/v1alpha:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>
@@ -126,12 +126,12 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Service(string name, ServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:metastore/v1alpha:Service", name, args ?? new ServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Service(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:Service", name, null, MakeResourceOptions(options, id))
+            : base("google-native:metastore/v1alpha:Service", name, null, MakeResourceOptions(options, id))
         {
         }
 

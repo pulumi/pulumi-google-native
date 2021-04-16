@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Container.V1Beta1
     /// <summary>
     /// Creates a node pool for a cluster.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:container/v1beta1:ClusterNodePool")]
+    [GcpNativeResourceType("google-native:container/v1beta1:ClusterNodePool")]
     public partial class ClusterNodePool : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GcpNative.Container.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ClusterNodePool(string name, ClusterNodePoolArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:container/v1beta1:ClusterNodePool", name, args ?? new ClusterNodePoolArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:container/v1beta1:ClusterNodePool", name, args ?? new ClusterNodePoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ClusterNodePool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:container/v1beta1:ClusterNodePool", name, null, MakeResourceOptions(options, id))
+            : base("google-native:container/v1beta1:ClusterNodePool", name, null, MakeResourceOptions(options, id))
         {
         }
 

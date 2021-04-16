@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Translate.V3
     /// <summary>
     /// Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:translate/v3:Glossary")]
+    [GcpNativeResourceType("google-native:translate/v3:Glossary")]
     public partial class Glossary : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.Translate.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Glossary(string name, GlossaryArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:translate/v3:Glossary", name, args ?? new GlossaryArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:translate/v3:Glossary", name, args ?? new GlossaryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Glossary(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:translate/v3:Glossary", name, null, MakeResourceOptions(options, id))
+            : base("google-native:translate/v3:Glossary", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AccessContextManager.V1
     /// <summary>
     /// Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding")]
+    [GcpNativeResourceType("google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding")]
     public partial class OrganizationGcpUserAccessBinding : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.AccessContextManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationGcpUserAccessBinding(string name, OrganizationGcpUserAccessBindingArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding", name, args ?? new OrganizationGcpUserAccessBindingArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding", name, args ?? new OrganizationGcpUserAccessBindingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationGcpUserAccessBinding(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding", name, null, MakeResourceOptions(options, id))
+            : base("google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GKEHub.V1Alpha2
     /// <summary>
     /// Adds a new Membership.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gkehub/v1alpha2:Membership")]
+    [GcpNativeResourceType("google-native:gkehub/v1alpha2:Membership")]
     public partial class Membership : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.GKEHub.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Membership(string name, MembershipArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1alpha2:Membership", name, args ?? new MembershipArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gkehub/v1alpha2:Membership", name, args ?? new MembershipArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Membership(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1alpha2:Membership", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gkehub/v1alpha2:Membership", name, null, MakeResourceOptions(options, id))
         {
         }
 

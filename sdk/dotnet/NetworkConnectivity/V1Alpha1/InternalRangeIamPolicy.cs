@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy")]
+    [GcpNativeResourceType("google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy")]
     public partial class InternalRangeIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InternalRangeIamPolicy(string name, InternalRangeIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy", name, args ?? new InternalRangeIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy", name, args ?? new InternalRangeIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InternalRangeIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

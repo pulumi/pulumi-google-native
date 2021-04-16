@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
     /// <summary>
     /// Creates a new channel in the specified site.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:firebasehosting/v1beta1:SiteChannel")]
+    [GcpNativeResourceType("google-native:firebasehosting/v1beta1:SiteChannel")]
     public partial class SiteChannel : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SiteChannel(string name, SiteChannelArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:firebasehosting/v1beta1:SiteChannel", name, args ?? new SiteChannelArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:firebasehosting/v1beta1:SiteChannel", name, args ?? new SiteChannelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SiteChannel(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:firebasehosting/v1beta1:SiteChannel", name, null, MakeResourceOptions(options, id))
+            : base("google-native:firebasehosting/v1beta1:SiteChannel", name, null, MakeResourceOptions(options, id))
         {
         }
 

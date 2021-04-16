@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigtableAdmin.V2
     /// <summary>
     /// Sets the access control policy on a Table resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceTableIamPolicy")]
+    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceTableIamPolicy")]
     public partial class InstanceTableIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceTableIamPolicy(string name, InstanceTableIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigtableadmin/v2:InstanceTableIamPolicy", name, args ?? new InstanceTableIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigtableadmin/v2:InstanceTableIamPolicy", name, args ?? new InstanceTableIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceTableIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigtableadmin/v2:InstanceTableIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigtableadmin/v2:InstanceTableIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

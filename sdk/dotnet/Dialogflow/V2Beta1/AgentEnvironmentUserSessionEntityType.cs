@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
     /// <summary>
     /// Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType")]
+    [GcpNativeResourceType("google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType")]
     public partial class AgentEnvironmentUserSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironmentUserSessionEntityType(string name, AgentEnvironmentUserSessionEntityTypeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType", name, args ?? new AgentEnvironmentUserSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType", name, args ?? new AgentEnvironmentUserSessionEntityTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironmentUserSessionEntityType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionEntityType", name, null, MakeResourceOptions(options, id))
         {
         }
 

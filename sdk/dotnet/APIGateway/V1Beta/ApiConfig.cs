@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.APIGateway.V1Beta
     /// <summary>
     /// Creates a new ApiConfig in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigateway/v1beta:ApiConfig")]
+    [GcpNativeResourceType("google-native:apigateway/v1beta:ApiConfig")]
     public partial class ApiConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.APIGateway.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApiConfig(string name, ApiConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigateway/v1beta:ApiConfig", name, args ?? new ApiConfigArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigateway/v1beta:ApiConfig", name, args ?? new ApiConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ApiConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigateway/v1beta:ApiConfig", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigateway/v1beta:ApiConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ServiceDirectory.V1Beta1
     /// <summary>
     /// Sets the IAM Policy for a resource (namespace or service only).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy")]
+    [GcpNativeResourceType("google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy")]
     public partial class NamespaceServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.ServiceDirectory.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NamespaceServiceIamPolicy(string name, NamespaceServiceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy", name, args ?? new NamespaceServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy", name, args ?? new NamespaceServiceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NamespaceServiceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

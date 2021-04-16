@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ToolResults.V1Beta3
     /// <summary>
     /// Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
     /// </summary>
-    [GcpNativeResourceType("gcp-native:toolresults/v1beta3:History")]
+    [GcpNativeResourceType("google-native:toolresults/v1beta3:History")]
     public partial class History : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.ToolResults.V1Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public History(string name, HistoryArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:toolresults/v1beta3:History", name, args ?? new HistoryArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:toolresults/v1beta3:History", name, args ?? new HistoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private History(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:toolresults/v1beta3:History", name, null, MakeResourceOptions(options, id))
+            : base("google-native:toolresults/v1beta3:History", name, null, MakeResourceOptions(options, id))
         {
         }
 

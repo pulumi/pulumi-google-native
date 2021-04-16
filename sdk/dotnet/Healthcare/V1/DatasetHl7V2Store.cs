@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Healthcare.V1
     /// <summary>
     /// Creates a new HL7v2 store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:healthcare/v1:DatasetHl7V2Store")]
+    [GcpNativeResourceType("google-native:healthcare/v1:DatasetHl7V2Store")]
     public partial class DatasetHl7V2Store : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Healthcare.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetHl7V2Store(string name, DatasetHl7V2StoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetHl7V2Store", name, args ?? new DatasetHl7V2StoreArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:healthcare/v1:DatasetHl7V2Store", name, args ?? new DatasetHl7V2StoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetHl7V2Store(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetHl7V2Store", name, null, MakeResourceOptions(options, id))
+            : base("google-native:healthcare/v1:DatasetHl7V2Store", name, null, MakeResourceOptions(options, id))
         {
         }
 

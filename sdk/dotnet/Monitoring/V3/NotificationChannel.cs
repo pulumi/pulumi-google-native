@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Monitoring.V3
     /// <summary>
     /// Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:monitoring/v3:NotificationChannel")]
+    [GcpNativeResourceType("google-native:monitoring/v3:NotificationChannel")]
     public partial class NotificationChannel : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NotificationChannel(string name, NotificationChannelArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:NotificationChannel", name, args ?? new NotificationChannelArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:monitoring/v3:NotificationChannel", name, args ?? new NotificationChannelArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NotificationChannel(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:NotificationChannel", name, null, MakeResourceOptions(options, id))
+            : base("google-native:monitoring/v3:NotificationChannel", name, null, MakeResourceOptions(options, id))
         {
         }
 

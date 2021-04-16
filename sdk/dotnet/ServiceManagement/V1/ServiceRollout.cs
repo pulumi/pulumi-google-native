@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ServiceManagement.V1
     /// <summary>
     /// Creates a new service configuration rollout. Based on rollout, the Google Service Management will roll out the service configurations to different backend services. For example, the logging configuration will be pushed to Google Cloud Logging. Please note that any previous pending and running Rollouts and associated Operations will be automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts. Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of 100 most recent) rollouts are kept for each service. The rest will be deleted eventually. Operation
     /// </summary>
-    [GcpNativeResourceType("gcp-native:servicemanagement/v1:ServiceRollout")]
+    [GcpNativeResourceType("google-native:servicemanagement/v1:ServiceRollout")]
     public partial class ServiceRollout : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.ServiceManagement.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceRollout(string name, ServiceRolloutArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:servicemanagement/v1:ServiceRollout", name, args ?? new ServiceRolloutArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:servicemanagement/v1:ServiceRollout", name, args ?? new ServiceRolloutArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceRollout(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:servicemanagement/v1:ServiceRollout", name, null, MakeResourceOptions(options, id))
+            : base("google-native:servicemanagement/v1:ServiceRollout", name, null, MakeResourceOptions(options, id))
         {
         }
 

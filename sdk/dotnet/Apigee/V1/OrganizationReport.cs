@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationReport")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationReport")]
     public partial class OrganizationReport : Pulumi.CustomResource
     {
         /// <summary>
@@ -156,12 +156,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationReport(string name, OrganizationReportArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationReport", name, args ?? new OrganizationReportArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationReport", name, args ?? new OrganizationReportArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationReport(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationReport", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationReport", name, null, MakeResourceOptions(options, id))
         {
         }
 

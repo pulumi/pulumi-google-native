@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a new policy in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:SecurityPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:SecurityPolicy")]
     public partial class SecurityPolicy : Pulumi.CustomResource
     {
         [Output("adaptiveProtectionConfig")]
@@ -124,12 +124,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecurityPolicy(string name, SecurityPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:SecurityPolicy", name, args ?? new SecurityPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:SecurityPolicy", name, args ?? new SecurityPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecurityPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:SecurityPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:SecurityPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates an in-place snapshot in the specified zone.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:ZoneInPlaceSnapshot")]
+    [GcpNativeResourceType("google-native:compute/alpha:ZoneInPlaceSnapshot")]
     public partial class ZoneInPlaceSnapshot : Pulumi.CustomResource
     {
         /// <summary>
@@ -119,12 +119,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ZoneInPlaceSnapshot(string name, ZoneInPlaceSnapshotArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:ZoneInPlaceSnapshot", name, args ?? new ZoneInPlaceSnapshotArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:ZoneInPlaceSnapshot", name, args ?? new ZoneInPlaceSnapshotArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ZoneInPlaceSnapshot(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:ZoneInPlaceSnapshot", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:ZoneInPlaceSnapshot", name, null, MakeResourceOptions(options, id))
         {
         }
 

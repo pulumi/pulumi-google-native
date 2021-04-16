@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates a new resource policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:ResourcePolicy")]
+    [GcpNativeResourceType("google-native:compute/v1:ResourcePolicy")]
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePolicy(string name, ResourcePolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:ResourcePolicy", name, args ?? new ResourcePolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:ResourcePolicy", name, args ?? new ResourcePolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResourcePolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:ResourcePolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:ResourcePolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

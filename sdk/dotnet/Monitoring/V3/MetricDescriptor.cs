@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Monitoring.V3
     /// <summary>
     /// Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:monitoring/v3:MetricDescriptor")]
+    [GcpNativeResourceType("google-native:monitoring/v3:MetricDescriptor")]
     public partial class MetricDescriptor : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MetricDescriptor(string name, MetricDescriptorArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:MetricDescriptor", name, args ?? new MetricDescriptorArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:monitoring/v3:MetricDescriptor", name, args ?? new MetricDescriptorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MetricDescriptor(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:MetricDescriptor", name, null, MakeResourceOptions(options, id))
+            : base("google-native:monitoring/v3:MetricDescriptor", name, null, MakeResourceOptions(options, id))
         {
         }
 

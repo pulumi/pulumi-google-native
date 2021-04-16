@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigQueryDataTransfer.V1
     /// <summary>
     /// Creates a new data transfer configuration.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigquerydatatransfer/v1:TransferConfig")]
+    [GcpNativeResourceType("google-native:bigquerydatatransfer/v1:TransferConfig")]
     public partial class TransferConfig : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GcpNative.BigQueryDataTransfer.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TransferConfig(string name, TransferConfigArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquerydatatransfer/v1:TransferConfig", name, args ?? new TransferConfigArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigquerydatatransfer/v1:TransferConfig", name, args ?? new TransferConfigArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TransferConfig(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquerydatatransfer/v1:TransferConfig", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigquerydatatransfer/v1:TransferConfig", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates a BackendBucket resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:BackendBucket")]
+    [GcpNativeResourceType("google-native:compute/beta:BackendBucket")]
     public partial class BackendBucket : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendBucket(string name, BackendBucketArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:BackendBucket", name, args ?? new BackendBucketArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:BackendBucket", name, args ?? new BackendBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BackendBucket(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:BackendBucket", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:BackendBucket", name, null, MakeResourceOptions(options, id))
         {
         }
 

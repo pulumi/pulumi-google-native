@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GKEHub.V1Beta
     /// <summary>
     /// Adds a new Feature.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gkehub/v1beta:Feature")]
+    [GcpNativeResourceType("google-native:gkehub/v1beta:Feature")]
     public partial class Feature : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.GKEHub.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Feature(string name, FeatureArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1beta:Feature", name, args ?? new FeatureArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gkehub/v1beta:Feature", name, args ?? new FeatureArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Feature(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gkehub/v1beta:Feature", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gkehub/v1beta:Feature", name, null, MakeResourceOptions(options, id))
         {
         }
 

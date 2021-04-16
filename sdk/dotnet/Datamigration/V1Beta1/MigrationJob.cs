@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Datamigration.V1Beta1
     /// <summary>
     /// Creates a new migration job in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datamigration/v1beta1:MigrationJob")]
+    [GcpNativeResourceType("google-native:datamigration/v1beta1:MigrationJob")]
     public partial class MigrationJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -138,12 +138,12 @@ namespace Pulumi.GcpNative.Datamigration.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MigrationJob(string name, MigrationJobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datamigration/v1beta1:MigrationJob", name, args ?? new MigrationJobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datamigration/v1beta1:MigrationJob", name, args ?? new MigrationJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MigrationJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datamigration/v1beta1:MigrationJob", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datamigration/v1beta1:MigrationJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

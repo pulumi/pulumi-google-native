@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
     /// <summary>
     /// Creates a domain mapping on the specified site.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:firebasehosting/v1beta1:SiteDomain")]
+    [GcpNativeResourceType("google-native:firebasehosting/v1beta1:SiteDomain")]
     public partial class SiteDomain : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SiteDomain(string name, SiteDomainArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:firebasehosting/v1beta1:SiteDomain", name, args ?? new SiteDomainArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:firebasehosting/v1beta1:SiteDomain", name, args ?? new SiteDomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SiteDomain(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:firebasehosting/v1beta1:SiteDomain", name, null, MakeResourceOptions(options, id))
+            : base("google-native:firebasehosting/v1beta1:SiteDomain", name, null, MakeResourceOptions(options, id))
         {
         }
 

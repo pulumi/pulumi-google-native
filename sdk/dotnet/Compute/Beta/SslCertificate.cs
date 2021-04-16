@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates a SslCertificate resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:SslCertificate")]
+    [GcpNativeResourceType("google-native:compute/beta:SslCertificate")]
     public partial class SslCertificate : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SslCertificate(string name, SslCertificateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:SslCertificate", name, args ?? new SslCertificateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:SslCertificate", name, args ?? new SslCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SslCertificate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:SslCertificate", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:SslCertificate", name, null, MakeResourceOptions(options, id))
         {
         }
 

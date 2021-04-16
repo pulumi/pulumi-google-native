@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
     /// <summary>
     /// Creates a test case for the given agent.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:AgentTestCase")]
+    [GcpNativeResourceType("google-native:dialogflow/v3beta1:AgentTestCase")]
     public partial class AgentTestCase : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentTestCase(string name, AgentTestCaseArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentTestCase", name, args ?? new AgentTestCaseArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3beta1:AgentTestCase", name, args ?? new AgentTestCaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentTestCase(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentTestCase", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3beta1:AgentTestCase", name, null, MakeResourceOptions(options, id))
         {
         }
 

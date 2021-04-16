@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Beta1
     /// <summary>
     /// Creates a new occurrence.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:containeranalysis/v1beta1:Occurrence")]
+    [GcpNativeResourceType("google-native:containeranalysis/v1beta1:Occurrence")]
     public partial class Occurrence : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Occurrence(string name, OccurrenceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1beta1:Occurrence", name, args ?? new OccurrenceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:containeranalysis/v1beta1:Occurrence", name, args ?? new OccurrenceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Occurrence(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1beta1:Occurrence", name, null, MakeResourceOptions(options, id))
+            : base("google-native:containeranalysis/v1beta1:Occurrence", name, null, MakeResourceOptions(options, id))
         {
         }
 

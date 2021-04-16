@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Pubsub.V1
     /// <summary>
     /// Creates a subscription to a given topic. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names). If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic, conforming to the [resource name format] (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated name is populated in the returned Subscription object. Note that for REST API requests, you must specify a name in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:pubsub/v1:Subscription")]
+    [GcpNativeResourceType("google-native:pubsub/v1:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Pubsub.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Subscription(string name, SubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:pubsub/v1:Subscription", name, args ?? new SubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Subscription(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsub/v1:Subscription", name, null, MakeResourceOptions(options, id))
+            : base("google-native:pubsub/v1:Subscription", name, null, MakeResourceOptions(options, id))
         {
         }
 

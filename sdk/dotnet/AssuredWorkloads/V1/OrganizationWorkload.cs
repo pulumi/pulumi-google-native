@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AssuredWorkloads.V1
     /// <summary>
     /// Creates Assured Workload.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:assuredworkloads/v1:OrganizationWorkload")]
+    [GcpNativeResourceType("google-native:assuredworkloads/v1:OrganizationWorkload")]
     public partial class OrganizationWorkload : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.AssuredWorkloads.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationWorkload(string name, OrganizationWorkloadArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:assuredworkloads/v1:OrganizationWorkload", name, args ?? new OrganizationWorkloadArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:assuredworkloads/v1:OrganizationWorkload", name, args ?? new OrganizationWorkloadArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationWorkload(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:assuredworkloads/v1:OrganizationWorkload", name, null, MakeResourceOptions(options, id))
+            : base("google-native:assuredworkloads/v1:OrganizationWorkload", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3
     /// <summary>
     /// Creates an agent in the specified location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3:Agent")]
+    [GcpNativeResourceType("google-native:dialogflow/v3:Agent")]
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Agent(string name, AgentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:Agent", name, args ?? new AgentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3:Agent", name, args ?? new AgentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Agent(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:Agent", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3:Agent", name, null, MakeResourceOptions(options, id))
         {
         }
 

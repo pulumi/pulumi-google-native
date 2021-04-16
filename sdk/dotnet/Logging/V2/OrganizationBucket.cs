@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Logging.V2
     /// <summary>
     /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:logging/v2:OrganizationBucket")]
+    [GcpNativeResourceType("google-native:logging/v2:OrganizationBucket")]
     public partial class OrganizationBucket : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationBucket(string name, OrganizationBucketArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:OrganizationBucket", name, args ?? new OrganizationBucketArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:logging/v2:OrganizationBucket", name, args ?? new OrganizationBucketArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationBucket(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:OrganizationBucket", name, null, MakeResourceOptions(options, id))
+            : base("google-native:logging/v2:OrganizationBucket", name, null, MakeResourceOptions(options, id))
         {
         }
 

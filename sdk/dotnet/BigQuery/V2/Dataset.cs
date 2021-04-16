@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigQuery.V2
     /// <summary>
     /// Creates a new empty dataset.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigquery/v2:Dataset")]
+    [GcpNativeResourceType("google-native:bigquery/v2:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>
@@ -111,12 +111,12 @@ namespace Pulumi.GcpNative.BigQuery.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Dataset(string name, DatasetArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquery/v2:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigquery/v2:Dataset", name, args ?? new DatasetArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Dataset(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigquery/v2:Dataset", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigquery/v2:Dataset", name, null, MakeResourceOptions(options, id))
         {
         }
 

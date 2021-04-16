@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:PublicAdvertisedPrefix")]
+    [GcpNativeResourceType("google-native:compute/alpha:PublicAdvertisedPrefix")]
     public partial class PublicAdvertisedPrefix : Pulumi.CustomResource
     {
         /// <summary>
@@ -98,12 +98,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PublicAdvertisedPrefix(string name, PublicAdvertisedPrefixArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PublicAdvertisedPrefix", name, args ?? new PublicAdvertisedPrefixArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:PublicAdvertisedPrefix", name, args ?? new PublicAdvertisedPrefixArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PublicAdvertisedPrefix(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PublicAdvertisedPrefix", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:PublicAdvertisedPrefix", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudTrace.V2Beta1
     /// <summary>
     /// Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudtrace/v2beta1:TraceSink")]
+    [GcpNativeResourceType("google-native:cloudtrace/v2beta1:TraceSink")]
     public partial class TraceSink : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.CloudTrace.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TraceSink(string name, TraceSinkArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudtrace/v2beta1:TraceSink", name, args ?? new TraceSinkArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudtrace/v2beta1:TraceSink", name, args ?? new TraceSinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TraceSink(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudtrace/v2beta1:TraceSink", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudtrace/v2beta1:TraceSink", name, null, MakeResourceOptions(options, id))
         {
         }
 
