@@ -81,7 +81,7 @@ clean::
 	rm -rf sdk/nodejs && mkdir sdk/nodejs && touch sdk/nodejs/go.mod
 	rm -rf sdk/python && mkdir sdk/python && touch sdk/python/go.mod && cp README.md sdk/python
 	rm -rf sdk/dotnet && mkdir sdk/dotnet && touch sdk/dotnet/go.mod
-	rm -rf sdk/go/gcp
+	rm -rf sdk/go/google
 	rm -rf sdk/schema
 
 install_dotnet_sdk::

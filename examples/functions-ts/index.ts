@@ -1,7 +1,7 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
 import * as pulumi from "@pulumi/pulumi";
-import * as gcp from "@pulumi/google-native";
+import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
 const config = new pulumi.Config("google-native");
@@ -16,14 +16,14 @@ const randomString = new random.RandomString("name", {
 });
 
 const bucketName = pulumi.interpolate`bucket-${randomString.result}`;
-const bucket = new gcp.storage.v1.Bucket("bucket", {
+const bucket = new google.storage.v1.Bucket("bucket", {
     project: project,
     bucket: bucketName,
     name: bucketName,
 });
 
 const archiveName = "zip";
-const bucketObject = new gcp.storage.v1.BucketObject(archiveName, {
+const bucketObject = new google.storage.v1.BucketObject(archiveName, {
     object: archiveName,
     name: archiveName,
     bucket: bucket.name,
@@ -33,7 +33,7 @@ const bucketObject = new gcp.storage.v1.BucketObject(archiveName, {
 });
 
 const functionName = pulumi.interpolate`func-${randomString.result}`;
-const func = new gcp.cloudfunctions.v1.Function("function-py", {
+const func = new google.cloudfunctions.v1.Function("function-py", {
     projectsId: project,
     locationsId: region,
     functionsId: functionName,
@@ -47,7 +47,7 @@ const func = new gcp.cloudfunctions.v1.Function("function-py", {
     ingressSettings: "ALLOW_ALL",
 });
 
-const invoker = new gcp.cloudfunctions.v1.FunctionIamPolicy("function-py-iam", {
+const invoker = new google.cloudfunctions.v1.FunctionIamPolicy("function-py-iam", {
     projectsId: project,
     locationsId: region,
     functionsId: functionName, // func.name returns the long `projects/foo/locations/bat/functions/buzz` name which doesn't suit here

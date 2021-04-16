@@ -1,7 +1,7 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
 import * as pulumi from "@pulumi/pulumi";
-import * as gcp from "@pulumi/google-native";
+import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
 const config = new pulumi.Config("google-native");
@@ -16,7 +16,7 @@ const randomString = new random.RandomString("service-name", {
 });
 const serviceName = pulumi.interpolate`run-${randomString.result}`;
 
-const service = new gcp.run.v1.Service("service", {
+const service = new google.run.v1.Service("service", {
     projectsId: project,
     locationsId: region,
     servicesId: serviceName,
@@ -34,7 +34,7 @@ const service = new gcp.run.v1.Service("service", {
     },
 });
 
-const iamHello = new gcp.run.v1.ServiceIamPolicy("allow-all", {
+const iamHello = new google.run.v1.ServiceIamPolicy("allow-all", {
     projectsId: project,
     locationsId: region,
     servicesId: service.metadata.name,
