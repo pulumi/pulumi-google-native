@@ -22,7 +22,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dns/v1beta2:Policy';
+    public static readonly __pulumiType = 'google-native:dns/v1beta2:Policy';
 
     /**
      * Returns true if the given object is an instance of Policy.  This is designed to work even
@@ -111,7 +111,7 @@ export interface PolicyArgs {
     /**
      * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
      */
-    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1beta2.PolicyAlternativeNameServerConfig>;
+    readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1beta2.PolicyAlternativeNameServerConfigArgs>;
     /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
      */
@@ -136,7 +136,7 @@ export interface PolicyArgs {
     /**
      * List of network names specifying networks to which this policy is applied.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetwork>[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.PolicyNetworkArgs>[]>;
     readonly policy: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
 }

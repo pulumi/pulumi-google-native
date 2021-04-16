@@ -22,7 +22,7 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:Dataset';
+    public static readonly __pulumiType = 'google-native:datalabeling/v1beta1:Dataset';
 
     /**
      * Returns true if the given object is an instance of Dataset.  This is designed to work even
@@ -140,7 +140,7 @@ export interface DatasetArgs {
     /**
      * This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
      */
-    readonly inputConfigs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfig>[]>;
+    readonly inputConfigs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigArgs>[]>;
     /**
      * Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
      */

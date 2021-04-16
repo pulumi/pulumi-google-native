@@ -22,7 +22,7 @@ export class DatasetConsentStoreConsent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetConsentStoreConsent';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetConsentStoreConsent';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreConsent.  This is designed to work even
@@ -163,7 +163,7 @@ export interface DatasetConsentStoreConsentArgs {
     /**
      * Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
      */
-    readonly policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicy>[]>;
+    readonly policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1ConsentPolicyArgs>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Indicates the current state of this Consent.

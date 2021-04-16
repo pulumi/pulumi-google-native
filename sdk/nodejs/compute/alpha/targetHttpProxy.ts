@@ -21,7 +21,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:TargetHttpProxy';
+    public static readonly __pulumiType = 'google-native:compute/alpha:TargetHttpProxy';
 
     /**
      * Returns true if the given object is an instance of TargetHttpProxy.  This is designed to work even

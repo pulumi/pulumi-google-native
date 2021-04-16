@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates a UrlMap resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:UrlMap")]
+    [GcpNativeResourceType("google-native:compute/beta:UrlMap")]
     public partial class UrlMap : Pulumi.CustomResource
     {
         /// <summary>
@@ -121,12 +121,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public UrlMap(string name, UrlMapArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:UrlMap", name, args ?? new UrlMapArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:UrlMap", name, args ?? new UrlMapArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private UrlMap(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:UrlMap", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:UrlMap", name, null, MakeResourceOptions(options, id))
         {
         }
 

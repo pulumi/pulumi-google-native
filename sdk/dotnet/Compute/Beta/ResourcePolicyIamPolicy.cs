@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:ResourcePolicyIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/beta:ResourcePolicyIamPolicy")]
     public partial class ResourcePolicyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ResourcePolicyIamPolicy(string name, ResourcePolicyIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:ResourcePolicyIamPolicy", name, args ?? new ResourcePolicyIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:ResourcePolicyIamPolicy", name, args ?? new ResourcePolicyIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ResourcePolicyIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:ResourcePolicyIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:ResourcePolicyIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

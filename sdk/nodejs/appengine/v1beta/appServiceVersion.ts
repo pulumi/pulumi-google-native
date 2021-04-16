@@ -22,7 +22,7 @@ export class AppServiceVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:appengine/v1beta:AppServiceVersion';
+    public static readonly __pulumiType = 'google-native:appengine/v1beta:AppServiceVersion';
 
     /**
      * Returns true if the given object is an instance of AppServiceVersion.  This is designed to work even
@@ -304,7 +304,7 @@ export interface AppServiceVersionArgs {
     /**
      * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
      */
-    readonly apiConfig?: pulumi.Input<inputs.appengine.v1beta.ApiConfigHandler>;
+    readonly apiConfig?: pulumi.Input<inputs.appengine.v1beta.ApiConfigHandlerArgs>;
     /**
      * app_engine_apis allows second generation runtimes to access the App Engine APIs.
      */
@@ -313,11 +313,11 @@ export interface AppServiceVersionArgs {
     /**
      * Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
      */
-    readonly automaticScaling?: pulumi.Input<inputs.appengine.v1beta.AutomaticScaling>;
+    readonly automaticScaling?: pulumi.Input<inputs.appengine.v1beta.AutomaticScalingArgs>;
     /**
      * A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
      */
-    readonly basicScaling?: pulumi.Input<inputs.appengine.v1beta.BasicScaling>;
+    readonly basicScaling?: pulumi.Input<inputs.appengine.v1beta.BasicScalingArgs>;
     /**
      * Metadata settings that are supplied to this version to enable beta runtime features.
      */
@@ -341,7 +341,7 @@ export interface AppServiceVersionArgs {
     /**
      * Code and application artifacts that make up this version.Only returned in GET requests if view=FULL is set.
      */
-    readonly deployment?: pulumi.Input<inputs.appengine.v1beta.Deployment>;
+    readonly deployment?: pulumi.Input<inputs.appengine.v1beta.DeploymentArgs>;
     /**
      * Total size in bytes of all the files that are included in this version and currently hosted on the App Engine disk.@OutputOnly
      */
@@ -349,11 +349,11 @@ export interface AppServiceVersionArgs {
     /**
      * Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible Service Proxy will be provided to serve the API implemented by the app.
      */
-    readonly endpointsApiService?: pulumi.Input<inputs.appengine.v1beta.EndpointsApiService>;
+    readonly endpointsApiService?: pulumi.Input<inputs.appengine.v1beta.EndpointsApiServiceArgs>;
     /**
      * The entrypoint for the application.
      */
-    readonly entrypoint?: pulumi.Input<inputs.appengine.v1beta.Entrypoint>;
+    readonly entrypoint?: pulumi.Input<inputs.appengine.v1beta.EntrypointArgs>;
     /**
      * App Engine execution environment for this version.Defaults to standard.
      */
@@ -365,15 +365,15 @@ export interface AppServiceVersionArgs {
     /**
      * Custom static error pages. Limited to 10KB per page.Only returned in GET requests if view=FULL is set.
      */
-    readonly errorHandlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.ErrorHandler>[]>;
+    readonly errorHandlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.ErrorHandlerArgs>[]>;
     /**
      * An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL is set.
      */
-    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlMap>[]>;
+    readonly handlers?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlMapArgs>[]>;
     /**
      * Configures health checking for instances. Unhealthy instances are stopped and replaced with new instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL is set.
      */
-    readonly healthCheck?: pulumi.Input<inputs.appengine.v1beta.HealthCheck>;
+    readonly healthCheck?: pulumi.Input<inputs.appengine.v1beta.HealthCheckArgs>;
     /**
      * Relative name of the version within the service. Example: v1. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names: "default", "latest", and any name with the prefix "ah-".
      */
@@ -389,15 +389,15 @@ export interface AppServiceVersionArgs {
     /**
      * Configuration for third-party Python runtime libraries that are required by the application.Only returned in GET requests if view=FULL is set.
      */
-    readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.Library>[]>;
+    readonly libraries?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.LibraryArgs>[]>;
     /**
      * Configures liveness health checking for instances. Unhealthy instances are stopped and replaced with new instancesOnly returned in GET requests if view=FULL is set.
      */
-    readonly livenessCheck?: pulumi.Input<inputs.appengine.v1beta.LivenessCheck>;
+    readonly livenessCheck?: pulumi.Input<inputs.appengine.v1beta.LivenessCheckArgs>;
     /**
      * A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time. Manually scaled versions are sometimes referred to as "backends".
      */
-    readonly manualScaling?: pulumi.Input<inputs.appengine.v1beta.ManualScaling>;
+    readonly manualScaling?: pulumi.Input<inputs.appengine.v1beta.ManualScalingArgs>;
     /**
      * Full path to the Version resource in the API. Example: apps/myapp/services/default/versions/v1.@OutputOnly
      */
@@ -405,7 +405,7 @@ export interface AppServiceVersionArgs {
     /**
      * Extra network settings. Only applicable in the App Engine flexible environment.
      */
-    readonly network?: pulumi.Input<inputs.appengine.v1beta.Network>;
+    readonly network?: pulumi.Input<inputs.appengine.v1beta.NetworkArgs>;
     /**
      * Files that match this pattern will not be built into this version. Only applicable for Go runtimes.Only returned in GET requests if view=FULL is set.
      */
@@ -413,11 +413,11 @@ export interface AppServiceVersionArgs {
     /**
      * Configures readiness health checking for instances. Unhealthy instances are not put into the backend traffic rotation.Only returned in GET requests if view=FULL is set.
      */
-    readonly readinessCheck?: pulumi.Input<inputs.appengine.v1beta.ReadinessCheck>;
+    readonly readinessCheck?: pulumi.Input<inputs.appengine.v1beta.ReadinessCheckArgs>;
     /**
      * Machine resources for this version. Only applicable in the App Engine flexible environment.
      */
-    readonly resources?: pulumi.Input<inputs.appengine.v1beta.Resources>;
+    readonly resources?: pulumi.Input<inputs.appengine.v1beta.ResourcesArgs>;
     /**
      * Desired runtime. Example: python27.
      */
@@ -459,5 +459,5 @@ export interface AppServiceVersionArgs {
     /**
      * Enables VPC connectivity for standard apps.
      */
-    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.v1beta.VpcAccessConnector>;
+    readonly vpcAccessConnector?: pulumi.Input<inputs.appengine.v1beta.VpcAccessConnectorArgs>;
 }

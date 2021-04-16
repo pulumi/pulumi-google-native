@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.SourceRepo.V1
     /// <summary>
     /// Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:sourcerepo/v1:Repo")]
+    [GcpNativeResourceType("google-native:sourcerepo/v1:Repo")]
     public partial class Repo : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.SourceRepo.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repo(string name, RepoArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:sourcerepo/v1:Repo", name, args ?? new RepoArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:sourcerepo/v1:Repo", name, args ?? new RepoArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Repo(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:sourcerepo/v1:Repo", name, null, MakeResourceOptions(options, id))
+            : base("google-native:sourcerepo/v1:Repo", name, null, MakeResourceOptions(options, id))
         {
         }
 

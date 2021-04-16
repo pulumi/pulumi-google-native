@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a Interconnect in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:Interconnect")]
+    [GcpNativeResourceType("google-native:compute/alpha:Interconnect")]
     public partial class Interconnect : Pulumi.CustomResource
     {
         /// <summary>
@@ -180,12 +180,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Interconnect(string name, InterconnectArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:Interconnect", name, args ?? new InterconnectArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:Interconnect", name, args ?? new InterconnectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Interconnect(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:Interconnect", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:Interconnect", name, null, MakeResourceOptions(options, id))
         {
         }
 

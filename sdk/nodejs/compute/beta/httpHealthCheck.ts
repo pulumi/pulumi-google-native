@@ -21,7 +21,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:HttpHealthCheck';
+    public static readonly __pulumiType = 'google-native:compute/beta:HttpHealthCheck';
 
     /**
      * Returns true if the given object is an instance of HttpHealthCheck.  This is designed to work even

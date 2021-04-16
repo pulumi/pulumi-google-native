@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:memcache/v1:Instance';
+    public static readonly __pulumiType = 'google-native:memcache/v1:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -179,7 +179,7 @@ export interface InstanceArgs {
     /**
      * List of messages that describe the current state of the Memcached instance.
      */
-    readonly instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1.InstanceMessage>[]>;
+    readonly instanceMessages?: pulumi.Input<pulumi.Input<inputs.memcache.v1.InstanceMessageArgs>[]>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -197,7 +197,7 @@ export interface InstanceArgs {
     /**
      * Required. Configuration for Memcached nodes.
      */
-    readonly nodeConfig?: pulumi.Input<inputs.memcache.v1.NodeConfig>;
+    readonly nodeConfig?: pulumi.Input<inputs.memcache.v1.NodeConfigArgs>;
     /**
      * Required. Number of nodes in the Memcached instance.
      */
@@ -205,7 +205,7 @@ export interface InstanceArgs {
     /**
      * Optional: User defined parameters to apply to the memcached process on each node.
      */
-    readonly parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParameters>;
+    readonly parameters?: pulumi.Input<inputs.memcache.v1.MemcacheParametersArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.

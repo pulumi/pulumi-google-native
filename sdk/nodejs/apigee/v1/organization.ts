@@ -22,7 +22,7 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:Organization';
+    public static readonly __pulumiType = 'google-native:apigee/v1:Organization';
 
     /**
      * Returns true if the given object is an instance of Organization.  This is designed to work even
@@ -210,7 +210,7 @@ export interface OrganizationArgs {
     /**
      * Properties defined in the Apigee organization profile.
      */
-    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
+    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1PropertiesArgs>;
     /**
      * Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
      */

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.GameServices.V1Beta
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:gameservices/v1beta:GameServerDeploymentIamPolicy")]
+    [GcpNativeResourceType("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy")]
     public partial class GameServerDeploymentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -57,12 +57,12 @@ namespace Pulumi.GcpNative.GameServices.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GameServerDeploymentIamPolicy(string name, GameServerDeploymentIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, args ?? new GameServerDeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, args ?? new GameServerDeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private GameServerDeploymentIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

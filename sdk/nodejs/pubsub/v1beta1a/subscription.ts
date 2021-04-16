@@ -22,7 +22,7 @@ export class Subscription extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsub/v1beta1a:Subscription';
+    public static readonly __pulumiType = 'google-native:pubsub/v1beta1a:Subscription';
 
     /**
      * Returns true if the given object is an instance of Subscription.  This is designed to work even
@@ -99,7 +99,7 @@ export interface SubscriptionArgs {
     /**
      * If push delivery is used with this subscription, this field is used to configure it.
      */
-    readonly pushConfig?: pulumi.Input<inputs.pubsub.v1beta1a.PushConfig>;
+    readonly pushConfig?: pulumi.Input<inputs.pubsub.v1beta1a.PushConfigArgs>;
     readonly subscriptionsId: pulumi.Input<string>;
     /**
      * The name of the topic from which this subscription is receiving messages.

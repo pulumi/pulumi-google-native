@@ -22,7 +22,7 @@ export class DatasetHl7V2Store extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetHl7V2Store';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetHl7V2Store';
 
     /**
      * Returns true if the given object is an instance of DatasetHl7V2Store.  This is designed to work even
@@ -126,15 +126,15 @@ export interface DatasetHl7V2StoreArgs {
     /**
      * The notification destination all messages (both Ingest & Create) are published on. Only the message name is sent as part of the notification. If this is unset, no notifications are sent. Supplied by the client.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfig>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
     /**
      * A list of notification configs. Each configuration uses a filter to determine whether to publish a message (both Ingest & Create) on the corresponding notification destination. Only the message name is sent as part of the notification. Supplied by the client.
      */
-    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.Hl7V2NotificationConfig>[]>;
+    readonly notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.Hl7V2NotificationConfigArgs>[]>;
     /**
      * The configuration for the parser. It determines how the server parses the messages.
      */
-    readonly parserConfig?: pulumi.Input<inputs.healthcare.v1beta1.ParserConfig>;
+    readonly parserConfig?: pulumi.Input<inputs.healthcare.v1beta1.ParserConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.

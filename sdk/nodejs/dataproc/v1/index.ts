@@ -38,35 +38,35 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:dataproc/v1:AutoscalingPolicy":
+            case "google-native:dataproc/v1:AutoscalingPolicy":
                 return new AutoscalingPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:AutoscalingPolicyIamPolicy":
+            case "google-native:dataproc/v1:AutoscalingPolicyIamPolicy":
                 return new AutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionAutoscalingPolicy":
+            case "google-native:dataproc/v1:RegionAutoscalingPolicy":
                 return new RegionAutoscalingPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
+            case "google-native:dataproc/v1:RegionAutoscalingPolicyIamPolicy":
                 return new RegionAutoscalingPolicyIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionCluster":
+            case "google-native:dataproc/v1:RegionCluster":
                 return new RegionCluster(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionClusterIamPolicy":
+            case "google-native:dataproc/v1:RegionClusterIamPolicy":
                 return new RegionClusterIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionJob":
+            case "google-native:dataproc/v1:RegionJob":
                 return new RegionJob(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionJobIamPolicy":
+            case "google-native:dataproc/v1:RegionJobIamPolicy":
                 return new RegionJobIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionOperationIamPolicy":
+            case "google-native:dataproc/v1:RegionOperationIamPolicy":
                 return new RegionOperationIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionWorkflowTemplate":
+            case "google-native:dataproc/v1:RegionWorkflowTemplate":
                 return new RegionWorkflowTemplate(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
+            case "google-native:dataproc/v1:RegionWorkflowTemplateIamPolicy":
                 return new RegionWorkflowTemplateIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:WorkflowTemplate":
+            case "google-native:dataproc/v1:WorkflowTemplate":
                 return new WorkflowTemplate(name, <any>undefined, { urn })
-            case "gcp-native:dataproc/v1:WorkflowTemplateIamPolicy":
+            case "google-native:dataproc/v1:WorkflowTemplateIamPolicy":
                 return new WorkflowTemplateIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "dataproc/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "dataproc/v1", _module)

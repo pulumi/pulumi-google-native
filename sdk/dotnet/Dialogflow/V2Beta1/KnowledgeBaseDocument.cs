@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
     /// <summary>
     /// Creates a new document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:KnowledgeBaseDocument")]
+    [GcpNativeResourceType("google-native:dialogflow/v2beta1:KnowledgeBaseDocument")]
     public partial class KnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public KnowledgeBaseDocument(string name, KnowledgeBaseDocumentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:KnowledgeBaseDocument", name, args ?? new KnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2beta1:KnowledgeBaseDocument", name, args ?? new KnowledgeBaseDocumentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private KnowledgeBaseDocument(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:KnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2beta1:KnowledgeBaseDocument", name, null, MakeResourceOptions(options, id))
         {
         }
 

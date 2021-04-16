@@ -22,7 +22,7 @@ export class Bucket extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:storage/v1:Bucket';
+    public static readonly __pulumiType = 'google-native:storage/v1:Bucket';
 
     /**
      * Returns true if the given object is an instance of Bucket.  This is designed to work even
@@ -234,7 +234,7 @@ export interface BucketArgs {
     /**
      * Access controls on the bucket.
      */
-    readonly acl?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketAccessControl>[]>;
+    readonly acl?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketAccessControlArgs>[]>;
     /**
      * The bucket's billing configuration.
      */
@@ -251,7 +251,7 @@ export interface BucketArgs {
     /**
      * Default access controls to apply to new objects when no ACL is provided.
      */
-    readonly defaultObjectAcl?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectAccessControl>[]>;
+    readonly defaultObjectAcl?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectAccessControlArgs>[]>;
     /**
      * Encryption configuration for a bucket.
      */

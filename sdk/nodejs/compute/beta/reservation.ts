@@ -22,7 +22,7 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:Reservation';
+    public static readonly __pulumiType = 'google-native:compute/beta:Reservation';
 
     /**
      * Returns true if the given object is an instance of Reservation.  This is designed to work even
@@ -175,7 +175,7 @@ export interface ReservationArgs {
     /**
      * Reservation for instances with specific machine shapes.
      */
-    readonly specificReservation?: pulumi.Input<inputs.compute.beta.AllocationSpecificSKUReservation>;
+    readonly specificReservation?: pulumi.Input<inputs.compute.beta.AllocationSpecificSKUReservationArgs>;
     /**
      * Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
      */

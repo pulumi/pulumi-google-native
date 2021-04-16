@@ -7,8 +7,8 @@ import (
 	"fmt"
 	"github.com/gedex/inflector"
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-gcp-native/provider/pkg/discovery"
-	"github.com/pulumi/pulumi-gcp-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/discovery"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -21,17 +21,17 @@ import (
 )
 
 // Note - this needs to be kept in sync with the layout in the SDK package
-const goBasePath = "github.com/pulumi/pulumi-gcp-native/sdk/go/gcp"
+const goBasePath = "github.com/pulumi/pulumi-google-native/sdk/go/gcp"
 
 // PulumiSchema will generate a Pulumi schema for the given Google Cloud discovery documents.
 func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg := schema.PackageSpec{
-		Name:        "gcp-native",
+		Name:        "google-native",
 		Description: "A native Pulumi package for creating and managing Google Cloud resources.",
 		License:     "Apache-2.0",
 		Keywords:    []string{"pulumi", "google cloud"},
 		Homepage:    "https://pulumi.com",
-		Repository:  "https://github.com/pulumi/pulumi-gcp-native",
+		Repository:  "https://github.com/pulumi/pulumi-google-native",
 		Config:      schema.ConfigSpec{},
 		Provider: schema.ResourceSpec{
 			ObjectTypeSpec: schema.ObjectTypeSpec{
@@ -50,7 +50,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	}
 
 	csharpNamespaces := map[string]string{
-		"gcp-native": "GcpNative",
+		"google-native": "GcpNative",
 	}
 	pythonModuleNames := map[string]string{}
 	golangImportAliases := map[string]string{}
@@ -392,8 +392,8 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		g.escapeCSharpNames(typeName, properties)
 	}
 
-	if resourceTok == "gcp-native:storage/v1:Object" {
-		resourceTok = "gcp-native:storage/v1:BucketObject"
+	if resourceTok == "google-native:storage/v1:Object" {
+		resourceTok = "google-native:storage/v1:BucketObject"
 		inputProperties["source"] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{
 				Ref: "pulumi.json#/Asset",

@@ -22,7 +22,7 @@ export class Schedule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:notebooks/v1:Schedule';
+    public static readonly __pulumiType = 'google-native:notebooks/v1:Schedule';
 
     /**
      * Returns true if the given object is an instance of Schedule.  This is designed to work even
@@ -140,7 +140,7 @@ export interface ScheduleArgs {
     /**
      * Notebook Execution Template corresponding to this schedule.
      */
-    readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplate>;
+    readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly schedulesId: pulumi.Input<string>;

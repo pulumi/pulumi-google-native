@@ -22,7 +22,7 @@ export class CatalogBranchProduct extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:retail/v2beta:CatalogBranchProduct';
+    public static readonly __pulumiType = 'google-native:retail/v2beta:CatalogBranchProduct';
 
     /**
      * Returns true if the given object is an instance of CatalogBranchProduct.  This is designed to work even
@@ -198,7 +198,7 @@ export interface CatalogBranchProductArgs {
     /**
      * Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
      */
-    readonly images?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaImage>[]>;
+    readonly images?: pulumi.Input<pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaImageArgs>[]>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Immutable. Full resource name of the product, such as `projects/*&#47;locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
@@ -207,7 +207,7 @@ export interface CatalogBranchProductArgs {
     /**
      * Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
      */
-    readonly priceInfo?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaPriceInfo>;
+    readonly priceInfo?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaPriceInfoArgs>;
     /**
      * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */

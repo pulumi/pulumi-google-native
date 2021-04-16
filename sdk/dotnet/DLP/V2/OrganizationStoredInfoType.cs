@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DLP.V2
     /// <summary>
     /// Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dlp/v2:OrganizationStoredInfoType")]
+    [GcpNativeResourceType("google-native:dlp/v2:OrganizationStoredInfoType")]
     public partial class OrganizationStoredInfoType : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationStoredInfoType(string name, OrganizationStoredInfoTypeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:OrganizationStoredInfoType", name, args ?? new OrganizationStoredInfoTypeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dlp/v2:OrganizationStoredInfoType", name, args ?? new OrganizationStoredInfoTypeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationStoredInfoType(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:OrganizationStoredInfoType", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dlp/v2:OrganizationStoredInfoType", name, null, MakeResourceOptions(options, id))
         {
         }
 

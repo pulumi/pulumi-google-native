@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AppEngine.V1Alpha
     /// <summary>
     /// Uploads the specified SSL certificate.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:appengine/v1alpha:AppAuthorizedCertificate")]
+    [GcpNativeResourceType("google-native:appengine/v1alpha:AppAuthorizedCertificate")]
     public partial class AppAuthorizedCertificate : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.AppEngine.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppAuthorizedCertificate(string name, AppAuthorizedCertificateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1alpha:AppAuthorizedCertificate", name, args ?? new AppAuthorizedCertificateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:appengine/v1alpha:AppAuthorizedCertificate", name, args ?? new AppAuthorizedCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AppAuthorizedCertificate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1alpha:AppAuthorizedCertificate", name, null, MakeResourceOptions(options, id))
+            : base("google-native:appengine/v1alpha:AppAuthorizedCertificate", name, null, MakeResourceOptions(options, id))
         {
         }
 

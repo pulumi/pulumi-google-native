@@ -22,7 +22,7 @@ export class OrganizationReplay extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:policysimulator/v1:OrganizationReplay';
+    public static readonly __pulumiType = 'google-native:policysimulator/v1:OrganizationReplay';
 
     /**
      * Returns true if the given object is an instance of OrganizationReplay.  This is designed to work even
@@ -99,7 +99,7 @@ export interface OrganizationReplayArgs {
     /**
      * Required. The configuration used for the `Replay`.
      */
-    readonly config?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfig>;
+    readonly config?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigArgs>;
     readonly locationsId: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     readonly replaysId: pulumi.Input<string>;

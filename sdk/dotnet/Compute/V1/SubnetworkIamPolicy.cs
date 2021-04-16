@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:SubnetworkIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/v1:SubnetworkIamPolicy")]
     public partial class SubnetworkIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SubnetworkIamPolicy(string name, SubnetworkIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:SubnetworkIamPolicy", name, args ?? new SubnetworkIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:SubnetworkIamPolicy", name, args ?? new SubnetworkIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SubnetworkIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:SubnetworkIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:SubnetworkIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

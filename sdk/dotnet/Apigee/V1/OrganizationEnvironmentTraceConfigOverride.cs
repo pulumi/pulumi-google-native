@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride")]
     public partial class OrganizationEnvironmentTraceConfigOverride : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentTraceConfigOverride(string name, OrganizationEnvironmentTraceConfigOverrideArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, args ?? new OrganizationEnvironmentTraceConfigOverrideArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, args ?? new OrganizationEnvironmentTraceConfigOverrideArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentTraceConfigOverride(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride", name, null, MakeResourceOptions(options, id))
         {
         }
 

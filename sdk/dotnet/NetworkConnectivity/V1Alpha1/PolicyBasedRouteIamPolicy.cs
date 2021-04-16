@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy")]
+    [GcpNativeResourceType("google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy")]
     public partial class PolicyBasedRouteIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PolicyBasedRouteIamPolicy(string name, PolicyBasedRouteIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy", name, args ?? new PolicyBasedRouteIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy", name, args ?? new PolicyBasedRouteIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PolicyBasedRouteIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:networkconnectivity/v1alpha1:PolicyBasedRouteIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

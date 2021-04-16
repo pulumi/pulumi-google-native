@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Logging.V2
     /// <summary>
     /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:logging/v2:FolderSink")]
+    [GcpNativeResourceType("google-native:logging/v2:FolderSink")]
     public partial class FolderSink : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public FolderSink(string name, FolderSinkArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:FolderSink", name, args ?? new FolderSinkArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:logging/v2:FolderSink", name, args ?? new FolderSinkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private FolderSink(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:FolderSink", name, null, MakeResourceOptions(options, id))
+            : base("google-native:logging/v2:FolderSink", name, null, MakeResourceOptions(options, id))
         {
         }
 

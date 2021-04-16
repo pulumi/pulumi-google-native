@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
     /// <summary>
     /// Creates a new Spoke in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:networkconnectivity/v1alpha1:Spoke")]
+    [GcpNativeResourceType("google-native:networkconnectivity/v1alpha1:Spoke")]
     public partial class Spoke : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Spoke(string name, SpokeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:Spoke", name, args ?? new SpokeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:networkconnectivity/v1alpha1:Spoke", name, args ?? new SpokeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Spoke(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:networkconnectivity/v1alpha1:Spoke", name, null, MakeResourceOptions(options, id))
+            : base("google-native:networkconnectivity/v1alpha1:Spoke", name, null, MakeResourceOptions(options, id))
         {
         }
 

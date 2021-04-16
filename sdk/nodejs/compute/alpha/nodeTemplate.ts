@@ -22,7 +22,7 @@ export class NodeTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:NodeTemplate';
+    public static readonly __pulumiType = 'google-native:compute/alpha:NodeTemplate';
 
     /**
      * Returns true if the given object is an instance of NodeTemplate.  This is designed to work even
@@ -168,7 +168,7 @@ export class NodeTemplate extends pulumi.CustomResource {
  * The set of arguments for constructing a NodeTemplate resource.
  */
 export interface NodeTemplateArgs {
-    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AcceleratorConfig>[]>;
+    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AcceleratorConfigArgs>[]>;
     /**
      * CPU overcommit.
      */
@@ -181,7 +181,7 @@ export interface NodeTemplateArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.alpha.LocalDisk>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.alpha.LocalDiskArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -208,7 +208,7 @@ export interface NodeTemplateArgs {
      *
      * This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
      */
-    readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.alpha.NodeTemplateNodeTypeFlexibility>;
+    readonly nodeTypeFlexibility?: pulumi.Input<inputs.compute.alpha.NodeTemplateNodeTypeFlexibilityArgs>;
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The name of the region where the node template resides, such as us-central1.
@@ -229,7 +229,7 @@ export interface NodeTemplateArgs {
      *
      * See Sole-tenant node options for more information.
      */
-    readonly serverBinding?: pulumi.Input<inputs.compute.alpha.ServerBinding>;
+    readonly serverBinding?: pulumi.Input<inputs.compute.alpha.ServerBindingArgs>;
     /**
      * [Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.
      */

@@ -22,7 +22,7 @@ export class RegionCommitment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionCommitment';
+    public static readonly __pulumiType = 'google-native:compute/v1:RegionCommitment';
 
     /**
      * Returns true if the given object is an instance of RegionCommitment.  This is designed to work even
@@ -190,7 +190,7 @@ export interface RegionCommitmentArgs {
     /**
      * The license specification required as part of a license commitment.
      */
-    readonly licenseResource?: pulumi.Input<inputs.compute.v1.LicenseResourceCommitment>;
+    readonly licenseResource?: pulumi.Input<inputs.compute.v1.LicenseResourceCommitmentArgs>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -207,11 +207,11 @@ export interface RegionCommitmentArgs {
     /**
      * List of reservations in this commitment.
      */
-    readonly reservations?: pulumi.Input<pulumi.Input<inputs.compute.v1.Reservation>[]>;
+    readonly reservations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ReservationArgs>[]>;
     /**
      * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
      */
-    readonly resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitment>[]>;
+    readonly resources?: pulumi.Input<pulumi.Input<inputs.compute.v1.ResourceCommitmentArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

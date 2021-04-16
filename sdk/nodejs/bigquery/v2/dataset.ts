@@ -22,7 +22,7 @@ export class Dataset extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigquery/v2:Dataset';
+    public static readonly __pulumiType = 'google-native:bigquery/v2:Dataset';
 
     /**
      * Returns true if the given object is an instance of Dataset.  This is designed to work even
@@ -168,8 +168,8 @@ export interface DatasetArgs {
     /**
      * [Required] A reference that identifies the dataset.
      */
-    readonly datasetReference?: pulumi.Input<inputs.bigquery.v2.DatasetReference>;
-    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfiguration>;
+    readonly datasetReference?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
+    readonly defaultEncryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
     /**
      * [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
      */

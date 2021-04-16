@@ -22,7 +22,7 @@ export class DatasetConsentStoreIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetConsentStoreIamPolicy';
+    public static readonly __pulumiType = 'google-native:healthcare/v1:DatasetConsentStoreIamPolicy';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreIamPolicy.  This is designed to work even
@@ -104,11 +104,11 @@ export interface DatasetConsentStoreIamPolicyArgs {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.AuditConfig>[]>;
+    readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.AuditConfigArgs>[]>;
     /**
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.Binding>[]>;
+    readonly bindings?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.BindingArgs>[]>;
     readonly consentStoresId: pulumi.Input<string>;
     readonly datasetsId: pulumi.Input<string>;
     /**

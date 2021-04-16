@@ -22,7 +22,7 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:eventarc/v1beta1:Trigger';
+    public static readonly __pulumiType = 'google-native:eventarc/v1beta1:Trigger';
 
     /**
      * Returns true if the given object is an instance of Trigger.  This is designed to work even
@@ -129,7 +129,7 @@ export interface TriggerArgs {
     /**
      * Required. Destination specifies where the events should be sent to.
      */
-    readonly destination?: pulumi.Input<inputs.eventarc.v1beta1.Destination>;
+    readonly destination?: pulumi.Input<inputs.eventarc.v1beta1.DestinationArgs>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
@@ -138,7 +138,7 @@ export interface TriggerArgs {
     /**
      * Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
-    readonly matchingCriteria?: pulumi.Input<pulumi.Input<inputs.eventarc.v1beta1.MatchingCriteria>[]>;
+    readonly matchingCriteria?: pulumi.Input<pulumi.Input<inputs.eventarc.v1beta1.MatchingCriteriaArgs>[]>;
     /**
      * Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
      */

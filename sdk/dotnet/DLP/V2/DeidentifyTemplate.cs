@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DLP.V2
     /// <summary>
     /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dlp/v2:DeidentifyTemplate")]
+    [GcpNativeResourceType("google-native:dlp/v2:DeidentifyTemplate")]
     public partial class DeidentifyTemplate : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DeidentifyTemplate(string name, DeidentifyTemplateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:DeidentifyTemplate", name, args ?? new DeidentifyTemplateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dlp/v2:DeidentifyTemplate", name, args ?? new DeidentifyTemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DeidentifyTemplate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:DeidentifyTemplate", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dlp/v2:DeidentifyTemplate", name, null, MakeResourceOptions(options, id))
         {
         }
 

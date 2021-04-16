@@ -22,7 +22,7 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:recommendationengine/v1beta1:CatalogCatalogItem';
+    public static readonly __pulumiType = 'google-native:recommendationengine/v1beta1:CatalogCatalogItem';
 
     /**
      * Returns true if the given object is an instance of CatalogCatalogItem.  This is designed to work even
@@ -124,7 +124,7 @@ export interface CatalogCatalogItemArgs {
     /**
      * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */
-    readonly categoryHierarchies?: pulumi.Input<pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>[]>;
+    readonly categoryHierarchies?: pulumi.Input<pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>[]>;
     /**
      * Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
      */
@@ -136,7 +136,7 @@ export interface CatalogCatalogItemArgs {
     /**
      * Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
      */
-    readonly itemAttributes?: pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1FeatureMap>;
+    readonly itemAttributes?: pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1FeatureMapArgs>;
     /**
      * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
@@ -145,7 +145,7 @@ export interface CatalogCatalogItemArgs {
     /**
      * Optional. Metadata specific to retail products.
      */
-    readonly productMetadata?: pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItem>;
+    readonly productMetadata?: pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.

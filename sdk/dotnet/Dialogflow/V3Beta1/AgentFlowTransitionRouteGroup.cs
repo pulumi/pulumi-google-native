@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
     /// <summary>
     /// Creates an TransitionRouteGroup in the specified flow.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup")]
+    [GcpNativeResourceType("google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup")]
     public partial class AgentFlowTransitionRouteGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentFlowTransitionRouteGroup(string name, AgentFlowTransitionRouteGroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup", name, args ?? new AgentFlowTransitionRouteGroupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup", name, args ?? new AgentFlowTransitionRouteGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentFlowTransitionRouteGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

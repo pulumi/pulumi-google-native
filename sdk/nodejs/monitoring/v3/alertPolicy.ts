@@ -22,7 +22,7 @@ export class AlertPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v3:AlertPolicy';
+    public static readonly __pulumiType = 'google-native:monitoring/v3:AlertPolicy';
 
     /**
      * Returns true if the given object is an instance of AlertPolicy.  This is designed to work even
@@ -142,11 +142,11 @@ export interface AlertPolicyArgs {
     /**
      * A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.Condition>[]>;
+    readonly conditions?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.ConditionArgs>[]>;
     /**
      * A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
      */
-    readonly creationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecord>;
+    readonly creationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecordArgs>;
     /**
      * A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple policies in the same project. The name is limited to 512 Unicode characters.
      */
@@ -154,7 +154,7 @@ export interface AlertPolicyArgs {
     /**
      * Documentation that is included with notifications and incidents related to this policy. Best practice is for the documentation to include information to help responders understand, mitigate, escalate, and correct the underlying problems detected by the alerting policy. Notification channels that have limited capacity might not show this documentation.
      */
-    readonly documentation?: pulumi.Input<inputs.monitoring.v3.Documentation>;
+    readonly documentation?: pulumi.Input<inputs.monitoring.v3.DocumentationArgs>;
     /**
      * Whether or not the policy is enabled. On write, the default interpretation if unset is that the policy is enabled. On read, clients should not make any assumption about the state if it has not been populated. The field should always be populated on List and Get operations, unless a field projection has been specified that strips it out.
      */
@@ -162,7 +162,7 @@ export interface AlertPolicyArgs {
     /**
      * A read-only record of the most recent change to the alerting policy. If provided in a call to create or update, this field will be ignored.
      */
-    readonly mutationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecord>;
+    readonly mutationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecordArgs>;
     /**
      * Required if the policy exists. The resource name for this policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting policy passed as part of the request.
      */
@@ -179,5 +179,5 @@ export interface AlertPolicyArgs {
     /**
      * Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
      */
-    readonly validity?: pulumi.Input<inputs.monitoring.v3.Status>;
+    readonly validity?: pulumi.Input<inputs.monitoring.v3.StatusArgs>;
 }

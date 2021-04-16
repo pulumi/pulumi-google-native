@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudscheduler/v1beta1:Job';
+    public static readonly __pulumiType = 'google-native:cloudscheduler/v1beta1:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -165,7 +165,7 @@ export interface JobArgs {
     /**
      * App Engine HTTP target.
      */
-    readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.AppEngineHttpTarget>;
+    readonly appEngineHttpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.AppEngineHttpTargetArgs>;
     /**
      * The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours. * For PubSub targets, this field is ignored.
      */
@@ -177,7 +177,7 @@ export interface JobArgs {
     /**
      * HTTP target.
      */
-    readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.HttpTarget>;
+    readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.HttpTargetArgs>;
     readonly jobsId: pulumi.Input<string>;
     /**
      * The time the last job attempt started.
@@ -196,11 +196,11 @@ export interface JobArgs {
     /**
      * Pub/Sub target.
      */
-    readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.PubsubTarget>;
+    readonly pubsubTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.PubsubTargetArgs>;
     /**
      * Settings that determine the retry behavior.
      */
-    readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.v1beta1.RetryConfig>;
+    readonly retryConfig?: pulumi.Input<inputs.cloudscheduler.v1beta1.RetryConfigArgs>;
     /**
      * Required, except when used with UpdateJob. Describes the schedule on which the job will be executed. The schedule can be either of the following types: * [Crontab](http://en.wikipedia.org/wiki/Cron#Overview) * English-like [schedule](https://cloud.google.com/scheduler/docs/configuring/cron-job-schedules) As a general rule, execution `n + 1` of a job will not begin until execution `n` has finished. Cloud Scheduler will never allow two simultaneously outstanding executions. For example, this implies that if the `n+1`th execution is scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its scheduled time occurs. If retry_count > 0 and a job attempt fails, the job will be tried a total of retry_count times, with exponential backoff, until the next scheduled start time.
      */
@@ -216,7 +216,7 @@ export interface JobArgs {
     /**
      * The response from the target for the last attempted execution.
      */
-    readonly status?: pulumi.Input<inputs.cloudscheduler.v1beta1.Status>;
+    readonly status?: pulumi.Input<inputs.cloudscheduler.v1beta1.StatusArgs>;
     /**
      * Specifies the time zone to be used in interpreting schedule. The value of this field must be a time zone name from the [tz database](http://en.wikipedia.org/wiki/Tz_database). Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
      */

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
     /// <summary>
     /// Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:TagKeyIamPolicy")]
     public partial class TagKeyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagKeyIamPolicy(string name, TagKeyIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy", name, args ?? new TagKeyIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v3:TagKeyIamPolicy", name, args ?? new TagKeyIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagKeyIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:TagKeyIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v3:TagKeyIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

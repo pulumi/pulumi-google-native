@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Managedidentities.V1Beta1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:managedidentities/v1beta1:DomainIamPolicy")]
+    [GcpNativeResourceType("google-native:managedidentities/v1beta1:DomainIamPolicy")]
     public partial class DomainIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Managedidentities.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DomainIamPolicy(string name, DomainIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:managedidentities/v1beta1:DomainIamPolicy", name, args ?? new DomainIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:managedidentities/v1beta1:DomainIamPolicy", name, args ?? new DomainIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DomainIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:managedidentities/v1beta1:DomainIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:managedidentities/v1beta1:DomainIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

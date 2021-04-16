@@ -22,7 +22,7 @@ export class NotificationChannel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v3:NotificationChannel';
+    public static readonly __pulumiType = 'google-native:monitoring/v3:NotificationChannel';
 
     /**
      * Returns true if the given object is an instance of NotificationChannel.  This is designed to work even
@@ -131,7 +131,7 @@ export interface NotificationChannelArgs {
     /**
      * Record of the creation of this channel.
      */
-    readonly creationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecord>;
+    readonly creationRecord?: pulumi.Input<inputs.monitoring.v3.MutationRecordArgs>;
     /**
      * An optional human-readable description of this notification channel. This description may provide additional details, beyond the display name, for the channel. This may not exceed 1024 Unicode characters.
      */
@@ -151,7 +151,7 @@ export interface NotificationChannelArgs {
     /**
      * Records of the modification of this channel.
      */
-    readonly mutationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.MutationRecord>[]>;
+    readonly mutationRecords?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.MutationRecordArgs>[]>;
     /**
      * The full REST resource name for this channel. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on creation.
      */

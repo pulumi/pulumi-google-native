@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Firestore.V1Beta1
     /// <summary>
     /// Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:firestore/v1beta1:DatabaseIndex")]
+    [GcpNativeResourceType("google-native:firestore/v1beta1:DatabaseIndex")]
     public partial class DatabaseIndex : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Firestore.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatabaseIndex(string name, DatabaseIndexArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:firestore/v1beta1:DatabaseIndex", name, args ?? new DatabaseIndexArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:firestore/v1beta1:DatabaseIndex", name, args ?? new DatabaseIndexArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatabaseIndex(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:firestore/v1beta1:DatabaseIndex", name, null, MakeResourceOptions(options, id))
+            : base("google-native:firestore/v1beta1:DatabaseIndex", name, null, MakeResourceOptions(options, id))
         {
         }
 

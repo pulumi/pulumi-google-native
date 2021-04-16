@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Healthcare.V1Beta1
     /// <summary>
     /// Creates a new FHIR store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:healthcare/v1beta1:DatasetFhirStore")]
+    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetFhirStore")]
     public partial class DatasetFhirStore : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.Healthcare.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetFhirStore(string name, DatasetFhirStoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1beta1:DatasetFhirStore", name, args ?? new DatasetFhirStoreArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:healthcare/v1beta1:DatasetFhirStore", name, args ?? new DatasetFhirStoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetFhirStore(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1beta1:DatasetFhirStore", name, null, MakeResourceOptions(options, id))
+            : base("google-native:healthcare/v1beta1:DatasetFhirStore", name, null, MakeResourceOptions(options, id))
         {
         }
 

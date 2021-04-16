@@ -22,7 +22,7 @@ export class AgentEnvironmentSessionEntityType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentEnvironmentSessionEntityType';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:AgentEnvironmentSessionEntityType';
 
     /**
      * Returns true if the given object is an instance of AgentEnvironmentSessionEntityType.  This is designed to work even
@@ -106,7 +106,7 @@ export interface AgentEnvironmentSessionEntityTypeArgs {
     /**
      * Required. The collection of entities to override or supplement the custom entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntity>[]>;
+    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
     /**
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */

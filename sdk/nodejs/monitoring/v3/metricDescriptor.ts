@@ -22,7 +22,7 @@ export class MetricDescriptor extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v3:MetricDescriptor';
+    public static readonly __pulumiType = 'google-native:monitoring/v3:MetricDescriptor';
 
     /**
      * Returns true if the given object is an instance of MetricDescriptor.  This is designed to work even
@@ -145,7 +145,7 @@ export interface MetricDescriptorArgs {
     /**
      * The set of labels that can be used to describe a specific instance of this metric type. For example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP response code, response_code, so you can look at latencies for successful responses or just for responses that failed.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.LabelDescriptor>[]>;
+    readonly labels?: pulumi.Input<pulumi.Input<inputs.monitoring.v3.LabelDescriptorArgs>[]>;
     /**
      * Optional. The launch stage of the metric definition.
      */
@@ -153,7 +153,7 @@ export interface MetricDescriptorArgs {
     /**
      * Optional. Metadata which can be used to guide usage of the metric.
      */
-    readonly metadata?: pulumi.Input<inputs.monitoring.v3.MetricDescriptorMetadata>;
+    readonly metadata?: pulumi.Input<inputs.monitoring.v3.MetricDescriptorMetadataArgs>;
     readonly metricDescriptorsId: pulumi.Input<string>;
     /**
      * Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.

@@ -22,7 +22,7 @@ export class Image extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:Image';
+    public static readonly __pulumiType = 'google-native:compute/beta:Image';
 
     /**
      * Returns true if the given object is an instance of Image.  This is designed to work even
@@ -284,7 +284,7 @@ export interface ImageArgs {
     /**
      * The deprecation status associated with this image.
      */
-    readonly deprecated?: pulumi.Input<inputs.compute.beta.DeprecationStatus>;
+    readonly deprecated?: pulumi.Input<inputs.compute.beta.DeprecationStatusArgs>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -300,7 +300,7 @@ export interface ImageArgs {
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
      */
-    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.beta.GuestOsFeature>[]>;
+    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.beta.GuestOsFeatureArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -315,7 +315,7 @@ export interface ImageArgs {
      *
      * If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
      */
-    readonly imageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
+    readonly imageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] Type of the resource. Always compute#image for images.
      */
@@ -358,7 +358,7 @@ export interface ImageArgs {
     /**
      * Set the secure boot keys of shielded instance.
      */
-    readonly shieldedInstanceInitialState?: pulumi.Input<inputs.compute.beta.InitialStateConfig>;
+    readonly shieldedInstanceInitialState?: pulumi.Input<inputs.compute.beta.InitialStateConfigArgs>;
     /**
      * URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
@@ -369,7 +369,7 @@ export interface ImageArgs {
     /**
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
+    readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The ID value of the disk used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given disk name.
      */
@@ -387,7 +387,7 @@ export interface ImageArgs {
     /**
      * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
      */
-    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
+    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The ID value of the image used to create this image. This value may be used to determine whether the image was taken from the current or a previous instance of a given image name.
      */
@@ -406,7 +406,7 @@ export interface ImageArgs {
     /**
      * The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
      */
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The ID value of the snapshot used to create this image. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given snapshot name.
      */

@@ -22,7 +22,7 @@ export class Router extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:Router';
+    public static readonly __pulumiType = 'google-native:compute/v1:Router';
 
     /**
      * Returns true if the given object is an instance of Router.  This is designed to work even
@@ -148,11 +148,11 @@ export interface RouterArgs {
     /**
      * BGP information specific to this router.
      */
-    readonly bgp?: pulumi.Input<inputs.compute.v1.RouterBgp>;
+    readonly bgp?: pulumi.Input<inputs.compute.v1.RouterBgpArgs>;
     /**
      * BGP information that must be configured into the routing stack to establish BGP peering. This information must specify the peer ASN and either the interface name, IP address, or peer IP address. Please refer to RFC4273.
      */
-    readonly bgpPeers?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterBgpPeer>[]>;
+    readonly bgpPeers?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterBgpPeerArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -173,7 +173,7 @@ export interface RouterArgs {
     /**
      * Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
      */
-    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterInterface>[]>;
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterInterfaceArgs>[]>;
     /**
      * [Output Only] Type of resource. Always compute#router for routers.
      */
@@ -185,7 +185,7 @@ export interface RouterArgs {
     /**
      * A list of NAT services created in this router.
      */
-    readonly nats?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterNat>[]>;
+    readonly nats?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouterNatArgs>[]>;
     /**
      * URI of the network to which this router belongs.
      */

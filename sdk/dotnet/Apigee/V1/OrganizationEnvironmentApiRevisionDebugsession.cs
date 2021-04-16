@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a debug session for a deployed API Proxy revision.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession")]
     public partial class OrganizationEnvironmentApiRevisionDebugsession : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentApiRevisionDebugsession(string name, OrganizationEnvironmentApiRevisionDebugsessionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession", name, args ?? new OrganizationEnvironmentApiRevisionDebugsessionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession", name, args ?? new OrganizationEnvironmentApiRevisionDebugsessionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentApiRevisionDebugsession(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession", name, null, MakeResourceOptions(options, id))
         {
         }
 

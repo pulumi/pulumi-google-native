@@ -22,7 +22,7 @@ export class DatabaseCollectionGroupIndex extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:firestore/v1:DatabaseCollectionGroupIndex';
+    public static readonly __pulumiType = 'google-native:firestore/v1:DatabaseCollectionGroupIndex';
 
     /**
      * Returns true if the given object is an instance of DatabaseCollectionGroupIndex.  This is designed to work even
@@ -105,7 +105,7 @@ export interface DatabaseCollectionGroupIndexArgs {
     /**
      * The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1.GoogleFirestoreAdminV1IndexField>[]>;
+    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1.GoogleFirestoreAdminV1IndexFieldArgs>[]>;
     readonly indexesId: pulumi.Input<string>;
     /**
      * A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.

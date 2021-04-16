@@ -22,7 +22,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:ResourcePolicy';
+    public static readonly __pulumiType = 'google-native:compute/beta:ResourcePolicy';
 
     /**
      * Returns true if the given object is an instance of ResourcePolicy.  This is designed to work even
@@ -140,7 +140,7 @@ export interface ResourcePolicyArgs {
     /**
      * Resource policy for instances for placement configuration.
      */
-    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicyGroupPlacementPolicy>;
+    readonly groupPlacementPolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicyGroupPlacementPolicyArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -148,7 +148,7 @@ export interface ResourcePolicyArgs {
     /**
      * Resource policy for scheduling instance operations.
      */
-    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicyInstanceSchedulePolicy>;
+    readonly instanceSchedulePolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicyInstanceSchedulePolicyArgs>;
     /**
      * [Output Only] Type of the resource. Always compute#resource_policies for resource policies.
      */
@@ -163,7 +163,7 @@ export interface ResourcePolicyArgs {
     /**
      * [Output Only] The system status of the resource policy.
      */
-    readonly resourceStatus?: pulumi.Input<inputs.compute.beta.ResourcePolicyResourceStatus>;
+    readonly resourceStatus?: pulumi.Input<inputs.compute.beta.ResourcePolicyResourceStatusArgs>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.
      */
@@ -171,7 +171,7 @@ export interface ResourcePolicyArgs {
     /**
      * Resource policy for persistent disks for creating snapshots.
      */
-    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicySnapshotSchedulePolicy>;
+    readonly snapshotSchedulePolicy?: pulumi.Input<inputs.compute.beta.ResourcePolicySnapshotSchedulePolicyArgs>;
     /**
      * [Output Only] The status of resource policy creation.
      */

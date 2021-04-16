@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Pubsublite.V1
     /// <summary>
     /// Creates a new subscription.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:pubsublite/v1:AdminSubscription")]
+    [GcpNativeResourceType("google-native:pubsublite/v1:AdminSubscription")]
     public partial class AdminSubscription : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Pubsublite.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AdminSubscription(string name, AdminSubscriptionArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsublite/v1:AdminSubscription", name, args ?? new AdminSubscriptionArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:pubsublite/v1:AdminSubscription", name, args ?? new AdminSubscriptionArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AdminSubscription(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:pubsublite/v1:AdminSubscription", name, null, MakeResourceOptions(options, id))
+            : base("google-native:pubsublite/v1:AdminSubscription", name, null, MakeResourceOptions(options, id))
         {
         }
 

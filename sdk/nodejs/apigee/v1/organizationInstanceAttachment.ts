@@ -21,7 +21,7 @@ export class OrganizationInstanceAttachment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationInstanceAttachment';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationInstanceAttachment';
 
     /**
      * Returns true if the given object is an instance of OrganizationInstanceAttachment.  This is designed to work even

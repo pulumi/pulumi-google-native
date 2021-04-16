@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataflow.V1b3
     /// <summary>
     /// Creates a Cloud Dataflow job from a template.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataflow/v1b3:Template")]
+    [GcpNativeResourceType("google-native:dataflow/v1b3:Template")]
     public partial class Template : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Dataflow.V1b3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Template(string name, TemplateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataflow/v1b3:Template", name, args ?? new TemplateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataflow/v1b3:Template", name, args ?? new TemplateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Template(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataflow/v1b3:Template", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataflow/v1b3:Template", name, null, MakeResourceOptions(options, id))
         {
         }
 

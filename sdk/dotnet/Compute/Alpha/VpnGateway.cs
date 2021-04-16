@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a VPN gateway in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:VpnGateway")]
+    [GcpNativeResourceType("google-native:compute/alpha:VpnGateway")]
     public partial class VpnGateway : Pulumi.CustomResource
     {
         /// <summary>
@@ -86,12 +86,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public VpnGateway(string name, VpnGatewayArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:VpnGateway", name, args ?? new VpnGatewayArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:VpnGateway", name, args ?? new VpnGatewayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private VpnGateway(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:VpnGateway", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:VpnGateway", name, null, MakeResourceOptions(options, id))
         {
         }
 

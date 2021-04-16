@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Retail.V2Beta
     /// <summary>
     /// Creates a Product.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:retail/v2beta:CatalogBranchProduct")]
+    [GcpNativeResourceType("google-native:retail/v2beta:CatalogBranchProduct")]
     public partial class CatalogBranchProduct : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GcpNative.Retail.V2Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogBranchProduct(string name, CatalogBranchProductArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:retail/v2beta:CatalogBranchProduct", name, args ?? new CatalogBranchProductArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:retail/v2beta:CatalogBranchProduct", name, args ?? new CatalogBranchProductArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CatalogBranchProduct(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:retail/v2beta:CatalogBranchProduct", name, null, MakeResourceOptions(options, id))
+            : base("google-native:retail/v2beta:CatalogBranchProduct", name, null, MakeResourceOptions(options, id))
         {
         }
 

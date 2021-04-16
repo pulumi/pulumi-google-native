@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
     /// <summary>
     /// Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2beta1:AgentKnowledgeBase")]
+    [GcpNativeResourceType("google-native:dialogflow/v2beta1:AgentKnowledgeBase")]
     public partial class AgentKnowledgeBase : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentKnowledgeBase(string name, AgentKnowledgeBaseArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentKnowledgeBase", name, args ?? new AgentKnowledgeBaseArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2beta1:AgentKnowledgeBase", name, args ?? new AgentKnowledgeBaseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentKnowledgeBase(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2beta1:AgentKnowledgeBase", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2beta1:AgentKnowledgeBase", name, null, MakeResourceOptions(options, id))
         {
         }
 

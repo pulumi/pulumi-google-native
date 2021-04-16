@@ -22,7 +22,7 @@ export class Template extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataflow/v1b3:Template';
+    public static readonly __pulumiType = 'google-native:dataflow/v1b3:Template';
 
     /**
      * Returns true if the given object is an instance of Template.  This is designed to work even
@@ -96,7 +96,7 @@ export interface TemplateArgs {
     /**
      * The runtime environment for the job.
      */
-    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironment>;
+    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.RuntimeEnvironmentArgs>;
     /**
      * Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
      */

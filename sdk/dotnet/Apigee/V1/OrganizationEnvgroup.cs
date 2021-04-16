@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a new environment group.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvgroup")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvgroup")]
     public partial class OrganizationEnvgroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvgroup(string name, OrganizationEnvgroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvgroup", name, args ?? new OrganizationEnvgroupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvgroup", name, args ?? new OrganizationEnvgroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvgroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvgroup", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvgroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

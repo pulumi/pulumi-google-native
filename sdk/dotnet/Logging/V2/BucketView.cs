@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Logging.V2
     /// <summary>
     /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:logging/v2:BucketView")]
+    [GcpNativeResourceType("google-native:logging/v2:BucketView")]
     public partial class BucketView : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Logging.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketView(string name, BucketViewArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:BucketView", name, args ?? new BucketViewArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:logging/v2:BucketView", name, args ?? new BucketViewArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BucketView(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:logging/v2:BucketView", name, null, MakeResourceOptions(options, id))
+            : base("google-native:logging/v2:BucketView", name, null, MakeResourceOptions(options, id))
         {
         }
 

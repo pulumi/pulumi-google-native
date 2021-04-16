@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationDeveloper")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationDeveloper")]
     public partial class OrganizationDeveloper : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationDeveloper(string name, OrganizationDeveloperArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationDeveloper", name, args ?? new OrganizationDeveloperArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationDeveloper", name, args ?? new OrganizationDeveloperArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationDeveloper(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationDeveloper", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationDeveloper", name, null, MakeResourceOptions(options, id))
         {
         }
 

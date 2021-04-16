@@ -22,7 +22,7 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:privateca/v1beta1:CertificateAuthorityCertificate';
+    public static readonly __pulumiType = 'google-native:privateca/v1beta1:CertificateAuthorityCertificate';
 
     /**
      * Returns true if the given object is an instance of CertificateAuthorityCertificate.  This is designed to work even
@@ -147,7 +147,7 @@ export interface CertificateAuthorityCertificateArgs {
     /**
      * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
      */
-    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfig>;
+    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
     /**
      * Optional. Labels with user-defined metadata.
      */

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Monitoring.V3
     /// <summary>
     /// Creates a new alerting policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:monitoring/v3:AlertPolicy")]
+    [GcpNativeResourceType("google-native:monitoring/v3:AlertPolicy")]
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.Monitoring.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AlertPolicy(string name, AlertPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:AlertPolicy", name, args ?? new AlertPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:monitoring/v3:AlertPolicy", name, args ?? new AlertPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AlertPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:monitoring/v3:AlertPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:monitoring/v3:AlertPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

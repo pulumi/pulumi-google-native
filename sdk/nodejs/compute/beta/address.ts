@@ -21,7 +21,7 @@ export class Address extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:Address';
+    public static readonly __pulumiType = 'google-native:compute/beta:Address';
 
     /**
      * Returns true if the given object is an instance of Address.  This is designed to work even

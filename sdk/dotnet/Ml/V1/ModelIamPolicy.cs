@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Ml.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:ml/v1:ModelIamPolicy")]
+    [GcpNativeResourceType("google-native:ml/v1:ModelIamPolicy")]
     public partial class ModelIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Ml.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ModelIamPolicy(string name, ModelIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:ml/v1:ModelIamPolicy", name, args ?? new ModelIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:ml/v1:ModelIamPolicy", name, args ?? new ModelIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ModelIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:ml/v1:ModelIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:ml/v1:ModelIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

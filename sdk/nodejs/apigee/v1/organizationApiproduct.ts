@@ -22,7 +22,7 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationApiproduct';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationApiproduct';
 
     /**
      * Returns true if the given object is an instance of OrganizationApiproduct.  This is designed to work even
@@ -170,7 +170,7 @@ export interface OrganizationApiproductArgs {
     /**
      * Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Attribute>[]>;
+    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * Response only. Creation time of this environment as milliseconds since epoch.
      */
@@ -190,7 +190,7 @@ export interface OrganizationApiproductArgs {
     /**
      * Configuration used to group Apigee proxies or remote services with graphQL operation name, graphQL operation type and quotas. This grouping allows us to precisely set quota for a particular combination of graphQL name and operation type for a particular proxy request. If graphQL name is not set, this would imply quota will be applied on all graphQL requests matching the operation type.
      */
-    readonly graphqlOperationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroup>;
+    readonly graphqlOperationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationGroupArgs>;
     /**
      * Response only. Modified time of this environment as milliseconds since epoch.
      */
@@ -202,7 +202,7 @@ export interface OrganizationApiproductArgs {
     /**
      * Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
      */
-    readonly operationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1OperationGroup>;
+    readonly operationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1OperationGroupArgs>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.

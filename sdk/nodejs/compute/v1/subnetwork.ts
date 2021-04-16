@@ -22,7 +22,7 @@ export class Subnetwork extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:Subnetwork';
+    public static readonly __pulumiType = 'google-native:compute/v1:Subnetwork';
 
     /**
      * Returns true if the given object is an instance of Subnetwork.  This is designed to work even
@@ -231,7 +231,7 @@ export interface SubnetworkArgs {
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.v1.SubnetworkLogConfig>;
+    readonly logConfig?: pulumi.Input<inputs.compute.v1.SubnetworkLogConfigArgs>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -266,7 +266,7 @@ export interface SubnetworkArgs {
     /**
      * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
      */
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.v1.SubnetworkSecondaryRange>[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.v1.SubnetworkSecondaryRangeArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -22,7 +22,7 @@ export class RegionBackendService extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:RegionBackendService';
+    public static readonly __pulumiType = 'google-native:compute/alpha:RegionBackendService';
 
     /**
      * Returns true if the given object is an instance of RegionBackendService.  This is designed to work even
@@ -351,11 +351,11 @@ export interface RegionBackendServiceArgs {
     /**
      * The list of backends that serve this BackendService.
      */
-    readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.alpha.Backend>[]>;
+    readonly backends?: pulumi.Input<pulumi.Input<inputs.compute.alpha.BackendArgs>[]>;
     /**
      * Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
      */
-    readonly cdnPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceCdnPolicy>;
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceCdnPolicyArgs>;
     /**
      * Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
      *
@@ -365,9 +365,9 @@ export interface RegionBackendServiceArgs {
      *
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly circuitBreakers?: pulumi.Input<inputs.compute.alpha.CircuitBreakers>;
-    readonly connectionDraining?: pulumi.Input<inputs.compute.alpha.ConnectionDraining>;
-    readonly connectionTrackingPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceConnectionTrackingPolicy>;
+    readonly circuitBreakers?: pulumi.Input<inputs.compute.alpha.CircuitBreakersArgs>;
+    readonly connectionDraining?: pulumi.Input<inputs.compute.alpha.ConnectionDrainingArgs>;
+    readonly connectionTrackingPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceConnectionTrackingPolicyArgs>;
     /**
      * Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
      *
@@ -377,7 +377,7 @@ export interface RegionBackendServiceArgs {
      *
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly consistentHash?: pulumi.Input<inputs.compute.alpha.ConsistentHashLoadBalancerSettings>;
+    readonly consistentHash?: pulumi.Input<inputs.compute.alpha.ConsistentHashLoadBalancerSettingsArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -405,7 +405,7 @@ export interface RegionBackendServiceArgs {
     /**
      * Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
      */
-    readonly failoverPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceFailoverPolicy>;
+    readonly failoverPolicy?: pulumi.Input<inputs.compute.alpha.BackendServiceFailoverPolicyArgs>;
     /**
      * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
      *
@@ -419,7 +419,7 @@ export interface RegionBackendServiceArgs {
     /**
      * The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
      */
-    readonly iap?: pulumi.Input<inputs.compute.alpha.BackendServiceIAP>;
+    readonly iap?: pulumi.Input<inputs.compute.alpha.BackendServiceIAPArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -453,13 +453,13 @@ export interface RegionBackendServiceArgs {
     /**
      * This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.alpha.BackendServiceLogConfig>;
+    readonly logConfig?: pulumi.Input<inputs.compute.alpha.BackendServiceLogConfigArgs>;
     /**
      * Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
      * If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
      * This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
      */
-    readonly maxStreamDuration?: pulumi.Input<inputs.compute.alpha.Duration>;
+    readonly maxStreamDuration?: pulumi.Input<inputs.compute.alpha.DurationArgs>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -477,7 +477,7 @@ export interface RegionBackendServiceArgs {
      *
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly outlierDetection?: pulumi.Input<inputs.compute.alpha.OutlierDetection>;
+    readonly outlierDetection?: pulumi.Input<inputs.compute.alpha.OutlierDetectionArgs>;
     /**
      * Deprecated in favor of portName. The TCP port to connect on the backend. The default value is 80.
      *
@@ -514,7 +514,7 @@ export interface RegionBackendServiceArgs {
      * - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
      * - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
      */
-    readonly securitySettings?: pulumi.Input<inputs.compute.alpha.SecuritySettings>;
+    readonly securitySettings?: pulumi.Input<inputs.compute.alpha.SecuritySettingsArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */
@@ -535,7 +535,7 @@ export interface RegionBackendServiceArgs {
      * Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
     readonly sessionAffinity?: pulumi.Input<string>;
-    readonly subsetting?: pulumi.Input<inputs.compute.alpha.Subsetting>;
+    readonly subsetting?: pulumi.Input<inputs.compute.alpha.SubsettingArgs>;
     /**
      * The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
      */

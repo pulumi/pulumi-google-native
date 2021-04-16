@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
     /// <summary>
     /// Sets the IAM policy for a taxonomy or a policy tag.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy")]
+    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyIamPolicy")]
     public partial class TaxonomyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TaxonomyIamPolicy(string name, TaxonomyIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy", name, args ?? new TaxonomyIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datacatalog/v1beta1:TaxonomyIamPolicy", name, args ?? new TaxonomyIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TaxonomyIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datacatalog/v1beta1:TaxonomyIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

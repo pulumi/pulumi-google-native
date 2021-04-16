@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a HealthCheck resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:RegionHealthCheck")]
+    [GcpNativeResourceType("google-native:compute/alpha:RegionHealthCheck")]
     public partial class RegionHealthCheck : Pulumi.CustomResource
     {
         /// <summary>
@@ -123,12 +123,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionHealthCheck(string name, RegionHealthCheckArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionHealthCheck", name, args ?? new RegionHealthCheckArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:RegionHealthCheck", name, args ?? new RegionHealthCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionHealthCheck(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionHealthCheck", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:RegionHealthCheck", name, null, MakeResourceOptions(options, id))
         {
         }
 

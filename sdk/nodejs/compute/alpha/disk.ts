@@ -22,7 +22,7 @@ export class Disk extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Disk';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Disk';
 
     /**
      * Returns true if the given object is an instance of Disk.  This is designed to work even
@@ -406,7 +406,7 @@ export interface DiskArgs {
      *
      * If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
      */
-    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly diskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
      */
@@ -414,7 +414,7 @@ export interface DiskArgs {
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
      */
-    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeature>[]>;
+    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeatureArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -544,7 +544,7 @@ export interface DiskArgs {
     /**
      * The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
      */
-    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly sourceImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.
      */
@@ -581,7 +581,7 @@ export interface DiskArgs {
     /**
      * The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
      */
-    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly sourceSnapshotEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The unique ID of the snapshot used to create this disk. This value identifies the exact snapshot that was used to create this persistent disk. For example, if you created the persistent disk from a snapshot that was later deleted and recreated under the same name, the source snapshot ID would identify the exact version of the snapshot that was used.
      */

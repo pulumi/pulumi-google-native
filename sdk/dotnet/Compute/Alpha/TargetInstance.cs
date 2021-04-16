@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:TargetInstance")]
+    [GcpNativeResourceType("google-native:compute/alpha:TargetInstance")]
     public partial class TargetInstance : Pulumi.CustomResource
     {
         /// <summary>
@@ -87,12 +87,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetInstance(string name, TargetInstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetInstance", name, args ?? new TargetInstanceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:TargetInstance", name, args ?? new TargetInstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetInstance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetInstance", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:TargetInstance", name, null, MakeResourceOptions(options, id))
         {
         }
 

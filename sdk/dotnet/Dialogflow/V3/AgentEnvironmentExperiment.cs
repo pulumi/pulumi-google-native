@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3
     /// <summary>
     /// Creates an Experiment in the specified Environment.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentEnvironmentExperiment")]
+    [GcpNativeResourceType("google-native:dialogflow/v3:AgentEnvironmentExperiment")]
     public partial class AgentEnvironmentExperiment : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentEnvironmentExperiment(string name, AgentEnvironmentExperimentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentEnvironmentExperiment", name, args ?? new AgentEnvironmentExperimentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3:AgentEnvironmentExperiment", name, args ?? new AgentEnvironmentExperimentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentEnvironmentExperiment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentEnvironmentExperiment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3:AgentEnvironmentExperiment", name, null, MakeResourceOptions(options, id))
         {
         }
 

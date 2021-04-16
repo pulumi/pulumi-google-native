@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataflow/v1b3:Job';
+    public static readonly __pulumiType = 'google-native:dataflow/v1b3:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -232,7 +232,7 @@ export interface JobArgs {
     /**
      * The environment for the job.
      */
-    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.Environment>;
+    readonly environment?: pulumi.Input<inputs.dataflow.v1b3.EnvironmentArgs>;
     /**
      * The unique ID of this job. This field is set by the Cloud Dataflow service when the Job is created, and is immutable for the life of the job.
      */
@@ -241,7 +241,7 @@ export interface JobArgs {
     /**
      * This field is populated by the Dataflow service to support filtering jobs by the metadata values provided here. Populated for ListJobs and all GetJob views SUMMARY and higher.
      */
-    readonly jobMetadata?: pulumi.Input<inputs.dataflow.v1b3.JobMetadata>;
+    readonly jobMetadata?: pulumi.Input<inputs.dataflow.v1b3.JobMetadataArgs>;
     /**
      * User-defined labels for this job. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.
      */
@@ -257,7 +257,7 @@ export interface JobArgs {
     /**
      * Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
      */
-    readonly pipelineDescription?: pulumi.Input<inputs.dataflow.v1b3.PipelineDescription>;
+    readonly pipelineDescription?: pulumi.Input<inputs.dataflow.v1b3.PipelineDescriptionArgs>;
     /**
      * The ID of the Cloud Platform project that the job belongs to.
      */
@@ -281,7 +281,7 @@ export interface JobArgs {
     /**
      * This field may be mutated by the Cloud Dataflow service; callers cannot mutate it.
      */
-    readonly stageStates?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.ExecutionStageState>[]>;
+    readonly stageStates?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.ExecutionStageStateArgs>[]>;
     /**
      * The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling jobs are started with some delay after job creation, so start_time is unset before start and is updated when the job is started by the Cloud Dataflow service. For other jobs, start_time always equals to create_time and is immutable and set by the Cloud Dataflow service.
      */
@@ -289,7 +289,7 @@ export interface JobArgs {
     /**
      * Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire job. Only retrieved with JOB_VIEW_ALL.
      */
-    readonly steps?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.Step>[]>;
+    readonly steps?: pulumi.Input<pulumi.Input<inputs.dataflow.v1b3.StepArgs>[]>;
     /**
      * The Cloud Storage location where the steps are stored.
      */

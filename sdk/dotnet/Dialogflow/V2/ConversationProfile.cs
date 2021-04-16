@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2
     /// <summary>
     /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2:ConversationProfile")]
+    [GcpNativeResourceType("google-native:dialogflow/v2:ConversationProfile")]
     public partial class ConversationProfile : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConversationProfile(string name, ConversationProfileArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2:ConversationProfile", name, args ?? new ConversationProfileArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2:ConversationProfile", name, args ?? new ConversationProfileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConversationProfile(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2:ConversationProfile", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2:ConversationProfile", name, null, MakeResourceOptions(options, id))
         {
         }
 

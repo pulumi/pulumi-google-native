@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudIdentity.V1
     /// <summary>
     /// Creates a Group.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudidentity/v1:Group")]
+    [GcpNativeResourceType("google-native:cloudidentity/v1:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
@@ -78,12 +78,12 @@ namespace Pulumi.GcpNative.CloudIdentity.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudidentity/v1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudidentity/v1:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Group(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudidentity/v1:Group", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudidentity/v1:Group", name, null, MakeResourceOptions(options, id))
         {
         }
 

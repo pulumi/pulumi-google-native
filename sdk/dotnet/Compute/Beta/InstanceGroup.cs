@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates an instance group in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:InstanceGroup")]
+    [GcpNativeResourceType("google-native:compute/beta:InstanceGroup")]
     public partial class InstanceGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -100,12 +100,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceGroup(string name, InstanceGroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:InstanceGroup", name, args ?? new InstanceGroupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:InstanceGroup", name, args ?? new InstanceGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:InstanceGroup", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:InstanceGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class OrganizationEnvironment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironment';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironment';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironment.  This is designed to work even
@@ -127,5 +127,5 @@ export interface OrganizationEnvironmentArgs {
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
-    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Properties>;
+    readonly properties?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1PropertiesArgs>;
 }

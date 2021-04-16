@@ -22,7 +22,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:InterconnectAttachment';
+    public static readonly __pulumiType = 'google-native:compute/v1:InterconnectAttachment';
 
     /**
      * Returns true if the given object is an instance of InterconnectAttachment.  This is designed to work even
@@ -369,11 +369,11 @@ export interface InterconnectAttachmentArgs {
     /**
      * Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
      */
-    readonly partnerMetadata?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPartnerMetadata>;
+    readonly partnerMetadata?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPartnerMetadataArgs>;
     /**
      * [Output Only] Information specific to an InterconnectAttachment. This property is populated if the interconnect that this is attached to is of type DEDICATED.
      */
-    readonly privateInterconnectInfo?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPrivateInfo>;
+    readonly privateInterconnectInfo?: pulumi.Input<inputs.compute.v1.InterconnectAttachmentPrivateInfoArgs>;
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

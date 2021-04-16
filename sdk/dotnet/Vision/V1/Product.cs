@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Vision.V1
     /// <summary>
     /// Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:vision/v1:Product")]
+    [GcpNativeResourceType("google-native:vision/v1:Product")]
     public partial class Product : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Vision.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Product(string name, ProductArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:vision/v1:Product", name, args ?? new ProductArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:vision/v1:Product", name, args ?? new ProductArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Product(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:vision/v1:Product", name, null, MakeResourceOptions(options, id))
+            : base("google-native:vision/v1:Product", name, null, MakeResourceOptions(options, id))
         {
         }
 

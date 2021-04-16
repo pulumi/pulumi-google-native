@@ -22,7 +22,7 @@ export class InstanceAppProfile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceAppProfile';
+    public static readonly __pulumiType = 'google-native:bigtableadmin/v2:InstanceAppProfile';
 
     /**
      * Returns true if the given object is an instance of InstanceAppProfile.  This is designed to work even
@@ -115,7 +115,7 @@ export interface InstanceAppProfileArgs {
     /**
      * Use a multi-cluster routing policy.
      */
-    readonly multiClusterRoutingUseAny?: pulumi.Input<inputs.bigtableadmin.v2.MultiClusterRoutingUseAny>;
+    readonly multiClusterRoutingUseAny?: pulumi.Input<inputs.bigtableadmin.v2.MultiClusterRoutingUseAnyArgs>;
     /**
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
@@ -124,5 +124,5 @@ export interface InstanceAppProfileArgs {
     /**
      * Use a single-cluster routing policy.
      */
-    readonly singleClusterRouting?: pulumi.Input<inputs.bigtableadmin.v2.SingleClusterRouting>;
+    readonly singleClusterRouting?: pulumi.Input<inputs.bigtableadmin.v2.SingleClusterRoutingArgs>;
 }

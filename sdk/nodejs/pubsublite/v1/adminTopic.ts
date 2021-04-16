@@ -22,7 +22,7 @@ export class AdminTopic extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsublite/v1:AdminTopic';
+    public static readonly __pulumiType = 'google-native:pubsublite/v1:AdminTopic';
 
     /**
      * Returns true if the given object is an instance of AdminTopic.  This is designed to work even
@@ -98,11 +98,11 @@ export interface AdminTopicArgs {
     /**
      * The settings for this topic's partitions.
      */
-    readonly partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfig>;
+    readonly partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The settings for this topic's message retention.
      */
-    readonly retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfig>;
+    readonly retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
     readonly topicsId: pulumi.Input<string>;
 }

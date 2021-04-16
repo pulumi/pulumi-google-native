@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:recommendationengine/v1beta1:CatalogCatalogItem":
+            case "google-native:recommendationengine/v1beta1:CatalogCatalogItem":
                 return new CatalogCatalogItem(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "recommendationengine/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "recommendationengine/v1beta1", _module)

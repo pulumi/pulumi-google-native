@@ -22,7 +22,7 @@ export class AppDomainMapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:appengine/v1alpha:AppDomainMapping';
+    public static readonly __pulumiType = 'google-native:appengine/v1alpha:AppDomainMapping';
 
     /**
      * Returns true if the given object is an instance of AppDomainMapping.  This is designed to work even
@@ -100,9 +100,9 @@ export interface AppDomainMappingArgs {
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
      */
-    readonly resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.v1alpha.ResourceRecord>[]>;
+    readonly resourceRecords?: pulumi.Input<pulumi.Input<inputs.appengine.v1alpha.ResourceRecordArgs>[]>;
     /**
      * SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
      */
-    readonly sslSettings?: pulumi.Input<inputs.appengine.v1alpha.SslSettings>;
+    readonly sslSettings?: pulumi.Input<inputs.appengine.v1alpha.SslSettingsArgs>;
 }

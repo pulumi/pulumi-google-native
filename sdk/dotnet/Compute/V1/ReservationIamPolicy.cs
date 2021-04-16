@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:ReservationIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/v1:ReservationIamPolicy")]
     public partial class ReservationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ReservationIamPolicy(string name, ReservationIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:ReservationIamPolicy", name, args ?? new ReservationIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:ReservationIamPolicy", name, args ?? new ReservationIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ReservationIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:ReservationIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:ReservationIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

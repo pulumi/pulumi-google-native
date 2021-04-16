@@ -22,7 +22,7 @@ export class GroupMembership extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudidentity/v1beta1:GroupMembership';
+    public static readonly __pulumiType = 'google-native:cloudidentity/v1beta1:GroupMembership';
 
     /**
      * Returns true if the given object is an instance of GroupMembership.  This is designed to work even
@@ -114,14 +114,14 @@ export interface GroupMembershipArgs {
     /**
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
-    readonly memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKey>;
+    readonly memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     readonly membershipsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
-    readonly preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKey>;
+    readonly preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
     /**
      * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
      */
-    readonly roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.MembershipRole>[]>;
+    readonly roles?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.MembershipRoleArgs>[]>;
 }

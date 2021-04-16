@@ -22,7 +22,7 @@ export class Subnetwork extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Subnetwork';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Subnetwork';
 
     /**
      * Returns true if the given object is an instance of Subnetwork.  This is designed to work even
@@ -345,7 +345,7 @@ export interface SubnetworkArgs {
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.alpha.SubnetworkLogConfig>;
+    readonly logConfig?: pulumi.Input<inputs.compute.alpha.SubnetworkLogConfigArgs>;
     /**
      * Can only be specified if VPC flow logging for this subnetwork is enabled. Configures whether metadata fields should be added to the reported VPC flow logs. Options are INCLUDE_ALL_METADATA, EXCLUDE_ALL_METADATA, and CUSTOM_METADATA. Default is EXCLUDE_ALL_METADATA.
      */
@@ -388,7 +388,7 @@ export interface SubnetworkArgs {
     /**
      * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
      */
-    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SubnetworkSecondaryRange>[]>;
+    readonly secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SubnetworkSecondaryRangeArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

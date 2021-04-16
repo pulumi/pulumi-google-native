@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:securitycenter/v1beta1:OrganizationSource":
+            case "google-native:securitycenter/v1beta1:OrganizationSource":
                 return new OrganizationSource(name, <any>undefined, { urn })
-            case "gcp-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
+            case "google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "securitycenter/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "securitycenter/v1beta1", _module)

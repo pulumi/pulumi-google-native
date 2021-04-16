@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Spanner.V1
     /// <summary>
     /// Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:spanner/v1:InstanceDatabaseIamPolicy")]
+    [GcpNativeResourceType("google-native:spanner/v1:InstanceDatabaseIamPolicy")]
     public partial class InstanceDatabaseIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Spanner.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceDatabaseIamPolicy(string name, InstanceDatabaseIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:spanner/v1:InstanceDatabaseIamPolicy", name, args ?? new InstanceDatabaseIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:spanner/v1:InstanceDatabaseIamPolicy", name, args ?? new InstanceDatabaseIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceDatabaseIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:spanner/v1:InstanceDatabaseIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:spanner/v1:InstanceDatabaseIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

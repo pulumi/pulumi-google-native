@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Recommendationengine.V1Beta1
     /// <summary>
     /// Creates a catalog item.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:recommendationengine/v1beta1:CatalogCatalogItem")]
+    [GcpNativeResourceType("google-native:recommendationengine/v1beta1:CatalogCatalogItem")]
     public partial class CatalogCatalogItem : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.Recommendationengine.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public CatalogCatalogItem(string name, CatalogCatalogItemArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:recommendationengine/v1beta1:CatalogCatalogItem", name, args ?? new CatalogCatalogItemArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:recommendationengine/v1beta1:CatalogCatalogItem", name, args ?? new CatalogCatalogItemArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private CatalogCatalogItem(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:recommendationengine/v1beta1:CatalogCatalogItem", name, null, MakeResourceOptions(options, id))
+            : base("google-native:recommendationengine/v1beta1:CatalogCatalogItem", name, null, MakeResourceOptions(options, id))
         {
         }
 

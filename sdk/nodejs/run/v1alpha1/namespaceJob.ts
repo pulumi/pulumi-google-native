@@ -22,7 +22,7 @@ export class NamespaceJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:run/v1alpha1:NamespaceJob';
+    public static readonly __pulumiType = 'google-native:run/v1alpha1:NamespaceJob';
 
     /**
      * Returns true if the given object is an instance of NamespaceJob.  This is designed to work even
@@ -110,14 +110,14 @@ export interface NamespaceJobArgs {
     /**
      * Optional. Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata +optional
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMeta>;
+    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMetaArgs>;
     readonly namespacesId: pulumi.Input<string>;
     /**
      * Optional. Specification of the desired behavior of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */
-    readonly spec?: pulumi.Input<inputs.run.v1alpha1.JobSpec>;
+    readonly spec?: pulumi.Input<inputs.run.v1alpha1.JobSpecArgs>;
     /**
      * Optional. Current status of a job. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#spec-and-status +optional
      */
-    readonly status?: pulumi.Input<inputs.run.v1alpha1.JobStatus>;
+    readonly status?: pulumi.Input<inputs.run.v1alpha1.JobStatusArgs>;
 }

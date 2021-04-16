@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Memcache.V1
     /// <summary>
     /// Creates a new Instance in a given location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:memcache/v1:Instance")]
+    [GcpNativeResourceType("google-native:memcache/v1:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
@@ -120,12 +120,12 @@ namespace Pulumi.GcpNative.Memcache.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Instance(string name, InstanceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:memcache/v1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:memcache/v1:Instance", name, args ?? new InstanceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Instance(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:memcache/v1:Instance", name, null, MakeResourceOptions(options, id))
+            : base("google-native:memcache/v1:Instance", name, null, MakeResourceOptions(options, id))
         {
         }
 

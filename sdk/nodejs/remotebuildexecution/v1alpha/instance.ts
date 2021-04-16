@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:remotebuildexecution/v1alpha:Instance';
+    public static readonly __pulumiType = 'google-native:remotebuildexecution/v1alpha:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -103,7 +103,7 @@ export interface InstanceArgs {
     /**
      * The policy to define whether or not RBE features can be used or how they can be used.
      */
-    readonly featurePolicy?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy>;
+    readonly featurePolicy?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs>;
     /**
      * ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */

@@ -22,7 +22,7 @@ export class ManagedZone extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dns/v1:ManagedZone';
+    public static readonly __pulumiType = 'google-native:dns/v1:ManagedZone';
 
     /**
      * Returns true if the given object is an instance of ManagedZone.  This is designed to work even
@@ -171,11 +171,11 @@ export interface ManagedZoneArgs {
     /**
      * DNSSEC configuration.
      */
-    readonly dnssecConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneDnsSecConfig>;
+    readonly dnssecConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneDnsSecConfigArgs>;
     /**
      * The presence for this field indicates that outbound forwarding is enabled for this zone. The value of this field contains the set of destinations to forward to.
      */
-    readonly forwardingConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneForwardingConfig>;
+    readonly forwardingConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneForwardingConfigArgs>;
     /**
      * Unique identifier for the resource; defined by the server (output only)
      */
@@ -201,20 +201,20 @@ export interface ManagedZoneArgs {
     /**
      * The presence of this field indicates that DNS Peering is enabled for this zone. The value of this field contains the network to peer with.
      */
-    readonly peeringConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePeeringConfig>;
+    readonly peeringConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePeeringConfigArgs>;
     /**
      * For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from.
      */
-    readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfig>;
+    readonly privateVisibilityConfig?: pulumi.Input<inputs.dns.v1.ManagedZonePrivateVisibilityConfigArgs>;
     readonly project: pulumi.Input<string>;
     /**
      * The presence of this field indicates that this is a managed reverse lookup zone and Cloud DNS resolves reverse lookup queries using automatically configured records for VPC resources. This only applies to networks listed under private_visibility_config.
      */
-    readonly reverseLookupConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneReverseLookupConfig>;
+    readonly reverseLookupConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneReverseLookupConfigArgs>;
     /**
      * This field links to the associated service directory namespace. Do not set this field for public zones or forwarding zones.
      */
-    readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneServiceDirectoryConfig>;
+    readonly serviceDirectoryConfig?: pulumi.Input<inputs.dns.v1.ManagedZoneServiceDirectoryConfigArgs>;
     /**
      * The zone's visibility: public zones are exposed to the Internet, while private zones are visible only to Virtual Private Cloud resources.
      */

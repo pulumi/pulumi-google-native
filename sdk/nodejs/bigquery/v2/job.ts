@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigquery/v2:Job';
+    public static readonly __pulumiType = 'google-native:bigquery/v2:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -120,7 +120,7 @@ export interface JobArgs {
     /**
      * [Required] Describes the job configuration.
      */
-    readonly configuration?: pulumi.Input<inputs.bigquery.v2.JobConfiguration>;
+    readonly configuration?: pulumi.Input<inputs.bigquery.v2.JobConfigurationArgs>;
     /**
      * [Output-only] A hash of this resource.
      */
@@ -133,7 +133,7 @@ export interface JobArgs {
     /**
      * [Optional] Reference describing the unique-per-user name of the job.
      */
-    readonly jobReference?: pulumi.Input<inputs.bigquery.v2.JobReference>;
+    readonly jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
     /**
      * [Output-only] The type of the resource.
      */
@@ -146,11 +146,11 @@ export interface JobArgs {
     /**
      * [Output-only] Information about the job, including starting time and ending time of the job.
      */
-    readonly statistics?: pulumi.Input<inputs.bigquery.v2.JobStatistics>;
+    readonly statistics?: pulumi.Input<inputs.bigquery.v2.JobStatisticsArgs>;
     /**
      * [Output-only] The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
      */
-    readonly status?: pulumi.Input<inputs.bigquery.v2.JobStatus>;
+    readonly status?: pulumi.Input<inputs.bigquery.v2.JobStatusArgs>;
     /**
      * [Output-only] Email address of the user who ran the job.
      */

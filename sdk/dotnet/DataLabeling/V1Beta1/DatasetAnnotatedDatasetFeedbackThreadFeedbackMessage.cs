@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
     /// <summary>
     /// Create a FeedbackMessage object.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage")]
+    [GcpNativeResourceType("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage")]
     public partial class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.DataLabeling.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(string name, DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage", name, args ?? new DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage", name, args ?? new DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage", name, null, MakeResourceOptions(options, id))
         {
         }
 

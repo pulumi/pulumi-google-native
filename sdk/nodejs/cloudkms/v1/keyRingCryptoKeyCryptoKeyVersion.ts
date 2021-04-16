@@ -22,7 +22,7 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion';
+    public static readonly __pulumiType = 'google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion';
 
     /**
      * Returns true if the given object is an instance of KeyRingCryptoKeyCryptoKeyVersion.  This is designed to work even
@@ -163,7 +163,7 @@ export interface KeyRingCryptoKeyCryptoKeyVersionArgs {
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
      */
-    readonly externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptions>;
+    readonly externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
     readonly keyRingsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;

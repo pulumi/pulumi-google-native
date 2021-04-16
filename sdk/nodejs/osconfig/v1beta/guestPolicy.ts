@@ -22,7 +22,7 @@ export class GuestPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:osconfig/v1beta:GuestPolicy';
+    public static readonly __pulumiType = 'google-native:osconfig/v1beta:GuestPolicy';
 
     /**
      * Returns true if the given object is an instance of GuestPolicy.  This is designed to work even
@@ -125,7 +125,7 @@ export interface GuestPolicyArgs {
     /**
      * Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
      */
-    readonly assignment?: pulumi.Input<inputs.osconfig.v1beta.Assignment>;
+    readonly assignment?: pulumi.Input<inputs.osconfig.v1beta.AssignmentArgs>;
     /**
      * Description of the guest policy. Length of the description is limited to 1024 characters.
      */
@@ -142,14 +142,14 @@ export interface GuestPolicyArgs {
     /**
      * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
      */
-    readonly packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageRepository>[]>;
+    readonly packageRepositories?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageRepositoryArgs>[]>;
     /**
      * The software packages to be managed by this policy.
      */
-    readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.Package>[]>;
+    readonly packages?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.PackageArgs>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * A list of Recipes to install on the VM instance.
      */
-    readonly recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipe>[]>;
+    readonly recipes?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipeArgs>[]>;
 }

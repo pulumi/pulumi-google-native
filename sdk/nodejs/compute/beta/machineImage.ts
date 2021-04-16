@@ -22,7 +22,7 @@ export class MachineImage extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:MachineImage';
+    public static readonly __pulumiType = 'google-native:compute/beta:MachineImage';
 
     /**
      * Returns true if the given object is an instance of MachineImage.  This is designed to work even
@@ -191,7 +191,7 @@ export interface MachineImageArgs {
      *
      * If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
      */
-    readonly machineImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKey>;
+    readonly machineImageEncryptionKey?: pulumi.Input<inputs.compute.beta.CustomerEncryptionKeyArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -208,7 +208,7 @@ export interface MachineImageArgs {
     /**
      * [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    readonly sourceDiskEncryptionKeys?: pulumi.Input<pulumi.Input<inputs.compute.beta.SourceDiskEncryptionKey>[]>;
+    readonly sourceDiskEncryptionKeys?: pulumi.Input<pulumi.Input<inputs.compute.beta.SourceDiskEncryptionKeyArgs>[]>;
     /**
      * The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
@@ -218,7 +218,7 @@ export interface MachineImageArgs {
     /**
      * [Output Only] Properties of source instance.
      */
-    readonly sourceInstanceProperties?: pulumi.Input<inputs.compute.beta.SourceInstanceProperties>;
+    readonly sourceInstanceProperties?: pulumi.Input<inputs.compute.beta.SourceInstancePropertiesArgs>;
     /**
      * [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
      */

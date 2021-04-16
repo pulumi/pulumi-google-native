@@ -21,7 +21,7 @@ export class Tenant extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:jobs/v4:Tenant';
+    public static readonly __pulumiType = 'google-native:jobs/v4:Tenant';
 
     /**
      * Returns true if the given object is an instance of Tenant.  This is designed to work even

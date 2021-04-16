@@ -22,7 +22,7 @@ export class GlobalPublicDelegatedPrefix extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:GlobalPublicDelegatedPrefix';
+    public static readonly __pulumiType = 'google-native:compute/v1:GlobalPublicDelegatedPrefix';
 
     /**
      * Returns true if the given object is an instance of GlobalPublicDelegatedPrefix.  This is designed to work even
@@ -186,7 +186,7 @@ export interface GlobalPublicDelegatedPrefixArgs {
     /**
      * The list of sub public delegated prefixes that exist for this public delegated prefix.
      */
-    readonly publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.v1.PublicDelegatedPrefixPublicDelegatedSubPrefix>[]>;
+    readonly publicDelegatedSubPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.v1.PublicDelegatedPrefixPublicDelegatedSubPrefixArgs>[]>;
     /**
      * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

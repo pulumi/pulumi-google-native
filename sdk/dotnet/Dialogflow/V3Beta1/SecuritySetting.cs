@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
     /// <summary>
     /// Create security settings in the specified location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3beta1:SecuritySetting")]
+    [GcpNativeResourceType("google-native:dialogflow/v3beta1:SecuritySetting")]
     public partial class SecuritySetting : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public SecuritySetting(string name, SecuritySettingArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:SecuritySetting", name, args ?? new SecuritySettingArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3beta1:SecuritySetting", name, args ?? new SecuritySettingArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private SecuritySetting(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3beta1:SecuritySetting", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3beta1:SecuritySetting", name, null, MakeResourceOptions(options, id))
         {
         }
 

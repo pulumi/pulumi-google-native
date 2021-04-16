@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:gkehub/v1:Membership":
+            case "google-native:gkehub/v1:Membership":
                 return new Membership(name, <any>undefined, { urn })
-            case "gcp-native:gkehub/v1:MembershipIamPolicy":
+            case "google-native:gkehub/v1:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "gkehub/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "gkehub/v1", _module)

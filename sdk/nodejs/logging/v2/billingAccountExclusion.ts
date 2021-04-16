@@ -21,7 +21,7 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:logging/v2:BillingAccountExclusion';
+    public static readonly __pulumiType = 'google-native:logging/v2:BillingAccountExclusion';
 
     /**
      * Returns true if the given object is an instance of BillingAccountExclusion.  This is designed to work even

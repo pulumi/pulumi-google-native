@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.IAM.V1
     /// <summary>
     /// Creates a new custom Role.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:iam/v1:Role")]
+    [GcpNativeResourceType("google-native:iam/v1:Role")]
     public partial class Role : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.IAM.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Role(string name, RoleArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:iam/v1:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:iam/v1:Role", name, args ?? new RoleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Role(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:iam/v1:Role", name, null, MakeResourceOptions(options, id))
+            : base("google-native:iam/v1:Role", name, null, MakeResourceOptions(options, id))
         {
         }
 

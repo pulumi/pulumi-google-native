@@ -22,7 +22,7 @@ export class QueueTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudtasks/v2beta2:QueueTask';
+    public static readonly __pulumiType = 'google-native:cloudtasks/v2beta2:QueueTask';
 
     /**
      * Returns true if the given object is an instance of QueueTask.  This is designed to work even
@@ -122,7 +122,7 @@ export interface QueueTaskArgs {
     /**
      * App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
      */
-    readonly appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpRequest>;
+    readonly appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2beta2.AppEngineHttpRequestArgs>;
     /**
      * The time that the task was created. `create_time` will be truncated to the nearest second.
      */
@@ -136,7 +136,7 @@ export interface QueueTaskArgs {
     /**
      * LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
      */
-    readonly pullMessage?: pulumi.Input<inputs.cloudtasks.v2beta2.PullMessage>;
+    readonly pullMessage?: pulumi.Input<inputs.cloudtasks.v2beta2.PullMessageArgs>;
     readonly queuesId: pulumi.Input<string>;
     /**
      * The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
@@ -149,7 +149,7 @@ export interface QueueTaskArgs {
     /**
      * The task status.
      */
-    readonly status?: pulumi.Input<inputs.cloudtasks.v2beta2.TaskStatus>;
+    readonly status?: pulumi.Input<inputs.cloudtasks.v2beta2.TaskStatusArgs>;
     readonly tasksId: pulumi.Input<string>;
     /**
      * The view specifies which subset of the Task has been returned.

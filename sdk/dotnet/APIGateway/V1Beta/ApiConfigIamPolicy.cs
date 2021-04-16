@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.APIGateway.V1Beta
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigateway/v1beta:ApiConfigIamPolicy")]
+    [GcpNativeResourceType("google-native:apigateway/v1beta:ApiConfigIamPolicy")]
     public partial class ApiConfigIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.APIGateway.V1Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApiConfigIamPolicy(string name, ApiConfigIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigateway/v1beta:ApiConfigIamPolicy", name, args ?? new ApiConfigIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigateway/v1beta:ApiConfigIamPolicy", name, args ?? new ApiConfigIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ApiConfigIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigateway/v1beta:ApiConfigIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigateway/v1beta:ApiConfigIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

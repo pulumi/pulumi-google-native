@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
     /// <summary>
     /// Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:Project")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v3:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Project(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:Project", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v3:Project", name, null, MakeResourceOptions(options, id))
         {
         }
 

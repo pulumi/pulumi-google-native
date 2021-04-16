@@ -22,7 +22,7 @@ export class OrganizationDeveloperApp extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationDeveloperApp';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationDeveloperApp';
 
     /**
      * Returns true if the given object is an instance of OrganizationDeveloperApp.  This is designed to work even
@@ -166,7 +166,7 @@ export interface OrganizationDeveloperAppArgs {
     /**
      * List of attributes for the developer app.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Attribute>[]>;
+    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * Callback URL used by OAuth 2.0 authorization servers to communicate authorization codes back to developer apps.
      */

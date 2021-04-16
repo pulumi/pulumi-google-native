@@ -22,7 +22,7 @@ export class Glossary extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:translate/v3beta1:Glossary';
+    public static readonly __pulumiType = 'google-native:translate/v3beta1:Glossary';
 
     /**
      * Returns true if the given object is an instance of Glossary.  This is designed to work even
@@ -118,15 +118,15 @@ export interface GlossaryArgs {
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
-    readonly inputConfig?: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfig>;
+    readonly inputConfig?: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfigArgs>;
     /**
      * Used with equivalent term set glossaries.
      */
-    readonly languageCodesSet?: pulumi.Input<inputs.translate.v3beta1.LanguageCodesSet>;
+    readonly languageCodesSet?: pulumi.Input<inputs.translate.v3beta1.LanguageCodesSetArgs>;
     /**
      * Used with unidirectional glossaries.
      */
-    readonly languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePair>;
+    readonly languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePairArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.

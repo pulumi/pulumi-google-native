@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
     /// <summary>
     /// Sets the access control policy on the specified `Note` or `Occurrence`. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a `Note` or an `Occurrence`, respectively. Attempting to call this method without these permissions will result in a ` `PERMISSION_DENIED`error. Attempting to call this method on a non-existent resource will result in a`NOT_FOUND`error if the user has`containeranalysis.notes.list`permission on a`Note`or`containeranalysis.occurrences.list`on an`Occurrence` , or a  `PERMISSION_DENIED`error otherwise. The resource takes the following formats:`projects/{projectid}/occurrences/{occurrenceid}` for occurrences and projects/{projectid}/notes/{noteid} for notes
     /// </summary>
-    [GcpNativeResourceType("gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy")]
+    [GcpNativeResourceType("google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy")]
     public partial class ProviderNoteIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProviderNoteIamPolicy(string name, ProviderNoteIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, args ?? new ProviderNoteIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, args ?? new ProviderNoteIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ProviderNoteIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

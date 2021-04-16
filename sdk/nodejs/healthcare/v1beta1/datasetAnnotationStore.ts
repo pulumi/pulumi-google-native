@@ -21,7 +21,7 @@ export class DatasetAnnotationStore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetAnnotationStore';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetAnnotationStore';
 
     /**
      * Returns true if the given object is an instance of DatasetAnnotationStore.  This is designed to work even

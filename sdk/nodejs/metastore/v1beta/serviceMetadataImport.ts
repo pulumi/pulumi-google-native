@@ -22,7 +22,7 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:metastore/v1beta:ServiceMetadataImport';
+    public static readonly __pulumiType = 'google-native:metastore/v1beta:ServiceMetadataImport';
 
     /**
      * Returns true if the given object is an instance of ServiceMetadataImport.  This is designed to work even
@@ -115,7 +115,7 @@ export interface ServiceMetadataImportArgs {
     /**
      * Immutable. A database dump from a pre-existing metastore's database.
      */
-    readonly databaseDump?: pulumi.Input<inputs.metastore.v1beta.DatabaseDump>;
+    readonly databaseDump?: pulumi.Input<inputs.metastore.v1beta.DatabaseDumpArgs>;
     /**
      * The description of the metadata import.
      */

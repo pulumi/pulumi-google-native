@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:MachineImage")]
+    [GcpNativeResourceType("google-native:compute/alpha:MachineImage")]
     public partial class MachineImage : Pulumi.CustomResource
     {
         /// <summary>
@@ -122,12 +122,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public MachineImage(string name, MachineImageArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:MachineImage", name, args ?? new MachineImageArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:MachineImage", name, args ?? new MachineImageArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private MachineImage(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:MachineImage", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:MachineImage", name, null, MakeResourceOptions(options, id))
         {
         }
 

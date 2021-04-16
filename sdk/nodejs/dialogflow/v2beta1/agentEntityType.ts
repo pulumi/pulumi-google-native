@@ -22,7 +22,7 @@ export class AgentEntityType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2beta1:AgentEntityType';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2beta1:AgentEntityType';
 
     /**
      * Returns true if the given object is an instance of AgentEntityType.  This is designed to work even
@@ -123,7 +123,7 @@ export interface AgentEntityTypeArgs {
     /**
      * Optional. The collection of entity entries associated with the entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntity>[]>;
+    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntityArgs>[]>;
     readonly entityTypesId: pulumi.Input<string>;
     /**
      * Required. Indicates the kind of entity type.

@@ -22,7 +22,7 @@ export class SiteDomain extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:firebasehosting/v1beta1:SiteDomain';
+    public static readonly __pulumiType = 'google-native:firebasehosting/v1beta1:SiteDomain';
 
     /**
      * Returns true if the given object is an instance of SiteDomain.  This is designed to work even
@@ -111,12 +111,12 @@ export interface SiteDomainArgs {
     /**
      * If set, the domain should redirect with the provided parameters.
      */
-    readonly domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirect>;
+    readonly domainRedirect?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainRedirectArgs>;
     readonly domainsId: pulumi.Input<string>;
     /**
      * Information about the provisioning of certificates and the health of the DNS resolution for the domain.
      */
-    readonly provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioning>;
+    readonly provisioning?: pulumi.Input<inputs.firebasehosting.v1beta1.DomainProvisioningArgs>;
     /**
      * Required. The site name of the association.
      */

@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:monitoring/v3:AlertPolicy":
+            case "google-native:monitoring/v3:AlertPolicy":
                 return new AlertPolicy(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:Group":
+            case "google-native:monitoring/v3:Group":
                 return new Group(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:MetricDescriptor":
+            case "google-native:monitoring/v3:MetricDescriptor":
                 return new MetricDescriptor(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:NotificationChannel":
+            case "google-native:monitoring/v3:NotificationChannel":
                 return new NotificationChannel(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:Service":
+            case "google-native:monitoring/v3:Service":
                 return new Service(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:ServiceServiceLevelObjective":
+            case "google-native:monitoring/v3:ServiceServiceLevelObjective":
                 return new ServiceServiceLevelObjective(name, <any>undefined, { urn })
-            case "gcp-native:monitoring/v3:UptimeCheckConfig":
+            case "google-native:monitoring/v3:UptimeCheckConfig":
                 return new UptimeCheckConfig(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "monitoring/v3", _module)
+pulumi.runtime.registerResourceModule("google-native", "monitoring/v3", _module)

@@ -22,7 +22,7 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentKeystoreAlias';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironmentKeystoreAlias';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentKeystoreAlias.  This is designed to work even

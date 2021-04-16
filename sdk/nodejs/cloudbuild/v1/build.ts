@@ -22,7 +22,7 @@ export class Build extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudbuild/v1:Build';
+    public static readonly __pulumiType = 'google-native:cloudbuild/v1:Build';
 
     /**
      * Returns true if the given object is an instance of Build.  This is designed to work even
@@ -225,11 +225,11 @@ export interface BuildArgs {
     /**
      * Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
      */
-    readonly artifacts?: pulumi.Input<inputs.cloudbuild.v1.Artifacts>;
+    readonly artifacts?: pulumi.Input<inputs.cloudbuild.v1.ArtifactsArgs>;
     /**
      * Secrets and secret environment variables.
      */
-    readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.Secrets>;
+    readonly availableSecrets?: pulumi.Input<inputs.cloudbuild.v1.SecretsArgs>;
     readonly buildsId: pulumi.Input<string>;
     /**
      * A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -243,7 +243,7 @@ export interface BuildArgs {
     /**
      * Special options for this build.
      */
-    readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptions>;
+    readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
@@ -252,7 +252,7 @@ export interface BuildArgs {
     /**
      * Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
      */
-    readonly secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.Secret>[]>;
+    readonly secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.SecretArgs>[]>;
     /**
      * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
      */
@@ -260,11 +260,11 @@ export interface BuildArgs {
     /**
      * The location of the source files to build.
      */
-    readonly source?: pulumi.Input<inputs.cloudbuild.v1.Source>;
+    readonly source?: pulumi.Input<inputs.cloudbuild.v1.SourceArgs>;
     /**
      * Required. The operations to be performed on the workspace.
      */
-    readonly steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStep>[]>;
+    readonly steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
     /**
      * Substitutions data for `Build` resource.
      */

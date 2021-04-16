@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataFusion.V1Beta1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datafusion/v1beta1:InstanceNamespaceIamPolicy")]
+    [GcpNativeResourceType("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy")]
     public partial class InstanceNamespaceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.DataFusion.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceNamespaceIamPolicy(string name, InstanceNamespaceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datafusion/v1beta1:InstanceNamespaceIamPolicy", name, args ?? new InstanceNamespaceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy", name, args ?? new InstanceNamespaceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceNamespaceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datafusion/v1beta1:InstanceNamespaceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

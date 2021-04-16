@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DNS.V1Beta2
     /// <summary>
     /// Creates a new ManagedZone.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dns/v1beta2:ManagedZone")]
+    [GcpNativeResourceType("google-native:dns/v1beta2:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>
@@ -111,12 +111,12 @@ namespace Pulumi.GcpNative.DNS.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ManagedZone(string name, ManagedZoneArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1beta2:ManagedZone", name, args ?? new ManagedZoneArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dns/v1beta2:ManagedZone", name, args ?? new ManagedZoneArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ManagedZone(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1beta2:ManagedZone", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dns/v1beta2:ManagedZone", name, null, MakeResourceOptions(options, id))
         {
         }
 

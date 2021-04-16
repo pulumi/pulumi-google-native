@@ -22,7 +22,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:logging/v2:BillingAccountSink';
+    public static readonly __pulumiType = 'google-native:logging/v2:BillingAccountSink';
 
     /**
      * Returns true if the given object is an instance of BillingAccountSink.  This is designed to work even
@@ -137,7 +137,7 @@ export interface BillingAccountSinkArgs {
     /**
      * Optional. Options that affect sinks exporting data to BigQuery.
      */
-    readonly bigqueryOptions?: pulumi.Input<inputs.logging.v2.BigQueryOptions>;
+    readonly bigqueryOptions?: pulumi.Input<inputs.logging.v2.BigQueryOptionsArgs>;
     readonly billingAccountsId: pulumi.Input<string>;
     /**
      * Optional. A description of this sink. The maximum length of the description is 8000 characters.
@@ -154,7 +154,7 @@ export interface BillingAccountSinkArgs {
     /**
      * Optional. Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both filter and one of exclusion_filters it will not be exported.
      */
-    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.v2.LogExclusion>[]>;
+    readonly exclusions?: pulumi.Input<pulumi.Input<inputs.logging.v2.LogExclusionArgs>[]>;
     /**
      * Optional. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries). The only exported log entries are those that are in the resource owning the sink and that match the filter. For example: logName="projects/[PROJECT_ID]/logs/[LOG_ID]" AND severity>=ERROR 
      */

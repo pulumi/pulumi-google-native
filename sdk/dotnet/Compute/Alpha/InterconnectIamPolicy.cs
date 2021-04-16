@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:InterconnectIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:InterconnectIamPolicy")]
     public partial class InterconnectIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InterconnectIamPolicy(string name, InterconnectIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:InterconnectIamPolicy", name, args ?? new InterconnectIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:InterconnectIamPolicy", name, args ?? new InterconnectIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InterconnectIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:InterconnectIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:InterconnectIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

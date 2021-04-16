@@ -22,7 +22,7 @@ export class Table extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigquery/v2:Table';
+    public static readonly __pulumiType = 'google-native:bigquery/v2:Table';
 
     /**
      * Returns true if the given object is an instance of Table.  This is designed to work even
@@ -244,7 +244,7 @@ export interface TableArgs {
     /**
      * [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
      */
-    readonly clustering?: pulumi.Input<inputs.bigquery.v2.Clustering>;
+    readonly clustering?: pulumi.Input<inputs.bigquery.v2.ClusteringArgs>;
     /**
      * [Output-only] The time when this table was created, in milliseconds since the epoch.
      */
@@ -257,7 +257,7 @@ export interface TableArgs {
     /**
      * Custom encryption configuration (e.g., Cloud KMS keys).
      */
-    readonly encryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfiguration>;
+    readonly encryptionConfiguration?: pulumi.Input<inputs.bigquery.v2.EncryptionConfigurationArgs>;
     /**
      * [Output-only] A hash of the table metadata. Used to ensure there were no concurrent modifications to the resource when attempting an update. Not guaranteed to change when the table contents or the fields numRows, numBytes, numLongTermBytes or lastModifiedTime change.
      */
@@ -269,7 +269,7 @@ export interface TableArgs {
     /**
      * [Optional] Describes the data format, location, and other properties of a table stored outside of BigQuery. By defining these properties, the data source can then be queried as if it were a standard BigQuery table.
      */
-    readonly externalDataConfiguration?: pulumi.Input<inputs.bigquery.v2.ExternalDataConfiguration>;
+    readonly externalDataConfiguration?: pulumi.Input<inputs.bigquery.v2.ExternalDataConfigurationArgs>;
     /**
      * [Optional] A descriptive name for this table.
      */
@@ -297,11 +297,11 @@ export interface TableArgs {
     /**
      * [Optional] Materialized view definition.
      */
-    readonly materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinition>;
+    readonly materializedView?: pulumi.Input<inputs.bigquery.v2.MaterializedViewDefinitionArgs>;
     /**
      * [Output-only, Beta] Present iff this table represents a ML model. Describes the training information for the model, and it is required to run 'PREDICT' queries.
      */
-    readonly model?: pulumi.Input<inputs.bigquery.v2.ModelDefinition>;
+    readonly model?: pulumi.Input<inputs.bigquery.v2.ModelDefinitionArgs>;
     /**
      * [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
      */
@@ -322,7 +322,7 @@ export interface TableArgs {
     /**
      * [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
-    readonly rangePartitioning?: pulumi.Input<inputs.bigquery.v2.RangePartitioning>;
+    readonly rangePartitioning?: pulumi.Input<inputs.bigquery.v2.RangePartitioningArgs>;
     /**
      * [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
      */
@@ -330,7 +330,7 @@ export interface TableArgs {
     /**
      * [Optional] Describes the schema of this table.
      */
-    readonly schema?: pulumi.Input<inputs.bigquery.v2.TableSchema>;
+    readonly schema?: pulumi.Input<inputs.bigquery.v2.TableSchemaArgs>;
     /**
      * [Output-only] A URL that can be used to access this resource again.
      */
@@ -338,20 +338,20 @@ export interface TableArgs {
     /**
      * [Output-only] Snapshot definition.
      */
-    readonly snapshotDefinition?: pulumi.Input<inputs.bigquery.v2.SnapshotDefinition>;
+    readonly snapshotDefinition?: pulumi.Input<inputs.bigquery.v2.SnapshotDefinitionArgs>;
     /**
      * [Output-only] Contains information regarding this table's streaming buffer, if one is present. This field will be absent if the table is not being streamed to or if there is no data in the streaming buffer.
      */
-    readonly streamingBuffer?: pulumi.Input<inputs.bigquery.v2.Streamingbuffer>;
+    readonly streamingBuffer?: pulumi.Input<inputs.bigquery.v2.StreamingbufferArgs>;
     readonly tableId: pulumi.Input<string>;
     /**
      * [Required] Reference describing the ID of this table.
      */
-    readonly tableReference?: pulumi.Input<inputs.bigquery.v2.TableReference>;
+    readonly tableReference?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
     /**
      * Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
      */
-    readonly timePartitioning?: pulumi.Input<inputs.bigquery.v2.TimePartitioning>;
+    readonly timePartitioning?: pulumi.Input<inputs.bigquery.v2.TimePartitioningArgs>;
     /**
      * [Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.
      */
@@ -359,5 +359,5 @@ export interface TableArgs {
     /**
      * [Optional] The view definition.
      */
-    readonly view?: pulumi.Input<inputs.bigquery.v2.ViewDefinition>;
+    readonly view?: pulumi.Input<inputs.bigquery.v2.ViewDefinitionArgs>;
 }

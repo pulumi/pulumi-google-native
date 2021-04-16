@@ -22,7 +22,7 @@ export class RegistryDevice extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudiot/v1:RegistryDevice';
+    public static readonly __pulumiType = 'google-native:cloudiot/v1:RegistryDevice';
 
     /**
      * Returns true if the given object is an instance of RegistryDevice.  This is designed to work even
@@ -180,16 +180,16 @@ export interface RegistryDeviceArgs {
     /**
      * The most recent device configuration, which is eventually sent from Cloud IoT Core to the device. If not present on creation, the configuration will be initialized with an empty payload and version value of `1`. To update this field after creation, use the `DeviceManager.ModifyCloudToDeviceConfig` method.
      */
-    readonly config?: pulumi.Input<inputs.cloudiot.v1.DeviceConfig>;
+    readonly config?: pulumi.Input<inputs.cloudiot.v1.DeviceConfigArgs>;
     /**
      * The credentials used to authenticate this device. To allow credential rotation without interruption, multiple device credentials can be bound to this device. No more than 3 credentials can be bound to a single device at a time. When new credentials are added to a device, they are verified against the registry credentials. For details, see the description of the `DeviceRegistry.credentials` field.
      */
-    readonly credentials?: pulumi.Input<pulumi.Input<inputs.cloudiot.v1.DeviceCredential>[]>;
+    readonly credentials?: pulumi.Input<pulumi.Input<inputs.cloudiot.v1.DeviceCredentialArgs>[]>;
     readonly devicesId: pulumi.Input<string>;
     /**
      * Gateway-related configuration and state.
      */
-    readonly gatewayConfig?: pulumi.Input<inputs.cloudiot.v1.GatewayConfig>;
+    readonly gatewayConfig?: pulumi.Input<inputs.cloudiot.v1.GatewayConfigArgs>;
     /**
      * The user-defined device identifier. The device ID must be unique within a device registry.
      */
@@ -205,7 +205,7 @@ export interface RegistryDeviceArgs {
     /**
      * [Output only] The error message of the most recent error, such as a failure to publish to Cloud Pub/Sub. 'last_error_time' is the timestamp of this field. If no errors have occurred, this field has an empty message and the status code 0 == OK. Otherwise, this field is expected to have a status code other than OK.
      */
-    readonly lastErrorStatus?: pulumi.Input<inputs.cloudiot.v1.Status>;
+    readonly lastErrorStatus?: pulumi.Input<inputs.cloudiot.v1.StatusArgs>;
     /**
      * [Output only] The time the most recent error occurred, such as a failure to publish to Cloud Pub/Sub. This field is the timestamp of 'last_error_status'.
      */
@@ -244,5 +244,5 @@ export interface RegistryDeviceArgs {
     /**
      * [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
      */
-    readonly state?: pulumi.Input<inputs.cloudiot.v1.DeviceState>;
+    readonly state?: pulumi.Input<inputs.cloudiot.v1.DeviceStateArgs>;
 }

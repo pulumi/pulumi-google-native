@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Domains.V1Alpha2
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:domains/v1alpha2:RegistrationIamPolicy")]
+    [GcpNativeResourceType("google-native:domains/v1alpha2:RegistrationIamPolicy")]
     public partial class RegistrationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Domains.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegistrationIamPolicy(string name, RegistrationIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:domains/v1alpha2:RegistrationIamPolicy", name, args ?? new RegistrationIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:domains/v1alpha2:RegistrationIamPolicy", name, args ?? new RegistrationIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegistrationIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:domains/v1alpha2:RegistrationIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:domains/v1alpha2:RegistrationIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

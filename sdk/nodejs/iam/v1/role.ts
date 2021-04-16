@@ -21,7 +21,7 @@ export class Role extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:iam/v1:Role';
+    public static readonly __pulumiType = 'google-native:iam/v1:Role';
 
     /**
      * Returns true if the given object is an instance of Role.  This is designed to work even

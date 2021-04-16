@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta2
     /// <summary>
     /// Updates the IAM policy for a given resource.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:artifactregistry/v1beta2:RepositoryIamPolicy")]
+    [GcpNativeResourceType("google-native:artifactregistry/v1beta2:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryIamPolicy(string name, RepositoryIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta2:RepositoryIamPolicy", name, args ?? new RepositoryIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:artifactregistry/v1beta2:RepositoryIamPolicy", name, args ?? new RepositoryIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RepositoryIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta2:RepositoryIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:artifactregistry/v1beta2:RepositoryIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

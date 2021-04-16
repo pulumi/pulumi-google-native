@@ -21,7 +21,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:storage/v1:ObjectAccessControl';
+    public static readonly __pulumiType = 'google-native:storage/v1:ObjectAccessControl';
 
     /**
      * Returns true if the given object is an instance of ObjectAccessControl.  This is designed to work even

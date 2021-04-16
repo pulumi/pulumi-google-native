@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:cloudkms/v1:KeyRing":
+            case "google-native:cloudkms/v1:KeyRing":
                 return new KeyRing(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingCryptoKey":
+            case "google-native:cloudkms/v1:KeyRingCryptoKey":
                 return new KeyRingCryptoKey(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
+            case "google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion":
                 return new KeyRingCryptoKeyCryptoKeyVersion(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
+            case "google-native:cloudkms/v1:KeyRingCryptoKeyIamPolicy":
                 return new KeyRingCryptoKeyIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingIamPolicy":
+            case "google-native:cloudkms/v1:KeyRingIamPolicy":
                 return new KeyRingIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingImportJob":
+            case "google-native:cloudkms/v1:KeyRingImportJob":
                 return new KeyRingImportJob(name, <any>undefined, { urn })
-            case "gcp-native:cloudkms/v1:KeyRingImportJobIamPolicy":
+            case "google-native:cloudkms/v1:KeyRingImportJobIamPolicy":
                 return new KeyRingImportJobIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "cloudkms/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "cloudkms/v1", _module)

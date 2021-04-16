@@ -22,7 +22,7 @@ export class Runtime extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:notebooks/v1:Runtime';
+    public static readonly __pulumiType = 'google-native:notebooks/v1:Runtime';
 
     /**
      * Returns true if the given object is an instance of Runtime.  This is designed to work even
@@ -129,16 +129,16 @@ export interface RuntimeArgs {
     /**
      * The config settings for accessing runtime.
      */
-    readonly accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfig>;
+    readonly accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly runtimesId: pulumi.Input<string>;
     /**
      * The config settings for software inside the runtime.
      */
-    readonly softwareConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeSoftwareConfig>;
+    readonly softwareConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeSoftwareConfigArgs>;
     /**
      * Use a Compute Engine VM image to start the managed notebook instance.
      */
-    readonly virtualMachine?: pulumi.Input<inputs.notebooks.v1.VirtualMachine>;
+    readonly virtualMachine?: pulumi.Input<inputs.notebooks.v1.VirtualMachineArgs>;
 }

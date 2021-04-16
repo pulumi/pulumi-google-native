@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a network in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:Network")]
+    [GcpNativeResourceType("google-native:compute/alpha:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>
@@ -114,12 +114,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Network(string name, NetworkArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:Network", name, args ?? new NetworkArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:Network", name, args ?? new NetworkArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Network(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:Network", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:Network", name, null, MakeResourceOptions(options, id))
         {
         }
 

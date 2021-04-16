@@ -22,7 +22,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:ExternalVpnGateway';
+    public static readonly __pulumiType = 'google-native:compute/v1:ExternalVpnGateway';
 
     /**
      * Returns true if the given object is an instance of ExternalVpnGateway.  This is designed to work even
@@ -141,7 +141,7 @@ export interface ExternalVpnGatewayArgs {
     /**
      * List of interfaces for this external VPN gateway.
      */
-    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.ExternalVpnGatewayInterface>[]>;
+    readonly interfaces?: pulumi.Input<pulumi.Input<inputs.compute.v1.ExternalVpnGatewayInterfaceArgs>[]>;
     /**
      * [Output Only] Type of the resource. Always compute#externalVpnGateway for externalVpnGateways.
      */

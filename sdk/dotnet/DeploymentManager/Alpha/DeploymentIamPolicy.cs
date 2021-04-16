@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:deploymentmanager/alpha:DeploymentIamPolicy")]
+    [GcpNativeResourceType("google-native:deploymentmanager/alpha:DeploymentIamPolicy")]
     public partial class DeploymentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.DeploymentManager.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DeploymentIamPolicy(string name, DeploymentIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:deploymentmanager/alpha:DeploymentIamPolicy", name, args ?? new DeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:deploymentmanager/alpha:DeploymentIamPolicy", name, args ?? new DeploymentIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DeploymentIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:deploymentmanager/alpha:DeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:deploymentmanager/alpha:DeploymentIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class CompositeType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:deploymentmanager/v2beta:CompositeType';
+    public static readonly __pulumiType = 'google-native:deploymentmanager/v2beta:CompositeType';
 
     /**
      * Returns true if the given object is an instance of CompositeType.  This is designed to work even
@@ -127,7 +127,7 @@ export interface CompositeTypeArgs {
     /**
      * Map of labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeLabelEntry>[]>;
+    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeLabelEntryArgs>[]>;
     /**
      * Name of the composite type, must follow the expression: `[a-z]([-a-z0-9_.]{0,61}[a-z0-9])?`.
      */
@@ -135,7 +135,7 @@ export interface CompositeTypeArgs {
     /**
      * The Operation that most recently ran, or is currently running, on this composite type.
      */
-    readonly operation?: pulumi.Input<inputs.deploymentmanager.v2beta.Operation>;
+    readonly operation?: pulumi.Input<inputs.deploymentmanager.v2beta.OperationArgs>;
     readonly project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.
@@ -145,5 +145,5 @@ export interface CompositeTypeArgs {
     /**
      * Files for the template type.
      */
-    readonly templateContents?: pulumi.Input<inputs.deploymentmanager.v2beta.TemplateContents>;
+    readonly templateContents?: pulumi.Input<inputs.deploymentmanager.v2beta.TemplateContentsArgs>;
 }

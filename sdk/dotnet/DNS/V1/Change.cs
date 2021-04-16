@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DNS.V1
     /// <summary>
     /// Atomically updates the ResourceRecordSet collection.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dns/v1:Change")]
+    [GcpNativeResourceType("google-native:dns/v1:Change")]
     public partial class Change : Pulumi.CustomResource
     {
         /// <summary>
@@ -57,12 +57,12 @@ namespace Pulumi.GcpNative.DNS.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Change(string name, ChangeArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1:Change", name, args ?? new ChangeArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dns/v1:Change", name, args ?? new ChangeArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Change(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dns/v1:Change", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dns/v1:Change", name, null, MakeResourceOptions(options, id))
         {
         }
 

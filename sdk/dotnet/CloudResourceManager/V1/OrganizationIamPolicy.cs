@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V1
     /// <summary>
     /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123". Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the specified organization
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v1:OrganizationIamPolicy")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v1:OrganizationIamPolicy")]
     public partial class OrganizationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationIamPolicy(string name, OrganizationIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v1:OrganizationIamPolicy", name, args ?? new OrganizationIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v1:OrganizationIamPolicy", name, args ?? new OrganizationIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v1:OrganizationIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v1:OrganizationIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

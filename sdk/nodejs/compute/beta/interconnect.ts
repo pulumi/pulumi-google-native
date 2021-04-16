@@ -22,7 +22,7 @@ export class Interconnect extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:Interconnect';
+    public static readonly __pulumiType = 'google-native:compute/beta:Interconnect';
 
     /**
      * Returns true if the given object is an instance of Interconnect.  This is designed to work even
@@ -226,7 +226,7 @@ export interface InterconnectArgs {
     /**
      * [Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.
      */
-    readonly circuitInfos?: pulumi.Input<pulumi.Input<inputs.compute.beta.InterconnectCircuitInfo>[]>;
+    readonly circuitInfos?: pulumi.Input<pulumi.Input<inputs.compute.beta.InterconnectCircuitInfoArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -242,7 +242,7 @@ export interface InterconnectArgs {
     /**
      * [Output Only] A list of outages expected for this Interconnect.
      */
-    readonly expectedOutages?: pulumi.Input<pulumi.Input<inputs.compute.beta.InterconnectOutageNotification>[]>;
+    readonly expectedOutages?: pulumi.Input<pulumi.Input<inputs.compute.beta.InterconnectOutageNotificationArgs>[]>;
     /**
      * [Output Only] IP address configured on the Google side of the Interconnect link. This can be used only for ping tests.
      */

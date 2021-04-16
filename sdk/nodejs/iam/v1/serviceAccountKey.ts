@@ -21,7 +21,7 @@ export class ServiceAccountKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:iam/v1:ServiceAccountKey';
+    public static readonly __pulumiType = 'google-native:iam/v1:ServiceAccountKey';
 
     /**
      * Returns true if the given object is an instance of ServiceAccountKey.  This is designed to work even

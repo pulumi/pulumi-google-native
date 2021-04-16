@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Domains.V1Alpha2
     /// <summary>
     /// Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:domains/v1alpha2:Registration")]
+    [GcpNativeResourceType("google-native:domains/v1alpha2:Registration")]
     public partial class Registration : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.Domains.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Registration(string name, RegistrationArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:domains/v1alpha2:Registration", name, args ?? new RegistrationArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:domains/v1alpha2:Registration", name, args ?? new RegistrationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Registration(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:domains/v1alpha2:Registration", name, null, MakeResourceOptions(options, id))
+            : base("google-native:domains/v1alpha2:Registration", name, null, MakeResourceOptions(options, id))
         {
         }
 

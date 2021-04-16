@@ -22,7 +22,7 @@ export class GameServerDeploymentConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:gameservices/v1beta:GameServerDeploymentConfig';
+    public static readonly __pulumiType = 'google-native:gameservices/v1beta:GameServerDeploymentConfig';
 
     /**
      * Returns true if the given object is an instance of GameServerDeploymentConfig.  This is designed to work even
@@ -126,7 +126,7 @@ export interface GameServerDeploymentConfigArgs {
     /**
      * FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
      */
-    readonly fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.FleetConfig>[]>;
+    readonly fleetConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.FleetConfigArgs>[]>;
     readonly gameServerDeploymentsId: pulumi.Input<string>;
     /**
      * The labels associated with this game server config. Each label is a key-value pair.
@@ -141,5 +141,5 @@ export interface GameServerDeploymentConfigArgs {
     /**
      * The autoscaling settings.
      */
-    readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.ScalingConfig>[]>;
+    readonly scalingConfigs?: pulumi.Input<pulumi.Input<inputs.gameservices.v1beta.ScalingConfigArgs>[]>;
 }

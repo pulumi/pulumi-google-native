@@ -22,7 +22,7 @@ export class Project extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudresourcemanager/v1beta1:Project';
+    public static readonly __pulumiType = 'google-native:cloudresourcemanager/v1beta1:Project';
 
     /**
      * Returns true if the given object is an instance of Project.  This is designed to work even
@@ -124,7 +124,7 @@ export interface ProjectArgs {
     /**
      * An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
      */
-    readonly parent?: pulumi.Input<inputs.cloudresourcemanager.v1beta1.ResourceId>;
+    readonly parent?: pulumi.Input<inputs.cloudresourcemanager.v1beta1.ResourceIdArgs>;
     /**
      * The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
      */

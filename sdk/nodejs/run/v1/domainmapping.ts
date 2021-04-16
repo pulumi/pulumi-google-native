@@ -22,7 +22,7 @@ export class Domainmapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:run/v1:Domainmapping';
+    public static readonly __pulumiType = 'google-native:run/v1:Domainmapping';
 
     /**
      * Returns true if the given object is an instance of Domainmapping.  This is designed to work even
@@ -115,14 +115,14 @@ export interface DomainmappingArgs {
     /**
      * Metadata associated with this BuildTemplate.
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMeta>;
+    readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */
-    readonly spec?: pulumi.Input<inputs.run.v1.DomainMappingSpec>;
+    readonly spec?: pulumi.Input<inputs.run.v1.DomainMappingSpecArgs>;
     /**
      * The current status of the DomainMapping.
      */
-    readonly status?: pulumi.Input<inputs.run.v1.DomainMappingStatus>;
+    readonly status?: pulumi.Input<inputs.run.v1.DomainMappingStatusArgs>;
 }

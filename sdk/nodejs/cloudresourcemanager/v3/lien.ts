@@ -21,7 +21,7 @@ export class Lien extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudresourcemanager/v3:Lien';
+    public static readonly __pulumiType = 'google-native:cloudresourcemanager/v3:Lien';
 
     /**
      * Returns true if the given object is an instance of Lien.  This is designed to work even

@@ -22,7 +22,7 @@ export class DatasetHl7V2StoreMessage extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetHl7V2StoreMessage';
+    public static readonly __pulumiType = 'google-native:healthcare/v1:DatasetHl7V2StoreMessage';
 
     /**
      * Returns true if the given object is an instance of DatasetHl7V2StoreMessage.  This is designed to work even
@@ -163,12 +163,12 @@ export interface DatasetHl7V2StoreMessageArgs {
     /**
      * All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
      */
-    readonly patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.PatientId>[]>;
+    readonly patientIds?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.PatientIdArgs>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The parsed version of the raw message data schematized according to this store's schemas and type definitions.
      */
-    readonly schematizedData?: pulumi.Input<inputs.healthcare.v1.SchematizedData>;
+    readonly schematizedData?: pulumi.Input<inputs.healthcare.v1.SchematizedDataArgs>;
     /**
      * The hospital that this message came from. MSH-4.
      */

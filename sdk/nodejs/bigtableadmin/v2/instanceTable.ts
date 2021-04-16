@@ -22,7 +22,7 @@ export class InstanceTable extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceTable';
+    public static readonly __pulumiType = 'google-native:bigtableadmin/v2:InstanceTable';
 
     /**
      * Returns true if the given object is an instance of InstanceTable.  This is designed to work even
@@ -115,7 +115,7 @@ export interface InstanceTableArgs {
     /**
      * The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
      */
-    readonly initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.Split>[]>;
+    readonly initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.SplitArgs>[]>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`

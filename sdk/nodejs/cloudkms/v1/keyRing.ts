@@ -21,7 +21,7 @@ export class KeyRing extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudkms/v1:KeyRing';
+    public static readonly __pulumiType = 'google-native:cloudkms/v1:KeyRing';
 
     /**
      * Returns true if the given object is an instance of KeyRing.  This is designed to work even

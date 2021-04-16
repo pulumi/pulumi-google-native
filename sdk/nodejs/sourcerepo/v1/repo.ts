@@ -22,7 +22,7 @@ export class Repo extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:sourcerepo/v1:Repo';
+    public static readonly __pulumiType = 'google-native:sourcerepo/v1:Repo';
 
     /**
      * Returns true if the given object is an instance of Repo.  This is designed to work even
@@ -101,7 +101,7 @@ export interface RepoArgs {
     /**
      * How this repository mirrors a repository managed by another service. Read-only field.
      */
-    readonly mirrorConfig?: pulumi.Input<inputs.sourcerepo.v1.MirrorConfig>;
+    readonly mirrorConfig?: pulumi.Input<inputs.sourcerepo.v1.MirrorConfigArgs>;
     /**
      * Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
      */

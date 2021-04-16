@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Securitycenter.V1
     /// <summary>
     /// Sets the access control policy on the specified Source.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:securitycenter/v1:OrganizationSourceIamPolicy")]
+    [GcpNativeResourceType("google-native:securitycenter/v1:OrganizationSourceIamPolicy")]
     public partial class OrganizationSourceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Securitycenter.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationSourceIamPolicy(string name, OrganizationSourceIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:securitycenter/v1:OrganizationSourceIamPolicy", name, args ?? new OrganizationSourceIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:securitycenter/v1:OrganizationSourceIamPolicy", name, args ?? new OrganizationSourceIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationSourceIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:securitycenter/v1:OrganizationSourceIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:securitycenter/v1:OrganizationSourceIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

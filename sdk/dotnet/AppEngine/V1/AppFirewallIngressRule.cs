@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AppEngine.V1
     /// <summary>
     /// Creates a firewall rule for the application.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:appengine/v1:AppFirewallIngressRule")]
+    [GcpNativeResourceType("google-native:appengine/v1:AppFirewallIngressRule")]
     public partial class AppFirewallIngressRule : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.AppEngine.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AppFirewallIngressRule(string name, AppFirewallIngressRuleArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1:AppFirewallIngressRule", name, args ?? new AppFirewallIngressRuleArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:appengine/v1:AppFirewallIngressRule", name, args ?? new AppFirewallIngressRuleArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AppFirewallIngressRule(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:appengine/v1:AppFirewallIngressRule", name, null, MakeResourceOptions(options, id))
+            : base("google-native:appengine/v1:AppFirewallIngressRule", name, null, MakeResourceOptions(options, id))
         {
         }
 

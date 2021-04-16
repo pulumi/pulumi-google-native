@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:InstanceTemplateIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:InstanceTemplateIamPolicy")]
     public partial class InstanceTemplateIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceTemplateIamPolicy(string name, InstanceTemplateIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:InstanceTemplateIamPolicy", name, args ?? new InstanceTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:InstanceTemplateIamPolicy", name, args ?? new InstanceTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceTemplateIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:InstanceTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:InstanceTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:bigqueryconnection/v1beta1:Connection":
+            case "google-native:bigqueryconnection/v1beta1:Connection":
                 return new Connection(name, <any>undefined, { urn })
-            case "gcp-native:bigqueryconnection/v1beta1:ConnectionIamPolicy":
+            case "google-native:bigqueryconnection/v1beta1:ConnectionIamPolicy":
                 return new ConnectionIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "bigqueryconnection/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "bigqueryconnection/v1beta1", _module)

@@ -22,7 +22,7 @@ export class Network extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Network';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Network';
 
     /**
      * Returns true if the given object is an instance of Network.  This is designed to work even
@@ -209,12 +209,12 @@ export interface NetworkArgs {
     /**
      * [Output Only] A list of network peerings for the resource.
      */
-    readonly peerings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NetworkPeering>[]>;
+    readonly peerings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NetworkPeeringArgs>[]>;
     readonly project: pulumi.Input<string>;
     /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */
-    readonly routingConfig?: pulumi.Input<inputs.compute.alpha.NetworkRoutingConfig>;
+    readonly routingConfig?: pulumi.Input<inputs.compute.alpha.NetworkRoutingConfigArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -22,7 +22,7 @@ export class RegionJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataproc/v1:RegionJob';
+    public static readonly __pulumiType = 'google-native:dataproc/v1:RegionJob';
 
     /**
      * Returns true if the given object is an instance of RegionJob.  This is designed to work even
@@ -190,11 +190,11 @@ export interface RegionJobArgs {
     /**
      * Optional. Job is a Hadoop job.
      */
-    readonly hadoopJob?: pulumi.Input<inputs.dataproc.v1.HadoopJob>;
+    readonly hadoopJob?: pulumi.Input<inputs.dataproc.v1.HadoopJobArgs>;
     /**
      * Optional. Job is a Hive job.
      */
-    readonly hiveJob?: pulumi.Input<inputs.dataproc.v1.HiveJob>;
+    readonly hiveJob?: pulumi.Input<inputs.dataproc.v1.HiveJobArgs>;
     readonly jobId: pulumi.Input<string>;
     /**
      * Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
@@ -203,24 +203,24 @@ export interface RegionJobArgs {
     /**
      * Optional. Job is a Pig job.
      */
-    readonly pigJob?: pulumi.Input<inputs.dataproc.v1.PigJob>;
+    readonly pigJob?: pulumi.Input<inputs.dataproc.v1.PigJobArgs>;
     /**
      * Required. Job information, including how, when, and where to run the job.
      */
-    readonly placement?: pulumi.Input<inputs.dataproc.v1.JobPlacement>;
+    readonly placement?: pulumi.Input<inputs.dataproc.v1.JobPlacementArgs>;
     /**
      * Optional. Job is a Presto job.
      */
-    readonly prestoJob?: pulumi.Input<inputs.dataproc.v1.PrestoJob>;
+    readonly prestoJob?: pulumi.Input<inputs.dataproc.v1.PrestoJobArgs>;
     readonly projectId: pulumi.Input<string>;
     /**
      * Optional. Job is a PySpark job.
      */
-    readonly pysparkJob?: pulumi.Input<inputs.dataproc.v1.PySparkJob>;
+    readonly pysparkJob?: pulumi.Input<inputs.dataproc.v1.PySparkJobArgs>;
     /**
      * Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
      */
-    readonly reference?: pulumi.Input<inputs.dataproc.v1.JobReference>;
+    readonly reference?: pulumi.Input<inputs.dataproc.v1.JobReferenceArgs>;
     readonly region: pulumi.Input<string>;
     /**
      * Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.SubmitJobRequest)s with the same id, then the second request will be ignored and the first Job created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
@@ -229,17 +229,17 @@ export interface RegionJobArgs {
     /**
      * Optional. Job scheduling configuration.
      */
-    readonly scheduling?: pulumi.Input<inputs.dataproc.v1.JobScheduling>;
+    readonly scheduling?: pulumi.Input<inputs.dataproc.v1.JobSchedulingArgs>;
     /**
      * Optional. Job is a Spark job.
      */
-    readonly sparkJob?: pulumi.Input<inputs.dataproc.v1.SparkJob>;
+    readonly sparkJob?: pulumi.Input<inputs.dataproc.v1.SparkJobArgs>;
     /**
      * Optional. Job is a SparkR job.
      */
-    readonly sparkRJob?: pulumi.Input<inputs.dataproc.v1.SparkRJob>;
+    readonly sparkRJob?: pulumi.Input<inputs.dataproc.v1.SparkRJobArgs>;
     /**
      * Optional. Job is a SparkSql job.
      */
-    readonly sparkSqlJob?: pulumi.Input<inputs.dataproc.v1.SparkSqlJob>;
+    readonly sparkSqlJob?: pulumi.Input<inputs.dataproc.v1.SparkSqlJobArgs>;
 }

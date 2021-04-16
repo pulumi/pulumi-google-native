@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a TargetServer in the specified environment.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTargetserver")]
     public partial class OrganizationEnvironmentTargetserver : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentTargetserver(string name, OrganizationEnvironmentTargetserverArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver", name, args ?? new OrganizationEnvironmentTargetserverArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentTargetserver", name, args ?? new OrganizationEnvironmentTargetserverArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentTargetserver(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentTargetserver", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentTargetserver", name, null, MakeResourceOptions(options, id))
         {
         }
 

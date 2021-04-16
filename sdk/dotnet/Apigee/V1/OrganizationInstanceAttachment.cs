@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationInstanceAttachment")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationInstanceAttachment")]
     public partial class OrganizationInstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationInstanceAttachment(string name, OrganizationInstanceAttachmentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationInstanceAttachment", name, args ?? new OrganizationInstanceAttachmentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationInstanceAttachment", name, args ?? new OrganizationInstanceAttachmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationInstanceAttachment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationInstanceAttachment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationInstanceAttachment", name, null, MakeResourceOptions(options, id))
         {
         }
 

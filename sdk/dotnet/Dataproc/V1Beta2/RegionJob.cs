@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
     /// <summary>
     /// Submits a job to a cluster.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataproc/v1beta2:RegionJob")]
+    [GcpNativeResourceType("google-native:dataproc/v1beta2:RegionJob")]
     public partial class RegionJob : Pulumi.CustomResource
     {
         /// <summary>
@@ -144,12 +144,12 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionJob(string name, RegionJobArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionJob", name, args ?? new RegionJobArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataproc/v1beta2:RegionJob", name, args ?? new RegionJobArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionJob(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionJob", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataproc/v1beta2:RegionJob", name, null, MakeResourceOptions(options, id))
         {
         }
 

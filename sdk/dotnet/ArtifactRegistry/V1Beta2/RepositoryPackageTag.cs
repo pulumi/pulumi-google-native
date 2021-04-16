@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta2
     /// <summary>
     /// Creates a tag.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:artifactregistry/v1beta2:RepositoryPackageTag")]
+    [GcpNativeResourceType("google-native:artifactregistry/v1beta2:RepositoryPackageTag")]
     public partial class RepositoryPackageTag : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RepositoryPackageTag(string name, RepositoryPackageTagArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta2:RepositoryPackageTag", name, args ?? new RepositoryPackageTagArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:artifactregistry/v1beta2:RepositoryPackageTag", name, args ?? new RepositoryPackageTagArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RepositoryPackageTag(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta2:RepositoryPackageTag", name, null, MakeResourceOptions(options, id))
+            : base("google-native:artifactregistry/v1beta2:RepositoryPackageTag", name, null, MakeResourceOptions(options, id))
         {
         }
 

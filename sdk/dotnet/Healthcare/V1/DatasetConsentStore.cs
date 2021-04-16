@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Healthcare.V1
     /// <summary>
     /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:healthcare/v1:DatasetConsentStore")]
+    [GcpNativeResourceType("google-native:healthcare/v1:DatasetConsentStore")]
     public partial class DatasetConsentStore : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Healthcare.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public DatasetConsentStore(string name, DatasetConsentStoreArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetConsentStore", name, args ?? new DatasetConsentStoreArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:healthcare/v1:DatasetConsentStore", name, args ?? new DatasetConsentStoreArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private DatasetConsentStore(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:healthcare/v1:DatasetConsentStore", name, null, MakeResourceOptions(options, id))
+            : base("google-native:healthcare/v1:DatasetConsentStore", name, null, MakeResourceOptions(options, id))
         {
         }
 

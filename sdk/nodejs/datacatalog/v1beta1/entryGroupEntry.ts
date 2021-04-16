@@ -22,7 +22,7 @@ export class EntryGroupEntry extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datacatalog/v1beta1:EntryGroupEntry';
+    public static readonly __pulumiType = 'google-native:datacatalog/v1beta1:EntryGroupEntry';
 
     /**
      * Returns true if the given object is an instance of EntryGroupEntry.  This is designed to work even
@@ -157,11 +157,11 @@ export interface EntryGroupEntryArgs {
     /**
      * Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
      */
-    readonly bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec>;
+    readonly bigqueryDateShardedSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs>;
     /**
      * Specification that applies to a BigQuery table. This is only valid on entries of type `TABLE`.
      */
-    readonly bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryTableSpec>;
+    readonly bigqueryTableSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs>;
     /**
      * Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
      */
@@ -175,7 +175,7 @@ export interface EntryGroupEntryArgs {
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
      */
-    readonly gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1GcsFilesetSpec>;
+    readonly gcsFilesetSpec?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs>;
     /**
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
      */
@@ -185,7 +185,7 @@ export interface EntryGroupEntryArgs {
     /**
      * Schema of the entry. An entry might not have any schema attached to it.
      */
-    readonly schema?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1Schema>;
+    readonly schema?: pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1SchemaArgs>;
     /**
      * The type of the entry. Only used for Entries with types in the EntryType enum.
      */

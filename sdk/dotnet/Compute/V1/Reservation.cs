@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates a new reservation. For more information, read Reserving zonal resources.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:Reservation")]
+    [GcpNativeResourceType("google-native:compute/v1:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Reservation(string name, ReservationArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:Reservation", name, args ?? new ReservationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Reservation(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:Reservation", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:Reservation", name, null, MakeResourceOptions(options, id))
         {
         }
 

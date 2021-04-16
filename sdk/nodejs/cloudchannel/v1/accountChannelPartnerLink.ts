@@ -22,7 +22,7 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudchannel/v1:AccountChannelPartnerLink';
+    public static readonly __pulumiType = 'google-native:cloudchannel/v1:AccountChannelPartnerLink';
 
     /**
      * Returns true if the given object is an instance of AccountChannelPartnerLink.  This is designed to work even

@@ -22,7 +22,7 @@ export class Reservation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Reservation';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Reservation';
 
     /**
      * Returns true if the given object is an instance of Reservation.  This is designed to work even
@@ -191,11 +191,11 @@ export interface ReservationArgs {
     /**
      * Share-settings for shared-reservation
      */
-    readonly shareSettings?: pulumi.Input<inputs.compute.alpha.AllocationShareSettings>;
+    readonly shareSettings?: pulumi.Input<inputs.compute.alpha.AllocationShareSettingsArgs>;
     /**
      * Reservation for instances with specific machine shapes.
      */
-    readonly specificReservation?: pulumi.Input<inputs.compute.alpha.AllocationSpecificSKUReservation>;
+    readonly specificReservation?: pulumi.Input<inputs.compute.alpha.AllocationSpecificSKUReservationArgs>;
     /**
      * Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
      */

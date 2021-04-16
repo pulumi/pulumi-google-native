@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:domains/v1alpha2:Registration":
+            case "google-native:domains/v1alpha2:Registration":
                 return new Registration(name, <any>undefined, { urn })
-            case "gcp-native:domains/v1alpha2:RegistrationIamPolicy":
+            case "google-native:domains/v1alpha2:RegistrationIamPolicy":
                 return new RegistrationIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "domains/v1alpha2", _module)
+pulumi.runtime.registerResourceModule("google-native", "domains/v1alpha2", _module)

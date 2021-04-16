@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BigtableAdmin.V2
     /// <summary>
     /// Creates a cluster within an instance.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:bigtableadmin/v2:InstanceCluster")]
+    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceCluster")]
     public partial class InstanceCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.BigtableAdmin.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public InstanceCluster(string name, InstanceClusterArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:bigtableadmin/v2:InstanceCluster", name, args ?? new InstanceClusterArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:bigtableadmin/v2:InstanceCluster", name, args ?? new InstanceClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private InstanceCluster(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:bigtableadmin/v2:InstanceCluster", name, null, MakeResourceOptions(options, id))
+            : base("google-native:bigtableadmin/v2:InstanceCluster", name, null, MakeResourceOptions(options, id))
         {
         }
 

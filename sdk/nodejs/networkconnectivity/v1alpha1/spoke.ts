@@ -22,7 +22,7 @@ export class Spoke extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:networkconnectivity/v1alpha1:Spoke';
+    public static readonly __pulumiType = 'google-native:networkconnectivity/v1alpha1:Spoke';
 
     /**
      * Returns true if the given object is an instance of Spoke.  This is designed to work even
@@ -161,7 +161,7 @@ export interface SpokeArgs {
     /**
      * The URIs of linked Router appliance resources
      */
-    readonly linkedRouterApplianceInstances?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.RouterApplianceInstance>[]>;
+    readonly linkedRouterApplianceInstances?: pulumi.Input<pulumi.Input<inputs.networkconnectivity.v1alpha1.RouterApplianceInstanceArgs>[]>;
     /**
      * The URIs of linked VPN tunnel resources
      */

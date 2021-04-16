@@ -22,7 +22,7 @@ export class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage extends pulumi
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage';
+    public static readonly __pulumiType = 'google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage';
 
     /**
      * Returns true if the given object is an instance of DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage.  This is designed to work even
@@ -130,7 +130,7 @@ export interface DatasetAnnotatedDatasetFeedbackThreadFeedbackMessageArgs {
      * Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
      */
     readonly name?: pulumi.Input<string>;
-    readonly operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata>;
+    readonly operatorFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs>;
     readonly projectsId: pulumi.Input<string>;
-    readonly requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata>;
+    readonly requesterFeedbackMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs>;
 }

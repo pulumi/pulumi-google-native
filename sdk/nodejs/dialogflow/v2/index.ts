@@ -38,35 +38,35 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:dialogflow/v2:AgentEntityType":
+            case "google-native:dialogflow/v2:AgentEntityType":
                 return new AgentEntityType(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
+            case "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
                 return new AgentEnvironmentUserSessionContext(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
+            case "google-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
                 return new AgentEnvironmentUserSessionEntityType(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentIntent":
+            case "google-native:dialogflow/v2:AgentIntent":
                 return new AgentIntent(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentKnowledgeBase":
+            case "google-native:dialogflow/v2:AgentKnowledgeBase":
                 return new AgentKnowledgeBase(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentKnowledgeBaseDocument":
+            case "google-native:dialogflow/v2:AgentKnowledgeBaseDocument":
                 return new AgentKnowledgeBaseDocument(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentSessionContext":
+            case "google-native:dialogflow/v2:AgentSessionContext":
                 return new AgentSessionContext(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:AgentSessionEntityType":
+            case "google-native:dialogflow/v2:AgentSessionEntityType":
                 return new AgentSessionEntityType(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:Conversation":
+            case "google-native:dialogflow/v2:Conversation":
                 return new Conversation(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:ConversationParticipant":
+            case "google-native:dialogflow/v2:ConversationParticipant":
                 return new ConversationParticipant(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:ConversationProfile":
+            case "google-native:dialogflow/v2:ConversationProfile":
                 return new ConversationProfile(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:KnowledgeBase":
+            case "google-native:dialogflow/v2:KnowledgeBase":
                 return new KnowledgeBase(name, <any>undefined, { urn })
-            case "gcp-native:dialogflow/v2:KnowledgeBaseDocument":
+            case "google-native:dialogflow/v2:KnowledgeBaseDocument":
                 return new KnowledgeBaseDocument(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "dialogflow/v2", _module)
+pulumi.runtime.registerResourceModule("google-native", "dialogflow/v2", _module)

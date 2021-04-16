@@ -22,7 +22,7 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudbuild/v1:Trigger';
+    public static readonly __pulumiType = 'google-native:cloudbuild/v1:Trigger';
 
     /**
      * Returns true if the given object is an instance of Trigger.  This is designed to work even
@@ -143,7 +143,7 @@ export interface TriggerArgs {
     /**
      * Contents of the build template.
      */
-    readonly build?: pulumi.Input<inputs.cloudbuild.v1.Build>;
+    readonly build?: pulumi.Input<inputs.cloudbuild.v1.BuildArgs>;
     /**
      * Human-readable description of this trigger.
      */
@@ -159,7 +159,7 @@ export interface TriggerArgs {
     /**
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
-    readonly github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfig>;
+    readonly github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfigArgs>;
     /**
      * ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
      */
@@ -185,5 +185,5 @@ export interface TriggerArgs {
     /**
      * Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
      */
-    readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.v1.RepoSource>;
+    readonly triggerTemplate?: pulumi.Input<inputs.cloudbuild.v1.RepoSourceArgs>;
 }

@@ -22,7 +22,7 @@ export class RegionWorkflowTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataproc/v1beta2:RegionWorkflowTemplate';
+    public static readonly __pulumiType = 'google-native:dataproc/v1beta2:RegionWorkflowTemplate';
 
     /**
      * Returns true if the given object is an instance of RegionWorkflowTemplate.  This is designed to work even
@@ -138,7 +138,7 @@ export interface RegionWorkflowTemplateArgs {
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
-    readonly jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJob>[]>;
+    readonly jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJobArgs>[]>;
     /**
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
@@ -146,11 +146,11 @@ export interface RegionWorkflowTemplateArgs {
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.TemplateParameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.TemplateParameterArgs>[]>;
     /**
      * Required. WorkflowTemplate scheduling information.
      */
-    readonly placement?: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacement>;
+    readonly placement?: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacementArgs>;
     readonly projectsId: pulumi.Input<string>;
     readonly regionsId: pulumi.Input<string>;
     /**

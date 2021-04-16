@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ServiceDirectory.V1Beta1
     /// <summary>
     /// Creates a namespace, and returns the new namespace.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:servicedirectory/v1beta1:Namespace")]
+    [GcpNativeResourceType("google-native:servicedirectory/v1beta1:Namespace")]
     public partial class Namespace : Pulumi.CustomResource
     {
         /// <summary>
@@ -36,12 +36,12 @@ namespace Pulumi.GcpNative.ServiceDirectory.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Namespace(string name, NamespaceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:servicedirectory/v1beta1:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:servicedirectory/v1beta1:Namespace", name, args ?? new NamespaceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Namespace(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:servicedirectory/v1beta1:Namespace", name, null, MakeResourceOptions(options, id))
+            : base("google-native:servicedirectory/v1beta1:Namespace", name, null, MakeResourceOptions(options, id))
         {
         }
 

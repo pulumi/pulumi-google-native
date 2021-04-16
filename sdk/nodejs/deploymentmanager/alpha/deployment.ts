@@ -22,7 +22,7 @@ export class Deployment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:deploymentmanager/alpha:Deployment';
+    public static readonly __pulumiType = 'google-native:deploymentmanager/alpha:Deployment';
 
     /**
      * Returns true if the given object is an instance of Deployment.  This is designed to work even
@@ -150,7 +150,7 @@ export interface DeploymentArgs {
     /**
      * User provided default credential for the deployment.
      */
-    readonly credential?: pulumi.Input<inputs.deploymentmanager.alpha.Credential>;
+    readonly credential?: pulumi.Input<inputs.deploymentmanager.alpha.CredentialArgs>;
     readonly deployment: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
@@ -168,7 +168,7 @@ export interface DeploymentArgs {
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentLabelEntry>[]>;
+    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentLabelEntryArgs>[]>;
     /**
      * URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
      */
@@ -180,11 +180,11 @@ export interface DeploymentArgs {
     /**
      * The Operation that most recently ran, or is currently running, on this deployment.
      */
-    readonly operation?: pulumi.Input<inputs.deploymentmanager.alpha.Operation>;
+    readonly operation?: pulumi.Input<inputs.deploymentmanager.alpha.OperationArgs>;
     /**
      * List of outputs from the last manifest that deployed successfully.
      */
-    readonly outputs?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentOutputEntry>[]>;
+    readonly outputs?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentOutputEntryArgs>[]>;
     readonly project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.
@@ -193,11 +193,11 @@ export interface DeploymentArgs {
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
      */
-    readonly target?: pulumi.Input<inputs.deploymentmanager.alpha.TargetConfiguration>;
+    readonly target?: pulumi.Input<inputs.deploymentmanager.alpha.TargetConfigurationArgs>;
     /**
      * If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
      */
-    readonly update?: pulumi.Input<inputs.deploymentmanager.alpha.DeploymentUpdate>;
+    readonly update?: pulumi.Input<inputs.deploymentmanager.alpha.DeploymentUpdateArgs>;
     /**
      * Update timestamp in RFC3339 text format.
      */

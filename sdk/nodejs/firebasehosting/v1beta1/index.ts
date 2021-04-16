@@ -18,15 +18,15 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:firebasehosting/v1beta1:Site":
+            case "google-native:firebasehosting/v1beta1:Site":
                 return new Site(name, <any>undefined, { urn })
-            case "gcp-native:firebasehosting/v1beta1:SiteChannel":
+            case "google-native:firebasehosting/v1beta1:SiteChannel":
                 return new SiteChannel(name, <any>undefined, { urn })
-            case "gcp-native:firebasehosting/v1beta1:SiteDomain":
+            case "google-native:firebasehosting/v1beta1:SiteDomain":
                 return new SiteDomain(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "firebasehosting/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "firebasehosting/v1beta1", _module)

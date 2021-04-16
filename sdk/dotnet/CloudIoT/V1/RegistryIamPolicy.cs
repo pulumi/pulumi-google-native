@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudIoT.V1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudiot/v1:RegistryIamPolicy")]
+    [GcpNativeResourceType("google-native:cloudiot/v1:RegistryIamPolicy")]
     public partial class RegistryIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.CloudIoT.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegistryIamPolicy(string name, RegistryIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudiot/v1:RegistryIamPolicy", name, args ?? new RegistryIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudiot/v1:RegistryIamPolicy", name, args ?? new RegistryIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegistryIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudiot/v1:RegistryIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudiot/v1:RegistryIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -21,7 +21,7 @@ export class ConversationParticipant extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2:ConversationParticipant';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2:ConversationParticipant';
 
     /**
      * Returns true if the given object is an instance of ConversationParticipant.  This is designed to work even

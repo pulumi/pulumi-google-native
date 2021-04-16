@@ -22,7 +22,7 @@ export class SettingDatasource extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudsearch/v1:SettingDatasource';
+    public static readonly __pulumiType = 'google-native:cloudsearch/v1:SettingDatasource';
 
     /**
      * Returns true if the given object is an instance of SettingDatasource.  This is designed to work even
@@ -132,7 +132,7 @@ export interface SettingDatasourceArgs {
     /**
      * This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
      */
-    readonly itemsVisibility?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.GSuitePrincipal>[]>;
+    readonly itemsVisibility?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.GSuitePrincipalArgs>[]>;
     /**
      * Name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource.
      */

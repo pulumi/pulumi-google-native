@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
     /// <summary>
     /// Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataproc/v1beta2:RegionCluster")]
+    [GcpNativeResourceType("google-native:dataproc/v1beta2:RegionCluster")]
     public partial class RegionCluster : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionCluster(string name, RegionClusterArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionCluster", name, args ?? new RegionClusterArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataproc/v1beta2:RegionCluster", name, args ?? new RegionClusterArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionCluster(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:RegionCluster", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataproc/v1beta2:RegionCluster", name, null, MakeResourceOptions(options, id))
         {
         }
 

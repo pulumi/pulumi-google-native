@@ -22,7 +22,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:ServiceAttachment';
+    public static readonly __pulumiType = 'google-native:compute/alpha:ServiceAttachment';
 
     /**
      * Returns true if the given object is an instance of ServiceAttachment.  This is designed to work even
@@ -145,7 +145,7 @@ export interface ServiceAttachmentArgs {
     /**
      * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
      */
-    readonly consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerForwardingRule>[]>;
+    readonly consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */

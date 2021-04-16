@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:RegionTargetHttpProxy")]
+    [GcpNativeResourceType("google-native:compute/v1:RegionTargetHttpProxy")]
     public partial class RegionTargetHttpProxy : Pulumi.CustomResource
     {
         /// <summary>
@@ -82,12 +82,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionTargetHttpProxy(string name, RegionTargetHttpProxyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:RegionTargetHttpProxy", name, args ?? new RegionTargetHttpProxyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:RegionTargetHttpProxy", name, args ?? new RegionTargetHttpProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionTargetHttpProxy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:RegionTargetHttpProxy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:RegionTargetHttpProxy", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
     /// <summary>
     /// Creates new autoscaling policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dataproc/v1beta2:AutoscalingPolicy")]
+    [GcpNativeResourceType("google-native:dataproc/v1beta2:AutoscalingPolicy")]
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
         [Output("basicAlgorithm")]
@@ -45,12 +45,12 @@ namespace Pulumi.GcpNative.Dataproc.V1Beta2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AutoscalingPolicy(string name, AutoscalingPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:AutoscalingPolicy", name, args ?? new AutoscalingPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dataproc/v1beta2:AutoscalingPolicy", name, args ?? new AutoscalingPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AutoscalingPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dataproc/v1beta2:AutoscalingPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dataproc/v1beta2:AutoscalingPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

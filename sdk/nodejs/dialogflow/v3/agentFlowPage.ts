@@ -22,7 +22,7 @@ export class AgentFlowPage extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentFlowPage';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:AgentFlowPage';
 
     /**
      * Returns true if the given object is an instance of AgentFlowPage.  This is designed to work even
@@ -130,16 +130,16 @@ export interface AgentFlowPageArgs {
     /**
      * The fulfillment to call when the session is entering the page.
      */
-    readonly entryFulfillment?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3Fulfillment>;
+    readonly entryFulfillment?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentArgs>;
     /**
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      */
-    readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandler>[]>;
+    readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
     readonly flowsId: pulumi.Input<string>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      */
-    readonly form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3Form>;
+    readonly form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
@@ -154,5 +154,5 @@ export interface AgentFlowPageArgs {
     /**
      * A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
      */
-    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRoute>[]>;
+    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
 }

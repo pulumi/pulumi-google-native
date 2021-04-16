@@ -21,7 +21,7 @@ export class Schema extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsub/v1:Schema';
+    public static readonly __pulumiType = 'google-native:pubsub/v1:Schema';
 
     /**
      * Returns true if the given object is an instance of Schema.  This is designed to work even

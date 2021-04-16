@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a new policy in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:NetworkFirewallPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:NetworkFirewallPolicy")]
     public partial class NetworkFirewallPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -110,12 +110,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NetworkFirewallPolicy(string name, NetworkFirewallPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:NetworkFirewallPolicy", name, args ?? new NetworkFirewallPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:NetworkFirewallPolicy", name, args ?? new NetworkFirewallPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NetworkFirewallPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:NetworkFirewallPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:NetworkFirewallPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

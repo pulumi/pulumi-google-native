@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Storage.V1
     /// <summary>
     /// Creates a new ACL entry on the specified bucket.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:storage/v1:BucketAccessControl")]
+    [GcpNativeResourceType("google-native:storage/v1:BucketAccessControl")]
     public partial class BucketAccessControl : Pulumi.CustomResource
     {
         /// <summary>
@@ -95,12 +95,12 @@ namespace Pulumi.GcpNative.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketAccessControl(string name, BucketAccessControlArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:BucketAccessControl", name, args ?? new BucketAccessControlArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:storage/v1:BucketAccessControl", name, args ?? new BucketAccessControlArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BucketAccessControl(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:BucketAccessControl", name, null, MakeResourceOptions(options, id))
+            : base("google-native:storage/v1:BucketAccessControl", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class OrganizationDeveloperAppKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationDeveloperAppKey';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationDeveloperAppKey';
 
     /**
      * Returns true if the given object is an instance of OrganizationDeveloperAppKey.  This is designed to work even
@@ -138,7 +138,7 @@ export interface OrganizationDeveloperAppKeyArgs {
     /**
      * List of attributes associated with the credential.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Attribute>[]>;
+    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * Consumer key.
      */

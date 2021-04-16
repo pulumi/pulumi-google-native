@@ -22,7 +22,7 @@ export class AgentEntityType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentEntityType';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:AgentEntityType';
 
     /**
      * Returns true if the given object is an instance of AgentEntityType.  This is designed to work even
@@ -140,12 +140,12 @@ export interface AgentEntityTypeArgs {
     /**
      * The collection of entity entries associated with the entity type.
      */
-    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntity>[]>;
+    readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
     readonly entityTypesId: pulumi.Input<string>;
     /**
      * Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
      */
-    readonly excludedPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase>[]>;
+    readonly excludedPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs>[]>;
     /**
      * Required. Indicates the kind of entity type.
      */

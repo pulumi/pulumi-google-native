@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V3
     /// <summary>
     /// Creates a webhook in the specified agent.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v3:AgentWebhook")]
+    [GcpNativeResourceType("google-native:dialogflow/v3:AgentWebhook")]
     public partial class AgentWebhook : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Dialogflow.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AgentWebhook(string name, AgentWebhookArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentWebhook", name, args ?? new AgentWebhookArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v3:AgentWebhook", name, args ?? new AgentWebhookArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AgentWebhook(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v3:AgentWebhook", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v3:AgentWebhook", name, null, MakeResourceOptions(options, id))
         {
         }
 

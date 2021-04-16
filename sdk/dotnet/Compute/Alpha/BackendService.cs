@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:BackendService")]
+    [GcpNativeResourceType("google-native:compute/alpha:BackendService")]
     public partial class BackendService : Pulumi.CustomResource
     {
         /// <summary>
@@ -291,12 +291,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BackendService(string name, BackendServiceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:BackendService", name, args ?? new BackendServiceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BackendService(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:BackendService", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:BackendService", name, null, MakeResourceOptions(options, id))
         {
         }
 

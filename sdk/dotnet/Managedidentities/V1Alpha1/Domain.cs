@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Managedidentities.V1Alpha1
     /// <summary>
     /// Creates a Microsoft AD Domain in a given project. Operation
     /// </summary>
-    [GcpNativeResourceType("gcp-native:managedidentities/v1alpha1:Domain")]
+    [GcpNativeResourceType("google-native:managedidentities/v1alpha1:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Managedidentities.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Domain(string name, DomainArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:managedidentities/v1alpha1:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:managedidentities/v1alpha1:Domain", name, args ?? new DomainArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Domain(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:managedidentities/v1alpha1:Domain", name, null, MakeResourceOptions(options, id))
+            : base("google-native:managedidentities/v1alpha1:Domain", name, null, MakeResourceOptions(options, id))
         {
         }
 

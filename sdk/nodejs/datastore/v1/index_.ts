@@ -22,7 +22,7 @@ export class Index extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datastore/v1:Index';
+    public static readonly __pulumiType = 'google-native:datastore/v1:Index';
 
     /**
      * Returns true if the given object is an instance of Index.  This is designed to work even
@@ -115,5 +115,5 @@ export interface IndexArgs {
     /**
      * Required. An ordered sequence of property names and their index attributes.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedProperty>[]>;
+    readonly properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
 }

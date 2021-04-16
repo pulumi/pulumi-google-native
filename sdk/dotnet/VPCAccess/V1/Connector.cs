@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.VPCAccess.V1
     /// <summary>
     /// Creates a Serverless VPC Access connector, returns an operation.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:vpcaccess/v1:Connector")]
+    [GcpNativeResourceType("google-native:vpcaccess/v1:Connector")]
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.VPCAccess.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Connector(string name, ConnectorArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:vpcaccess/v1:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:vpcaccess/v1:Connector", name, args ?? new ConnectorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Connector(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:vpcaccess/v1:Connector", name, null, MakeResourceOptions(options, id))
+            : base("google-native:vpcaccess/v1:Connector", name, null, MakeResourceOptions(options, id))
         {
         }
 

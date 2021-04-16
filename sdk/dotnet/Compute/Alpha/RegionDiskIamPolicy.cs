@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:RegionDiskIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:RegionDiskIamPolicy")]
     public partial class RegionDiskIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionDiskIamPolicy(string name, RegionDiskIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionDiskIamPolicy", name, args ?? new RegionDiskIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:RegionDiskIamPolicy", name, args ?? new RegionDiskIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionDiskIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionDiskIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:RegionDiskIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

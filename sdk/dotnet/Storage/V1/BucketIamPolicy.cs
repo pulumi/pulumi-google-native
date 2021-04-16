@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Storage.V1
     /// <summary>
     /// Updates an IAM policy for the specified bucket.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:storage/v1:BucketIamPolicy")]
+    [GcpNativeResourceType("google-native:storage/v1:BucketIamPolicy")]
     public partial class BucketIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Storage.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public BucketIamPolicy(string name, BucketIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:BucketIamPolicy", name, args ?? new BucketIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:storage/v1:BucketIamPolicy", name, args ?? new BucketIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private BucketIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:storage/v1:BucketIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:storage/v1:BucketIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

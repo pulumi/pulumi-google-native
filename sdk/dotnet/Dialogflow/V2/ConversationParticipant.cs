@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Dialogflow.V2
     /// <summary>
     /// Creates a new participant in a conversation.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dialogflow/v2:ConversationParticipant")]
+    [GcpNativeResourceType("google-native:dialogflow/v2:ConversationParticipant")]
     public partial class ConversationParticipant : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Dialogflow.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConversationParticipant(string name, ConversationParticipantArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2:ConversationParticipant", name, args ?? new ConversationParticipantArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dialogflow/v2:ConversationParticipant", name, args ?? new ConversationParticipantArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConversationParticipant(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dialogflow/v2:ConversationParticipant", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dialogflow/v2:ConversationParticipant", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class Study extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:ml/v1:Study';
+    public static readonly __pulumiType = 'google-native:ml/v1:Study';
 
     /**
      * Returns true if the given object is an instance of Study.  This is designed to work even
@@ -108,5 +108,5 @@ export interface StudyArgs {
     /**
      * Required. Configuration of the study.
      */
-    readonly studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfig>;
+    readonly studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
 }

@@ -22,7 +22,7 @@ export class Registration extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:domains/v1alpha2:Registration';
+    public static readonly __pulumiType = 'google-native:domains/v1alpha2:Registration';
 
     /**
      * Returns true if the given object is an instance of Registration.  This is designed to work even
@@ -155,11 +155,11 @@ export interface RegistrationArgs {
     /**
      * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
-    readonly contactSettings?: pulumi.Input<inputs.domains.v1alpha2.ContactSettings>;
+    readonly contactSettings?: pulumi.Input<inputs.domains.v1alpha2.ContactSettingsArgs>;
     /**
      * Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
      */
-    readonly dnsSettings?: pulumi.Input<inputs.domains.v1alpha2.DnsSettings>;
+    readonly dnsSettings?: pulumi.Input<inputs.domains.v1alpha2.DnsSettingsArgs>;
     /**
      * Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
      */
@@ -176,7 +176,7 @@ export interface RegistrationArgs {
     /**
      * Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
      */
-    readonly managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettings>;
+    readonly managementSettings?: pulumi.Input<inputs.domains.v1alpha2.ManagementSettingsArgs>;
     readonly projectsId: pulumi.Input<string>;
     readonly registrationsId: pulumi.Input<string>;
     /**
@@ -186,5 +186,5 @@ export interface RegistrationArgs {
     /**
      * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
      */
-    readonly yearlyPrice?: pulumi.Input<inputs.domains.v1alpha2.Money>;
+    readonly yearlyPrice?: pulumi.Input<inputs.domains.v1alpha2.MoneyArgs>;
 }

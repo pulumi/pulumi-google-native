@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a SslCertificate resource in the specified project and region using the data included in the request
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:RegionSslCertificate")]
+    [GcpNativeResourceType("google-native:compute/alpha:RegionSslCertificate")]
     public partial class RegionSslCertificate : Pulumi.CustomResource
     {
         /// <summary>
@@ -108,12 +108,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public RegionSslCertificate(string name, RegionSslCertificateArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionSslCertificate", name, args ?? new RegionSslCertificateArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:RegionSslCertificate", name, args ?? new RegionSslCertificateArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private RegionSslCertificate(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:RegionSslCertificate", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:RegionSslCertificate", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
     /// <summary>
     /// Creates a new `Note`.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:containeranalysis/v1alpha1:ProviderNote")]
+    [GcpNativeResourceType("google-native:containeranalysis/v1alpha1:ProviderNote")]
     public partial class ProviderNote : Pulumi.CustomResource
     {
         /// <summary>
@@ -120,12 +120,12 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ProviderNote(string name, ProviderNoteArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1alpha1:ProviderNote", name, args ?? new ProviderNoteArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:containeranalysis/v1alpha1:ProviderNote", name, args ?? new ProviderNoteArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ProviderNote(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1alpha1:ProviderNote", name, null, MakeResourceOptions(options, id))
+            : base("google-native:containeranalysis/v1alpha1:ProviderNote", name, null, MakeResourceOptions(options, id))
         {
         }
 

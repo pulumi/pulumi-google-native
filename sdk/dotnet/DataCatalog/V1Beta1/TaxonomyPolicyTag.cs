@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
     /// <summary>
     /// Creates a policy tag in the specified taxonomy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag")]
+    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyPolicyTag")]
     public partial class TaxonomyPolicyTag : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TaxonomyPolicyTag(string name, TaxonomyPolicyTagArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag", name, args ?? new TaxonomyPolicyTagArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datacatalog/v1beta1:TaxonomyPolicyTag", name, args ?? new TaxonomyPolicyTagArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TaxonomyPolicyTag(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datacatalog/v1beta1:TaxonomyPolicyTag", name, null, MakeResourceOptions(options, id))
         {
         }
 

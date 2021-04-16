@@ -22,7 +22,7 @@ export class AgentTestCase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentTestCase';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3beta1:AgentTestCase';
 
     /**
      * Returns true if the given object is an instance of AgentTestCase.  This is designed to work even
@@ -132,7 +132,7 @@ export interface AgentTestCaseArgs {
     /**
      * The latest test result.
      */
-    readonly lastTestResult?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestCaseResult>;
+    readonly lastTestResult?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestCaseResultArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
@@ -150,10 +150,10 @@ export interface AgentTestCaseArgs {
     /**
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      */
-    readonly testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurn>[]>;
+    readonly testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurnArgs>[]>;
     readonly testCasesId: pulumi.Input<string>;
     /**
      * Config for the test case.
      */
-    readonly testConfig?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfig>;
+    readonly testConfig?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestConfigArgs>;
 }

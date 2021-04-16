@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Beta1
     /// <summary>
     /// Sets the access control policy on the specified note or occurrence. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a note or an occurrence, respectively. The resource takes the format `projects/[PROJECT_ID]/notes/[NOTE_ID]` for notes and `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]` for occurrences.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:containeranalysis/v1beta1:NoteIamPolicy")]
+    [GcpNativeResourceType("google-native:containeranalysis/v1beta1:NoteIamPolicy")]
     public partial class NoteIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.ContainerAnalysis.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public NoteIamPolicy(string name, NoteIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1beta1:NoteIamPolicy", name, args ?? new NoteIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:containeranalysis/v1beta1:NoteIamPolicy", name, args ?? new NoteIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private NoteIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:containeranalysis/v1beta1:NoteIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:containeranalysis/v1beta1:NoteIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

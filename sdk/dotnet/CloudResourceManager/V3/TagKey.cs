@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
     /// <summary>
     /// Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudresourcemanager/v3:TagKey")]
+    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:TagKey")]
     public partial class TagKey : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.CloudResourceManager.V3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagKey(string name, TagKeyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:TagKey", name, args ?? new TagKeyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudresourcemanager/v3:TagKey", name, args ?? new TagKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagKey(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudresourcemanager/v3:TagKey", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudresourcemanager/v3:TagKey", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
     /// <summary>
     /// A maximum of 10,000 entry groups may be created per organization across all locations. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:EntryGroup")]
+    [GcpNativeResourceType("google-native:datacatalog/v1beta1:EntryGroup")]
     public partial class EntryGroup : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public EntryGroup(string name, EntryGroupArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:EntryGroup", name, args ?? new EntryGroupArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datacatalog/v1beta1:EntryGroup", name, args ?? new EntryGroupArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private EntryGroup(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:EntryGroup", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datacatalog/v1beta1:EntryGroup", name, null, MakeResourceOptions(options, id))
         {
         }
 

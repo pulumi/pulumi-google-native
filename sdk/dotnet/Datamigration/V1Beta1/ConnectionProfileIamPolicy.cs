@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Datamigration.V1Beta1
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datamigration/v1beta1:ConnectionProfileIamPolicy")]
+    [GcpNativeResourceType("google-native:datamigration/v1beta1:ConnectionProfileIamPolicy")]
     public partial class ConnectionProfileIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Datamigration.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ConnectionProfileIamPolicy(string name, ConnectionProfileIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datamigration/v1beta1:ConnectionProfileIamPolicy", name, args ?? new ConnectionProfileIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datamigration/v1beta1:ConnectionProfileIamPolicy", name, args ?? new ConnectionProfileIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ConnectionProfileIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datamigration/v1beta1:ConnectionProfileIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datamigration/v1beta1:ConnectionProfileIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

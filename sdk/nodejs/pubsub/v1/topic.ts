@@ -22,7 +22,7 @@ export class Topic extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsub/v1:Topic';
+    public static readonly __pulumiType = 'google-native:pubsub/v1:Topic';
 
     /**
      * Returns true if the given object is an instance of Topic.  This is designed to work even
@@ -115,7 +115,7 @@ export interface TopicArgs {
     /**
      * Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
      */
-    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.v1.MessageStoragePolicy>;
+    readonly messageStoragePolicy?: pulumi.Input<inputs.pubsub.v1.MessageStoragePolicyArgs>;
     /**
      * Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
@@ -128,6 +128,6 @@ export interface TopicArgs {
     /**
      * Settings for validating messages published against a schema.
      */
-    readonly schemaSettings?: pulumi.Input<inputs.pubsub.v1.SchemaSettings>;
+    readonly schemaSettings?: pulumi.Input<inputs.pubsub.v1.SchemaSettingsArgs>;
     readonly topicsId: pulumi.Input<string>;
 }

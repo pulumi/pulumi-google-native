@@ -24,7 +24,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:InstanceGroupManager';
+    public static readonly __pulumiType = 'google-native:compute/v1:InstanceGroupManager';
 
     /**
      * Returns true if the given object is an instance of InstanceGroupManager.  This is designed to work even
@@ -207,7 +207,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * The autohealing policy for this managed instance group. You can specify only one value.
      */
-    readonly autoHealingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.v1.InstanceGroupManagerAutoHealingPolicy>[]>;
+    readonly autoHealingPolicies?: pulumi.Input<pulumi.Input<inputs.compute.v1.InstanceGroupManagerAutoHealingPolicyArgs>[]>;
     /**
      * The base instance name to use for instances in this group. The value must be 1-58 characters long. Instances are named by appending a hyphen and a random four-character string to the base instance name. The base instance name must comply with RFC1035.
      */
@@ -219,7 +219,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * [Output Only] The list of instance actions and the number of instances in this managed instance group that are scheduled for each of those actions.
      */
-    readonly currentActions?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerActionsSummary>;
+    readonly currentActions?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerActionsSummaryArgs>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -227,7 +227,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * Policy specifying the intended distribution of managed instances across zones in a regional managed instance group.
      */
-    readonly distributionPolicy?: pulumi.Input<inputs.compute.v1.DistributionPolicy>;
+    readonly distributionPolicy?: pulumi.Input<inputs.compute.v1.DistributionPolicyArgs>;
     /**
      * Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
      *
@@ -258,7 +258,7 @@ export interface InstanceGroupManagerArgs {
     /**
      * Named ports configured for the Instance Groups complementary to this Instance Group Manager.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.v1.NamedPort>[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.v1.NamedPortArgs>[]>;
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
@@ -271,11 +271,11 @@ export interface InstanceGroupManagerArgs {
     /**
      * Stateful configuration for this Instanced Group Manager
      */
-    readonly statefulPolicy?: pulumi.Input<inputs.compute.v1.StatefulPolicy>;
+    readonly statefulPolicy?: pulumi.Input<inputs.compute.v1.StatefulPolicyArgs>;
     /**
      * [Output Only] The status of this managed instance group.
      */
-    readonly status?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerStatus>;
+    readonly status?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerStatusArgs>;
     /**
      * The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
      */
@@ -287,13 +287,13 @@ export interface InstanceGroupManagerArgs {
     /**
      * The update policy for this managed instance group.
      */
-    readonly updatePolicy?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerUpdatePolicy>;
+    readonly updatePolicy?: pulumi.Input<inputs.compute.v1.InstanceGroupManagerUpdatePolicyArgs>;
     /**
      * Specifies the instance templates used by this managed instance group to create instances.
      *
      * Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
      */
-    readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.v1.InstanceGroupManagerVersion>[]>;
+    readonly versions?: pulumi.Input<pulumi.Input<inputs.compute.v1.InstanceGroupManagerVersionArgs>[]>;
     /**
      * [Output Only] The URL of a zone where the managed instance group is located (for zonal resources).
      */

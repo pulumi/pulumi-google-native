@@ -22,7 +22,7 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationDeveloper';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationDeveloper';
 
     /**
      * Returns true if the given object is an instance of OrganizationDeveloper.  This is designed to work even
@@ -167,7 +167,7 @@ export interface OrganizationDeveloperArgs {
     /**
      * Optional. Developer attributes (name/value pairs). The custom attribute limit is 18.
      */
-    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1Attribute>[]>;
+    readonly attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
     /**
      * List of companies associated with the developer.
      */

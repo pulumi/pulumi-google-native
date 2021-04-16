@@ -22,7 +22,7 @@ export class ServiceRollout extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:servicemanagement/v1:ServiceRollout';
+    public static readonly __pulumiType = 'google-native:servicemanagement/v1:ServiceRollout';
 
     /**
      * Returns true if the given object is an instance of ServiceRollout.  This is designed to work even
@@ -119,7 +119,7 @@ export interface ServiceRolloutArgs {
     /**
      * The strategy associated with a rollout to delete a `ManagedService`. Readonly.
      */
-    readonly deleteServiceStrategy?: pulumi.Input<inputs.servicemanagement.v1.DeleteServiceStrategy>;
+    readonly deleteServiceStrategy?: pulumi.Input<inputs.servicemanagement.v1.DeleteServiceStrategyArgs>;
     /**
      * Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
      */
@@ -135,5 +135,5 @@ export interface ServiceRolloutArgs {
     /**
      * Google Service Control selects service configurations based on traffic percentage.
      */
-    readonly trafficPercentStrategy?: pulumi.Input<inputs.servicemanagement.v1.TrafficPercentStrategy>;
+    readonly trafficPercentStrategy?: pulumi.Input<inputs.servicemanagement.v1.TrafficPercentStrategyArgs>;
 }

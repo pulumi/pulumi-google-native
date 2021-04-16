@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:License")]
+    [GcpNativeResourceType("google-native:compute/v1:License")]
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>
@@ -69,12 +69,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public License(string name, LicenseArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:License", name, args ?? new LicenseArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:License", name, args ?? new LicenseArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private License(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:License", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:License", name, null, MakeResourceOptions(options, id))
         {
         }
 

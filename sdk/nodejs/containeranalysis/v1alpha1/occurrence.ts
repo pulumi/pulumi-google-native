@@ -22,7 +22,7 @@ export class Occurrence extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:containeranalysis/v1alpha1:Occurrence';
+    public static readonly __pulumiType = 'google-native:containeranalysis/v1alpha1:Occurrence';
 
     /**
      * Returns true if the given object is an instance of Occurrence.  This is designed to work even
@@ -167,11 +167,11 @@ export interface OccurrenceArgs {
     /**
      * Describes an attestation of an artifact.
      */
-    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.Attestation>;
+    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1alpha1.AttestationArgs>;
     /**
      * Build details for a verifiable build.
      */
-    readonly buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetails>;
+    readonly buildDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildDetailsArgs>;
     /**
      * The time this `Occurrence` was created.
      */
@@ -179,19 +179,19 @@ export interface OccurrenceArgs {
     /**
      * Describes the deployment of an artifact on a runtime.
      */
-    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1alpha1.Deployment>;
+    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1alpha1.DeploymentArgs>;
     /**
      * Describes how this resource derives from the basis in the associated note.
      */
-    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.Derived>;
+    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.DerivedArgs>;
     /**
      * Describes the initial scan status for this resource.
      */
-    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1alpha1.Discovered>;
+    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveredArgs>;
     /**
      * Describes the installation of a package on the linked resource.
      */
-    readonly installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.Installation>;
+    readonly installation?: pulumi.Input<inputs.containeranalysis.v1alpha1.InstallationArgs>;
     /**
      * This explicitly denotes which of the `Occurrence` details are specified. This field can be used as a filter in list requests.
      */
@@ -213,7 +213,7 @@ export interface OccurrenceArgs {
     /**
      *  The resource for which the `Occurrence` applies.
      */
-    readonly resource?: pulumi.Input<inputs.containeranalysis.v1alpha1.Resource>;
+    readonly resource?: pulumi.Input<inputs.containeranalysis.v1alpha1.ResourceArgs>;
     /**
      * The unique URL of the image or the container for which the `Occurrence` applies. For example, https://gcr.io/project/image@sha256:foo This field can be used as a filter in list requests.
      */
@@ -225,9 +225,9 @@ export interface OccurrenceArgs {
     /**
      * Describes an upgrade.
      */
-    readonly upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeOccurrence>;
+    readonly upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeOccurrenceArgs>;
     /**
      * Details of a security vulnerability note.
      */
-    readonly vulnerabilityDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityDetails>;
+    readonly vulnerabilityDetails?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityDetailsArgs>;
 }

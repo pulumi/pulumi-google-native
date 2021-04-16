@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative
     /// <summary>
     /// The provider type for the Google Cloud package.
     /// </summary>
-    [GcpNativeResourceType("pulumi:providers:gcp-native")]
+    [GcpNativeResourceType("pulumi:providers:google-native")]
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
@@ -23,7 +23,7 @@ namespace Pulumi.GcpNative
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
-            : base("gcp-native", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
+            : base("google-native", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
 

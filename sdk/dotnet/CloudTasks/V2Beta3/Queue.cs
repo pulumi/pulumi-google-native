@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudTasks.V2Beta3
     /// <summary>
     /// Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudtasks/v2beta3:Queue")]
+    [GcpNativeResourceType("google-native:cloudtasks/v2beta3:Queue")]
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.CloudTasks.V2Beta3
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Queue(string name, QueueArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudtasks/v2beta3:Queue", name, args ?? new QueueArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudtasks/v2beta3:Queue", name, args ?? new QueueArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Queue(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudtasks/v2beta3:Queue", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudtasks/v2beta3:Queue", name, null, MakeResourceOptions(options, id))
         {
         }
 

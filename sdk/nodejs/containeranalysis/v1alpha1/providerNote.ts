@@ -22,7 +22,7 @@ export class ProviderNote extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:containeranalysis/v1alpha1:ProviderNote';
+    public static readonly __pulumiType = 'google-native:containeranalysis/v1alpha1:ProviderNote';
 
     /**
      * Returns true if the given object is an instance of ProviderNote.  This is designed to work even
@@ -167,15 +167,15 @@ export interface ProviderNoteArgs {
     /**
      * A note describing an attestation role.
      */
-    readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.v1alpha1.AttestationAuthority>;
+    readonly attestationAuthority?: pulumi.Input<inputs.containeranalysis.v1alpha1.AttestationAuthorityArgs>;
     /**
      * A note describing a base image.
      */
-    readonly baseImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.Basis>;
+    readonly baseImage?: pulumi.Input<inputs.containeranalysis.v1alpha1.BasisArgs>;
     /**
      * Build provenance type for a verifiable build.
      */
-    readonly buildType?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildType>;
+    readonly buildType?: pulumi.Input<inputs.containeranalysis.v1alpha1.BuildTypeArgs>;
     /**
      * The time this note was created. This field can be used as a filter in list requests.
      */
@@ -183,11 +183,11 @@ export interface ProviderNoteArgs {
     /**
      * A note describing something that can be deployed.
      */
-    readonly deployable?: pulumi.Input<inputs.containeranalysis.v1alpha1.Deployable>;
+    readonly deployable?: pulumi.Input<inputs.containeranalysis.v1alpha1.DeployableArgs>;
     /**
      * A note describing a provider/analysis type.
      */
-    readonly discovery?: pulumi.Input<inputs.containeranalysis.v1alpha1.Discovery>;
+    readonly discovery?: pulumi.Input<inputs.containeranalysis.v1alpha1.DiscoveryArgs>;
     /**
      * Time of expiration for this note, null if note does not expire.
      */
@@ -208,12 +208,12 @@ export interface ProviderNoteArgs {
     /**
      * A note describing a package hosted by various package managers.
      */
-    readonly package?: pulumi.Input<inputs.containeranalysis.v1alpha1.Package>;
+    readonly package?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageArgs>;
     readonly providersId: pulumi.Input<string>;
     /**
      * URLs associated with this note
      */
-    readonly relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1alpha1.RelatedUrl>[]>;
+    readonly relatedUrl?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1alpha1.RelatedUrlArgs>[]>;
     /**
      * A one sentence description of this `Note`.
      */
@@ -225,9 +225,9 @@ export interface ProviderNoteArgs {
     /**
      * A note describing an upgrade.
      */
-    readonly upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeNote>;
+    readonly upgrade?: pulumi.Input<inputs.containeranalysis.v1alpha1.UpgradeNoteArgs>;
     /**
      * A package vulnerability type of note.
      */
-    readonly vulnerabilityType?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityType>;
+    readonly vulnerabilityType?: pulumi.Input<inputs.containeranalysis.v1alpha1.VulnerabilityTypeArgs>;
 }

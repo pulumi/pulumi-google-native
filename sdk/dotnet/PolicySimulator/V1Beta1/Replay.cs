@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.PolicySimulator.V1Beta1
     /// <summary>
     /// Creates and starts a Replay using the given ReplayConfig.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:policysimulator/v1beta1:Replay")]
+    [GcpNativeResourceType("google-native:policysimulator/v1beta1:Replay")]
     public partial class Replay : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.PolicySimulator.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Replay(string name, ReplayArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:policysimulator/v1beta1:Replay", name, args ?? new ReplayArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:policysimulator/v1beta1:Replay", name, args ?? new ReplayArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Replay(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:policysimulator/v1beta1:Replay", name, null, MakeResourceOptions(options, id))
+            : base("google-native:policysimulator/v1beta1:Replay", name, null, MakeResourceOptions(options, id))
         {
         }
 

@@ -22,7 +22,7 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudchannel/v1:AccountCustomerEntitlement';
+    public static readonly __pulumiType = 'google-native:cloudchannel/v1:AccountCustomerEntitlement';
 
     /**
      * Returns true if the given object is an instance of AccountCustomerEntitlement.  This is designed to work even
@@ -149,11 +149,11 @@ export interface AccountCustomerEntitlementArgs {
     /**
      * Association information to other entitlements.
      */
-    readonly associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfo>;
+    readonly associationInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1AssociationInfoArgs>;
     /**
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
-    readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettings>;
+    readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
     readonly customersId: pulumi.Input<string>;
     readonly entitlementsId: pulumi.Input<string>;
     /**
@@ -163,7 +163,7 @@ export interface AccountCustomerEntitlementArgs {
     /**
      * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1Parameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ParameterArgs>[]>;
     /**
      * Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
      */

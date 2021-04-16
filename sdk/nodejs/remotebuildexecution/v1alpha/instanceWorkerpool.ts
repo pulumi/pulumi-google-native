@@ -22,7 +22,7 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:remotebuildexecution/v1alpha:InstanceWorkerpool';
+    public static readonly __pulumiType = 'google-native:remotebuildexecution/v1alpha:InstanceWorkerpool';
 
     /**
      * Returns true if the given object is an instance of InstanceWorkerpool.  This is designed to work even
@@ -113,7 +113,7 @@ export interface InstanceWorkerpoolArgs {
     /**
      * The autoscale policy to apply on a pool.
      */
-    readonly autoscale?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale>;
+    readonly autoscale?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs>;
     /**
      * Channel specifies the release channel of the pool.
      */
@@ -139,7 +139,7 @@ export interface InstanceWorkerpoolArgs {
     /**
      * Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
      */
-    readonly workerConfig?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig>;
+    readonly workerConfig?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs>;
     /**
      * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
      */

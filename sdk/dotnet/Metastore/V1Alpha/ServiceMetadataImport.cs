@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
     /// <summary>
     /// Creates a new MetadataImport in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:metastore/v1alpha:ServiceMetadataImport")]
+    [GcpNativeResourceType("google-native:metastore/v1alpha:ServiceMetadataImport")]
     public partial class ServiceMetadataImport : Pulumi.CustomResource
     {
         /// <summary>
@@ -60,12 +60,12 @@ namespace Pulumi.GcpNative.Metastore.V1Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServiceMetadataImport(string name, ServiceMetadataImportArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:ServiceMetadataImport", name, args ?? new ServiceMetadataImportArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:metastore/v1alpha:ServiceMetadataImport", name, args ?? new ServiceMetadataImportArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ServiceMetadataImport(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:metastore/v1alpha:ServiceMetadataImport", name, null, MakeResourceOptions(options, id))
+            : base("google-native:metastore/v1alpha:ServiceMetadataImport", name, null, MakeResourceOptions(options, id))
         {
         }
 

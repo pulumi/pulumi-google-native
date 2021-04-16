@@ -22,7 +22,7 @@ export class WorkerPool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudbuild/v1alpha2:WorkerPool';
+    public static readonly __pulumiType = 'google-native:cloudbuild/v1alpha2:WorkerPool';
 
     /**
      * Returns true if the given object is an instance of WorkerPool.  This is designed to work even
@@ -119,7 +119,7 @@ export interface WorkerPoolArgs {
     /**
      * Network configuration for the `WorkerPool`.
      */
-    readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfig>;
+    readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.NetworkConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
@@ -128,6 +128,6 @@ export interface WorkerPoolArgs {
     /**
      * Worker configuration for the `WorkerPool`.
      */
-    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfig>;
+    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfigArgs>;
     readonly workerPoolsId: pulumi.Input<string>;
 }

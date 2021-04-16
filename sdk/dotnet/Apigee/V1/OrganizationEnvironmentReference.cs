@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a Reference in the specified environment.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentReference")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentReference")]
     public partial class OrganizationEnvironmentReference : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentReference(string name, OrganizationEnvironmentReferenceArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentReference", name, args ?? new OrganizationEnvironmentReferenceArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentReference", name, args ?? new OrganizationEnvironmentReferenceArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentReference(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentReference", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentReference", name, null, MakeResourceOptions(options, id))
         {
         }
 

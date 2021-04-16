@@ -21,7 +21,7 @@ export class RegionInPlaceSnapshot extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:RegionInPlaceSnapshot';
+    public static readonly __pulumiType = 'google-native:compute/alpha:RegionInPlaceSnapshot';
 
     /**
      * Returns true if the given object is an instance of RegionInPlaceSnapshot.  This is designed to work even

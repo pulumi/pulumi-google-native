@@ -21,7 +21,7 @@ export class Workflow extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:workflows/v1:Workflow';
+    public static readonly __pulumiType = 'google-native:workflows/v1:Workflow';
 
     /**
      * Returns true if the given object is an instance of Workflow.  This is designed to work even

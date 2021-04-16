@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:cloudresourcemanager/v2:Folder":
+            case "google-native:cloudresourcemanager/v2:Folder":
                 return new Folder(name, <any>undefined, { urn })
-            case "gcp-native:cloudresourcemanager/v2:FolderIamPolicy":
+            case "google-native:cloudresourcemanager/v2:FolderIamPolicy":
                 return new FolderIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "cloudresourcemanager/v2", _module)
+pulumi.runtime.registerResourceModule("google-native", "cloudresourcemanager/v2", _module)

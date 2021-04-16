@@ -22,7 +22,7 @@ export class Membership extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:gkehub/v1:Membership';
+    public static readonly __pulumiType = 'google-native:gkehub/v1:Membership';
 
     /**
      * Returns true if the given object is an instance of Membership.  This is designed to work even
@@ -147,11 +147,11 @@ export interface MembershipArgs {
     /**
      * Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
      */
-    readonly authority?: pulumi.Input<inputs.gkehub.v1.Authority>;
+    readonly authority?: pulumi.Input<inputs.gkehub.v1.AuthorityArgs>;
     /**
      * Optional. Endpoint information to reach this member.
      */
-    readonly endpoint?: pulumi.Input<inputs.gkehub.v1.MembershipEndpoint>;
+    readonly endpoint?: pulumi.Input<inputs.gkehub.v1.MembershipEndpointArgs>;
     /**
      * Optional. An externally-generated and managed ID for this Membership. This ID may be modified after creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
      */

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
     /// <summary>
     /// Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:artifactregistry/v1beta1:Repository")]
+    [GcpNativeResourceType("google-native:artifactregistry/v1beta1:Repository")]
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>
@@ -66,12 +66,12 @@ namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Repository(string name, RepositoryArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta1:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:artifactregistry/v1beta1:Repository", name, args ?? new RepositoryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Repository(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:artifactregistry/v1beta1:Repository", name, null, MakeResourceOptions(options, id))
+            : base("google-native:artifactregistry/v1beta1:Repository", name, null, MakeResourceOptions(options, id))
         {
         }
 

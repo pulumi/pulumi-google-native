@@ -22,7 +22,7 @@ export class Agent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:Agent';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:Agent';
 
     /**
      * Returns true if the given object is an instance of Agent.  This is designed to work even
@@ -176,7 +176,7 @@ export interface AgentArgs {
     /**
      * Speech recognition related settings.
      */
-    readonly speechToTextSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3SpeechToTextSettings>;
+    readonly speechToTextSettings?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs>;
     /**
      * Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
      */

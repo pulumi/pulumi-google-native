@@ -22,7 +22,7 @@ export class Service extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v3:Service';
+    public static readonly __pulumiType = 'google-native:monitoring/v3:Service';
 
     /**
      * Returns true if the given object is an instance of Service.  This is designed to work even
@@ -129,19 +129,19 @@ export interface ServiceArgs {
     /**
      * Type used for App Engine services.
      */
-    readonly appEngine?: pulumi.Input<inputs.monitoring.v3.AppEngine>;
+    readonly appEngine?: pulumi.Input<inputs.monitoring.v3.AppEngineArgs>;
     /**
      * Type used for Cloud Endpoints services.
      */
-    readonly cloudEndpoints?: pulumi.Input<inputs.monitoring.v3.CloudEndpoints>;
+    readonly cloudEndpoints?: pulumi.Input<inputs.monitoring.v3.CloudEndpointsArgs>;
     /**
      * Type used for Istio services that live in a Kubernetes cluster.
      */
-    readonly clusterIstio?: pulumi.Input<inputs.monitoring.v3.ClusterIstio>;
+    readonly clusterIstio?: pulumi.Input<inputs.monitoring.v3.ClusterIstioArgs>;
     /**
      * Custom service type.
      */
-    readonly custom?: pulumi.Input<inputs.monitoring.v3.Custom>;
+    readonly custom?: pulumi.Input<inputs.monitoring.v3.CustomArgs>;
     /**
      * Name used for UI elements listing this Service.
      */
@@ -149,11 +149,11 @@ export interface ServiceArgs {
     /**
      * Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
      */
-    readonly istioCanonicalService?: pulumi.Input<inputs.monitoring.v3.IstioCanonicalService>;
+    readonly istioCanonicalService?: pulumi.Input<inputs.monitoring.v3.IstioCanonicalServiceArgs>;
     /**
      * Type used for Istio services scoped to an Istio mesh.
      */
-    readonly meshIstio?: pulumi.Input<inputs.monitoring.v3.MeshIstio>;
+    readonly meshIstio?: pulumi.Input<inputs.monitoring.v3.MeshIstioArgs>;
     /**
      * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
@@ -162,7 +162,7 @@ export interface ServiceArgs {
     /**
      * Configuration for how to query telemetry on a Service.
      */
-    readonly telemetry?: pulumi.Input<inputs.monitoring.v3.Telemetry>;
+    readonly telemetry?: pulumi.Input<inputs.monitoring.v3.TelemetryArgs>;
     readonly v3Id: pulumi.Input<string>;
     readonly v3Id1: pulumi.Input<string>;
 }

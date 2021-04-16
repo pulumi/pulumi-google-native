@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:ImageIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/beta:ImageIamPolicy")]
     public partial class ImageIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ImageIamPolicy(string name, ImageIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:ImageIamPolicy", name, args ?? new ImageIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:ImageIamPolicy", name, args ?? new ImageIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ImageIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:ImageIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:ImageIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

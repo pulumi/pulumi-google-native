@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:PublicDelegatedPrefix")]
+    [GcpNativeResourceType("google-native:compute/alpha:PublicDelegatedPrefix")]
     public partial class PublicDelegatedPrefix : Pulumi.CustomResource
     {
         /// <summary>
@@ -104,12 +104,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public PublicDelegatedPrefix(string name, PublicDelegatedPrefixArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PublicDelegatedPrefix", name, args ?? new PublicDelegatedPrefixArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:PublicDelegatedPrefix", name, args ?? new PublicDelegatedPrefixArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private PublicDelegatedPrefix(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:PublicDelegatedPrefix", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:PublicDelegatedPrefix", name, null, MakeResourceOptions(options, id))
         {
         }
 

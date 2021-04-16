@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
     /// <summary>
     /// Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy")]
+    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TagTemplateIamPolicy")]
     public partial class TagTemplateIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.DataCatalog.V1Beta1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TagTemplateIamPolicy(string name, TagTemplateIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy", name, args ?? new TagTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:datacatalog/v1beta1:TagTemplateIamPolicy", name, args ?? new TagTemplateIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TagTemplateIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:datacatalog/v1beta1:TagTemplateIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

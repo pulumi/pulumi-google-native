@@ -22,7 +22,7 @@ export class Trigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:eventarc/v1:Trigger';
+    public static readonly __pulumiType = 'google-native:eventarc/v1:Trigger';
 
     /**
      * Returns true if the given object is an instance of Trigger.  This is designed to work even
@@ -135,11 +135,11 @@ export interface TriggerArgs {
     /**
      * Required. Destination specifies where the events should be sent to.
      */
-    readonly destination?: pulumi.Input<inputs.eventarc.v1.Destination>;
+    readonly destination?: pulumi.Input<inputs.eventarc.v1.DestinationArgs>;
     /**
      * Required. null The list of filters that applies to event attributes. Only events that match all the provided filters will be sent to the destination.
      */
-    readonly eventFilters?: pulumi.Input<pulumi.Input<inputs.eventarc.v1.EventFilter>[]>;
+    readonly eventFilters?: pulumi.Input<pulumi.Input<inputs.eventarc.v1.EventFilterArgs>[]>;
     /**
      * Optional. User labels attached to the triggers that can be used to group resources.
      */
@@ -157,6 +157,6 @@ export interface TriggerArgs {
     /**
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
-    readonly transport?: pulumi.Input<inputs.eventarc.v1.Transport>;
+    readonly transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
     readonly triggersId: pulumi.Input<string>;
 }

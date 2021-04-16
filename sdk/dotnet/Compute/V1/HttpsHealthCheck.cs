@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.V1
     /// <summary>
     /// Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/v1:HttpsHealthCheck")]
+    [GcpNativeResourceType("google-native:compute/v1:HttpsHealthCheck")]
     public partial class HttpsHealthCheck : Pulumi.CustomResource
     {
         /// <summary>
@@ -96,12 +96,12 @@ namespace Pulumi.GcpNative.Compute.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public HttpsHealthCheck(string name, HttpsHealthCheckArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:HttpsHealthCheck", name, args ?? new HttpsHealthCheckArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/v1:HttpsHealthCheck", name, args ?? new HttpsHealthCheckArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private HttpsHealthCheck(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/v1:HttpsHealthCheck", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/v1:HttpsHealthCheck", name, null, MakeResourceOptions(options, id))
         {
         }
 

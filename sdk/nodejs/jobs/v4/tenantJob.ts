@@ -22,7 +22,7 @@ export class TenantJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:jobs/v4:TenantJob';
+    public static readonly __pulumiType = 'google-native:jobs/v4:TenantJob';
 
     /**
      * Returns true if the given object is an instance of TenantJob.  This is designed to work even
@@ -253,7 +253,7 @@ export interface TenantJobArgs {
     /**
      * Job application information.
      */
-    readonly applicationInfo?: pulumi.Input<inputs.jobs.v4.ApplicationInfo>;
+    readonly applicationInfo?: pulumi.Input<inputs.jobs.v4.ApplicationInfoArgs>;
     /**
      * Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
      */
@@ -261,7 +261,7 @@ export interface TenantJobArgs {
     /**
      * Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
      */
-    readonly compensationInfo?: pulumi.Input<inputs.jobs.v4.CompensationInfo>;
+    readonly compensationInfo?: pulumi.Input<inputs.jobs.v4.CompensationInfoArgs>;
     /**
      * A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
      */
@@ -326,7 +326,7 @@ export interface TenantJobArgs {
     /**
      * Options for job processing.
      */
-    readonly processingOptions?: pulumi.Input<inputs.jobs.v4.ProcessingOptions>;
+    readonly processingOptions?: pulumi.Input<inputs.jobs.v4.ProcessingOptionsArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.

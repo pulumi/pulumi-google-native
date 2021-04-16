@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a new data collector.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationDatacollector")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationDatacollector")]
     public partial class OrganizationDatacollector : Pulumi.CustomResource
     {
         /// <summary>
@@ -54,12 +54,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationDatacollector(string name, OrganizationDatacollectorArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationDatacollector", name, args ?? new OrganizationDatacollectorArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationDatacollector", name, args ?? new OrganizationDatacollectorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationDatacollector(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationDatacollector", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationDatacollector", name, null, MakeResourceOptions(options, id))
         {
         }
 

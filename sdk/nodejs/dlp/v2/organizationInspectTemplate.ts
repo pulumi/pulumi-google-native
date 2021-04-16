@@ -22,7 +22,7 @@ export class OrganizationInspectTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dlp/v2:OrganizationInspectTemplate';
+    public static readonly __pulumiType = 'google-native:dlp/v2:OrganizationInspectTemplate';
 
     /**
      * Returns true if the given object is an instance of OrganizationInspectTemplate.  This is designed to work even
@@ -120,7 +120,7 @@ export interface OrganizationInspectTemplateArgs {
     /**
      * The core content of the template. Configuration of the scanning process.
      */
-    readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfig>;
+    readonly inspectConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectConfigArgs>;
     readonly inspectTemplatesId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;

@@ -22,7 +22,7 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentAnalyticExport';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironmentAnalyticExport';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentAnalyticExport.  This is designed to work even
@@ -140,7 +140,7 @@ export interface OrganizationEnvironmentAnalyticExportArgs {
     /**
      * Required. Date range of the data to export.
      */
-    readonly dateRange?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRange>;
+    readonly dateRange?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DateRangeArgs>;
     /**
      * Optional. Description of the export job.
      */

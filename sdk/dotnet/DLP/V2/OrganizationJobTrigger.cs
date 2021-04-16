@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DLP.V2
     /// <summary>
     /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:dlp/v2:OrganizationJobTrigger")]
+    [GcpNativeResourceType("google-native:dlp/v2:OrganizationJobTrigger")]
     public partial class OrganizationJobTrigger : Pulumi.CustomResource
     {
         /// <summary>
@@ -84,12 +84,12 @@ namespace Pulumi.GcpNative.DLP.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationJobTrigger(string name, OrganizationJobTriggerArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:OrganizationJobTrigger", name, args ?? new OrganizationJobTriggerArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:dlp/v2:OrganizationJobTrigger", name, args ?? new OrganizationJobTriggerArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationJobTrigger(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:dlp/v2:OrganizationJobTrigger", name, null, MakeResourceOptions(options, id))
+            : base("google-native:dlp/v2:OrganizationJobTrigger", name, null, MakeResourceOptions(options, id))
         {
         }
 

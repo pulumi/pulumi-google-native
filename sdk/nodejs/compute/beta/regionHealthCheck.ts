@@ -22,7 +22,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:RegionHealthCheck';
+    public static readonly __pulumiType = 'google-native:compute/beta:RegionHealthCheck';
 
     /**
      * Returns true if the given object is an instance of RegionHealthCheck.  This is designed to work even
@@ -174,15 +174,15 @@ export interface RegionHealthCheckArgs {
      * An optional description of this resource. Provide this property when you create the resource.
      */
     readonly description?: pulumi.Input<string>;
-    readonly grpcHealthCheck?: pulumi.Input<inputs.compute.beta.GRPCHealthCheck>;
+    readonly grpcHealthCheck?: pulumi.Input<inputs.compute.beta.GRPCHealthCheckArgs>;
     readonly healthCheck: pulumi.Input<string>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many consecutive successes. The default value is 2.
      */
     readonly healthyThreshold?: pulumi.Input<number>;
-    readonly http2HealthCheck?: pulumi.Input<inputs.compute.beta.HTTP2HealthCheck>;
-    readonly httpHealthCheck?: pulumi.Input<inputs.compute.beta.HTTPHealthCheck>;
-    readonly httpsHealthCheck?: pulumi.Input<inputs.compute.beta.HTTPSHealthCheck>;
+    readonly http2HealthCheck?: pulumi.Input<inputs.compute.beta.HTTP2HealthCheckArgs>;
+    readonly httpHealthCheck?: pulumi.Input<inputs.compute.beta.HTTPHealthCheckArgs>;
+    readonly httpsHealthCheck?: pulumi.Input<inputs.compute.beta.HTTPSHealthCheckArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -194,7 +194,7 @@ export interface RegionHealthCheckArgs {
     /**
      * Configure logging on this health check.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.beta.HealthCheckLogConfig>;
+    readonly logConfig?: pulumi.Input<inputs.compute.beta.HealthCheckLogConfigArgs>;
     /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. For example, a name that is 1-63 characters long, matches the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`, and otherwise complies with RFC1035. This regular expression describes a name where the first character is a lowercase letter, and all following characters are a dash, lowercase letter, or digit, except the last character, which isn't a dash.
      */
@@ -208,8 +208,8 @@ export interface RegionHealthCheckArgs {
      * [Output Only] Server-defined URL for the resource.
      */
     readonly selfLink?: pulumi.Input<string>;
-    readonly sslHealthCheck?: pulumi.Input<inputs.compute.beta.SSLHealthCheck>;
-    readonly tcpHealthCheck?: pulumi.Input<inputs.compute.beta.TCPHealthCheck>;
+    readonly sslHealthCheck?: pulumi.Input<inputs.compute.beta.SSLHealthCheckArgs>;
+    readonly tcpHealthCheck?: pulumi.Input<inputs.compute.beta.TCPHealthCheckArgs>;
     /**
      * How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
      */

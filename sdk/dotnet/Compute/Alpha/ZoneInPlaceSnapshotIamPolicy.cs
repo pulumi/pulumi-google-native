@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy")]
+    [GcpNativeResourceType("google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy")]
     public partial class ZoneInPlaceSnapshotIamPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -71,12 +71,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ZoneInPlaceSnapshotIamPolicy(string name, ZoneInPlaceSnapshotIamPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy", name, args ?? new ZoneInPlaceSnapshotIamPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy", name, args ?? new ZoneInPlaceSnapshotIamPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private ZoneInPlaceSnapshotIamPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:ZoneInPlaceSnapshotIamPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

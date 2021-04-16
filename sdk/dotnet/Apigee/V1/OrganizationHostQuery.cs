@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationHostQuery")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationHostQuery")]
     public partial class OrganizationHostQuery : Pulumi.CustomResource
     {
         /// <summary>
@@ -102,12 +102,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationHostQuery(string name, OrganizationHostQueryArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationHostQuery", name, args ?? new OrganizationHostQueryArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationHostQuery", name, args ?? new OrganizationHostQueryArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationHostQuery(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationHostQuery", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationHostQuery", name, null, MakeResourceOptions(options, id))
         {
         }
 

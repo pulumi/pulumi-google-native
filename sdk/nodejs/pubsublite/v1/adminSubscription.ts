@@ -22,7 +22,7 @@ export class AdminSubscription extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsublite/v1:AdminSubscription';
+    public static readonly __pulumiType = 'google-native:pubsublite/v1:AdminSubscription';
 
     /**
      * Returns true if the given object is an instance of AdminSubscription.  This is designed to work even
@@ -93,7 +93,7 @@ export interface AdminSubscriptionArgs {
     /**
      * The settings for this subscription's message delivery.
      */
-    readonly deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfig>;
+    readonly deliveryConfig?: pulumi.Input<inputs.pubsublite.v1.DeliveryConfigArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}

@@ -22,7 +22,7 @@ export class PacketMirroring extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:PacketMirroring';
+    public static readonly __pulumiType = 'google-native:compute/v1:PacketMirroring';
 
     /**
      * Returns true if the given object is an instance of PacketMirroring.  This is designed to work even
@@ -151,7 +151,7 @@ export interface PacketMirroringArgs {
     /**
      * The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
      */
-    readonly collectorIlb?: pulumi.Input<inputs.compute.v1.PacketMirroringForwardingRuleInfo>;
+    readonly collectorIlb?: pulumi.Input<inputs.compute.v1.PacketMirroringForwardingRuleInfoArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -169,7 +169,7 @@ export interface PacketMirroringArgs {
     /**
      * Filter for mirrored traffic. If unspecified, all traffic is mirrored.
      */
-    readonly filter?: pulumi.Input<inputs.compute.v1.PacketMirroringFilter>;
+    readonly filter?: pulumi.Input<inputs.compute.v1.PacketMirroringFilterArgs>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -181,7 +181,7 @@ export interface PacketMirroringArgs {
     /**
      * PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
      */
-    readonly mirroredResources?: pulumi.Input<inputs.compute.v1.PacketMirroringMirroredResourceInfo>;
+    readonly mirroredResources?: pulumi.Input<inputs.compute.v1.PacketMirroringMirroredResourceInfoArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -189,7 +189,7 @@ export interface PacketMirroringArgs {
     /**
      * Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
      */
-    readonly network?: pulumi.Input<inputs.compute.v1.PacketMirroringNetworkInfo>;
+    readonly network?: pulumi.Input<inputs.compute.v1.PacketMirroringNetworkInfoArgs>;
     readonly packetMirroring: pulumi.Input<string>;
     /**
      * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.

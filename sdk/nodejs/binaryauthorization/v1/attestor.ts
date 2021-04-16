@@ -22,7 +22,7 @@ export class Attestor extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:binaryauthorization/v1:Attestor';
+    public static readonly __pulumiType = 'google-native:binaryauthorization/v1:Attestor';
 
     /**
      * Returns true if the given object is an instance of Attestor.  This is designed to work even
@@ -105,5 +105,5 @@ export interface AttestorArgs {
     /**
      * This specifies how an attestation will be read, and how it will be used during policy enforcement.
      */
-    readonly userOwnedGrafeasNote?: pulumi.Input<inputs.binaryauthorization.v1.UserOwnedGrafeasNote>;
+    readonly userOwnedGrafeasNote?: pulumi.Input<inputs.binaryauthorization.v1.UserOwnedGrafeasNoteArgs>;
 }

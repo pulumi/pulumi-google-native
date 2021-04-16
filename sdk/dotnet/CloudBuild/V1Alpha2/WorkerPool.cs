@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.CloudBuild.V1Alpha2
     /// <summary>
     /// Creates a `WorkerPool` to run the builds, and returns the new worker pool.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:cloudbuild/v1alpha2:WorkerPool")]
+    [GcpNativeResourceType("google-native:cloudbuild/v1alpha2:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>
@@ -72,12 +72,12 @@ namespace Pulumi.GcpNative.CloudBuild.V1Alpha2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public WorkerPool(string name, WorkerPoolArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudbuild/v1alpha2:WorkerPool", name, args ?? new WorkerPoolArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:cloudbuild/v1alpha2:WorkerPool", name, args ?? new WorkerPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private WorkerPool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:cloudbuild/v1alpha2:WorkerPool", name, null, MakeResourceOptions(options, id))
+            : base("google-native:cloudbuild/v1alpha2:WorkerPool", name, null, MakeResourceOptions(options, id))
         {
         }
 

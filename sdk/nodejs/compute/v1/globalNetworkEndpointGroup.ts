@@ -22,7 +22,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:GlobalNetworkEndpointGroup';
+    public static readonly __pulumiType = 'google-native:compute/v1:GlobalNetworkEndpointGroup';
 
     /**
      * Returns true if the given object is an instance of GlobalNetworkEndpointGroup.  This is designed to work even
@@ -172,15 +172,15 @@ export interface GlobalNetworkEndpointGroupArgs {
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly appEngine?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupAppEngine>;
+    readonly appEngine?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupAppEngineArgs>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly cloudFunction?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupCloudFunction>;
+    readonly cloudFunction?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupCloudFunctionArgs>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly cloudRun?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupCloudRun>;
+    readonly cloudRun?: pulumi.Input<inputs.compute.v1.NetworkEndpointGroupCloudRunArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */

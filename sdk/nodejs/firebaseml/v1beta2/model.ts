@@ -22,7 +22,7 @@ export class Model extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:firebaseml/v1beta2:Model';
+    public static readonly __pulumiType = 'google-native:firebaseml/v1beta2:Model';
 
     /**
      * Returns true if the given object is an instance of Model.  This is designed to work even
@@ -141,7 +141,7 @@ export interface ModelArgs {
     /**
      * State common to all model types. Includes publishing and validation information.
      */
-    readonly state?: pulumi.Input<inputs.firebaseml.v1beta2.ModelState>;
+    readonly state?: pulumi.Input<inputs.firebaseml.v1beta2.ModelStateArgs>;
     /**
      * User defined tags which can be used to group/filter models during listing
      */
@@ -149,5 +149,5 @@ export interface ModelArgs {
     /**
      * A TFLite Model
      */
-    readonly tfliteModel?: pulumi.Input<inputs.firebaseml.v1beta2.TfLiteModel>;
+    readonly tfliteModel?: pulumi.Input<inputs.firebaseml.v1beta2.TfLiteModelArgs>;
 }

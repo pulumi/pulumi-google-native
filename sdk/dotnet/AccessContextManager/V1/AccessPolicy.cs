@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.AccessContextManager.V1
     /// <summary>
     /// Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:accesscontextmanager/v1:AccessPolicy")]
+    [GcpNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.AccessContextManager.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public AccessPolicy(string name, AccessPolicyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:accesscontextmanager/v1:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:accesscontextmanager/v1:AccessPolicy", name, args ?? new AccessPolicyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private AccessPolicy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:accesscontextmanager/v1:AccessPolicy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:accesscontextmanager/v1:AccessPolicy", name, null, MakeResourceOptions(options, id))
         {
         }
 

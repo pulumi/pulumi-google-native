@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.BinaryAuthorization.V1
     /// <summary>
     /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:binaryauthorization/v1:Attestor")]
+    [GcpNativeResourceType("google-native:binaryauthorization/v1:Attestor")]
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.BinaryAuthorization.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Attestor(string name, AttestorArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:binaryauthorization/v1:Attestor", name, args ?? new AttestorArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:binaryauthorization/v1:Attestor", name, args ?? new AttestorArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Attestor(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:binaryauthorization/v1:Attestor", name, null, MakeResourceOptions(options, id))
+            : base("google-native:binaryauthorization/v1:Attestor", name, null, MakeResourceOptions(options, id))
         {
         }
 

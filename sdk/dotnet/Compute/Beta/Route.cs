@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Beta
     /// <summary>
     /// Creates a Route resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/beta:Route")]
+    [GcpNativeResourceType("google-native:compute/beta:Route")]
     public partial class Route : Pulumi.CustomResource
     {
         /// <summary>
@@ -136,12 +136,12 @@ namespace Pulumi.GcpNative.Compute.Beta
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Route(string name, RouteArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:Route", name, args ?? new RouteArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/beta:Route", name, args ?? new RouteArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Route(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/beta:Route", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/beta:Route", name, null, MakeResourceOptions(options, id))
         {
         }
 

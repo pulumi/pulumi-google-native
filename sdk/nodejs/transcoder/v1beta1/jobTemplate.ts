@@ -22,7 +22,7 @@ export class JobTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:transcoder/v1beta1:JobTemplate';
+    public static readonly __pulumiType = 'google-native:transcoder/v1beta1:JobTemplate';
 
     /**
      * Returns true if the given object is an instance of JobTemplate.  This is designed to work even
@@ -87,7 +87,7 @@ export interface JobTemplateArgs {
     /**
      * The configuration for this template.
      */
-    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfig>;
+    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
     readonly jobTemplatesId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationApi")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationApi")]
     public partial class OrganizationApi : Pulumi.CustomResource
     {
         /// <summary>
@@ -48,12 +48,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationApi(string name, OrganizationApiArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationApi", name, args ?? new OrganizationApiArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationApi", name, args ?? new OrganizationApiArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationApi(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationApi", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationApi", name, null, MakeResourceOptions(options, id))
         {
         }
 

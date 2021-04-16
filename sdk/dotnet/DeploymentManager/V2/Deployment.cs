@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.DeploymentManager.V2
     /// <summary>
     /// Creates a deployment and all of the resources described by the deployment manifest.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:deploymentmanager/v2:Deployment")]
+    [GcpNativeResourceType("google-native:deploymentmanager/v2:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>
@@ -90,12 +90,12 @@ namespace Pulumi.GcpNative.DeploymentManager.V2
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Deployment(string name, DeploymentArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:deploymentmanager/v2:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:deploymentmanager/v2:Deployment", name, args ?? new DeploymentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private Deployment(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:deploymentmanager/v2:Deployment", name, null, MakeResourceOptions(options, id))
+            : base("google-native:deploymentmanager/v2:Deployment", name, null, MakeResourceOptions(options, id))
         {
         }
 

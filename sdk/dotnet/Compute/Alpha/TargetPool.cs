@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a target pool in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:TargetPool")]
+    [GcpNativeResourceType("google-native:compute/alpha:TargetPool")]
     public partial class TargetPool : Pulumi.CustomResource
     {
         /// <summary>
@@ -107,12 +107,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetPool(string name, TargetPoolArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetPool", name, args ?? new TargetPoolArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:TargetPool", name, args ?? new TargetPoolArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetPool(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetPool", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:TargetPool", name, null, MakeResourceOptions(options, id))
         {
         }
 

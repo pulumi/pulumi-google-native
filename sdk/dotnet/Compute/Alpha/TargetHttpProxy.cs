@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Compute.Alpha
     /// <summary>
     /// Creates a TargetHttpProxy resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("gcp-native:compute/alpha:TargetHttpProxy")]
+    [GcpNativeResourceType("google-native:compute/alpha:TargetHttpProxy")]
     public partial class TargetHttpProxy : Pulumi.CustomResource
     {
         /// <summary>
@@ -95,12 +95,12 @@ namespace Pulumi.GcpNative.Compute.Alpha
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public TargetHttpProxy(string name, TargetHttpProxyArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetHttpProxy", name, args ?? new TargetHttpProxyArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:compute/alpha:TargetHttpProxy", name, args ?? new TargetHttpProxyArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private TargetHttpProxy(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:compute/alpha:TargetHttpProxy", name, null, MakeResourceOptions(options, id))
+            : base("google-native:compute/alpha:TargetHttpProxy", name, null, MakeResourceOptions(options, id))
         {
         }
 

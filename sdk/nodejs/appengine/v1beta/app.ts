@@ -22,7 +22,7 @@ export class App extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:appengine/v1beta:App';
+    public static readonly __pulumiType = 'google-native:appengine/v1beta:App';
 
     /**
      * Returns true if the given object is an instance of App.  This is designed to work even
@@ -168,16 +168,16 @@ export interface AppArgs {
     /**
      * HTTP path dispatch rules for requests to the application that do not explicitly target a service or version. Rules are order-dependent. Up to 20 dispatch rules can be supported.
      */
-    readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlDispatchRule>[]>;
+    readonly dispatchRules?: pulumi.Input<pulumi.Input<inputs.appengine.v1beta.UrlDispatchRuleArgs>[]>;
     /**
      * The feature specific settings to be used in the application.
      */
-    readonly featureSettings?: pulumi.Input<inputs.appengine.v1beta.FeatureSettings>;
+    readonly featureSettings?: pulumi.Input<inputs.appengine.v1beta.FeatureSettingsArgs>;
     /**
      * The Google Container Registry domain used for storing managed build docker images for this application.
      */
     readonly gcrDomain?: pulumi.Input<string>;
-    readonly iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxy>;
+    readonly iap?: pulumi.Input<inputs.appengine.v1beta.IdentityAwareProxyArgs>;
     /**
      * Identifier of the Application resource. This identifier is equivalent to the project ID of the Google Cloud Platform project where you want to deploy your application. Example: myapp.
      */

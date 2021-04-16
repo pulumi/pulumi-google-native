@@ -22,7 +22,7 @@ export class JobTrigger extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dlp/v2:JobTrigger';
+    public static readonly __pulumiType = 'google-native:dlp/v2:JobTrigger';
 
     /**
      * Returns true if the given object is an instance of JobTrigger.  This is designed to work even
@@ -144,7 +144,7 @@ export interface JobTriggerArgs {
     /**
      * For inspect jobs, a snapshot of the configuration.
      */
-    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfig>;
+    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
     readonly jobTriggersId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
@@ -163,5 +163,5 @@ export interface JobTriggerArgs {
     /**
      * A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
      */
-    readonly triggers?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2Trigger>[]>;
+    readonly triggers?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2TriggerArgs>[]>;
 }

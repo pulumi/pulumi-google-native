@@ -12,7 +12,7 @@ namespace Pulumi.GcpNative.Apigee.V1
     /// <summary>
     /// Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
     /// </summary>
-    [GcpNativeResourceType("gcp-native:apigee/v1:OrganizationEnvironmentResourcefile")]
+    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentResourcefile")]
     public partial class OrganizationEnvironmentResourcefile : Pulumi.CustomResource
     {
         /// <summary>
@@ -42,12 +42,12 @@ namespace Pulumi.GcpNative.Apigee.V1
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public OrganizationEnvironmentResourcefile(string name, OrganizationEnvironmentResourcefileArgs args, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentResourcefile", name, args ?? new OrganizationEnvironmentResourcefileArgs(), MakeResourceOptions(options, ""))
+            : base("google-native:apigee/v1:OrganizationEnvironmentResourcefile", name, args ?? new OrganizationEnvironmentResourcefileArgs(), MakeResourceOptions(options, ""))
         {
         }
 
         private OrganizationEnvironmentResourcefile(string name, Input<string> id, CustomResourceOptions? options = null)
-            : base("gcp-native:apigee/v1:OrganizationEnvironmentResourcefile", name, null, MakeResourceOptions(options, id))
+            : base("google-native:apigee/v1:OrganizationEnvironmentResourcefile", name, null, MakeResourceOptions(options, id))
         {
         }
 

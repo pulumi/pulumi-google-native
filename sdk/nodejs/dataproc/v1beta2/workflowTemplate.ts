@@ -22,7 +22,7 @@ export class WorkflowTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataproc/v1beta2:WorkflowTemplate';
+    public static readonly __pulumiType = 'google-native:dataproc/v1beta2:WorkflowTemplate';
 
     /**
      * Returns true if the given object is an instance of WorkflowTemplate.  This is designed to work even
@@ -138,7 +138,7 @@ export interface WorkflowTemplateArgs {
     /**
      * Required. The Directed Acyclic Graph of Jobs to submit.
      */
-    readonly jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJob>[]>;
+    readonly jobs?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.OrderedJobArgs>[]>;
     /**
      * Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
      */
@@ -147,11 +147,11 @@ export interface WorkflowTemplateArgs {
     /**
      * Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.TemplateParameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dataproc.v1beta2.TemplateParameterArgs>[]>;
     /**
      * Required. WorkflowTemplate scheduling information.
      */
-    readonly placement?: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacement>;
+    readonly placement?: pulumi.Input<inputs.dataproc.v1beta2.WorkflowTemplatePlacementArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.

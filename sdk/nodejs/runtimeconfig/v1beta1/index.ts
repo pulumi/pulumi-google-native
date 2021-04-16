@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:runtimeconfig/v1beta1:Config":
+            case "google-native:runtimeconfig/v1beta1:Config":
                 return new Config(name, <any>undefined, { urn })
-            case "gcp-native:runtimeconfig/v1beta1:ConfigIamPolicy":
+            case "google-native:runtimeconfig/v1beta1:ConfigIamPolicy":
                 return new ConfigIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:runtimeconfig/v1beta1:ConfigVariable":
+            case "google-native:runtimeconfig/v1beta1:ConfigVariable":
                 return new ConfigVariable(name, <any>undefined, { urn })
-            case "gcp-native:runtimeconfig/v1beta1:ConfigWaiter":
+            case "google-native:runtimeconfig/v1beta1:ConfigWaiter":
                 return new ConfigWaiter(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "runtimeconfig/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "runtimeconfig/v1beta1", _module)
