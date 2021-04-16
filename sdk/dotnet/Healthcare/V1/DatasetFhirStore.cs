@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1
+namespace Pulumi.GoogleNative.Healthcare.V1
 {
     /// <summary>
     /// Creates a new FHIR store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1:DatasetFhirStore")]
+    [GoogleNativeResourceType("google-native:healthcare/v1:DatasetFhirStore")]
     public partial class DatasetFhirStore : Pulumi.CustomResource
     {
         /// <summary>

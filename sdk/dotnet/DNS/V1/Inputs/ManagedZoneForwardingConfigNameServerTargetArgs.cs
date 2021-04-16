@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DNS.V1.Inputs
+namespace Pulumi.GoogleNative.DNS.V1.Inputs
 {
 
     public sealed class ManagedZoneForwardingConfigNameServerTargetArgs : Pulumi.ResourceArgs

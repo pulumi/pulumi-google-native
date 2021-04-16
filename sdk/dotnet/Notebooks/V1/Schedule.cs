@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Notebooks.V1
+namespace Pulumi.GoogleNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Scheduled Notebook in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:notebooks/v1:Schedule")]
+    [GoogleNativeResourceType("google-native:notebooks/v1:Schedule")]
     public partial class Schedule : Pulumi.CustomResource
     {
         /// <summary>

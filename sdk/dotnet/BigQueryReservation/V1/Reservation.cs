@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryReservation.V1
+namespace Pulumi.GoogleNative.BigQueryReservation.V1
 {
     /// <summary>
     /// Creates a new reservation resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigqueryreservation/v1:Reservation")]
+    [GoogleNativeResourceType("google-native:bigqueryreservation/v1:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>

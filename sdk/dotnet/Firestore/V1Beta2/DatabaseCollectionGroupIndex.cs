@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Firestore.V1Beta2
+namespace Pulumi.GoogleNative.Firestore.V1Beta2
 {
     /// <summary>
     /// Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
     /// </summary>
-    [GcpNativeResourceType("google-native:firestore/v1beta2:DatabaseCollectionGroupIndex")]
+    [GoogleNativeResourceType("google-native:firestore/v1beta2:DatabaseCollectionGroupIndex")]
     public partial class DatabaseCollectionGroupIndex : Pulumi.CustomResource
     {
         /// <summary>

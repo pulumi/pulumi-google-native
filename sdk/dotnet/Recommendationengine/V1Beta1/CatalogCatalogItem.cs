@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Recommendationengine.V1Beta1
+namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 {
     /// <summary>
     /// Creates a catalog item.
     /// </summary>
-    [GcpNativeResourceType("google-native:recommendationengine/v1beta1:CatalogCatalogItem")]
+    [GoogleNativeResourceType("google-native:recommendationengine/v1beta1:CatalogCatalogItem")]
     public partial class CatalogCatalogItem : Pulumi.CustomResource
     {
         /// <summary>

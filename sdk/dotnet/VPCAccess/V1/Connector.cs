@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.VPCAccess.V1
+namespace Pulumi.GoogleNative.VPCAccess.V1
 {
     /// <summary>
     /// Creates a Serverless VPC Access connector, returns an operation.
     /// </summary>
-    [GcpNativeResourceType("google-native:vpcaccess/v1:Connector")]
+    [GoogleNativeResourceType("google-native:vpcaccess/v1:Connector")]
     public partial class Connector : Pulumi.CustomResource
     {
         /// <summary>

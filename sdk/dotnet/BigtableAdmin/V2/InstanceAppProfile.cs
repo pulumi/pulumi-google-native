@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates an app profile within an instance.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceAppProfile")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceAppProfile")]
     public partial class InstanceAppProfile : Pulumi.CustomResource
     {
         /// <summary>

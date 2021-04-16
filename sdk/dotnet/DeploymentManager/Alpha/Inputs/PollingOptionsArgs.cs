@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DeploymentManager.Alpha.Inputs
+namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
 {
 
     public sealed class PollingOptionsArgs : Pulumi.ResourceArgs

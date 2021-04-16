@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Spanner.V1
+namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
     /// </summary>
-    [GcpNativeResourceType("google-native:spanner/v1:InstanceDatabase")]
+    [GoogleNativeResourceType("google-native:spanner/v1:InstanceDatabase")]
     public partial class InstanceDatabase : Pulumi.CustomResource
     {
         /// <summary>

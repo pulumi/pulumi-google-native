@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Create security settings in the specified location.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:SecuritySetting")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:SecuritySetting")]
     public partial class SecuritySetting : Pulumi.CustomResource
     {
         /// <summary>

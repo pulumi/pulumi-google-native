@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Create an instance within a project.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:Instance")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

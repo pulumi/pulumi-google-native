@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AssuredWorkloads.V1
+namespace Pulumi.GoogleNative.AssuredWorkloads.V1
 {
     /// <summary>
     /// Creates Assured Workload.
     /// </summary>
-    [GcpNativeResourceType("google-native:assuredworkloads/v1:OrganizationWorkload")]
+    [GoogleNativeResourceType("google-native:assuredworkloads/v1:OrganizationWorkload")]
     public partial class OrganizationWorkload : Pulumi.CustomResource
     {
         /// <summary>

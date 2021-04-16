@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Transcoder.V1Beta1
+namespace Pulumi.GoogleNative.Transcoder.V1Beta1
 {
     /// <summary>
     /// Creates a job in the specified region.
     /// </summary>
-    [GcpNativeResourceType("google-native:transcoder/v1beta1:Job")]
+    [GoogleNativeResourceType("google-native:transcoder/v1beta1:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

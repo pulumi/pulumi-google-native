@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentQuery")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentQuery")]
     public partial class OrganizationEnvironmentQuery : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationDeveloperApp")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationDeveloperApp")]
     public partial class OrganizationDeveloperApp : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataproc.V1Beta2
+namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
     /// <summary>
     /// Submits a job to a cluster.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataproc/v1beta2:RegionJob")]
+    [GoogleNativeResourceType("google-native:dataproc/v1beta2:RegionJob")]
     public partial class RegionJob : Pulumi.CustomResource
     {
         /// <summary>

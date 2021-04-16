@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.StorageTransfer.V1.Outputs
+namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 {
 
     [OutputType]

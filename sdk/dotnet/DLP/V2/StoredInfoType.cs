@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DLP.V2
+namespace Pulumi.GoogleNative.DLP.V2
 {
     /// <summary>
     /// Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
     /// </summary>
-    [GcpNativeResourceType("google-native:dlp/v2:StoredInfoType")]
+    [GoogleNativeResourceType("google-native:dlp/v2:StoredInfoType")]
     public partial class StoredInfoType : Pulumi.CustomResource
     {
         /// <summary>

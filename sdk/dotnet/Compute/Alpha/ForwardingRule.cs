@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a ForwardingRule resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:ForwardingRule")]
+    [GoogleNativeResourceType("google-native:compute/alpha:ForwardingRule")]
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>

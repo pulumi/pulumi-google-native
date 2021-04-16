@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DNS.V1Beta2
+namespace Pulumi.GoogleNative.DNS.V1Beta2
 {
     /// <summary>
     /// Atomically updates the ResourceRecordSet collection.
     /// </summary>
-    [GcpNativeResourceType("google-native:dns/v1beta2:Change")]
+    [GoogleNativeResourceType("google-native:dns/v1beta2:Change")]
     public partial class Change : Pulumi.CustomResource
     {
         /// <summary>

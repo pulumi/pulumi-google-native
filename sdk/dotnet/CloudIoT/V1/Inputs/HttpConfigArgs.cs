@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudIoT.V1.Inputs
+namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
 {
 
     /// <summary>

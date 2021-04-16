@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Jobs.V3
+namespace Pulumi.GoogleNative.Jobs.V3
 {
     /// <summary>
     /// Creates a new company entity.
     /// </summary>
-    [GcpNativeResourceType("google-native:jobs/v3:Company")]
+    [GoogleNativeResourceType("google-native:jobs/v3:Company")]
     public partial class Company : Pulumi.CustomResource
     {
         /// <summary>

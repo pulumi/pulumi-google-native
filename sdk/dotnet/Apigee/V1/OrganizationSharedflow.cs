@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationSharedflow")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationSharedflow")]
     public partial class OrganizationSharedflow : Pulumi.CustomResource
     {
         /// <summary>

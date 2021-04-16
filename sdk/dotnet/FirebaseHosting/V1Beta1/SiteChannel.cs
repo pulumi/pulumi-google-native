@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
+namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
     /// Creates a new channel in the specified site.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebasehosting/v1beta1:SiteChannel")]
+    [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:SiteChannel")]
     public partial class SiteChannel : Pulumi.CustomResource
     {
         /// <summary>

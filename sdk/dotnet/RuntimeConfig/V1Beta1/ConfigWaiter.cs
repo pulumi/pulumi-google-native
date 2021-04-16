@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
+namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
     /// <summary>
     /// Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
     /// </summary>
-    [GcpNativeResourceType("google-native:runtimeconfig/v1beta1:ConfigWaiter")]
+    [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:ConfigWaiter")]
     public partial class ConfigWaiter : Pulumi.CustomResource
     {
         /// <summary>

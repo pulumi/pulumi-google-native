@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a persistent regional disk in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:RegionDisk")]
+    [GoogleNativeResourceType("google-native:compute/beta:RegionDisk")]
     public partial class RegionDisk : Pulumi.CustomResource
     {
         /// <summary>

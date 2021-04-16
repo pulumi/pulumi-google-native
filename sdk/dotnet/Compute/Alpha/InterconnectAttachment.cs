@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates an InterconnectAttachment in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:InterconnectAttachment")]
+    [GoogleNativeResourceType("google-native:compute/alpha:InterconnectAttachment")]
     public partial class InterconnectAttachment : Pulumi.CustomResource
     {
         /// <summary>

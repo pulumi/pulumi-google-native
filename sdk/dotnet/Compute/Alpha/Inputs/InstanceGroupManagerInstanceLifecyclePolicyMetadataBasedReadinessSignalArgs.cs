@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha.Inputs
+namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     public sealed class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs : Pulumi.ResourceArgs

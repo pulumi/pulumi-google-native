@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Vision.V1
+namespace Pulumi.GoogleNative.Vision.V1
 {
     /// <summary>
     /// Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid.
     /// </summary>
-    [GcpNativeResourceType("google-native:vision/v1:Product")]
+    [GoogleNativeResourceType("google-native:vision/v1:Product")]
     public partial class Product : Pulumi.CustomResource
     {
         /// <summary>

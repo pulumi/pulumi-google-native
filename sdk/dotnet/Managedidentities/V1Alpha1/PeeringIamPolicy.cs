@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Managedidentities.V1Alpha1
+namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:managedidentities/v1alpha1:PeeringIamPolicy")]
+    [GoogleNativeResourceType("google-native:managedidentities/v1alpha1:PeeringIamPolicy")]
     public partial class PeeringIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

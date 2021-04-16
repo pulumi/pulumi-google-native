@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Securitycenter.V1Beta1
+namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified Source.
     /// </summary>
-    [GcpNativeResourceType("google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy")]
+    [GoogleNativeResourceType("google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy")]
     public partial class OrganizationSourceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

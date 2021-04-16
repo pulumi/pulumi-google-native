@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.WebSecurityScanner.V1
+namespace Pulumi.GoogleNative.WebSecurityScanner.V1
 {
     /// <summary>
     /// Creates a new ScanConfig.
     /// </summary>
-    [GcpNativeResourceType("google-native:websecurityscanner/v1:ScanConfig")]
+    [GoogleNativeResourceType("google-native:websecurityscanner/v1:ScanConfig")]
     public partial class ScanConfig : Pulumi.CustomResource
     {
         /// <summary>

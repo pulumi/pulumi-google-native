@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Storage.V1
+namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Updates an IAM policy for the specified bucket.
     /// </summary>
-    [GcpNativeResourceType("google-native:storage/v1:BucketIamPolicy")]
+    [GoogleNativeResourceType("google-native:storage/v1:BucketIamPolicy")]
     public partial class BucketIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

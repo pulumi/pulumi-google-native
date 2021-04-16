@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudFunctions.V1
+namespace Pulumi.GoogleNative.CloudFunctions.V1
 {
     /// <summary>
     /// Sets the IAM access control policy on the specified function. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudfunctions/v1:FunctionIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudfunctions/v1:FunctionIamPolicy")]
     public partial class FunctionIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

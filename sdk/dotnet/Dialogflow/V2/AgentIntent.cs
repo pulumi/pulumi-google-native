@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates an intent in the specified agent.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:AgentIntent")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:AgentIntent")]
     public partial class AgentIntent : Pulumi.CustomResource
     {
         /// <summary>

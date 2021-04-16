@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a TargetHttpProxy resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:TargetHttpProxy")]
+    [GoogleNativeResourceType("google-native:compute/beta:TargetHttpProxy")]
     public partial class TargetHttpProxy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Memcache.V1Beta2
+namespace Pulumi.GoogleNative.Memcache.V1Beta2
 {
     /// <summary>
     /// Creates a new Instance in a given location.
     /// </summary>
-    [GcpNativeResourceType("google-native:memcache/v1beta2:Instance")]
+    [GoogleNativeResourceType("google-native:memcache/v1beta2:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

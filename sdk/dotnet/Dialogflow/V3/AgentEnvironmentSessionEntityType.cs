@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates a session entity type.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:AgentEnvironmentSessionEntityType")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:AgentEnvironmentSessionEntityType")]
     public partial class AgentEnvironmentSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>

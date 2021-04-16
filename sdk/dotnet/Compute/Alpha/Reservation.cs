@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a new reservation. For more information, read Reserving zonal resources.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:Reservation")]
+    [GoogleNativeResourceType("google-native:compute/alpha:Reservation")]
     public partial class Reservation : Pulumi.CustomResource
     {
         /// <summary>

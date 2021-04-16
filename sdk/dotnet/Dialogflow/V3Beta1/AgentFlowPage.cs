@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates a page in the specified flow.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3beta1:AgentFlowPage")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3beta1:AgentFlowPage")]
     public partial class AgentFlowPage : Pulumi.CustomResource
     {
         /// <summary>

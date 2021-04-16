@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates an in-place snapshot in the specified zone.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:ZoneInPlaceSnapshot")]
+    [GoogleNativeResourceType("google-native:compute/alpha:ZoneInPlaceSnapshot")]
     public partial class ZoneInPlaceSnapshot : Pulumi.CustomResource
     {
         /// <summary>

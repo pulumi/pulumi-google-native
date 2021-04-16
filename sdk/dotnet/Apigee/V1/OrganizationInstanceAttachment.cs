@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationInstanceAttachment")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationInstanceAttachment")]
     public partial class OrganizationInstanceAttachment : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a Reference in the specified environment.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentReference")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentReference")]
     public partial class OrganizationEnvironmentReference : Pulumi.CustomResource
     {
         /// <summary>

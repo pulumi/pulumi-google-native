@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GameServices.V1Beta
+namespace Pulumi.GoogleNative.GameServices.V1Beta
 {
     /// <summary>
     /// Creates a new realm in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:gameservices/v1beta:Realm")]
+    [GoogleNativeResourceType("google-native:gameservices/v1beta:Realm")]
     public partial class Realm : Pulumi.CustomResource
     {
         /// <summary>

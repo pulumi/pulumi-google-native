@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryConnection.V1Beta1.Outputs
+namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Outputs
 {
 
     [OutputType]

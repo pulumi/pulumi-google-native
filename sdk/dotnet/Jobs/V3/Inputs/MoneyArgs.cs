@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Jobs.V3.Inputs
+namespace Pulumi.GoogleNative.Jobs.V3.Inputs
 {
 
     /// <summary>

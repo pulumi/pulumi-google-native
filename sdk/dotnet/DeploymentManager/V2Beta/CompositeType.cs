@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DeploymentManager.V2Beta
+namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 {
     /// <summary>
     /// Creates a composite type.
     /// </summary>
-    [GcpNativeResourceType("google-native:deploymentmanager/v2beta:CompositeType")]
+    [GoogleNativeResourceType("google-native:deploymentmanager/v2beta:CompositeType")]
     public partial class CompositeType : Pulumi.CustomResource
     {
         /// <summary>

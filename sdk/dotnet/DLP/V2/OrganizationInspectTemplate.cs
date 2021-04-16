@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DLP.V2
+namespace Pulumi.GoogleNative.DLP.V2
 {
     /// <summary>
     /// Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
     /// </summary>
-    [GcpNativeResourceType("google-native:dlp/v2:OrganizationInspectTemplate")]
+    [GoogleNativeResourceType("google-native:dlp/v2:OrganizationInspectTemplate")]
     public partial class OrganizationInspectTemplate : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta2
+namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 {
     /// <summary>
     /// Creates a tag.
     /// </summary>
-    [GcpNativeResourceType("google-native:artifactregistry/v1beta2:RepositoryPackageTag")]
+    [GoogleNativeResourceType("google-native:artifactregistry/v1beta2:RepositoryPackageTag")]
     public partial class RepositoryPackageTag : Pulumi.CustomResource
     {
         /// <summary>

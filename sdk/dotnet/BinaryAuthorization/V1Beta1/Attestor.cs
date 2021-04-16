@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BinaryAuthorization.V1Beta1
+namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
 {
     /// <summary>
     /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
     /// </summary>
-    [GcpNativeResourceType("google-native:binaryauthorization/v1beta1:Attestor")]
+    [GoogleNativeResourceType("google-native:binaryauthorization/v1beta1:Attestor")]
     public partial class Attestor : Pulumi.CustomResource
     {
         /// <summary>

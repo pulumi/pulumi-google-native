@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Sets the IAM policy for a taxonomy or a policy tag.
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyIamPolicy")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyIamPolicy")]
     public partial class TaxonomyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

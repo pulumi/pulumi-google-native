@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a TargetGrpcProxy in the specified project in the given scope using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:TargetGrpcProxy")]
+    [GoogleNativeResourceType("google-native:compute/v1:TargetGrpcProxy")]
     public partial class TargetGrpcProxy : Pulumi.CustomResource
     {
         /// <summary>

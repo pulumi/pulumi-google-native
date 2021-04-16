@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Spanner.V1
+namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently.
     /// </summary>
-    [GcpNativeResourceType("google-native:spanner/v1:InstanceBackup")]
+    [GoogleNativeResourceType("google-native:spanner/v1:InstanceBackup")]
     public partial class InstanceBackup : Pulumi.CustomResource
     {
         /// <summary>

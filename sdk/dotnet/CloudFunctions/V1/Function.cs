@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudFunctions.V1
+namespace Pulumi.GoogleNative.CloudFunctions.V1
 {
     /// <summary>
     /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudfunctions/v1:Function")]
+    [GoogleNativeResourceType("google-native:cloudfunctions/v1:Function")]
     public partial class Function : Pulumi.CustomResource
     {
         /// <summary>

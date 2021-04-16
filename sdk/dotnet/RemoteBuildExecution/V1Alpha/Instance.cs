@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.RemoteBuildExecution.V1Alpha
+namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
 {
     /// <summary>
     /// Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.
     /// </summary>
-    [GcpNativeResourceType("google-native:remotebuildexecution/v1alpha:Instance")]
+    [GoogleNativeResourceType("google-native:remotebuildexecution/v1alpha:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

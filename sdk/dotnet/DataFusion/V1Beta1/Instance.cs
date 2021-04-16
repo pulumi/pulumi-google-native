@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataFusion.V1Beta1
+namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 {
     /// <summary>
     /// Creates a new Data Fusion instance in the specified project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:datafusion/v1beta1:Instance")]
+    [GoogleNativeResourceType("google-native:datafusion/v1beta1:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

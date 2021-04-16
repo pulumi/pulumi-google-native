@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
+namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:containeranalysis/v1alpha1:Occurrence")]
+    [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:Occurrence")]
     public partial class Occurrence : Pulumi.CustomResource
     {
         /// <summary>

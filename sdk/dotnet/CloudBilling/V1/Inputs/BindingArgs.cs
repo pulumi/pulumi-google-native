@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudBilling.V1.Inputs
+namespace Pulumi.GoogleNative.CloudBilling.V1.Inputs
 {
 
     /// <summary>

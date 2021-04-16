@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.TPU.V1
+namespace Pulumi.GoogleNative.TPU.V1
 {
     /// <summary>
     /// Creates a node.
     /// </summary>
-    [GcpNativeResourceType("google-native:tpu/v1:Node")]
+    [GoogleNativeResourceType("google-native:tpu/v1:Node")]
     public partial class Node : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Logging.V2
+namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
     /// </summary>
-    [GcpNativeResourceType("google-native:logging/v2:OrganizationBucketView")]
+    [GoogleNativeResourceType("google-native:logging/v2:OrganizationBucketView")]
     public partial class OrganizationBucketView : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataproc.V1
+namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
     /// Creates new workflow template.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataproc/v1:RegionWorkflowTemplate")]
+    [GoogleNativeResourceType("google-native:dataproc/v1:RegionWorkflowTemplate")]
     public partial class RegionWorkflowTemplate : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
+namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
     /// Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
     /// </summary>
-    [GcpNativeResourceType("google-native:artifactregistry/v1beta1:Repository")]
+    [GoogleNativeResourceType("google-native:artifactregistry/v1beta1:Repository")]
     public partial class Repository : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative
+namespace Pulumi.GoogleNative
 {
     /// <summary>
     /// The provider type for the Google Cloud package.
     /// </summary>
-    [GcpNativeResourceType("pulumi:providers:google-native")]
+    [GoogleNativeResourceType("pulumi:providers:google-native")]
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BinaryAuthorization.V1Beta1
+namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:binaryauthorization/v1beta1:AttestorIamPolicy")]
+    [GoogleNativeResourceType("google-native:binaryauthorization/v1beta1:AttestorIamPolicy")]
     public partial class AttestorIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

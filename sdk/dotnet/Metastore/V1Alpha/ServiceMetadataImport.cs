@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Metastore.V1Alpha
+namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
     /// <summary>
     /// Creates a new MetadataImport in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:metastore/v1alpha:ServiceMetadataImport")]
+    [GoogleNativeResourceType("google-native:metastore/v1alpha:ServiceMetadataImport")]
     public partial class ServiceMetadataImport : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AppEngine.V1Alpha
+namespace Pulumi.GoogleNative.AppEngine.V1Alpha
 {
     /// <summary>
     /// Uploads the specified SSL certificate.
     /// </summary>
-    [GcpNativeResourceType("google-native:appengine/v1alpha:AppAuthorizedCertificate")]
+    [GoogleNativeResourceType("google-native:appengine/v1alpha:AppAuthorizedCertificate")]
     public partial class AppAuthorizedCertificate : Pulumi.CustomResource
     {
         /// <summary>

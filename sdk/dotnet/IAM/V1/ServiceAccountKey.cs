@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.IAM.V1
+namespace Pulumi.GoogleNative.IAM.V1
 {
     /// <summary>
     /// Creates a ServiceAccountKey.
     /// </summary>
-    [GcpNativeResourceType("google-native:iam/v1:ServiceAccountKey")]
+    [GoogleNativeResourceType("google-native:iam/v1:ServiceAccountKey")]
     public partial class ServiceAccountKey : Pulumi.CustomResource
     {
         /// <summary>

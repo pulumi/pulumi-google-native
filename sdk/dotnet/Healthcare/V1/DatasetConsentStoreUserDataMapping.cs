@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1
+namespace Pulumi.GoogleNative.Healthcare.V1
 {
     /// <summary>
     /// Creates a new User data mapping in the parent consent store.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1:DatasetConsentStoreUserDataMapping")]
+    [GoogleNativeResourceType("google-native:healthcare/v1:DatasetConsentStoreUserDataMapping")]
     public partial class DatasetConsentStoreUserDataMapping : Pulumi.CustomResource
     {
         /// <summary>

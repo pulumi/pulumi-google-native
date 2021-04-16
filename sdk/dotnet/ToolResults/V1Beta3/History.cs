@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ToolResults.V1Beta3
+namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a History. The returned History will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing project does not exist
     /// </summary>
-    [GcpNativeResourceType("google-native:toolresults/v1beta3:History")]
+    [GoogleNativeResourceType("google-native:toolresults/v1beta3:History")]
     public partial class History : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQuery.V2
+namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Creates a new empty dataset.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigquery/v2:Dataset")]
+    [GoogleNativeResourceType("google-native:bigquery/v2:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DeploymentManager.Alpha
+namespace Pulumi.GoogleNative.DeploymentManager.Alpha
 {
     /// <summary>
     /// Creates a type provider.
     /// </summary>
-    [GcpNativeResourceType("google-native:deploymentmanager/alpha:TypeProvider")]
+    [GoogleNativeResourceType("google-native:deploymentmanager/alpha:TypeProvider")]
     public partial class TypeProvider : Pulumi.CustomResource
     {
         /// <summary>

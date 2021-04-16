@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Pubsublite.V1
+namespace Pulumi.GoogleNative.Pubsublite.V1
 {
     /// <summary>
     /// Creates a new topic.
     /// </summary>
-    [GcpNativeResourceType("google-native:pubsublite/v1:AdminTopic")]
+    [GoogleNativeResourceType("google-native:pubsublite/v1:AdminTopic")]
     public partial class AdminTopic : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.IAM.V1
+namespace Pulumi.GoogleNative.IAM.V1
 {
     /// <summary>
     /// Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
     /// </summary>
-    [GcpNativeResourceType("google-native:iam/v1:WorkloadIdentityPool")]
+    [GoogleNativeResourceType("google-native:iam/v1:WorkloadIdentityPool")]
     public partial class WorkloadIdentityPool : Pulumi.CustomResource
     {
         /// <summary>

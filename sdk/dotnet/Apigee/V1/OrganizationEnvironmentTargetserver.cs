@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a TargetServer in the specified environment.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTargetserver")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTargetserver")]
     public partial class OrganizationEnvironmentTargetserver : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudResourceManager.V3
+namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Sets the access control policy on a TagKey, replacing any existing policy. The `resource` field should be the TagKey's resource name. For example, "tagKeys/1234". The caller must have `resourcemanager.tagKeys.setIamPolicy` permission on the identified tagValue.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:TagKeyIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:TagKeyIamPolicy")]
     public partial class TagKeyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

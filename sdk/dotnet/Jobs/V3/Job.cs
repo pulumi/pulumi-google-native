@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Jobs.V3
+namespace Pulumi.GoogleNative.Jobs.V3
 {
     /// <summary>
     /// Creates a new job. Typically, the job becomes searchable within 10 seconds, but it may take up to 5 minutes.
     /// </summary>
-    [GcpNativeResourceType("google-native:jobs/v3:Job")]
+    [GoogleNativeResourceType("google-native:jobs/v3:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

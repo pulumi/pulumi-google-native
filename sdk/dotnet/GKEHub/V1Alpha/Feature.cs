@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GKEHub.V1Alpha
+namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 {
     /// <summary>
     /// Adds a new Feature.
     /// </summary>
-    [GcpNativeResourceType("google-native:gkehub/v1alpha:Feature")]
+    [GoogleNativeResourceType("google-native:gkehub/v1alpha:Feature")]
     public partial class Feature : Pulumi.CustomResource
     {
         /// <summary>

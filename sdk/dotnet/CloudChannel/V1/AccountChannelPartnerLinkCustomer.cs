@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudChannel.V1
+namespace Pulumi.GoogleNative.CloudChannel.V1
 {
     /// <summary>
     /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return value: The newly created Customer resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer")]
+    [GoogleNativeResourceType("google-native:cloudchannel/v1:AccountChannelPartnerLinkCustomer")]
     public partial class AccountChannelPartnerLinkCustomer : Pulumi.CustomResource
     {
         /// <summary>

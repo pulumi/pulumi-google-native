@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AccessContextManager.V1
+namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
     /// Create a Service Perimeter. The longrunning operation from this RPC will have a successful status once the Service Perimeter has propagated to long-lasting storage. Service Perimeters containing errors will result in an error response for the first error encountered.
     /// </summary>
-    [GcpNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyServicePerimeter")]
+    [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyServicePerimeter")]
     public partial class AccessPolicyServicePerimeter : Pulumi.CustomResource
     {
         /// <summary>

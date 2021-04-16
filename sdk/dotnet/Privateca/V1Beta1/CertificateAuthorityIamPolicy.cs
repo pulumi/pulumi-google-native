@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Privateca.V1Beta1
+namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:privateca/v1beta1:CertificateAuthorityIamPolicy")]
+    [GoogleNativeResourceType("google-native:privateca/v1beta1:CertificateAuthorityIamPolicy")]
     public partial class CertificateAuthorityIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

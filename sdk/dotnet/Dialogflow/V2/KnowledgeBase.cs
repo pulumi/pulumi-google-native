@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a knowledge base.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:KnowledgeBase")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:KnowledgeBase")]
     public partial class KnowledgeBase : Pulumi.CustomResource
     {
         /// <summary>

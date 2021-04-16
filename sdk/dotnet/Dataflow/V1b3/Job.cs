@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataflow.V1b3
+namespace Pulumi.GoogleNative.Dataflow.V1b3
 {
     /// <summary>
     /// Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataflow/v1b3:Job")]
+    [GoogleNativeResourceType("google-native:dataflow/v1b3:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

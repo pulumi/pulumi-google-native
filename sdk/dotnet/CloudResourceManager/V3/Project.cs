@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudResourceManager.V3
+namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:Project")]
+    [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:Project")]
     public partial class Project : Pulumi.CustomResource
     {
         /// <summary>

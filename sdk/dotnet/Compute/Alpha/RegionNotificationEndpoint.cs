@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:RegionNotificationEndpoint")]
+    [GoogleNativeResourceType("google-native:compute/alpha:RegionNotificationEndpoint")]
     public partial class RegionNotificationEndpoint : Pulumi.CustomResource
     {
         /// <summary>

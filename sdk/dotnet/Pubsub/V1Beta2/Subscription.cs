@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Pubsub.V1Beta2
+namespace Pulumi.GoogleNative.Pubsub.V1Beta2
 {
     /// <summary>
     /// Creates a subscription to a given topic. If the subscription already exists, returns `ALREADY_EXISTS`. If the corresponding topic doesn't exist, returns `NOT_FOUND`. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic. Note that for REST API requests, you must specify a name.
     /// </summary>
-    [GcpNativeResourceType("google-native:pubsub/v1beta2:Subscription")]
+    [GoogleNativeResourceType("google-native:pubsub/v1beta2:Subscription")]
     public partial class Subscription : Pulumi.CustomResource
     {
         /// <summary>

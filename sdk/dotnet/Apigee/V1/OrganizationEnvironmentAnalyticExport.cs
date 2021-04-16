@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentAnalyticExport")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentAnalyticExport")]
     public partial class OrganizationEnvironmentAnalyticExport : Pulumi.CustomResource
     {
         /// <summary>

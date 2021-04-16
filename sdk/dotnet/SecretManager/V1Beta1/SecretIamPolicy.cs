@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SecretManager.V1Beta1
+namespace Pulumi.GoogleNative.SecretManager.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
     /// </summary>
-    [GcpNativeResourceType("google-native:secretmanager/v1beta1:SecretIamPolicy")]
+    [GoogleNativeResourceType("google-native:secretmanager/v1beta1:SecretIamPolicy")]
     public partial class SecretIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

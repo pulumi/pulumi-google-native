@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.VPCAccess.V1.Outputs
+namespace Pulumi.GoogleNative.VPCAccess.V1.Outputs
 {
 
     [OutputType]

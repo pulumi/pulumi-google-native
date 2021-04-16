@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.NetworkConnectivity.V1Alpha1
+namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 {
     /// <summary>
     /// Creates a new Spoke in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:networkconnectivity/v1alpha1:Spoke")]
+    [GoogleNativeResourceType("google-native:networkconnectivity/v1alpha1:Spoke")]
     public partial class Spoke : Pulumi.CustomResource
     {
         /// <summary>

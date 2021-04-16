@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DeploymentManager.V2Beta
+namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
 {
     /// <summary>
     /// Creates a deployment and all of the resources described by the deployment manifest.
     /// </summary>
-    [GcpNativeResourceType("google-native:deploymentmanager/v2beta:Deployment")]
+    [GoogleNativeResourceType("google-native:deploymentmanager/v2beta:Deployment")]
     public partial class Deployment : Pulumi.CustomResource
     {
         /// <summary>

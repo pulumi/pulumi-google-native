@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudTasks.V2
+namespace Pulumi.GoogleNative.CloudTasks.V2
 {
     /// <summary>
     /// Sets the access control policy for a Queue. Replaces any existing policy. Note: The Cloud Console does not check queue-level IAM permissions yet. Project-level permissions are required to use the Cloud Console. Authorization requires the following [Google IAM](https://cloud.google.com/iam) permission on the specified resource parent: * `cloudtasks.queues.setIamPolicy`
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudtasks/v2:QueueIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudtasks/v2:QueueIamPolicy")]
     public partial class QueueIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Vision.V1
+namespace Pulumi.GoogleNative.Vision.V1
 {
     /// <summary>
     /// Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
     /// </summary>
-    [GcpNativeResourceType("google-native:vision/v1:ProductSet")]
+    [GoogleNativeResourceType("google-native:vision/v1:ProductSet")]
     public partial class ProductSet : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DNS.V1
+namespace Pulumi.GoogleNative.DNS.V1
 {
     /// <summary>
     /// Creates a new ManagedZone.
     /// </summary>
-    [GcpNativeResourceType("google-native:dns/v1:ManagedZone")]
+    [GoogleNativeResourceType("google-native:dns/v1:ManagedZone")]
     public partial class ManagedZone : Pulumi.CustomResource
     {
         /// <summary>

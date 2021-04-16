@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new canary evaluation for an organization.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationInstanceCanaryevaluation")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationInstanceCanaryevaluation")]
     public partial class OrganizationInstanceCanaryevaluation : Pulumi.CustomResource
     {
         /// <summary>

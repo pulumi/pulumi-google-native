@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// A maximum of 10,000 entry groups may be created per organization across all locations. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:EntryGroup")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:EntryGroup")]
     public partial class EntryGroup : Pulumi.CustomResource
     {
         /// <summary>

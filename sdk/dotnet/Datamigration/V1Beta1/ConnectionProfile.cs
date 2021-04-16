@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Datamigration.V1Beta1
+namespace Pulumi.GoogleNative.Datamigration.V1Beta1
 {
     /// <summary>
     /// Creates a new connection profile in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:datamigration/v1beta1:ConnectionProfile")]
+    [GoogleNativeResourceType("google-native:datamigration/v1beta1:ConnectionProfile")]
     public partial class ConnectionProfile : Pulumi.CustomResource
     {
         /// <summary>

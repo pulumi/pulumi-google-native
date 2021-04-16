@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ArtifactRegistry.V1Beta1
+namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
 {
     /// <summary>
     /// Updates the IAM policy for a given resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:artifactregistry/v1beta1:RepositoryIamPolicy")]
+    [GoogleNativeResourceType("google-native:artifactregistry/v1beta1:RepositoryIamPolicy")]
     public partial class RepositoryIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates an instance group in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:InstanceGroup")]
+    [GoogleNativeResourceType("google-native:compute/beta:InstanceGroup")]
     public partial class InstanceGroup : Pulumi.CustomResource
     {
         /// <summary>

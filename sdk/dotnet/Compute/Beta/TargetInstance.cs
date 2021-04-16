@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:TargetInstance")]
+    [GoogleNativeResourceType("google-native:compute/beta:TargetInstance")]
     public partial class TargetInstance : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Run.V1
+namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Create a service.
     /// </summary>
-    [GcpNativeResourceType("google-native:run/v1:Service")]
+    [GoogleNativeResourceType("google-native:run/v1:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

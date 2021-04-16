@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.FirebaseML.V1Beta2
+namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
 {
     /// <summary>
     /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
     /// </summary>
-    [GcpNativeResourceType("google-native:firebaseml/v1beta2:Model")]
+    [GoogleNativeResourceType("google-native:firebaseml/v1beta2:Model")]
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Domains.V1Beta1
+namespace Pulumi.GoogleNative.Domains.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:domains/v1beta1:RegistrationIamPolicy")]
+    [GoogleNativeResourceType("google-native:domains/v1beta1:RegistrationIamPolicy")]
     public partial class RegistrationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

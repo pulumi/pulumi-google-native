@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Metastore.V1Alpha
+namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:metastore/v1alpha:ServiceIamPolicy")]
+    [GoogleNativeResourceType("google-native:metastore/v1alpha:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

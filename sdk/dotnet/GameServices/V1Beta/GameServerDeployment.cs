@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GameServices.V1Beta
+namespace Pulumi.GoogleNative.GameServices.V1Beta
 {
     /// <summary>
     /// Creates a new game server deployment in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:gameservices/v1beta:GameServerDeployment")]
+    [GoogleNativeResourceType("google-native:gameservices/v1beta:GameServerDeployment")]
     public partial class GameServerDeployment : Pulumi.CustomResource
     {
         /// <summary>

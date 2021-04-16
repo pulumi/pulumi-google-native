@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Ml.V1
+namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create.
     /// </summary>
-    [GcpNativeResourceType("google-native:ml/v1:Model")]
+    [GoogleNativeResourceType("google-native:ml/v1:Model")]
     public partial class Model : Pulumi.CustomResource
     {
         /// <summary>

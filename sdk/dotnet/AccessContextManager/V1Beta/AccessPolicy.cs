@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AccessContextManager.V1Beta
+namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 {
     /// <summary>
     /// Create an `AccessPolicy`. Fails if this organization already has a `AccessPolicy`. The longrunning Operation will have a successful status once the `AccessPolicy` has propagated to long-lasting storage. Syntactic and basic semantic errors will be returned in `metadata` as a BadRequest proto.
     /// </summary>
-    [GcpNativeResourceType("google-native:accesscontextmanager/v1beta:AccessPolicy")]
+    [GoogleNativeResourceType("google-native:accesscontextmanager/v1beta:AccessPolicy")]
     public partial class AccessPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryDataTransfer.V1
+namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 {
     /// <summary>
     /// Creates a new data transfer configuration.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigquerydatatransfer/v1:TransferConfig")]
+    [GoogleNativeResourceType("google-native:bigquerydatatransfer/v1:TransferConfig")]
     public partial class TransferConfig : Pulumi.CustomResource
     {
         /// <summary>

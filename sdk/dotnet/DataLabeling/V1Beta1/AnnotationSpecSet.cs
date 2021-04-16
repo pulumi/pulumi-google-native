@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataLabeling.V1Beta1
+namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an annotation spec set by providing a set of labels.
     /// </summary>
-    [GcpNativeResourceType("google-native:datalabeling/v1beta1:AnnotationSpecSet")]
+    [GoogleNativeResourceType("google-native:datalabeling/v1beta1:AnnotationSpecSet")]
     public partial class AnnotationSpecSet : Pulumi.CustomResource
     {
         /// <summary>

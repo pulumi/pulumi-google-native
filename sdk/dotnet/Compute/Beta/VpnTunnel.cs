@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a VpnTunnel resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:VpnTunnel")]
+    [GoogleNativeResourceType("google-native:compute/beta:VpnTunnel")]
     public partial class VpnTunnel : Pulumi.CustomResource
     {
         /// <summary>

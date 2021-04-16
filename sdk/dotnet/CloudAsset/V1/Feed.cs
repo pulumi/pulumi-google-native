@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudAsset.V1
+namespace Pulumi.GoogleNative.CloudAsset.V1
 {
     /// <summary>
     /// Creates a feed in a parent project/folder/organization to listen to its asset updates.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudasset/v1:Feed")]
+    [GoogleNativeResourceType("google-native:cloudasset/v1:Feed")]
     public partial class Feed : Pulumi.CustomResource
     {
         /// <summary>

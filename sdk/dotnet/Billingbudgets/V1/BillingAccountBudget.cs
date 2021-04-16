@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Billingbudgets.V1
+namespace Pulumi.GoogleNative.Billingbudgets.V1
 {
     /// <summary>
     /// Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/quotas) for more information on the limits of the number of budgets you can create.
     /// </summary>
-    [GcpNativeResourceType("google-native:billingbudgets/v1:BillingAccountBudget")]
+    [GoogleNativeResourceType("google-native:billingbudgets/v1:BillingAccountBudget")]
     public partial class BillingAccountBudget : Pulumi.CustomResource
     {
         /// <summary>

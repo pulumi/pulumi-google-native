@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudIoT.V1
+namespace Pulumi.GoogleNative.CloudIoT.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudiot/v1:RegistryGroupIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudiot/v1:RegistryGroupIamPolicy")]
     public partial class RegistryGroupIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

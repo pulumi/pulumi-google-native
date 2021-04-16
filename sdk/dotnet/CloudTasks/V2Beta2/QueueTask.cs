@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudTasks.V2Beta2
+namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
 {
     /// <summary>
     /// Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * For App Engine queues, the maximum task size is 100KB. * For pull queues, the maximum task size is 1MB.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudtasks/v2beta2:QueueTask")]
+    [GoogleNativeResourceType("google-native:cloudtasks/v2beta2:QueueTask")]
     public partial class QueueTask : Pulumi.CustomResource
     {
         /// <summary>

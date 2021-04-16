@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQuery.V2
+namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigquery/v2:TableIamPolicy")]
+    [GoogleNativeResourceType("google-native:bigquery/v2:TableIamPolicy")]
     public partial class TableIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

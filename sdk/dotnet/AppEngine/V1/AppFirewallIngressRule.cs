@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AppEngine.V1
+namespace Pulumi.GoogleNative.AppEngine.V1
 {
     /// <summary>
     /// Creates a firewall rule for the application.
     /// </summary>
-    [GcpNativeResourceType("google-native:appengine/v1:AppFirewallIngressRule")]
+    [GoogleNativeResourceType("google-native:appengine/v1:AppFirewallIngressRule")]
     public partial class AppFirewallIngressRule : Pulumi.CustomResource
     {
         /// <summary>

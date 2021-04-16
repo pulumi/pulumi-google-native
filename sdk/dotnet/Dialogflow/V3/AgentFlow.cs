@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates a flow in the specified agent.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:AgentFlow")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:AgentFlow")]
     public partial class AgentFlow : Pulumi.CustomResource
     {
         /// <summary>

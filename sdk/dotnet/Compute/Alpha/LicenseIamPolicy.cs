@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:LicenseIamPolicy")]
+    [GoogleNativeResourceType("google-native:compute/alpha:LicenseIamPolicy")]
     public partial class LicenseIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

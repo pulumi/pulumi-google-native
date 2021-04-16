@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudSearch.V1.Inputs
+namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
 {
 
     public sealed class ValueFilterArgs : Pulumi.ResourceArgs

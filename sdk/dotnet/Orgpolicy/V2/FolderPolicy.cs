@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Orgpolicy.V2
+namespace Pulumi.GoogleNative.Orgpolicy.V2
 {
     /// <summary>
     /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:orgpolicy/v2:FolderPolicy")]
+    [GoogleNativeResourceType("google-native:orgpolicy/v2:FolderPolicy")]
     public partial class FolderPolicy : Pulumi.CustomResource
     {
         /// <summary>

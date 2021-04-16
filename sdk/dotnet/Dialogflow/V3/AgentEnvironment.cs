@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates an Environment in the specified Agent.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:AgentEnvironment")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:AgentEnvironment")]
     public partial class AgentEnvironment : Pulumi.CustomResource
     {
         /// <summary>

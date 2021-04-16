@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SecretManager.V1.Inputs
+namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
 {
 
     /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Logging.V2
+namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a new exclusion in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:logging/v2:Exclusion")]
+    [GoogleNativeResourceType("google-native:logging/v2:Exclusion")]
     public partial class Exclusion : Pulumi.CustomResource
     {
         /// <summary>

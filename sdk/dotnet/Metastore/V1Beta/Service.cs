@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Metastore.V1Beta
+namespace Pulumi.GoogleNative.Metastore.V1Beta
 {
     /// <summary>
     /// Creates a metastore service in a project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:metastore/v1beta:Service")]
+    [GoogleNativeResourceType("google-native:metastore/v1beta:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GKEHub.V1Alpha
+namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:gkehub/v1alpha:FeatureIamPolicy")]
+    [GoogleNativeResourceType("google-native:gkehub/v1alpha:FeatureIamPolicy")]
     public partial class FeatureIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

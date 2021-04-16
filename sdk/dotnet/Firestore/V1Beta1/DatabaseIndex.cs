@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Firestore.V1Beta1
+namespace Pulumi.GoogleNative.Firestore.V1Beta1
 {
     /// <summary>
     /// Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
     /// </summary>
-    [GcpNativeResourceType("google-native:firestore/v1beta1:DatabaseIndex")]
+    [GoogleNativeResourceType("google-native:firestore/v1beta1:DatabaseIndex")]
     public partial class DatabaseIndex : Pulumi.CustomResource
     {
         /// <summary>

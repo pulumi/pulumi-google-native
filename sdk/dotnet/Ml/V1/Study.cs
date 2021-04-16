@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Ml.V1
+namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Creates a study.
     /// </summary>
-    [GcpNativeResourceType("google-native:ml/v1:Study")]
+    [GoogleNativeResourceType("google-native:ml/v1:Study")]
     public partial class Study : Pulumi.CustomResource
     {
         /// <summary>

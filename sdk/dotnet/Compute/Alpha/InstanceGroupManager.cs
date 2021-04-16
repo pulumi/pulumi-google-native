@@ -7,14 +7,14 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
     /// A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:InstanceGroupManager")]
+    [GoogleNativeResourceType("google-native:compute/alpha:InstanceGroupManager")]
     public partial class InstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>

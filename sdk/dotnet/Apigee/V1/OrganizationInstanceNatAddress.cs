@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationInstanceNatAddress")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationInstanceNatAddress")]
     public partial class OrganizationInstanceNatAddress : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceClusterBackup")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceClusterBackup")]
     public partial class InstanceClusterBackup : Pulumi.CustomResource
     {
         /// <summary>

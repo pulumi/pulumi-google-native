@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:EntryGroupEntry")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:EntryGroupEntry")]
     public partial class EntryGroupEntry : Pulumi.CustomResource
     {
         /// <summary>

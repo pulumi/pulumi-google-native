@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Genomics.V1Alpha2
+namespace Pulumi.GoogleNative.Genomics.V1Alpha2
 {
     /// <summary>
     /// Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used to run the pipeline. Caller must have WRITE permission to the project.
     /// </summary>
-    [GcpNativeResourceType("google-native:genomics/v1alpha2:Pipeline")]
+    [GoogleNativeResourceType("google-native:genomics/v1alpha2:Pipeline")]
     public partial class Pipeline : Pulumi.CustomResource
     {
         /// <summary>

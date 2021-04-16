@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Pubsublite.V1
+namespace Pulumi.GoogleNative.Pubsublite.V1
 {
     /// <summary>
     /// Creates a new subscription.
     /// </summary>
-    [GcpNativeResourceType("google-native:pubsublite/v1:AdminSubscription")]
+    [GoogleNativeResourceType("google-native:pubsublite/v1:AdminSubscription")]
     public partial class AdminSubscription : Pulumi.CustomResource
     {
         /// <summary>

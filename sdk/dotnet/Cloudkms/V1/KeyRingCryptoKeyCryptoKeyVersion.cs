@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Cloudkms.V1
+namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion")]
+    [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion")]
     public partial class KeyRingCryptoKeyCryptoKeyVersion : Pulumi.CustomResource
     {
         /// <summary>

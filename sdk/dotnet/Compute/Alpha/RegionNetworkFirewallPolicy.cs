@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a new network firewall policy in the specified project and region.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:RegionNetworkFirewallPolicy")]
+    [GoogleNativeResourceType("google-native:compute/alpha:RegionNetworkFirewallPolicy")]
     public partial class RegionNetworkFirewallPolicy : Pulumi.CustomResource
     {
         /// <summary>

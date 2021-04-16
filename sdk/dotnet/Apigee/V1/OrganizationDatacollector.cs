@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new data collector.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationDatacollector")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationDatacollector")]
     public partial class OrganizationDatacollector : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudSearch.V1
+namespace Pulumi.GoogleNative.CloudSearch.V1
 {
     /// <summary>
     /// Creates a datasource. **Note:** This API requires an admin account to execute.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudsearch/v1:SettingDatasource")]
+    [GoogleNativeResourceType("google-native:cloudsearch/v1:SettingDatasource")]
     public partial class SettingDatasource : Pulumi.CustomResource
     {
         /// <summary>

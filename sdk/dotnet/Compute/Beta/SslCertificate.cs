@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a SslCertificate resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:SslCertificate")]
+    [GoogleNativeResourceType("google-native:compute/beta:SslCertificate")]
     public partial class SslCertificate : Pulumi.CustomResource
     {
         /// <summary>

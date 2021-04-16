@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Spanner.V1
+namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Sets the access control policy on an instance resource. Replaces any existing policy. Authorization requires `spanner.instances.setIamPolicy` on resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:spanner/v1:InstanceIamPolicy")]
+    [GoogleNativeResourceType("google-native:spanner/v1:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

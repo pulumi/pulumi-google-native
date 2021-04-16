@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Monitoring.V3
+namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
     /// Create a Service.
     /// </summary>
-    [GcpNativeResourceType("google-native:monitoring/v3:Service")]
+    [GoogleNativeResourceType("google-native:monitoring/v3:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

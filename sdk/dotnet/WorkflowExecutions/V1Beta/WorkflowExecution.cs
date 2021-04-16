@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.WorkflowExecutions.V1Beta
+namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta
 {
     /// <summary>
     /// Creates a new execution using the latest revision of the given workflow.
     /// </summary>
-    [GcpNativeResourceType("google-native:workflowexecutions/v1beta:WorkflowExecution")]
+    [GoogleNativeResourceType("google-native:workflowexecutions/v1beta:WorkflowExecution")]
     public partial class WorkflowExecution : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataproc.V1Beta2
+namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataproc/v1beta2:AutoscalingPolicyIamPolicy")]
+    [GoogleNativeResourceType("google-native:dataproc/v1beta2:AutoscalingPolicyIamPolicy")]
     public partial class AutoscalingPolicyIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

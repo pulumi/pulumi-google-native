@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQuery.V2.Inputs
+namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
     public sealed class TransactionInfoArgs : Pulumi.ResourceArgs

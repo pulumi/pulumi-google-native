@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a firewall rule in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:Firewall")]
+    [GoogleNativeResourceType("google-native:compute/v1:Firewall")]
     public partial class Firewall : Pulumi.CustomResource
     {
         /// <summary>

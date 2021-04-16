@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:AgentSessionEntityType")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:AgentSessionEntityType")]
     public partial class AgentSessionEntityType : Pulumi.CustomResource
     {
         /// <summary>

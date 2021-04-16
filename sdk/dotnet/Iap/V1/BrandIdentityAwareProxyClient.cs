@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Iap.V1
+namespace Pulumi.GoogleNative.Iap.V1
 {
     /// <summary>
     /// Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
     /// </summary>
-    [GcpNativeResourceType("google-native:iap/v1:BrandIdentityAwareProxyClient")]
+    [GoogleNativeResourceType("google-native:iap/v1:BrandIdentityAwareProxyClient")]
     public partial class BrandIdentityAwareProxyClient : Pulumi.CustomResource
     {
         /// <summary>

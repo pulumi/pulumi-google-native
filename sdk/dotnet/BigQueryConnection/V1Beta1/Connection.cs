@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryConnection.V1Beta1
+namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
 {
     /// <summary>
     /// Creates a new connection.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigqueryconnection/v1beta1:Connection")]
+    [GoogleNativeResourceType("google-native:bigqueryconnection/v1beta1:Connection")]
     public partial class Connection : Pulumi.CustomResource
     {
         /// <summary>

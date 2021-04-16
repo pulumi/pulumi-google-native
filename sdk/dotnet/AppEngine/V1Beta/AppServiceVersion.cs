@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AppEngine.V1Beta
+namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Deploys code and resource files to a new version.
     /// </summary>
-    [GcpNativeResourceType("google-native:appengine/v1beta:AppServiceVersion")]
+    [GoogleNativeResourceType("google-native:appengine/v1beta:AppServiceVersion")]
     public partial class AppServiceVersion : Pulumi.CustomResource
     {
         /// <summary>

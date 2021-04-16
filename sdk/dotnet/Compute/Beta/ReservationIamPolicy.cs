@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:ReservationIamPolicy")]
+    [GoogleNativeResourceType("google-native:compute/beta:ReservationIamPolicy")]
     public partial class ReservationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

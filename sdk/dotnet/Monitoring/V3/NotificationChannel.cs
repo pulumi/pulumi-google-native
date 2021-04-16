@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Monitoring.V3
+namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
     /// </summary>
-    [GcpNativeResourceType("google-native:monitoring/v3:NotificationChannel")]
+    [GoogleNativeResourceType("google-native:monitoring/v3:NotificationChannel")]
     public partial class NotificationChannel : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.NetworkManagement.V1
+namespace Pulumi.GoogleNative.NetworkManagement.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:networkmanagement/v1:ConnectivityTestIamPolicy")]
+    [GoogleNativeResourceType("google-native:networkmanagement/v1:ConnectivityTestIamPolicy")]
     public partial class ConnectivityTestIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Monitoring.V3
+namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new metric descriptor. User-created metric descriptors define custom metrics (https://cloud.google.com/monitoring/custom-metrics).
     /// </summary>
-    [GcpNativeResourceType("google-native:monitoring/v3:MetricDescriptor")]
+    [GoogleNativeResourceType("google-native:monitoring/v3:MetricDescriptor")]
     public partial class MetricDescriptor : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates an agent in the specified location.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3beta1:Agent")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Agent")]
     public partial class Agent : Pulumi.CustomResource
     {
         /// <summary>

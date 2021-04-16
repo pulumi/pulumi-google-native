@@ -21,7 +21,7 @@ import (
 )
 
 // Note - this needs to be kept in sync with the layout in the SDK package
-const goBasePath = "github.com/pulumi/pulumi-google-native/sdk/go/gcp"
+const goBasePath = "github.com/pulumi/pulumi-google-native/sdk/go/google"
 
 // PulumiSchema will generate a Pulumi schema for the given Google Cloud discovery documents.
 func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
@@ -50,7 +50,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	}
 
 	csharpNamespaces := map[string]string{
-		"google-native": "GcpNative",
+		"google-native": "GoogleNative",
 	}
 	pythonModuleNames := map[string]string{}
 	golangImportAliases := map[string]string{}

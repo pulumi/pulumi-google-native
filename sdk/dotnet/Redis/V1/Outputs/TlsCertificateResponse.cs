@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Redis.V1.Outputs
+namespace Pulumi.GoogleNative.Redis.V1.Outputs
 {
 
     [OutputType]

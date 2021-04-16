@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudBuild.V1
+namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
     /// Creates a new `BuildTrigger`. This API is experimental.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudbuild/v1:Trigger")]
+    [GoogleNativeResourceType("google-native:cloudbuild/v1:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

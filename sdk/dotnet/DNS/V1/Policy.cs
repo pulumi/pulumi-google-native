@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DNS.V1
+namespace Pulumi.GoogleNative.DNS.V1
 {
     /// <summary>
     /// Creates a new Policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:dns/v1:Policy")]
+    [GoogleNativeResourceType("google-native:dns/v1:Policy")]
     public partial class Policy : Pulumi.CustomResource
     {
         /// <summary>

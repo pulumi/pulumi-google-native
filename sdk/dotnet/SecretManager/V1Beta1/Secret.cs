@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SecretManager.V1Beta1
+namespace Pulumi.GoogleNative.SecretManager.V1Beta1
 {
     /// <summary>
     /// Creates a new Secret containing no SecretVersions.
     /// </summary>
-    [GcpNativeResourceType("google-native:secretmanager/v1beta1:Secret")]
+    [GoogleNativeResourceType("google-native:secretmanager/v1beta1:Secret")]
     public partial class Secret : Pulumi.CustomResource
     {
         /// <summary>
