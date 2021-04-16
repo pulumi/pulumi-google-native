@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ServiceDirectory.V1
+namespace Pulumi.GoogleNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Sets the IAM Policy for a resource (namespace or service only).
     /// </summary>
-    [GcpNativeResourceType("google-native:servicedirectory/v1:NamespaceServiceIamPolicy")]
+    [GoogleNativeResourceType("google-native:servicedirectory/v1:NamespaceServiceIamPolicy")]
     public partial class NamespaceServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

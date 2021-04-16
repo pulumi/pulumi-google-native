@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:SslPolicy")]
+    [GoogleNativeResourceType("google-native:compute/beta:SslPolicy")]
     public partial class SslPolicy : Pulumi.CustomResource
     {
         /// <summary>

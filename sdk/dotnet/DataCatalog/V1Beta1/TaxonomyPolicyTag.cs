@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a policy tag in the specified taxonomy.
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyPolicyTag")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:TaxonomyPolicyTag")]
     public partial class TaxonomyPolicyTag : Pulumi.CustomResource
     {
         /// <summary>

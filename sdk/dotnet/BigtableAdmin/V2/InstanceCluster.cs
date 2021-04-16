@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates a cluster within an instance.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceCluster")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceCluster")]
     public partial class InstanceCluster : Pulumi.CustomResource
     {
         /// <summary>

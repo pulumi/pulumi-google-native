@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataproc.V1
+namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
     /// Creates new autoscaling policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataproc/v1:AutoscalingPolicy")]
+    [GoogleNativeResourceType("google-native:dataproc/v1:AutoscalingPolicy")]
     public partial class AutoscalingPolicy : Pulumi.CustomResource
     {
         [Output("basicAlgorithm")]

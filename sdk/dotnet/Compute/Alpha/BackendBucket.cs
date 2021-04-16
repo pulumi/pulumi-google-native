@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a BackendBucket resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:BackendBucket")]
+    [GoogleNativeResourceType("google-native:compute/alpha:BackendBucket")]
     public partial class BackendBucket : Pulumi.CustomResource
     {
         /// <summary>

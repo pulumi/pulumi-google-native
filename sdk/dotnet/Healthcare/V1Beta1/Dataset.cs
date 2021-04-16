@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1Beta1
+namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1beta1:Dataset")]
+    [GoogleNativeResourceType("google-native:healthcare/v1beta1:Dataset")]
     public partial class Dataset : Pulumi.CustomResource
     {
         /// <summary>

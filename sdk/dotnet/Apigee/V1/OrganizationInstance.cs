@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationInstance")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationInstance")]
     public partial class OrganizationInstance : Pulumi.CustomResource
     {
         /// <summary>

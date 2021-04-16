@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:RegionBackendService")]
+    [GoogleNativeResourceType("google-native:compute/v1:RegionBackendService")]
     public partial class RegionBackendService : Pulumi.CustomResource
     {
         /// <summary>

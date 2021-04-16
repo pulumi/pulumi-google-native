@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DLP.V2
+namespace Pulumi.GoogleNative.DLP.V2
 {
     /// <summary>
     /// Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
     /// </summary>
-    [GcpNativeResourceType("google-native:dlp/v2:OrganizationDeidentifyTemplate")]
+    [GoogleNativeResourceType("google-native:dlp/v2:OrganizationDeidentifyTemplate")]
     public partial class OrganizationDeidentifyTemplate : Pulumi.CustomResource
     {
         /// <summary>

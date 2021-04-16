@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataLabeling.V1Beta1
+namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Create a FeedbackMessage object.
     /// </summary>
-    [GcpNativeResourceType("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage")]
+    [GoogleNativeResourceType("google-native:datalabeling/v1beta1:DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage")]
     public partial class DatasetAnnotatedDatasetFeedbackThreadFeedbackMessage : Pulumi.CustomResource
     {
         /// <summary>

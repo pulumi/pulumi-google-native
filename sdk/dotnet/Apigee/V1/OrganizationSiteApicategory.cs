@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a new category on the portal.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationSiteApicategory")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationSiteApicategory")]
     public partial class OrganizationSiteApicategory : Pulumi.CustomResource
     {
         /// <summary>

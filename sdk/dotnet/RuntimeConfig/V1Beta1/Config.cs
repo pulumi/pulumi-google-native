@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
+namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
     /// <summary>
     /// Creates a new RuntimeConfig resource. The configuration name must be unique within project.
     /// </summary>
-    [GcpNativeResourceType("google-native:runtimeconfig/v1beta1:Config")]
+    [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:Config")]
     public partial class Config : Pulumi.CustomResource
     {
         /// <summary>

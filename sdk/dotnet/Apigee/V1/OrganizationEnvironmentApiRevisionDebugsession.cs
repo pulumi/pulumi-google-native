@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a debug session for a deployed API Proxy revision.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentApiRevisionDebugsession")]
     public partial class OrganizationEnvironmentApiRevisionDebugsession : Pulumi.CustomResource
     {
         /// <summary>

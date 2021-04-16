@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceTable")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceTable")]
     public partial class InstanceTable : Pulumi.CustomResource
     {
         /// <summary>

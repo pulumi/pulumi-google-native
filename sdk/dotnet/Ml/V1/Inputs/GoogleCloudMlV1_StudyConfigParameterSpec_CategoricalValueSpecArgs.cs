@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Ml.V1.Inputs
+namespace Pulumi.GoogleNative.Ml.V1.Inputs
 {
 
     public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs : Pulumi.ResourceArgs

@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using Pulumi;
 
-namespace Pulumi.GcpNative
+namespace Pulumi.GoogleNative
 {
     static class Utilities
     {
@@ -66,7 +66,7 @@ namespace Pulumi.GcpNative
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using var stream = assembly.GetManifestResourceStream("Pulumi.GcpNative.version.txt");
+            using var stream = assembly.GetManifestResourceStream("Pulumi.GoogleNative.version.txt");
             using var reader = new StreamReader(stream ?? throw new NotSupportedException("Missing embedded version.txt file"));
             version = reader.ReadToEnd().Trim();
             var parts = version.Split("\n");
@@ -78,9 +78,9 @@ namespace Pulumi.GcpNative
         }
     }
 
-    internal sealed class GcpNativeResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class GoogleNativeResourceTypeAttribute : Pulumi.ResourceTypeAttribute
     {
-        public GcpNativeResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        public GoogleNativeResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {
         }
     }

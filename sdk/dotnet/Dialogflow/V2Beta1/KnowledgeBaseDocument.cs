@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a new document. Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2beta1:KnowledgeBaseDocument")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2beta1:KnowledgeBaseDocument")]
     public partial class KnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>

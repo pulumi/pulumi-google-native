@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:Disk")]
+    [GoogleNativeResourceType("google-native:compute/alpha:Disk")]
     public partial class Disk : Pulumi.CustomResource
     {
         /// <summary>

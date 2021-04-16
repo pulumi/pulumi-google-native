@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a UrlMap resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:RegionUrlMap")]
+    [GoogleNativeResourceType("google-native:compute/alpha:RegionUrlMap")]
     public partial class RegionUrlMap : Pulumi.CustomResource
     {
         /// <summary>

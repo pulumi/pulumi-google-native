@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.StorageTransfer.V1
+namespace Pulumi.GoogleNative.StorageTransfer.V1
 {
     /// <summary>
     /// Creates a transfer job that runs periodically.
     /// </summary>
-    [GcpNativeResourceType("google-native:storagetransfer/v1:TransferJob")]
+    [GoogleNativeResourceType("google-native:storagetransfer/v1:TransferJob")]
     public partial class TransferJob : Pulumi.CustomResource
     {
         /// <summary>

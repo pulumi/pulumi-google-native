@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudResourceManager.V3
+namespace Pulumi.GoogleNative.CloudResourceManager.V3
 {
     /// <summary>
     /// Sets the access control policy on a folder, replacing any existing policy. The `resource` field should be the folder's resource name, for example: "folders/1234". The caller must have `resourcemanager.folders.setIamPolicy` permission on the identified folder.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudresourcemanager/v3:FolderIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:FolderIamPolicy")]
     public partial class FolderIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

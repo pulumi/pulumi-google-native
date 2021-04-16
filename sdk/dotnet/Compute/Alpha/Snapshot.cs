@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a snapshot in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:Snapshot")]
+    [GoogleNativeResourceType("google-native:compute/alpha:Snapshot")]
     public partial class Snapshot : Pulumi.CustomResource
     {
         /// <summary>

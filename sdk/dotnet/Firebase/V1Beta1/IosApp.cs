@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Firebase.V1Beta1
+namespace Pulumi.GoogleNative.Firebase.V1Beta1
 {
     /// <summary>
     /// Requests the creation of a new IosApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebase/v1beta1:IosApp")]
+    [GoogleNativeResourceType("google-native:firebase/v1beta1:IosApp")]
     public partial class IosApp : Pulumi.CustomResource
     {
         /// <summary>

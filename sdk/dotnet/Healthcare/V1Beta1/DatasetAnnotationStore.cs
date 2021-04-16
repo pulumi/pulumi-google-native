@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1Beta1
+namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new Annotation store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetAnnotationStore")]
+    [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetAnnotationStore")]
     public partial class DatasetAnnotationStore : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Pubsub.V1
+namespace Pulumi.GoogleNative.Pubsub.V1
 {
     /// <summary>
     /// Creates a schema.
     /// </summary>
-    [GcpNativeResourceType("google-native:pubsub/v1:Schema")]
+    [GoogleNativeResourceType("google-native:pubsub/v1:Schema")]
     public partial class Schema : Pulumi.CustomResource
     {
         /// <summary>

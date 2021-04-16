@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a new document. Operation
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:AgentKnowledgeBaseDocument")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:AgentKnowledgeBaseDocument")]
     public partial class AgentKnowledgeBaseDocument : Pulumi.CustomResource
     {
         /// <summary>

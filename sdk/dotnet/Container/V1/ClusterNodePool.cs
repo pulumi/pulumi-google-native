@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Container.V1
+namespace Pulumi.GoogleNative.Container.V1
 {
     /// <summary>
     /// Creates a node pool for a cluster.
     /// </summary>
-    [GcpNativeResourceType("google-native:container/v1:ClusterNodePool")]
+    [GoogleNativeResourceType("google-native:container/v1:ClusterNodePool")]
     public partial class ClusterNodePool : Pulumi.CustomResource
     {
         /// <summary>

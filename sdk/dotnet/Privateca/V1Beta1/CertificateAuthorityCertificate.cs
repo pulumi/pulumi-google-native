@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Privateca.V1Beta1
+namespace Pulumi.GoogleNative.Privateca.V1Beta1
 {
     /// <summary>
     /// Create a new Certificate in a given Project, Location from a particular CertificateAuthority.
     /// </summary>
-    [GcpNativeResourceType("google-native:privateca/v1beta1:CertificateAuthorityCertificate")]
+    [GoogleNativeResourceType("google-native:privateca/v1beta1:CertificateAuthorityCertificate")]
     public partial class CertificateAuthorityCertificate : Pulumi.CustomResource
     {
         /// <summary>

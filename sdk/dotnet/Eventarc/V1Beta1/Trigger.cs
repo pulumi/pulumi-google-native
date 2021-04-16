@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Eventarc.V1Beta1
+namespace Pulumi.GoogleNative.Eventarc.V1Beta1
 {
     /// <summary>
     /// Create a new trigger in a particular project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:eventarc/v1beta1:Trigger")]
+    [GoogleNativeResourceType("google-native:eventarc/v1beta1:Trigger")]
     public partial class Trigger : Pulumi.CustomResource
     {
         /// <summary>

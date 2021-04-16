@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Storage.V1
+namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a new HMAC key for the specified service account.
     /// </summary>
-    [GcpNativeResourceType("google-native:storage/v1:HmacKey")]
+    [GoogleNativeResourceType("google-native:storage/v1:HmacKey")]
     public partial class HmacKey : Pulumi.CustomResource
     {
         /// <summary>

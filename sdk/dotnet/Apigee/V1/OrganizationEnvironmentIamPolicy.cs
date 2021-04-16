@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentIamPolicy")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentIamPolicy")]
     public partial class OrganizationEnvironmentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

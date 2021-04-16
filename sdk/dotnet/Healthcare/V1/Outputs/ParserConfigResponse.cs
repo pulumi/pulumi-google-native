@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1.Outputs
+namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
 {
 
     [OutputType]

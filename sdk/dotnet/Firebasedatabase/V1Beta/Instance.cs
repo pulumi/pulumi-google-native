@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Firebasedatabase.V1Beta
+namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
 {
     /// <summary>
     /// Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebasedatabase/v1beta:Instance")]
+    [GoogleNativeResourceType("google-native:firebasedatabase/v1beta:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

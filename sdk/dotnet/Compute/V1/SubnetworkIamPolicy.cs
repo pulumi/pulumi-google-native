@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:SubnetworkIamPolicy")]
+    [GoogleNativeResourceType("google-native:compute/v1:SubnetworkIamPolicy")]
     public partial class SubnetworkIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

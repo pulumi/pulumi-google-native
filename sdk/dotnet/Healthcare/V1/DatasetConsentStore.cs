@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1
+namespace Pulumi.GoogleNative.Healthcare.V1
 {
     /// <summary>
     /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1:DatasetConsentStore")]
+    [GoogleNativeResourceType("google-native:healthcare/v1:DatasetConsentStore")]
     public partial class DatasetConsentStore : Pulumi.CustomResource
     {
         /// <summary>

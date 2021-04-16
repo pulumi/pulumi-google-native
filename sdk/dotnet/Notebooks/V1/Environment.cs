@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Notebooks.V1
+namespace Pulumi.GoogleNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Environment.
     /// </summary>
-    [GcpNativeResourceType("google-native:notebooks/v1:Environment")]
+    [GoogleNativeResourceType("google-native:notebooks/v1:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>

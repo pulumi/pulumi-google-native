@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationDeveloper")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationDeveloper")]
     public partial class OrganizationDeveloper : Pulumi.CustomResource
     {
         /// <summary>

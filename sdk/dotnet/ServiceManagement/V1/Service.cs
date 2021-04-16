@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ServiceManagement.V1
+namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
     /// <summary>
     /// Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation
     /// </summary>
-    [GcpNativeResourceType("google-native:servicemanagement/v1:Service")]
+    [GoogleNativeResourceType("google-native:servicemanagement/v1:Service")]
     public partial class Service : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Managedidentities.V1Alpha1
+namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 {
     /// <summary>
     /// Creates a Microsoft AD Domain in a given project. Operation
     /// </summary>
-    [GcpNativeResourceType("google-native:managedidentities/v1alpha1:Domain")]
+    [GoogleNativeResourceType("google-native:managedidentities/v1alpha1:Domain")]
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>

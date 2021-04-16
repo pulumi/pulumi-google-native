@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
+namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates a new Cloud SQL instance.
     /// </summary>
-    [GcpNativeResourceType("google-native:sqladmin/v1beta4:Instance")]
+    [GoogleNativeResourceType("google-native:sqladmin/v1beta4:Instance")]
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>

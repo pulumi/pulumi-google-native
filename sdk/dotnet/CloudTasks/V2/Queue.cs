@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudTasks.V2
+namespace Pulumi.GoogleNative.CloudTasks.V2
 {
     /// <summary>
     /// Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudtasks/v2:Queue")]
+    [GoogleNativeResourceType("google-native:cloudtasks/v2:Queue")]
     public partial class Queue : Pulumi.CustomResource
     {
         /// <summary>

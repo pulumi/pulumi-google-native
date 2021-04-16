@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Cloudkms.V1
+namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingCryptoKey")]
+    [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRingCryptoKey")]
     public partial class KeyRingCryptoKey : Pulumi.CustomResource
     {
         /// <summary>

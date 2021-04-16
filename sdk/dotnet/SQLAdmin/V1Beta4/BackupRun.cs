@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
+namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
     /// </summary>
-    [GcpNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
+    [GoogleNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
     public partial class BackupRun : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Cloudkms.V1
+namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingImportJob")]
+    [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRingImportJob")]
     public partial class KeyRingImportJob : Pulumi.CustomResource
     {
         /// <summary>

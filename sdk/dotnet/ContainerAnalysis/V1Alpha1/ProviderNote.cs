@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
+namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Note`.
     /// </summary>
-    [GcpNativeResourceType("google-native:containeranalysis/v1alpha1:ProviderNote")]
+    [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:ProviderNote")]
     public partial class ProviderNote : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a network in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:Network")]
+    [GoogleNativeResourceType("google-native:compute/v1:Network")]
     public partial class Network : Pulumi.CustomResource
     {
         /// <summary>

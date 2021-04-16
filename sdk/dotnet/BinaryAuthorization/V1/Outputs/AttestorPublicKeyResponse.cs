@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BinaryAuthorization.V1.Outputs
+namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Outputs
 {
 
     [OutputType]

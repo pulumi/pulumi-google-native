@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Storage.V1
+namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a notification subscription for a given bucket.
     /// </summary>
-    [GcpNativeResourceType("google-native:storage/v1:Notification")]
+    [GoogleNativeResourceType("google-native:storage/v1:Notification")]
     public partial class Notification : Pulumi.CustomResource
     {
         /// <summary>

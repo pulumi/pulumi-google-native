@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates an address resource in the specified project by using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:Address")]
+    [GoogleNativeResourceType("google-native:compute/beta:Address")]
     public partial class Address : Pulumi.CustomResource
     {
         /// <summary>

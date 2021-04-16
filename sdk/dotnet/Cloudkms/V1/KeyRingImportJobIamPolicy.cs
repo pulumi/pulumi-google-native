@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Cloudkms.V1
+namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRingImportJobIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRingImportJobIamPolicy")]
     public partial class KeyRingImportJobIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

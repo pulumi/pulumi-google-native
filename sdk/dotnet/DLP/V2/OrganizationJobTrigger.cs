@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DLP.V2
+namespace Pulumi.GoogleNative.DLP.V2
 {
     /// <summary>
     /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
     /// </summary>
-    [GcpNativeResourceType("google-native:dlp/v2:OrganizationJobTrigger")]
+    [GoogleNativeResourceType("google-native:dlp/v2:OrganizationJobTrigger")]
     public partial class OrganizationJobTrigger : Pulumi.CustomResource
     {
         /// <summary>

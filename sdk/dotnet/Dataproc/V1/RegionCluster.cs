@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataproc.V1
+namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
     /// Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
     /// </summary>
-    [GcpNativeResourceType("google-native:dataproc/v1:RegionCluster")]
+    [GoogleNativeResourceType("google-native:dataproc/v1:RegionCluster")]
     public partial class RegionCluster : Pulumi.CustomResource
     {
         /// <summary>

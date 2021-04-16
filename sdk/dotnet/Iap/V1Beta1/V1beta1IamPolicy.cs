@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Iap.V1Beta1
+namespace Pulumi.GoogleNative.Iap.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
     /// </summary>
-    [GcpNativeResourceType("google-native:iap/v1beta1:V1beta1IamPolicy")]
+    [GoogleNativeResourceType("google-native:iap/v1beta1:V1beta1IamPolicy")]
     public partial class V1beta1IamPolicy : Pulumi.CustomResource
     {
         /// <summary>

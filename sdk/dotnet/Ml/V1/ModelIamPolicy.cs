@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Ml.V1
+namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:ml/v1:ModelIamPolicy")]
+    [GoogleNativeResourceType("google-native:ml/v1:ModelIamPolicy")]
     public partial class ModelIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

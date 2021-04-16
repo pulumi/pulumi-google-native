@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Run.V1
+namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Create a new domain mapping.
     /// </summary>
-    [GcpNativeResourceType("google-native:run/v1:Domainmapping")]
+    [GoogleNativeResourceType("google-native:run/v1:Domainmapping")]
     public partial class Domainmapping : Pulumi.CustomResource
     {
         /// <summary>

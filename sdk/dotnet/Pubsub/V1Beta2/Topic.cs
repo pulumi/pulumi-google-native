@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Pubsub.V1Beta2
+namespace Pulumi.GoogleNative.Pubsub.V1Beta2
 {
     /// <summary>
     /// Creates the given topic with the given name.
     /// </summary>
-    [GcpNativeResourceType("google-native:pubsub/v1beta2:Topic")]
+    [GoogleNativeResourceType("google-native:pubsub/v1beta2:Topic")]
     public partial class Topic : Pulumi.CustomResource
     {
         /// <summary>

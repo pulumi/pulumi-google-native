@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ToolResults.V1Beta3
+namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
     /// </summary>
-    [GcpNativeResourceType("google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries")]
+    [GoogleNativeResourceType("google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries")]
     public partial class HistoryExecutionStepPerfSampleSeries : Pulumi.CustomResource
     {
         /// <summary>

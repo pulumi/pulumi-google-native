@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a context. If the specified context already exists, overrides the context.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2beta1:AgentSessionContext")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2beta1:AgentSessionContext")]
     public partial class AgentSessionContext : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,14 +7,14 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
     /// 
     /// A regional managed instance group can contain up to 2000 instances.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:RegionInstanceGroupManager")]
+    [GoogleNativeResourceType("google-native:compute/v1:RegionInstanceGroupManager")]
     public partial class RegionInstanceGroupManager : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentResourcefile")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentResourcefile")]
     public partial class OrganizationEnvironmentResourcefile : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryReservation.V1Beta1
+namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 {
     /// <summary>
     /// Creates a new capacity commitment resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigqueryreservation/v1beta1:CapacityCommitment")]
+    [GoogleNativeResourceType("google-native:bigqueryreservation/v1beta1:CapacityCommitment")]
     public partial class CapacityCommitment : Pulumi.CustomResource
     {
         /// <summary>

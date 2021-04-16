@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.APIGateway.V1
+namespace Pulumi.GoogleNative.APIGateway.V1
 {
     /// <summary>
     /// Creates a new ApiConfig in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigateway/v1:ApiConfig")]
+    [GoogleNativeResourceType("google-native:apigateway/v1:ApiConfig")]
     public partial class ApiConfig : Pulumi.CustomResource
     {
         /// <summary>

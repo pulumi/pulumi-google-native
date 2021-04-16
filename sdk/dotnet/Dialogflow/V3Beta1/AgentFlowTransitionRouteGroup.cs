@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 {
     /// <summary>
     /// Creates an TransitionRouteGroup in the specified flow.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3beta1:AgentFlowTransitionRouteGroup")]
     public partial class AgentFlowTransitionRouteGroup : Pulumi.CustomResource
     {
         /// <summary>

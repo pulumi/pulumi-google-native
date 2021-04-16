@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationReport")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationReport")]
     public partial class OrganizationReport : Pulumi.CustomResource
     {
         /// <summary>

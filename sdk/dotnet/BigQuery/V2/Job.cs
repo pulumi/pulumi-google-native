@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQuery.V2
+namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Starts a new asynchronous job. Requires the Can View project role.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigquery/v2:Job")]
+    [GoogleNativeResourceType("google-native:bigquery/v2:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ServiceManagement.V1
+namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:servicemanagement/v1:ServiceConsumerIamPolicy")]
+    [GoogleNativeResourceType("google-native:servicemanagement/v1:ServiceConsumerIamPolicy")]
     public partial class ServiceConsumerIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

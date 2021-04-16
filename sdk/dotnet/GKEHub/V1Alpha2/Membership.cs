@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GKEHub.V1Alpha2
+namespace Pulumi.GoogleNative.GKEHub.V1Alpha2
 {
     /// <summary>
     /// Adds a new Membership.
     /// </summary>
-    [GcpNativeResourceType("google-native:gkehub/v1alpha2:Membership")]
+    [GoogleNativeResourceType("google-native:gkehub/v1alpha2:Membership")]
     public partial class Membership : Pulumi.CustomResource
     {
         /// <summary>

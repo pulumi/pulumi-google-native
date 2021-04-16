@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataFusion.V1Beta1
+namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy")]
+    [GoogleNativeResourceType("google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy")]
     public partial class InstanceNamespaceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.PolicySimulator.V1Beta1
+namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
 {
     /// <summary>
     /// Creates and starts a Replay using the given ReplayConfig.
     /// </summary>
-    [GcpNativeResourceType("google-native:policysimulator/v1beta1:OrganizationReplay")]
+    [GoogleNativeResourceType("google-native:policysimulator/v1beta1:OrganizationReplay")]
     public partial class OrganizationReplay : Pulumi.CustomResource
     {
         /// <summary>

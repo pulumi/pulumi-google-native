@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AppEngine.V1Beta
+namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
     /// </summary>
-    [GcpNativeResourceType("google-native:appengine/v1beta:AppDomainMapping")]
+    [GoogleNativeResourceType("google-native:appengine/v1beta:AppDomainMapping")]
     public partial class AppDomainMapping : Pulumi.CustomResource
     {
         /// <summary>

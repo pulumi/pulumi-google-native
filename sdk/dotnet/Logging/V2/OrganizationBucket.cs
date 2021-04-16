@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Logging.V2
+namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a bucket that can be used to store log entries. Once a bucket has been created, the region cannot be changed.
     /// </summary>
-    [GcpNativeResourceType("google-native:logging/v2:OrganizationBucket")]
+    [GoogleNativeResourceType("google-native:logging/v2:OrganizationBucket")]
     public partial class OrganizationBucket : Pulumi.CustomResource
     {
         /// <summary>

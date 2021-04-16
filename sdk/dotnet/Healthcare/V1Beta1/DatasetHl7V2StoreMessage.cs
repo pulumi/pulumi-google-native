@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1Beta1
+namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetHl7V2StoreMessage")]
+    [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetHl7V2StoreMessage")]
     public partial class DatasetHl7V2StoreMessage : Pulumi.CustomResource
     {
         /// <summary>

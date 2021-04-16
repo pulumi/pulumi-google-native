@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:MachineImage")]
+    [GoogleNativeResourceType("google-native:compute/beta:MachineImage")]
     public partial class MachineImage : Pulumi.CustomResource
     {
         /// <summary>

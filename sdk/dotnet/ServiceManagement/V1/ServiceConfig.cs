@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ServiceManagement.V1
+namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
     /// <summary>
     /// Creates a new service configuration (version) for a managed service. This method only stores the service configuration. To roll out the service configuration to backend systems please call CreateServiceRollout. Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for each service. The rest will be deleted eventually.
     /// </summary>
-    [GcpNativeResourceType("google-native:servicemanagement/v1:ServiceConfig")]
+    [GoogleNativeResourceType("google-native:servicemanagement/v1:ServiceConfig")]
     public partial class ServiceConfig : Pulumi.CustomResource
     {
         /// <summary>

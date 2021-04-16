@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AccessContextManager.V1
+namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
     /// Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
     /// </summary>
-    [GcpNativeResourceType("google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding")]
+    [GoogleNativeResourceType("google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding")]
     public partial class OrganizationGcpUserAccessBinding : Pulumi.CustomResource
     {
         /// <summary>

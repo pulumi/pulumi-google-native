@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Composer.V1
+namespace Pulumi.GoogleNative.Composer.V1
 {
     /// <summary>
     /// Create a new environment.
     /// </summary>
-    [GcpNativeResourceType("google-native:composer/v1:Environment")]
+    [GoogleNativeResourceType("google-native:composer/v1:Environment")]
     public partial class Environment : Pulumi.CustomResource
     {
         /// <summary>

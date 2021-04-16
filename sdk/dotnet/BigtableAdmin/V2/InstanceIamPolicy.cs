@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigtableAdmin.V2
+namespace Pulumi.GoogleNative.BigtableAdmin.V2
 {
     /// <summary>
     /// Sets the access control policy on an instance resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigtableadmin/v2:InstanceIamPolicy")]
+    [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceIamPolicy")]
     public partial class InstanceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

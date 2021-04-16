@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudBuild.V1Alpha1
+namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
 {
     /// <summary>
     /// Creates a `WorkerPool` to run the builds, and returns the new worker pool.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudbuild/v1alpha1:WorkerPool")]
+    [GoogleNativeResourceType("google-native:cloudbuild/v1alpha1:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource
     {
         /// <summary>

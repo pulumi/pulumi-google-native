@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
+namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
     /// </summary>
-    [GcpNativeResourceType("google-native:sqladmin/v1beta4:SslCert")]
+    [GoogleNativeResourceType("google-native:sqladmin/v1beta4:SslCert")]
     public partial class SslCert : Pulumi.CustomResource
     {
         /// <summary>

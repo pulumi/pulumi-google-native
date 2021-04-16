@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:ImageIamPolicy")]
+    [GoogleNativeResourceType("google-native:compute/alpha:ImageIamPolicy")]
     public partial class ImageIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

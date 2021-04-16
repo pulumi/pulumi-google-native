@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a HttpHealthCheck resource in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:HttpHealthCheck")]
+    [GoogleNativeResourceType("google-native:compute/beta:HttpHealthCheck")]
     public partial class HttpHealthCheck : Pulumi.CustomResource
     {
         /// <summary>

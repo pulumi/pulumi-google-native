@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:Organization")]
+    [GoogleNativeResourceType("google-native:apigee/v1:Organization")]
     public partial class Organization : Pulumi.CustomResource
     {
         /// <summary>

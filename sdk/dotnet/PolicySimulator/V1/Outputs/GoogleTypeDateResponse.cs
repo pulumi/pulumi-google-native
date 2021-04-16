@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.PolicySimulator.V1.Outputs
+namespace Pulumi.GoogleNative.PolicySimulator.V1.Outputs
 {
 
     [OutputType]

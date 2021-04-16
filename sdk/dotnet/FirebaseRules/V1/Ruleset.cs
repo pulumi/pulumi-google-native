@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.FirebaseRules.V1
+namespace Pulumi.GoogleNative.FirebaseRules.V1
 {
     /// <summary>
     /// Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebaserules/v1:Ruleset")]
+    [GoogleNativeResourceType("google-native:firebaserules/v1:Ruleset")]
     public partial class Ruleset : Pulumi.CustomResource
     {
         /// <summary>

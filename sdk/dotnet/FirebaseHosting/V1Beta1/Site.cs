@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
+namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
     /// Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebasehosting/v1beta1:Site")]
+    [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:Site")]
     public partial class Site : Pulumi.CustomResource
     {
         /// <summary>

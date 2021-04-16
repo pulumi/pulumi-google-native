@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Privateca.V1Beta1.Inputs
+namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
 {
 
     public sealed class AllowedConfigListArgs : Pulumi.ResourceArgs

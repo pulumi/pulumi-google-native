@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates an Experiment in the specified Environment.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:AgentEnvironmentExperiment")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:AgentEnvironmentExperiment")]
     public partial class AgentEnvironmentExperiment : Pulumi.CustomResource
     {
         /// <summary>

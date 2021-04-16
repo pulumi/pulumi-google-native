@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dataflow.V1b3
+namespace Pulumi.GoogleNative.Dataflow.V1b3
 {
     /// <summary>
     /// Creates a Cloud Dataflow job from a template.
     /// </summary>
-    [GcpNativeResourceType("google-native:dataflow/v1b3:Template")]
+    [GoogleNativeResourceType("google-native:dataflow/v1b3:Template")]
     public partial class Template : Pulumi.CustomResource
     {
         /// <summary>

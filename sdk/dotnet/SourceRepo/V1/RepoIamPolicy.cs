@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SourceRepo.V1
+namespace Pulumi.GoogleNative.SourceRepo.V1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:sourcerepo/v1:RepoIamPolicy")]
+    [GoogleNativeResourceType("google-native:sourcerepo/v1:RepoIamPolicy")]
     public partial class RepoIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Create a License resource in the specified project.  Caution This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:License")]
+    [GoogleNativeResourceType("google-native:compute/alpha:License")]
     public partial class License : Pulumi.CustomResource
     {
         /// <summary>

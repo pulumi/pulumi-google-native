@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DeploymentManager.V2
+namespace Pulumi.GoogleNative.DeploymentManager.V2
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:deploymentmanager/v2:DeploymentIamPolicy")]
+    [GoogleNativeResourceType("google-native:deploymentmanager/v2:DeploymentIamPolicy")]
     public partial class DeploymentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

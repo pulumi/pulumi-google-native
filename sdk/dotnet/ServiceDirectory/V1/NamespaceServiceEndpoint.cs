@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ServiceDirectory.V1
+namespace Pulumi.GoogleNative.ServiceDirectory.V1
 {
     /// <summary>
     /// Creates an endpoint, and returns the new endpoint.
     /// </summary>
-    [GcpNativeResourceType("google-native:servicedirectory/v1:NamespaceServiceEndpoint")]
+    [GoogleNativeResourceType("google-native:servicedirectory/v1:NamespaceServiceEndpoint")]
     public partial class NamespaceServiceEndpoint : Pulumi.CustomResource
     {
         /// <summary>

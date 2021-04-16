@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Ml.V1
+namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Creates a training or a batch prediction job.
     /// </summary>
-    [GcpNativeResourceType("google-native:ml/v1:Job")]
+    [GoogleNativeResourceType("google-native:ml/v1:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

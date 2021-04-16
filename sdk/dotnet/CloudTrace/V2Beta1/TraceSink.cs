@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudTrace.V2Beta1
+namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
 {
     /// <summary>
     /// Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudtrace/v2beta1:TraceSink")]
+    [GoogleNativeResourceType("google-native:cloudtrace/v2beta1:TraceSink")]
     public partial class TraceSink : Pulumi.CustomResource
     {
         /// <summary>

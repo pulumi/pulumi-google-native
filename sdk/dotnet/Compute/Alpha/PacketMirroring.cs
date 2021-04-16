@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a PacketMirroring resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:PacketMirroring")]
+    [GoogleNativeResourceType("google-native:compute/alpha:PacketMirroring")]
     public partial class PacketMirroring : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudIdentity.V1
+namespace Pulumi.GoogleNative.CloudIdentity.V1
 {
     /// <summary>
     /// Creates a Group.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudidentity/v1:Group")]
+    [GoogleNativeResourceType("google-native:cloudidentity/v1:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

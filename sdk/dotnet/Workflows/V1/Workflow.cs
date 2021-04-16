@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Workflows.V1
+namespace Pulumi.GoogleNative.Workflows.V1
 {
     /// <summary>
     /// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
     /// </summary>
-    [GcpNativeResourceType("google-native:workflows/v1:Workflow")]
+    [GoogleNativeResourceType("google-native:workflows/v1:Workflow")]
     public partial class Workflow : Pulumi.CustomResource
     {
         /// <summary>

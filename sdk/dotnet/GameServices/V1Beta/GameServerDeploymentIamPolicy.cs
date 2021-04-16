@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.GameServices.V1Beta
+namespace Pulumi.GoogleNative.GameServices.V1Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy")]
+    [GoogleNativeResourceType("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy")]
     public partial class GameServerDeploymentIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

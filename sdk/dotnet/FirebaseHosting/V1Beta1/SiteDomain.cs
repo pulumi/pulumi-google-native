@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.FirebaseHosting.V1Beta1
+namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
     /// Creates a domain mapping on the specified site.
     /// </summary>
-    [GcpNativeResourceType("google-native:firebasehosting/v1beta1:SiteDomain")]
+    [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:SiteDomain")]
     public partial class SiteDomain : Pulumi.CustomResource
     {
         /// <summary>

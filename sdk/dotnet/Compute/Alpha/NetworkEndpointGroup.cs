@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a network endpoint group in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:NetworkEndpointGroup")]
+    [GoogleNativeResourceType("google-native:compute/alpha:NetworkEndpointGroup")]
     public partial class NetworkEndpointGroup : Pulumi.CustomResource
     {
         /// <summary>

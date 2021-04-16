@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Datamigration.V1
+namespace Pulumi.GoogleNative.Datamigration.V1
 {
     /// <summary>
     /// Creates a new migration job in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:datamigration/v1:MigrationJob")]
+    [GoogleNativeResourceType("google-native:datamigration/v1:MigrationJob")]
     public partial class MigrationJob : Pulumi.CustomResource
     {
         /// <summary>

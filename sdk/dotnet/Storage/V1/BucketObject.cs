@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Storage.V1
+namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Stores a new object and metadata.
     /// </summary>
-    [GcpNativeResourceType("google-native:storage/v1:BucketObject")]
+    [GoogleNativeResourceType("google-native:storage/v1:BucketObject")]
     public partial class BucketObject : Pulumi.CustomResource
     {
         /// <summary>

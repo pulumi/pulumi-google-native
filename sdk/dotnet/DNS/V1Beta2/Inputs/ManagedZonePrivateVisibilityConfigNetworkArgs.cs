@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DNS.V1Beta2.Inputs
+namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
     public sealed class ManagedZonePrivateVisibilityConfigNetworkArgs : Pulumi.ResourceArgs

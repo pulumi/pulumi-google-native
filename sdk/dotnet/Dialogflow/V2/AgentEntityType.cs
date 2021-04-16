@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates an entity type in the specified agent.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:AgentEntityType")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:AgentEntityType")]
     public partial class AgentEntityType : Pulumi.CustomResource
     {
         /// <summary>

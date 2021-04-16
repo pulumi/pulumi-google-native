@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Create a Datastore for an org
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationAnalyticDatastore")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationAnalyticDatastore")]
     public partial class OrganizationAnalyticDatastore : Pulumi.CustomResource
     {
         /// <summary>

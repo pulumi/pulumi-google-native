@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:ConversationProfile")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:ConversationProfile")]
     public partial class ConversationProfile : Pulumi.CustomResource
     {
         /// <summary>

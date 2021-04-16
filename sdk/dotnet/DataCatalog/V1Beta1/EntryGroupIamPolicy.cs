@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy for a resource. Replaces any existing policy. Supported resources are: - Tag templates. - Entries. - Entry groups. Note, this method cannot be used to manage policies for BigQuery, Pub/Sub and any external Google Cloud Platform resources synced to Data Catalog. Callers must have following Google IAM permission - `datacatalog.tagTemplates.setIamPolicy` to set policies on tag templates. - `datacatalog.entries.setIamPolicy` to set policies on entries. - `datacatalog.entryGroups.setIamPolicy` to set policies on entry groups.
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:EntryGroupIamPolicy")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:EntryGroupIamPolicy")]
     public partial class EntryGroupIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

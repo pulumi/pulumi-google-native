@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1
+namespace Pulumi.GoogleNative.Healthcare.V1
 {
     /// <summary>
     /// Creates a new HL7v2 store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1:DatasetHl7V2Store")]
+    [GoogleNativeResourceType("google-native:healthcare/v1:DatasetHl7V2Store")]
     public partial class DatasetHl7V2Store : Pulumi.CustomResource
     {
         /// <summary>

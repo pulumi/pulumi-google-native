@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a ExternalVpnGateway in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:ExternalVpnGateway")]
+    [GoogleNativeResourceType("google-native:compute/alpha:ExternalVpnGateway")]
     public partial class ExternalVpnGateway : Pulumi.CustomResource
     {
         /// <summary>

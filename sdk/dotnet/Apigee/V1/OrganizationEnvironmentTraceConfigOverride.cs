@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Apigee.V1
+namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride")]
+    [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride")]
     public partial class OrganizationEnvironmentTraceConfigOverride : Pulumi.CustomResource
     {
         /// <summary>

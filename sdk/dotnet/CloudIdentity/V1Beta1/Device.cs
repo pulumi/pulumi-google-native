@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudIdentity.V1Beta1
+namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 {
     /// <summary>
     /// Creates a device. Only company-owned device may be created. **Note**: This method is available only to customers who have one of the following SKUs: Enterprise Standard, Enterprise Plus, Enterprise for Education, and Cloud Identity Premium
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudidentity/v1beta1:Device")]
+    [GoogleNativeResourceType("google-native:cloudidentity/v1beta1:Device")]
     public partial class Device : Pulumi.CustomResource
     {
         /// <summary>

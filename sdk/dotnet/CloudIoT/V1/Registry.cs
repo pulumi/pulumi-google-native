@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudIoT.V1
+namespace Pulumi.GoogleNative.CloudIoT.V1
 {
     /// <summary>
     /// Creates a device registry that contains devices.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudiot/v1:Registry")]
+    [GoogleNativeResourceType("google-native:cloudiot/v1:Registry")]
     public partial class Registry : Pulumi.CustomResource
     {
         /// <summary>

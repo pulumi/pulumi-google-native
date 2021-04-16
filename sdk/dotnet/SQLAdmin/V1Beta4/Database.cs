@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SQLAdmin.V1Beta4
+namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Inserts a resource containing information about a database inside a Cloud SQL instance.
     /// </summary>
-    [GcpNativeResourceType("google-native:sqladmin/v1beta4:Database")]
+    [GoogleNativeResourceType("google-native:sqladmin/v1beta4:Database")]
     public partial class Database : Pulumi.CustomResource
     {
         /// <summary>

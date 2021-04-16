@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Retail.V2Beta
+namespace Pulumi.GoogleNative.Retail.V2Beta
 {
     /// <summary>
     /// Creates a Product.
     /// </summary>
-    [GcpNativeResourceType("google-native:retail/v2beta:CatalogBranchProduct")]
+    [GoogleNativeResourceType("google-native:retail/v2beta:CatalogBranchProduct")]
     public partial class CatalogBranchProduct : Pulumi.CustomResource
     {
         /// <summary>

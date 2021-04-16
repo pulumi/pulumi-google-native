@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a new resource policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:ResourcePolicy")]
+    [GoogleNativeResourceType("google-native:compute/v1:ResourcePolicy")]
     public partial class ResourcePolicy : Pulumi.CustomResource
     {
         /// <summary>

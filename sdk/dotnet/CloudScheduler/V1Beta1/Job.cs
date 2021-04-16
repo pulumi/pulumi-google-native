@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudScheduler.V1Beta1
+namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
 {
     /// <summary>
     /// Creates a job.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudscheduler/v1beta1:Job")]
+    [GoogleNativeResourceType("google-native:cloudscheduler/v1beta1:Job")]
     public partial class Job : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.OSConfig.V1Beta
+namespace Pulumi.GoogleNative.OSConfig.V1Beta
 {
     /// <summary>
     /// Create an OS Config patch deployment.
     /// </summary>
-    [GcpNativeResourceType("google-native:osconfig/v1beta:PatchDeployment")]
+    [GoogleNativeResourceType("google-native:osconfig/v1beta:PatchDeployment")]
     public partial class PatchDeployment : Pulumi.CustomResource
     {
         /// <summary>

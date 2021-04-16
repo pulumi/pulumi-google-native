@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.RemoteBuildExecution.V1Alpha
+namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
 {
     /// <summary>
     /// Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.
     /// </summary>
-    [GcpNativeResourceType("google-native:remotebuildexecution/v1alpha:InstanceWorkerpool")]
+    [GoogleNativeResourceType("google-native:remotebuildexecution/v1alpha:InstanceWorkerpool")]
     public partial class InstanceWorkerpool : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:RegionInstantSnapshotIamPolicy")]
+    [GoogleNativeResourceType("google-native:compute/alpha:RegionInstantSnapshotIamPolicy")]
     public partial class RegionInstantSnapshotIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

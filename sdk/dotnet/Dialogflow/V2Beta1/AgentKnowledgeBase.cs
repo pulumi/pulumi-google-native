@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2Beta1
+namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2beta1:AgentKnowledgeBase")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2beta1:AgentKnowledgeBase")]
     public partial class AgentKnowledgeBase : Pulumi.CustomResource
     {
         /// <summary>

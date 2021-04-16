@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudTrace.V2Beta1.Inputs
+namespace Pulumi.GoogleNative.CloudTrace.V2Beta1.Inputs
 {
 
     /// <summary>

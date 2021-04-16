@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.APIGateway.V1Beta
+namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
     /// <summary>
     /// Creates a new Gateway in a given project and location.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigateway/v1beta:Gateway")]
+    [GoogleNativeResourceType("google-native:apigateway/v1beta:Gateway")]
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>

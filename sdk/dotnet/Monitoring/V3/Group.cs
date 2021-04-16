@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Monitoring.V3
+namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new group.
     /// </summary>
-    [GcpNativeResourceType("google-native:monitoring/v3:Group")]
+    [GoogleNativeResourceType("google-native:monitoring/v3:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

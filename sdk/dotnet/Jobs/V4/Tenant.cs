@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Jobs.V4
+namespace Pulumi.GoogleNative.Jobs.V4
 {
     /// <summary>
     /// Creates a new tenant entity.
     /// </summary>
-    [GcpNativeResourceType("google-native:jobs/v4:Tenant")]
+    [GoogleNativeResourceType("google-native:jobs/v4:Tenant")]
     public partial class Tenant : Pulumi.CustomResource
     {
         /// <summary>

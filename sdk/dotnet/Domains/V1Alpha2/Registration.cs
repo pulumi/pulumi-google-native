@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Domains.V1Alpha2
+namespace Pulumi.GoogleNative.Domains.V1Alpha2
 {
     /// <summary>
     /// Registers a new domain name and creates a corresponding `Registration` resource. Call `RetrieveRegisterParameters` first to check availability of the domain name and determine parameters like price that are needed to build a call to this method. A successful call creates a `Registration` resource in state `REGISTRATION_PENDING`, which resolves to `ACTIVE` within 1-2 minutes, indicating that the domain was successfully registered. If the resource ends up in state `REGISTRATION_FAILED`, it indicates that the domain was not registered successfully, and you can safely delete the resource and retry registration.
     /// </summary>
-    [GcpNativeResourceType("google-native:domains/v1alpha2:Registration")]
+    [GoogleNativeResourceType("google-native:domains/v1alpha2:Registration")]
     public partial class Registration : Pulumi.CustomResource
     {
         /// <summary>

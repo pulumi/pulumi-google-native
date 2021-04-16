@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Storage.V1
+namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a new ACL entry on the specified object.
     /// </summary>
-    [GcpNativeResourceType("google-native:storage/v1:ObjectAccessControl")]
+    [GoogleNativeResourceType("google-native:storage/v1:ObjectAccessControl")]
     public partial class ObjectAccessControl : Pulumi.CustomResource
     {
         /// <summary>

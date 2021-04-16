@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataCatalog.V1Beta1
+namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a tag template. The user should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project](https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information).
     /// </summary>
-    [GcpNativeResourceType("google-native:datacatalog/v1beta1:TagTemplate")]
+    [GoogleNativeResourceType("google-native:datacatalog/v1beta1:TagTemplate")]
     public partial class TagTemplate : Pulumi.CustomResource
     {
         /// <summary>

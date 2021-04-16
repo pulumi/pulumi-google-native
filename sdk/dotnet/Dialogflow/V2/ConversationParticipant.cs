@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V2
+namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates a new participant in a conversation.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v2:ConversationParticipant")]
+    [GoogleNativeResourceType("google-native:dialogflow/v2:ConversationParticipant")]
     public partial class ConversationParticipant : Pulumi.CustomResource
     {
         /// <summary>

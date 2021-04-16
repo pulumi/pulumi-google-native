@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:PublicAdvertisedPrefix")]
+    [GoogleNativeResourceType("google-native:compute/beta:PublicAdvertisedPrefix")]
     public partial class PublicAdvertisedPrefix : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudResourceManager.V1Beta1
+namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on an Organization resource. Replaces any existing policy. The `resource` field should be the organization's resource name, e.g. "organizations/123".
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudresourcemanager/v1beta1:OrganizationIamPolicy")]
+    [GoogleNativeResourceType("google-native:cloudresourcemanager/v1beta1:OrganizationIamPolicy")]
     public partial class OrganizationIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

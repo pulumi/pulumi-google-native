@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.CloudBuild.V1
+namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
     /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudbuild/v1:Build")]
+    [GoogleNativeResourceType("google-native:cloudbuild/v1:Build")]
     public partial class Build : Pulumi.CustomResource
     {
         /// <summary>

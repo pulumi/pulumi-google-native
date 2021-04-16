@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.SourceRepo.V1
+namespace Pulumi.GoogleNative.SourceRepo.V1
 {
     /// <summary>
     /// Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
     /// </summary>
-    [GcpNativeResourceType("google-native:sourcerepo/v1:Repo")]
+    [GoogleNativeResourceType("google-native:sourcerepo/v1:Repo")]
     public partial class Repo : Pulumi.CustomResource
     {
         /// <summary>

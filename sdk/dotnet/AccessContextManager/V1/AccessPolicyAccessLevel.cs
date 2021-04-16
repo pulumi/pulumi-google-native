@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.AccessContextManager.V1
+namespace Pulumi.GoogleNative.AccessContextManager.V1
 {
     /// <summary>
     /// Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
     /// </summary>
-    [GcpNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyAccessLevel")]
+    [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyAccessLevel")]
     public partial class AccessPolicyAccessLevel : Pulumi.CustomResource
     {
         /// <summary>

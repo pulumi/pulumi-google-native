@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates an autoscaler in the specified project using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:Autoscaler")]
+    [GoogleNativeResourceType("google-native:compute/beta:Autoscaler")]
     public partial class Autoscaler : Pulumi.CustomResource
     {
         /// <summary>

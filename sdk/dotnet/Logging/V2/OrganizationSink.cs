@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Logging.V2
+namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
     /// </summary>
-    [GcpNativeResourceType("google-native:logging/v2:OrganizationSink")]
+    [GoogleNativeResourceType("google-native:logging/v2:OrganizationSink")]
     public partial class OrganizationSink : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.APIGateway.V1Beta
+namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:apigateway/v1beta:ApiConfigIamPolicy")]
+    [GoogleNativeResourceType("google-native:apigateway/v1beta:ApiConfigIamPolicy")]
     public partial class ApiConfigIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

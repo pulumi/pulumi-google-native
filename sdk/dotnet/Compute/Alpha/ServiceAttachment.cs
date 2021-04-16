@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Alpha
+namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/alpha:ServiceAttachment")]
+    [GoogleNativeResourceType("google-native:compute/alpha:ServiceAttachment")]
     public partial class ServiceAttachment : Pulumi.CustomResource
     {
         /// <summary>

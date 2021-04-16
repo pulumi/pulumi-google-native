@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ToolResults.V1Beta3
+namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a Step. The returned Step will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - FAILED_PRECONDITION - if the step is too large (more than 10Mib) - NOT_FOUND - if the containing Execution does not exist
     /// </summary>
-    [GcpNativeResourceType("google-native:toolresults/v1beta3:HistoryExecutionStep")]
+    [GoogleNativeResourceType("google-native:toolresults/v1beta3:HistoryExecutionStep")]
     public partial class HistoryExecutionStep : Pulumi.CustomResource
     {
         /// <summary>

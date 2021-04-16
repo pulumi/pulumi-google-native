@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Logging.V2
+namespace Pulumi.GoogleNative.Logging.V2
 {
     /// <summary>
     /// Creates a logs-based metric.
     /// </summary>
-    [GcpNativeResourceType("google-native:logging/v2:Metric")]
+    [GoogleNativeResourceType("google-native:logging/v2:Metric")]
     public partial class Metric : Pulumi.CustomResource
     {
         /// <summary>

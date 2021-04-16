@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1Beta1
+namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new DICOM store within the parent dataset.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetDicomStore")]
+    [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetDicomStore")]
     public partial class DatasetDicomStore : Pulumi.CustomResource
     {
         /// <summary>

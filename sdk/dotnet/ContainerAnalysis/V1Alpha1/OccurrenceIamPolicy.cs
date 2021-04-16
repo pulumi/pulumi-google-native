@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.ContainerAnalysis.V1Alpha1
+namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Sets the access control policy on the specified `Note` or `Occurrence`. Requires `containeranalysis.notes.setIamPolicy` or `containeranalysis.occurrences.setIamPolicy` permission if the resource is a `Note` or an `Occurrence`, respectively. Attempting to call this method without these permissions will result in a ` `PERMISSION_DENIED`error. Attempting to call this method on a non-existent resource will result in a`NOT_FOUND`error if the user has`containeranalysis.notes.list`permission on a`Note`or`containeranalysis.occurrences.list`on an`Occurrence` , or a  `PERMISSION_DENIED`error otherwise. The resource takes the following formats:`projects/{projectid}/occurrences/{occurrenceid}` for occurrences and projects/{projectid}/notes/{noteid} for notes
     /// </summary>
-    [GcpNativeResourceType("google-native:containeranalysis/v1alpha1:OccurrenceIamPolicy")]
+    [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:OccurrenceIamPolicy")]
     public partial class OccurrenceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

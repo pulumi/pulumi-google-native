@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Dialogflow.V3
+namespace Pulumi.GoogleNative.Dialogflow.V3
 {
     /// <summary>
     /// Creates a test case for the given agent.
     /// </summary>
-    [GcpNativeResourceType("google-native:dialogflow/v3:AgentTestCase")]
+    [GoogleNativeResourceType("google-native:dialogflow/v3:AgentTestCase")]
     public partial class AgentTestCase : Pulumi.CustomResource
     {
         /// <summary>

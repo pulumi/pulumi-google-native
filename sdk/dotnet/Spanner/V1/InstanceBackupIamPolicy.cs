@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Spanner.V1
+namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Sets the access control policy on a database or backup resource. Replaces any existing policy. Authorization requires `spanner.databases.setIamPolicy` permission on resource. For backups, authorization requires `spanner.backups.setIamPolicy` permission on resource.
     /// </summary>
-    [GcpNativeResourceType("google-native:spanner/v1:InstanceBackupIamPolicy")]
+    [GoogleNativeResourceType("google-native:spanner/v1:InstanceBackupIamPolicy")]
     public partial class InstanceBackupIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

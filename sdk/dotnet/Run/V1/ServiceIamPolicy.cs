@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Run.V1
+namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Sets the IAM Access control policy for the specified Service. Overwrites any existing policy.
     /// </summary>
-    [GcpNativeResourceType("google-native:run/v1:ServiceIamPolicy")]
+    [GoogleNativeResourceType("google-native:run/v1:ServiceIamPolicy")]
     public partial class ServiceIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

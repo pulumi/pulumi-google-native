@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.RuntimeConfig.V1Beta1
+namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 {
     /// <summary>
     /// Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
     /// </summary>
-    [GcpNativeResourceType("google-native:runtimeconfig/v1beta1:ConfigVariable")]
+    [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:ConfigVariable")]
     public partial class ConfigVariable : Pulumi.CustomResource
     {
         /// <summary>

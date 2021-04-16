@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Securitycenter.V1
+namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
     /// Creates a source.
     /// </summary>
-    [GcpNativeResourceType("google-native:securitycenter/v1:OrganizationSource")]
+    [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationSource")]
     public partial class OrganizationSource : Pulumi.CustomResource
     {
         /// <summary>

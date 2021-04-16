@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Cloudkms.V1
+namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new KeyRing in a given Project and Location.
     /// </summary>
-    [GcpNativeResourceType("google-native:cloudkms/v1:KeyRing")]
+    [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRing")]
     public partial class KeyRing : Pulumi.CustomResource
     {
         /// <summary>

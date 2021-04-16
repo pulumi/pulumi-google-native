@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.V1
+namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/v1:RegionHealthCheckService")]
+    [GoogleNativeResourceType("google-native:compute/v1:RegionHealthCheckService")]
     public partial class RegionHealthCheckService : Pulumi.CustomResource
     {
         /// <summary>

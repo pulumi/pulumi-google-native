@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataLabeling.V1Beta1
+namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an evaluation job.
     /// </summary>
-    [GcpNativeResourceType("google-native:datalabeling/v1beta1:EvaluationJob")]
+    [GoogleNativeResourceType("google-native:datalabeling/v1beta1:EvaluationJob")]
     public partial class EvaluationJob : Pulumi.CustomResource
     {
         /// <summary>

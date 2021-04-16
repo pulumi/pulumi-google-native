@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.DataLabeling.V1Beta1
+namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an instruction for how data should be labeled.
     /// </summary>
-    [GcpNativeResourceType("google-native:datalabeling/v1beta1:Instruction")]
+    [GoogleNativeResourceType("google-native:datalabeling/v1beta1:Instruction")]
     public partial class Instruction : Pulumi.CustomResource
     {
         /// <summary>

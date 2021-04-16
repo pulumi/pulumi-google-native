@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:PublicDelegatedPrefix")]
+    [GoogleNativeResourceType("google-native:compute/beta:PublicDelegatedPrefix")]
     public partial class PublicDelegatedPrefix : Pulumi.CustomResource
     {
         /// <summary>

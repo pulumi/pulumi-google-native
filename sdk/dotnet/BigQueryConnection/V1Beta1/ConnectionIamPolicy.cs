@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryConnection.V1Beta1
+namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
 {
     /// <summary>
     /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
     /// </summary>
-    [GcpNativeResourceType("google-native:bigqueryconnection/v1beta1:ConnectionIamPolicy")]
+    [GoogleNativeResourceType("google-native:bigqueryconnection/v1beta1:ConnectionIamPolicy")]
     public partial class ConnectionIamPolicy : Pulumi.CustomResource
     {
         /// <summary>

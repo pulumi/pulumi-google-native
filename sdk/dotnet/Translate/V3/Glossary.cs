@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Translate.V3
+namespace Pulumi.GoogleNative.Translate.V3
 {
     /// <summary>
     /// Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist.
     /// </summary>
-    [GcpNativeResourceType("google-native:translate/v3:Glossary")]
+    [GoogleNativeResourceType("google-native:translate/v3:Glossary")]
     public partial class Glossary : Pulumi.CustomResource
     {
         /// <summary>

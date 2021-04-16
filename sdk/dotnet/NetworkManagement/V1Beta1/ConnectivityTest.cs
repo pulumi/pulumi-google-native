@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.NetworkManagement.V1Beta1
+namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1
 {
     /// <summary>
     /// Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.
     /// </summary>
-    [GcpNativeResourceType("google-native:networkmanagement/v1beta1:ConnectivityTest")]
+    [GoogleNativeResourceType("google-native:networkmanagement/v1beta1:ConnectivityTest")]
     public partial class ConnectivityTest : Pulumi.CustomResource
     {
         /// <summary>

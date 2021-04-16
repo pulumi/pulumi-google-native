@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Compute.Beta
+namespace Pulumi.GoogleNative.Compute.Beta
 {
     /// <summary>
     /// Creates a target pool in the specified project and region using the data included in the request.
     /// </summary>
-    [GcpNativeResourceType("google-native:compute/beta:TargetPool")]
+    [GoogleNativeResourceType("google-native:compute/beta:TargetPool")]
     public partial class TargetPool : Pulumi.CustomResource
     {
         /// <summary>

@@ -7,7 +7,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.BigQueryDataTransfer.V1.Inputs
+namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Inputs
 {
 
     /// <summary>

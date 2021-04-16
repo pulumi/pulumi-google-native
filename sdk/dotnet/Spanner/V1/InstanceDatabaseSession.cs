@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Spanner.V1
+namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT 1"`.
     /// </summary>
-    [GcpNativeResourceType("google-native:spanner/v1:InstanceDatabaseSession")]
+    [GoogleNativeResourceType("google-native:spanner/v1:InstanceDatabaseSession")]
     public partial class InstanceDatabaseSession : Pulumi.CustomResource
     {
         /// <summary>

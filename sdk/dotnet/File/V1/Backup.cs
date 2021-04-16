@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.File.V1
+namespace Pulumi.GoogleNative.File.V1
 {
     /// <summary>
     /// Creates a backup.
     /// </summary>
-    [GcpNativeResourceType("google-native:file/v1:Backup")]
+    [GoogleNativeResourceType("google-native:file/v1:Backup")]
     public partial class Backup : Pulumi.CustomResource
     {
         /// <summary>

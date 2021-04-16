@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Healthcare.V1Beta1
+namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 {
     /// <summary>
     /// Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
     /// </summary>
-    [GcpNativeResourceType("google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation")]
+    [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation")]
     public partial class DatasetAnnotationStoreAnnotation : Pulumi.CustomResource
     {
         /// <summary>

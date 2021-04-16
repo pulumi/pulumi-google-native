@@ -7,12 +7,12 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GcpNative.Securitycenter.V1
+namespace Pulumi.GoogleNative.Securitycenter.V1
 {
     /// <summary>
     /// Creates a notification config.
     /// </summary>
-    [GcpNativeResourceType("google-native:securitycenter/v1:OrganizationNotificationConfig")]
+    [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationNotificationConfig")]
     public partial class OrganizationNotificationConfig : Pulumi.CustomResource
     {
         /// <summary>
