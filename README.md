@@ -2,7 +2,7 @@
 
 The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud programs.
 
-This provider uses the Google Cloud REST API directly and therefore provides full access to the Google Cloud Platform (GCP).
+This provider uses the Google Cloud REST API directly and therefore provides full access to the Google Cloud Platform.
 
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes will be introduced in minor version releases.
 
@@ -26,7 +26,7 @@ or `yarn`:
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_gcp_native
+    $ pip install pulumi_google_native
 
 ### Go
 
@@ -38,17 +38,17 @@ To use from Go, use `go get` to grab the latest version of the library
 
 To use from .NET, install using `dotnet add package`:
 
-    $ dotnet add package Pulumi.GcpNative
+    $ dotnet add package Pulumi.GoogleNative
 
 ## Concepts
 
 The native Google Cloud package provides a strongly-typed means to build cloud applications that create
-and interact closely with Google Cloud resources.  Resources are exposed for the entire GCP surface area,
+and interact closely with Google Cloud resources.  Resources are exposed for the entire Google Cloud surface area,
 including (but not limited to) 'compute', 'container', 'run', 'storage', and more.
 
-The native GCP provider works directly with the Google Cloud API instead of depending on a
+The native Google Cloud provider works directly with the Google Cloud API instead of depending on a
 handwritten layer as with the [classic provider](https://github.com/pulumi/pulumi-gcp). This approach ensures higher
-quality and higher fidelity with GCP.
+quality and higher fidelity with Google Cloud.
 
 ## Configuring credentials
 

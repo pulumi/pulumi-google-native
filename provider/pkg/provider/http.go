@@ -128,7 +128,7 @@ func newClient(ctx context.Context, config credentialsConfig) (*http.Client, err
 	// 1. OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
 	client := oauth2.NewClient(cleanCtx, credentials.TokenSource)
 
-	// 2. Logging Transport - ensure we log HTTP requests to GCP APIs.
+	// 2. Logging Transport - ensure we log HTTP requests to Google APIs.
 	loggingTransport := logging.NewTransport("Google", client.Transport)
 
 	// 3. Retry Transport - retries common temporary errors
