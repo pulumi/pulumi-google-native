@@ -22,7 +22,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:AnnotationSpecSet';
+    public static readonly __pulumiType = 'google-native:datalabeling/v1beta1:AnnotationSpecSet';
 
     /**
      * Returns true if the given object is an instance of AnnotationSpecSet.  This is designed to work even
@@ -102,7 +102,7 @@ export interface AnnotationSpecSetArgs {
     /**
      * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
-    readonly annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpec>[]>;
+    readonly annotationSpecs?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>[]>;
     /**
      * The names of any related resources that are blocking changes to the annotation spec set.
      */

@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:file/v1beta1:Instance';
+    public static readonly __pulumiType = 'google-native:file/v1beta1:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -143,7 +143,7 @@ export interface InstanceArgs {
     /**
      * File system shares on the instance. For this version, only a single file share is supported.
      */
-    readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.FileShareConfig>[]>;
+    readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.FileShareConfigArgs>[]>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
@@ -153,7 +153,7 @@ export interface InstanceArgs {
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
-    readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.NetworkConfig>[]>;
+    readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.NetworkConfigArgs>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The service tier of the instance.

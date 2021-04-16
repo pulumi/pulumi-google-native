@@ -22,7 +22,7 @@ export class StudyTrial extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:ml/v1:StudyTrial';
+    public static readonly __pulumiType = 'google-native:ml/v1:StudyTrial';
 
     /**
      * Returns true if the given object is an instance of StudyTrial.  This is designed to work even
@@ -139,16 +139,16 @@ export interface StudyTrialArgs {
     /**
      * The final measurement containing the objective value.
      */
-    readonly finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__Measurement>;
+    readonly finalMeasurement?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
      */
-    readonly measurements?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__Measurement>[]>;
+    readonly measurements?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__MeasurementArgs>[]>;
     /**
      * The parameters of the trial.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_Parameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_Trial_ParameterArgs>[]>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The detailed state of a trial.

@@ -22,7 +22,7 @@ export class TransferJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:storagetransfer/v1:TransferJob';
+    public static readonly __pulumiType = 'google-native:storagetransfer/v1:TransferJob';
 
     /**
      * Returns true if the given object is an instance of TransferJob.  This is designed to work even
@@ -145,7 +145,7 @@ export interface TransferJobArgs {
     /**
      * Notification configuration.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.storagetransfer.v1.NotificationConfig>;
+    readonly notificationConfig?: pulumi.Input<inputs.storagetransfer.v1.NotificationConfigArgs>;
     /**
      * The ID of the Google Cloud Platform Project that owns the job.
      */
@@ -153,7 +153,7 @@ export interface TransferJobArgs {
     /**
      * Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
      */
-    readonly schedule?: pulumi.Input<inputs.storagetransfer.v1.Schedule>;
+    readonly schedule?: pulumi.Input<inputs.storagetransfer.v1.ScheduleArgs>;
     /**
      * Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
      */
@@ -162,5 +162,5 @@ export interface TransferJobArgs {
     /**
      * Transfer specification.
      */
-    readonly transferSpec?: pulumi.Input<inputs.storagetransfer.v1.TransferSpec>;
+    readonly transferSpec?: pulumi.Input<inputs.storagetransfer.v1.TransferSpecArgs>;
 }

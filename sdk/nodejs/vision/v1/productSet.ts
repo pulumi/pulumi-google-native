@@ -22,7 +22,7 @@ export class ProductSet extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:vision/v1:ProductSet';
+    public static readonly __pulumiType = 'google-native:vision/v1:ProductSet';
 
     /**
      * Returns true if the given object is an instance of ProductSet.  This is designed to work even

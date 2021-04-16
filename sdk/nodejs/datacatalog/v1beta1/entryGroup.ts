@@ -22,7 +22,7 @@ export class EntryGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datacatalog/v1beta1:EntryGroup';
+    public static readonly __pulumiType = 'google-native:datacatalog/v1beta1:EntryGroup';
 
     /**
      * Returns true if the given object is an instance of EntryGroup.  This is designed to work even

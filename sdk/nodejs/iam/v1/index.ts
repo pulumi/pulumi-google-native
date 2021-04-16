@@ -26,23 +26,23 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:iam/v1:OrganizationRole":
+            case "google-native:iam/v1:OrganizationRole":
                 return new OrganizationRole(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:Role":
+            case "google-native:iam/v1:Role":
                 return new Role(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:ServiceAccount":
+            case "google-native:iam/v1:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:ServiceAccountIamPolicy":
+            case "google-native:iam/v1:ServiceAccountIamPolicy":
                 return new ServiceAccountIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:ServiceAccountKey":
+            case "google-native:iam/v1:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:WorkloadIdentityPool":
+            case "google-native:iam/v1:WorkloadIdentityPool":
                 return new WorkloadIdentityPool(name, <any>undefined, { urn })
-            case "gcp-native:iam/v1:WorkloadIdentityPoolProvider":
+            case "google-native:iam/v1:WorkloadIdentityPoolProvider":
                 return new WorkloadIdentityPoolProvider(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "iam/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "iam/v1", _module)

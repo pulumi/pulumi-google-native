@@ -22,7 +22,7 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:secretmanager/v1beta1:Secret';
+    public static readonly __pulumiType = 'google-native:secretmanager/v1beta1:Secret';
 
     /**
      * Returns true if the given object is an instance of Secret.  This is designed to work even
@@ -100,6 +100,6 @@ export interface SecretArgs {
     /**
      * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
-    readonly replication?: pulumi.Input<inputs.secretmanager.v1beta1.Replication>;
+    readonly replication?: pulumi.Input<inputs.secretmanager.v1beta1.ReplicationArgs>;
     readonly secretsId: pulumi.Input<string>;
 }

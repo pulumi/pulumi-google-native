@@ -22,7 +22,7 @@ export class BillingAccountBudget extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:billingbudgets/v1:BillingAccountBudget';
+    public static readonly __pulumiType = 'google-native:billingbudgets/v1:BillingAccountBudget';
 
     /**
      * Returns true if the given object is an instance of BillingAccountBudget.  This is designed to work even
@@ -113,12 +113,12 @@ export interface BillingAccountBudgetArgs {
     /**
      * Required. Budgeted amount.
      */
-    readonly amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmount>;
+    readonly amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
     readonly billingAccountsId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget.
      */
-    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1Filter>;
+    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1FilterArgs>;
     readonly budgetsId: pulumi.Input<string>;
     /**
      * User data for display name in UI. The name must be less than or equal to 60 characters.
@@ -131,9 +131,9 @@ export interface BillingAccountBudgetArgs {
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
-    readonly notificationsRule?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRule>;
+    readonly notificationsRule?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleArgs>;
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
      */
-    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRule>[]>;
+    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleArgs>[]>;
 }

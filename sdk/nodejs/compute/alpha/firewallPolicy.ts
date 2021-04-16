@@ -22,7 +22,7 @@ export class FirewallPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:FirewallPolicy';
+    public static readonly __pulumiType = 'google-native:compute/alpha:FirewallPolicy';
 
     /**
      * Returns true if the given object is an instance of FirewallPolicy.  This is designed to work even
@@ -154,7 +154,7 @@ export interface FirewallPolicyArgs {
     /**
      * A list of associations that belong to this firewall policy.
      */
-    readonly associations?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyAssociation>[]>;
+    readonly associations?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyAssociationArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -201,7 +201,7 @@ export interface FirewallPolicyArgs {
     /**
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRule>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.FirewallPolicyRuleArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

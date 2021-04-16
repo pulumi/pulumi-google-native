@@ -22,7 +22,7 @@ export class License extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:License';
+    public static readonly __pulumiType = 'google-native:compute/alpha:License';
 
     /**
      * Returns true if the given object is an instance of License.  This is designed to work even
@@ -146,7 +146,7 @@ export interface LicenseArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
-    readonly resourceRequirements?: pulumi.Input<inputs.compute.alpha.LicenseResourceRequirements>;
+    readonly resourceRequirements?: pulumi.Input<inputs.compute.alpha.LicenseResourceRequirementsArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

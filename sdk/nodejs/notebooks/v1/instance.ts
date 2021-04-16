@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:notebooks/v1:Instance';
+    public static readonly __pulumiType = 'google-native:notebooks/v1:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -267,7 +267,7 @@ export interface InstanceArgs {
     /**
      * The hardware accelerator used on this instance. If you use accelerators, make sure that your configuration has [enough vCPUs and memory to support the `machine_type` you have selected](/compute/docs/gpus/#gpus-list).
      */
-    readonly acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.AcceleratorConfig>;
+    readonly acceleratorConfig?: pulumi.Input<inputs.notebooks.v1.AcceleratorConfigArgs>;
     /**
      * Input only. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). The minimum recommended value is 100 GB. If not specified, this defaults to 100.
      */
@@ -279,7 +279,7 @@ export interface InstanceArgs {
     /**
      * Use a container image to start the notebook instance.
      */
-    readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImage>;
+    readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>;
     /**
      * Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
      */
@@ -354,7 +354,7 @@ export interface InstanceArgs {
     /**
      * Optional. Shielded VM configuration. [Images using supported Shielded VM features] (https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
      */
-    readonly shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.v1.ShieldedInstanceConfig>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.notebooks.v1.ShieldedInstanceConfigArgs>;
     /**
      * The name of the subnet that this instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
      */
@@ -366,9 +366,9 @@ export interface InstanceArgs {
     /**
      * The upgrade history of this instance.
      */
-    readonly upgradeHistory?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.UpgradeHistoryEntry>[]>;
+    readonly upgradeHistory?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.UpgradeHistoryEntryArgs>[]>;
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      */
-    readonly vmImage?: pulumi.Input<inputs.notebooks.v1.VmImage>;
+    readonly vmImage?: pulumi.Input<inputs.notebooks.v1.VmImageArgs>;
 }

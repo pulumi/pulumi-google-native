@@ -22,7 +22,7 @@ export class ScanConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:websecurityscanner/v1alpha:ScanConfig';
+    public static readonly __pulumiType = 'google-native:websecurityscanner/v1alpha:ScanConfig';
 
     /**
      * Returns true if the given object is an instance of ScanConfig.  This is designed to work even
@@ -131,7 +131,7 @@ export interface ScanConfigArgs {
     /**
      * The authentication configuration. If specified, service will use the authentication configuration during scanning.
      */
-    readonly authentication?: pulumi.Input<inputs.websecurityscanner.v1alpha.Authentication>;
+    readonly authentication?: pulumi.Input<inputs.websecurityscanner.v1alpha.AuthenticationArgs>;
     /**
      * The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
      */
@@ -143,7 +143,7 @@ export interface ScanConfigArgs {
     /**
      * Latest ScanRun if available.
      */
-    readonly latestRun?: pulumi.Input<inputs.websecurityscanner.v1alpha.ScanRun>;
+    readonly latestRun?: pulumi.Input<inputs.websecurityscanner.v1alpha.ScanRunArgs>;
     /**
      * The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
      */
@@ -157,7 +157,7 @@ export interface ScanConfigArgs {
     /**
      * The schedule of the ScanConfig.
      */
-    readonly schedule?: pulumi.Input<inputs.websecurityscanner.v1alpha.Schedule>;
+    readonly schedule?: pulumi.Input<inputs.websecurityscanner.v1alpha.ScheduleArgs>;
     /**
      * Required. The starting URLs from which the scanner finds site pages.
      */

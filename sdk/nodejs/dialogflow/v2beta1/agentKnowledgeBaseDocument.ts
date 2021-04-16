@@ -22,7 +22,7 @@ export class AgentKnowledgeBaseDocument extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument';
 
     /**
      * Returns true if the given object is an instance of AgentKnowledgeBaseDocument.  This is designed to work even

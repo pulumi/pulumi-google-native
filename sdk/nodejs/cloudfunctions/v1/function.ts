@@ -22,7 +22,7 @@ export class Function extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudfunctions/v1:Function';
+    public static readonly __pulumiType = 'google-native:cloudfunctions/v1:Function';
 
     /**
      * Returns true if the given object is an instance of Function.  This is designed to work even
@@ -255,12 +255,12 @@ export interface FunctionArgs {
     /**
      * A source that fires events in response to a condition in another service.
      */
-    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.v1.EventTrigger>;
+    readonly eventTrigger?: pulumi.Input<inputs.cloudfunctions.v1.EventTriggerArgs>;
     readonly functionsId: pulumi.Input<string>;
     /**
      * An HTTPS endpoint type of source that can be triggered via URL.
      */
-    readonly httpsTrigger?: pulumi.Input<inputs.cloudfunctions.v1.HttpsTrigger>;
+    readonly httpsTrigger?: pulumi.Input<inputs.cloudfunctions.v1.HttpsTriggerArgs>;
     /**
      * The ingress settings for the function, controlling what traffic can reach it.
      */
@@ -298,7 +298,7 @@ export interface FunctionArgs {
     /**
      * **Beta Feature** The source repository where a function is hosted.
      */
-    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.v1.SourceRepository>;
+    readonly sourceRepository?: pulumi.Input<inputs.cloudfunctions.v1.SourceRepositoryArgs>;
     /**
      * Input only. An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function deployments.
      */

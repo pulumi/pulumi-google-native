@@ -21,7 +21,7 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationInstanceNatAddress';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationInstanceNatAddress';
 
     /**
      * Returns true if the given object is an instance of OrganizationInstanceNatAddress.  This is designed to work even

@@ -22,7 +22,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:InstanceTemplate';
+    public static readonly __pulumiType = 'google-native:compute/alpha:InstanceTemplate';
 
     /**
      * Returns true if the given object is an instance of InstanceTemplate.  This is designed to work even
@@ -150,7 +150,7 @@ export interface InstanceTemplateArgs {
     /**
      * The instance properties for this instance template.
      */
-    readonly properties?: pulumi.Input<inputs.compute.alpha.InstanceProperties>;
+    readonly properties?: pulumi.Input<inputs.compute.alpha.InstancePropertiesArgs>;
     /**
      * [Output Only] The URL for this instance template. The server defines this URL.
      */
@@ -168,5 +168,5 @@ export interface InstanceTemplateArgs {
     /**
      * The source instance params to use to create this instance template.
      */
-    readonly sourceInstanceParams?: pulumi.Input<inputs.compute.alpha.SourceInstanceParams>;
+    readonly sourceInstanceParams?: pulumi.Input<inputs.compute.alpha.SourceInstanceParamsArgs>;
 }

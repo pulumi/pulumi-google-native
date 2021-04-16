@@ -22,7 +22,7 @@ export class NetworkEndpointGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:NetworkEndpointGroup';
+    public static readonly __pulumiType = 'google-native:compute/alpha:NetworkEndpointGroup';
 
     /**
      * Returns true if the given object is an instance of NetworkEndpointGroup.  This is designed to work even
@@ -205,15 +205,15 @@ export interface NetworkEndpointGroupArgs {
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly appEngine?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupAppEngine>;
+    readonly appEngine?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupAppEngineArgs>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly cloudFunction?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupCloudFunction>;
+    readonly cloudFunction?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupCloudFunctionArgs>;
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine or cloudFunction may be set.
      */
-    readonly cloudRun?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupCloudRun>;
+    readonly cloudRun?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupCloudRunArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -237,7 +237,7 @@ export interface NetworkEndpointGroupArgs {
     /**
      * This field is only valid when the network endpoint group is used for load balancing. [Deprecated] This field is deprecated.
      */
-    readonly loadBalancer?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupLbNetworkEndpointGroup>;
+    readonly loadBalancer?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupLbNetworkEndpointGroupArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -271,7 +271,7 @@ export interface NetworkEndpointGroupArgs {
     /**
      * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
      */
-    readonly serverlessDeployment?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupServerlessDeployment>;
+    readonly serverlessDeployment?: pulumi.Input<inputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentArgs>;
     /**
      * [Output only] Number of network endpoints in the network endpoint group.
      */

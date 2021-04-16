@@ -21,7 +21,7 @@ export class AndroidApp extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:firebase/v1beta1:AndroidApp';
+    public static readonly __pulumiType = 'google-native:firebase/v1beta1:AndroidApp';
 
     /**
      * Returns true if the given object is an instance of AndroidApp.  This is designed to work even

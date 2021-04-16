@@ -22,7 +22,7 @@ export class Snapshot extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Snapshot';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Snapshot';
 
     /**
      * Returns true if the given object is an instance of Snapshot.  This is designed to work even
@@ -264,7 +264,7 @@ export interface SnapshotArgs {
     /**
      * [Output Only] A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
      */
-    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeature>[]>;
+    readonly guestOsFeatures?: pulumi.Input<pulumi.Input<inputs.compute.alpha.GuestOsFeatureArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -322,7 +322,7 @@ export interface SnapshotArgs {
      *
      * If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
      */
-    readonly snapshotEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly snapshotEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * The source disk used to create this snapshot.
      */
@@ -330,7 +330,7 @@ export interface SnapshotArgs {
     /**
      * The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
      */
-    readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly sourceDiskEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.
      */

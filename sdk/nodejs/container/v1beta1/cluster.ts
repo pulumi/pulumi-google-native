@@ -22,7 +22,7 @@ export class Cluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:container/v1beta1:Cluster';
+    public static readonly __pulumiType = 'google-native:container/v1beta1:Cluster';
 
     /**
      * Returns true if the given object is an instance of Cluster.  This is designed to work even
@@ -417,23 +417,23 @@ export interface ClusterArgs {
     /**
      * Configurations for the various addons available to run in the cluster.
      */
-    readonly addonsConfig?: pulumi.Input<inputs.container.v1beta1.AddonsConfig>;
+    readonly addonsConfig?: pulumi.Input<inputs.container.v1beta1.AddonsConfigArgs>;
     /**
      * Configuration controlling RBAC group membership information.
      */
-    readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.v1beta1.AuthenticatorGroupsConfig>;
+    readonly authenticatorGroupsConfig?: pulumi.Input<inputs.container.v1beta1.AuthenticatorGroupsConfigArgs>;
     /**
      * Autopilot configuration for the cluster.
      */
-    readonly autopilot?: pulumi.Input<inputs.container.v1beta1.Autopilot>;
+    readonly autopilot?: pulumi.Input<inputs.container.v1beta1.AutopilotArgs>;
     /**
      * Cluster-level autoscaling configuration.
      */
-    readonly autoscaling?: pulumi.Input<inputs.container.v1beta1.ClusterAutoscaling>;
+    readonly autoscaling?: pulumi.Input<inputs.container.v1beta1.ClusterAutoscalingArgs>;
     /**
      * Configuration for Binary Authorization.
      */
-    readonly binaryAuthorization?: pulumi.Input<inputs.container.v1beta1.BinaryAuthorization>;
+    readonly binaryAuthorization?: pulumi.Input<inputs.container.v1beta1.BinaryAuthorizationArgs>;
     readonly clusterId: pulumi.Input<string>;
     /**
      * The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
@@ -442,15 +442,15 @@ export interface ClusterArgs {
     /**
      * Telemetry integration for the cluster.
      */
-    readonly clusterTelemetry?: pulumi.Input<inputs.container.v1beta1.ClusterTelemetry>;
+    readonly clusterTelemetry?: pulumi.Input<inputs.container.v1beta1.ClusterTelemetryArgs>;
     /**
      * Which conditions caused the current cluster state.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.StatusCondition>[]>;
+    readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.StatusConditionArgs>[]>;
     /**
      * Configuration of Confidential Nodes
      */
-    readonly confidentialNodes?: pulumi.Input<inputs.container.v1beta1.ConfidentialNodes>;
+    readonly confidentialNodes?: pulumi.Input<inputs.container.v1beta1.ConfidentialNodesArgs>;
     /**
      * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
@@ -466,11 +466,11 @@ export interface ClusterArgs {
     /**
      * Configuration of etcd encryption.
      */
-    readonly databaseEncryption?: pulumi.Input<inputs.container.v1beta1.DatabaseEncryption>;
+    readonly databaseEncryption?: pulumi.Input<inputs.container.v1beta1.DatabaseEncryptionArgs>;
     /**
      * The default constraint on the maximum number of pods that can be run simultaneously on a node in the node pool of this cluster. Only honored if cluster created with IP Alias support.
      */
-    readonly defaultMaxPodsConstraint?: pulumi.Input<inputs.container.v1beta1.MaxPodsConstraint>;
+    readonly defaultMaxPodsConstraint?: pulumi.Input<inputs.container.v1beta1.MaxPodsConstraintArgs>;
     /**
      * An optional description of this cluster.
      */
@@ -502,7 +502,7 @@ export interface ClusterArgs {
     /**
      * Configuration for cluster IP allocation.
      */
-    readonly ipAllocationPolicy?: pulumi.Input<inputs.container.v1beta1.IPAllocationPolicy>;
+    readonly ipAllocationPolicy?: pulumi.Input<inputs.container.v1beta1.IPAllocationPolicyArgs>;
     /**
      * The fingerprint of the set of labels for this cluster.
      */
@@ -510,7 +510,7 @@ export interface ClusterArgs {
     /**
      * Configuration for the legacy ABAC authorization mode.
      */
-    readonly legacyAbac?: pulumi.Input<inputs.container.v1beta1.LegacyAbac>;
+    readonly legacyAbac?: pulumi.Input<inputs.container.v1beta1.LegacyAbacArgs>;
     /**
      * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
      */
@@ -526,19 +526,19 @@ export interface ClusterArgs {
     /**
      * Configure the maintenance policy for this cluster.
      */
-    readonly maintenancePolicy?: pulumi.Input<inputs.container.v1beta1.MaintenancePolicy>;
+    readonly maintenancePolicy?: pulumi.Input<inputs.container.v1beta1.MaintenancePolicyArgs>;
     /**
      * Configuration for master components.
      */
-    readonly master?: pulumi.Input<inputs.container.v1beta1.Master>;
+    readonly master?: pulumi.Input<inputs.container.v1beta1.MasterArgs>;
     /**
      * The authentication information for accessing the master endpoint. If unspecified, the defaults are used: For clusters before v1.12, if master_auth is unspecified, `username` will be set to "admin", a random password will be generated, and a client certificate will be issued.
      */
-    readonly masterAuth?: pulumi.Input<inputs.container.v1beta1.MasterAuth>;
+    readonly masterAuth?: pulumi.Input<inputs.container.v1beta1.MasterAuthArgs>;
     /**
      * The configuration options for master authorized networks feature.
      */
-    readonly masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.v1beta1.MasterAuthorizedNetworksConfig>;
+    readonly masterAuthorizedNetworksConfig?: pulumi.Input<inputs.container.v1beta1.MasterAuthorizedNetworksConfigArgs>;
     /**
      * The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for assigning private IP addresses to the master or set of masters, as well as the ILB VIP. This field is deprecated, use private_cluster_config.master_ipv4_cidr_block instead.
      */
@@ -558,15 +558,15 @@ export interface ClusterArgs {
     /**
      * Configuration for cluster networking.
      */
-    readonly networkConfig?: pulumi.Input<inputs.container.v1beta1.NetworkConfig>;
+    readonly networkConfig?: pulumi.Input<inputs.container.v1beta1.NetworkConfigArgs>;
     /**
      * Configuration options for the NetworkPolicy feature.
      */
-    readonly networkPolicy?: pulumi.Input<inputs.container.v1beta1.NetworkPolicy>;
+    readonly networkPolicy?: pulumi.Input<inputs.container.v1beta1.NetworkPolicyArgs>;
     /**
      * Parameters used in creating the cluster's nodes. For requests, this field should only be used in lieu of a "node_pool" object, since this configuration (along with the "initial_node_count") will be used to create a "NodePool" object with an auto-generated name. Do not use this and a node_pool at the same time. For responses, this field will be populated with the node configuration of the first node pool. (For configuration of each node pool, see `node_pool.config`) If unspecified, the defaults are used. This field is deprecated, use node_pool.config instead.
      */
-    readonly nodeConfig?: pulumi.Input<inputs.container.v1beta1.NodeConfig>;
+    readonly nodeConfig?: pulumi.Input<inputs.container.v1beta1.NodeConfigArgs>;
     /**
      * [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
      */
@@ -574,11 +574,11 @@ export interface ClusterArgs {
     /**
      * The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
      */
-    readonly nodePools?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.NodePool>[]>;
+    readonly nodePools?: pulumi.Input<pulumi.Input<inputs.container.v1beta1.NodePoolArgs>[]>;
     /**
      * Notification configuration of the cluster.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.container.v1beta1.NotificationConfig>;
+    readonly notificationConfig?: pulumi.Input<inputs.container.v1beta1.NotificationConfigArgs>;
     /**
      * The parent (project and location) where the cluster will be created. Specified in the format `projects/*&#47;locations/*`.
      */
@@ -586,7 +586,7 @@ export interface ClusterArgs {
     /**
      * Configuration for the PodSecurityPolicy feature.
      */
-    readonly podSecurityPolicyConfig?: pulumi.Input<inputs.container.v1beta1.PodSecurityPolicyConfig>;
+    readonly podSecurityPolicyConfig?: pulumi.Input<inputs.container.v1beta1.PodSecurityPolicyConfigArgs>;
     /**
      * If this is a private cluster setup. Private clusters are clusters that, by default have no external IP addresses on the nodes and where nodes and the master communicate over private IP addresses. This field is deprecated, use private_cluster_config.enable_private_nodes instead.
      */
@@ -594,12 +594,12 @@ export interface ClusterArgs {
     /**
      * Configuration for private cluster.
      */
-    readonly privateClusterConfig?: pulumi.Input<inputs.container.v1beta1.PrivateClusterConfig>;
+    readonly privateClusterConfig?: pulumi.Input<inputs.container.v1beta1.PrivateClusterConfigArgs>;
     readonly projectId: pulumi.Input<string>;
     /**
      * Release channel configuration.
      */
-    readonly releaseChannel?: pulumi.Input<inputs.container.v1beta1.ReleaseChannel>;
+    readonly releaseChannel?: pulumi.Input<inputs.container.v1beta1.ReleaseChannelArgs>;
     /**
      * The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
      */
@@ -607,7 +607,7 @@ export interface ClusterArgs {
     /**
      * Configuration for exporting resource usages. Resource usage export is disabled when this config unspecified.
      */
-    readonly resourceUsageExportConfig?: pulumi.Input<inputs.container.v1beta1.ResourceUsageExportConfig>;
+    readonly resourceUsageExportConfig?: pulumi.Input<inputs.container.v1beta1.ResourceUsageExportConfigArgs>;
     /**
      * [Output only] Server-defined URL for the resource.
      */
@@ -619,7 +619,7 @@ export interface ClusterArgs {
     /**
      * Shielded Nodes configuration.
      */
-    readonly shieldedNodes?: pulumi.Input<inputs.container.v1beta1.ShieldedNodes>;
+    readonly shieldedNodes?: pulumi.Input<inputs.container.v1beta1.ShieldedNodesArgs>;
     /**
      * [Output only] The current status of this cluster.
      */
@@ -631,7 +631,7 @@ export interface ClusterArgs {
     /**
      * Configuration for Cloud TPU support;
      */
-    readonly tpuConfig?: pulumi.Input<inputs.container.v1beta1.TpuConfig>;
+    readonly tpuConfig?: pulumi.Input<inputs.container.v1beta1.TpuConfigArgs>;
     /**
      * [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
      */
@@ -639,11 +639,11 @@ export interface ClusterArgs {
     /**
      * Cluster-level Vertical Pod Autoscaling configuration.
      */
-    readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.v1beta1.VerticalPodAutoscaling>;
+    readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.v1beta1.VerticalPodAutoscalingArgs>;
     /**
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
-    readonly workloadIdentityConfig?: pulumi.Input<inputs.container.v1beta1.WorkloadIdentityConfig>;
+    readonly workloadIdentityConfig?: pulumi.Input<inputs.container.v1beta1.WorkloadIdentityConfigArgs>;
     /**
      * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
      */

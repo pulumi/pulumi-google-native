@@ -22,7 +22,7 @@ export class OrganizationReport extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationReport';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationReport';
 
     /**
      * Returns true if the given object is an instance of OrganizationReport.  This is designed to work even
@@ -231,7 +231,7 @@ export interface OrganizationReportArgs {
     /**
      * Required. This contains the list of metrics
      */
-    readonly metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetric>[]>;
+    readonly metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricArgs>[]>;
     /**
      * Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
@@ -244,7 +244,7 @@ export interface OrganizationReportArgs {
     /**
      * This field contains report properties such as ui metadata etc.
      */
-    readonly properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportProperty>[]>;
+    readonly properties?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1ReportPropertyArgs>[]>;
     readonly reportsId: pulumi.Input<string>;
     /**
      * Legacy field: not used much. Contains the list of sort by columns

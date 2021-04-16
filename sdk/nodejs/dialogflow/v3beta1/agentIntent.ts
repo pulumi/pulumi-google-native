@@ -22,7 +22,7 @@ export class AgentIntent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentIntent';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3beta1:AgentIntent';
 
     /**
      * Returns true if the given object is an instance of AgentIntent.  This is designed to work even
@@ -150,7 +150,7 @@ export interface AgentIntentArgs {
     /**
      * The collection of parameters associated with the intent.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentParameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentParameterArgs>[]>;
     /**
      * The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
      */
@@ -159,5 +159,5 @@ export interface AgentIntentArgs {
     /**
      * The collection of training phrases the agent is trained on to identify the intent.
      */
-    readonly trainingPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase>[]>;
+    readonly trainingPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs>[]>;
 }

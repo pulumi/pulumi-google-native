@@ -21,7 +21,7 @@ export class AgentSessionContext extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2:AgentSessionContext';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2:AgentSessionContext';
 
     /**
      * Returns true if the given object is an instance of AgentSessionContext.  This is designed to work even

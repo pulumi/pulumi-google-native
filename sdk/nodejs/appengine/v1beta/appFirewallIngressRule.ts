@@ -21,7 +21,7 @@ export class AppFirewallIngressRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:appengine/v1beta:AppFirewallIngressRule';
+    public static readonly __pulumiType = 'google-native:appengine/v1beta:AppFirewallIngressRule';
 
     /**
      * Returns true if the given object is an instance of AppFirewallIngressRule.  This is designed to work even

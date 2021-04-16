@@ -22,7 +22,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigqueryreservation/v1beta1:CapacityCommitment';
+    public static readonly __pulumiType = 'google-native:bigqueryreservation/v1beta1:CapacityCommitment';
 
     /**
      * Returns true if the given object is an instance of CapacityCommitment.  This is designed to work even

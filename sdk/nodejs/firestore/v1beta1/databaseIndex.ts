@@ -22,7 +22,7 @@ export class DatabaseIndex extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:firestore/v1beta1:DatabaseIndex';
+    public static readonly __pulumiType = 'google-native:firestore/v1beta1:DatabaseIndex';
 
     /**
      * Returns true if the given object is an instance of DatabaseIndex.  This is designed to work even
@@ -104,7 +104,7 @@ export interface DatabaseIndexArgs {
     /**
      * The fields to index.
      */
-    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexField>[]>;
+    readonly fields?: pulumi.Input<pulumi.Input<inputs.firestore.v1beta1.GoogleFirestoreAdminV1beta1IndexFieldArgs>[]>;
     readonly indexesId: pulumi.Input<string>;
     /**
      * The resource name of the index. Output only.

@@ -22,7 +22,7 @@ export class ServiceConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:servicemanagement/v1:ServiceConfig';
+    public static readonly __pulumiType = 'google-native:servicemanagement/v1:ServiceConfig';
 
     /**
      * Returns true if the given object is an instance of ServiceConfig.  This is designed to work even
@@ -228,19 +228,19 @@ export interface ServiceConfigArgs {
     /**
      * A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
      */
-    readonly apis?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.Api>[]>;
+    readonly apis?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.ApiArgs>[]>;
     /**
      * Auth configuration.
      */
-    readonly authentication?: pulumi.Input<inputs.servicemanagement.v1.Authentication>;
+    readonly authentication?: pulumi.Input<inputs.servicemanagement.v1.AuthenticationArgs>;
     /**
      * API backend configuration.
      */
-    readonly backend?: pulumi.Input<inputs.servicemanagement.v1.Backend>;
+    readonly backend?: pulumi.Input<inputs.servicemanagement.v1.BackendArgs>;
     /**
      * Billing configuration.
      */
-    readonly billing?: pulumi.Input<inputs.servicemanagement.v1.Billing>;
+    readonly billing?: pulumi.Input<inputs.servicemanagement.v1.BillingArgs>;
     readonly configId: pulumi.Input<string>;
     /**
      * Obsolete. Do not use. This field has no semantic meaning. The service config compiler always sets this field to `3`.
@@ -249,31 +249,31 @@ export interface ServiceConfigArgs {
     /**
      * Context configuration.
      */
-    readonly context?: pulumi.Input<inputs.servicemanagement.v1.Context>;
+    readonly context?: pulumi.Input<inputs.servicemanagement.v1.ContextArgs>;
     /**
      * Configuration for the service control plane.
      */
-    readonly control?: pulumi.Input<inputs.servicemanagement.v1.Control>;
+    readonly control?: pulumi.Input<inputs.servicemanagement.v1.ControlArgs>;
     /**
      * Custom error configuration.
      */
-    readonly customError?: pulumi.Input<inputs.servicemanagement.v1.CustomError>;
+    readonly customError?: pulumi.Input<inputs.servicemanagement.v1.CustomErrorArgs>;
     /**
      * Additional API documentation.
      */
-    readonly documentation?: pulumi.Input<inputs.servicemanagement.v1.Documentation>;
+    readonly documentation?: pulumi.Input<inputs.servicemanagement.v1.DocumentationArgs>;
     /**
      * Configuration for network endpoints. If this is empty, then an endpoint with the same name as the service is automatically generated to service all defined APIs.
      */
-    readonly endpoints?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.Endpoint>[]>;
+    readonly endpoints?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.EndpointArgs>[]>;
     /**
      * A list of all enum types included in this API service. Enums referenced directly or indirectly by the `apis` are automatically included. Enums which are not referenced but shall be included should be listed here by name. Example: enums: - name: google.someapi.v1.SomeEnum
      */
-    readonly enums?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.Enum>[]>;
+    readonly enums?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.EnumArgs>[]>;
     /**
      * HTTP configuration.
      */
-    readonly http?: pulumi.Input<inputs.servicemanagement.v1.Http>;
+    readonly http?: pulumi.Input<inputs.servicemanagement.v1.HttpArgs>;
     /**
      * A unique ID for a specific instance of this message, typically assigned by the client for tracking purpose. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If empty, the server may choose to generate one instead.
      */
@@ -281,23 +281,23 @@ export interface ServiceConfigArgs {
     /**
      * Logging configuration.
      */
-    readonly logging?: pulumi.Input<inputs.servicemanagement.v1.Logging>;
+    readonly logging?: pulumi.Input<inputs.servicemanagement.v1.LoggingArgs>;
     /**
      * Defines the logs used by this service.
      */
-    readonly logs?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.LogDescriptor>[]>;
+    readonly logs?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.LogDescriptorArgs>[]>;
     /**
      * Defines the metrics used by this service.
      */
-    readonly metrics?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.MetricDescriptor>[]>;
+    readonly metrics?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.MetricDescriptorArgs>[]>;
     /**
      * Defines the monitored resources used by this service. This is required by the Service.monitoring and Service.logging configurations.
      */
-    readonly monitoredResources?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.MonitoredResourceDescriptor>[]>;
+    readonly monitoredResources?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.MonitoredResourceDescriptorArgs>[]>;
     /**
      * Monitoring configuration.
      */
-    readonly monitoring?: pulumi.Input<inputs.servicemanagement.v1.Monitoring>;
+    readonly monitoring?: pulumi.Input<inputs.servicemanagement.v1.MonitoringArgs>;
     /**
      * The service name, which is a DNS-like logical identifier for the service, such as `calendar.googleapis.com`. The service name typically goes through DNS verification to make sure the owner of the service also owns the DNS name.
      */
@@ -309,20 +309,20 @@ export interface ServiceConfigArgs {
     /**
      * Quota configuration.
      */
-    readonly quota?: pulumi.Input<inputs.servicemanagement.v1.Quota>;
+    readonly quota?: pulumi.Input<inputs.servicemanagement.v1.QuotaArgs>;
     readonly serviceName: pulumi.Input<string>;
     /**
      * The source information for this configuration if available.
      */
-    readonly sourceInfo?: pulumi.Input<inputs.servicemanagement.v1.SourceInfo>;
+    readonly sourceInfo?: pulumi.Input<inputs.servicemanagement.v1.SourceInfoArgs>;
     /**
      * System parameter configuration.
      */
-    readonly systemParameters?: pulumi.Input<inputs.servicemanagement.v1.SystemParameters>;
+    readonly systemParameters?: pulumi.Input<inputs.servicemanagement.v1.SystemParametersArgs>;
     /**
      * A list of all proto message types included in this API service. It serves similar purpose as [google.api.Service.types], except that these types are not needed by user-defined APIs. Therefore, they will not show up in the generated discovery doc. This field should only be used to define system APIs in ESF.
      */
-    readonly systemTypes?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.Type>[]>;
+    readonly systemTypes?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.TypeArgs>[]>;
     /**
      * The product title for this service.
      */
@@ -330,9 +330,9 @@ export interface ServiceConfigArgs {
     /**
      * A list of all proto message types included in this API service. Types referenced directly or indirectly by the `apis` are automatically included. Messages which are not referenced but shall be included, such as types used by the `google.protobuf.Any` type, should be listed here by name. Example: types: - name: google.protobuf.Int32
      */
-    readonly types?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.Type>[]>;
+    readonly types?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.TypeArgs>[]>;
     /**
      * Configuration controlling usage of this service.
      */
-    readonly usage?: pulumi.Input<inputs.servicemanagement.v1.Usage>;
+    readonly usage?: pulumi.Input<inputs.servicemanagement.v1.UsageArgs>;
 }

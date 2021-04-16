@@ -22,7 +22,7 @@ export class AgentEnvironment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentEnvironment';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3beta1:AgentEnvironment';
 
     /**
      * Returns true if the given object is an instance of AgentEnvironment.  This is designed to work even
@@ -125,5 +125,5 @@ export interface AgentEnvironmentArgs {
     /**
      * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */
-    readonly versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig>[]>;
+    readonly versionConfigs?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>[]>;
 }

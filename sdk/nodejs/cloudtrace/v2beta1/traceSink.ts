@@ -22,7 +22,7 @@ export class TraceSink extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudtrace/v2beta1:TraceSink';
+    public static readonly __pulumiType = 'google-native:cloudtrace/v2beta1:TraceSink';
 
     /**
      * Returns true if the given object is an instance of TraceSink.  This is designed to work even
@@ -93,7 +93,7 @@ export interface TraceSinkArgs {
     /**
      * Required. The export destination.
      */
-    readonly outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfig>;
+    readonly outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
     readonly traceSinksId: pulumi.Input<string>;
 }

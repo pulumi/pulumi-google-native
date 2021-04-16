@@ -22,7 +22,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:PublicAdvertisedPrefix';
+    public static readonly __pulumiType = 'google-native:compute/alpha:PublicAdvertisedPrefix';
 
     /**
      * Returns true if the given object is an instance of PublicAdvertisedPrefix.  This is designed to work even
@@ -182,7 +182,7 @@ export interface PublicAdvertisedPrefixArgs {
     /**
      * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
      */
-    readonly publicDelegatedPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefix>[]>;
+    readonly publicDelegatedPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>[]>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

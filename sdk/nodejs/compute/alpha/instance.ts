@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:Instance';
+    public static readonly __pulumiType = 'google-native:compute/alpha:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -393,12 +393,12 @@ export interface InstanceArgs {
     /**
      * Controls for advanced machine-related behavior features.
      */
-    readonly advancedMachineFeatures?: pulumi.Input<inputs.compute.alpha.AdvancedMachineFeatures>;
+    readonly advancedMachineFeatures?: pulumi.Input<inputs.compute.alpha.AdvancedMachineFeaturesArgs>;
     /**
      * Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
      */
     readonly canIpForward?: pulumi.Input<boolean>;
-    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.alpha.ConfidentialInstanceConfig>;
+    readonly confidentialInstanceConfig?: pulumi.Input<inputs.compute.alpha.ConfidentialInstanceConfigArgs>;
     /**
      * [Output Only] The CPU platform used by this instance.
      */
@@ -418,11 +418,11 @@ export interface InstanceArgs {
     /**
      * Array of disks associated with this instance. Persistent disks must be created before you can assign them.
      */
-    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AttachedDisk>[]>;
+    readonly disks?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AttachedDiskArgs>[]>;
     /**
      * Enables display device for the instance.
      */
-    readonly displayDevice?: pulumi.Input<inputs.compute.alpha.DisplayDevice>;
+    readonly displayDevice?: pulumi.Input<inputs.compute.alpha.DisplayDeviceArgs>;
     /**
      * Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
      */
@@ -436,7 +436,7 @@ export interface InstanceArgs {
     /**
      * A list of the type and count of accelerator cards attached to the instance.
      */
-    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AcceleratorConfig>[]>;
+    readonly guestAccelerators?: pulumi.Input<pulumi.Input<inputs.compute.alpha.AcceleratorConfigArgs>[]>;
     /**
      * Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
      */
@@ -457,7 +457,7 @@ export interface InstanceArgs {
      *
      * Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
      */
-    readonly instanceEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly instanceEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] Type of the resource. Always compute#instance for instances.
      */
@@ -501,7 +501,7 @@ export interface InstanceArgs {
     /**
      * The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
      */
-    readonly metadata?: pulumi.Input<inputs.compute.alpha.Metadata>;
+    readonly metadata?: pulumi.Input<inputs.compute.alpha.MetadataArgs>;
     /**
      * Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
      */
@@ -513,8 +513,8 @@ export interface InstanceArgs {
     /**
      * An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      */
-    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NetworkInterface>[]>;
-    readonly networkPerformanceConfig?: pulumi.Input<inputs.compute.alpha.NetworkPerformanceConfig>;
+    readonly networkInterfaces?: pulumi.Input<pulumi.Input<inputs.compute.alpha.NetworkInterfaceArgs>[]>;
+    readonly networkPerformanceConfig?: pulumi.Input<inputs.compute.alpha.NetworkPerformanceConfigArgs>;
     /**
      * PostKeyRevocationActionType of the instance.
      */
@@ -531,7 +531,7 @@ export interface InstanceArgs {
     /**
      * Specifies the reservations that this instance can consume from.
      */
-    readonly reservationAffinity?: pulumi.Input<inputs.compute.alpha.ReservationAffinity>;
+    readonly reservationAffinity?: pulumi.Input<inputs.compute.alpha.ReservationAffinityArgs>;
     /**
      * Resource policies applied to this instance.
      */
@@ -539,7 +539,7 @@ export interface InstanceArgs {
     /**
      * [Output Only] Specifies values set for instance attributes as compared to the values requested by user in the corresponding input only field.
      */
-    readonly resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourceStatus>;
+    readonly resourceStatus?: pulumi.Input<inputs.compute.alpha.ResourceStatusArgs>;
     /**
      * [Output Only] Reserved for future use.
      */
@@ -547,7 +547,7 @@ export interface InstanceArgs {
     /**
      * Sets the scheduling options for this instance.
      */
-    readonly scheduling?: pulumi.Input<inputs.compute.alpha.Scheduling>;
+    readonly scheduling?: pulumi.Input<inputs.compute.alpha.SchedulingArgs>;
     /**
      * Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
      */
@@ -569,17 +569,17 @@ export interface InstanceArgs {
      *
      * Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
      */
-    readonly serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAccount>[]>;
-    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceConfig>;
-    readonly shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceIntegrityPolicy>;
+    readonly serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAccountArgs>[]>;
+    readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceConfigArgs>;
+    readonly shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedInstanceIntegrityPolicyArgs>;
     /**
      * Deprecating, please use shielded_instance_config.
      */
-    readonly shieldedVmConfig?: pulumi.Input<inputs.compute.alpha.ShieldedVmConfig>;
+    readonly shieldedVmConfig?: pulumi.Input<inputs.compute.alpha.ShieldedVmConfigArgs>;
     /**
      * Deprecating, please use shielded_instance_integrity_policy.
      */
-    readonly shieldedVmIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedVmIntegrityPolicy>;
+    readonly shieldedVmIntegrityPolicy?: pulumi.Input<inputs.compute.alpha.ShieldedVmIntegrityPolicyArgs>;
     /**
      * Source machine image
      */
@@ -587,7 +587,7 @@ export interface InstanceArgs {
     /**
      * Source machine image encryption key when creating an instance from a machine image.
      */
-    readonly sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKey>;
+    readonly sourceMachineImageEncryptionKey?: pulumi.Input<inputs.compute.alpha.CustomerEncryptionKeyArgs>;
     /**
      * [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */
@@ -603,11 +603,11 @@ export interface InstanceArgs {
     /**
      * Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
      */
-    readonly tags?: pulumi.Input<inputs.compute.alpha.Tags>;
+    readonly tags?: pulumi.Input<inputs.compute.alpha.TagsArgs>;
     /**
      * [Output Only] Specifies upcoming maintenance for the instance.
      */
-    readonly upcomingMaintenance?: pulumi.Input<inputs.compute.alpha.UpcomingMaintenance>;
+    readonly upcomingMaintenance?: pulumi.Input<inputs.compute.alpha.UpcomingMaintenanceArgs>;
     /**
      * [Output Only] URL of the zone where the instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

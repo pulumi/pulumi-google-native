@@ -21,7 +21,7 @@ export class History extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:toolresults/v1beta3:History';
+    public static readonly __pulumiType = 'google-native:toolresults/v1beta3:History';
 
     /**
      * Returns true if the given object is an instance of History.  This is designed to work even

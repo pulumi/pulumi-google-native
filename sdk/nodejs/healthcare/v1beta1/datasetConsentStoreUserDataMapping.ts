@@ -22,7 +22,7 @@ export class DatasetConsentStoreUserDataMapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreUserDataMapping.  This is designed to work even
@@ -131,7 +131,7 @@ export interface DatasetConsentStoreUserDataMappingArgs {
     /**
      * Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
      */
-    readonly resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.Attribute>[]>;
+    readonly resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.AttributeArgs>[]>;
     readonly userDataMappingsId: pulumi.Input<string>;
     /**
      * Required. User's UUID provided by the client.

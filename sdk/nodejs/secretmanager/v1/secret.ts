@@ -22,7 +22,7 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:secretmanager/v1:Secret';
+    public static readonly __pulumiType = 'google-native:secretmanager/v1:Secret';
 
     /**
      * Returns true if the given object is an instance of Secret.  This is designed to work even
@@ -128,16 +128,16 @@ export interface SecretArgs {
     /**
      * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
-    readonly replication?: pulumi.Input<inputs.secretmanager.v1.Replication>;
+    readonly replication?: pulumi.Input<inputs.secretmanager.v1.ReplicationArgs>;
     /**
      * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
      */
-    readonly rotation?: pulumi.Input<inputs.secretmanager.v1.Rotation>;
+    readonly rotation?: pulumi.Input<inputs.secretmanager.v1.RotationArgs>;
     readonly secretsId: pulumi.Input<string>;
     /**
      * Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
      */
-    readonly topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.v1.Topic>[]>;
+    readonly topics?: pulumi.Input<pulumi.Input<inputs.secretmanager.v1.TopicArgs>[]>;
     /**
      * Input only. The TTL for the Secret.
      */

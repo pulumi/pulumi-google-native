@@ -50,47 +50,47 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:healthcare/v1beta1:Dataset":
+            case "google-native:healthcare/v1beta1:Dataset":
                 return new Dataset(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetAnnotationStore":
+            case "google-native:healthcare/v1beta1:DatasetAnnotationStore":
                 return new DatasetAnnotationStore(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation":
+            case "google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation":
                 return new DatasetAnnotationStoreAnnotation(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy":
                 return new DatasetAnnotationStoreIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStore":
+            case "google-native:healthcare/v1beta1:DatasetConsentStore":
                 return new DatasetConsentStore(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition":
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreAttributeDefinition":
                 return new DatasetConsentStoreAttributeDefinition(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStoreConsent":
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreConsent":
                 return new DatasetConsentStoreConsent(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact":
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact":
                 return new DatasetConsentStoreConsentArtifact(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreIamPolicy":
                 return new DatasetConsentStoreIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping":
+            case "google-native:healthcare/v1beta1:DatasetConsentStoreUserDataMapping":
                 return new DatasetConsentStoreUserDataMapping(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetDicomStore":
+            case "google-native:healthcare/v1beta1:DatasetDicomStore":
                 return new DatasetDicomStore(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetDicomStoreIamPolicy":
                 return new DatasetDicomStoreIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetFhirStore":
+            case "google-native:healthcare/v1beta1:DatasetFhirStore":
                 return new DatasetFhirStore(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetFhirStoreFhir":
+            case "google-native:healthcare/v1beta1:DatasetFhirStoreFhir":
                 return new DatasetFhirStoreFhir(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy":
                 return new DatasetFhirStoreIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetHl7V2Store":
+            case "google-native:healthcare/v1beta1:DatasetHl7V2Store":
                 return new DatasetHl7V2Store(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetHl7V2StoreIamPolicy":
                 return new DatasetHl7V2StoreIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetHl7V2StoreMessage":
+            case "google-native:healthcare/v1beta1:DatasetHl7V2StoreMessage":
                 return new DatasetHl7V2StoreMessage(name, <any>undefined, { urn })
-            case "gcp-native:healthcare/v1beta1:DatasetIamPolicy":
+            case "google-native:healthcare/v1beta1:DatasetIamPolicy":
                 return new DatasetIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "healthcare/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "healthcare/v1beta1", _module)

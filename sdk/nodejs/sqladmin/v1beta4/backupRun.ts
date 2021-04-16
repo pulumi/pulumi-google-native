@@ -22,7 +22,7 @@ export class BackupRun extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:sqladmin/v1beta4:BackupRun';
+    public static readonly __pulumiType = 'google-native:sqladmin/v1beta4:BackupRun';
 
     /**
      * Returns true if the given object is an instance of BackupRun.  This is designed to work even
@@ -172,11 +172,11 @@ export interface BackupRunArgs {
     /**
      * Encryption configuration specific to a backup. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfiguration>;
+    readonly diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
     /**
      * Encryption status specific to a backup. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatus>;
+    readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**
      * The time the backup operation completed in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
      */
@@ -188,7 +188,7 @@ export interface BackupRunArgs {
     /**
      * Information about why the backup operation failed. This is only present if the run has the FAILED status.
      */
-    readonly error?: pulumi.Input<inputs.sqladmin.v1beta4.OperationError>;
+    readonly error?: pulumi.Input<inputs.sqladmin.v1beta4.OperationErrorArgs>;
     /**
      * The identifier for this backup run. Unique only for a specific Cloud SQL instance.
      */

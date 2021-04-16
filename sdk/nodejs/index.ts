@@ -210,10 +210,10 @@ export {
 
 import { Provider } from "./provider";
 
-pulumi.runtime.registerResourcePackage("gcp-native", {
+pulumi.runtime.registerResourcePackage("google-native", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
-        if (type !== "pulumi:providers:gcp-native") {
+        if (type !== "pulumi:providers:google-native") {
             throw new Error(`unknown provider type ${type}`);
         }
         return new Provider(name, <any>undefined, { urn });

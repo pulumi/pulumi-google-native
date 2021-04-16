@@ -22,7 +22,7 @@ export class OrganizationEnvironmentTargetserver extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentTargetserver';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironmentTargetserver';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentTargetserver.  This is designed to work even
@@ -133,6 +133,6 @@ export interface OrganizationEnvironmentTargetserverArgs {
     /**
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
-    readonly sSLInfo?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TlsInfo>;
+    readonly sSLInfo?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TlsInfoArgs>;
     readonly targetserversId: pulumi.Input<string>;
 }

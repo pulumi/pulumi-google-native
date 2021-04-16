@@ -22,7 +22,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:iam/v1:WorkloadIdentityPoolProvider';
+    public static readonly __pulumiType = 'google-native:iam/v1:WorkloadIdentityPoolProvider';
 
     /**
      * Returns true if the given object is an instance of WorkloadIdentityPoolProvider.  This is designed to work even
@@ -141,7 +141,7 @@ export interface WorkloadIdentityPoolProviderArgs {
     /**
      * An Amazon Web Services identity provider.
      */
-    readonly aws?: pulumi.Input<inputs.iam.v1.Aws>;
+    readonly aws?: pulumi.Input<inputs.iam.v1.AwsArgs>;
     /**
      * A description for the provider. Cannot exceed 256 characters.
      */
@@ -158,7 +158,7 @@ export interface WorkloadIdentityPoolProviderArgs {
     /**
      * An OpenId Connect 1.0 identity provider.
      */
-    readonly oidc?: pulumi.Input<inputs.iam.v1.Oidc>;
+    readonly oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
     readonly projectsId: pulumi.Input<string>;
     readonly providersId: pulumi.Input<string>;
     readonly workloadIdentityPoolsId: pulumi.Input<string>;

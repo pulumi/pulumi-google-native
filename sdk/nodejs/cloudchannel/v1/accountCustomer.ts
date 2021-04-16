@@ -22,7 +22,7 @@ export class AccountCustomer extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudchannel/v1:AccountCustomer';
+    public static readonly __pulumiType = 'google-native:cloudchannel/v1:AccountCustomer';
 
     /**
      * Returns true if the given object is an instance of AccountCustomer.  This is designed to work even
@@ -165,9 +165,9 @@ export interface AccountCustomerArgs {
     /**
      * Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
      */
-    readonly orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddress>;
+    readonly orgPostalAddress?: pulumi.Input<inputs.cloudchannel.v1.GoogleTypePostalAddressArgs>;
     /**
      * Primary contact info.
      */
-    readonly primaryContactInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfo>;
+    readonly primaryContactInfo?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoArgs>;
 }

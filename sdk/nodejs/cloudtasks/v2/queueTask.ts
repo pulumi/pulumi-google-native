@@ -22,7 +22,7 @@ export class QueueTask extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudtasks/v2:QueueTask';
+    public static readonly __pulumiType = 'google-native:cloudtasks/v2:QueueTask';
 
     /**
      * Returns true if the given object is an instance of QueueTask.  This is designed to work even
@@ -146,7 +146,7 @@ export interface QueueTaskArgs {
     /**
      * HTTP request that is sent to the App Engine app handler. An App Engine task is a task that has AppEngineHttpRequest set.
      */
-    readonly appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2.AppEngineHttpRequest>;
+    readonly appEngineHttpRequest?: pulumi.Input<inputs.cloudtasks.v2.AppEngineHttpRequestArgs>;
     /**
      * The time that the task was created. `create_time` will be truncated to the nearest second.
      */
@@ -162,15 +162,15 @@ export interface QueueTaskArgs {
     /**
      * The status of the task's first attempt. Only dispatch_time will be set. The other Attempt information is not retained by Cloud Tasks.
      */
-    readonly firstAttempt?: pulumi.Input<inputs.cloudtasks.v2.Attempt>;
+    readonly firstAttempt?: pulumi.Input<inputs.cloudtasks.v2.AttemptArgs>;
     /**
      * HTTP request that is sent to the worker. An HTTP task is a task that has HttpRequest set.
      */
-    readonly httpRequest?: pulumi.Input<inputs.cloudtasks.v2.HttpRequest>;
+    readonly httpRequest?: pulumi.Input<inputs.cloudtasks.v2.HttpRequestArgs>;
     /**
      * The status of the task's last attempt.
      */
-    readonly lastAttempt?: pulumi.Input<inputs.cloudtasks.v2.Attempt>;
+    readonly lastAttempt?: pulumi.Input<inputs.cloudtasks.v2.AttemptArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.

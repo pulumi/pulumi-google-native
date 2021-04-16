@@ -22,7 +22,7 @@ export class WorkerPool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudbuild/v1alpha1:WorkerPool';
+    public static readonly __pulumiType = 'google-native:cloudbuild/v1alpha1:WorkerPool';
 
     /**
      * Returns true if the given object is an instance of WorkerPool.  This is designed to work even
@@ -164,7 +164,7 @@ export interface WorkerPoolArgs {
     /**
      * Configuration to be used for a creating workers in the `WorkerPool`.
      */
-    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha1.WorkerConfig>;
+    readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha1.WorkerConfigArgs>;
     /**
      * Total number of workers to be created across all requested regions.
      */

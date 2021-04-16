@@ -22,7 +22,7 @@ export class TestMatrix extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:testing/v1:TestMatrix';
+    public static readonly __pulumiType = 'google-native:testing/v1:TestMatrix';
 
     /**
      * Returns true if the given object is an instance of TestMatrix.  This is designed to work even
@@ -147,11 +147,11 @@ export interface TestMatrixArgs {
     /**
      * Information about the client which invoked the test.
      */
-    readonly clientInfo?: pulumi.Input<inputs.testing.v1.ClientInfo>;
+    readonly clientInfo?: pulumi.Input<inputs.testing.v1.ClientInfoArgs>;
     /**
      * Required. The devices the tests are being executed on.
      */
-    readonly environmentMatrix?: pulumi.Input<inputs.testing.v1.EnvironmentMatrix>;
+    readonly environmentMatrix?: pulumi.Input<inputs.testing.v1.EnvironmentMatrixArgs>;
     /**
      * If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
      */
@@ -175,7 +175,7 @@ export interface TestMatrixArgs {
     /**
      * Required. Where the results for the matrix are written.
      */
-    readonly resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorage>;
+    readonly resultStorage?: pulumi.Input<inputs.testing.v1.ResultStorageArgs>;
     /**
      * Indicates the current progress of the test matrix.
      */
@@ -183,7 +183,7 @@ export interface TestMatrixArgs {
     /**
      * The list of test executions that the service creates for this matrix.
      */
-    readonly testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecution>[]>;
+    readonly testExecutions?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestExecutionArgs>[]>;
     /**
      * Unique id set by the service.
      */
@@ -191,7 +191,7 @@ export interface TestMatrixArgs {
     /**
      * Required. How to run the test.
      */
-    readonly testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecification>;
+    readonly testSpecification?: pulumi.Input<inputs.testing.v1.TestSpecificationArgs>;
     /**
      * The time this test matrix was initially created.
      */

@@ -22,7 +22,7 @@ export class AppAuthorizedCertificate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:appengine/v1alpha:AppAuthorizedCertificate';
+    public static readonly __pulumiType = 'google-native:appengine/v1alpha:AppAuthorizedCertificate';
 
     /**
      * Returns true if the given object is an instance of AppAuthorizedCertificate.  This is designed to work even
@@ -122,7 +122,7 @@ export interface AppAuthorizedCertificateArgs {
     /**
      * The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.
      */
-    readonly certificateRawData?: pulumi.Input<inputs.appengine.v1alpha.CertificateRawData>;
+    readonly certificateRawData?: pulumi.Input<inputs.appengine.v1alpha.CertificateRawDataArgs>;
     /**
      * The user-specified display name of the certificate. This is not guaranteed to be unique. Example: My Certificate.
      */
@@ -146,7 +146,7 @@ export interface AppAuthorizedCertificateArgs {
     /**
      * Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly
      */
-    readonly managedCertificate?: pulumi.Input<inputs.appengine.v1alpha.ManagedCertificate>;
+    readonly managedCertificate?: pulumi.Input<inputs.appengine.v1alpha.ManagedCertificateArgs>;
     /**
      * Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
      */

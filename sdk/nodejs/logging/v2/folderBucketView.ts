@@ -21,7 +21,7 @@ export class FolderBucketView extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:logging/v2:FolderBucketView';
+    public static readonly __pulumiType = 'google-native:logging/v2:FolderBucketView';
 
     /**
      * Returns true if the given object is an instance of FolderBucketView.  This is designed to work even

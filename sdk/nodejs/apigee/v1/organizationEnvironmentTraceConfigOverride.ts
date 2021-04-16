@@ -22,7 +22,7 @@ export class OrganizationEnvironmentTraceConfigOverride extends pulumi.CustomRes
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironmentTraceConfigOverride';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentTraceConfigOverride.  This is designed to work even
@@ -104,5 +104,5 @@ export interface OrganizationEnvironmentTraceConfigOverrideArgs {
     /**
      * Trace configuration to override.
      */
-    readonly samplingConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfig>;
+    readonly samplingConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TraceSamplingConfigArgs>;
 }

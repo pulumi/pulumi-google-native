@@ -22,7 +22,7 @@ export class DatasetDicomStore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetDicomStore';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetDicomStore';
 
     /**
      * Returns true if the given object is an instance of DatasetDicomStore.  This is designed to work even
@@ -114,10 +114,10 @@ export interface DatasetDicomStoreArgs {
     /**
      * Notification destination for new DICOM instances. Supplied by the client.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfig>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
      */
-    readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1DicomStreamConfig>[]>;
+    readonly streamConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.GoogleCloudHealthcareV1beta1DicomStreamConfigArgs>[]>;
 }

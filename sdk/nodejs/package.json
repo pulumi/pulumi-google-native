@@ -1,12 +1,12 @@
 {
-    "name": "@pulumi/gcp-native",
+    "name": "@pulumi/google-native",
     "version": "${VERSION}",
     "keywords": [
         "pulumi",
         "google cloud"
     ],
     "homepage": "https://pulumi.com",
-    "repository": "https://github.com/pulumi/pulumi-gcp-native",
+    "repository": "https://github.com/pulumi/pulumi-google-native",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"

@@ -22,7 +22,7 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:securitycenter/v1:OrganizationNotificationConfig';
+    public static readonly __pulumiType = 'google-native:securitycenter/v1:OrganizationNotificationConfig';
 
     /**
      * Returns true if the given object is an instance of OrganizationNotificationConfig.  This is designed to work even
@@ -115,5 +115,5 @@ export interface OrganizationNotificationConfigArgs {
     /**
      * The config for triggering streaming-based notifications.
      */
-    readonly streamingConfig?: pulumi.Input<inputs.securitycenter.v1.StreamingConfig>;
+    readonly streamingConfig?: pulumi.Input<inputs.securitycenter.v1.StreamingConfigArgs>;
 }

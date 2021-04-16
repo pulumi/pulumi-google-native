@@ -21,7 +21,7 @@ export class ZoneInstantSnapshot extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:ZoneInstantSnapshot';
+    public static readonly __pulumiType = 'google-native:compute/alpha:ZoneInstantSnapshot';
 
     /**
      * Returns true if the given object is an instance of ZoneInstantSnapshot.  This is designed to work even

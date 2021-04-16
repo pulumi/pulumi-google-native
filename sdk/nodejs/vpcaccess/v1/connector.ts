@@ -22,7 +22,7 @@ export class Connector extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:vpcaccess/v1:Connector';
+    public static readonly __pulumiType = 'google-native:vpcaccess/v1:Connector';
 
     /**
      * Returns true if the given object is an instance of Connector.  This is designed to work even
@@ -146,5 +146,5 @@ export interface ConnectorArgs {
     /**
      * The subnet in which to house the VPC Access Connector.
      */
-    readonly subnet?: pulumi.Input<inputs.vpcaccess.v1.Subnet>;
+    readonly subnet?: pulumi.Input<inputs.vpcaccess.v1.SubnetArgs>;
 }

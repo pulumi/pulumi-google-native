@@ -22,7 +22,7 @@ export class Company extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:jobs/v3:Company';
+    public static readonly __pulumiType = 'google-native:jobs/v3:Company';
 
     /**
      * Returns true if the given object is an instance of Company.  This is designed to work even
@@ -154,7 +154,7 @@ export interface CompanyArgs {
     /**
      * Derived details about the company.
      */
-    readonly derivedInfo?: pulumi.Input<inputs.jobs.v3.CompanyDerivedInfo>;
+    readonly derivedInfo?: pulumi.Input<inputs.jobs.v3.CompanyDerivedInfoArgs>;
     /**
      * Required. The display name of the company, for example, "Google LLC".
      */

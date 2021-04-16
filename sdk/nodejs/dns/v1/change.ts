@@ -22,7 +22,7 @@ export class Change extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dns/v1:Change';
+    public static readonly __pulumiType = 'google-native:dns/v1:Change';
 
     /**
      * Returns true if the given object is an instance of Change.  This is designed to work even
@@ -109,12 +109,12 @@ export interface ChangeArgs {
     /**
      * Which ResourceRecordSets to add?
      */
-    readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSet>[]>;
+    readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSetArgs>[]>;
     readonly changeId: pulumi.Input<string>;
     /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */
-    readonly deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSet>[]>;
+    readonly deletions?: pulumi.Input<pulumi.Input<inputs.dns.v1.ResourceRecordSetArgs>[]>;
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */

@@ -22,7 +22,7 @@ export class BillingAccountBudget extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:billingbudgets/v1beta1:BillingAccountBudget';
+    public static readonly __pulumiType = 'google-native:billingbudgets/v1beta1:BillingAccountBudget';
 
     /**
      * Returns true if the given object is an instance of BillingAccountBudget.  This is designed to work even
@@ -113,16 +113,16 @@ export interface BillingAccountBudgetArgs {
     /**
      * Optional. Rules to apply to notifications sent based on budget spend and thresholds.
      */
-    readonly allUpdatesRule?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule>;
+    readonly allUpdatesRule?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs>;
     /**
      * Required. Budgeted amount.
      */
-    readonly amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmount>;
+    readonly amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>;
     readonly billingAccountsId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget.
      */
-    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1Filter>;
+    readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterArgs>;
     readonly budgetsId: pulumi.Input<string>;
     /**
      * User data for display name in UI. Validation: <= 60 chars.
@@ -135,5 +135,5 @@ export interface BillingAccountBudgetArgs {
     /**
      * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
      */
-    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRule>[]>;
+    readonly thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>[]>;
 }

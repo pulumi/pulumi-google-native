@@ -22,7 +22,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datamigration/v1:ConnectionProfile';
+    public static readonly __pulumiType = 'google-native:datamigration/v1:ConnectionProfile';
 
     /**
      * Returns true if the given object is an instance of ConnectionProfile.  This is designed to work even
@@ -141,7 +141,7 @@ export interface ConnectionProfileArgs {
     /**
      * A CloudSQL database connection profile.
      */
-    readonly cloudsql?: pulumi.Input<inputs.datamigration.v1.CloudSqlConnectionProfile>;
+    readonly cloudsql?: pulumi.Input<inputs.datamigration.v1.CloudSqlConnectionProfileArgs>;
     readonly connectionProfilesId: pulumi.Input<string>;
     /**
      * The connection profile display name.
@@ -155,7 +155,7 @@ export interface ConnectionProfileArgs {
     /**
      * A MySQL database connection profile.
      */
-    readonly mysql?: pulumi.Input<inputs.datamigration.v1.MySqlConnectionProfile>;
+    readonly mysql?: pulumi.Input<inputs.datamigration.v1.MySqlConnectionProfileArgs>;
     /**
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
@@ -163,7 +163,7 @@ export interface ConnectionProfileArgs {
     /**
      * A PostgreSQL database connection profile.
      */
-    readonly postgresql?: pulumi.Input<inputs.datamigration.v1.PostgreSqlConnectionProfile>;
+    readonly postgresql?: pulumi.Input<inputs.datamigration.v1.PostgreSqlConnectionProfileArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * The database provider.

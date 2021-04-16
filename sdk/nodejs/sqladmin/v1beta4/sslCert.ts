@@ -21,7 +21,7 @@ export class SslCert extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:sqladmin/v1beta4:SslCert';
+    public static readonly __pulumiType = 'google-native:sqladmin/v1beta4:SslCert';
 
     /**
      * Returns true if the given object is an instance of SslCert.  This is designed to work even

@@ -22,7 +22,7 @@ export class Feature extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:gkehub/v1alpha:Feature';
+    public static readonly __pulumiType = 'google-native:gkehub/v1alpha:Feature';
 
     /**
      * Returns true if the given object is an instance of Feature.  This is designed to work even
@@ -141,5 +141,5 @@ export interface FeatureArgs {
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */
-    readonly spec?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureSpec>;
+    readonly spec?: pulumi.Input<inputs.gkehub.v1alpha.CommonFeatureSpecArgs>;
 }

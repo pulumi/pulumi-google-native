@@ -22,7 +22,7 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:accesscontextmanager/v1:AccessPolicyAccessLevel';
+    public static readonly __pulumiType = 'google-native:accesscontextmanager/v1:AccessPolicyAccessLevel';
 
     /**
      * Returns true if the given object is an instance of AccessPolicyAccessLevel.  This is designed to work even
@@ -103,11 +103,11 @@ export interface AccessPolicyAccessLevelArgs {
     /**
      * A `BasicLevel` composed of `Conditions`.
      */
-    readonly basic?: pulumi.Input<inputs.accesscontextmanager.v1.BasicLevel>;
+    readonly basic?: pulumi.Input<inputs.accesscontextmanager.v1.BasicLevelArgs>;
     /**
      * A `CustomLevel` written in the Common Expression Language.
      */
-    readonly custom?: pulumi.Input<inputs.accesscontextmanager.v1.CustomLevel>;
+    readonly custom?: pulumi.Input<inputs.accesscontextmanager.v1.CustomLevelArgs>;
     /**
      * Description of the `AccessLevel` and its use. Does not affect behavior.
      */

@@ -22,7 +22,7 @@ export class BackendBucket extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:BackendBucket';
+    public static readonly __pulumiType = 'google-native:compute/v1:BackendBucket';
 
     /**
      * Returns true if the given object is an instance of BackendBucket.  This is designed to work even
@@ -131,7 +131,7 @@ export interface BackendBucketArgs {
     /**
      * Cloud CDN configuration for this BackendBucket.
      */
-    readonly cdnPolicy?: pulumi.Input<inputs.compute.v1.BackendBucketCdnPolicy>;
+    readonly cdnPolicy?: pulumi.Input<inputs.compute.v1.BackendBucketCdnPolicyArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */

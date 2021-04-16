@@ -22,7 +22,7 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:orgpolicy/v2:Policy';
+    public static readonly __pulumiType = 'google-native:orgpolicy/v2:Policy';
 
     /**
      * Returns true if the given object is an instance of Policy.  This is designed to work even
@@ -89,5 +89,5 @@ export interface PolicyArgs {
     /**
      * Basic information about the Organization Policy.
      */
-    readonly spec?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpec>;
+    readonly spec?: pulumi.Input<inputs.orgpolicy.v2.GoogleCloudOrgpolicyV2PolicySpecArgs>;
 }

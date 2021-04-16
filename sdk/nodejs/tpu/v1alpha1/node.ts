@@ -22,7 +22,7 @@ export class Node extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:tpu/v1alpha1:Node';
+    public static readonly __pulumiType = 'google-native:tpu/v1alpha1:Node';
 
     /**
      * Returns true if the given object is an instance of Node.  This is designed to work even
@@ -224,7 +224,7 @@ export interface NodeArgs {
     /**
      * The scheduling options for this node.
      */
-    readonly schedulingConfig?: pulumi.Input<inputs.tpu.v1alpha1.SchedulingConfig>;
+    readonly schedulingConfig?: pulumi.Input<inputs.tpu.v1alpha1.SchedulingConfigArgs>;
     /**
      * Required. The version of Tensorflow running in the Node.
      */

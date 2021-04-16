@@ -22,7 +22,7 @@ export class Deployment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:deploymentmanager/v2:Deployment';
+    public static readonly __pulumiType = 'google-native:deploymentmanager/v2:Deployment';
 
     /**
      * Returns true if the given object is an instance of Deployment.  This is designed to work even
@@ -152,7 +152,7 @@ export interface DeploymentArgs {
     /**
      * Map of One Platform labels; provided by the client when the resource is created or updated. Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?` Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`.
      */
-    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentLabelEntry>[]>;
+    readonly labels?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentLabelEntryArgs>[]>;
     /**
      * URL of the manifest representing the last manifest that was successfully deployed. If no manifest has been successfully deployed, this field will be absent.
      */
@@ -164,7 +164,7 @@ export interface DeploymentArgs {
     /**
      * The Operation that most recently ran, or is currently running, on this deployment.
      */
-    readonly operation?: pulumi.Input<inputs.deploymentmanager.v2.Operation>;
+    readonly operation?: pulumi.Input<inputs.deploymentmanager.v2.OperationArgs>;
     readonly project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.
@@ -173,11 +173,11 @@ export interface DeploymentArgs {
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.
      */
-    readonly target?: pulumi.Input<inputs.deploymentmanager.v2.TargetConfiguration>;
+    readonly target?: pulumi.Input<inputs.deploymentmanager.v2.TargetConfigurationArgs>;
     /**
      * If Deployment Manager is currently updating or previewing an update to this deployment, the updated configuration appears here.
      */
-    readonly update?: pulumi.Input<inputs.deploymentmanager.v2.DeploymentUpdate>;
+    readonly update?: pulumi.Input<inputs.deploymentmanager.v2.DeploymentUpdateArgs>;
     /**
      * Update timestamp in RFC3339 text format.
      */

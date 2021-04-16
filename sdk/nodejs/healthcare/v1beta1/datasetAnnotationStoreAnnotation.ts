@@ -22,7 +22,7 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation';
+    public static readonly __pulumiType = 'google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation';
 
     /**
      * Returns true if the given object is an instance of DatasetAnnotationStoreAnnotation.  This is designed to work even
@@ -119,7 +119,7 @@ export interface DatasetAnnotationStoreAnnotationArgs {
     /**
      * Details of the source.
      */
-    readonly annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSource>;
+    readonly annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
     readonly annotationStoresId: pulumi.Input<string>;
     readonly annotationsId: pulumi.Input<string>;
     /**
@@ -130,7 +130,7 @@ export interface DatasetAnnotationStoreAnnotationArgs {
     /**
      * Annotations for images. For example, bounding polygons.
      */
-    readonly imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotation>;
+    readonly imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
@@ -140,9 +140,9 @@ export interface DatasetAnnotationStoreAnnotationArgs {
     /**
      * Annotations for resource. For example, classification tags.
      */
-    readonly resourceAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ResourceAnnotation>;
+    readonly resourceAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ResourceAnnotationArgs>;
     /**
      * Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
      */
-    readonly textAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.SensitiveTextAnnotation>;
+    readonly textAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.SensitiveTextAnnotationArgs>;
 }

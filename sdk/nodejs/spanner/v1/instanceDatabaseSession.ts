@@ -21,7 +21,7 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:spanner/v1:InstanceDatabaseSession';
+    public static readonly __pulumiType = 'google-native:spanner/v1:InstanceDatabaseSession';
 
     /**
      * Returns true if the given object is an instance of InstanceDatabaseSession.  This is designed to work even

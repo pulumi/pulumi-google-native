@@ -22,7 +22,7 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceClusterBackup';
+    public static readonly __pulumiType = 'google-native:bigtableadmin/v2:InstanceClusterBackup';
 
     /**
      * Returns true if the given object is an instance of InstanceClusterBackup.  This is designed to work even

@@ -22,19 +22,19 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:gameservices/v1beta:GameServerDeployment":
+            case "google-native:gameservices/v1beta:GameServerDeployment":
                 return new GameServerDeployment(name, <any>undefined, { urn })
-            case "gcp-native:gameservices/v1beta:GameServerDeploymentConfig":
+            case "google-native:gameservices/v1beta:GameServerDeploymentConfig":
                 return new GameServerDeploymentConfig(name, <any>undefined, { urn })
-            case "gcp-native:gameservices/v1beta:GameServerDeploymentIamPolicy":
+            case "google-native:gameservices/v1beta:GameServerDeploymentIamPolicy":
                 return new GameServerDeploymentIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:gameservices/v1beta:Realm":
+            case "google-native:gameservices/v1beta:Realm":
                 return new Realm(name, <any>undefined, { urn })
-            case "gcp-native:gameservices/v1beta:RealmGameServerCluster":
+            case "google-native:gameservices/v1beta:RealmGameServerCluster":
                 return new RealmGameServerCluster(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "gameservices/v1beta", _module)
+pulumi.runtime.registerResourceModule("google-native", "gameservices/v1beta", _module)

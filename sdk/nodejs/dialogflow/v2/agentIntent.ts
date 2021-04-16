@@ -22,7 +22,7 @@ export class AgentIntent extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2:AgentIntent';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2:AgentIntent';
 
     /**
      * Returns true if the given object is an instance of AgentIntent.  This is designed to work even
@@ -215,7 +215,7 @@ export interface AgentIntentArgs {
     /**
      * Read-only. Information about all followup intents that have this intent as a direct or indirect parent. We populate this field only in the output.
      */
-    readonly followupIntentInfo?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfo>[]>;
+    readonly followupIntentInfo?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs>[]>;
     /**
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
@@ -233,7 +233,7 @@ export interface AgentIntentArgs {
     /**
      * Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
      */
-    readonly messages?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessage>[]>;
+    readonly messages?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageArgs>[]>;
     /**
      * Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
      */
@@ -245,11 +245,11 @@ export interface AgentIntentArgs {
     /**
      * Optional. The collection of contexts that are activated when the intent is matched. Context messages in this collection should not set the parameters field. Setting the `lifespan_count` to 0 will reset the context when the intent is matched. Format: `projects//agent/sessions/-/contexts/`.
      */
-    readonly outputContexts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2Context>[]>;
+    readonly outputContexts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2ContextArgs>[]>;
     /**
      * Optional. The collection of parameters associated with the intent.
      */
-    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentParameter>[]>;
+    readonly parameters?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentParameterArgs>[]>;
     /**
      * Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
      */
@@ -270,7 +270,7 @@ export interface AgentIntentArgs {
     /**
      * Optional. The collection of examples that the agent is trained on.
      */
-    readonly trainingPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhrase>[]>;
+    readonly trainingPhrases?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhraseArgs>[]>;
     /**
      * Optional. Indicates whether webhooks are enabled for the intent.
      */

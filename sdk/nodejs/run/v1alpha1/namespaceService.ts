@@ -22,7 +22,7 @@ export class NamespaceService extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:run/v1alpha1:NamespaceService';
+    public static readonly __pulumiType = 'google-native:run/v1alpha1:NamespaceService';
 
     /**
      * Returns true if the given object is an instance of NamespaceService.  This is designed to work even
@@ -109,15 +109,15 @@ export interface NamespaceServiceArgs {
     /**
      * Metadata associated with this Service, including name, namespace, labels, and annotations.
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMeta>;
+    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMetaArgs>;
     readonly namespacesId: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
     /**
      * Spec holds the desired state of the Service (from the client).
      */
-    readonly spec?: pulumi.Input<inputs.run.v1alpha1.ServiceSpec>;
+    readonly spec?: pulumi.Input<inputs.run.v1alpha1.ServiceSpecArgs>;
     /**
      * Status communicates the observed state of the Service (from the controller).
      */
-    readonly status?: pulumi.Input<inputs.run.v1alpha1.ServiceStatus>;
+    readonly status?: pulumi.Input<inputs.run.v1alpha1.ServiceStatusArgs>;
 }

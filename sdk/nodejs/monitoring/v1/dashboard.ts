@@ -22,7 +22,7 @@ export class Dashboard extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v1:Dashboard';
+    public static readonly __pulumiType = 'google-native:monitoring/v1:Dashboard';
 
     /**
      * Returns true if the given object is an instance of Dashboard.  This is designed to work even
@@ -113,7 +113,7 @@ export interface DashboardArgs {
     /**
      * The content is divided into equally spaced columns and the widgets are arranged vertically.
      */
-    readonly columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayout>;
+    readonly columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayoutArgs>;
     readonly dashboardsId: pulumi.Input<string>;
     /**
      * Required. The mutable, human-readable name.
@@ -126,11 +126,11 @@ export interface DashboardArgs {
     /**
      * Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
      */
-    readonly gridLayout?: pulumi.Input<inputs.monitoring.v1.GridLayout>;
+    readonly gridLayout?: pulumi.Input<inputs.monitoring.v1.GridLayoutArgs>;
     /**
      * The content is arranged as a grid of tiles, with each content widget occupying one or more grid blocks.
      */
-    readonly mosaicLayout?: pulumi.Input<inputs.monitoring.v1.MosaicLayout>;
+    readonly mosaicLayout?: pulumi.Input<inputs.monitoring.v1.MosaicLayoutArgs>;
     /**
      * Immutable. The resource name of the dashboard.
      */
@@ -139,5 +139,5 @@ export interface DashboardArgs {
     /**
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
-    readonly rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayout>;
+    readonly rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
 }

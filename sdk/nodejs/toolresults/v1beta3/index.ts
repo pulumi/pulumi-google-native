@@ -20,17 +20,17 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:toolresults/v1beta3:History":
+            case "google-native:toolresults/v1beta3:History":
                 return new History(name, <any>undefined, { urn })
-            case "gcp-native:toolresults/v1beta3:HistoryExecution":
+            case "google-native:toolresults/v1beta3:HistoryExecution":
                 return new HistoryExecution(name, <any>undefined, { urn })
-            case "gcp-native:toolresults/v1beta3:HistoryExecutionStep":
+            case "google-native:toolresults/v1beta3:HistoryExecutionStep":
                 return new HistoryExecutionStep(name, <any>undefined, { urn })
-            case "gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
+            case "google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries":
                 return new HistoryExecutionStepPerfSampleSeries(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "toolresults/v1beta3", _module)
+pulumi.runtime.registerResourceModule("google-native", "toolresults/v1beta3", _module)

@@ -22,7 +22,7 @@ export class Firewall extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:Firewall';
+    public static readonly __pulumiType = 'google-native:compute/v1:Firewall';
 
     /**
      * Returns true if the given object is an instance of Firewall.  This is designed to work even
@@ -222,7 +222,7 @@ export interface FirewallArgs {
     /**
      * This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
      */
-    readonly logConfig?: pulumi.Input<inputs.compute.v1.FirewallLogConfig>;
+    readonly logConfig?: pulumi.Input<inputs.compute.v1.FirewallLogConfigArgs>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
      */

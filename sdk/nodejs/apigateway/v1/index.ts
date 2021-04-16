@@ -24,21 +24,21 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:apigateway/v1:Api":
+            case "google-native:apigateway/v1:Api":
                 return new Api(name, <any>undefined, { urn })
-            case "gcp-native:apigateway/v1:ApiConfig":
+            case "google-native:apigateway/v1:ApiConfig":
                 return new ApiConfig(name, <any>undefined, { urn })
-            case "gcp-native:apigateway/v1:ApiConfigIamPolicy":
+            case "google-native:apigateway/v1:ApiConfigIamPolicy":
                 return new ApiConfigIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:apigateway/v1:ApiIamPolicy":
+            case "google-native:apigateway/v1:ApiIamPolicy":
                 return new ApiIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:apigateway/v1:Gateway":
+            case "google-native:apigateway/v1:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
-            case "gcp-native:apigateway/v1:GatewayIamPolicy":
+            case "google-native:apigateway/v1:GatewayIamPolicy":
                 return new GatewayIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "apigateway/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "apigateway/v1", _module)

@@ -22,7 +22,7 @@ export class AgentWebhook extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentWebhook';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:AgentWebhook';
 
     /**
      * Returns true if the given object is an instance of AgentWebhook.  This is designed to work even
@@ -118,7 +118,7 @@ export interface AgentWebhookArgs {
     /**
      * Configuration for a generic web service.
      */
-    readonly genericWebService?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebService>;
+    readonly genericWebService?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.

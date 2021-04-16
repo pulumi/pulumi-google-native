@@ -22,7 +22,7 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:composer/v1:Environment';
+    public static readonly __pulumiType = 'google-native:composer/v1:Environment';
 
     /**
      * Returns true if the given object is an instance of Environment.  This is designed to work even
@@ -117,7 +117,7 @@ export interface EnvironmentArgs {
     /**
      * Configuration parameters for this environment.
      */
-    readonly config?: pulumi.Input<inputs.composer.v1.EnvironmentConfig>;
+    readonly config?: pulumi.Input<inputs.composer.v1.EnvironmentConfigArgs>;
     /**
      * The time at which this environment was created.
      */

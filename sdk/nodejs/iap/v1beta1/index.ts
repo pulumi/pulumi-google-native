@@ -14,11 +14,11 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:iap/v1beta1:V1beta1IamPolicy":
+            case "google-native:iap/v1beta1:V1beta1IamPolicy":
                 return new V1beta1IamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "iap/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "iap/v1beta1", _module)

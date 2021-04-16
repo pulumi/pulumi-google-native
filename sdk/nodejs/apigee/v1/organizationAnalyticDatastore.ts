@@ -22,7 +22,7 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationAnalyticDatastore';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationAnalyticDatastore';
 
     /**
      * Returns true if the given object is an instance of OrganizationAnalyticDatastore.  This is designed to work even
@@ -113,7 +113,7 @@ export interface OrganizationAnalyticDatastoreArgs {
     /**
      * Datastore Configurations.
      */
-    readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfig>;
+    readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
     readonly datastoresId: pulumi.Input<string>;
     /**
      * Required. Display name in UI

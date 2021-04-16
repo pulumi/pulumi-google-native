@@ -22,7 +22,7 @@ export class ScanConfig extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:websecurityscanner/v1beta:ScanConfig';
+    public static readonly __pulumiType = 'google-native:websecurityscanner/v1beta:ScanConfig';
 
     /**
      * Returns true if the given object is an instance of ScanConfig.  This is designed to work even
@@ -155,7 +155,7 @@ export interface ScanConfigArgs {
     /**
      * The authentication configuration. If specified, service will use the authentication configuration during scanning.
      */
-    readonly authentication?: pulumi.Input<inputs.websecurityscanner.v1beta.Authentication>;
+    readonly authentication?: pulumi.Input<inputs.websecurityscanner.v1beta.AuthenticationArgs>;
     /**
      * The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
      */
@@ -171,7 +171,7 @@ export interface ScanConfigArgs {
     /**
      * Latest ScanRun if available.
      */
-    readonly latestRun?: pulumi.Input<inputs.websecurityscanner.v1beta.ScanRun>;
+    readonly latestRun?: pulumi.Input<inputs.websecurityscanner.v1beta.ScanRunArgs>;
     /**
      * Whether the scan config is managed by Web Security Scanner, output only.
      */
@@ -193,7 +193,7 @@ export interface ScanConfigArgs {
     /**
      * The schedule of the ScanConfig.
      */
-    readonly schedule?: pulumi.Input<inputs.websecurityscanner.v1beta.Schedule>;
+    readonly schedule?: pulumi.Input<inputs.websecurityscanner.v1beta.ScheduleArgs>;
     /**
      * Required. The starting URLs from which the scanner finds site pages.
      */

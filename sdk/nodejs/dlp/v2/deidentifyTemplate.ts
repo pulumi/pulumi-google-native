@@ -22,7 +22,7 @@ export class DeidentifyTemplate extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dlp/v2:DeidentifyTemplate';
+    public static readonly __pulumiType = 'google-native:dlp/v2:DeidentifyTemplate';
 
     /**
      * Returns true if the given object is an instance of DeidentifyTemplate.  This is designed to work even
@@ -112,7 +112,7 @@ export interface DeidentifyTemplateArgs {
     /**
      * The core content of the template.
      */
-    readonly deidentifyConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2DeidentifyConfig>;
+    readonly deidentifyConfig?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2DeidentifyConfigArgs>;
     readonly deidentifyTemplatesId: pulumi.Input<string>;
     /**
      * Short description (max 256 chars).

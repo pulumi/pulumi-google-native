@@ -21,7 +21,7 @@ export class AgentKnowledgeBase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v2:AgentKnowledgeBase';
+    public static readonly __pulumiType = 'google-native:dialogflow/v2:AgentKnowledgeBase';
 
     /**
      * Returns true if the given object is an instance of AgentKnowledgeBase.  This is designed to work even

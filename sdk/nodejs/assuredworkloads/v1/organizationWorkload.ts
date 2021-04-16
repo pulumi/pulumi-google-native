@@ -22,7 +22,7 @@ export class OrganizationWorkload extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:assuredworkloads/v1:OrganizationWorkload';
+    public static readonly __pulumiType = 'google-native:assuredworkloads/v1:OrganizationWorkload';
 
     /**
      * Returns true if the given object is an instance of OrganizationWorkload.  This is designed to work even
@@ -151,7 +151,7 @@ export interface OrganizationWorkloadArgs {
     /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */
-    readonly kmsSettings?: pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings>;
+    readonly kmsSettings?: pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs>;
     /**
      * Optional. Labels applied to the workload.
      */

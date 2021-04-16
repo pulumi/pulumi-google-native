@@ -22,7 +22,7 @@ export class NodeGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:NodeGroup';
+    public static readonly __pulumiType = 'google-native:compute/beta:NodeGroup';
 
     /**
      * Returns true if the given object is an instance of NodeGroup.  This is designed to work even
@@ -154,7 +154,7 @@ export interface NodeGroupArgs {
     /**
      * Specifies how autoscaling should behave.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.beta.NodeGroupAutoscalingPolicy>;
+    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.beta.NodeGroupAutoscalingPolicyArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -181,7 +181,7 @@ export interface NodeGroupArgs {
      * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
      */
     readonly maintenancePolicy?: pulumi.Input<string>;
-    readonly maintenanceWindow?: pulumi.Input<inputs.compute.beta.NodeGroupMaintenanceWindow>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.compute.beta.NodeGroupMaintenanceWindowArgs>;
     /**
      * The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */

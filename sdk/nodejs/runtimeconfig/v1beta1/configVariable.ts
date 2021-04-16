@@ -21,7 +21,7 @@ export class ConfigVariable extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:runtimeconfig/v1beta1:ConfigVariable';
+    public static readonly __pulumiType = 'google-native:runtimeconfig/v1beta1:ConfigVariable';
 
     /**
      * Returns true if the given object is an instance of ConfigVariable.  This is designed to work even

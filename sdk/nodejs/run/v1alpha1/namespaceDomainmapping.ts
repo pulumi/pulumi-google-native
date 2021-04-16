@@ -22,7 +22,7 @@ export class NamespaceDomainmapping extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:run/v1alpha1:NamespaceDomainmapping';
+    public static readonly __pulumiType = 'google-native:run/v1alpha1:NamespaceDomainmapping';
 
     /**
      * Returns true if the given object is an instance of NamespaceDomainmapping.  This is designed to work even
@@ -110,14 +110,14 @@ export interface NamespaceDomainmappingArgs {
     /**
      * Metadata associated with this BuildTemplate.
      */
-    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMeta>;
+    readonly metadata?: pulumi.Input<inputs.run.v1alpha1.ObjectMetaArgs>;
     readonly namespacesId: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */
-    readonly spec?: pulumi.Input<inputs.run.v1alpha1.DomainMappingSpec>;
+    readonly spec?: pulumi.Input<inputs.run.v1alpha1.DomainMappingSpecArgs>;
     /**
      * The current status of the DomainMapping.
      */
-    readonly status?: pulumi.Input<inputs.run.v1alpha1.DomainMappingStatus>;
+    readonly status?: pulumi.Input<inputs.run.v1alpha1.DomainMappingStatusArgs>;
 }

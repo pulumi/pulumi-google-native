@@ -22,7 +22,7 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:composer/v1beta1:Environment';
+    public static readonly __pulumiType = 'google-native:composer/v1beta1:Environment';
 
     /**
      * Returns true if the given object is an instance of Environment.  This is designed to work even
@@ -117,7 +117,7 @@ export interface EnvironmentArgs {
     /**
      * Configuration parameters for this environment.
      */
-    readonly config?: pulumi.Input<inputs.composer.v1beta1.EnvironmentConfig>;
+    readonly config?: pulumi.Input<inputs.composer.v1beta1.EnvironmentConfigArgs>;
     readonly environmentsId: pulumi.Input<string>;
     /**
      * Optional. User-defined labels for this environment. The labels map can contain no more than 64 entries. Entries of the labels map are UTF8 strings that comply with the following restrictions: * Keys must conform to regexp: \p{Ll}\p{Lo}{0,62} * Values must conform to regexp: [\p{Ll}\p{Lo}\p{N}_-]{0,63} * Both keys and values are additionally constrained to be <= 128 bytes in size.

@@ -22,7 +22,7 @@ export class SslPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/alpha:SslPolicy';
+    public static readonly __pulumiType = 'google-native:compute/alpha:SslPolicy';
 
     /**
      * Returns true if the given object is an instance of SslPolicy.  This is designed to work even
@@ -206,7 +206,7 @@ export interface SslPolicyArgs {
     /**
      * Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    readonly tlsSettings?: pulumi.Input<inputs.compute.alpha.ServerTlsSettings>;
+    readonly tlsSettings?: pulumi.Input<inputs.compute.alpha.ServerTlsSettingsArgs>;
     /**
      * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */

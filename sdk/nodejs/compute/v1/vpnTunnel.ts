@@ -21,7 +21,7 @@ export class VpnTunnel extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:VpnTunnel';
+    public static readonly __pulumiType = 'google-native:compute/v1:VpnTunnel';
 
     /**
      * Returns true if the given object is an instance of VpnTunnel.  This is designed to work even

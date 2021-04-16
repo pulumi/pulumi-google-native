@@ -22,7 +22,7 @@ export class Attestor extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:binaryauthorization/v1beta1:Attestor';
+    public static readonly __pulumiType = 'google-native:binaryauthorization/v1beta1:Attestor';
 
     /**
      * Returns true if the given object is an instance of Attestor.  This is designed to work even
@@ -105,5 +105,5 @@ export interface AttestorArgs {
     /**
      * A Drydock ATTESTATION_AUTHORITY Note, created by the user.
      */
-    readonly userOwnedDrydockNote?: pulumi.Input<inputs.binaryauthorization.v1beta1.UserOwnedDrydockNote>;
+    readonly userOwnedDrydockNote?: pulumi.Input<inputs.binaryauthorization.v1beta1.UserOwnedDrydockNoteArgs>;
 }

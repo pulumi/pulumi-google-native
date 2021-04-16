@@ -22,7 +22,7 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetConsentStoreConsentArtifact';
+    public static readonly __pulumiType = 'google-native:healthcare/v1:DatasetConsentStoreConsentArtifact';
 
     /**
      * Returns true if the given object is an instance of DatasetConsentStoreConsentArtifact.  This is designed to work even
@@ -132,7 +132,7 @@ export interface DatasetConsentStoreConsentArtifactArgs {
     /**
      * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
      */
-    readonly consentContentScreenshots?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.Image>[]>;
+    readonly consentContentScreenshots?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.ImageArgs>[]>;
     /**
      * Optional. An string indicating the version of the consent information shown to the user.
      */
@@ -142,7 +142,7 @@ export interface DatasetConsentStoreConsentArtifactArgs {
     /**
      * Optional. A signature from a guardian.
      */
-    readonly guardianSignature?: pulumi.Input<inputs.healthcare.v1.Signature>;
+    readonly guardianSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
@@ -160,9 +160,9 @@ export interface DatasetConsentStoreConsentArtifactArgs {
     /**
      * Optional. User's signature.
      */
-    readonly userSignature?: pulumi.Input<inputs.healthcare.v1.Signature>;
+    readonly userSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
     /**
      * Optional. A signature from a witness.
      */
-    readonly witnessSignature?: pulumi.Input<inputs.healthcare.v1.Signature>;
+    readonly witnessSignature?: pulumi.Input<inputs.healthcare.v1.SignatureArgs>;
 }

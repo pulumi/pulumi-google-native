@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:sqladmin/v1beta4:Instance';
+    public static readonly __pulumiType = 'google-native:sqladmin/v1beta4:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -272,11 +272,11 @@ export interface InstanceArgs {
     /**
      * Disk encryption configuration specific to an instance. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfiguration>;
+    readonly diskEncryptionConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionConfigurationArgs>;
     /**
      * Disk encryption status specific to an instance. Applies only to Second Generation instances.
      */
-    readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatus>;
+    readonly diskEncryptionStatus?: pulumi.Input<inputs.sqladmin.v1beta4.DiskEncryptionStatusArgs>;
     /**
      * This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
      */
@@ -297,7 +297,7 @@ export interface InstanceArgs {
     /**
      * The assigned IP addresses for the instance.
      */
-    readonly ipAddresses?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.IpMapping>[]>;
+    readonly ipAddresses?: pulumi.Input<pulumi.Input<inputs.sqladmin.v1beta4.IpMappingArgs>[]>;
     /**
      * The IPv6 address assigned to the instance. (Deprecated) This property was applicable only to First Generation instances.
      */
@@ -321,7 +321,7 @@ export interface InstanceArgs {
     /**
      * Configuration specific to on-premises instances.
      */
-    readonly onPremisesConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.OnPremisesConfiguration>;
+    readonly onPremisesConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.OnPremisesConfigurationArgs>;
     /**
      * The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if applicable.
      */
@@ -333,7 +333,7 @@ export interface InstanceArgs {
     /**
      * Configuration specific to failover replicas and read replicas.
      */
-    readonly replicaConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.ReplicaConfiguration>;
+    readonly replicaConfiguration?: pulumi.Input<inputs.sqladmin.v1beta4.ReplicaConfigurationArgs>;
     /**
      * The replicas of the instance.
      */
@@ -349,7 +349,7 @@ export interface InstanceArgs {
     /**
      * The start time of any upcoming scheduled maintenance for this instance.
      */
-    readonly scheduledMaintenance?: pulumi.Input<inputs.sqladmin.v1beta4.SqlScheduledMaintenance>;
+    readonly scheduledMaintenance?: pulumi.Input<inputs.sqladmin.v1beta4.SqlScheduledMaintenanceArgs>;
     /**
      * The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.
      */
@@ -361,7 +361,7 @@ export interface InstanceArgs {
     /**
      * SSL configuration.
      */
-    readonly serverCaCert?: pulumi.Input<inputs.sqladmin.v1beta4.SslCert>;
+    readonly serverCaCert?: pulumi.Input<inputs.sqladmin.v1beta4.SslCertArgs>;
     /**
      * The service account email address assigned to the instance. This property is applicable only to Second Generation instances.
      */
@@ -369,7 +369,7 @@ export interface InstanceArgs {
     /**
      * The user settings.
      */
-    readonly settings?: pulumi.Input<inputs.sqladmin.v1beta4.Settings>;
+    readonly settings?: pulumi.Input<inputs.sqladmin.v1beta4.SettingsArgs>;
     /**
      * The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.
      */

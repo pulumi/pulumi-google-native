@@ -22,7 +22,7 @@ export class OrganizationStoredInfoType extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dlp/v2:OrganizationStoredInfoType';
+    public static readonly __pulumiType = 'google-native:dlp/v2:OrganizationStoredInfoType';
 
     /**
      * Returns true if the given object is an instance of OrganizationStoredInfoType.  This is designed to work even
@@ -91,7 +91,7 @@ export interface OrganizationStoredInfoTypeArgs {
     /**
      * Required. Configuration of the storedInfoType to create.
      */
-    readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfig>;
+    readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

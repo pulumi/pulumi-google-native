@@ -22,7 +22,7 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3:AgentFlowTransitionRouteGroup';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3:AgentFlowTransitionRouteGroup';
 
     /**
      * Returns true if the given object is an instance of AgentFlowTransitionRouteGroup.  This is designed to work even
@@ -114,5 +114,5 @@ export interface AgentFlowTransitionRouteGroupArgs {
     /**
      * Transition routes associated with the TransitionRouteGroup.
      */
-    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRoute>[]>;
+    readonly transitionRoutes?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3TransitionRouteArgs>[]>;
 }

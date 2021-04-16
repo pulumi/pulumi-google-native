@@ -22,7 +22,7 @@ export class ProductReferenceImage extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:vision/v1:ProductReferenceImage';
+    public static readonly __pulumiType = 'google-native:vision/v1:ProductReferenceImage';
 
     /**
      * Returns true if the given object is an instance of ProductReferenceImage.  This is designed to work even
@@ -97,7 +97,7 @@ export interface ProductReferenceImageArgs {
     /**
      * Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
      */
-    readonly boundingPolys?: pulumi.Input<pulumi.Input<inputs.vision.v1.BoundingPoly>[]>;
+    readonly boundingPolys?: pulumi.Input<pulumi.Input<inputs.vision.v1.BoundingPolyArgs>[]>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.

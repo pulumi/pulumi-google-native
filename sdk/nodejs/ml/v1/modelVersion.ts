@@ -22,7 +22,7 @@ export class ModelVersion extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:ml/v1:ModelVersion';
+    public static readonly __pulumiType = 'google-native:ml/v1:ModelVersion';
 
     /**
      * Returns true if the given object is an instance of ModelVersion.  This is designed to work even
@@ -231,15 +231,15 @@ export interface ModelVersionArgs {
     /**
      * Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
      */
-    readonly acceleratorConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AcceleratorConfig>;
+    readonly acceleratorConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AcceleratorConfigArgs>;
     /**
      * Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
      */
-    readonly autoScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AutoScaling>;
+    readonly autoScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__AutoScalingArgs>;
     /**
      * Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
      */
-    readonly container?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ContainerSpec>;
+    readonly container?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ContainerSpecArgs>;
     /**
      * The time the version was created.
      */
@@ -263,7 +263,7 @@ export interface ModelVersionArgs {
     /**
      * Optional. Configures explainability features on the model's version. Some explanation features require additional metadata to be loaded as part of the model payload.
      */
-    readonly explanationConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ExplanationConfig>;
+    readonly explanationConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ExplanationConfigArgs>;
     /**
      * Optional. The machine learning framework AI Platform uses to train this version of the model. Valid values are `TENSORFLOW`, `SCIKIT_LEARN`, `XGBOOST`. If you do not specify a framework, AI Platform will analyze files in the deployment_uri to determine a framework. If you choose `SCIKIT_LEARN` or `XGBOOST`, you must also set the runtime version of the model to 1.4 or greater. Do **not** specify a framework if you're deploying a [custom prediction routine](/ai-platform/prediction/docs/custom-prediction-routines) or if you're using a [custom container](/ai-platform/prediction/docs/use-custom-container).
      */
@@ -287,7 +287,7 @@ export interface ModelVersionArgs {
     /**
      * Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
      */
-    readonly manualScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ManualScaling>;
+    readonly manualScaling?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ManualScalingArgs>;
     readonly modelsId: pulumi.Input<string>;
     /**
      * Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
@@ -309,11 +309,11 @@ export interface ModelVersionArgs {
     /**
      * Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
      */
-    readonly requestLoggingConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__RequestLoggingConfig>;
+    readonly requestLoggingConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__RequestLoggingConfigArgs>;
     /**
      * Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
      */
-    readonly routes?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__RouteMap>;
+    readonly routes?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__RouteMapArgs>;
     /**
      * Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
      */

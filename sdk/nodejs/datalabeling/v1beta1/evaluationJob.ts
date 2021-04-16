@@ -22,7 +22,7 @@ export class EvaluationJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:EvaluationJob';
+    public static readonly __pulumiType = 'google-native:datalabeling/v1beta1:EvaluationJob';
 
     /**
      * Returns true if the given object is an instance of EvaluationJob.  This is designed to work even
@@ -135,7 +135,7 @@ export interface EvaluationJobArgs {
     /**
      * Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
      */
-    readonly attempts?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1Attempt>[]>;
+    readonly attempts?: pulumi.Input<pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1AttemptArgs>[]>;
     /**
      * Timestamp of when this evaluation job was created.
      */
@@ -147,7 +147,7 @@ export interface EvaluationJobArgs {
     /**
      * Required. Configuration details for the evaluation job.
      */
-    readonly evaluationJobConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfig>;
+    readonly evaluationJobConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs>;
     readonly evaluationJobsId: pulumi.Input<string>;
     /**
      * Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.

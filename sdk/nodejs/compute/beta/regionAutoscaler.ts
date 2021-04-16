@@ -22,7 +22,7 @@ export class RegionAutoscaler extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:RegionAutoscaler';
+    public static readonly __pulumiType = 'google-native:compute/beta:RegionAutoscaler';
 
     /**
      * Returns true if the given object is an instance of RegionAutoscaler.  This is designed to work even
@@ -162,7 +162,7 @@ export interface RegionAutoscalerArgs {
      *
      * If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
      */
-    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.beta.AutoscalingPolicy>;
+    readonly autoscalingPolicy?: pulumi.Input<inputs.compute.beta.AutoscalingPolicyArgs>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -211,7 +211,7 @@ export interface RegionAutoscalerArgs {
     /**
      * [Output Only] Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
      */
-    readonly statusDetails?: pulumi.Input<pulumi.Input<inputs.compute.beta.AutoscalerStatusDetails>[]>;
+    readonly statusDetails?: pulumi.Input<pulumi.Input<inputs.compute.beta.AutoscalerStatusDetailsArgs>[]>;
     /**
      * URL of the managed instance group that this autoscaler will scale. This field is required when creating an autoscaler.
      */

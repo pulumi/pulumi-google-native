@@ -22,7 +22,7 @@ export class Environment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:notebooks/v1:Environment';
+    public static readonly __pulumiType = 'google-native:notebooks/v1:Environment';
 
     /**
      * Returns true if the given object is an instance of Environment.  This is designed to work even
@@ -117,7 +117,7 @@ export interface EnvironmentArgs {
     /**
      * Use a container image to start the notebook instance.
      */
-    readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImage>;
+    readonly containerImage?: pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>;
     /**
      * A brief description of this environment.
      */
@@ -136,5 +136,5 @@ export interface EnvironmentArgs {
     /**
      * Use a Compute Engine VM image to start the notebook instance.
      */
-    readonly vmImage?: pulumi.Input<inputs.notebooks.v1.VmImage>;
+    readonly vmImage?: pulumi.Input<inputs.notebooks.v1.VmImageArgs>;
 }

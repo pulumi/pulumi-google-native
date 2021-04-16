@@ -22,7 +22,7 @@ export class RegionAutoscalingPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataproc/v1:RegionAutoscalingPolicy';
+    public static readonly __pulumiType = 'google-native:dataproc/v1:RegionAutoscalingPolicy';
 
     /**
      * Returns true if the given object is an instance of RegionAutoscalingPolicy.  This is designed to work even
@@ -95,7 +95,7 @@ export class RegionAutoscalingPolicy extends pulumi.CustomResource {
  */
 export interface RegionAutoscalingPolicyArgs {
     readonly autoscalingPoliciesId: pulumi.Input<string>;
-    readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithm>;
+    readonly basicAlgorithm?: pulumi.Input<inputs.dataproc.v1.BasicAutoscalingAlgorithmArgs>;
     /**
      * Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
      */
@@ -105,9 +105,9 @@ export interface RegionAutoscalingPolicyArgs {
     /**
      * Optional. Describes how the autoscaler will operate for secondary workers.
      */
-    readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfig>;
+    readonly secondaryWorkerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
     /**
      * Required. Describes how the autoscaler will operate for primary workers.
      */
-    readonly workerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfig>;
+    readonly workerConfig?: pulumi.Input<inputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigArgs>;
 }

@@ -22,7 +22,7 @@ export class AgentEnvironmentExperiment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dialogflow/v3beta1:AgentEnvironmentExperiment';
+    public static readonly __pulumiType = 'google-native:dialogflow/v3beta1:AgentEnvironmentExperiment';
 
     /**
      * Returns true if the given object is an instance of AgentEnvironmentExperiment.  This is designed to work even
@@ -160,7 +160,7 @@ export interface AgentEnvironmentExperimentArgs {
     /**
      * The definition of the experiment.
      */
-    readonly definition?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentDefinition>;
+    readonly definition?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs>;
     /**
      * The human-readable description of the experiment.
      */
@@ -192,7 +192,7 @@ export interface AgentEnvironmentExperimentArgs {
     /**
      * Inference result of the experiment.
      */
-    readonly result?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentResult>;
+    readonly result?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ExperimentResultArgs>;
     /**
      * Start time of this experiment.
      */
@@ -204,5 +204,5 @@ export interface AgentEnvironmentExperimentArgs {
     /**
      * The history of updates to the experiment variants.
      */
-    readonly variantsHistory?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1VariantsHistory>[]>;
+    readonly variantsHistory?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs>[]>;
 }

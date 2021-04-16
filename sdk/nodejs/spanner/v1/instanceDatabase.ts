@@ -22,7 +22,7 @@ export class InstanceDatabase extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:spanner/v1:InstanceDatabase';
+    public static readonly __pulumiType = 'google-native:spanner/v1:InstanceDatabase';
 
     /**
      * Returns true if the given object is an instance of InstanceDatabase.  This is designed to work even
@@ -130,7 +130,7 @@ export interface InstanceDatabaseArgs {
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.spanner.v1.EncryptionConfig>;
+    readonly encryptionConfig?: pulumi.Input<inputs.spanner.v1.EncryptionConfigArgs>;
     /**
      * Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
      */

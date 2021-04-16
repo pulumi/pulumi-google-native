@@ -22,7 +22,7 @@ export class Execution extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:notebooks/v1:Execution';
+    public static readonly __pulumiType = 'google-native:notebooks/v1:Execution';
 
     /**
      * Returns true if the given object is an instance of Execution.  This is designed to work even
@@ -127,7 +127,7 @@ export interface ExecutionArgs {
     /**
      * execute metadata including name, hardware spec, region, labels, etc.
      */
-    readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplate>;
+    readonly executionTemplate?: pulumi.Input<inputs.notebooks.v1.ExecutionTemplateArgs>;
     readonly executionsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

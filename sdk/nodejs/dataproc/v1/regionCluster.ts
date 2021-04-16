@@ -22,7 +22,7 @@ export class RegionCluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dataproc/v1:RegionCluster';
+    public static readonly __pulumiType = 'google-native:dataproc/v1:RegionCluster';
 
     /**
      * Returns true if the given object is an instance of RegionCluster.  This is designed to work even
@@ -125,7 +125,7 @@ export interface RegionClusterArgs {
     /**
      * Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
      */
-    readonly config?: pulumi.Input<inputs.dataproc.v1.ClusterConfig>;
+    readonly config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
     /**
      * Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
      */

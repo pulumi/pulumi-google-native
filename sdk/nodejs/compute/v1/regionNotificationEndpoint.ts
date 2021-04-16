@@ -22,7 +22,7 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionNotificationEndpoint';
+    public static readonly __pulumiType = 'google-native:compute/v1:RegionNotificationEndpoint';
 
     /**
      * Returns true if the given object is an instance of RegionNotificationEndpoint.  This is designed to work even
@@ -125,7 +125,7 @@ export interface RegionNotificationEndpointArgs {
     /**
      * Settings of the gRPC notification endpoint including the endpoint URL and the retry duration.
      */
-    readonly grpcSettings?: pulumi.Input<inputs.compute.v1.NotificationEndpointGrpcSettings>;
+    readonly grpcSettings?: pulumi.Input<inputs.compute.v1.NotificationEndpointGrpcSettingsArgs>;
     /**
      * [Output Only] A unique identifier for this resource type. The server generates this identifier.
      */

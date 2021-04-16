@@ -22,7 +22,7 @@ export class Feed extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudasset/v1:Feed';
+    public static readonly __pulumiType = 'google-native:cloudasset/v1:Feed';
 
     /**
      * Returns true if the given object is an instance of Feed.  This is designed to work even
@@ -120,7 +120,7 @@ export interface FeedArgs {
     /**
      * A condition which determines whether an asset update should be published. If specified, an asset will be returned only when the expression evaluates to true. When set, `expression` field in the `Expr` must be a valid [CEL expression] (https://github.com/google/cel-spec) on a TemporalAsset with name `temporal_asset`. Example: a Feed with expression ("temporal_asset.deleted == true") will only publish Asset deletions. Other fields of `Expr` are optional. See our [user guide](https://cloud.google.com/asset-inventory/docs/monitoring-asset-changes#feed_with_condition) for detailed instructions.
      */
-    readonly condition?: pulumi.Input<inputs.cloudasset.v1.Expr>;
+    readonly condition?: pulumi.Input<inputs.cloudasset.v1.ExprArgs>;
     /**
      * Asset content type. If not specified, no content but the asset name and type will be returned.
      */
@@ -132,7 +132,7 @@ export interface FeedArgs {
     /**
      * Required. Feed output configuration defining where the asset updates are published to.
      */
-    readonly feedOutputConfig?: pulumi.Input<inputs.cloudasset.v1.FeedOutputConfig>;
+    readonly feedOutputConfig?: pulumi.Input<inputs.cloudasset.v1.FeedOutputConfigArgs>;
     readonly feedsId: pulumi.Input<string>;
     /**
      * Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.

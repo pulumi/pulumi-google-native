@@ -22,7 +22,7 @@ export class MigrationJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datamigration/v1beta1:MigrationJob';
+    public static readonly __pulumiType = 'google-native:datamigration/v1beta1:MigrationJob';
 
     /**
      * Returns true if the given object is an instance of MigrationJob.  This is designed to work even
@@ -193,7 +193,7 @@ export interface MigrationJobArgs {
     /**
      * The database engine type and provider of the destination.
      */
-    readonly destinationDatabase?: pulumi.Input<inputs.datamigration.v1beta1.DatabaseType>;
+    readonly destinationDatabase?: pulumi.Input<inputs.datamigration.v1beta1.DatabaseTypeArgs>;
     /**
      * The migration job display name.
      */
@@ -216,7 +216,7 @@ export interface MigrationJobArgs {
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
      */
-    readonly reverseSshConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.ReverseSshConnectivity>;
+    readonly reverseSshConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.ReverseSshConnectivityArgs>;
     /**
      * Required. The resource name (URI) of the source connection profile.
      */
@@ -224,7 +224,7 @@ export interface MigrationJobArgs {
     /**
      * The database engine type and provider of the source.
      */
-    readonly sourceDatabase?: pulumi.Input<inputs.datamigration.v1beta1.DatabaseType>;
+    readonly sourceDatabase?: pulumi.Input<inputs.datamigration.v1beta1.DatabaseTypeArgs>;
     /**
      * The current migration job state.
      */
@@ -232,7 +232,7 @@ export interface MigrationJobArgs {
     /**
      * static ip connectivity data (default, no additional details needed).
      */
-    readonly staticIpConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.StaticIpConnectivity>;
+    readonly staticIpConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.StaticIpConnectivityArgs>;
     /**
      * Required. The migration job type.
      */
@@ -240,5 +240,5 @@ export interface MigrationJobArgs {
     /**
      * The details of the VPC network that the source database is located in.
      */
-    readonly vpcPeeringConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.VpcPeeringConnectivity>;
+    readonly vpcPeeringConnectivity?: pulumi.Input<inputs.datamigration.v1beta1.VpcPeeringConnectivityArgs>;
 }

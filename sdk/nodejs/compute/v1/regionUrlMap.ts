@@ -22,7 +22,7 @@ export class RegionUrlMap extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:RegionUrlMap';
+    public static readonly __pulumiType = 'google-native:compute/v1:RegionUrlMap';
 
     /**
      * Returns true if the given object is an instance of RegionUrlMap.  This is designed to work even
@@ -179,7 +179,7 @@ export interface RegionUrlMapArgs {
      * UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
      * defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly defaultRouteAction?: pulumi.Input<inputs.compute.v1.HttpRouteAction>;
+    readonly defaultRouteAction?: pulumi.Input<inputs.compute.v1.HttpRouteActionArgs>;
     /**
      * The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified.
      * Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.
@@ -191,7 +191,7 @@ export interface RegionUrlMapArgs {
      * If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
      * Not supported when the URL map is bound to target gRPC proxy.
      */
-    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.v1.HttpRedirectAction>;
+    readonly defaultUrlRedirect?: pulumi.Input<inputs.compute.v1.HttpRedirectActionArgs>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */
@@ -208,11 +208,11 @@ export interface RegionUrlMapArgs {
      * Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
      * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly headerAction?: pulumi.Input<inputs.compute.v1.HttpHeaderAction>;
+    readonly headerAction?: pulumi.Input<inputs.compute.v1.HttpHeaderActionArgs>;
     /**
      * The list of HostRules to use against the URL.
      */
-    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.v1.HostRule>[]>;
+    readonly hostRules?: pulumi.Input<pulumi.Input<inputs.compute.v1.HostRuleArgs>[]>;
     /**
      * [Output Only] The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -228,7 +228,7 @@ export interface RegionUrlMapArgs {
     /**
      * The list of named PathMatchers to use against the URL.
      */
-    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.v1.PathMatcher>[]>;
+    readonly pathMatchers?: pulumi.Input<pulumi.Input<inputs.compute.v1.PathMatcherArgs>[]>;
     readonly project: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
@@ -242,6 +242,6 @@ export interface RegionUrlMapArgs {
      * The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
      * Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
      */
-    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.v1.UrlMapTest>[]>;
+    readonly tests?: pulumi.Input<pulumi.Input<inputs.compute.v1.UrlMapTestArgs>[]>;
     readonly urlMap: pulumi.Input<string>;
 }

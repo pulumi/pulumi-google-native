@@ -22,7 +22,7 @@ export class Occurrence extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:containeranalysis/v1beta1:Occurrence';
+    public static readonly __pulumiType = 'google-native:containeranalysis/v1beta1:Occurrence';
 
     /**
      * Returns true if the given object is an instance of Occurrence.  This is designed to work even
@@ -161,11 +161,11 @@ export interface OccurrenceArgs {
     /**
      * Describes an attestation of an artifact.
      */
-    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1beta1.Details>;
+    readonly attestation?: pulumi.Input<inputs.containeranalysis.v1beta1.DetailsArgs>;
     /**
      * Describes a verifiable build.
      */
-    readonly build?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1BuildDetails>;
+    readonly build?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1BuildDetailsArgs>;
     /**
      * The time this occurrence was created.
      */
@@ -173,23 +173,23 @@ export interface OccurrenceArgs {
     /**
      * Describes the deployment of an artifact on a runtime.
      */
-    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DeploymentDetails>;
+    readonly deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DeploymentDetailsArgs>;
     /**
      * Describes how this resource derives from the basis in the associated note.
      */
-    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1ImageDetails>;
+    readonly derivedImage?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1ImageDetailsArgs>;
     /**
      * Describes when a resource was discovered.
      */
-    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetails>;
+    readonly discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1DiscoveryDetailsArgs>;
     /**
      * Describes the installation of a package on the linked resource.
      */
-    readonly installation?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetails>;
+    readonly installation?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1PackageDetailsArgs>;
     /**
      * Describes a specific in-toto link.
      */
-    readonly intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetails>;
+    readonly intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetailsArgs>;
     /**
      * This explicitly denotes which of the occurrence details are specified. This field can be used as a filter in list requests.
      */
@@ -211,7 +211,7 @@ export interface OccurrenceArgs {
     /**
      * Required. Immutable. The resource for which the occurrence applies.
      */
-    readonly resource?: pulumi.Input<inputs.containeranalysis.v1beta1.Resource>;
+    readonly resource?: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
     /**
      * The time this occurrence was last updated.
      */
@@ -219,5 +219,5 @@ export interface OccurrenceArgs {
     /**
      * Describes a security vulnerability.
      */
-    readonly vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1VulnerabilityDetails>;
+    readonly vulnerability?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1VulnerabilityDetailsArgs>;
 }

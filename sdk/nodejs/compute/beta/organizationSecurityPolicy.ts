@@ -22,7 +22,7 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:OrganizationSecurityPolicy';
+    public static readonly __pulumiType = 'google-native:compute/beta:OrganizationSecurityPolicy';
 
     /**
      * Returns true if the given object is an instance of OrganizationSecurityPolicy.  This is designed to work even
@@ -162,11 +162,11 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationSecurityPolicy resource.
  */
 export interface OrganizationSecurityPolicyArgs {
-    readonly adaptiveProtectionConfig?: pulumi.Input<inputs.compute.beta.SecurityPolicyAdaptiveProtectionConfig>;
+    readonly adaptiveProtectionConfig?: pulumi.Input<inputs.compute.beta.SecurityPolicyAdaptiveProtectionConfigArgs>;
     /**
      * A list of associations that belong to this policy.
      */
-    readonly associations?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyAssociation>[]>;
+    readonly associations?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyAssociationArgs>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -218,7 +218,7 @@ export interface OrganizationSecurityPolicyArgs {
     /**
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyRule>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.beta.SecurityPolicyRuleArgs>[]>;
     readonly securityPolicy: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.

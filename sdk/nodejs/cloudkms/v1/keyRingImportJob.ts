@@ -22,7 +22,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudkms/v1:KeyRingImportJob';
+    public static readonly __pulumiType = 'google-native:cloudkms/v1:KeyRingImportJob';
 
     /**
      * Returns true if the given object is an instance of KeyRingImportJob.  This is designed to work even

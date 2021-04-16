@@ -22,7 +22,7 @@ export class Instance extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datafusion/v1beta1:Instance';
+    public static readonly __pulumiType = 'google-native:datafusion/v1beta1:Instance';
 
     /**
      * Returns true if the given object is an instance of Instance.  This is designed to work even
@@ -225,11 +225,11 @@ export interface InstanceArgs {
     /**
      * List of accelerators enabled for this CDF instance.
      */
-    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.Accelerator>[]>;
+    readonly accelerators?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.AcceleratorArgs>[]>;
     /**
      * Available versions that the instance can be upgraded to using UpdateInstanceRequest.
      */
-    readonly availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.Version>[]>;
+    readonly availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.VersionArgs>[]>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */
@@ -263,7 +263,7 @@ export interface InstanceArgs {
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      */
-    readonly networkConfig?: pulumi.Input<inputs.datafusion.v1beta1.NetworkConfig>;
+    readonly networkConfig?: pulumi.Input<inputs.datafusion.v1beta1.NetworkConfigArgs>;
     /**
      * Map of additional options used to configure the behavior of Data Fusion instance.
      */

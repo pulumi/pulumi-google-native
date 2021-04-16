@@ -22,7 +22,7 @@ export class InstanceIamPolicy extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:InstanceIamPolicy';
+    public static readonly __pulumiType = 'google-native:compute/v1:InstanceIamPolicy';
 
     /**
      * Returns true if the given object is an instance of InstanceIamPolicy.  This is designed to work even
@@ -122,11 +122,11 @@ export interface InstanceIamPolicyArgs {
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
-    readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.compute.v1.AuditConfig>[]>;
+    readonly auditConfigs?: pulumi.Input<pulumi.Input<inputs.compute.v1.AuditConfigArgs>[]>;
     /**
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.v1.Binding>[]>;
+    readonly bindings?: pulumi.Input<pulumi.Input<inputs.compute.v1.BindingArgs>[]>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
      *
@@ -139,7 +139,7 @@ export interface InstanceIamPolicyArgs {
     /**
      * If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
      */
-    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.v1.Rule>[]>;
+    readonly rules?: pulumi.Input<pulumi.Input<inputs.compute.v1.RuleArgs>[]>;
     /**
      * Specifies the format of the policy.
      *

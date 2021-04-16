@@ -22,7 +22,7 @@ export class SettingSearchapplication extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudsearch/v1:SettingSearchapplication';
+    public static readonly __pulumiType = 'google-native:cloudsearch/v1:SettingSearchapplication';
 
     /**
      * Returns true if the given object is an instance of SettingSearchapplication.  This is designed to work even
@@ -115,15 +115,15 @@ export interface SettingSearchapplicationArgs {
     /**
      * Retrictions applied to the configurations. The maximum number of elements is 10.
      */
-    readonly dataSourceRestrictions?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.DataSourceRestriction>[]>;
+    readonly dataSourceRestrictions?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.DataSourceRestrictionArgs>[]>;
     /**
      * The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
      */
-    readonly defaultFacetOptions?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.FacetOptions>[]>;
+    readonly defaultFacetOptions?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.FacetOptionsArgs>[]>;
     /**
      * The default options for sorting the search results
      */
-    readonly defaultSortOptions?: pulumi.Input<inputs.cloudsearch.v1.SortOptions>;
+    readonly defaultSortOptions?: pulumi.Input<inputs.cloudsearch.v1.SortOptionsArgs>;
     /**
      * Display name of the Search Application. The maximum length is 300 characters.
      */
@@ -135,10 +135,10 @@ export interface SettingSearchapplicationArgs {
     /**
      * Configuration for ranking results.
      */
-    readonly scoringConfig?: pulumi.Input<inputs.cloudsearch.v1.ScoringConfig>;
+    readonly scoringConfig?: pulumi.Input<inputs.cloudsearch.v1.ScoringConfigArgs>;
     readonly searchapplicationsId: pulumi.Input<string>;
     /**
      * Configuration for a sources specified in data_source_restrictions.
      */
-    readonly sourceConfig?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.SourceConfig>[]>;
+    readonly sourceConfig?: pulumi.Input<pulumi.Input<inputs.cloudsearch.v1.SourceConfigArgs>[]>;
 }

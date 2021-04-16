@@ -22,7 +22,7 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigqueryconnection/v1beta1:Connection';
+    public static readonly __pulumiType = 'google-native:bigqueryconnection/v1beta1:Connection';
 
     /**
      * Returns true if the given object is an instance of Connection.  This is designed to work even
@@ -117,7 +117,7 @@ export interface ConnectionArgs {
     /**
      * Cloud SQL properties.
      */
-    readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlProperties>;
+    readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlPropertiesArgs>;
     readonly connectionsId: pulumi.Input<string>;
     /**
      * User provided description.

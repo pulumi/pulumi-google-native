@@ -22,7 +22,7 @@ export class ClusterNodePool extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:container/v1:ClusterNodePool';
+    public static readonly __pulumiType = 'google-native:container/v1:ClusterNodePool';
 
     /**
      * Returns true if the given object is an instance of ClusterNodePool.  This is designed to work even
@@ -164,16 +164,16 @@ export interface ClusterNodePoolArgs {
     /**
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
-    readonly autoscaling?: pulumi.Input<inputs.container.v1.NodePoolAutoscaling>;
+    readonly autoscaling?: pulumi.Input<inputs.container.v1.NodePoolAutoscalingArgs>;
     readonly clustersId: pulumi.Input<string>;
     /**
      * Which conditions caused the current node pool state.
      */
-    readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1.StatusCondition>[]>;
+    readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1.StatusConditionArgs>[]>;
     /**
      * The node configuration of the pool.
      */
-    readonly config?: pulumi.Input<inputs.container.v1.NodeConfig>;
+    readonly config?: pulumi.Input<inputs.container.v1.NodeConfigArgs>;
     /**
      * The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
      */
@@ -190,11 +190,11 @@ export interface ClusterNodePoolArgs {
     /**
      * NodeManagement configuration for this NodePool.
      */
-    readonly management?: pulumi.Input<inputs.container.v1.NodeManagement>;
+    readonly management?: pulumi.Input<inputs.container.v1.NodeManagementArgs>;
     /**
      * The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
      */
-    readonly maxPodsConstraint?: pulumi.Input<inputs.container.v1.MaxPodsConstraint>;
+    readonly maxPodsConstraint?: pulumi.Input<inputs.container.v1.MaxPodsConstraintArgs>;
     /**
      * The name of the node pool.
      */
@@ -220,7 +220,7 @@ export interface ClusterNodePoolArgs {
     /**
      * Upgrade settings control disruption and speed of the upgrade.
      */
-    readonly upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettings>;
+    readonly upgradeSettings?: pulumi.Input<inputs.container.v1.UpgradeSettingsArgs>;
     /**
      * The version of the Kubernetes of this node.
      */

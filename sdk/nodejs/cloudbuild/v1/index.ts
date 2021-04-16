@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:cloudbuild/v1:Build":
+            case "google-native:cloudbuild/v1:Build":
                 return new Build(name, <any>undefined, { urn })
-            case "gcp-native:cloudbuild/v1:Trigger":
+            case "google-native:cloudbuild/v1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "cloudbuild/v1", _module)
+pulumi.runtime.registerResourceModule("google-native", "cloudbuild/v1", _module)

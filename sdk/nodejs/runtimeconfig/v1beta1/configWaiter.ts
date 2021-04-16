@@ -22,7 +22,7 @@ export class ConfigWaiter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:runtimeconfig/v1beta1:ConfigWaiter';
+    public static readonly __pulumiType = 'google-native:runtimeconfig/v1beta1:ConfigWaiter';
 
     /**
      * Returns true if the given object is an instance of ConfigWaiter.  This is designed to work even
@@ -126,11 +126,11 @@ export interface ConfigWaiterArgs {
     /**
      * If the waiter ended due to a failure or timeout, this value will be set.
      */
-    readonly error?: pulumi.Input<inputs.runtimeconfig.v1beta1.Status>;
+    readonly error?: pulumi.Input<inputs.runtimeconfig.v1beta1.StatusArgs>;
     /**
      * [Optional] The failure condition of this waiter. If this condition is met, `done` will be set to `true` and the `error` code will be set to `ABORTED`. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated. This value is optional; if no failure condition is set, the only failure scenario will be a timeout.
      */
-    readonly failure?: pulumi.Input<inputs.runtimeconfig.v1beta1.EndCondition>;
+    readonly failure?: pulumi.Input<inputs.runtimeconfig.v1beta1.EndConditionArgs>;
     /**
      * The name of the Waiter resource, in the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME]/waiters/[WAITER_NAME] The `[PROJECT_ID]` must be a valid Google Cloud project ID, the `[CONFIG_NAME]` must be a valid RuntimeConfig resource, the `[WAITER_NAME]` must match RFC 1035 segment specification, and the length of `[WAITER_NAME]` must be less than 64 bytes. After you create a Waiter resource, you cannot change the resource name.
      */
@@ -139,7 +139,7 @@ export interface ConfigWaiterArgs {
     /**
      * [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
      */
-    readonly success?: pulumi.Input<inputs.runtimeconfig.v1beta1.EndCondition>;
+    readonly success?: pulumi.Input<inputs.runtimeconfig.v1beta1.EndConditionArgs>;
     /**
      * [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
      */

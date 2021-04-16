@@ -30,27 +30,27 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:datacatalog/v1beta1:EntryGroup":
+            case "google-native:datacatalog/v1beta1:EntryGroup":
                 return new EntryGroup(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:EntryGroupEntry":
+            case "google-native:datacatalog/v1beta1:EntryGroupEntry":
                 return new EntryGroupEntry(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:EntryGroupIamPolicy":
+            case "google-native:datacatalog/v1beta1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TagTemplate":
+            case "google-native:datacatalog/v1beta1:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TagTemplateIamPolicy":
+            case "google-native:datacatalog/v1beta1:TagTemplateIamPolicy":
                 return new TagTemplateIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:Taxonomy":
+            case "google-native:datacatalog/v1beta1:Taxonomy":
                 return new Taxonomy(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TaxonomyIamPolicy":
+            case "google-native:datacatalog/v1beta1:TaxonomyIamPolicy":
                 return new TaxonomyIamPolicy(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTag":
+            case "google-native:datacatalog/v1beta1:TaxonomyPolicyTag":
                 return new TaxonomyPolicyTag(name, <any>undefined, { urn })
-            case "gcp-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
+            case "google-native:datacatalog/v1beta1:TaxonomyPolicyTagIamPolicy":
                 return new TaxonomyPolicyTagIamPolicy(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "datacatalog/v1beta1", _module)
+pulumi.runtime.registerResourceModule("google-native", "datacatalog/v1beta1", _module)

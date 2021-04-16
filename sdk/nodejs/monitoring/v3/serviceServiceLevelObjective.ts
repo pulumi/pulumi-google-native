@@ -22,7 +22,7 @@ export class ServiceServiceLevelObjective extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:monitoring/v3:ServiceServiceLevelObjective';
+    public static readonly __pulumiType = 'google-native:monitoring/v3:ServiceServiceLevelObjective';
 
     /**
      * Returns true if the given object is an instance of ServiceServiceLevelObjective.  This is designed to work even
@@ -135,7 +135,7 @@ export interface ServiceServiceLevelObjectiveArgs {
     /**
      * The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
      */
-    readonly serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicator>;
+    readonly serviceLevelIndicator?: pulumi.Input<inputs.monitoring.v3.ServiceLevelIndicatorArgs>;
     readonly serviceLevelObjectivesId: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
     readonly v3Id: pulumi.Input<string>;

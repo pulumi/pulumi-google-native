@@ -22,7 +22,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudkms/v1:KeyRingCryptoKey';
+    public static readonly __pulumiType = 'google-native:cloudkms/v1:KeyRingCryptoKey';
 
     /**
      * Returns true if the given object is an instance of KeyRingCryptoKey.  This is designed to work even
@@ -147,5 +147,5 @@ export interface KeyRingCryptoKeyArgs {
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */
-    readonly versionTemplate?: pulumi.Input<inputs.cloudkms.v1.CryptoKeyVersionTemplate>;
+    readonly versionTemplate?: pulumi.Input<inputs.cloudkms.v1.CryptoKeyVersionTemplateArgs>;
 }

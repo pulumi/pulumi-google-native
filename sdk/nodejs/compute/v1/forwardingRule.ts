@@ -22,7 +22,7 @@ export class ForwardingRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/v1:ForwardingRule';
+    public static readonly __pulumiType = 'google-native:compute/v1:ForwardingRule';
 
     /**
      * Returns true if the given object is an instance of ForwardingRule.  This is designed to work even
@@ -433,7 +433,7 @@ export interface ForwardingRuleArgs {
      * metadataFilters specified here will be applifed before those specified in the UrlMap that this ForwardingRule references.
      * metadataFilters only applies to Loadbalancers that have their loadBalancingScheme set to INTERNAL_SELF_MANAGED.
      */
-    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.v1.MetadataFilter>[]>;
+    readonly metadataFilters?: pulumi.Input<pulumi.Input<inputs.compute.v1.MetadataFilterArgs>[]>;
     /**
      * Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
@@ -498,7 +498,7 @@ export interface ForwardingRuleArgs {
      *
      * It is only supported for Internal TCP/UDP Load Balancing and Internal HTTP(S) Load Balancing.
      */
-    readonly serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ForwardingRuleServiceDirectoryRegistration>[]>;
+    readonly serviceDirectoryRegistrations?: pulumi.Input<pulumi.Input<inputs.compute.v1.ForwardingRuleServiceDirectoryRegistrationArgs>[]>;
     /**
      * An optional prefix to the service name for this Forwarding Rule. If specified, the prefix is the first label of the fully qualified service name.
      *

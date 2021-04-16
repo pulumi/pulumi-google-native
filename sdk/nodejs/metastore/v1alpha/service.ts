@@ -22,7 +22,7 @@ export class Service extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:metastore/v1alpha:Service';
+    public static readonly __pulumiType = 'google-native:metastore/v1alpha:Service';
 
     /**
      * Returns true if the given object is an instance of Service.  This is designed to work even
@@ -177,7 +177,7 @@ export interface ServiceArgs {
     /**
      * Configuration information specific to running Hive metastore software as the metastore service.
      */
-    readonly hiveMetastoreConfig?: pulumi.Input<inputs.metastore.v1alpha.HiveMetastoreConfig>;
+    readonly hiveMetastoreConfig?: pulumi.Input<inputs.metastore.v1alpha.HiveMetastoreConfigArgs>;
     /**
      * User-defined labels for the metastore service.
      */
@@ -186,11 +186,11 @@ export interface ServiceArgs {
     /**
      * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
      */
-    readonly maintenanceWindow?: pulumi.Input<inputs.metastore.v1alpha.MaintenanceWindow>;
+    readonly maintenanceWindow?: pulumi.Input<inputs.metastore.v1alpha.MaintenanceWindowArgs>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
      */
-    readonly metadataIntegration?: pulumi.Input<inputs.metastore.v1alpha.MetadataIntegration>;
+    readonly metadataIntegration?: pulumi.Input<inputs.metastore.v1alpha.MetadataIntegrationArgs>;
     /**
      * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */

@@ -21,7 +21,7 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:artifactregistry/v1beta2:Repository';
+    public static readonly __pulumiType = 'google-native:artifactregistry/v1beta2:Repository';
 
     /**
      * Returns true if the given object is an instance of Repository.  This is designed to work even

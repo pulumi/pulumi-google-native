@@ -22,7 +22,7 @@ export class OrganizationEnvironmentQuery extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationEnvironmentQuery';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationEnvironmentQuery';
 
     /**
      * Returns true if the given object is an instance of OrganizationEnvironmentQuery.  This is designed to work even
@@ -186,7 +186,7 @@ export interface OrganizationEnvironmentQueryArgs {
     /**
      * A list of Metrics.
      */
-    readonly metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1QueryMetric>[]>;
+    readonly metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1QueryMetricArgs>[]>;
     /**
      * Asynchronous Query Name.
      */

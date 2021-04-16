@@ -16,13 +16,13 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp-native:appengine/v1alpha:AppAuthorizedCertificate":
+            case "google-native:appengine/v1alpha:AppAuthorizedCertificate":
                 return new AppAuthorizedCertificate(name, <any>undefined, { urn })
-            case "gcp-native:appengine/v1alpha:AppDomainMapping":
+            case "google-native:appengine/v1alpha:AppDomainMapping":
                 return new AppDomainMapping(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp-native", "appengine/v1alpha", _module)
+pulumi.runtime.registerResourceModule("google-native", "appengine/v1alpha", _module)

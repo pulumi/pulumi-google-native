@@ -22,7 +22,7 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:gameservices/v1:RealmGameServerCluster';
+    public static readonly __pulumiType = 'google-native:gameservices/v1:RealmGameServerCluster';
 
     /**
      * Returns true if the given object is an instance of RealmGameServerCluster.  This is designed to work even
@@ -121,7 +121,7 @@ export interface RealmGameServerClusterArgs {
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */
-    readonly connectionInfo?: pulumi.Input<inputs.gameservices.v1.GameServerClusterConnectionInfo>;
+    readonly connectionInfo?: pulumi.Input<inputs.gameservices.v1.GameServerClusterConnectionInfoArgs>;
     /**
      * Human readable description of the cluster.
      */

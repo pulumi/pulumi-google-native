@@ -22,7 +22,7 @@ export class AccessPolicyServicePerimeter extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:accesscontextmanager/v1:AccessPolicyServicePerimeter';
+    public static readonly __pulumiType = 'google-native:accesscontextmanager/v1:AccessPolicyServicePerimeter';
 
     /**
      * Returns true if the given object is an instance of AccessPolicyServicePerimeter.  This is designed to work even
@@ -127,11 +127,11 @@ export interface AccessPolicyServicePerimeterArgs {
     /**
      * Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
      */
-    readonly spec?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfig>;
+    readonly spec?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfigArgs>;
     /**
      * Current ServicePerimeter configuration. Specifies sets of resources, restricted services and access levels that determine perimeter content and boundaries.
      */
-    readonly status?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfig>;
+    readonly status?: pulumi.Input<inputs.accesscontextmanager.v1.ServicePerimeterConfigArgs>;
     /**
      * Human readable title. Must be unique within the Policy.
      */

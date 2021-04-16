@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:transcoder/v1beta1:Job';
+    public static readonly __pulumiType = 'google-native:transcoder/v1beta1:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -165,7 +165,7 @@ export interface JobArgs {
     /**
      * The configuration for this job.
      */
-    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfig>;
+    readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
     /**
      * Input only. Specify the `input_uri` to populate empty `uri` fields in each element of `Job.config.inputs` or `JobTemplate.config.inputs` when using template. URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, `gs://bucket/inputs/file.mp4`).
      */

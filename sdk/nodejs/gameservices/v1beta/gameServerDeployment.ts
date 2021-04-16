@@ -21,7 +21,7 @@ export class GameServerDeployment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:gameservices/v1beta:GameServerDeployment';
+    public static readonly __pulumiType = 'google-native:gameservices/v1beta:GameServerDeployment';
 
     /**
      * Returns true if the given object is an instance of GameServerDeployment.  This is designed to work even

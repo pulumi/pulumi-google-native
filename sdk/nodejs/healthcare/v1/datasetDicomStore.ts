@@ -22,7 +22,7 @@ export class DatasetDicomStore extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:healthcare/v1:DatasetDicomStore';
+    public static readonly __pulumiType = 'google-native:healthcare/v1:DatasetDicomStore';
 
     /**
      * Returns true if the given object is an instance of DatasetDicomStore.  This is designed to work even
@@ -108,6 +108,6 @@ export interface DatasetDicomStoreArgs {
     /**
      * Notification destination for new DICOM instances. Supplied by the client.
      */
-    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfig>;
+    readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
     readonly projectsId: pulumi.Input<string>;
 }

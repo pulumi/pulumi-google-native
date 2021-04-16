@@ -22,7 +22,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:privateca/v1beta1:CertificateAuthority';
+    public static readonly __pulumiType = 'google-native:privateca/v1beta1:CertificateAuthority';
 
     /**
      * Returns true if the given object is an instance of CertificateAuthority.  This is designed to work even
@@ -184,11 +184,11 @@ export interface CertificateAuthorityArgs {
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
      */
-    readonly certificatePolicy?: pulumi.Input<inputs.privateca.v1beta1.CertificateAuthorityPolicy>;
+    readonly certificatePolicy?: pulumi.Input<inputs.privateca.v1beta1.CertificateAuthorityPolicyArgs>;
     /**
      * Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
      */
-    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfig>;
+    readonly config?: pulumi.Input<inputs.privateca.v1beta1.CertificateConfigArgs>;
     /**
      * Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
      */
@@ -196,11 +196,11 @@ export interface CertificateAuthorityArgs {
     /**
      * Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
      */
-    readonly issuingOptions?: pulumi.Input<inputs.privateca.v1beta1.IssuingOptions>;
+    readonly issuingOptions?: pulumi.Input<inputs.privateca.v1beta1.IssuingOptionsArgs>;
     /**
      * Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
      */
-    readonly keySpec?: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpec>;
+    readonly keySpec?: pulumi.Input<inputs.privateca.v1beta1.KeyVersionSpecArgs>;
     /**
      * Optional. Labels with user-defined metadata.
      */
@@ -214,7 +214,7 @@ export interface CertificateAuthorityArgs {
     /**
      * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
      */
-    readonly subordinateConfig?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfig>;
+    readonly subordinateConfig?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigArgs>;
     /**
      * Required. Immutable. The Tier of this CertificateAuthority.
      */

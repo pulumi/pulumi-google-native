@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:jobs/v3:Job';
+    public static readonly __pulumiType = 'google-native:jobs/v3:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -249,7 +249,7 @@ export interface JobArgs {
     /**
      * Required. At least one field within ApplicationInfo must be specified. Job application information.
      */
-    readonly applicationInfo?: pulumi.Input<inputs.jobs.v3.ApplicationInfo>;
+    readonly applicationInfo?: pulumi.Input<inputs.jobs.v3.ApplicationInfoArgs>;
     /**
      * Display name of the company listing the job.
      */
@@ -261,7 +261,7 @@ export interface JobArgs {
     /**
      * Optional. Job compensation information.
      */
-    readonly compensationInfo?: pulumi.Input<inputs.jobs.v3.CompensationInfo>;
+    readonly compensationInfo?: pulumi.Input<inputs.jobs.v3.CompensationInfoArgs>;
     /**
      * Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
      */
@@ -277,7 +277,7 @@ export interface JobArgs {
     /**
      * Derived details about the job posting.
      */
-    readonly derivedInfo?: pulumi.Input<inputs.jobs.v3.JobDerivedInfo>;
+    readonly derivedInfo?: pulumi.Input<inputs.jobs.v3.JobDerivedInfoArgs>;
     /**
      * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
@@ -338,7 +338,7 @@ export interface JobArgs {
     /**
      * Optional. Options for job processing.
      */
-    readonly processingOptions?: pulumi.Input<inputs.jobs.v3.ProcessingOptions>;
+    readonly processingOptions?: pulumi.Input<inputs.jobs.v3.ProcessingOptionsArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Optional. A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.

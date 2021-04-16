@@ -22,7 +22,7 @@ export class Subscription extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:pubsub/v1:Subscription';
+    public static readonly __pulumiType = 'google-native:pubsub/v1:Subscription';
 
     /**
      * Returns true if the given object is an instance of Subscription.  This is designed to work even
@@ -153,7 +153,7 @@ export interface SubscriptionArgs {
     /**
      * A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
      */
-    readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.v1.DeadLetterPolicy>;
+    readonly deadLetterPolicy?: pulumi.Input<inputs.pubsub.v1.DeadLetterPolicyArgs>;
     /**
      * Indicates whether the subscription is detached from its topic. Detached subscriptions don't receive messages from their topic and don't retain any backlog. `Pull` and `StreamingPull` requests will return FAILED_PRECONDITION. If the subscription is a push subscription, pushes to the endpoint will not be made.
      */
@@ -165,7 +165,7 @@ export interface SubscriptionArgs {
     /**
      * A policy that specifies the conditions for this subscription's expiration. A subscription is considered active as long as any connected subscriber is successfully consuming messages from the subscription or is issuing operations on the subscription. If `expiration_policy` is not set, a *default policy* with `ttl` of 31 days will be used. The minimum allowed value for `expiration_policy.ttl` is 1 day.
      */
-    readonly expirationPolicy?: pulumi.Input<inputs.pubsub.v1.ExpirationPolicy>;
+    readonly expirationPolicy?: pulumi.Input<inputs.pubsub.v1.ExpirationPolicyArgs>;
     /**
      * An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
      */
@@ -186,7 +186,7 @@ export interface SubscriptionArgs {
     /**
      * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
      */
-    readonly pushConfig?: pulumi.Input<inputs.pubsub.v1.PushConfig>;
+    readonly pushConfig?: pulumi.Input<inputs.pubsub.v1.PushConfigArgs>;
     /**
      * Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
      */
@@ -194,7 +194,7 @@ export interface SubscriptionArgs {
     /**
      * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
      */
-    readonly retryPolicy?: pulumi.Input<inputs.pubsub.v1.RetryPolicy>;
+    readonly retryPolicy?: pulumi.Input<inputs.pubsub.v1.RetryPolicyArgs>;
     readonly subscriptionsId: pulumi.Input<string>;
     /**
      * Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.

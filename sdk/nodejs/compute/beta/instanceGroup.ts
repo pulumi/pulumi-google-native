@@ -22,7 +22,7 @@ export class InstanceGroup extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:compute/beta:InstanceGroup';
+    public static readonly __pulumiType = 'google-native:compute/beta:InstanceGroup';
 
     /**
      * Returns true if the given object is an instance of InstanceGroup.  This is designed to work even
@@ -180,7 +180,7 @@ export interface InstanceGroupArgs {
      *
      * Named ports apply to all instances in this instance group.
      */
-    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPort>[]>;
+    readonly namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.beta.NamedPortArgs>[]>;
     /**
      * [Output Only] The URL of the network to which all instances in the instance group belong. If your instance has multiple network interfaces, then the network and subnetwork fields only refer to the network and subnet used by your primary interface (nic0).
      */

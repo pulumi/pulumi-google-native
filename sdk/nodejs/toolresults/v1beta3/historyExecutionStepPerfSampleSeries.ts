@@ -22,7 +22,7 @@ export class HistoryExecutionStepPerfSampleSeries extends pulumi.CustomResource 
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries';
+    public static readonly __pulumiType = 'google-native:toolresults/v1beta3:HistoryExecutionStepPerfSampleSeries';
 
     /**
      * Returns true if the given object is an instance of HistoryExecutionStepPerfSampleSeries.  This is designed to work even
@@ -114,7 +114,7 @@ export interface HistoryExecutionStepPerfSampleSeriesArgs {
     /**
      * Basic series represented by a line chart
      */
-    readonly basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeries>;
+    readonly basicPerfSampleSeries?: pulumi.Input<inputs.toolresults.v1beta3.BasicPerfSampleSeriesArgs>;
     /**
      * A tool results execution ID. @OutputOnly
      */

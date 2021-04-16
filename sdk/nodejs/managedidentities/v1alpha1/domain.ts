@@ -22,7 +22,7 @@ export class Domain extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:managedidentities/v1alpha1:Domain';
+    public static readonly __pulumiType = 'google-native:managedidentities/v1alpha1:Domain';
 
     /**
      * Returns true if the given object is an instance of Domain.  This is designed to work even
@@ -195,7 +195,7 @@ export interface DomainArgs {
     /**
      * The current trusts associated with the domain.
      */
-    readonly trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.Trust>[]>;
+    readonly trusts?: pulumi.Input<pulumi.Input<inputs.managedidentities.v1alpha1.TrustArgs>[]>;
     /**
      * Last update time. Synthetic field is populated automatically by CCFE.
      */

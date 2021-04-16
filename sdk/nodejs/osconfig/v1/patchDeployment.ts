@@ -22,7 +22,7 @@ export class PatchDeployment extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:osconfig/v1:PatchDeployment';
+    public static readonly __pulumiType = 'google-native:osconfig/v1:PatchDeployment';
 
     /**
      * Returns true if the given object is an instance of PatchDeployment.  This is designed to work even
@@ -145,7 +145,7 @@ export interface PatchDeploymentArgs {
     /**
      * Required. VM instances to patch.
      */
-    readonly instanceFilter?: pulumi.Input<inputs.osconfig.v1.PatchInstanceFilter>;
+    readonly instanceFilter?: pulumi.Input<inputs.osconfig.v1.PatchInstanceFilterArgs>;
     /**
      * Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
      */
@@ -153,19 +153,19 @@ export interface PatchDeploymentArgs {
     /**
      * Required. Schedule a one-time execution.
      */
-    readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1.OneTimeSchedule>;
+    readonly oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1.OneTimeScheduleArgs>;
     /**
      * Optional. Patch configuration that is applied.
      */
-    readonly patchConfig?: pulumi.Input<inputs.osconfig.v1.PatchConfig>;
+    readonly patchConfig?: pulumi.Input<inputs.osconfig.v1.PatchConfigArgs>;
     readonly patchDeploymentsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Required. Schedule recurring executions.
      */
-    readonly recurringSchedule?: pulumi.Input<inputs.osconfig.v1.RecurringSchedule>;
+    readonly recurringSchedule?: pulumi.Input<inputs.osconfig.v1.RecurringScheduleArgs>;
     /**
      * Optional. Rollout strategy of the patch job.
      */
-    readonly rollout?: pulumi.Input<inputs.osconfig.v1.PatchRollout>;
+    readonly rollout?: pulumi.Input<inputs.osconfig.v1.PatchRolloutArgs>;
 }

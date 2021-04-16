@@ -22,7 +22,7 @@ export class DlpJob extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dlp/v2:DlpJob';
+    public static readonly __pulumiType = 'google-native:dlp/v2:DlpJob';
 
     /**
      * Returns true if the given object is an instance of DlpJob.  This is designed to work even
@@ -139,7 +139,7 @@ export interface DlpJobArgs {
     /**
      * An inspection job scans a storage repository for InfoTypes.
      */
-    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfig>;
+    readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
     /**
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
@@ -149,5 +149,5 @@ export interface DlpJobArgs {
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.
      */
-    readonly riskJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2RiskAnalysisJobConfig>;
+    readonly riskJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2RiskAnalysisJobConfigArgs>;
 }

@@ -22,7 +22,7 @@ export class Model extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:ml/v1:Model';
+    public static readonly __pulumiType = 'google-native:ml/v1:Model';
 
     /**
      * Returns true if the given object is an instance of Model.  This is designed to work even
@@ -119,7 +119,7 @@ export interface ModelArgs {
     /**
      * The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
      */
-    readonly defaultVersion?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__Version>;
+    readonly defaultVersion?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__VersionArgs>;
     /**
      * Optional. The description specified for the model when it was created.
      */

@@ -22,7 +22,7 @@ export class OrganizationInstanceCanaryevaluation extends pulumi.CustomResource 
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:apigee/v1:OrganizationInstanceCanaryevaluation';
+    public static readonly __pulumiType = 'google-native:apigee/v1:OrganizationInstanceCanaryevaluation';
 
     /**
      * Returns true if the given object is an instance of OrganizationInstanceCanaryevaluation.  This is designed to work even
@@ -139,7 +139,7 @@ export interface OrganizationInstanceCanaryevaluationArgs {
     /**
      * Required. Labels used to filter the metrics used for a canary evaluation.
      */
-    readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabels>;
+    readonly metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
     readonly organizationsId: pulumi.Input<string>;
     /**
      * Required. Start time for the canary evaluation's analysis.

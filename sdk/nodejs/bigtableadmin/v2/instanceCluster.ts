@@ -22,7 +22,7 @@ export class InstanceCluster extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:bigtableadmin/v2:InstanceCluster';
+    public static readonly __pulumiType = 'google-native:bigtableadmin/v2:InstanceCluster';
 
     /**
      * Returns true if the given object is an instance of InstanceCluster.  This is designed to work even
@@ -116,7 +116,7 @@ export interface InstanceClusterArgs {
     /**
      * Immutable. The encryption configuration for CMEK-protected clusters.
      */
-    readonly encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfig>;
+    readonly encryptionConfig?: pulumi.Input<inputs.bigtableadmin.v2.EncryptionConfigArgs>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.

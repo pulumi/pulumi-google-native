@@ -22,7 +22,7 @@ export class Group extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:cloudidentity/v1:Group';
+    public static readonly __pulumiType = 'google-native:cloudidentity/v1:Group';
 
     /**
      * Returns true if the given object is an instance of Group.  This is designed to work even
@@ -129,11 +129,11 @@ export interface GroupArgs {
     /**
      * Optional. Dynamic group metadata like queries and status.
      */
-    readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1.DynamicGroupMetadata>;
+    readonly dynamicGroupMetadata?: pulumi.Input<inputs.cloudidentity.v1.DynamicGroupMetadataArgs>;
     /**
      * Required. Immutable. The `EntityKey` of the `Group`.
      */
-    readonly groupKey?: pulumi.Input<inputs.cloudidentity.v1.EntityKey>;
+    readonly groupKey?: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
     readonly groupsId: pulumi.Input<string>;
     /**
      * Required. One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value. Examples: {"cloudidentity.googleapis.com/groups.discussion_forum": ""} or {"system/groups/external": ""}.

@@ -22,7 +22,7 @@ export class Job extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:ml/v1:Job';
+    public static readonly __pulumiType = 'google-native:ml/v1:Job';
 
     /**
      * Returns true if the given object is an instance of Job.  This is designed to work even
@@ -168,11 +168,11 @@ export interface JobArgs {
     /**
      * Input parameters to create a prediction job.
      */
-    readonly predictionInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionInput>;
+    readonly predictionInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionInputArgs>;
     /**
      * The current prediction job result.
      */
-    readonly predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutput>;
+    readonly predictionOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__PredictionOutputArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * When the job processing was started.
@@ -185,9 +185,9 @@ export interface JobArgs {
     /**
      * Input parameters to create a training job.
      */
-    readonly trainingInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingInput>;
+    readonly trainingInput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingInputArgs>;
     /**
      * The current training job result.
      */
-    readonly trainingOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingOutput>;
+    readonly trainingOutput?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__TrainingOutputArgs>;
 }

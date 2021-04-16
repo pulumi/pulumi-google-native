@@ -22,7 +22,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:dns/v1beta2:ResponsePolicyRule';
+    public static readonly __pulumiType = 'google-native:dns/v1beta2:ResponsePolicyRule';
 
     /**
      * Returns true if the given object is an instance of ResponsePolicyRule.  This is designed to work even
@@ -111,7 +111,7 @@ export interface ResponsePolicyRuleArgs {
     /**
      * Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
      */
-    readonly localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalData>;
+    readonly localData?: pulumi.Input<inputs.dns.v1beta2.ResponsePolicyRuleLocalDataArgs>;
     readonly project: pulumi.Input<string>;
     readonly responsePolicy: pulumi.Input<string>;
     readonly responsePolicyRule: pulumi.Input<string>;

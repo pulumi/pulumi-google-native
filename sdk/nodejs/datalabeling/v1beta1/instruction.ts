@@ -22,7 +22,7 @@ export class Instruction extends pulumi.CustomResource {
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'gcp-native:datalabeling/v1beta1:Instruction';
+    public static readonly __pulumiType = 'google-native:datalabeling/v1beta1:Instruction';
 
     /**
      * Returns true if the given object is an instance of Instruction.  This is designed to work even
@@ -133,7 +133,7 @@ export interface InstructionArgs {
     /**
      * Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
      */
-    readonly csvInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstruction>;
+    readonly csvInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1CsvInstructionArgs>;
     /**
      * Required. The data type of this instruction.
      */
@@ -154,7 +154,7 @@ export interface InstructionArgs {
     /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */
-    readonly pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstruction>;
+    readonly pdfInstruction?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1PdfInstructionArgs>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * Last update time of instruction.
