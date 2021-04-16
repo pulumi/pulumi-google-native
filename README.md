@@ -2,7 +2,7 @@
 
 The native Google Cloud Provider for Pulumi lets you provision Google Cloud resources in your cloud programs.
 
-This provider uses the Google Cloud REST API directly and therefore provides full access to the Google Cloud Platform.
+This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes will be introduced in minor version releases.
 
@@ -61,7 +61,7 @@ https://www.pulumi.com/docs/intro/cloud-providers/gcp/setup/) for possible confi
 
 ### Dependencies
 
-- Go 1.15
+- Go 1.16
 - NodeJS 10.X.X or later
 - Python 3.6 or later
 - .NET Core 3.1
