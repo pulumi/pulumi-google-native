@@ -1,10 +1,10 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
 import * as pulumi from "@pulumi/pulumi";
-import * as gcp from "@pulumi/gcp-native";
+import * as gcp from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
-const config = new pulumi.Config("gcp-native");
+const config = new pulumi.Config("google-native");
 const project = config.require("project");
 const region = config.require("region");
 

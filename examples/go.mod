@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp-native/examples
+module github.com/pulumi/pulumi-google-native/examples
 
 go 1.16
 

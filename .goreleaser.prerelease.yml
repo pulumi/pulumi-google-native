@@ -14,7 +14,7 @@ blobs:
     provider: s3
     region: us-west-2
 builds:
-  - binary: pulumi-resource-gcp-native
+  - binary: pulumi-resource-google-native
     dir: provider
     env:
       - CGO_ENABLED=0
@@ -27,8 +27,8 @@ builds:
       - windows
       - linux
     ldflags:
-      - -X github.com/pulumi/pulumi-gcp-native/provider/pkg/version.Version={{.Tag}}
-    main: ./cmd/pulumi-resource-gcp-native/
+      - -X github.com/pulumi/pulumi-google-native/provider/pkg/version.Version={{.Tag}}
+    main: ./cmd/pulumi-resource-google-native/
 changelog:
   skip: true
 release:

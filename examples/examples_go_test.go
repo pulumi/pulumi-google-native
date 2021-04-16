@@ -13,7 +13,7 @@ func getGoBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	base := getBaseOptions(t)
 	baseGo := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"github.com/pulumi/pulumi-gcp-native/sdk/go",
+			"github.com/pulumi/pulumi-google-native/sdk/go",
 		},
 	})
 

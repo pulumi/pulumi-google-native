@@ -1,8 +1,8 @@
 PROJECT_NAME := Pulumi Native Google Cloud Resource Provider
 
-PACK            := gcp-native
+PACK            := google-native
 PACKDIR         := sdk
-PROJECT         := github.com/pulumi/pulumi-gcp-native
+PROJECT         := github.com/pulumi/pulumi-google-native
 PROVIDER        := pulumi-resource-${PACK}
 CODEGEN         := pulumi-gen-${PACK}
 VERSION         := $(shell pulumictl get version)

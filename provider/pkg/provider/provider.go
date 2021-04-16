@@ -12,7 +12,7 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi-gcp-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
@@ -80,7 +80,7 @@ func loadMetadata(azureAPIResourcesBytes []byte) (*resources.CloudAPIMetadata, e
 func (p *googleCloudProvider) Configure(ctx context.Context,
 	req *rpc.ConfigureRequest) (*rpc.ConfigureResponse, error) {
 	for key, val := range req.GetVariables() {
-		p.config[strings.TrimPrefix(key, "gcp-native:config:")] = val
+		p.config[strings.TrimPrefix(key, "google-native:config:")] = val
 	}
 
 	p.setLoggingContext(ctx)
@@ -253,7 +253,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	var uri string
 	var resp map[string]interface{}
 	switch resourceKey {
-	case "gcp-native:storage/v1:BucketObject":
+	case "google-native:storage/v1:BucketObject":
 		// This is a very sketchy implementation based on the Go SDK client that exposes media upload.
 		// TODO: We may be able to do that based purely on Discovery API.
 		opts := []option.ClientOption{option.WithScopes(defaultClientScopes...)}

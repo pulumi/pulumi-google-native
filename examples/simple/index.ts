@@ -1,7 +1,7 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
 import * as pulumi from "@pulumi/pulumi";
-import * as gcp from "@pulumi/gcp-native";
+import * as gcp from "@pulumi/google-native";
 
 const project = "pulumi-development";
 const region = "us-central1";

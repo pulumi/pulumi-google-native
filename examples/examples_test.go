@@ -57,9 +57,9 @@ func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
 	region := getRegion(t)
 	return integration.ProgramTestOptions{
 		Config: map[string]string{
-			"gcp-native:config:project": project,
-			"gcp-native:config:zone":    zone,
-			"gcp-native:config:region":  region,
+			"google-native:config:project": project,
+			"google-native:config:zone":    zone,
+			"google-native:config:region":  region,
 		},
 	}
 }

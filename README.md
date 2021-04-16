@@ -16,11 +16,11 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/gcp-native
+    $ npm install @pulumi/google-native
 
 or `yarn`:
 
-    $ yarn add @pulumi/gcp-native
+    $ yarn add @pulumi/google-native
 
 ### Python
 
@@ -32,7 +32,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-gcp-native/sdk
+    $ go get github.com/pulumi/pulumi-google-native/sdk
 
 ### .NET
 
@@ -42,7 +42,7 @@ To use from .NET, install using `dotnet add package`:
 
 ## Concepts
 
-The GCP-Native package provides a strongly-typed means to build cloud applications that create
+The native Google Cloud package provides a strongly-typed means to build cloud applications that create
 and interact closely with Google Cloud resources.  Resources are exposed for the entire GCP surface area,
 including (but not limited to) 'compute', 'container', 'run', 'storage', and more.
 
@@ -78,7 +78,7 @@ $ make ensure
 $ make build
 ```
 
-Add the `bin` folder to your `$PATH` or copy the `bin/pulumi-resource-gcp-native` file to another location in your `$PATH`.
+Add the `bin` folder to your `$PATH` or copy the `bin/pulumi-resource-google-native` file to another location in your `$PATH`.
 
 ### Running an example
 
@@ -86,6 +86,6 @@ Navigate to one of the `examples` and run Pulumi:
 
 ```
 $ cd ./exampes/simple
-$ yarn link @pulumi/gcp-native
+$ yarn link @pulumi/google-native
 $ pulumi up
 ``` 

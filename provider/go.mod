@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-gcp-native/provider
+module github.com/pulumi/pulumi-google-native/provider
 
 go 1.16
 
@@ -14,8 +14,8 @@ require (
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/pkg/errors v0.9.1
-	github.com/pulumi/pulumi/pkg/v3 v3.0.0-20210414205626-9d4d274b1376
-	github.com/pulumi/pulumi/sdk/v3 v3.0.0-beta.2
+	github.com/pulumi/pulumi/pkg/v3 v3.0.0-rc.1
+	github.com/pulumi/pulumi/sdk/v3 v3.0.0-rc.1
 	github.com/stretchr/testify v1.7.0 // indirect
 	golang.org/x/oauth2 v0.0.0-20201203001011-0b49973bad19
 	google.golang.org/api v0.36.0
