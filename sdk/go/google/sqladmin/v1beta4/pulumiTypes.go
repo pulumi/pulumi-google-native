@@ -2590,6 +2590,312 @@ func (o InsightsConfigResponsePtrOutput) RecordClientAddress() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplica struct {
+	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+	Available *bool `pulumi:"available"`
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	Name *string `pulumi:"name"`
+}
+
+// InstanceFailoverReplicaInput is an input type that accepts InstanceFailoverReplicaArgs and InstanceFailoverReplicaOutput values.
+// You can construct a concrete instance of `InstanceFailoverReplicaInput` via:
+//
+//          InstanceFailoverReplicaArgs{...}
+type InstanceFailoverReplicaInput interface {
+	pulumi.Input
+
+	ToInstanceFailoverReplicaOutput() InstanceFailoverReplicaOutput
+	ToInstanceFailoverReplicaOutputWithContext(context.Context) InstanceFailoverReplicaOutput
+}
+
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplicaArgs struct {
+	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+	Available pulumi.BoolPtrInput `pulumi:"available"`
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (InstanceFailoverReplicaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFailoverReplica)(nil)).Elem()
+}
+
+func (i InstanceFailoverReplicaArgs) ToInstanceFailoverReplicaOutput() InstanceFailoverReplicaOutput {
+	return i.ToInstanceFailoverReplicaOutputWithContext(context.Background())
+}
+
+func (i InstanceFailoverReplicaArgs) ToInstanceFailoverReplicaOutputWithContext(ctx context.Context) InstanceFailoverReplicaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaOutput)
+}
+
+func (i InstanceFailoverReplicaArgs) ToInstanceFailoverReplicaPtrOutput() InstanceFailoverReplicaPtrOutput {
+	return i.ToInstanceFailoverReplicaPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFailoverReplicaArgs) ToInstanceFailoverReplicaPtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaOutput).ToInstanceFailoverReplicaPtrOutputWithContext(ctx)
+}
+
+// InstanceFailoverReplicaPtrInput is an input type that accepts InstanceFailoverReplicaArgs, InstanceFailoverReplicaPtr and InstanceFailoverReplicaPtrOutput values.
+// You can construct a concrete instance of `InstanceFailoverReplicaPtrInput` via:
+//
+//          InstanceFailoverReplicaArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFailoverReplicaPtrInput interface {
+	pulumi.Input
+
+	ToInstanceFailoverReplicaPtrOutput() InstanceFailoverReplicaPtrOutput
+	ToInstanceFailoverReplicaPtrOutputWithContext(context.Context) InstanceFailoverReplicaPtrOutput
+}
+
+type instanceFailoverReplicaPtrType InstanceFailoverReplicaArgs
+
+func InstanceFailoverReplicaPtr(v *InstanceFailoverReplicaArgs) InstanceFailoverReplicaPtrInput {
+	return (*instanceFailoverReplicaPtrType)(v)
+}
+
+func (*instanceFailoverReplicaPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFailoverReplica)(nil)).Elem()
+}
+
+func (i *instanceFailoverReplicaPtrType) ToInstanceFailoverReplicaPtrOutput() InstanceFailoverReplicaPtrOutput {
+	return i.ToInstanceFailoverReplicaPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFailoverReplicaPtrType) ToInstanceFailoverReplicaPtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaPtrOutput)
+}
+
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplicaOutput struct{ *pulumi.OutputState }
+
+func (InstanceFailoverReplicaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFailoverReplica)(nil)).Elem()
+}
+
+func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaOutput() InstanceFailoverReplicaOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaOutputWithContext(ctx context.Context) InstanceFailoverReplicaOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaPtrOutput() InstanceFailoverReplicaPtrOutput {
+	return o.ToInstanceFailoverReplicaPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFailoverReplicaOutput) ToInstanceFailoverReplicaPtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaPtrOutput {
+	return o.ApplyT(func(v InstanceFailoverReplica) *InstanceFailoverReplica {
+		return &v
+	}).(InstanceFailoverReplicaPtrOutput)
+}
+
+// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+func (o InstanceFailoverReplicaOutput) Available() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v InstanceFailoverReplica) *bool { return v.Available }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+func (o InstanceFailoverReplicaOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceFailoverReplica) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type InstanceFailoverReplicaPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFailoverReplicaPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFailoverReplica)(nil)).Elem()
+}
+
+func (o InstanceFailoverReplicaPtrOutput) ToInstanceFailoverReplicaPtrOutput() InstanceFailoverReplicaPtrOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaPtrOutput) ToInstanceFailoverReplicaPtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaPtrOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaPtrOutput) Elem() InstanceFailoverReplicaOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplica) InstanceFailoverReplica { return *v }).(InstanceFailoverReplicaOutput)
+}
+
+// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+func (o InstanceFailoverReplicaPtrOutput) Available() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplica) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Available
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+func (o InstanceFailoverReplicaPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplica) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplicaResponse struct {
+	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+	Available bool `pulumi:"available"`
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	Name string `pulumi:"name"`
+}
+
+// InstanceFailoverReplicaResponseInput is an input type that accepts InstanceFailoverReplicaResponseArgs and InstanceFailoverReplicaResponseOutput values.
+// You can construct a concrete instance of `InstanceFailoverReplicaResponseInput` via:
+//
+//          InstanceFailoverReplicaResponseArgs{...}
+type InstanceFailoverReplicaResponseInput interface {
+	pulumi.Input
+
+	ToInstanceFailoverReplicaResponseOutput() InstanceFailoverReplicaResponseOutput
+	ToInstanceFailoverReplicaResponseOutputWithContext(context.Context) InstanceFailoverReplicaResponseOutput
+}
+
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplicaResponseArgs struct {
+	// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+	Available pulumi.BoolInput `pulumi:"available"`
+	// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (InstanceFailoverReplicaResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFailoverReplicaResponse)(nil)).Elem()
+}
+
+func (i InstanceFailoverReplicaResponseArgs) ToInstanceFailoverReplicaResponseOutput() InstanceFailoverReplicaResponseOutput {
+	return i.ToInstanceFailoverReplicaResponseOutputWithContext(context.Background())
+}
+
+func (i InstanceFailoverReplicaResponseArgs) ToInstanceFailoverReplicaResponseOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaResponseOutput)
+}
+
+func (i InstanceFailoverReplicaResponseArgs) ToInstanceFailoverReplicaResponsePtrOutput() InstanceFailoverReplicaResponsePtrOutput {
+	return i.ToInstanceFailoverReplicaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i InstanceFailoverReplicaResponseArgs) ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaResponseOutput).ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx)
+}
+
+// InstanceFailoverReplicaResponsePtrInput is an input type that accepts InstanceFailoverReplicaResponseArgs, InstanceFailoverReplicaResponsePtr and InstanceFailoverReplicaResponsePtrOutput values.
+// You can construct a concrete instance of `InstanceFailoverReplicaResponsePtrInput` via:
+//
+//          InstanceFailoverReplicaResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type InstanceFailoverReplicaResponsePtrInput interface {
+	pulumi.Input
+
+	ToInstanceFailoverReplicaResponsePtrOutput() InstanceFailoverReplicaResponsePtrOutput
+	ToInstanceFailoverReplicaResponsePtrOutputWithContext(context.Context) InstanceFailoverReplicaResponsePtrOutput
+}
+
+type instanceFailoverReplicaResponsePtrType InstanceFailoverReplicaResponseArgs
+
+func InstanceFailoverReplicaResponsePtr(v *InstanceFailoverReplicaResponseArgs) InstanceFailoverReplicaResponsePtrInput {
+	return (*instanceFailoverReplicaResponsePtrType)(v)
+}
+
+func (*instanceFailoverReplicaResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFailoverReplicaResponse)(nil)).Elem()
+}
+
+func (i *instanceFailoverReplicaResponsePtrType) ToInstanceFailoverReplicaResponsePtrOutput() InstanceFailoverReplicaResponsePtrOutput {
+	return i.ToInstanceFailoverReplicaResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *instanceFailoverReplicaResponsePtrType) ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceFailoverReplicaResponsePtrOutput)
+}
+
+// The name and status of the failover replica. This property is applicable only to Second Generation instances.
+type InstanceFailoverReplicaResponseOutput struct{ *pulumi.OutputState }
+
+func (InstanceFailoverReplicaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceFailoverReplicaResponse)(nil)).Elem()
+}
+
+func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponseOutput() InstanceFailoverReplicaResponseOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponseOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponseOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponsePtrOutput() InstanceFailoverReplicaResponsePtrOutput {
+	return o.ToInstanceFailoverReplicaResponsePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceFailoverReplicaResponseOutput) ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponsePtrOutput {
+	return o.ApplyT(func(v InstanceFailoverReplicaResponse) *InstanceFailoverReplicaResponse {
+		return &v
+	}).(InstanceFailoverReplicaResponsePtrOutput)
+}
+
+// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+func (o InstanceFailoverReplicaResponseOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceFailoverReplicaResponse) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+func (o InstanceFailoverReplicaResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceFailoverReplicaResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type InstanceFailoverReplicaResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceFailoverReplicaResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceFailoverReplicaResponse)(nil)).Elem()
+}
+
+func (o InstanceFailoverReplicaResponsePtrOutput) ToInstanceFailoverReplicaResponsePtrOutput() InstanceFailoverReplicaResponsePtrOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaResponsePtrOutput) ToInstanceFailoverReplicaResponsePtrOutputWithContext(ctx context.Context) InstanceFailoverReplicaResponsePtrOutput {
+	return o
+}
+
+func (o InstanceFailoverReplicaResponsePtrOutput) Elem() InstanceFailoverReplicaResponseOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) InstanceFailoverReplicaResponse { return *v }).(InstanceFailoverReplicaResponseOutput)
+}
+
+// The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+func (o InstanceFailoverReplicaResponsePtrOutput) Available() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Available
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+func (o InstanceFailoverReplicaResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceFailoverReplicaResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // IP Management configuration.
 type IpConfiguration struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. In 'CIDR' notation, also known as 'slash' notation (for example: *192.168.100.0/24*).
@@ -8537,6 +8843,10 @@ func init() {
 	pulumi.RegisterOutputType(InsightsConfigPtrOutput{})
 	pulumi.RegisterOutputType(InsightsConfigResponseOutput{})
 	pulumi.RegisterOutputType(InsightsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(InstanceFailoverReplicaOutput{})
+	pulumi.RegisterOutputType(InstanceFailoverReplicaPtrOutput{})
+	pulumi.RegisterOutputType(InstanceFailoverReplicaResponseOutput{})
+	pulumi.RegisterOutputType(InstanceFailoverReplicaResponsePtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationOutput{})
 	pulumi.RegisterOutputType(IpConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(IpConfigurationResponseOutput{})
