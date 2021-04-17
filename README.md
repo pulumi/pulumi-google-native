@@ -61,7 +61,7 @@ https://www.pulumi.com/docs/intro/cloud-providers/gcp/setup/) for possible confi
 
 ### Dependencies
 
-- Go 1.16
+- Go 1.15
 - NodeJS 10.X.X or later
 - Python 3.6 or later
 - .NET Core 3.1
