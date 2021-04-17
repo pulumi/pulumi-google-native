@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -84,7 +85,7 @@ export class ObjectAccessControl extends pulumi.CustomResource {
     /**
      * The project team associated with the entity, if any.
      */
-    public readonly projectTeam!: pulumi.Output<{[key: string]: string}>;
+    public readonly projectTeam!: pulumi.Output<outputs.storage.v1.ObjectAccessControlProjectTeamResponse>;
     /**
      * The access permission for the entity.
      */
@@ -206,7 +207,7 @@ export interface ObjectAccessControlArgs {
     /**
      * The project team associated with the entity, if any.
      */
-    readonly projectTeam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly projectTeam?: pulumi.Input<inputs.storage.v1.ObjectAccessControlProjectTeamArgs>;
     /**
      * The access permission for the entity.
      */

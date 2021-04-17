@@ -2955,7 +2955,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
              */
-            trainingOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            trainingOptions?: pulumi.Input<inputs.bigquery.v2.TableTrainingOptionsArgs>;
         }
 
         export interface ClusteringArgs {
@@ -3003,6 +3003,53 @@ export namespace bigquery {
             skipLeadingRows?: pulumi.Input<string>;
         }
 
+        export interface DatasetAccessEntryArgs {
+            /**
+             * [Required] The dataset this entry applies to.
+             */
+            dataset?: pulumi.Input<inputs.bigquery.v2.DatasetReferenceArgs>;
+            target_types?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetTarget_typesItemArgs>[]>;
+        }
+
+        export interface DatasetAccessItemArgs {
+            /**
+             * [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+             */
+            dataset?: pulumi.Input<inputs.bigquery.v2.DatasetAccessEntryArgs>;
+            /**
+             * [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+             */
+            domain?: pulumi.Input<string>;
+            /**
+             * [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+             */
+            groupByEmail?: pulumi.Input<string>;
+            /**
+             * [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+             */
+            iamMember?: pulumi.Input<string>;
+            /**
+             * [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+             */
+            role?: pulumi.Input<string>;
+            /**
+             * [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+             */
+            routine?: pulumi.Input<inputs.bigquery.v2.RoutineReferenceArgs>;
+            /**
+             * [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+             */
+            specialGroup?: pulumi.Input<string>;
+            /**
+             * [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+             */
+            userByEmail?: pulumi.Input<string>;
+            /**
+             * [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+             */
+            view?: pulumi.Input<inputs.bigquery.v2.TableReferenceArgs>;
+        }
+
         export interface DatasetReferenceArgs {
             /**
              * [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -3012,6 +3059,13 @@ export namespace bigquery {
              * [Optional] The ID of the project containing this dataset.
              */
             projectId?: pulumi.Input<string>;
+        }
+
+        export interface DatasetTarget_typesItemArgs {
+            /**
+             * [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+             */
+            targetType?: pulumi.Input<string>;
         }
 
         export interface DestinationTablePropertiesArgs {
@@ -3290,6 +3344,16 @@ export namespace bigquery {
              * [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
              */
             sourceUriPrefix?: pulumi.Input<string>;
+        }
+
+        /**
+         * [Optional] The categories attached to this field, used for field-level access control.
+         */
+        export interface JobCategoriesArgs {
+            /**
+             * A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+             */
+            names?: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         export interface JobConfigurationArgs {
@@ -3623,6 +3687,31 @@ export namespace bigquery {
             writeDisposition?: pulumi.Input<string>;
         }
 
+        export interface JobPolicyTagsArgs {
+            /**
+             * A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+             */
+            names?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * [TrustedTester] [Required] Defines the ranges for range partitioning.
+         */
+        export interface JobRangeArgs {
+            /**
+             * [TrustedTester] [Required] The end of range partitioning, exclusive.
+             */
+            end?: pulumi.Input<string>;
+            /**
+             * [TrustedTester] [Required] The width of each interval.
+             */
+            interval?: pulumi.Input<string>;
+            /**
+             * [TrustedTester] [Required] The start of range partitioning, inclusive.
+             */
+            start?: pulumi.Input<string>;
+        }
+
         export interface JobReferenceArgs {
             /**
              * [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -3636,6 +3725,17 @@ export namespace bigquery {
              * [Required] The ID of the project containing this job.
              */
             projectId?: pulumi.Input<string>;
+        }
+
+        export interface JobReservationUsageItemArgs {
+            /**
+             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * [Output-only] Slot-milliseconds the job spent in the given reservation.
+             */
+            slotMs?: pulumi.Input<string>;
         }
 
         export interface JobStatisticsArgs {
@@ -3678,7 +3778,7 @@ export namespace bigquery {
             /**
              * [Output-only] Job resource usage breakdown by reservation.
              */
-            reservationUsage?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            reservationUsage?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.JobReservationUsageItemArgs>[]>;
             /**
              * [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
              */
@@ -3781,7 +3881,7 @@ export namespace bigquery {
             /**
              * [Output-only] Job resource usage breakdown by reservation.
              */
-            reservationUsage?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            reservationUsage?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.JobReservationUsageItemArgs>[]>;
             /**
              * [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
              */
@@ -3869,6 +3969,21 @@ export namespace bigquery {
             state?: pulumi.Input<string>;
         }
 
+        export interface JobStructTypesItemArgs {
+            /**
+             * [Optional] Human-oriented description of the field.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * [Optional] The name of this field.
+             */
+            name?: pulumi.Input<string>;
+            /**
+             * [Required] The type of this field.
+             */
+            type?: pulumi.Input<inputs.bigquery.v2.QueryParameterTypeArgs>;
+        }
+
         export interface MaterializedViewDefinitionArgs {
             /**
              * [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -3892,7 +4007,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
              */
-            modelOptions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            modelOptions?: pulumi.Input<inputs.bigquery.v2.TableModelOptionsArgs>;
             /**
              * [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
              */
@@ -3948,7 +4063,7 @@ export namespace bigquery {
             /**
              * [Optional] The types of the fields of this struct, in order, if this is a struct.
              */
-            structTypes?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            structTypes?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.JobStructTypesItemArgs>[]>;
             /**
              * [Required] The top level type of this field.
              */
@@ -4001,7 +4116,7 @@ export namespace bigquery {
             /**
              * [TrustedTester] [Required] Defines the ranges for range partitioning.
              */
-            range?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            range?: pulumi.Input<inputs.bigquery.v2.JobRangeArgs>;
         }
 
         export interface RoutineReferenceArgs {
@@ -4166,7 +4281,7 @@ export namespace bigquery {
             /**
              * [Optional] The categories attached to this field, used for field-level access control.
              */
-            categories?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            categories?: pulumi.Input<inputs.bigquery.v2.JobCategoriesArgs>;
             /**
              * [Optional] The field description. The maximum length is 1,024 characters.
              */
@@ -4187,7 +4302,7 @@ export namespace bigquery {
              * [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
              */
             name?: pulumi.Input<string>;
-            policyTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            policyTags?: pulumi.Input<inputs.bigquery.v2.JobPolicyTagsArgs>;
             /**
              * [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
              */
@@ -4200,6 +4315,15 @@ export namespace bigquery {
              * [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
              */
             type?: pulumi.Input<string>;
+        }
+
+        /**
+         * [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+         */
+        export interface TableModelOptionsArgs {
+            labels?: pulumi.Input<pulumi.Input<string>[]>;
+            lossType?: pulumi.Input<string>;
+            modelType?: pulumi.Input<string>;
         }
 
         export interface TableReferenceArgs {
@@ -4222,6 +4346,21 @@ export namespace bigquery {
              * Describes the fields in a table.
              */
             fields?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.TableFieldSchemaArgs>[]>;
+        }
+
+        /**
+         * [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+         */
+        export interface TableTrainingOptionsArgs {
+            earlyStop?: pulumi.Input<boolean>;
+            l1Reg?: pulumi.Input<number>;
+            l2Reg?: pulumi.Input<number>;
+            learnRate?: pulumi.Input<number>;
+            learnRateStrategy?: pulumi.Input<string>;
+            lineSearchInitLearnRate?: pulumi.Input<number>;
+            maxIteration?: pulumi.Input<string>;
+            minRelProgress?: pulumi.Input<number>;
+            warmStart?: pulumi.Input<boolean>;
         }
 
         export interface TimePartitioningArgs {
@@ -10090,6 +10229,32 @@ export namespace compute {
             fileType?: pulumi.Input<string>;
         }
 
+        export interface FirewallAllowedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface FirewallDeniedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -10894,6 +11059,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskArgs {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType?: pulumi.Input<string>;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum?: pulumi.Input<string>;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source?: pulumi.Input<string>;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigArgs {
@@ -11206,6 +11389,17 @@ export namespace compute {
             tags?: pulumi.Input<inputs.compute.alpha.TagsArgs>;
         }
 
+        export interface InstanceTemplateItemsItemArgs {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value?: pulumi.Input<string>;
+        }
+
         /**
          * HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
          */
@@ -11495,7 +11689,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            items?: pulumi.Input<pulumi.Input<inputs.compute.alpha.InstanceTemplateItemsItemArgs>[]>;
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -12743,6 +12937,33 @@ export namespace compute {
             locationRolloutPolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
 
+        export interface RouteDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface RouteWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.alpha.RouteDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -13788,6 +14009,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SslPolicyDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         export interface StatefulPolicyArgs {
@@ -15432,6 +15680,32 @@ export namespace compute {
             fileType?: pulumi.Input<string>;
         }
 
+        export interface FirewallAllowedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface FirewallDeniedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -16187,6 +16461,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskArgs {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType?: pulumi.Input<string>;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum?: pulumi.Input<string>;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source?: pulumi.Input<string>;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigArgs {
@@ -16451,6 +16743,17 @@ export namespace compute {
             tags?: pulumi.Input<inputs.compute.beta.TagsArgs>;
         }
 
+        export interface InstanceTemplateItemsItemArgs {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value?: pulumi.Input<string>;
+        }
+
         /**
          * HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
          */
@@ -16690,7 +16993,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            items?: pulumi.Input<pulumi.Input<inputs.compute.beta.InstanceTemplateItemsItemArgs>[]>;
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -17600,6 +17903,33 @@ export namespace compute {
             startTime?: pulumi.Input<string>;
         }
 
+        export interface RouteDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface RouteWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.beta.RouteDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -18430,6 +18760,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.beta.SslPolicyDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         export interface StatefulPolicyArgs {
@@ -19873,6 +20230,32 @@ export namespace compute {
             fileType?: pulumi.Input<string>;
         }
 
+        export interface FirewallAllowedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        export interface FirewallDeniedItemArgs {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol?: pulumi.Input<string>;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -20599,6 +20982,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskArgs {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType?: pulumi.Input<string>;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum?: pulumi.Input<string>;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source?: pulumi.Input<string>;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigArgs {
@@ -20846,6 +21247,17 @@ export namespace compute {
             tags?: pulumi.Input<inputs.compute.v1.TagsArgs>;
         }
 
+        export interface InstanceTemplateItemsItemArgs {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value?: pulumi.Input<string>;
+        }
+
         /**
          * HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
          */
@@ -21085,7 +21497,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            items?: pulumi.Input<pulumi.Input<inputs.compute.v1.InstanceTemplateItemsItemArgs>[]>;
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -21969,6 +22381,33 @@ export namespace compute {
             startTime?: pulumi.Input<string>;
         }
 
+        export interface RouteDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface RouteWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.v1.RouteDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -22447,6 +22886,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        export interface SslPolicyWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.compute.v1.SslPolicyDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         export interface StatefulPolicyArgs {
@@ -31193,6 +31659,42 @@ export namespace deploymentmanager {
             options?: pulumi.Input<inputs.deploymentmanager.alpha.OptionsArgs>;
         }
 
+        export interface CompositeTypeDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface CompositeTypeErrorArgs {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeErrorsItemArgs>[]>;
+        }
+
+        export interface CompositeTypeErrorsItemArgs {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Label object for CompositeTypes
          */
@@ -31205,6 +31707,21 @@ export namespace deploymentmanager {
              * Value of the label
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface CompositeTypeWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         export interface ConfigFileArgs {
@@ -31408,7 +31925,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            error?: pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeErrorArgs>;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -31480,7 +31997,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            warnings?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.CompositeTypeWarningsItemArgs>[]>;
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -31663,6 +32180,42 @@ export namespace deploymentmanager {
             content?: pulumi.Input<string>;
         }
 
+        export interface DeploymentDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface DeploymentErrorArgs {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentErrorsItemArgs>[]>;
+        }
+
+        export interface DeploymentErrorsItemArgs {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Label object for Deployments
          */
@@ -31704,6 +32257,21 @@ export namespace deploymentmanager {
              * Value of the label
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface DeploymentWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         /**
@@ -31762,7 +32330,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            error?: pulumi.Input<inputs.deploymentmanager.v2.DeploymentErrorArgs>;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -31834,7 +32402,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            warnings?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2.DeploymentWarningsItemArgs>[]>;
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -31937,6 +32505,42 @@ export namespace deploymentmanager {
             options?: pulumi.Input<inputs.deploymentmanager.v2beta.OptionsArgs>;
         }
 
+        export interface CompositeTypeDataItemArgs {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key?: pulumi.Input<string>;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value?: pulumi.Input<string>;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface CompositeTypeErrorArgs {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeErrorsItemArgs>[]>;
+        }
+
+        export interface CompositeTypeErrorsItemArgs {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message?: pulumi.Input<string>;
+        }
+
         /**
          * Label object for CompositeTypes
          */
@@ -31949,6 +32553,21 @@ export namespace deploymentmanager {
              * Value of the label
              */
             value?: pulumi.Input<string>;
+        }
+
+        export interface CompositeTypeWarningsItemArgs {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code?: pulumi.Input<string>;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeDataItemArgs>[]>;
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message?: pulumi.Input<string>;
         }
 
         export interface ConfigFileArgs {
@@ -32108,7 +32727,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            error?: pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeErrorArgs>;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -32180,7 +32799,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+            warnings?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.v2beta.CompositeTypeWarningsItemArgs>[]>;
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -52029,6 +52648,20 @@ export namespace sqladmin {
         }
 
         /**
+         * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+         */
+        export interface InstanceFailoverReplicaArgs {
+            /**
+             * The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+             */
+            available?: pulumi.Input<boolean>;
+            /**
+             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+             */
+            name?: pulumi.Input<string>;
+        }
+
+        /**
          * IP Management configuration.
          */
         export interface IpConfigurationArgs {
@@ -52478,7 +53111,7 @@ export namespace storage {
             /**
              * The project team associated with the entity, if any.
              */
-            projectTeam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            projectTeam?: pulumi.Input<inputs.storage.v1.BucketProjectTeamArgs>;
             /**
              * The access permission for the entity.
              */
@@ -52487,6 +53120,340 @@ export namespace storage {
              * The link to this access-control entry.
              */
             selfLink?: pulumi.Input<string>;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface BucketAccessControlProjectTeamArgs {
+            /**
+             * The project number.
+             */
+            projectNumber?: pulumi.Input<string>;
+            /**
+             * The team.
+             */
+            team?: pulumi.Input<string>;
+        }
+
+        /**
+         * The action to take.
+         */
+        export interface BucketActionArgs {
+            /**
+             * Target storage class. Required iff the type of the action is SetStorageClass.
+             */
+            storageClass?: pulumi.Input<string>;
+            /**
+             * Type of the action. Currently, only Delete and SetStorageClass are supported.
+             */
+            type?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's billing configuration.
+         */
+        export interface BucketBillingArgs {
+            /**
+             * When set to true, Requester Pays is enabled for this bucket.
+             */
+            requesterPays?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+         */
+        export interface BucketBucketPolicyOnlyArgs {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * The condition(s) under which the action will be taken.
+         */
+        export interface BucketConditionArgs {
+            /**
+             * Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+             */
+            age?: pulumi.Input<number>;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+             */
+            createdBefore?: pulumi.Input<string>;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+             */
+            customTimeBefore?: pulumi.Input<string>;
+            /**
+             * Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+             */
+            daysSinceCustomTime?: pulumi.Input<number>;
+            /**
+             * Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+             */
+            daysSinceNoncurrentTime?: pulumi.Input<number>;
+            /**
+             * Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+             */
+            isLive?: pulumi.Input<boolean>;
+            /**
+             * A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+             */
+            matchesPattern?: pulumi.Input<string>;
+            /**
+             * Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+             */
+            matchesStorageClass?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+             */
+            noncurrentTimeBefore?: pulumi.Input<string>;
+            /**
+             * Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+             */
+            numNewerVersions?: pulumi.Input<number>;
+        }
+
+        export interface BucketCorsItemArgs {
+            /**
+             * The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+             */
+            maxAgeSeconds?: pulumi.Input<number>;
+            /**
+             * The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+             */
+            method?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+             */
+            origin?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+             */
+            responseHeader?: pulumi.Input<pulumi.Input<string>[]>;
+        }
+
+        /**
+         * Encryption configuration for a bucket.
+         */
+        export interface BucketEncryptionArgs {
+            /**
+             * A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+             */
+            defaultKmsKeyName?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's IAM configuration.
+         */
+        export interface BucketIamConfigurationArgs {
+            /**
+             * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+             */
+            bucketPolicyOnly?: pulumi.Input<inputs.storage.v1.BucketBucketPolicyOnlyArgs>;
+            /**
+             * The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+             */
+            publicAccessPrevention?: pulumi.Input<string>;
+            /**
+             * The bucket's uniform bucket-level access configuration.
+             */
+            uniformBucketLevelAccess?: pulumi.Input<inputs.storage.v1.BucketUniformBucketLevelAccessArgs>;
+        }
+
+        export interface BucketIamPolicyBindingsItemArgs {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition?: pulumi.Input<inputs.storage.v1.ExprArgs>;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's lifecycle configuration. See lifecycle management for more information.
+         */
+        export interface BucketLifecycleArgs {
+            /**
+             * A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+             */
+            rule?: pulumi.Input<pulumi.Input<inputs.storage.v1.BucketRuleItemArgs>[]>;
+        }
+
+        /**
+         * The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+         */
+        export interface BucketLoggingArgs {
+            /**
+             * The destination bucket where the current bucket's logs should be placed.
+             */
+            logBucket?: pulumi.Input<string>;
+            /**
+             * A prefix for log object names.
+             */
+            logObjectPrefix?: pulumi.Input<string>;
+        }
+
+        /**
+         * The owner of the bucket. This is always the project team's owner group.
+         */
+        export interface BucketOwnerArgs {
+            /**
+             * The entity, in the form project-owner-projectId.
+             */
+            entity?: pulumi.Input<string>;
+            /**
+             * The ID for the entity.
+             */
+            entityId?: pulumi.Input<string>;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface BucketProjectTeamArgs {
+            /**
+             * The project number.
+             */
+            projectNumber?: pulumi.Input<string>;
+            /**
+             * The team.
+             */
+            team?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+         */
+        export interface BucketRetentionPolicyArgs {
+            /**
+             * Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+             */
+            effectiveTime?: pulumi.Input<string>;
+            /**
+             * Once locked, an object retention policy cannot be modified.
+             */
+            isLocked?: pulumi.Input<boolean>;
+            /**
+             * The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+             */
+            retentionPeriod?: pulumi.Input<string>;
+        }
+
+        export interface BucketRuleItemArgs {
+            /**
+             * The action to take.
+             */
+            action?: pulumi.Input<inputs.storage.v1.BucketActionArgs>;
+            /**
+             * The condition(s) under which the action will be taken.
+             */
+            condition?: pulumi.Input<inputs.storage.v1.BucketConditionArgs>;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration.
+         */
+        export interface BucketUniformBucketLevelAccessArgs {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled?: pulumi.Input<boolean>;
+            /**
+             * The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime?: pulumi.Input<string>;
+        }
+
+        /**
+         * The bucket's versioning configuration.
+         */
+        export interface BucketVersioningArgs {
+            /**
+             * While set to true, versioning is fully enabled for this bucket.
+             */
+            enabled?: pulumi.Input<boolean>;
+        }
+
+        /**
+         * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+         */
+        export interface BucketWebsiteArgs {
+            /**
+             * If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+             */
+            mainPageSuffix?: pulumi.Input<string>;
+            /**
+             * If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+             */
+            notFoundPage?: pulumi.Input<string>;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface DefaultObjectAccessControlProjectTeamArgs {
+            /**
+             * The project number.
+             */
+            projectNumber?: pulumi.Input<string>;
+            /**
+             * The team.
+             */
+            team?: pulumi.Input<string>;
+        }
+
+        /**
+         * Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
+         */
+        export interface ExprArgs {
+            /**
+             * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description?: pulumi.Input<string>;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+             */
+            expression?: pulumi.Input<string>;
+            /**
+             * An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location?: pulumi.Input<string>;
+            /**
+             * An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title?: pulumi.Input<string>;
         }
 
         /**
@@ -52547,7 +53514,7 @@ export namespace storage {
             /**
              * The project team associated with the entity, if any.
              */
-            projectTeam?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            projectTeam?: pulumi.Input<inputs.storage.v1.BucketProjectTeamArgs>;
             /**
              * The access permission for the entity.
              */
@@ -52556,6 +53523,82 @@ export namespace storage {
              * The link to this access-control entry.
              */
             selfLink?: pulumi.Input<string>;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface ObjectAccessControlProjectTeamArgs {
+            /**
+             * The project number.
+             */
+            projectNumber?: pulumi.Input<string>;
+            /**
+             * The team.
+             */
+            team?: pulumi.Input<string>;
+        }
+
+        /**
+         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+         */
+        export interface ObjectCustomerEncryptionArgs {
+            /**
+             * The encryption algorithm.
+             */
+            encryptionAlgorithm?: pulumi.Input<string>;
+            /**
+             * SHA256 hash value of the encryption key.
+             */
+            keySha256?: pulumi.Input<string>;
+        }
+
+        export interface ObjectIamPolicyBindingsItemArgs {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition?: pulumi.Input<inputs.storage.v1.ExprArgs>;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members?: pulumi.Input<pulumi.Input<string>[]>;
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role?: pulumi.Input<string>;
+        }
+
+        /**
+         * The owner of the object. This will always be the uploader of the object.
+         */
+        export interface ObjectOwnerArgs {
+            /**
+             * The entity, in the form user-userId.
+             */
+            entity?: pulumi.Input<string>;
+            /**
+             * The ID for the entity.
+             */
+            entityId?: pulumi.Input<string>;
         }
 
     }

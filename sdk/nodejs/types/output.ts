@@ -3095,7 +3095,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
              */
-            trainingOptions: {[key: string]: string};
+            trainingOptions: outputs.bigquery.v2.TableTrainingOptionsResponse;
         }
 
         export interface ClusteringResponse {
@@ -3143,6 +3143,53 @@ export namespace bigquery {
             skipLeadingRows: string;
         }
 
+        export interface DatasetAccessEntryResponse {
+            /**
+             * [Required] The dataset this entry applies to.
+             */
+            dataset: outputs.bigquery.v2.DatasetReferenceResponse;
+            target_types: outputs.bigquery.v2.DatasetTarget_typesItemResponse[];
+        }
+
+        export interface DatasetAccessItemResponse {
+            /**
+             * [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+             */
+            dataset: outputs.bigquery.v2.DatasetAccessEntryResponse;
+            /**
+             * [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+             */
+            domain: string;
+            /**
+             * [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+             */
+            groupByEmail: string;
+            /**
+             * [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+             */
+            iamMember: string;
+            /**
+             * [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+             */
+            role: string;
+            /**
+             * [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+             */
+            routine: outputs.bigquery.v2.RoutineReferenceResponse;
+            /**
+             * [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+             */
+            specialGroup: string;
+            /**
+             * [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+             */
+            userByEmail: string;
+            /**
+             * [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+             */
+            view: outputs.bigquery.v2.TableReferenceResponse;
+        }
+
         export interface DatasetReferenceResponse {
             /**
              * [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -3152,6 +3199,13 @@ export namespace bigquery {
              * [Optional] The ID of the project containing this dataset.
              */
             projectId: string;
+        }
+
+        export interface DatasetTarget_typesItemResponse {
+            /**
+             * [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+             */
+            targetType: string;
         }
 
         export interface DestinationTablePropertiesResponse {
@@ -3426,6 +3480,16 @@ export namespace bigquery {
              * [Optional] When hive partition detection is requested, a common prefix for all source uris should be supplied. The prefix must end immediately before the partition key encoding begins. For example, consider files following this data layout. gs://bucket/path_to_table/dt=2019-01-01/country=BR/id=7/file.avro gs://bucket/path_to_table/dt=2018-12-31/country=CA/id=3/file.avro When hive partitioning is requested with either AUTO or STRINGS detection, the common prefix can be either of gs://bucket/path_to_table or gs://bucket/path_to_table/ (trailing slash does not matter).
              */
             sourceUriPrefix: string;
+        }
+
+        /**
+         * [Optional] The categories attached to this field, used for field-level access control.
+         */
+        export interface JobCategoriesResponse {
+            /**
+             * A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+             */
+            names: string[];
         }
 
         export interface JobConfigurationExtractResponse {
@@ -3759,6 +3823,31 @@ export namespace bigquery {
             writeDisposition: string;
         }
 
+        export interface JobPolicyTagsResponse {
+            /**
+             * A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+             */
+            names: string[];
+        }
+
+        /**
+         * [TrustedTester] [Required] Defines the ranges for range partitioning.
+         */
+        export interface JobRangeResponse {
+            /**
+             * [TrustedTester] [Required] The end of range partitioning, exclusive.
+             */
+            end: string;
+            /**
+             * [TrustedTester] [Required] The width of each interval.
+             */
+            interval: string;
+            /**
+             * [TrustedTester] [Required] The start of range partitioning, inclusive.
+             */
+            start: string;
+        }
+
         export interface JobReferenceResponse {
             /**
              * [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
@@ -3772,6 +3861,17 @@ export namespace bigquery {
              * [Required] The ID of the project containing this job.
              */
             projectId: string;
+        }
+
+        export interface JobReservationUsageItemResponse {
+            /**
+             * [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+             */
+            name: string;
+            /**
+             * [Output-only] Slot-milliseconds the job spent in the given reservation.
+             */
+            slotMs: string;
         }
 
         export interface JobStatistics2Response {
@@ -3842,7 +3942,7 @@ export namespace bigquery {
             /**
              * [Output-only] Job resource usage breakdown by reservation.
              */
-            reservationUsage: {[key: string]: string}[];
+            reservationUsage: outputs.bigquery.v2.JobReservationUsageItemResponse[];
             /**
              * [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
              */
@@ -3955,7 +4055,7 @@ export namespace bigquery {
             /**
              * [Output-only] Job resource usage breakdown by reservation.
              */
-            reservationUsage: {[key: string]: string}[];
+            reservationUsage: outputs.bigquery.v2.JobReservationUsageItemResponse[];
             /**
              * [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
              */
@@ -4005,6 +4105,21 @@ export namespace bigquery {
             state: string;
         }
 
+        export interface JobStructTypesItemResponse {
+            /**
+             * [Optional] Human-oriented description of the field.
+             */
+            description: string;
+            /**
+             * [Optional] The name of this field.
+             */
+            name: string;
+            /**
+             * [Required] The type of this field.
+             */
+            type: outputs.bigquery.v2.QueryParameterTypeResponse;
+        }
+
         export interface MaterializedViewDefinitionResponse {
             /**
              * [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -4028,7 +4143,7 @@ export namespace bigquery {
             /**
              * [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
              */
-            modelOptions: {[key: string]: string};
+            modelOptions: outputs.bigquery.v2.TableModelOptionsResponse;
             /**
              * [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
              */
@@ -4084,7 +4199,7 @@ export namespace bigquery {
             /**
              * [Optional] The types of the fields of this struct, in order, if this is a struct.
              */
-            structTypes: {[key: string]: string}[];
+            structTypes: outputs.bigquery.v2.JobStructTypesItemResponse[];
             /**
              * [Required] The top level type of this field.
              */
@@ -4137,7 +4252,7 @@ export namespace bigquery {
             /**
              * [TrustedTester] [Required] Defines the ranges for range partitioning.
              */
-            range: {[key: string]: string};
+            range: outputs.bigquery.v2.JobRangeResponse;
         }
 
         export interface RoutineReferenceResponse {
@@ -4302,7 +4417,7 @@ export namespace bigquery {
             /**
              * [Optional] The categories attached to this field, used for field-level access control.
              */
-            categories: {[key: string]: string};
+            categories: outputs.bigquery.v2.JobCategoriesResponse;
             /**
              * [Optional] The field description. The maximum length is 1,024 characters.
              */
@@ -4323,7 +4438,7 @@ export namespace bigquery {
              * [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
              */
             name: string;
-            policyTags: {[key: string]: string};
+            policyTags: outputs.bigquery.v2.JobPolicyTagsResponse;
             /**
              * [Optional] Precision (maximum number of total digits in base 10) and scale (maximum number of digits in the fractional part in base 10) constraints for values of this field for NUMERIC or BIGNUMERIC. It is invalid to set precision or scale if type ≠ "NUMERIC" and ≠ "BIGNUMERIC". If precision and scale are not specified, no value range constraint is imposed on this field insofar as values are permitted by the type. Values of this NUMERIC or BIGNUMERIC field must be in this range when: - Precision (P) and scale (S) are specified: [-10P-S + 10-S, 10P-S - 10-S] - Precision (P) is specified but not scale (and thus scale is interpreted to be equal to zero): [-10P + 1, 10P - 1]. Acceptable values for precision and scale if both are specified: - If type = "NUMERIC": 1 ≤ precision - scale ≤ 29 and 0 ≤ scale ≤ 9. - If type = "BIGNUMERIC": 1 ≤ precision - scale ≤ 38 and 0 ≤ scale ≤ 38. Acceptable values for precision if only precision is specified but not scale (and thus scale is interpreted to be equal to zero): - If type = "NUMERIC": 1 ≤ precision ≤ 29. - If type = "BIGNUMERIC": 1 ≤ precision ≤ 38. If scale is specified but not precision, then it is invalid.
              */
@@ -4336,6 +4451,15 @@ export namespace bigquery {
              * [Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, INTERVAL, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).
              */
             type: string;
+        }
+
+        /**
+         * [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+         */
+        export interface TableModelOptionsResponse {
+            labels: string[];
+            lossType: string;
+            modelType: string;
         }
 
         export interface TableReferenceResponse {
@@ -4358,6 +4482,21 @@ export namespace bigquery {
              * Describes the fields in a table.
              */
             fields: outputs.bigquery.v2.TableFieldSchemaResponse[];
+        }
+
+        /**
+         * [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+         */
+        export interface TableTrainingOptionsResponse {
+            earlyStop: boolean;
+            l1Reg: number;
+            l2Reg: number;
+            learnRate: number;
+            learnRateStrategy: string;
+            lineSearchInitLearnRate: number;
+            maxIteration: string;
+            minRelProgress: number;
+            warmStart: boolean;
         }
 
         export interface TimePartitioningResponse {
@@ -10788,6 +10927,32 @@ export namespace compute {
             fileType: string;
         }
 
+        export interface FirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface FirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -11592,6 +11757,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigResponse {
@@ -11902,6 +12085,17 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.alpha.TagsResponse;
+        }
+
+        export interface InstanceTemplateItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
         }
 
         /**
@@ -12243,7 +12437,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: {[key: string]: string}[];
+            items: outputs.compute.alpha.InstanceTemplateItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -13437,6 +13631,33 @@ export namespace compute {
             locationRolloutPolicies: {[key: string]: string};
         }
 
+        export interface RouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface RouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.alpha.RouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -14482,6 +14703,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey: string;
+        }
+
+        export interface SslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface SslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.alpha.SslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         /**
@@ -16117,6 +16365,32 @@ export namespace compute {
             fileType: string;
         }
 
+        export interface FirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface FirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -16872,6 +17146,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigResponse {
@@ -17134,6 +17426,17 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.beta.TagsResponse;
+        }
+
+        export interface InstanceTemplateItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
         }
 
         /**
@@ -17411,7 +17714,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: {[key: string]: string}[];
+            items: outputs.compute.beta.InstanceTemplateItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -18281,6 +18584,33 @@ export namespace compute {
             dayOfWeeks: outputs.compute.beta.ResourcePolicyWeeklyCycleDayOfWeekResponse[];
         }
 
+        export interface RouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface RouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.beta.RouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -19111,6 +19441,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey: string;
+        }
+
+        export interface SslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface SslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.beta.SslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         /**
@@ -20545,6 +20902,32 @@ export namespace compute {
             fileType: string;
         }
 
+        export interface FirewallAllowedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
+        export interface FirewallDeniedItemResponse {
+            /**
+             * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+             */
+            IPProtocol: string;
+            /**
+             * An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+             *
+             * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+             */
+            ports: string[];
+        }
+
         /**
          * The available logging options for a firewall rule.
          */
@@ -21271,6 +21654,24 @@ export namespace compute {
         }
 
         /**
+         * The parameters of the raw disk image.
+         */
+        export interface ImageRawDiskResponse {
+            /**
+             * The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+             */
+            containerType: string;
+            /**
+             * [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+             */
+            sha1Checksum: string;
+            /**
+             * The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+             */
+            source: string;
+        }
+
+        /**
          * Initial State for shielded instance, these are public keys which are safe to store in public
          */
         export interface InitialStateConfigResponse {
@@ -21516,6 +21917,17 @@ export namespace compute {
              * A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
              */
             tags: outputs.compute.v1.TagsResponse;
+        }
+
+        export interface InstanceTemplateItemsItemResponse {
+            /**
+             * Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+             */
+            key: string;
+            /**
+             * Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+             */
+            value: string;
         }
 
         /**
@@ -21793,7 +22205,7 @@ export namespace compute {
             /**
              * Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
              */
-            items: {[key: string]: string}[];
+            items: outputs.compute.v1.InstanceTemplateItemsItemResponse[];
             /**
              * [Output Only] Type of the resource. Always compute#metadata for metadata.
              */
@@ -22637,6 +23049,33 @@ export namespace compute {
             dayOfWeeks: outputs.compute.v1.ResourcePolicyWeeklyCycleDayOfWeekResponse[];
         }
 
+        export interface RouteDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface RouteWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.v1.RouteDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
+        }
+
         /**
          * Description-tagged IP ranges for the router to advertise.
          */
@@ -23115,6 +23554,33 @@ export namespace compute {
              * A write-only private key in PEM format. Only insert requests will include this field.
              */
             privateKey: string;
+        }
+
+        export interface SslPolicyDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        export interface SslPolicyWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example:
+             * "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+             */
+            data: outputs.compute.v1.SslPolicyDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         /**
@@ -32270,6 +32736,42 @@ export namespace deploymentmanager {
             options: outputs.deploymentmanager.alpha.OptionsResponse;
         }
 
+        export interface CompositeTypeDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface CompositeTypeErrorResponse {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors: outputs.deploymentmanager.alpha.CompositeTypeErrorsItemResponse[];
+        }
+
+        export interface CompositeTypeErrorsItemResponse {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code: string;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location: string;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message: string;
+        }
+
         /**
          * Label object for CompositeTypes
          */
@@ -32282,6 +32784,21 @@ export namespace deploymentmanager {
              * Value of the label
              */
             value: string;
+        }
+
+        export interface CompositeTypeWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data: outputs.deploymentmanager.alpha.CompositeTypeDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         export interface ConfigFileResponse {
@@ -32485,7 +33002,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: outputs.deploymentmanager.alpha.CompositeTypeErrorResponse;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -32553,7 +33070,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: outputs.deploymentmanager.alpha.CompositeTypeWarningsItemResponse[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -32735,6 +33252,42 @@ export namespace deploymentmanager {
             content: string;
         }
 
+        export interface DeploymentDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface DeploymentErrorResponse {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors: outputs.deploymentmanager.v2.DeploymentErrorsItemResponse[];
+        }
+
+        export interface DeploymentErrorsItemResponse {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code: string;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location: string;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message: string;
+        }
+
         /**
          * Label object for Deployments
          */
@@ -32776,6 +33329,21 @@ export namespace deploymentmanager {
              * URL of the manifest representing the update configuration of this deployment.
              */
             manifest: string;
+        }
+
+        export interface DeploymentWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data: outputs.deploymentmanager.v2.DeploymentDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         /**
@@ -32834,7 +33402,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: outputs.deploymentmanager.v2.DeploymentErrorResponse;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -32902,7 +33470,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: outputs.deploymentmanager.v2.DeploymentWarningsItemResponse[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -33004,6 +33572,42 @@ export namespace deploymentmanager {
             options: outputs.deploymentmanager.v2beta.OptionsResponse;
         }
 
+        export interface CompositeTypeDataItemResponse {
+            /**
+             * [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+             */
+            key: string;
+            /**
+             * [Output Only] A warning data value corresponding to the key.
+             */
+            value: string;
+        }
+
+        /**
+         * [Output Only] If errors are generated during processing of the operation, this field will be populated.
+         */
+        export interface CompositeTypeErrorResponse {
+            /**
+             * [Output Only] The array of errors encountered while processing this operation.
+             */
+            errors: outputs.deploymentmanager.v2beta.CompositeTypeErrorsItemResponse[];
+        }
+
+        export interface CompositeTypeErrorsItemResponse {
+            /**
+             * [Output Only] The error type identifier for this error.
+             */
+            code: string;
+            /**
+             * [Output Only] Indicates the field in the request that caused the error. This property is optional.
+             */
+            location: string;
+            /**
+             * [Output Only] An optional, human-readable error message.
+             */
+            message: string;
+        }
+
         /**
          * Label object for CompositeTypes
          */
@@ -33016,6 +33620,21 @@ export namespace deploymentmanager {
              * Value of the label
              */
             value: string;
+        }
+
+        export interface CompositeTypeWarningsItemResponse {
+            /**
+             * [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+             */
+            code: string;
+            /**
+             * [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+             */
+            data: outputs.deploymentmanager.v2beta.CompositeTypeDataItemResponse[];
+            /**
+             * [Output Only] A human-readable description of the warning code.
+             */
+            message: string;
         }
 
         export interface ConfigFileResponse {
@@ -33175,7 +33794,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If errors are generated during processing of the operation, this field will be populated.
              */
-            error: {[key: string]: string};
+            error: outputs.deploymentmanager.v2beta.CompositeTypeErrorResponse;
             /**
              * [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
              */
@@ -33243,7 +33862,7 @@ export namespace deploymentmanager {
             /**
              * [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
              */
-            warnings: {[key: string]: string}[];
+            warnings: outputs.deploymentmanager.v2beta.CompositeTypeWarningsItemResponse[];
             /**
              * [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
              */
@@ -56791,6 +57410,20 @@ export namespace sqladmin {
         }
 
         /**
+         * The name and status of the failover replica. This property is applicable only to Second Generation instances.
+         */
+        export interface InstanceFailoverReplicaResponse {
+            /**
+             * The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+             */
+            available: boolean;
+            /**
+             * The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+             */
+            name: string;
+        }
+
+        /**
          * IP Management configuration.
          */
         export interface IpConfigurationResponse {
@@ -57190,6 +57823,20 @@ export namespace sqladmin {
 export namespace storage {
     export namespace v1 {
         /**
+         * The project team associated with the entity, if any.
+         */
+        export interface BucketAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
          * An access-control entry.
          */
         export interface BucketAccessControlResponse {
@@ -57235,7 +57882,7 @@ export namespace storage {
             /**
              * The project team associated with the entity, if any.
              */
-            projectTeam: {[key: string]: string};
+            projectTeam: outputs.storage.v1.BucketProjectTeamResponse;
             /**
              * The access permission for the entity.
              */
@@ -57244,6 +57891,340 @@ export namespace storage {
              * The link to this access-control entry.
              */
             selfLink: string;
+        }
+
+        /**
+         * The action to take.
+         */
+        export interface BucketActionResponse {
+            /**
+             * Target storage class. Required iff the type of the action is SetStorageClass.
+             */
+            storageClass: string;
+            /**
+             * Type of the action. Currently, only Delete and SetStorageClass are supported.
+             */
+            type: string;
+        }
+
+        /**
+         * The bucket's billing configuration.
+         */
+        export interface BucketBillingResponse {
+            /**
+             * When set to true, Requester Pays is enabled for this bucket.
+             */
+            requesterPays: boolean;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+         */
+        export interface BucketBucketPolicyOnlyResponse {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled: boolean;
+            /**
+             * The deadline for changing iamConfiguration.bucketPolicyOnly.enabled from true to false in RFC 3339 format. iamConfiguration.bucketPolicyOnly.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime: string;
+        }
+
+        /**
+         * The condition(s) under which the action will be taken.
+         */
+        export interface BucketConditionResponse {
+            /**
+             * Age of an object (in days). This condition is satisfied when an object reaches the specified age.
+             */
+            age: number;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when an object is created before midnight of the specified date in UTC.
+             */
+            createdBefore: string;
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the custom time on an object is before this date in UTC.
+             */
+            customTimeBefore: string;
+            /**
+             * Number of days elapsed since the user-specified timestamp set on an object. The condition is satisfied if the days elapsed is at least this number. If no custom timestamp is specified on an object, the condition does not apply.
+             */
+            daysSinceCustomTime: number;
+            /**
+             * Number of days elapsed since the noncurrent timestamp of an object. The condition is satisfied if the days elapsed is at least this number. This condition is relevant only for versioned objects. The value of the field must be a nonnegative integer. If it's zero, the object version will become eligible for Lifecycle action as soon as it becomes noncurrent.
+             */
+            daysSinceNoncurrentTime: number;
+            /**
+             * Relevant only for versioned objects. If the value is true, this condition matches live objects; if the value is false, it matches archived objects.
+             */
+            isLive: boolean;
+            /**
+             * A regular expression that satisfies the RE2 syntax. This condition is satisfied when the name of the object matches the RE2 pattern. Note: This feature is currently in the "Early Access" launch stage and is only available to a whitelisted set of users; that means that this feature may be changed in backward-incompatible ways and that it is not guaranteed to be released.
+             */
+            matchesPattern: string;
+            /**
+             * Objects having any of the storage classes specified by this condition will be matched. Values include MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE, STANDARD, and DURABLE_REDUCED_AVAILABILITY.
+             */
+            matchesStorageClass: string[];
+            /**
+             * A date in RFC 3339 format with only the date part (for instance, "2013-01-15"). This condition is satisfied when the noncurrent time on an object is before this date in UTC. This condition is relevant only for versioned objects.
+             */
+            noncurrentTimeBefore: string;
+            /**
+             * Relevant only for versioned objects. If the value is N, this condition is satisfied when there are at least N versions (including the live version) newer than this version of the object.
+             */
+            numNewerVersions: number;
+        }
+
+        export interface BucketCorsItemResponse {
+            /**
+             * The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
+             */
+            maxAgeSeconds: number;
+            /**
+             * The list of HTTP methods on which to include CORS response headers, (GET, OPTIONS, POST, etc) Note: "*" is permitted in the list of methods, and means "any method".
+             */
+            method: string[];
+            /**
+             * The list of Origins eligible to receive CORS response headers. Note: "*" is permitted in the list of origins, and means "any Origin".
+             */
+            origin: string[];
+            /**
+             * The list of HTTP headers other than the simple response headers to give permission for the user-agent to share across domains.
+             */
+            responseHeader: string[];
+        }
+
+        /**
+         * Encryption configuration for a bucket.
+         */
+        export interface BucketEncryptionResponse {
+            /**
+             * A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
+             */
+            defaultKmsKeyName: string;
+        }
+
+        /**
+         * The bucket's IAM configuration.
+         */
+        export interface BucketIamConfigurationResponse {
+            /**
+             * The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
+             */
+            bucketPolicyOnly: outputs.storage.v1.BucketBucketPolicyOnlyResponse;
+            /**
+             * The bucket's Public Access Prevention configuration. Currently, 'unspecified' and 'enforced' are supported.
+             */
+            publicAccessPrevention: string;
+            /**
+             * The bucket's uniform bucket-level access configuration.
+             */
+            uniformBucketLevelAccess: outputs.storage.v1.BucketUniformBucketLevelAccessResponse;
+        }
+
+        export interface BucketIamPolicyBindingsItemResponse {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition: outputs.storage.v1.ExprResponse;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members: string[];
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role: string;
+        }
+
+        /**
+         * The bucket's lifecycle configuration. See lifecycle management for more information.
+         */
+        export interface BucketLifecycleResponse {
+            /**
+             * A lifecycle management rule, which is made of an action to take and the condition(s) under which the action will be taken.
+             */
+            rule: outputs.storage.v1.BucketRuleItemResponse[];
+        }
+
+        /**
+         * The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
+         */
+        export interface BucketLoggingResponse {
+            /**
+             * The destination bucket where the current bucket's logs should be placed.
+             */
+            logBucket: string;
+            /**
+             * A prefix for log object names.
+             */
+            logObjectPrefix: string;
+        }
+
+        /**
+         * The owner of the bucket. This is always the project team's owner group.
+         */
+        export interface BucketOwnerResponse {
+            /**
+             * The entity, in the form project-owner-projectId.
+             */
+            entity: string;
+            /**
+             * The ID for the entity.
+             */
+            entityId: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface BucketProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
+         * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
+         */
+        export interface BucketRetentionPolicyResponse {
+            /**
+             * Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
+             */
+            effectiveTime: string;
+            /**
+             * Once locked, an object retention policy cannot be modified.
+             */
+            isLocked: boolean;
+            /**
+             * The duration in seconds that objects need to be retained. Retention duration must be greater than zero and less than 100 years. Note that enforcement of retention periods less than a day is not guaranteed. Such periods should only be used for testing purposes.
+             */
+            retentionPeriod: string;
+        }
+
+        export interface BucketRuleItemResponse {
+            /**
+             * The action to take.
+             */
+            action: outputs.storage.v1.BucketActionResponse;
+            /**
+             * The condition(s) under which the action will be taken.
+             */
+            condition: outputs.storage.v1.BucketConditionResponse;
+        }
+
+        /**
+         * The bucket's uniform bucket-level access configuration.
+         */
+        export interface BucketUniformBucketLevelAccessResponse {
+            /**
+             * If set, access is controlled only by bucket-level or above IAM policies.
+             */
+            enabled: boolean;
+            /**
+             * The deadline for changing iamConfiguration.uniformBucketLevelAccess.enabled from true to false in RFC 3339  format. iamConfiguration.uniformBucketLevelAccess.enabled may be changed from true to false until the locked time, after which the field is immutable.
+             */
+            lockedTime: string;
+        }
+
+        /**
+         * The bucket's versioning configuration.
+         */
+        export interface BucketVersioningResponse {
+            /**
+             * While set to true, versioning is fully enabled for this bucket.
+             */
+            enabled: boolean;
+        }
+
+        /**
+         * The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
+         */
+        export interface BucketWebsiteResponse {
+            /**
+             * If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
+             */
+            mainPageSuffix: string;
+            /**
+             * If the requested object path is missing, and any mainPageSuffix object is missing, if applicable, the service will return the named object from this bucket as the content for a 404 Not Found result.
+             */
+            notFoundPage: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface DefaultObjectAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
+        }
+
+        /**
+         * Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) > 0"
+         */
+        export interface ExprResponse {
+            /**
+             * An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+             */
+            description: string;
+            /**
+             * Textual representation of an expression in Common Expression Language syntax. The application context of the containing message determines which well-known feature set of CEL is supported.
+             */
+            expression: string;
+            /**
+             * An optional string indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+             */
+            location: string;
+            /**
+             * An optional title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+             */
+            title: string;
+        }
+
+        /**
+         * The project team associated with the entity, if any.
+         */
+        export interface ObjectAccessControlProjectTeamResponse {
+            /**
+             * The project number.
+             */
+            projectNumber: string;
+            /**
+             * The team.
+             */
+            team: string;
         }
 
         /**
@@ -57300,7 +58281,7 @@ export namespace storage {
             /**
              * The project team associated with the entity, if any.
              */
-            projectTeam: {[key: string]: string};
+            projectTeam: outputs.storage.v1.BucketProjectTeamResponse;
             /**
              * The access permission for the entity.
              */
@@ -57309,6 +58290,68 @@ export namespace storage {
              * The link to this access-control entry.
              */
             selfLink: string;
+        }
+
+        /**
+         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+         */
+        export interface ObjectCustomerEncryptionResponse {
+            /**
+             * The encryption algorithm.
+             */
+            encryptionAlgorithm: string;
+            /**
+             * SHA256 hash value of the encryption key.
+             */
+            keySha256: string;
+        }
+
+        export interface ObjectIamPolicyBindingsItemResponse {
+            /**
+             * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
+             */
+            condition: outputs.storage.v1.ExprResponse;
+            /**
+             * A collection of identifiers for members who may assume the provided role. Recognized identifiers are as follows:  
+             * - allUsers — A special identifier that represents anyone on the internet; with or without a Google account.  
+             * - allAuthenticatedUsers — A special identifier that represents anyone who is authenticated with a Google account or a service account.  
+             * - user:emailid — An email address that represents a specific account. For example, user:alice@gmail.com or user:joe@example.com.  
+             * - serviceAccount:emailid — An email address that represents a service account. For example,  serviceAccount:my-other-app@appspot.gserviceaccount.com .  
+             * - group:emailid — An email address that represents a Google group. For example, group:admins@example.com.  
+             * - domain:domain — A Google Apps domain name that represents all the users of that domain. For example, domain:google.com or domain:example.com.  
+             * - projectOwner:projectid — Owners of the given project. For example, projectOwner:my-example-project  
+             * - projectEditor:projectid — Editors of the given project. For example, projectEditor:my-example-project  
+             * - projectViewer:projectid — Viewers of the given project. For example, projectViewer:my-example-project
+             */
+            members: string[];
+            /**
+             * The role to which members belong. Two types of roles are supported: new IAM roles, which grant permissions that do not map directly to those provided by ACLs, and legacy IAM roles, which do map directly to ACL permissions. All roles are of the format roles/storage.specificRole.
+             * The new IAM roles are:  
+             * - roles/storage.admin — Full control of Google Cloud Storage resources.  
+             * - roles/storage.objectViewer — Read-Only access to Google Cloud Storage objects.  
+             * - roles/storage.objectCreator — Access to create objects in Google Cloud Storage.  
+             * - roles/storage.objectAdmin — Full control of Google Cloud Storage objects.   The legacy IAM roles are:  
+             * - roles/storage.legacyObjectReader — Read-only access to objects without listing. Equivalent to an ACL entry on an object with the READER role.  
+             * - roles/storage.legacyObjectOwner — Read/write access to existing objects without listing. Equivalent to an ACL entry on an object with the OWNER role.  
+             * - roles/storage.legacyBucketReader — Read access to buckets with object listing. Equivalent to an ACL entry on a bucket with the READER role.  
+             * - roles/storage.legacyBucketWriter — Read access to buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the WRITER role.  
+             * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
+             */
+            role: string;
+        }
+
+        /**
+         * The owner of the object. This will always be the uploader of the object.
+         */
+        export interface ObjectOwnerResponse {
+            /**
+             * The entity, in the form user-userId.
+             */
+            entity: string;
+            /**
+             * The ID for the entity.
+             */
+            entityId: string;
         }
     }
 }
