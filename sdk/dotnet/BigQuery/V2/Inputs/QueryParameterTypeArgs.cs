@@ -19,14 +19,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.QueryParameterTypeArgs>? ArrayType { get; set; }
 
         [Input("structTypes")]
-        private InputList<ImmutableDictionary<string, string>>? _structTypes;
+        private InputList<Inputs.JobStructTypesItemArgs>? _structTypes;
 
         /// <summary>
         /// [Optional] The types of the fields of this struct, in order, if this is a struct.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> StructTypes
+        public InputList<Inputs.JobStructTypesItemArgs> StructTypes
         {
-            get => _structTypes ?? (_structTypes = new InputList<ImmutableDictionary<string, string>>());
+            get => _structTypes ?? (_structTypes = new InputList<Inputs.JobStructTypesItemArgs>());
             set => _structTypes = value;
         }
 

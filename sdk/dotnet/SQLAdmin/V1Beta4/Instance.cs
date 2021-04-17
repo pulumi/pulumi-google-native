@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
         /// </summary>
         [Output("failoverReplica")]
-        public Output<ImmutableDictionary<string, string>> FailoverReplica { get; private set; } = null!;
+        public Output<Outputs.InstanceFailoverReplicaResponse> FailoverReplica { get; private set; } = null!;
 
         /// <summary>
         /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
@@ -288,17 +288,11 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("failoverReplica")]
-        private InputMap<string>? _failoverReplica;
-
         /// <summary>
         /// The name and status of the failover replica. This property is applicable only to Second Generation instances.
         /// </summary>
-        public InputMap<string> FailoverReplica
-        {
-            get => _failoverReplica ?? (_failoverReplica = new InputMap<string>());
-            set => _failoverReplica = value;
-        }
+        [Input("failoverReplica")]
+        public Input<Inputs.InstanceFailoverReplicaArgs>? FailoverReplica { get; set; }
 
         /// <summary>
         /// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.

@@ -74,17 +74,11 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("projectTeam")]
-        private InputMap<string>? _projectTeam;
-
         /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
-        public InputMap<string> ProjectTeam
-        {
-            get => _projectTeam ?? (_projectTeam = new InputMap<string>());
-            set => _projectTeam = value;
-        }
+        [Input("projectTeam")]
+        public Input<Inputs.BucketProjectTeamArgs>? ProjectTeam { get; set; }
 
         /// <summary>
         /// The access permission for the entity.

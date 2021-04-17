@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Optional] The types of the fields of this struct, in order, if this is a struct.
         /// </summary>
-        public readonly ImmutableArray<ImmutableDictionary<string, string>> StructTypes;
+        public readonly ImmutableArray<Outputs.JobStructTypesItemResponse> StructTypes;
         /// <summary>
         /// [Required] The top level type of this field.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private QueryParameterTypeResponse(
             Outputs.QueryParameterTypeResponse arrayType,
 
-            ImmutableArray<ImmutableDictionary<string, string>> structTypes,
+            ImmutableArray<Outputs.JobStructTypesItemResponse> structTypes,
 
             string type)
         {

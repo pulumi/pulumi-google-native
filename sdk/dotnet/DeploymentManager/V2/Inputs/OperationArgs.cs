@@ -39,17 +39,11 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Inputs
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
-        [Input("error")]
-        private InputMap<string>? _error;
-
         /// <summary>
         /// [Output Only] If errors are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public InputMap<string> Error
-        {
-            get => _error ?? (_error = new InputMap<string>());
-            set => _error = value;
-        }
+        [Input("error")]
+        public Input<Inputs.DeploymentErrorArgs>? Error { get; set; }
 
         /// <summary>
         /// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -154,14 +148,14 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2.Inputs
         public Input<string>? User { get; set; }
 
         [Input("warnings")]
-        private InputList<ImmutableDictionary<string, string>>? _warnings;
+        private InputList<Inputs.DeploymentWarningsItemArgs>? _warnings;
 
         /// <summary>
         /// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Warnings
+        public InputList<Inputs.DeploymentWarningsItemArgs> Warnings
         {
-            get => _warnings ?? (_warnings = new InputList<ImmutableDictionary<string, string>>());
+            get => _warnings ?? (_warnings = new InputList<Inputs.DeploymentWarningsItemArgs>());
             set => _warnings = value;
         }
 

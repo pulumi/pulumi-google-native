@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// An association between a role, which comes with a set of permissions, and members who may assume that role.
         /// </summary>
         [Output("bindings")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Bindings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ObjectIamPolicyBindingsItemResponse>> Bindings { get; private set; } = null!;
 
         /// <summary>
         /// HTTP 1.1  Entity tag for the policy.
@@ -91,14 +91,14 @@ namespace Pulumi.GoogleNative.Storage.V1
     public sealed class ObjectIamPolicyArgs : Pulumi.ResourceArgs
     {
         [Input("bindings")]
-        private InputList<ImmutableDictionary<string, string>>? _bindings;
+        private InputList<Inputs.ObjectIamPolicyBindingsItemArgs>? _bindings;
 
         /// <summary>
         /// An association between a role, which comes with a set of permissions, and members who may assume that role.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Bindings
+        public InputList<Inputs.ObjectIamPolicyBindingsItemArgs> Bindings
         {
-            get => _bindings ?? (_bindings = new InputList<ImmutableDictionary<string, string>>());
+            get => _bindings ?? (_bindings = new InputList<Inputs.ObjectIamPolicyBindingsItemArgs>());
             set => _bindings = value;
         }
 

@@ -12,17 +12,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 
     public sealed class ModelDefinitionArgs : Pulumi.ResourceArgs
     {
-        [Input("modelOptions")]
-        private InputMap<string>? _modelOptions;
-
         /// <summary>
         /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         /// </summary>
-        public InputMap<string> ModelOptions
-        {
-            get => _modelOptions ?? (_modelOptions = new InputMap<string>());
-            set => _modelOptions = value;
-        }
+        [Input("modelOptions")]
+        public Input<Inputs.TableModelOptionsArgs>? ModelOptions { get; set; }
 
         [Input("trainingRuns")]
         private InputList<Inputs.BqmlTrainingRunArgs>? _trainingRuns;

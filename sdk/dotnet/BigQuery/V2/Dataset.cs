@@ -19,7 +19,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         /// </summary>
         [Output("access")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Access { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.DatasetAccessItemResponse>> Access { get; private set; } = null!;
 
         /// <summary>
         /// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
@@ -148,14 +148,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     public sealed class DatasetArgs : Pulumi.ResourceArgs
     {
         [Input("access")]
-        private InputList<ImmutableDictionary<string, string>>? _access;
+        private InputList<Inputs.DatasetAccessItemArgs>? _access;
 
         /// <summary>
         /// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Access
+        public InputList<Inputs.DatasetAccessItemArgs> Access
         {
-            get => _access ?? (_access = new InputList<ImmutableDictionary<string, string>>());
+            get => _access ?? (_access = new InputList<Inputs.DatasetAccessItemArgs>());
             set => _access = value;
         }
 

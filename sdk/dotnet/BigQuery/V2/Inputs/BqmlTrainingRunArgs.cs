@@ -36,17 +36,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("state")]
         public Input<string>? State { get; set; }
 
-        [Input("trainingOptions")]
-        private InputMap<string>? _trainingOptions;
-
         /// <summary>
         /// [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         /// </summary>
-        public InputMap<string> TrainingOptions
-        {
-            get => _trainingOptions ?? (_trainingOptions = new InputMap<string>());
-            set => _trainingOptions = value;
-        }
+        [Input("trainingOptions")]
+        public Input<Inputs.TableTrainingOptionsArgs>? TrainingOptions { get; set; }
 
         public BqmlTrainingRunArgs()
         {

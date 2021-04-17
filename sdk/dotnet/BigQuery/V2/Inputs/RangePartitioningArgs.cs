@@ -18,17 +18,11 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("field")]
         public Input<string>? Field { get; set; }
 
-        [Input("range")]
-        private InputMap<string>? _range;
-
         /// <summary>
         /// [TrustedTester] [Required] Defines the ranges for range partitioning.
         /// </summary>
-        public InputMap<string> Range
-        {
-            get => _range ?? (_range = new InputMap<string>());
-            set => _range = value;
-        }
+        [Input("range")]
+        public Input<Inputs.JobRangeArgs>? Range { get; set; }
 
         public RangePartitioningArgs()
         {
