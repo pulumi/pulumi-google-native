@@ -30,7 +30,7 @@ class SslPolicyArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tls_settings: Optional[pulumi.Input['ServerTlsSettingsArgs']] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemArgs']]]] = None):
         """
         The set of arguments for constructing a SslPolicy resource.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
@@ -49,7 +49,7 @@ class SslPolicyArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input['ServerTlsSettingsArgs'] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemArgs']]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "ssl_policy", ssl_policy)
@@ -261,14 +261,14 @@ class SslPolicyArgs:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemArgs']]]]:
         """
         [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemArgs']]]]):
         pulumi.set(self, "warnings", value)
 
 
@@ -292,7 +292,7 @@ class SslPolicy(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  tls_settings: Optional[pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SslPolicyWarningsItemArgs']]]]] = None,
                  __props__=None):
         """
         Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
@@ -315,7 +315,7 @@ class SslPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']] tls_settings: Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SslPolicyWarningsItemArgs']]]] warnings: [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """
         ...
     @overload
@@ -356,7 +356,7 @@ class SslPolicy(pulumi.CustomResource):
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  tls_settings: Optional[pulumi.Input[pulumi.InputType['ServerTlsSettingsArgs']]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SslPolicyWarningsItemArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -527,7 +527,7 @@ class SslPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def warnings(self) -> pulumi.Output[Sequence['outputs.SslPolicyWarningsItemResponse']]:
         """
         [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
         """

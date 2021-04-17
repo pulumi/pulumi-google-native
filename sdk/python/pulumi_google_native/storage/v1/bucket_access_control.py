@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
 
@@ -21,7 +23,7 @@ class BucketAccessControlArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 project_team: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project_team: Optional[pulumi.Input['BucketAccessControlProjectTeamArgs']] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
@@ -45,7 +47,7 @@ class BucketAccessControlArgs:
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input['BucketAccessControlProjectTeamArgs'] project_team: The project team associated with the entity, if any.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         """
@@ -179,14 +181,14 @@ class BucketAccessControlArgs:
 
     @property
     @pulumi.getter(name="projectTeam")
-    def project_team(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def project_team(self) -> Optional[pulumi.Input['BucketAccessControlProjectTeamArgs']]:
         """
         The project team associated with the entity, if any.
         """
         return pulumi.get(self, "project_team")
 
     @project_team.setter
-    def project_team(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def project_team(self, value: Optional[pulumi.Input['BucketAccessControlProjectTeamArgs']]):
         pulumi.set(self, "project_team", value)
 
     @property
@@ -227,7 +229,7 @@ class BucketAccessControl(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 project_team: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project_team: Optional[pulumi.Input[pulumi.InputType['BucketAccessControlProjectTeamArgs']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -255,7 +257,7 @@ class BucketAccessControl(pulumi.CustomResource):
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the access-control entry.
         :param pulumi.Input[str] id: The ID of the access-control entry.
         :param pulumi.Input[str] kind: The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] project_team: The project team associated with the entity, if any.
+        :param pulumi.Input[pulumi.InputType['BucketAccessControlProjectTeamArgs']] project_team: The project team associated with the entity, if any.
         :param pulumi.Input[str] role: The access permission for the entity.
         :param pulumi.Input[str] self_link: The link to this access-control entry.
         """
@@ -291,7 +293,7 @@ class BucketAccessControl(pulumi.CustomResource):
                  etag: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 project_team: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 project_team: Optional[pulumi.Input[pulumi.InputType['BucketAccessControlProjectTeamArgs']]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -424,7 +426,7 @@ class BucketAccessControl(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="projectTeam")
-    def project_team(self) -> pulumi.Output[Mapping[str, str]]:
+    def project_team(self) -> pulumi.Output['outputs.BucketAccessControlProjectTeamResponse']:
         """
         The project team associated with the entity, if any.
         """

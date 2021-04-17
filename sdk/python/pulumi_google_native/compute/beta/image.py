@@ -32,7 +32,7 @@ class ImageArgs:
                  license_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 raw_disk: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input['InitialStateConfigArgs']] = None,
@@ -73,7 +73,7 @@ class ImageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input['InitialStateConfigArgs'] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
@@ -379,14 +379,14 @@ class ImageArgs:
 
     @property
     @pulumi.getter(name="rawDisk")
-    def raw_disk(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def raw_disk(self) -> Optional[pulumi.Input['ImageRawDiskArgs']]:
         """
         The parameters of the raw disk image.
         """
         return pulumi.get(self, "raw_disk")
 
     @raw_disk.setter
-    def raw_disk(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
         pulumi.set(self, "raw_disk", value)
 
     @property
@@ -608,7 +608,7 @@ class Image(pulumi.CustomResource):
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_disk: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
@@ -653,7 +653,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] raw_disk: The parameters of the raw disk image.
+        :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
         :param pulumi.Input[bool] satisfies_pzs: [Output Only] Reserved for future use.
         :param pulumi.Input[str] self_link: [Output Only] Server-defined URL for the resource.
         :param pulumi.Input[pulumi.InputType['InitialStateConfigArgs']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
@@ -727,7 +727,7 @@ class Image(pulumi.CustomResource):
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 raw_disk: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
@@ -968,7 +968,7 @@ class Image(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="rawDisk")
-    def raw_disk(self) -> pulumi.Output[Mapping[str, str]]:
+    def raw_disk(self) -> pulumi.Output['outputs.ImageRawDiskResponse']:
         """
         The parameters of the raw disk image.
         """

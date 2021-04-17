@@ -66,6 +66,8 @@ __all__ = [
     'ExprResponse',
     'ExternalVpnGatewayInterfaceResponse',
     'FileContentBufferResponse',
+    'FirewallAllowedItemResponse',
+    'FirewallDeniedItemResponse',
     'FirewallLogConfigResponse',
     'FirewallPolicyAssociationResponse',
     'FirewallPolicyRuleMatcherLayer4ConfigResponse',
@@ -95,6 +97,7 @@ __all__ = [
     'HttpRouteActionResponse',
     'HttpRouteRuleMatchResponse',
     'HttpRouteRuleResponse',
+    'ImageRawDiskResponse',
     'InitialStateConfigResponse',
     'InstanceGroupManagerActionsSummaryResponse',
     'InstanceGroupManagerAutoHealingPolicyResponse',
@@ -107,6 +110,7 @@ __all__ = [
     'InstanceGroupManagerUpdatePolicyResponse',
     'InstanceGroupManagerVersionResponse',
     'InstancePropertiesResponse',
+    'InstanceTemplateItemsItemResponse',
     'Int64RangeMatchResponse',
     'InterconnectAttachmentPartnerMetadataResponse',
     'InterconnectAttachmentPrivateInfoResponse',
@@ -182,6 +186,8 @@ __all__ = [
     'ResourceStatusResponse',
     'ResourceStatusSchedulingResponse',
     'RolloutPolicyResponse',
+    'RouteDataItemResponse',
+    'RouteWarningsItemResponse',
     'RouterAdvertisedIpRangeResponse',
     'RouterBgpPeerBfdResponse',
     'RouterBgpPeerResponse',
@@ -225,6 +231,8 @@ __all__ = [
     'SourceInstancePropertiesResponse',
     'SslCertificateManagedSslCertificateResponse',
     'SslCertificateSelfManagedSslCertificateResponse',
+    'SslPolicyDataItemResponse',
+    'SslPolicyWarningsItemResponse',
     'StatefulPolicyPreservedStateResponse',
     'StatefulPolicyResponse',
     'SubnetworkLogConfigResponse',
@@ -4844,6 +4852,106 @@ class FileContentBufferResponse(dict):
 
 
 @pulumi.output_type
+class FirewallAllowedItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "IPProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallAllowedItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallAllowedItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallAllowedItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Sequence[str]):
+        """
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="IPProtocol")
+    def ip_protocol(self) -> str:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence[str]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
+class FirewallDeniedItemResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "IPProtocol":
+            suggest = "ip_protocol"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FirewallDeniedItemResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FirewallDeniedItemResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FirewallDeniedItemResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_protocol: str,
+                 ports: Sequence[str]):
+        """
+        :param str ip_protocol: The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+        :param Sequence[str] ports: An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+               
+               Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "ports", ports)
+
+    @property
+    @pulumi.getter(name="IPProtocol")
+    def ip_protocol(self) -> str:
+        """
+        The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
+        """
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def ports(self) -> Sequence[str]:
+        """
+        An optional list of ports to which this rule applies. This field is only applicable for the UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+
+        Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
+        """
+        return pulumi.get(self, "ports")
+
+
+@pulumi.output_type
 class FirewallLogConfigResponse(dict):
     """
     The available logging options for a firewall rule.
@@ -7356,6 +7464,69 @@ class HttpRouteRuleResponse(dict):
 
 
 @pulumi.output_type
+class ImageRawDiskResponse(dict):
+    """
+    The parameters of the raw disk image.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerType":
+            suggest = "container_type"
+        elif key == "sha1Checksum":
+            suggest = "sha1_checksum"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ImageRawDiskResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ImageRawDiskResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ImageRawDiskResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 container_type: str,
+                 sha1_checksum: str,
+                 source: str):
+        """
+        The parameters of the raw disk image.
+        :param str container_type: The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+        :param str sha1_checksum: [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+        :param str source: The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+        """
+        pulumi.set(__self__, "container_type", container_type)
+        pulumi.set(__self__, "sha1_checksum", sha1_checksum)
+        pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter(name="containerType")
+    def container_type(self) -> str:
+        """
+        The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
+        """
+        return pulumi.get(self, "container_type")
+
+    @property
+    @pulumi.getter(name="sha1Checksum")
+    def sha1_checksum(self) -> str:
+        """
+        [Deprecated] This field is deprecated. An optional SHA1 checksum of the disk image before unpackaging provided by the client when the disk image is created.
+        """
+        return pulumi.get(self, "sha1_checksum")
+
+    @property
+    @pulumi.getter
+    def source(self) -> str:
+        """
+        The full Google Cloud Storage URL where the disk image is stored. You must provide either this property or the sourceDisk property but not both.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
 class InitialStateConfigResponse(dict):
     """
     Initial State for shielded instance, these are public keys which are safe to store in public
@@ -8429,6 +8600,35 @@ class InstancePropertiesResponse(dict):
         A list of tags to apply to the instances that are created from these properties. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
         """
         return pulumi.get(self, "tags")
+
+
+@pulumi.output_type
+class InstanceTemplateItemsItemResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+        :param str value: Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB).
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -9512,14 +9712,14 @@ class MetadataResponse(dict):
     """
     def __init__(__self__, *,
                  fingerprint: str,
-                 items: Sequence[Mapping[str, str]],
+                 items: Sequence['outputs.InstanceTemplateItemsItemResponse'],
                  kind: str):
         """
         A metadata key/value entry.
         :param str fingerprint: Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error 412 conditionNotMet.
                
                To see the latest fingerprint, make a get() request to retrieve the resource.
-        :param Sequence[Mapping[str, str]] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
+        :param Sequence['InstanceTemplateItemsItemResponse'] items: Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         :param str kind: [Output Only] Type of the resource. Always compute#metadata for metadata.
         """
         pulumi.set(__self__, "fingerprint", fingerprint)
@@ -9538,7 +9738,7 @@ class MetadataResponse(dict):
 
     @property
     @pulumi.getter
-    def items(self) -> Sequence[Mapping[str, str]]:
+    def items(self) -> Sequence['outputs.InstanceTemplateItemsItemResponse']:
         """
         Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         """
@@ -13485,6 +13685,77 @@ class RolloutPolicyResponse(dict):
 
 
 @pulumi.output_type
+class RouteDataItemResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: [Output Only] A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        [Output Only] A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class RouteWarningsItemResponse(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 data: Sequence['outputs.RouteDataItemResponse'],
+                 message: str):
+        """
+        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['RouteDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example:
+               "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        :param str message: [Output Only] A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Sequence['outputs.RouteDataItemResponse']:
+        """
+        [Output Only] Metadata about this warning in key: value format. For example:
+        "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        [Output Only] A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class RouterAdvertisedIpRangeResponse(dict):
     """
     Description-tagged IP ranges for the router to advertise.
@@ -16972,6 +17243,77 @@ class SslCertificateSelfManagedSslCertificateResponse(dict):
         A write-only private key in PEM format. Only insert requests will include this field.
         """
         return pulumi.get(self, "private_key")
+
+
+@pulumi.output_type
+class SslPolicyDataItemResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: [Output Only] A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        [Output Only] A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class SslPolicyWarningsItemResponse(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 data: Sequence['outputs.SslPolicyDataItemResponse'],
+                 message: str):
+        """
+        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['SslPolicyDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example:
+               "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        :param str message: [Output Only] A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Sequence['outputs.SslPolicyDataItemResponse']:
+        """
+        [Output Only] Metadata about this warning in key: value format. For example:
+        "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        [Output Only] A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type

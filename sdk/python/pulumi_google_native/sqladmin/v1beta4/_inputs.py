@@ -17,6 +17,7 @@ __all__ = [
     'DiskEncryptionConfigurationArgs',
     'DiskEncryptionStatusArgs',
     'InsightsConfigArgs',
+    'InstanceFailoverReplicaArgs',
     'IpConfigurationArgs',
     'IpMappingArgs',
     'LocationPreferenceArgs',
@@ -542,6 +543,46 @@ class InsightsConfigArgs:
     @record_client_address.setter
     def record_client_address(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "record_client_address", value)
+
+
+@pulumi.input_type
+class InstanceFailoverReplicaArgs:
+    def __init__(__self__, *,
+                 available: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param pulumi.Input[bool] available: The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        :param pulumi.Input[str] name: The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        if available is not None:
+            pulumi.set(__self__, "available", available)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def available(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        """
+        return pulumi.get(self, "available")
+
+    @available.setter
+    def available(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "available", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

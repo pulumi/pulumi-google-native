@@ -14,9 +14,13 @@ __all__ = [
     'AuditLogConfigResponse',
     'BindingResponse',
     'ConfigFileResponse',
+    'DeploymentDataItemResponse',
+    'DeploymentErrorResponse',
+    'DeploymentErrorsItemResponse',
     'DeploymentLabelEntryResponse',
     'DeploymentUpdateLabelEntryResponse',
     'DeploymentUpdateResponse',
+    'DeploymentWarningsItemResponse',
     'ExprResponse',
     'ImportFileResponse',
     'OperationResponse',
@@ -188,6 +192,97 @@ class ConfigFileResponse(dict):
 
 
 @pulumi.output_type
+class DeploymentDataItemResponse(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 value: str):
+        """
+        :param str key: [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        :param str value: [Output Only] A warning data value corresponding to the key.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        [Output Only] A warning data value corresponding to the key.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DeploymentErrorResponse(dict):
+    """
+    [Output Only] If errors are generated during processing of the operation, this field will be populated.
+    """
+    def __init__(__self__, *,
+                 errors: Sequence['outputs.DeploymentErrorsItemResponse']):
+        """
+        [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param Sequence['DeploymentErrorsItemResponse'] errors: [Output Only] The array of errors encountered while processing this operation.
+        """
+        pulumi.set(__self__, "errors", errors)
+
+    @property
+    @pulumi.getter
+    def errors(self) -> Sequence['outputs.DeploymentErrorsItemResponse']:
+        """
+        [Output Only] The array of errors encountered while processing this operation.
+        """
+        return pulumi.get(self, "errors")
+
+
+@pulumi.output_type
+class DeploymentErrorsItemResponse(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 location: str,
+                 message: str):
+        """
+        :param str code: [Output Only] The error type identifier for this error.
+        :param str location: [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        :param str message: [Output Only] An optional, human-readable error message.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        [Output Only] The error type identifier for this error.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        [Output Only] Indicates the field in the request that caused the error. This property is optional.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        [Output Only] An optional, human-readable error message.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
 class DeploymentLabelEntryResponse(dict):
     """
     Label object for Deployments
@@ -291,6 +386,46 @@ class DeploymentUpdateResponse(dict):
         URL of the manifest representing the update configuration of this deployment.
         """
         return pulumi.get(self, "manifest")
+
+
+@pulumi.output_type
+class DeploymentWarningsItemResponse(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 data: Sequence['outputs.DeploymentDataItemResponse'],
+                 message: str):
+        """
+        :param str code: [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        :param Sequence['DeploymentDataItemResponse'] data: [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        :param str message: [Output Only] A human-readable description of the warning code.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "data", data)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def data(self) -> Sequence['outputs.DeploymentDataItemResponse']:
+        """
+        [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
+        """
+        return pulumi.get(self, "data")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        [Output Only] A human-readable description of the warning code.
+        """
+        return pulumi.get(self, "message")
 
 
 @pulumi.output_type
@@ -428,7 +563,7 @@ class OperationResponse(dict):
                  creation_timestamp: str,
                  description: str,
                  end_time: str,
-                 error: Mapping[str, str],
+                 error: 'outputs.DeploymentErrorResponse',
                  http_error_message: str,
                  http_error_status_code: int,
                  insert_time: str,
@@ -445,7 +580,7 @@ class OperationResponse(dict):
                  target_id: str,
                  target_link: str,
                  user: str,
-                 warnings: Sequence[Mapping[str, str]],
+                 warnings: Sequence['outputs.DeploymentWarningsItemResponse'],
                  zone: str):
         """
         Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/{$api_version}/globalOperations) * [Regional](/compute/docs/reference/rest/{$api_version}/regionOperations) * [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.
@@ -453,7 +588,7 @@ class OperationResponse(dict):
         :param str creation_timestamp: [Deprecated] This field is deprecated.
         :param str description: [Output Only] A textual description of the operation, which is set when the operation is created.
         :param str end_time: [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
-        :param Mapping[str, str] error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
+        :param 'DeploymentErrorResponse' error: [Output Only] If errors are generated during processing of the operation, this field will be populated.
         :param str http_error_message: [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
         :param int http_error_status_code: [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
         :param str insert_time: [Output Only] The time that this operation was requested. This value is in RFC3339 text format.
@@ -470,7 +605,7 @@ class OperationResponse(dict):
         :param str target_id: [Output Only] The unique target ID, which identifies a specific incarnation of the target resource.
         :param str target_link: [Output Only] The URL of the resource that the operation modifies. For operations related to creating a snapshot, this points to the persistent disk that the snapshot was created from.
         :param str user: [Output Only] User who requested the operation, for example: `user@example.com`.
-        :param Sequence[Mapping[str, str]] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
+        :param Sequence['DeploymentWarningsItemResponse'] warnings: [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         :param str zone: [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
         """
         pulumi.set(__self__, "client_operation_id", client_operation_id)
@@ -531,7 +666,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def error(self) -> Mapping[str, str]:
+    def error(self) -> 'outputs.DeploymentErrorResponse':
         """
         [Output Only] If errors are generated during processing of the operation, this field will be populated.
         """
@@ -667,7 +802,7 @@ class OperationResponse(dict):
 
     @property
     @pulumi.getter
-    def warnings(self) -> Sequence[Mapping[str, str]]:
+    def warnings(self) -> Sequence['outputs.DeploymentWarningsItemResponse']:
         """
         [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
         """

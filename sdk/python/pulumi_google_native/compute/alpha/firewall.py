@@ -17,9 +17,9 @@ class FirewallArgs:
     def __init__(__self__, *,
                  firewall: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 denied: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 denied: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -40,9 +40,9 @@ class FirewallArgs:
                  target_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] allowed: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]] allowed: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
+        :param pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
@@ -132,14 +132,14 @@ class FirewallArgs:
 
     @property
     @pulumi.getter
-    def allowed(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def allowed(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]]]:
         """
         The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         """
         return pulumi.get(self, "allowed")
 
     @allowed.setter
-    def allowed(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def allowed(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallAllowedItemArgs']]]]):
         pulumi.set(self, "allowed", value)
 
     @property
@@ -156,14 +156,14 @@ class FirewallArgs:
 
     @property
     @pulumi.getter
-    def denied(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def denied(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]]]:
         """
         The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         """
         return pulumi.get(self, "denied")
 
     @denied.setter
-    def denied(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def denied(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]]]):
         pulumi.set(self, "denied", value)
 
     @property
@@ -393,9 +393,9 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowedItemArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 denied: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 denied: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -422,9 +422,9 @@ class Firewall(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] allowed: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowedItemArgs']]]] allowed: The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         :param pulumi.Input[str] creation_timestamp: [Output Only] Creation timestamp in RFC3339 text format.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.
         :param pulumi.Input[str] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
@@ -473,9 +473,9 @@ class Firewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 allowed: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallAllowedItemArgs']]]]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
-                 denied: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 denied: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -581,7 +581,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def allowed(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def allowed(self) -> pulumi.Output[Sequence['outputs.FirewallAllowedItemResponse']]:
         """
         The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
         """
@@ -597,7 +597,7 @@ class Firewall(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def denied(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def denied(self) -> pulumi.Output[Sequence['outputs.FirewallDeniedItemResponse']]:
         """
         The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         """
