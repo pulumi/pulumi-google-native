@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("autoscaling")]
         public Input<Inputs.NodePoolAutoscalingArgs>? Autoscaling { get; set; }
 
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
+        [Input("clustersId", required: true)]
+        public Input<string> ClustersId { get; set; } = null!;
 
         [Input("conditions")]
         private InputList<Inputs.StatusConditionArgs>? _conditions;
@@ -207,6 +207,9 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             set => _locations = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// NodeManagement configuration for this NodePool.
         /// </summary>
@@ -231,8 +234,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("networkConfig")]
         public Input<Inputs.NodeNetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("nodePoolId", required: true)]
-        public Input<string> NodePoolId { get; set; } = null!;
+        [Input("nodePoolsId", required: true)]
+        public Input<string> NodePoolsId { get; set; } = null!;
 
         /// <summary>
         /// The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`.
@@ -246,8 +249,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("podIpv4CidrSize")]
         public Input<int>? PodIpv4CidrSize { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// [Output only] Server-defined URL for the resource.
@@ -272,9 +275,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
-
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
 
         public ClusterNodePoolArgs()
         {

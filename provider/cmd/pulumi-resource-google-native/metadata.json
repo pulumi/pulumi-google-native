@@ -18399,10 +18399,10 @@
         },
         "google-native:container/v1beta1:Cluster": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters",
             "createParams": [
-                "projectId",
-                "zone"
+                "projectsId",
+                "locationsId"
             ],
             "createVerb": "POST",
             "createProperties": {
@@ -18583,20 +18583,20 @@
             "updateProperties": {
                 "name": {}
             },
-            "idPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}",
+            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}",
             "idParams": [
-                "projectId",
-                "zone",
-                "clusterId"
+                "projectsId",
+                "locationsId",
+                "clustersId"
             ]
         },
         "google-native:container/v1beta1:ClusterNodePool": {
             "baseUrl": "https://container.googleapis.com/",
-            "createPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools",
+            "createPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools",
             "createParams": [
-                "projectId",
-                "zone",
-                "clusterId"
+                "projectsId",
+                "locationsId",
+                "clustersId"
             ],
             "createVerb": "POST",
             "createProperties": {
@@ -18647,18 +18647,18 @@
                     "container": "nodePool"
                 }
             },
-            "updateVerb": "POST",
+            "updateVerb": "PUT",
             "updateProperties": {
                 "locations": {},
                 "name": {},
                 "upgradeSettings": {}
             },
-            "idPath": "v1beta1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}",
+            "idPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}",
             "idParams": [
-                "projectId",
-                "zone",
-                "clusterId",
-                "nodePoolId"
+                "projectsId",
+                "locationsId",
+                "clustersId",
+                "nodePoolsId"
             ]
         },
         "google-native:containeranalysis/v1alpha1:Note": {

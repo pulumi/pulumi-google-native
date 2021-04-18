@@ -15,9 +15,9 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 cluster_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
-                 zone: pulumi.Input[str],
+                 clusters_id: pulumi.Input[str],
+                 locations_id: pulumi.Input[str],
+                 projects_id: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
                  autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
@@ -74,10 +74,10 @@ class ClusterArgs:
                  tpu_config: Optional[pulumi.Input['TpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['VerticalPodAutoscalingArgs']] = None,
-                 workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None):
+                 workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
-        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         :param pulumi.Input['AddonsConfigArgs'] addons_config: Configurations for the various addons available to run in the cluster.
         :param pulumi.Input['AuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration controlling RBAC group membership information.
         :param pulumi.Input['AutopilotArgs'] autopilot: Autopilot configuration for the cluster.
@@ -135,10 +135,11 @@ class ClusterArgs:
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['VerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
+        :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
-        pulumi.set(__self__, "cluster_id", cluster_id)
-        pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "zone", zone)
+        pulumi.set(__self__, "clusters_id", clusters_id)
+        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "projects_id", projects_id)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
@@ -253,36 +254,35 @@ class ClusterArgs:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
-    @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "cluster_id")
+    @pulumi.getter(name="clustersId")
+    def clusters_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "clusters_id")
 
-    @cluster_id.setter
-    def cluster_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "cluster_id", value)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @clusters_id.setter
+    def clusters_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "clusters_id", value)
 
     @property
-    @pulumi.getter
-    def zone(self) -> pulumi.Input[str]:
-        """
-        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-        """
-        return pulumi.get(self, "zone")
+    @pulumi.getter(name="locationsId")
+    def locations_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "locations_id")
 
-    @zone.setter
-    def zone(self, value: pulumi.Input[str]):
-        pulumi.set(self, "zone", value)
+    @locations_id.setter
+    def locations_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectsId")
+    def projects_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "projects_id")
+
+    @projects_id.setter
+    def projects_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "projects_id", value)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -968,6 +968,18 @@ class ClusterArgs:
     def workload_identity_config(self, value: Optional[pulumi.Input['WorkloadIdentityConfigArgs']]):
         pulumi.set(self, "workload_identity_config", value)
 
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
+        """
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
+
 
 class Cluster(pulumi.CustomResource):
     @overload
@@ -979,9 +991,9 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']]] = None,
+                 clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -1001,6 +1013,7 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
@@ -1020,7 +1033,7 @@ class Cluster(pulumi.CustomResource):
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1128,9 +1141,9 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
-                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[pulumi.InputType['ClusterTelemetryArgs']]] = None,
+                 clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -1150,6 +1163,7 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations_id: Optional[pulumi.Input[str]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master: Optional[pulumi.Input[pulumi.InputType['MasterArgs']]] = None,
@@ -1169,7 +1183,7 @@ class Cluster(pulumi.CustomResource):
                  pod_security_policy_config: Optional[pulumi.Input[pulumi.InputType['PodSecurityPolicyConfigArgs']]] = None,
                  private_cluster: Optional[pulumi.Input[bool]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 projects_id: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1200,11 +1214,11 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["autopilot"] = autopilot
             __props__.__dict__["autoscaling"] = autoscaling
             __props__.__dict__["binary_authorization"] = binary_authorization
-            if cluster_id is None and not opts.urn:
-                raise TypeError("Missing required property 'cluster_id'")
-            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
+            if clusters_id is None and not opts.urn:
+                raise TypeError("Missing required property 'clusters_id'")
+            __props__.__dict__["clusters_id"] = clusters_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["confidential_nodes"] = confidential_nodes
             __props__.__dict__["create_time"] = create_time
@@ -1224,6 +1238,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["legacy_abac"] = legacy_abac
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
+            if locations_id is None and not opts.urn:
+                raise TypeError("Missing required property 'locations_id'")
+            __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master"] = master
@@ -1243,9 +1260,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["pod_security_policy_config"] = pod_security_policy_config
             __props__.__dict__["private_cluster"] = private_cluster
             __props__.__dict__["private_cluster_config"] = private_cluster_config
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if projects_id is None and not opts.urn:
+                raise TypeError("Missing required property 'projects_id'")
+            __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config
@@ -1258,8 +1275,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_identity_config"] = workload_identity_config
-            if zone is None and not opts.urn:
-                raise TypeError("Missing required property 'zone'")
             __props__.__dict__["zone"] = zone
         super(Cluster, __self__).__init__(
             'google-native:container/v1beta1:Cluster',

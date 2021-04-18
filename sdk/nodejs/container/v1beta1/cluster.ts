@@ -275,23 +275,23 @@ export class Cluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clusterId'");
+            if ((!args || args.clustersId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clustersId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.locationsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'locationsId'");
             }
-            if ((!args || args.zone === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'zone'");
+            if ((!args || args.projectsId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectsId'");
             }
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["authenticatorGroupsConfig"] = args ? args.authenticatorGroupsConfig : undefined;
             inputs["autopilot"] = args ? args.autopilot : undefined;
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
             inputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
-            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["clusterTelemetry"] = args ? args.clusterTelemetry : undefined;
+            inputs["clustersId"] = args ? args.clustersId : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
@@ -311,6 +311,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["legacyAbac"] = args ? args.legacyAbac : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["locations"] = args ? args.locations : undefined;
+            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["loggingService"] = args ? args.loggingService : undefined;
             inputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             inputs["master"] = args ? args.master : undefined;
@@ -330,7 +331,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["podSecurityPolicyConfig"] = args ? args.podSecurityPolicyConfig : undefined;
             inputs["privateCluster"] = args ? args.privateCluster : undefined;
             inputs["privateClusterConfig"] = args ? args.privateClusterConfig : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["resourceLabels"] = args ? args.resourceLabels : undefined;
             inputs["resourceUsageExportConfig"] = args ? args.resourceUsageExportConfig : undefined;
@@ -434,7 +435,6 @@ export interface ClusterArgs {
      * Configuration for Binary Authorization.
      */
     readonly binaryAuthorization?: pulumi.Input<inputs.container.v1beta1.BinaryAuthorizationArgs>;
-    readonly clusterId: pulumi.Input<string>;
     /**
      * The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
      */
@@ -443,6 +443,7 @@ export interface ClusterArgs {
      * Telemetry integration for the cluster.
      */
     readonly clusterTelemetry?: pulumi.Input<inputs.container.v1beta1.ClusterTelemetryArgs>;
+    readonly clustersId: pulumi.Input<string>;
     /**
      * Which conditions caused the current cluster state.
      */
@@ -519,6 +520,7 @@ export interface ClusterArgs {
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
      */
     readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly locationsId: pulumi.Input<string>;
     /**
      * The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
      */
@@ -595,7 +597,7 @@ export interface ClusterArgs {
      * Configuration for private cluster.
      */
     readonly privateClusterConfig?: pulumi.Input<inputs.container.v1beta1.PrivateClusterConfigArgs>;
-    readonly projectId: pulumi.Input<string>;
+    readonly projectsId: pulumi.Input<string>;
     /**
      * Release channel configuration.
      */
@@ -647,5 +649,5 @@ export interface ClusterArgs {
     /**
      * [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
      */
-    readonly zone: pulumi.Input<string>;
+    readonly zone?: pulumi.Input<string>;
 }

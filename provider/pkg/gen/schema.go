@@ -275,7 +275,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	}
 
 	for name, param := range createMethod.Parameters {
-		if param.Location == "path" && strings.HasPrefix(param.Description, "Deprecated.") {
+		if param.Location == "path" && strings.Contains(param.Description, "Deprecated.") {
 			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
 			return nil
 		}

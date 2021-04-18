@@ -432,9 +432,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("binaryAuthorization")]
         public Input<Inputs.BinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
-        [Input("clusterId", required: true)]
-        public Input<string> ClusterId { get; set; } = null!;
-
         /// <summary>
         /// The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         /// </summary>
@@ -446,6 +443,9 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("clusterTelemetry")]
         public Input<Inputs.ClusterTelemetryArgs>? ClusterTelemetry { get; set; }
+
+        [Input("clustersId", required: true)]
+        public Input<string> ClustersId { get; set; } = null!;
 
         [Input("conditions")]
         private InputList<Inputs.StatusConditionArgs>? _conditions;
@@ -573,6 +573,9 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
             set => _locations = value;
         }
 
+        [Input("locationsId", required: true)]
+        public Input<string> LocationsId { get; set; } = null!;
+
         /// <summary>
         /// The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         /// </summary>
@@ -693,8 +696,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("privateClusterConfig")]
         public Input<Inputs.PrivateClusterConfigArgs>? PrivateClusterConfig { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectsId", required: true)]
+        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// Release channel configuration.
@@ -777,8 +780,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// <summary>
         /// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         /// </summary>
-        [Input("zone", required: true)]
-        public Input<string> Zone { get; set; } = null!;
+        [Input("zone")]
+        public Input<string>? Zone { get; set; }
 
         public ClusterArgs()
         {
