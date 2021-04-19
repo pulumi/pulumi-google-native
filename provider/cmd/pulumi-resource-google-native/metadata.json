@@ -656,6 +656,7 @@
             "createParams": null,
             "createVerb": "POST",
             "createProperties": {
+                "addonsConfig": {},
                 "analyticsRegion": {},
                 "attributes": {},
                 "authorizedNetwork": {},
@@ -670,6 +671,7 @@
             },
             "updateVerb": "PUT",
             "updateProperties": {
+                "addonsConfig": {},
                 "analyticsRegion": {},
                 "attributes": {},
                 "authorizedNetwork": {},
@@ -777,6 +779,58 @@
             "idParams": [
                 "organizationsId",
                 "apiproductsId"
+            ]
+        },
+        "google-native:apigee/v1:OrganizationApiproductRateplan": {
+            "baseUrl": "https://apigee.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans",
+            "createParams": [
+                "organizationsId",
+                "apiproductsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "apiproduct": {},
+                "billingPeriod": {},
+                "consumptionPricingRates": {},
+                "consumptionPricingType": {},
+                "currencyCode": {},
+                "description": {},
+                "displayName": {},
+                "endTime": {},
+                "fixedFeeFrequency": {},
+                "fixedRecurringFee": {},
+                "paymentFundingModel": {},
+                "revenueShareRates": {},
+                "revenueShareType": {},
+                "setupFee": {},
+                "startTime": {},
+                "state": {}
+            },
+            "updateVerb": "PUT",
+            "updateProperties": {
+                "apiproduct": {},
+                "billingPeriod": {},
+                "consumptionPricingRates": {},
+                "consumptionPricingType": {},
+                "currencyCode": {},
+                "description": {},
+                "displayName": {},
+                "endTime": {},
+                "fixedFeeFrequency": {},
+                "fixedRecurringFee": {},
+                "paymentFundingModel": {},
+                "revenueShareRates": {},
+                "revenueShareType": {},
+                "setupFee": {},
+                "startTime": {},
+                "state": {}
+            },
+            "idPath": "v1/organizations/{organizationsId}/apiproducts/{apiproductsId}/rateplans/{rateplansId}",
+            "idParams": [
+                "organizationsId",
+                "apiproductsId",
+                "rateplansId"
             ]
         },
         "google-native:apigee/v1:OrganizationDatacollector": {
@@ -908,6 +962,27 @@
                 "appsId",
                 "keysId"
             ]
+        },
+        "google-native:apigee/v1:OrganizationDeveloperSubscription": {
+            "baseUrl": "https://apigee.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions",
+            "createParams": [
+                "organizationsId",
+                "developersId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "apiproduct": {},
+                "endTime": {},
+                "startTime": {}
+            },
+            "idPath": "v1/organizations/{organizationsId}/developers/{developersId}/subscriptions/{subscriptionsId}",
+            "idParams": [
+                "organizationsId",
+                "developersId",
+                "subscriptionsId"
+            ],
+            "noDelete": true
         },
         "google-native:apigee/v1:OrganizationEnvgroup": {
             "baseUrl": "https://apigee.googleapis.com/",
@@ -2207,7 +2282,8 @@
                 "kmsSettings": {},
                 "labels": {},
                 "name": {},
-                "provisionedResourcesParent": {}
+                "provisionedResourcesParent": {},
+                "resourceSettings": {}
             },
             "updateVerb": "PATCH",
             "updateProperties": {
@@ -2218,7 +2294,8 @@
                 "kmsSettings": {},
                 "labels": {},
                 "name": {},
-                "provisionedResourcesParent": {}
+                "provisionedResourcesParent": {},
+                "resourceSettings": {}
             },
             "idPath": "v1/organizations/{organizationsId}/locations/{locationsId}/workloads/{workloadsId}",
             "idParams": [
@@ -5249,6 +5326,7 @@
                 "defaultFacetOptions": {},
                 "defaultSortOptions": {},
                 "displayName": {},
+                "enableAuditLog": {},
                 "name": {},
                 "scoringConfig": {},
                 "sourceConfig": {}
@@ -5259,6 +5337,7 @@
                 "defaultFacetOptions": {},
                 "defaultSortOptions": {},
                 "displayName": {},
+                "enableAuditLog": {},
                 "name": {},
                 "scoringConfig": {},
                 "sourceConfig": {}
@@ -6396,6 +6475,7 @@
                 "portRange": {},
                 "ports": {},
                 "pscConnectionId": {},
+                "pscConnectionStatus": {},
                 "region": {},
                 "selfLink": {},
                 "selfLinkWithId": {},
@@ -6429,6 +6509,7 @@
                 "portRange": {},
                 "ports": {},
                 "pscConnectionId": {},
+                "pscConnectionStatus": {},
                 "region": {},
                 "selfLink": {},
                 "selfLinkWithId": {},
@@ -6510,6 +6591,7 @@
                 "portRange": {},
                 "ports": {},
                 "pscConnectionId": {},
+                "pscConnectionStatus": {},
                 "region": {},
                 "selfLink": {},
                 "selfLinkWithId": {},
@@ -6543,6 +6625,7 @@
                 "portRange": {},
                 "ports": {},
                 "pscConnectionId": {},
+                "pscConnectionStatus": {},
                 "region": {},
                 "selfLink": {},
                 "selfLinkWithId": {},
@@ -9691,18 +9774,45 @@
             ],
             "createVerb": "POST",
             "createProperties": {
+                "connectedEndpoints": {},
                 "connectionPreference": {},
+                "consumerAcceptLists": {},
                 "consumerForwardingRules": {},
+                "consumerRejectLists": {},
                 "creationTimestamp": {},
                 "description": {},
                 "enableProxyProtocol": {},
+                "fingerprint": {},
                 "id": {},
                 "kind": {},
                 "name": {},
                 "natSubnets": {},
                 "producerForwardingRule": {},
+                "pscServiceAttachmentId": {},
                 "region": {},
-                "selfLink": {}
+                "selfLink": {},
+                "targetService": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "connectedEndpoints": {},
+                "connectionPreference": {},
+                "consumerAcceptLists": {},
+                "consumerForwardingRules": {},
+                "consumerRejectLists": {},
+                "creationTimestamp": {},
+                "description": {},
+                "enableProxyProtocol": {},
+                "fingerprint": {},
+                "id": {},
+                "kind": {},
+                "name": {},
+                "natSubnets": {},
+                "producerForwardingRule": {},
+                "pscServiceAttachmentId": {},
+                "region": {},
+                "selfLink": {},
+                "targetService": {}
             },
             "idPath": "projects/{project}/regions/{region}/serviceAttachments/{serviceAttachment}",
             "idParams": [
@@ -13866,6 +13976,7 @@
             ],
             "createVerb": "POST",
             "createProperties": {
+                "connectedEndpoints": {},
                 "connectionPreference": {},
                 "consumerForwardingRules": {},
                 "creationTimestamp": {},
@@ -13876,8 +13987,10 @@
                 "name": {},
                 "natSubnets": {},
                 "producerForwardingRule": {},
+                "pscServiceAttachmentId": {},
                 "region": {},
-                "selfLink": {}
+                "selfLink": {},
+                "targetService": {}
             },
             "idPath": "projects/{project}/regions/{region}/serviceAttachments/{serviceAttachment}",
             "idParams": [
@@ -18187,6 +18300,9 @@
                 "conditions": {
                     "container": "cluster"
                 },
+                "confidentialNodes": {
+                    "container": "cluster"
+                },
                 "createTime": {
                     "container": "cluster"
                 },
@@ -18570,6 +18686,9 @@
                     "container": "cluster"
                 },
                 "verticalPodAutoscaling": {
+                    "container": "cluster"
+                },
+                "workloadCertificates": {
                     "container": "cluster"
                 },
                 "workloadIdentityConfig": {
@@ -21766,6 +21885,34 @@
                 "entityTypesId"
             ]
         },
+        "google-native:dialogflow/v2:AgentEnvironment": {
+            "baseUrl": "https://dialogflow.googleapis.com/",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "agentVersion": {},
+                "description": {},
+                "fulfillment": {},
+                "textToSpeechSettings": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "agentVersion": {},
+                "description": {},
+                "fulfillment": {},
+                "textToSpeechSettings": {}
+            },
+            "idPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "environmentsId"
+            ]
+        },
         "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext": {
             "baseUrl": "https://dialogflow.googleapis.com/",
             "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}/users/{usersId}/sessions/{sessionsId}/contexts",
@@ -22006,6 +22153,28 @@
                 "entityTypesId"
             ]
         },
+        "google-native:dialogflow/v2:AgentVersion": {
+            "baseUrl": "https://dialogflow.googleapis.com/",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "description": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "description": {}
+            },
+            "idPath": "v2/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "versionsId"
+            ]
+        },
         "google-native:dialogflow/v2:Conversation": {
             "baseUrl": "https://dialogflow.googleapis.com/",
             "createPath": "v2/projects/{projectsId}/locations/{locationsId}/conversations",
@@ -22189,6 +22358,34 @@
                 "projectsId",
                 "locationsId",
                 "entityTypesId"
+            ]
+        },
+        "google-native:dialogflow/v2beta1:AgentEnvironment": {
+            "baseUrl": "https://dialogflow.googleapis.com/",
+            "createPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "agentVersion": {},
+                "description": {},
+                "fulfillment": {},
+                "textToSpeechSettings": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "agentVersion": {},
+                "description": {},
+                "fulfillment": {},
+                "textToSpeechSettings": {}
+            },
+            "idPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/environments/{environmentsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "environmentsId"
             ]
         },
         "google-native:dialogflow/v2beta1:AgentEnvironmentUserSessionContext": {
@@ -22429,6 +22626,28 @@
                 "locationsId",
                 "sessionsId",
                 "entityTypesId"
+            ]
+        },
+        "google-native:dialogflow/v2beta1:AgentVersion": {
+            "baseUrl": "https://dialogflow.googleapis.com/",
+            "createPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "description": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "description": {}
+            },
+            "idPath": "v2beta1/projects/{projectsId}/locations/{locationsId}/agent/versions/{versionsId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "versionsId"
             ]
         },
         "google-native:dialogflow/v2beta1:Conversation": {
@@ -30161,6 +30380,7 @@
                 "machineType": {},
                 "metadata": {},
                 "network": {},
+                "nicType": {},
                 "noProxyAccess": {},
                 "noPublicIp": {},
                 "noRemoveDataDisk": {},
@@ -31782,48 +32002,6 @@
             ],
             "noDelete": true
         },
-        "google-native:run/v1alpha1:Domainmapping": {
-            "baseUrl": "https://run.googleapis.com/",
-            "createPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/domainmappings",
-            "createParams": [
-                "projectsId",
-                "locationsId"
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "idPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/domainmappings/{domainmappingsId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "domainmappingsId"
-            ]
-        },
-        "google-native:run/v1alpha1:NamespaceDomainmapping": {
-            "baseUrl": "https://run.googleapis.com/",
-            "createPath": "apis/domains.cloudrun.com/v1alpha1/namespaces/{namespacesId}/domainmappings",
-            "createParams": [
-                "namespacesId"
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "idPath": "apis/domains.cloudrun.com/v1alpha1/namespaces/{namespacesId}/domainmappings/{domainmappingsId}",
-            "idParams": [
-                "namespacesId",
-                "domainmappingsId"
-            ]
-        },
         "google-native:run/v1alpha1:NamespaceJob": {
             "baseUrl": "https://run.googleapis.com/",
             "createPath": "apis/run.googleapis.com/v1alpha1/namespaces/{namespacesId}/jobs",
@@ -31843,112 +32021,6 @@
                 "namespacesId",
                 "jobsId"
             ]
-        },
-        "google-native:run/v1alpha1:NamespaceService": {
-            "baseUrl": "https://run.googleapis.com/",
-            "createPath": "apis/serving.knative.dev/v1alpha1/namespaces/{namespacesId}/services",
-            "createParams": [
-                "namespacesId"
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "updateVerb": "PUT",
-            "updateProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "idPath": "apis/serving.knative.dev/v1alpha1/namespaces/{namespacesId}/services/{servicesId}",
-            "idParams": [
-                "namespacesId",
-                "servicesId"
-            ]
-        },
-        "google-native:run/v1alpha1:Service": {
-            "baseUrl": "https://run.googleapis.com/",
-            "createPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/services",
-            "createParams": [
-                "projectsId",
-                "locationsId"
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "updateVerb": "PUT",
-            "updateProperties": {
-                "apiVersion": {},
-                "kind": {},
-                "metadata": {},
-                "spec": {},
-                "status": {}
-            },
-            "idPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "servicesId"
-            ]
-        },
-        "google-native:run/v1alpha1:ServiceIamPolicy": {
-            "baseUrl": "https://run.googleapis.com/",
-            "createPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:setIamPolicy",
-            "createParams": [
-                "projectsId",
-                "locationsId",
-                "servicesId"
-            ],
-            "createVerb": "POST",
-            "createProperties": {
-                "auditConfigs": {
-                    "container": "policy"
-                },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
-                "updateMask": {},
-                "version": {
-                    "container": "policy"
-                }
-            },
-            "updateVerb": "POST",
-            "updateProperties": {
-                "auditConfigs": {
-                    "container": "policy"
-                },
-                "bindings": {
-                    "container": "policy"
-                },
-                "etag": {
-                    "container": "policy"
-                },
-                "updateMask": {},
-                "version": {
-                    "container": "policy"
-                }
-            },
-            "idPath": "v1alpha1/projects/{projectsId}/locations/{locationsId}/services/{servicesId}:getIamPolicy",
-            "idParams": [
-                "projectsId",
-                "locationsId",
-                "servicesId"
-            ],
-            "noDelete": true
         },
         "google-native:runtimeconfig/v1beta1:Config": {
             "baseUrl": "https://runtimeconfig.googleapis.com/",
