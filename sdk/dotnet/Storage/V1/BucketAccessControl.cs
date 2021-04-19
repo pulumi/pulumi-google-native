@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The project team associated with the entity, if any.
         /// </summary>
         [Output("projectTeam")]
-        public Output<ImmutableDictionary<string, string>> ProjectTeam { get; private set; } = null!;
+        public Output<Outputs.BucketAccessControlProjectTeamResponse> ProjectTeam { get; private set; } = null!;
 
         /// <summary>
         /// The access permission for the entity.
@@ -190,17 +190,11 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("projectTeam")]
-        private InputMap<string>? _projectTeam;
-
         /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
-        public InputMap<string> ProjectTeam
-        {
-            get => _projectTeam ?? (_projectTeam = new InputMap<string>());
-            set => _projectTeam = value;
-        }
+        [Input("projectTeam")]
+        public Input<Inputs.BucketAccessControlProjectTeamArgs>? ProjectTeam { get; set; }
 
         /// <summary>
         /// The access permission for the entity.

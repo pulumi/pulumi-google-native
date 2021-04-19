@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
@@ -37,7 +38,7 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    public readonly bindings!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly bindings!: pulumi.Output<outputs.storage.v1.ObjectIamPolicyBindingsItemResponse[]>;
     /**
      * HTTP 1.1  Entity tag for the policy.
      */
@@ -100,7 +101,7 @@ export interface ObjectIamPolicyArgs {
     /**
      * An association between a role, which comes with a set of permissions, and members who may assume that role.
      */
-    readonly bindings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly bindings?: pulumi.Input<pulumi.Input<inputs.storage.v1.ObjectIamPolicyBindingsItemArgs>[]>;
     readonly bucket: pulumi.Input<string>;
     /**
      * HTTP 1.1  Entity tag for the policy.

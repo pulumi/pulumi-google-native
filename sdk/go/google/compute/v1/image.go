@@ -52,7 +52,7 @@ type Image struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parameters of the raw disk image.
-	RawDisk pulumi.StringMapOutput `pulumi:"rawDisk"`
+	RawDisk ImageRawDiskResponseOutput `pulumi:"rawDisk"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
@@ -173,7 +173,7 @@ type imageState struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The parameters of the raw disk image.
-	RawDisk map[string]string `pulumi:"rawDisk"`
+	RawDisk *ImageRawDiskResponse `pulumi:"rawDisk"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
@@ -260,7 +260,7 @@ type ImageState struct {
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The parameters of the raw disk image.
-	RawDisk pulumi.StringMapInput
+	RawDisk ImageRawDiskResponsePtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.
@@ -355,7 +355,7 @@ type imageArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The parameters of the raw disk image.
-	RawDisk map[string]string `pulumi:"rawDisk"`
+	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
@@ -447,7 +447,7 @@ type ImageArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The parameters of the raw disk image.
-	RawDisk pulumi.StringMapInput
+	RawDisk ImageRawDiskPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.

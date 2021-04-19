@@ -30,7 +30,7 @@ type Instance struct {
 	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica pulumi.StringMapOutput `pulumi:"failoverReplica"`
+	FailoverReplica InstanceFailoverReplicaResponseOutput `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone pulumi.StringOutput `pulumi:"gceZone"`
 	// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
@@ -129,7 +129,7 @@ type instanceState struct {
 	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
 	Etag *string `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica map[string]string `pulumi:"failoverReplica"`
+	FailoverReplica *InstanceFailoverReplicaResponse `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone *string `pulumi:"gceZone"`
 	// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
@@ -194,7 +194,7 @@ type InstanceState struct {
 	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
 	Etag pulumi.StringPtrInput
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica pulumi.StringMapInput
+	FailoverReplica InstanceFailoverReplicaResponsePtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone pulumi.StringPtrInput
 	// The instance type. This can be one of the following. *CLOUD_SQL_INSTANCE*: A Cloud SQL instance that is not replicating from a primary instance. *ON_PREMISES_INSTANCE*: An instance running on the customer's premises. *READ_REPLICA_INSTANCE*: A Cloud SQL instance configured as a read-replica.
@@ -263,7 +263,7 @@ type instanceArgs struct {
 	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
 	Etag *string `pulumi:"etag"`
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica map[string]string `pulumi:"failoverReplica"`
+	FailoverReplica *InstanceFailoverReplica `pulumi:"failoverReplica"`
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone  *string `pulumi:"gceZone"`
 	Instance string  `pulumi:"instance"`
@@ -330,7 +330,7 @@ type InstanceArgs struct {
 	// This field is deprecated and will be removed from a future version of the API. Use the *settings.settingsVersion* field instead.
 	Etag pulumi.StringPtrInput
 	// The name and status of the failover replica. This property is applicable only to Second Generation instances.
-	FailoverReplica pulumi.StringMapInput
+	FailoverReplica InstanceFailoverReplicaPtrInput
 	// The Compute Engine zone that the instance is currently serving from. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary zone.
 	GceZone  pulumi.StringPtrInput
 	Instance pulumi.StringInput

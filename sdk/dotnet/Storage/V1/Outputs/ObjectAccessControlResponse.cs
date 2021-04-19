@@ -63,7 +63,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         /// <summary>
         /// The project team associated with the entity, if any.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> ProjectTeam;
+        public readonly Outputs.BucketProjectTeamResponse ProjectTeam;
         /// <summary>
         /// The access permission for the entity.
         /// </summary>
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 
             string @object,
 
-            ImmutableDictionary<string, string> projectTeam,
+            Outputs.BucketProjectTeamResponse projectTeam,
 
             string role,
 

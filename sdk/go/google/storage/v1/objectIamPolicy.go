@@ -16,7 +16,7 @@ type ObjectIamPolicy struct {
 	pulumi.CustomResourceState
 
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayOutput `pulumi:"bindings"`
+	Bindings ObjectIamPolicyBindingsItemResponseArrayOutput `pulumi:"bindings"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -63,7 +63,7 @@ func GetObjectIamPolicy(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ObjectIamPolicy resources.
 type objectIamPolicyState struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings []map[string]string `pulumi:"bindings"`
+	Bindings []ObjectIamPolicyBindingsItemResponse `pulumi:"bindings"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -76,7 +76,7 @@ type objectIamPolicyState struct {
 
 type ObjectIamPolicyState struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayInput
+	Bindings ObjectIamPolicyBindingsItemResponseArrayInput
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringPtrInput
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -93,8 +93,8 @@ func (ObjectIamPolicyState) ElementType() reflect.Type {
 
 type objectIamPolicyArgs struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings []map[string]string `pulumi:"bindings"`
-	Bucket   string              `pulumi:"bucket"`
+	Bindings []ObjectIamPolicyBindingsItem `pulumi:"bindings"`
+	Bucket   string                        `pulumi:"bucket"`
 	// HTTP 1.1  Entity tag for the policy.
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -109,7 +109,7 @@ type objectIamPolicyArgs struct {
 // The set of arguments for constructing a ObjectIamPolicy resource.
 type ObjectIamPolicyArgs struct {
 	// An association between a role, which comes with a set of permissions, and members who may assume that role.
-	Bindings pulumi.StringMapArrayInput
+	Bindings ObjectIamPolicyBindingsItemArrayInput
 	Bucket   pulumi.StringInput
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringPtrInput

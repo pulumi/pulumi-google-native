@@ -1,0 +1,3 @@
+name: storage-cs
+runtime: dotnet
+description: A Google Cloud C# Pulumi program to provision storage

@@ -24,14 +24,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? Fingerprint { get; set; }
 
         [Input("items")]
-        private InputList<ImmutableDictionary<string, string>>? _items;
+        private InputList<Inputs.InstanceTemplateItemsItemArgs>? _items;
 
         /// <summary>
         /// Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Items
+        public InputList<Inputs.InstanceTemplateItemsItemArgs> Items
         {
-            get => _items ?? (_items = new InputList<ImmutableDictionary<string, string>>());
+            get => _items ?? (_items = new InputList<Inputs.InstanceTemplateItemsItemArgs>());
             set => _items = value;
         }
 

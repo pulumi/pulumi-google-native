@@ -26,7 +26,7 @@ class BucketObjectArgs:
                  content_type: Optional[pulumi.Input[str]] = None,
                  crc32c: Optional[pulumi.Input[str]] = None,
                  custom_time: Optional[pulumi.Input[str]] = None,
-                 customer_encryption: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 customer_encryption: Optional[pulumi.Input['ObjectCustomerEncryptionArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
@@ -38,7 +38,7 @@ class BucketObjectArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 owner: Optional[pulumi.Input['ObjectOwnerArgs']] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -61,7 +61,7 @@ class BucketObjectArgs:
         :param pulumi.Input[str] content_type: Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
         :param pulumi.Input[str] crc32c: CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
         :param pulumi.Input[str] custom_time: A timestamp in RFC 3339 format specified by the user for an object.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] customer_encryption: Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        :param pulumi.Input['ObjectCustomerEncryptionArgs'] customer_encryption: Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
@@ -73,7 +73,7 @@ class BucketObjectArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] owner: The owner of the object. This will always be the uploader of the object.
+        :param pulumi.Input['ObjectOwnerArgs'] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -282,14 +282,14 @@ class BucketObjectArgs:
 
     @property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def customer_encryption(self) -> Optional[pulumi.Input['ObjectCustomerEncryptionArgs']]:
         """
         Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         """
         return pulumi.get(self, "customer_encryption")
 
     @customer_encryption.setter
-    def customer_encryption(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def customer_encryption(self, value: Optional[pulumi.Input['ObjectCustomerEncryptionArgs']]):
         pulumi.set(self, "customer_encryption", value)
 
     @property
@@ -426,14 +426,14 @@ class BucketObjectArgs:
 
     @property
     @pulumi.getter
-    def owner(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def owner(self) -> Optional[pulumi.Input['ObjectOwnerArgs']]:
         """
         The owner of the object. This will always be the uploader of the object.
         """
         return pulumi.get(self, "owner")
 
     @owner.setter
-    def owner(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def owner(self, value: Optional[pulumi.Input['ObjectOwnerArgs']]):
         pulumi.set(self, "owner", value)
 
     @property
@@ -569,7 +569,7 @@ class BucketObject(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  crc32c: Optional[pulumi.Input[str]] = None,
                  custom_time: Optional[pulumi.Input[str]] = None,
-                 customer_encryption: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['ObjectCustomerEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
@@ -582,7 +582,7 @@ class BucketObject(pulumi.CustomResource):
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -609,7 +609,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: Content-Type of the object data. If an object is stored without a Content-Type, it is served as application/octet-stream.
         :param pulumi.Input[str] crc32c: CRC32c checksum, as described in RFC 4960, Appendix B; encoded using base64 in big-endian byte order. For more information about using the CRC32c checksum, see Hashes and ETags: Best Practices.
         :param pulumi.Input[str] custom_time: A timestamp in RFC 3339 format specified by the user for an object.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] customer_encryption: Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        :param pulumi.Input[pulumi.InputType['ObjectCustomerEncryptionArgs']] customer_encryption: Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         :param pulumi.Input[str] etag: HTTP 1.1 Entity tag for the object.
         :param pulumi.Input[bool] event_based_hold: Whether an object is under event-based hold. Event-based hold is a way to retain objects until an event occurs, which is signified by the hold's release (i.e. this value is set to false). After being released (set to false), such objects will be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here, bucket-level retention is 3 years and the event is the loan being paid in full. In this example, these objects will be held intact for any number of years until the event has occurred (event-based hold on the object is released) and then 3 more years after that. That means retention duration of the objects begins from the moment event-based hold transitioned from true to false.
         :param pulumi.Input[str] generation: The content generation of this object. Used for object versioning.
@@ -621,7 +621,7 @@ class BucketObject(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: User-provided metadata, in key/value pairs.
         :param pulumi.Input[str] metageneration: The version of the metadata for this object at this generation. Used for preconditions and for detecting changes in metadata. A metageneration number is only meaningful in the context of a particular generation of a particular object.
         :param pulumi.Input[str] name: The name of the object. Required if not specified by URL parameter.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] owner: The owner of the object. This will always be the uploader of the object.
+        :param pulumi.Input[pulumi.InputType['ObjectOwnerArgs']] owner: The owner of the object. This will always be the uploader of the object.
         :param pulumi.Input[str] retention_expiration_time: A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         :param pulumi.Input[str] self_link: The link to this object.
         :param pulumi.Input[str] size: Content-Length of the data in bytes.
@@ -666,7 +666,7 @@ class BucketObject(pulumi.CustomResource):
                  content_type: Optional[pulumi.Input[str]] = None,
                  crc32c: Optional[pulumi.Input[str]] = None,
                  custom_time: Optional[pulumi.Input[str]] = None,
-                 customer_encryption: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 customer_encryption: Optional[pulumi.Input[pulumi.InputType['ObjectCustomerEncryptionArgs']]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
@@ -679,7 +679,7 @@ class BucketObject(pulumi.CustomResource):
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
-                 owner: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -877,7 +877,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> pulumi.Output[Mapping[str, str]]:
+    def customer_encryption(self) -> pulumi.Output['outputs.ObjectCustomerEncryptionResponse']:
         """
         Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         """
@@ -965,7 +965,7 @@ class BucketObject(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owner(self) -> pulumi.Output[Mapping[str, str]]:
+    def owner(self) -> pulumi.Output['outputs.ObjectOwnerResponse']:
         """
         The owner of the object. This will always be the uploader of the object.
         """

@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// The parameters of the raw disk image.
         /// </summary>
         [Output("rawDisk")]
-        public Output<ImmutableDictionary<string, string>> RawDisk { get; private set; } = null!;
+        public Output<Outputs.ImageRawDiskResponse> RawDisk { get; private set; } = null!;
 
         /// <summary>
         /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
@@ -404,17 +404,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("rawDisk")]
-        private InputMap<string>? _rawDisk;
-
         /// <summary>
         /// The parameters of the raw disk image.
         /// </summary>
-        public InputMap<string> RawDisk
-        {
-            get => _rawDisk ?? (_rawDisk = new InputMap<string>());
-            set => _rawDisk = value;
-        }
+        [Input("rawDisk")]
+        public Input<Inputs.ImageRawDiskArgs>? RawDisk { get; set; }
 
         /// <summary>
         /// A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.

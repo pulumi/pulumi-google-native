@@ -22,7 +22,10 @@ __all__ = [
     'ClusteringArgs',
     'ConnectionPropertyArgs',
     'CsvOptionsArgs',
+    'DatasetAccessEntryArgs',
+    'DatasetAccessItemArgs',
     'DatasetReferenceArgs',
+    'DatasetTarget_typesItemArgs',
     'DestinationTablePropertiesArgs',
     'EncryptionConfigurationArgs',
     'ErrorProtoArgs',
@@ -32,17 +35,22 @@ __all__ = [
     'ExternalDataConfigurationArgs',
     'GoogleSheetsOptionsArgs',
     'HivePartitioningOptionsArgs',
+    'JobCategoriesArgs',
     'JobConfigurationArgs',
     'JobConfigurationExtractArgs',
     'JobConfigurationLoadArgs',
     'JobConfigurationQueryArgs',
     'JobConfigurationTableCopyArgs',
+    'JobPolicyTagsArgs',
+    'JobRangeArgs',
     'JobReferenceArgs',
+    'JobReservationUsageItemArgs',
     'JobStatisticsArgs',
     'JobStatistics2Args',
     'JobStatistics3Args',
     'JobStatistics4Args',
     'JobStatusArgs',
+    'JobStructTypesItemArgs',
     'MaterializedViewDefinitionArgs',
     'ModelDefinitionArgs',
     'ModelReferenceArgs',
@@ -65,8 +73,10 @@ __all__ = [
     'StandardSqlTableTypeArgs',
     'StreamingbufferArgs',
     'TableFieldSchemaArgs',
+    'TableModelOptionsArgs',
     'TableReferenceArgs',
     'TableSchemaArgs',
+    'TableTrainingOptionsArgs',
     'TimePartitioningArgs',
     'TransactionInfoArgs',
     'UserDefinedFunctionResourceArgs',
@@ -654,12 +664,12 @@ class BqmlTrainingRunArgs:
                  iteration_results: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 training_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 training_options: Optional[pulumi.Input['TableTrainingOptionsArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: [Output-only, Beta] List of each iteration results.
         :param pulumi.Input[str] start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
         :param pulumi.Input[str] state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        :param pulumi.Input['TableTrainingOptionsArgs'] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         if iteration_results is not None:
             pulumi.set(__self__, "iteration_results", iteration_results)
@@ -708,14 +718,14 @@ class BqmlTrainingRunArgs:
 
     @property
     @pulumi.getter(name="trainingOptions")
-    def training_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def training_options(self) -> Optional[pulumi.Input['TableTrainingOptionsArgs']]:
         """
         [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
         """
         return pulumi.get(self, "training_options")
 
     @training_options.setter
-    def training_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def training_options(self, value: Optional[pulumi.Input['TableTrainingOptionsArgs']]):
         pulumi.set(self, "training_options", value)
 
 
@@ -885,6 +895,192 @@ class CsvOptionsArgs:
 
 
 @pulumi.input_type
+class DatasetAccessEntryArgs:
+    def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
+                 target_types: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTarget_typesItemArgs']]]] = None):
+        """
+        :param pulumi.Input['DatasetReferenceArgs'] dataset: [Required] The dataset this entry applies to.
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if target_types is not None:
+            pulumi.set(__self__, "target_types", target_types)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['DatasetReferenceArgs']]:
+        """
+        [Required] The dataset this entry applies to.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['DatasetReferenceArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTarget_typesItemArgs']]]]:
+        return pulumi.get(self, "target_types")
+
+    @target_types.setter
+    def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetTarget_typesItemArgs']]]]):
+        pulumi.set(self, "target_types", value)
+
+
+@pulumi.input_type
+class DatasetAccessItemArgs:
+    def __init__(__self__, *,
+                 dataset: Optional[pulumi.Input['DatasetAccessEntryArgs']] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 group_by_email: Optional[pulumi.Input[str]] = None,
+                 iam_member: Optional[pulumi.Input[str]] = None,
+                 role: Optional[pulumi.Input[str]] = None,
+                 routine: Optional[pulumi.Input['RoutineReferenceArgs']] = None,
+                 special_group: Optional[pulumi.Input[str]] = None,
+                 user_by_email: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input['TableReferenceArgs']] = None):
+        """
+        :param pulumi.Input['DatasetAccessEntryArgs'] dataset: [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+        :param pulumi.Input[str] domain: [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+        :param pulumi.Input[str] group_by_email: [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+        :param pulumi.Input[str] iam_member: [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+        :param pulumi.Input[str] role: [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        :param pulumi.Input['RoutineReferenceArgs'] routine: [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+        :param pulumi.Input[str] special_group: [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+        :param pulumi.Input[str] user_by_email: [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+        :param pulumi.Input['TableReferenceArgs'] view: [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        """
+        if dataset is not None:
+            pulumi.set(__self__, "dataset", dataset)
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if group_by_email is not None:
+            pulumi.set(__self__, "group_by_email", group_by_email)
+        if iam_member is not None:
+            pulumi.set(__self__, "iam_member", iam_member)
+        if role is not None:
+            pulumi.set(__self__, "role", role)
+        if routine is not None:
+            pulumi.set(__self__, "routine", routine)
+        if special_group is not None:
+            pulumi.set(__self__, "special_group", special_group)
+        if user_by_email is not None:
+            pulumi.set(__self__, "user_by_email", user_by_email)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def dataset(self) -> Optional[pulumi.Input['DatasetAccessEntryArgs']]:
+        """
+        [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "dataset")
+
+    @dataset.setter
+    def dataset(self, value: Optional[pulumi.Input['DatasetAccessEntryArgs']]):
+        pulumi.set(self, "dataset", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Pick one] A domain to grant access to. Any users signed in with the domain specified will be granted the specified access. Example: "example.com". Maps to IAM policy member "domain:DOMAIN".
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="groupByEmail")
+    def group_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Pick one] An email address of a Google Group to grant access to. Maps to IAM policy member "group:GROUP".
+        """
+        return pulumi.get(self, "group_by_email")
+
+    @group_by_email.setter
+    def group_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_by_email", value)
+
+    @property
+    @pulumi.getter(name="iamMember")
+    def iam_member(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Pick one] Some other type of member that appears in the IAM Policy but isn't a user, group, domain, or special group.
+        """
+        return pulumi.get(self, "iam_member")
+
+    @iam_member.setter
+    def iam_member(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam_member", value)
+
+    @property
+    @pulumi.getter
+    def role(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to "roles/bigquery.dataOwner", it will be returned back as "OWNER".
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role", value)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> Optional[pulumi.Input['RoutineReferenceArgs']]:
+        """
+        [Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "routine")
+
+    @routine.setter
+    def routine(self, value: Optional[pulumi.Input['RoutineReferenceArgs']]):
+        pulumi.set(self, "routine", value)
+
+    @property
+    @pulumi.getter(name="specialGroup")
+    def special_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.
+        """
+        return pulumi.get(self, "special_group")
+
+    @special_group.setter
+    def special_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "special_group", value)
+
+    @property
+    @pulumi.getter(name="userByEmail")
+    def user_by_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Pick one] An email address of a user to grant access to. For example: fred@example.com. Maps to IAM policy member "user:EMAIL" or "serviceAccount:EMAIL".
+        """
+        return pulumi.get(self, "user_by_email")
+
+    @user_by_email.setter
+    def user_by_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_by_email", value)
+
+    @property
+    @pulumi.getter
+    def view(self) -> Optional[pulumi.Input['TableReferenceArgs']]:
+        """
+        [Pick one] A view from a different dataset to grant access to. Queries executed against that view will have read access to tables in this dataset. The role field is not required when this field is set. If that view is updated by any user, access to the view needs to be granted again via an update operation.
+        """
+        return pulumi.get(self, "view")
+
+    @view.setter
+    def view(self, value: Optional[pulumi.Input['TableReferenceArgs']]):
+        pulumi.set(self, "view", value)
+
+
+@pulumi.input_type
 class DatasetReferenceArgs:
     def __init__(__self__, *,
                  dataset_id: Optional[pulumi.Input[str]] = None,
@@ -921,6 +1117,29 @@ class DatasetReferenceArgs:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_id", value)
+
+
+@pulumi.input_type
+class DatasetTarget_typesItemArgs:
+    def __init__(__self__, *,
+                 target_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_type", value)
 
 
 @pulumi.input_type
@@ -1977,6 +2196,30 @@ class HivePartitioningOptionsArgs:
     @source_uri_prefix.setter
     def source_uri_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_uri_prefix", value)
+
+
+@pulumi.input_type
+class JobCategoriesArgs:
+    def __init__(__self__, *,
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        [Optional] The categories attached to this field, used for field-level access control.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        return pulumi.get(self, "names")
+
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type
@@ -3279,6 +3522,85 @@ class JobConfigurationTableCopyArgs:
 
 
 @pulumi.input_type
+class JobPolicyTagsArgs:
+    def __init__(__self__, *,
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        return pulumi.get(self, "names")
+
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
+
+
+@pulumi.input_type
+class JobRangeArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 interval: Optional[pulumi.Input[str]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param pulumi.Input[str] end: [TrustedTester] [Required] The end of range partitioning, exclusive.
+        :param pulumi.Input[str] interval: [TrustedTester] [Required] The width of each interval.
+        :param pulumi.Input[str] start: [TrustedTester] [Required] The start of range partitioning, inclusive.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        [TrustedTester] [Required] The end of range partitioning, exclusive.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        [TrustedTester] [Required] The width of each interval.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        [TrustedTester] [Required] The start of range partitioning, inclusive.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
 class JobReferenceArgs:
     def __init__(__self__, *,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -3334,6 +3656,45 @@ class JobReferenceArgs:
 
 
 @pulumi.input_type
+class JobReservationUsageItemArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 slot_ms: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        :param pulumi.Input[str] slot_ms: [Output-only] Slot-milliseconds the job spent in the given reservation.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if slot_ms is not None:
+            pulumi.set(__self__, "slot_ms", slot_ms)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] Reservation name or "unreserved" for on-demand resources usage.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="slotMs")
+    def slot_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only] Slot-milliseconds the job spent in the given reservation.
+        """
+        return pulumi.get(self, "slot_ms")
+
+    @slot_ms.setter
+    def slot_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "slot_ms", value)
+
+
+@pulumi.input_type
 class JobStatisticsArgs:
     def __init__(__self__, *,
                  completion_ratio: Optional[pulumi.Input[float]] = None,
@@ -3345,7 +3706,7 @@ class JobStatisticsArgs:
                  parent_job_id: Optional[pulumi.Input[str]] = None,
                  query: Optional[pulumi.Input['JobStatistics2Args']] = None,
                  quota_deferments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 reservation_usage: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 reservation_usage: Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]] = None,
                  reservation_id: Optional[pulumi.Input[str]] = None,
                  row_level_security_statistics: Optional[pulumi.Input['RowLevelSecurityStatisticsArgs']] = None,
                  script_statistics: Optional[pulumi.Input['ScriptStatisticsArgs']] = None,
@@ -3364,7 +3725,7 @@ class JobStatisticsArgs:
         :param pulumi.Input[str] parent_job_id: [Output-only] If this is a child job, the id of the parent.
         :param pulumi.Input['JobStatistics2Args'] query: [Output-only] Statistics for a query job.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] quota_deferments: [Output-only] Quotas which delayed this job's start time.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
+        :param pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
         :param pulumi.Input[str] reservation_id: [Output-only] Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
         :param pulumi.Input['RowLevelSecurityStatisticsArgs'] row_level_security_statistics: [Output-only] [Preview] Statistics for row-level security. Present only for query and extract jobs.
         :param pulumi.Input['ScriptStatisticsArgs'] script_statistics: [Output-only] Statistics for a child job of a script.
@@ -3521,14 +3882,14 @@ class JobStatisticsArgs:
 
     @property
     @pulumi.getter(name="reservationUsage")
-    def reservation_usage(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def reservation_usage(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]]:
         """
         [Output-only] Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
 
     @reservation_usage.setter
-    def reservation_usage(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def reservation_usage(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]]):
         pulumi.set(self, "reservation_usage", value)
 
     @property
@@ -3647,7 +4008,7 @@ class JobStatistics2Args:
                  query_plan: Optional[pulumi.Input[Sequence[pulumi.Input['ExplainQueryStageArgs']]]] = None,
                  referenced_routines: Optional[pulumi.Input[Sequence[pulumi.Input['RoutineReferenceArgs']]]] = None,
                  referenced_tables: Optional[pulumi.Input[Sequence[pulumi.Input['TableReferenceArgs']]]] = None,
-                 reservation_usage: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 reservation_usage: Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
                  statement_type: Optional[pulumi.Input[str]] = None,
                  timeline: Optional[pulumi.Input[Sequence[pulumi.Input['QueryTimelineSampleArgs']]]] = None,
@@ -3674,7 +4035,7 @@ class JobStatistics2Args:
         :param pulumi.Input[Sequence[pulumi.Input['ExplainQueryStageArgs']]] query_plan: [Output-only] Describes execution plan for the query.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineReferenceArgs']]] referenced_routines: [Output-only] Referenced routines (persistent user-defined functions and stored procedures) for the job.
         :param pulumi.Input[Sequence[pulumi.Input['TableReferenceArgs']]] referenced_tables: [Output-only] Referenced tables for the job. Queries that reference more than 50 tables will not have a complete list.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
+        :param pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]] reservation_usage: [Output-only] Job resource usage breakdown by reservation.
         :param pulumi.Input['TableSchemaArgs'] schema: [Output-only] The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         :param pulumi.Input[str] statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         :param pulumi.Input[Sequence[pulumi.Input['QueryTimelineSampleArgs']]] timeline: [Output-only] [Beta] Describes a timeline of job execution.
@@ -3932,14 +4293,14 @@ class JobStatistics2Args:
 
     @property
     @pulumi.getter(name="reservationUsage")
-    def reservation_usage(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def reservation_usage(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]]:
         """
         [Output-only] Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
 
     @reservation_usage.setter
-    def reservation_usage(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def reservation_usage(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobReservationUsageItemArgs']]]]):
         pulumi.set(self, "reservation_usage", value)
 
     @property
@@ -4233,6 +4594,61 @@ class JobStatusArgs:
 
 
 @pulumi.input_type
+class JobStructTypesItemArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None):
+        """
+        :param pulumi.Input[str] description: [Optional] Human-oriented description of the field.
+        :param pulumi.Input[str] name: [Optional] The name of this field.
+        :param pulumi.Input['QueryParameterTypeArgs'] type: [Required] The type of this field.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Human-oriented description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] The name of this field.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
+        """
+        [Required] The type of this field.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class MaterializedViewDefinitionArgs:
     def __init__(__self__, *,
                  enable_refresh: Optional[pulumi.Input[bool]] = None,
@@ -4306,10 +4722,10 @@ class MaterializedViewDefinitionArgs:
 @pulumi.input_type
 class ModelDefinitionArgs:
     def __init__(__self__, *,
-                 model_options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 model_options: Optional[pulumi.Input['TableModelOptionsArgs']] = None,
                  training_runs: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        :param pulumi.Input['TableModelOptionsArgs'] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
         """
         if model_options is not None:
@@ -4319,14 +4735,14 @@ class ModelDefinitionArgs:
 
     @property
     @pulumi.getter(name="modelOptions")
-    def model_options(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def model_options(self) -> Optional[pulumi.Input['TableModelOptionsArgs']]:
         """
         [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
         """
         return pulumi.get(self, "model_options")
 
     @model_options.setter
-    def model_options(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def model_options(self, value: Optional[pulumi.Input['TableModelOptionsArgs']]):
         pulumi.set(self, "model_options", value)
 
     @property
@@ -4495,11 +4911,11 @@ class QueryParameterArgs:
 class QueryParameterTypeArgs:
     def __init__(__self__, *,
                  array_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
-                 struct_types: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 struct_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobStructTypesItemArgs']]]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['QueryParameterTypeArgs'] array_type: [Optional] The type of the array's elements, if this is an array.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] struct_types: [Optional] The types of the fields of this struct, in order, if this is a struct.
+        :param pulumi.Input[Sequence[pulumi.Input['JobStructTypesItemArgs']]] struct_types: [Optional] The types of the fields of this struct, in order, if this is a struct.
         :param pulumi.Input[str] type: [Required] The top level type of this field.
         """
         if array_type is not None:
@@ -4523,14 +4939,14 @@ class QueryParameterTypeArgs:
 
     @property
     @pulumi.getter(name="structTypes")
-    def struct_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def struct_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['JobStructTypesItemArgs']]]]:
         """
         [Optional] The types of the fields of this struct, in order, if this is a struct.
         """
         return pulumi.get(self, "struct_types")
 
     @struct_types.setter
-    def struct_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def struct_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['JobStructTypesItemArgs']]]]):
         pulumi.set(self, "struct_types", value)
 
     @property
@@ -4692,10 +5108,10 @@ class QueryTimelineSampleArgs:
 class RangePartitioningArgs:
     def __init__(__self__, *,
                  field: Optional[pulumi.Input[str]] = None,
-                 range: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 range: Optional[pulumi.Input['JobRangeArgs']] = None):
         """
         :param pulumi.Input[str] field: [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] range: [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param pulumi.Input['JobRangeArgs'] range: [TrustedTester] [Required] Defines the ranges for range partitioning.
         """
         if field is not None:
             pulumi.set(__self__, "field", field)
@@ -4716,14 +5132,14 @@ class RangePartitioningArgs:
 
     @property
     @pulumi.getter
-    def range(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def range(self) -> Optional[pulumi.Input['JobRangeArgs']]:
         """
         [TrustedTester] [Required] Defines the ranges for range partitioning.
         """
         return pulumi.get(self, "range")
 
     @range.setter
-    def range(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def range(self, value: Optional[pulumi.Input['JobRangeArgs']]):
         pulumi.set(self, "range", value)
 
 
@@ -5275,18 +5691,18 @@ class StreamingbufferArgs:
 @pulumi.input_type
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 categories: Optional[pulumi.Input['JobCategoriesArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]] = None,
                  max_length: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 policy_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 policy_tags: Optional[pulumi.Input['JobPolicyTagsArgs']] = None,
                  precision: Optional[pulumi.Input[str]] = None,
                  scale: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] categories: [Optional] The categories attached to this field, used for field-level access control.
+        :param pulumi.Input['JobCategoriesArgs'] categories: [Optional] The categories attached to this field, used for field-level access control.
         :param pulumi.Input[str] description: [Optional] The field description. The maximum length is 1,024 characters.
         :param pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]] fields: [Optional] Describes the nested schema fields if the type property is set to RECORD.
         :param pulumi.Input[str] max_length: [Optional] Maximum length of values of this field for STRINGS or BYTES. If max_length is not specified, no maximum length constraint is imposed on this field. If type = "STRING", then max_length represents the maximum UTF-8 length of strings in this field. If type = "BYTES", then max_length represents the maximum number of bytes in this field. It is invalid to set this field if type ≠ "STRING" and ≠ "BYTES".
@@ -5319,14 +5735,14 @@ class TableFieldSchemaArgs:
 
     @property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def categories(self) -> Optional[pulumi.Input['JobCategoriesArgs']]:
         """
         [Optional] The categories attached to this field, used for field-level access control.
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def categories(self, value: Optional[pulumi.Input['JobCategoriesArgs']]):
         pulumi.set(self, "categories", value)
 
     @property
@@ -5391,11 +5807,11 @@ class TableFieldSchemaArgs:
 
     @property
     @pulumi.getter(name="policyTags")
-    def policy_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def policy_tags(self) -> Optional[pulumi.Input['JobPolicyTagsArgs']]:
         return pulumi.get(self, "policy_tags")
 
     @policy_tags.setter
-    def policy_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def policy_tags(self, value: Optional[pulumi.Input['JobPolicyTagsArgs']]):
         pulumi.set(self, "policy_tags", value)
 
     @property
@@ -5433,6 +5849,50 @@ class TableFieldSchemaArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class TableModelOptionsArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 loss_type: Optional[pulumi.Input[str]] = None,
+                 model_type: Optional[pulumi.Input[str]] = None):
+        """
+        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if loss_type is not None:
+            pulumi.set(__self__, "loss_type", loss_type)
+        if model_type is not None:
+            pulumi.set(__self__, "model_type", model_type)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="lossType")
+    def loss_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "loss_type")
+
+    @loss_type.setter
+    def loss_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "loss_type", value)
+
+    @property
+    @pulumi.getter(name="modelType")
+    def model_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "model_type")
+
+    @model_type.setter
+    def model_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "model_type", value)
 
 
 @pulumi.input_type
@@ -5511,6 +5971,122 @@ class TableSchemaArgs:
     @fields.setter
     def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TableFieldSchemaArgs']]]]):
         pulumi.set(self, "fields", value)
+
+
+@pulumi.input_type
+class TableTrainingOptionsArgs:
+    def __init__(__self__, *,
+                 early_stop: Optional[pulumi.Input[bool]] = None,
+                 l1_reg: Optional[pulumi.Input[float]] = None,
+                 l2_reg: Optional[pulumi.Input[float]] = None,
+                 learn_rate: Optional[pulumi.Input[float]] = None,
+                 learn_rate_strategy: Optional[pulumi.Input[str]] = None,
+                 line_search_init_learn_rate: Optional[pulumi.Input[float]] = None,
+                 max_iteration: Optional[pulumi.Input[str]] = None,
+                 min_rel_progress: Optional[pulumi.Input[float]] = None,
+                 warm_start: Optional[pulumi.Input[bool]] = None):
+        """
+        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        """
+        if early_stop is not None:
+            pulumi.set(__self__, "early_stop", early_stop)
+        if l1_reg is not None:
+            pulumi.set(__self__, "l1_reg", l1_reg)
+        if l2_reg is not None:
+            pulumi.set(__self__, "l2_reg", l2_reg)
+        if learn_rate is not None:
+            pulumi.set(__self__, "learn_rate", learn_rate)
+        if learn_rate_strategy is not None:
+            pulumi.set(__self__, "learn_rate_strategy", learn_rate_strategy)
+        if line_search_init_learn_rate is not None:
+            pulumi.set(__self__, "line_search_init_learn_rate", line_search_init_learn_rate)
+        if max_iteration is not None:
+            pulumi.set(__self__, "max_iteration", max_iteration)
+        if min_rel_progress is not None:
+            pulumi.set(__self__, "min_rel_progress", min_rel_progress)
+        if warm_start is not None:
+            pulumi.set(__self__, "warm_start", warm_start)
+
+    @property
+    @pulumi.getter(name="earlyStop")
+    def early_stop(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "early_stop")
+
+    @early_stop.setter
+    def early_stop(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "early_stop", value)
+
+    @property
+    @pulumi.getter(name="l1Reg")
+    def l1_reg(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "l1_reg")
+
+    @l1_reg.setter
+    def l1_reg(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "l1_reg", value)
+
+    @property
+    @pulumi.getter(name="l2Reg")
+    def l2_reg(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "l2_reg")
+
+    @l2_reg.setter
+    def l2_reg(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "l2_reg", value)
+
+    @property
+    @pulumi.getter(name="learnRate")
+    def learn_rate(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "learn_rate")
+
+    @learn_rate.setter
+    def learn_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "learn_rate", value)
+
+    @property
+    @pulumi.getter(name="learnRateStrategy")
+    def learn_rate_strategy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "learn_rate_strategy")
+
+    @learn_rate_strategy.setter
+    def learn_rate_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "learn_rate_strategy", value)
+
+    @property
+    @pulumi.getter(name="lineSearchInitLearnRate")
+    def line_search_init_learn_rate(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "line_search_init_learn_rate")
+
+    @line_search_init_learn_rate.setter
+    def line_search_init_learn_rate(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "line_search_init_learn_rate", value)
+
+    @property
+    @pulumi.getter(name="maxIteration")
+    def max_iteration(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "max_iteration")
+
+    @max_iteration.setter
+    def max_iteration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "max_iteration", value)
+
+    @property
+    @pulumi.getter(name="minRelProgress")
+    def min_rel_progress(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "min_rel_progress")
+
+    @min_rel_progress.setter
+    def min_rel_progress(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "min_rel_progress", value)
+
+    @property
+    @pulumi.getter(name="warmStart")
+    def warm_start(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "warm_start")
+
+    @warm_start.setter
+    def warm_start(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "warm_start", value)
 
 
 @pulumi.input_type

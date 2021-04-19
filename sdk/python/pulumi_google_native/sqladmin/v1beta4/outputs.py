@@ -18,6 +18,7 @@ __all__ = [
     'DiskEncryptionConfigurationResponse',
     'DiskEncryptionStatusResponse',
     'InsightsConfigResponse',
+    'InstanceFailoverReplicaResponse',
     'IpConfigurationResponse',
     'IpMappingResponse',
     'LocationPreferenceResponse',
@@ -566,6 +567,39 @@ class InsightsConfigResponse(dict):
         Whether Query Insights will record client address when enabled.
         """
         return pulumi.get(self, "record_client_address")
+
+
+@pulumi.output_type
+class InstanceFailoverReplicaResponse(dict):
+    """
+    The name and status of the failover replica. This property is applicable only to Second Generation instances.
+    """
+    def __init__(__self__, *,
+                 available: bool,
+                 name: str):
+        """
+        The name and status of the failover replica. This property is applicable only to Second Generation instances.
+        :param bool available: The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        :param str name: The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        pulumi.set(__self__, "available", available)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def available(self) -> bool:
+        """
+        The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
+        """
+        return pulumi.get(self, "available")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID. This property is applicable only to Second Generation instances.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

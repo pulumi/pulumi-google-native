@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// The parameters of the raw disk image.
         /// </summary>
         [Output("rawDisk")]
-        public Output<ImmutableDictionary<string, string>> RawDisk { get; private set; } = null!;
+        public Output<Outputs.ImageRawDiskResponse> RawDisk { get; private set; } = null!;
 
         /// <summary>
         /// [Output Only] Reserved for future use.
@@ -392,17 +392,11 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("rawDisk")]
-        private InputMap<string>? _rawDisk;
-
         /// <summary>
         /// The parameters of the raw disk image.
         /// </summary>
-        public InputMap<string> RawDisk
-        {
-            get => _rawDisk ?? (_rawDisk = new InputMap<string>());
-            set => _rawDisk = value;
-        }
+        [Input("rawDisk")]
+        public Input<Inputs.ImageRawDiskArgs>? RawDisk { get; set; }
 
         /// <summary>
         /// [Output Only] Reserved for future use.

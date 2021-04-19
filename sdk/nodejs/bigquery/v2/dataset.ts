@@ -38,7 +38,7 @@ export class Dataset extends pulumi.CustomResource {
     /**
      * [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
      */
-    public readonly access!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly access!: pulumi.Output<outputs.bigquery.v2.DatasetAccessItemResponse[]>;
     /**
      * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
      */
@@ -159,7 +159,7 @@ export interface DatasetArgs {
     /**
      * [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
      */
-    readonly access?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly access?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.DatasetAccessItemArgs>[]>;
     /**
      * [Output-only] The time when this dataset was created, in milliseconds since the epoch.
      */

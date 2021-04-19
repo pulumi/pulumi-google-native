@@ -89,7 +89,7 @@ export class SslPolicy extends pulumi.CustomResource {
     /**
      * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
-    public readonly warnings!: pulumi.Output<{[key: string]: string}[]>;
+    public readonly warnings!: pulumi.Output<outputs.compute.alpha.SslPolicyWarningsItemResponse[]>;
 
     /**
      * Create a SslPolicy resource with the given unique name, arguments, and options.
@@ -210,5 +210,5 @@ export interface SslPolicyArgs {
     /**
      * [Output Only] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
      */
-    readonly warnings?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly warnings?: pulumi.Input<pulumi.Input<inputs.compute.alpha.SslPolicyWarningsItemArgs>[]>;
 }

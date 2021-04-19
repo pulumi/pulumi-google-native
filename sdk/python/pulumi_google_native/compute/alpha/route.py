@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['RouteArgs', 'Route']
 
@@ -35,7 +37,7 @@ class RouteArgs:
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]]] = None):
         """
         The set of arguments for constructing a Route resource.
         :param pulumi.Input[bool] allow_conflicting_subnetworks: Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
@@ -62,7 +64,7 @@ class RouteArgs:
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route", route)
@@ -373,14 +375,14 @@ class RouteArgs:
 
     @property
     @pulumi.getter
-    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def warnings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]]]:
         """
         [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         return pulumi.get(self, "warnings")
 
     @warnings.setter
-    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def warnings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]]]):
         pulumi.set(self, "warnings", value)
 
 
@@ -411,7 +413,7 @@ class Route(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteWarningsItemArgs']]]]] = None,
                  __props__=None):
         """
         Creates a Route resource in the specified project using the data included in the request.
@@ -442,7 +444,7 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[str] self_link: [Output Only] Server-defined fully-qualified URL for this resource.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of instance tags to which this route applies.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteWarningsItemArgs']]]] warnings: [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """
         ...
     @overload
@@ -490,7 +492,7 @@ class Route(pulumi.CustomResource):
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RouteWarningsItemArgs']]]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -732,7 +734,7 @@ class Route(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def warnings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def warnings(self) -> pulumi.Output[Sequence['outputs.RouteWarningsItemResponse']]:
         """
         [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         """

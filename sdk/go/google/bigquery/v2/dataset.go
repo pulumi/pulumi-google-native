@@ -16,7 +16,7 @@ type Dataset struct {
 	pulumi.CustomResourceState
 
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-	Access pulumi.StringMapArrayOutput `pulumi:"access"`
+	Access DatasetAccessItemResponseArrayOutput `pulumi:"access"`
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
@@ -82,7 +82,7 @@ func GetDataset(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Dataset resources.
 type datasetState struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-	Access []map[string]string `pulumi:"access"`
+	Access []DatasetAccessItemResponse `pulumi:"access"`
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
 	// [Required] A reference that identifies the dataset.
@@ -114,7 +114,7 @@ type datasetState struct {
 
 type DatasetState struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-	Access pulumi.StringMapArrayInput
+	Access DatasetAccessItemResponseArrayInput
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
 	// [Required] A reference that identifies the dataset.
@@ -150,7 +150,7 @@ func (DatasetState) ElementType() reflect.Type {
 
 type datasetArgs struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-	Access []map[string]string `pulumi:"access"`
+	Access []DatasetAccessItem `pulumi:"access"`
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime *string `pulumi:"creationTime"`
 	DatasetId    string  `pulumi:"datasetId"`
@@ -187,7 +187,7 @@ type datasetArgs struct {
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
 	// [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
-	Access pulumi.StringMapArrayInput
+	Access DatasetAccessItemArrayInput
 	// [Output-only] The time when this dataset was created, in milliseconds since the epoch.
 	CreationTime pulumi.StringPtrInput
 	DatasetId    pulumi.StringInput

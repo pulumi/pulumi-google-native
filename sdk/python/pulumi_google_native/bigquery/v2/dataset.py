@@ -17,7 +17,7 @@ class DatasetArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
                  default_encryption_configuration: Optional[pulumi.Input['EncryptionConfigurationArgs']] = None,
@@ -35,7 +35,7 @@ class DatasetArgs:
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         :param pulumi.Input[str] creation_time: [Output-only] The time when this dataset was created, in milliseconds since the epoch.
         :param pulumi.Input['DatasetReferenceArgs'] dataset_reference: [Required] A reference that identifies the dataset.
         :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
@@ -106,14 +106,14 @@ class DatasetArgs:
 
     @property
     @pulumi.getter
-    def access(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def access(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]]:
         """
         [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         """
         return pulumi.get(self, "access")
 
     @access.setter
-    def access(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def access(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessItemArgs']]]]):
         pulumi.set(self, "access", value)
 
     @property
@@ -299,7 +299,7 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
@@ -323,7 +323,7 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]] access: [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         :param pulumi.Input[str] creation_time: [Output-only] The time when this dataset was created, in milliseconds since the epoch.
         :param pulumi.Input[pulumi.InputType['DatasetReferenceArgs']] dataset_reference: [Required] A reference that identifies the dataset.
         :param pulumi.Input[str] default_partition_expiration_ms: [Optional] The default partition expiration for all partitioned tables in the dataset, in milliseconds. Once this property is set, all newly-created partitioned tables in the dataset will have an expirationMs property in the timePartitioning settings set to this value, and changing the value will only affect new tables, not existing ones. The storage in a partition will have an expiration time of its partition time plus this value. Setting this property overrides the use of defaultTableExpirationMs for partitioned tables: only one of defaultTableExpirationMs and defaultPartitionExpirationMs will be used for any new partitioned table. If you provide an explicit timePartitioning.expirationMs when creating or updating a partitioned table, that value takes precedence over the default partition expiration time indicated by this property.
@@ -363,7 +363,7 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 access: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DatasetAccessItemArgs']]]]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetReferenceArgs']]] = None,
@@ -456,7 +456,7 @@ class Dataset(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def access(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def access(self) -> pulumi.Output[Sequence['outputs.DatasetAccessItemResponse']]:
         """
         [Optional] An array of objects that define dataset access for one or more entities. You can set this property when inserting or updating a dataset in order to control who is allowed to access the data. If unspecified at dataset creation time, BigQuery adds default dataset access for the following entities: access.specialGroup: projectReaders; access.role: READER; access.specialGroup: projectWriters; access.role: WRITER; access.specialGroup: projectOwners; access.role: OWNER; access.userByEmail: [dataset creator email]; access.role: OWNER;
         """

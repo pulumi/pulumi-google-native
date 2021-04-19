@@ -102,7 +102,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The parameters of the raw disk image.
      */
-    public readonly rawDisk!: pulumi.Output<{[key: string]: string}>;
+    public readonly rawDisk!: pulumi.Output<outputs.compute.v1.ImageRawDiskResponse>;
     /**
      * [Output Only] Reserved for future use.
      */
@@ -346,7 +346,7 @@ export interface ImageArgs {
     /**
      * The parameters of the raw disk image.
      */
-    readonly rawDisk?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly rawDisk?: pulumi.Input<inputs.compute.v1.ImageRawDiskArgs>;
     /**
      * [Output Only] Reserved for future use.
      */

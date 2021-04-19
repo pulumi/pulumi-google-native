@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         /// </summary>
         [Output("warnings")]
-        public Output<ImmutableArray<ImmutableDictionary<string, string>>> Warnings { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.RouteWarningsItemResponse>> Warnings { get; private set; } = null!;
 
 
         /// <summary>
@@ -285,14 +285,14 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         [Input("warnings")]
-        private InputList<ImmutableDictionary<string, string>>? _warnings;
+        private InputList<Inputs.RouteWarningsItemArgs>? _warnings;
 
         /// <summary>
         /// [Output Only] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> Warnings
+        public InputList<Inputs.RouteWarningsItemArgs> Warnings
         {
-            get => _warnings ?? (_warnings = new InputList<ImmutableDictionary<string, string>>());
+            get => _warnings ?? (_warnings = new InputList<Inputs.RouteWarningsItemArgs>());
             set => _warnings = value;
         }
 

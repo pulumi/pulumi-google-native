@@ -45,7 +45,7 @@ type DefaultObjectAccessControl struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringOutput `pulumi:"object"`
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapOutput `pulumi:"projectTeam"`
+	ProjectTeam DefaultObjectAccessControlProjectTeamResponseOutput `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The link to this access-control entry.
@@ -117,7 +117,7 @@ type defaultObjectAccessControlState struct {
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
 	// The project team associated with the entity, if any.
-	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	ProjectTeam *DefaultObjectAccessControlProjectTeamResponse `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -155,7 +155,7 @@ type DefaultObjectAccessControlState struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapInput
+	ProjectTeam DefaultObjectAccessControlProjectTeamResponsePtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
@@ -199,7 +199,7 @@ type defaultObjectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object *string `pulumi:"object"`
 	// The project team associated with the entity, if any.
-	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	ProjectTeam *DefaultObjectAccessControlProjectTeam `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -240,7 +240,7 @@ type DefaultObjectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapInput
+	ProjectTeam DefaultObjectAccessControlProjectTeamPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.

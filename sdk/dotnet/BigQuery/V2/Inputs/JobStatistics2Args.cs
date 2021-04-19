@@ -127,14 +127,14 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         }
 
         [Input("reservationUsage")]
-        private InputList<ImmutableDictionary<string, string>>? _reservationUsage;
+        private InputList<Inputs.JobReservationUsageItemArgs>? _reservationUsage;
 
         /// <summary>
         /// [Output-only] Job resource usage breakdown by reservation.
         /// </summary>
-        public InputList<ImmutableDictionary<string, string>> ReservationUsage
+        public InputList<Inputs.JobReservationUsageItemArgs> ReservationUsage
         {
-            get => _reservationUsage ?? (_reservationUsage = new InputList<ImmutableDictionary<string, string>>());
+            get => _reservationUsage ?? (_reservationUsage = new InputList<Inputs.JobReservationUsageItemArgs>());
             set => _reservationUsage = value;
         }
 

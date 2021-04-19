@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['BucketIamPolicyArgs', 'BucketIamPolicy']
 
@@ -14,14 +16,14 @@ __all__ = ['BucketIamPolicyArgs', 'BucketIamPolicy']
 class BucketIamPolicyArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BucketIamPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
+        :param pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
         :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
@@ -50,14 +52,14 @@ class BucketIamPolicyArgs:
 
     @property
     @pulumi.getter
-    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]:
+    def bindings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]]]:
         """
         An association between a role, which comes with a set of permissions, and members who may assume that role.
         """
         return pulumi.get(self, "bindings")
 
     @bindings.setter
-    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
+    def bindings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]]]):
         pulumi.set(self, "bindings", value)
 
     @property
@@ -114,7 +116,7 @@ class BucketIamPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketIamPolicyBindingsItemArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -126,7 +128,7 @@ class BucketIamPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketIamPolicyBindingsItemArgs']]]] bindings: An association between a role, which comes with a set of permissions, and members who may assume that role.
         :param pulumi.Input[str] etag: HTTP 1.1  Entity tag for the policy.
         :param pulumi.Input[str] kind: The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
         :param pulumi.Input[str] resource_id: The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
@@ -156,7 +158,7 @@ class BucketIamPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BucketIamPolicyBindingsItemArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -213,7 +215,7 @@ class BucketIamPolicy(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def bindings(self) -> pulumi.Output[Sequence[Mapping[str, str]]]:
+    def bindings(self) -> pulumi.Output[Sequence['outputs.BucketIamPolicyBindingsItemResponse']]:
         """
         An association between a role, which comes with a set of permissions, and members who may assume that role.
         """

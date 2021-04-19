@@ -944,6 +944,716 @@ func (o ConfigFileResponsePtrOutput) Content() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DeploymentDataItem struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key *string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value *string `pulumi:"value"`
+}
+
+// DeploymentDataItemInput is an input type that accepts DeploymentDataItemArgs and DeploymentDataItemOutput values.
+// You can construct a concrete instance of `DeploymentDataItemInput` via:
+//
+//          DeploymentDataItemArgs{...}
+type DeploymentDataItemInput interface {
+	pulumi.Input
+
+	ToDeploymentDataItemOutput() DeploymentDataItemOutput
+	ToDeploymentDataItemOutputWithContext(context.Context) DeploymentDataItemOutput
+}
+
+type DeploymentDataItemArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringPtrInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (DeploymentDataItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDataItem)(nil)).Elem()
+}
+
+func (i DeploymentDataItemArgs) ToDeploymentDataItemOutput() DeploymentDataItemOutput {
+	return i.ToDeploymentDataItemOutputWithContext(context.Background())
+}
+
+func (i DeploymentDataItemArgs) ToDeploymentDataItemOutputWithContext(ctx context.Context) DeploymentDataItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDataItemOutput)
+}
+
+// DeploymentDataItemArrayInput is an input type that accepts DeploymentDataItemArray and DeploymentDataItemArrayOutput values.
+// You can construct a concrete instance of `DeploymentDataItemArrayInput` via:
+//
+//          DeploymentDataItemArray{ DeploymentDataItemArgs{...} }
+type DeploymentDataItemArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentDataItemArrayOutput() DeploymentDataItemArrayOutput
+	ToDeploymentDataItemArrayOutputWithContext(context.Context) DeploymentDataItemArrayOutput
+}
+
+type DeploymentDataItemArray []DeploymentDataItemInput
+
+func (DeploymentDataItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentDataItem)(nil)).Elem()
+}
+
+func (i DeploymentDataItemArray) ToDeploymentDataItemArrayOutput() DeploymentDataItemArrayOutput {
+	return i.ToDeploymentDataItemArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentDataItemArray) ToDeploymentDataItemArrayOutputWithContext(ctx context.Context) DeploymentDataItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDataItemArrayOutput)
+}
+
+type DeploymentDataItemOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDataItem)(nil)).Elem()
+}
+
+func (o DeploymentDataItemOutput) ToDeploymentDataItemOutput() DeploymentDataItemOutput {
+	return o
+}
+
+func (o DeploymentDataItemOutput) ToDeploymentDataItemOutputWithContext(ctx context.Context) DeploymentDataItemOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o DeploymentDataItemOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataItem) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o DeploymentDataItemOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentDataItem) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentDataItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentDataItem)(nil)).Elem()
+}
+
+func (o DeploymentDataItemArrayOutput) ToDeploymentDataItemArrayOutput() DeploymentDataItemArrayOutput {
+	return o
+}
+
+func (o DeploymentDataItemArrayOutput) ToDeploymentDataItemArrayOutputWithContext(ctx context.Context) DeploymentDataItemArrayOutput {
+	return o
+}
+
+func (o DeploymentDataItemArrayOutput) Index(i pulumi.IntInput) DeploymentDataItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentDataItem {
+		return vs[0].([]DeploymentDataItem)[vs[1].(int)]
+	}).(DeploymentDataItemOutput)
+}
+
+type DeploymentDataItemResponse struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key string `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value string `pulumi:"value"`
+}
+
+// DeploymentDataItemResponseInput is an input type that accepts DeploymentDataItemResponseArgs and DeploymentDataItemResponseOutput values.
+// You can construct a concrete instance of `DeploymentDataItemResponseInput` via:
+//
+//          DeploymentDataItemResponseArgs{...}
+type DeploymentDataItemResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentDataItemResponseOutput() DeploymentDataItemResponseOutput
+	ToDeploymentDataItemResponseOutputWithContext(context.Context) DeploymentDataItemResponseOutput
+}
+
+type DeploymentDataItemResponseArgs struct {
+	// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+	Key pulumi.StringInput `pulumi:"key"`
+	// [Output Only] A warning data value corresponding to the key.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DeploymentDataItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDataItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentDataItemResponseArgs) ToDeploymentDataItemResponseOutput() DeploymentDataItemResponseOutput {
+	return i.ToDeploymentDataItemResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentDataItemResponseArgs) ToDeploymentDataItemResponseOutputWithContext(ctx context.Context) DeploymentDataItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDataItemResponseOutput)
+}
+
+// DeploymentDataItemResponseArrayInput is an input type that accepts DeploymentDataItemResponseArray and DeploymentDataItemResponseArrayOutput values.
+// You can construct a concrete instance of `DeploymentDataItemResponseArrayInput` via:
+//
+//          DeploymentDataItemResponseArray{ DeploymentDataItemResponseArgs{...} }
+type DeploymentDataItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentDataItemResponseArrayOutput() DeploymentDataItemResponseArrayOutput
+	ToDeploymentDataItemResponseArrayOutputWithContext(context.Context) DeploymentDataItemResponseArrayOutput
+}
+
+type DeploymentDataItemResponseArray []DeploymentDataItemResponseInput
+
+func (DeploymentDataItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentDataItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentDataItemResponseArray) ToDeploymentDataItemResponseArrayOutput() DeploymentDataItemResponseArrayOutput {
+	return i.ToDeploymentDataItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentDataItemResponseArray) ToDeploymentDataItemResponseArrayOutputWithContext(ctx context.Context) DeploymentDataItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentDataItemResponseArrayOutput)
+}
+
+type DeploymentDataItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentDataItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentDataItemResponseOutput) ToDeploymentDataItemResponseOutput() DeploymentDataItemResponseOutput {
+	return o
+}
+
+func (o DeploymentDataItemResponseOutput) ToDeploymentDataItemResponseOutputWithContext(ctx context.Context) DeploymentDataItemResponseOutput {
+	return o
+}
+
+// [Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).
+func (o DeploymentDataItemResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentDataItemResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// [Output Only] A warning data value corresponding to the key.
+func (o DeploymentDataItemResponseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentDataItemResponse) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DeploymentDataItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentDataItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentDataItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentDataItemResponseArrayOutput) ToDeploymentDataItemResponseArrayOutput() DeploymentDataItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentDataItemResponseArrayOutput) ToDeploymentDataItemResponseArrayOutputWithContext(ctx context.Context) DeploymentDataItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentDataItemResponseArrayOutput) Index(i pulumi.IntInput) DeploymentDataItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentDataItemResponse {
+		return vs[0].([]DeploymentDataItemResponse)[vs[1].(int)]
+	}).(DeploymentDataItemResponseOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentError struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors []DeploymentErrorsItem `pulumi:"errors"`
+}
+
+// DeploymentErrorInput is an input type that accepts DeploymentErrorArgs and DeploymentErrorOutput values.
+// You can construct a concrete instance of `DeploymentErrorInput` via:
+//
+//          DeploymentErrorArgs{...}
+type DeploymentErrorInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorOutput() DeploymentErrorOutput
+	ToDeploymentErrorOutputWithContext(context.Context) DeploymentErrorOutput
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentErrorArgs struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors DeploymentErrorsItemArrayInput `pulumi:"errors"`
+}
+
+func (DeploymentErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentError)(nil)).Elem()
+}
+
+func (i DeploymentErrorArgs) ToDeploymentErrorOutput() DeploymentErrorOutput {
+	return i.ToDeploymentErrorOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorArgs) ToDeploymentErrorOutputWithContext(ctx context.Context) DeploymentErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorOutput)
+}
+
+func (i DeploymentErrorArgs) ToDeploymentErrorPtrOutput() DeploymentErrorPtrOutput {
+	return i.ToDeploymentErrorPtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorArgs) ToDeploymentErrorPtrOutputWithContext(ctx context.Context) DeploymentErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorOutput).ToDeploymentErrorPtrOutputWithContext(ctx)
+}
+
+// DeploymentErrorPtrInput is an input type that accepts DeploymentErrorArgs, DeploymentErrorPtr and DeploymentErrorPtrOutput values.
+// You can construct a concrete instance of `DeploymentErrorPtrInput` via:
+//
+//          DeploymentErrorArgs{...}
+//
+//  or:
+//
+//          nil
+type DeploymentErrorPtrInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorPtrOutput() DeploymentErrorPtrOutput
+	ToDeploymentErrorPtrOutputWithContext(context.Context) DeploymentErrorPtrOutput
+}
+
+type deploymentErrorPtrType DeploymentErrorArgs
+
+func DeploymentErrorPtr(v *DeploymentErrorArgs) DeploymentErrorPtrInput {
+	return (*deploymentErrorPtrType)(v)
+}
+
+func (*deploymentErrorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentError)(nil)).Elem()
+}
+
+func (i *deploymentErrorPtrType) ToDeploymentErrorPtrOutput() DeploymentErrorPtrOutput {
+	return i.ToDeploymentErrorPtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentErrorPtrType) ToDeploymentErrorPtrOutputWithContext(ctx context.Context) DeploymentErrorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorPtrOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentErrorOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentError)(nil)).Elem()
+}
+
+func (o DeploymentErrorOutput) ToDeploymentErrorOutput() DeploymentErrorOutput {
+	return o
+}
+
+func (o DeploymentErrorOutput) ToDeploymentErrorOutputWithContext(ctx context.Context) DeploymentErrorOutput {
+	return o
+}
+
+func (o DeploymentErrorOutput) ToDeploymentErrorPtrOutput() DeploymentErrorPtrOutput {
+	return o.ToDeploymentErrorPtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentErrorOutput) ToDeploymentErrorPtrOutputWithContext(ctx context.Context) DeploymentErrorPtrOutput {
+	return o.ApplyT(func(v DeploymentError) *DeploymentError {
+		return &v
+	}).(DeploymentErrorPtrOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o DeploymentErrorOutput) Errors() DeploymentErrorsItemArrayOutput {
+	return o.ApplyT(func(v DeploymentError) []DeploymentErrorsItem { return v.Errors }).(DeploymentErrorsItemArrayOutput)
+}
+
+type DeploymentErrorPtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentError)(nil)).Elem()
+}
+
+func (o DeploymentErrorPtrOutput) ToDeploymentErrorPtrOutput() DeploymentErrorPtrOutput {
+	return o
+}
+
+func (o DeploymentErrorPtrOutput) ToDeploymentErrorPtrOutputWithContext(ctx context.Context) DeploymentErrorPtrOutput {
+	return o
+}
+
+func (o DeploymentErrorPtrOutput) Elem() DeploymentErrorOutput {
+	return o.ApplyT(func(v *DeploymentError) DeploymentError { return *v }).(DeploymentErrorOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o DeploymentErrorPtrOutput) Errors() DeploymentErrorsItemArrayOutput {
+	return o.ApplyT(func(v *DeploymentError) []DeploymentErrorsItem {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(DeploymentErrorsItemArrayOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentErrorResponse struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors []DeploymentErrorsItemResponse `pulumi:"errors"`
+}
+
+// DeploymentErrorResponseInput is an input type that accepts DeploymentErrorResponseArgs and DeploymentErrorResponseOutput values.
+// You can construct a concrete instance of `DeploymentErrorResponseInput` via:
+//
+//          DeploymentErrorResponseArgs{...}
+type DeploymentErrorResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorResponseOutput() DeploymentErrorResponseOutput
+	ToDeploymentErrorResponseOutputWithContext(context.Context) DeploymentErrorResponseOutput
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentErrorResponseArgs struct {
+	// [Output Only] The array of errors encountered while processing this operation.
+	Errors DeploymentErrorsItemResponseArrayInput `pulumi:"errors"`
+}
+
+func (DeploymentErrorResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorResponse)(nil)).Elem()
+}
+
+func (i DeploymentErrorResponseArgs) ToDeploymentErrorResponseOutput() DeploymentErrorResponseOutput {
+	return i.ToDeploymentErrorResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorResponseArgs) ToDeploymentErrorResponseOutputWithContext(ctx context.Context) DeploymentErrorResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorResponseOutput)
+}
+
+func (i DeploymentErrorResponseArgs) ToDeploymentErrorResponsePtrOutput() DeploymentErrorResponsePtrOutput {
+	return i.ToDeploymentErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorResponseArgs) ToDeploymentErrorResponsePtrOutputWithContext(ctx context.Context) DeploymentErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorResponseOutput).ToDeploymentErrorResponsePtrOutputWithContext(ctx)
+}
+
+// DeploymentErrorResponsePtrInput is an input type that accepts DeploymentErrorResponseArgs, DeploymentErrorResponsePtr and DeploymentErrorResponsePtrOutput values.
+// You can construct a concrete instance of `DeploymentErrorResponsePtrInput` via:
+//
+//          DeploymentErrorResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DeploymentErrorResponsePtrInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorResponsePtrOutput() DeploymentErrorResponsePtrOutput
+	ToDeploymentErrorResponsePtrOutputWithContext(context.Context) DeploymentErrorResponsePtrOutput
+}
+
+type deploymentErrorResponsePtrType DeploymentErrorResponseArgs
+
+func DeploymentErrorResponsePtr(v *DeploymentErrorResponseArgs) DeploymentErrorResponsePtrInput {
+	return (*deploymentErrorResponsePtrType)(v)
+}
+
+func (*deploymentErrorResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentErrorResponse)(nil)).Elem()
+}
+
+func (i *deploymentErrorResponsePtrType) ToDeploymentErrorResponsePtrOutput() DeploymentErrorResponsePtrOutput {
+	return i.ToDeploymentErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *deploymentErrorResponsePtrType) ToDeploymentErrorResponsePtrOutputWithContext(ctx context.Context) DeploymentErrorResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorResponsePtrOutput)
+}
+
+// [Output Only] If errors are generated during processing of the operation, this field will be populated.
+type DeploymentErrorResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorResponse)(nil)).Elem()
+}
+
+func (o DeploymentErrorResponseOutput) ToDeploymentErrorResponseOutput() DeploymentErrorResponseOutput {
+	return o
+}
+
+func (o DeploymentErrorResponseOutput) ToDeploymentErrorResponseOutputWithContext(ctx context.Context) DeploymentErrorResponseOutput {
+	return o
+}
+
+func (o DeploymentErrorResponseOutput) ToDeploymentErrorResponsePtrOutput() DeploymentErrorResponsePtrOutput {
+	return o.ToDeploymentErrorResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DeploymentErrorResponseOutput) ToDeploymentErrorResponsePtrOutputWithContext(ctx context.Context) DeploymentErrorResponsePtrOutput {
+	return o.ApplyT(func(v DeploymentErrorResponse) *DeploymentErrorResponse {
+		return &v
+	}).(DeploymentErrorResponsePtrOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o DeploymentErrorResponseOutput) Errors() DeploymentErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentErrorResponse) []DeploymentErrorsItemResponse { return v.Errors }).(DeploymentErrorsItemResponseArrayOutput)
+}
+
+type DeploymentErrorResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeploymentErrorResponse)(nil)).Elem()
+}
+
+func (o DeploymentErrorResponsePtrOutput) ToDeploymentErrorResponsePtrOutput() DeploymentErrorResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentErrorResponsePtrOutput) ToDeploymentErrorResponsePtrOutputWithContext(ctx context.Context) DeploymentErrorResponsePtrOutput {
+	return o
+}
+
+func (o DeploymentErrorResponsePtrOutput) Elem() DeploymentErrorResponseOutput {
+	return o.ApplyT(func(v *DeploymentErrorResponse) DeploymentErrorResponse { return *v }).(DeploymentErrorResponseOutput)
+}
+
+// [Output Only] The array of errors encountered while processing this operation.
+func (o DeploymentErrorResponsePtrOutput) Errors() DeploymentErrorsItemResponseArrayOutput {
+	return o.ApplyT(func(v *DeploymentErrorResponse) []DeploymentErrorsItemResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Errors
+	}).(DeploymentErrorsItemResponseArrayOutput)
+}
+
+type DeploymentErrorsItem struct {
+	// [Output Only] The error type identifier for this error.
+	Code *string `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location *string `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message *string `pulumi:"message"`
+}
+
+// DeploymentErrorsItemInput is an input type that accepts DeploymentErrorsItemArgs and DeploymentErrorsItemOutput values.
+// You can construct a concrete instance of `DeploymentErrorsItemInput` via:
+//
+//          DeploymentErrorsItemArgs{...}
+type DeploymentErrorsItemInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorsItemOutput() DeploymentErrorsItemOutput
+	ToDeploymentErrorsItemOutputWithContext(context.Context) DeploymentErrorsItemOutput
+}
+
+type DeploymentErrorsItemArgs struct {
+	// [Output Only] The error type identifier for this error.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (DeploymentErrorsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorsItem)(nil)).Elem()
+}
+
+func (i DeploymentErrorsItemArgs) ToDeploymentErrorsItemOutput() DeploymentErrorsItemOutput {
+	return i.ToDeploymentErrorsItemOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorsItemArgs) ToDeploymentErrorsItemOutputWithContext(ctx context.Context) DeploymentErrorsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorsItemOutput)
+}
+
+// DeploymentErrorsItemArrayInput is an input type that accepts DeploymentErrorsItemArray and DeploymentErrorsItemArrayOutput values.
+// You can construct a concrete instance of `DeploymentErrorsItemArrayInput` via:
+//
+//          DeploymentErrorsItemArray{ DeploymentErrorsItemArgs{...} }
+type DeploymentErrorsItemArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorsItemArrayOutput() DeploymentErrorsItemArrayOutput
+	ToDeploymentErrorsItemArrayOutputWithContext(context.Context) DeploymentErrorsItemArrayOutput
+}
+
+type DeploymentErrorsItemArray []DeploymentErrorsItemInput
+
+func (DeploymentErrorsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentErrorsItem)(nil)).Elem()
+}
+
+func (i DeploymentErrorsItemArray) ToDeploymentErrorsItemArrayOutput() DeploymentErrorsItemArrayOutput {
+	return i.ToDeploymentErrorsItemArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorsItemArray) ToDeploymentErrorsItemArrayOutputWithContext(ctx context.Context) DeploymentErrorsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorsItemArrayOutput)
+}
+
+type DeploymentErrorsItemOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorsItem)(nil)).Elem()
+}
+
+func (o DeploymentErrorsItemOutput) ToDeploymentErrorsItemOutput() DeploymentErrorsItemOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemOutput) ToDeploymentErrorsItemOutputWithContext(ctx context.Context) DeploymentErrorsItemOutput {
+	return o
+}
+
+// [Output Only] The error type identifier for this error.
+func (o DeploymentErrorsItemOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentErrorsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+func (o DeploymentErrorsItemOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentErrorsItem) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] An optional, human-readable error message.
+func (o DeploymentErrorsItemOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentErrorsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentErrorsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentErrorsItem)(nil)).Elem()
+}
+
+func (o DeploymentErrorsItemArrayOutput) ToDeploymentErrorsItemArrayOutput() DeploymentErrorsItemArrayOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemArrayOutput) ToDeploymentErrorsItemArrayOutputWithContext(ctx context.Context) DeploymentErrorsItemArrayOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemArrayOutput) Index(i pulumi.IntInput) DeploymentErrorsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentErrorsItem {
+		return vs[0].([]DeploymentErrorsItem)[vs[1].(int)]
+	}).(DeploymentErrorsItemOutput)
+}
+
+type DeploymentErrorsItemResponse struct {
+	// [Output Only] The error type identifier for this error.
+	Code string `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location string `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message string `pulumi:"message"`
+}
+
+// DeploymentErrorsItemResponseInput is an input type that accepts DeploymentErrorsItemResponseArgs and DeploymentErrorsItemResponseOutput values.
+// You can construct a concrete instance of `DeploymentErrorsItemResponseInput` via:
+//
+//          DeploymentErrorsItemResponseArgs{...}
+type DeploymentErrorsItemResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorsItemResponseOutput() DeploymentErrorsItemResponseOutput
+	ToDeploymentErrorsItemResponseOutputWithContext(context.Context) DeploymentErrorsItemResponseOutput
+}
+
+type DeploymentErrorsItemResponseArgs struct {
+	// [Output Only] The error type identifier for this error.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+	Location pulumi.StringInput `pulumi:"location"`
+	// [Output Only] An optional, human-readable error message.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (DeploymentErrorsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorsItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentErrorsItemResponseArgs) ToDeploymentErrorsItemResponseOutput() DeploymentErrorsItemResponseOutput {
+	return i.ToDeploymentErrorsItemResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorsItemResponseArgs) ToDeploymentErrorsItemResponseOutputWithContext(ctx context.Context) DeploymentErrorsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorsItemResponseOutput)
+}
+
+// DeploymentErrorsItemResponseArrayInput is an input type that accepts DeploymentErrorsItemResponseArray and DeploymentErrorsItemResponseArrayOutput values.
+// You can construct a concrete instance of `DeploymentErrorsItemResponseArrayInput` via:
+//
+//          DeploymentErrorsItemResponseArray{ DeploymentErrorsItemResponseArgs{...} }
+type DeploymentErrorsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentErrorsItemResponseArrayOutput() DeploymentErrorsItemResponseArrayOutput
+	ToDeploymentErrorsItemResponseArrayOutputWithContext(context.Context) DeploymentErrorsItemResponseArrayOutput
+}
+
+type DeploymentErrorsItemResponseArray []DeploymentErrorsItemResponseInput
+
+func (DeploymentErrorsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentErrorsItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentErrorsItemResponseArray) ToDeploymentErrorsItemResponseArrayOutput() DeploymentErrorsItemResponseArrayOutput {
+	return i.ToDeploymentErrorsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentErrorsItemResponseArray) ToDeploymentErrorsItemResponseArrayOutputWithContext(ctx context.Context) DeploymentErrorsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentErrorsItemResponseArrayOutput)
+}
+
+type DeploymentErrorsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentErrorsItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentErrorsItemResponseOutput) ToDeploymentErrorsItemResponseOutput() DeploymentErrorsItemResponseOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemResponseOutput) ToDeploymentErrorsItemResponseOutputWithContext(ctx context.Context) DeploymentErrorsItemResponseOutput {
+	return o
+}
+
+// [Output Only] The error type identifier for this error.
+func (o DeploymentErrorsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentErrorsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Indicates the field in the request that caused the error. This property is optional.
+func (o DeploymentErrorsItemResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentErrorsItemResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// [Output Only] An optional, human-readable error message.
+func (o DeploymentErrorsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentErrorsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type DeploymentErrorsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentErrorsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentErrorsItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentErrorsItemResponseArrayOutput) ToDeploymentErrorsItemResponseArrayOutput() DeploymentErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemResponseArrayOutput) ToDeploymentErrorsItemResponseArrayOutputWithContext(ctx context.Context) DeploymentErrorsItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentErrorsItemResponseArrayOutput) Index(i pulumi.IntInput) DeploymentErrorsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentErrorsItemResponse {
+		return vs[0].([]DeploymentErrorsItemResponse)[vs[1].(int)]
+	}).(DeploymentErrorsItemResponseOutput)
+}
+
 // Label object for Deployments
 type DeploymentLabelEntry struct {
 	// Key of the label
@@ -1718,6 +2428,236 @@ func (o DeploymentUpdateResponsePtrOutput) Manifest() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DeploymentWarningsItem struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code *string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []DeploymentDataItem `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message *string `pulumi:"message"`
+}
+
+// DeploymentWarningsItemInput is an input type that accepts DeploymentWarningsItemArgs and DeploymentWarningsItemOutput values.
+// You can construct a concrete instance of `DeploymentWarningsItemInput` via:
+//
+//          DeploymentWarningsItemArgs{...}
+type DeploymentWarningsItemInput interface {
+	pulumi.Input
+
+	ToDeploymentWarningsItemOutput() DeploymentWarningsItemOutput
+	ToDeploymentWarningsItemOutputWithContext(context.Context) DeploymentWarningsItemOutput
+}
+
+type DeploymentWarningsItemArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringPtrInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data DeploymentDataItemArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (DeploymentWarningsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWarningsItem)(nil)).Elem()
+}
+
+func (i DeploymentWarningsItemArgs) ToDeploymentWarningsItemOutput() DeploymentWarningsItemOutput {
+	return i.ToDeploymentWarningsItemOutputWithContext(context.Background())
+}
+
+func (i DeploymentWarningsItemArgs) ToDeploymentWarningsItemOutputWithContext(ctx context.Context) DeploymentWarningsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWarningsItemOutput)
+}
+
+// DeploymentWarningsItemArrayInput is an input type that accepts DeploymentWarningsItemArray and DeploymentWarningsItemArrayOutput values.
+// You can construct a concrete instance of `DeploymentWarningsItemArrayInput` via:
+//
+//          DeploymentWarningsItemArray{ DeploymentWarningsItemArgs{...} }
+type DeploymentWarningsItemArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentWarningsItemArrayOutput() DeploymentWarningsItemArrayOutput
+	ToDeploymentWarningsItemArrayOutputWithContext(context.Context) DeploymentWarningsItemArrayOutput
+}
+
+type DeploymentWarningsItemArray []DeploymentWarningsItemInput
+
+func (DeploymentWarningsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentWarningsItem)(nil)).Elem()
+}
+
+func (i DeploymentWarningsItemArray) ToDeploymentWarningsItemArrayOutput() DeploymentWarningsItemArrayOutput {
+	return i.ToDeploymentWarningsItemArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentWarningsItemArray) ToDeploymentWarningsItemArrayOutputWithContext(ctx context.Context) DeploymentWarningsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWarningsItemArrayOutput)
+}
+
+type DeploymentWarningsItemOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWarningsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWarningsItem)(nil)).Elem()
+}
+
+func (o DeploymentWarningsItemOutput) ToDeploymentWarningsItemOutput() DeploymentWarningsItemOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemOutput) ToDeploymentWarningsItemOutputWithContext(ctx context.Context) DeploymentWarningsItemOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o DeploymentWarningsItemOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWarningsItem) *string { return v.Code }).(pulumi.StringPtrOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o DeploymentWarningsItemOutput) Data() DeploymentDataItemArrayOutput {
+	return o.ApplyT(func(v DeploymentWarningsItem) []DeploymentDataItem { return v.Data }).(DeploymentDataItemArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o DeploymentWarningsItemOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DeploymentWarningsItem) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type DeploymentWarningsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWarningsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentWarningsItem)(nil)).Elem()
+}
+
+func (o DeploymentWarningsItemArrayOutput) ToDeploymentWarningsItemArrayOutput() DeploymentWarningsItemArrayOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemArrayOutput) ToDeploymentWarningsItemArrayOutputWithContext(ctx context.Context) DeploymentWarningsItemArrayOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemArrayOutput) Index(i pulumi.IntInput) DeploymentWarningsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentWarningsItem {
+		return vs[0].([]DeploymentWarningsItem)[vs[1].(int)]
+	}).(DeploymentWarningsItemOutput)
+}
+
+type DeploymentWarningsItemResponse struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code string `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data []DeploymentDataItemResponse `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message string `pulumi:"message"`
+}
+
+// DeploymentWarningsItemResponseInput is an input type that accepts DeploymentWarningsItemResponseArgs and DeploymentWarningsItemResponseOutput values.
+// You can construct a concrete instance of `DeploymentWarningsItemResponseInput` via:
+//
+//          DeploymentWarningsItemResponseArgs{...}
+type DeploymentWarningsItemResponseInput interface {
+	pulumi.Input
+
+	ToDeploymentWarningsItemResponseOutput() DeploymentWarningsItemResponseOutput
+	ToDeploymentWarningsItemResponseOutputWithContext(context.Context) DeploymentWarningsItemResponseOutput
+}
+
+type DeploymentWarningsItemResponseArgs struct {
+	// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+	Code pulumi.StringInput `pulumi:"code"`
+	// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+	Data DeploymentDataItemResponseArrayInput `pulumi:"data"`
+	// [Output Only] A human-readable description of the warning code.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (DeploymentWarningsItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWarningsItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentWarningsItemResponseArgs) ToDeploymentWarningsItemResponseOutput() DeploymentWarningsItemResponseOutput {
+	return i.ToDeploymentWarningsItemResponseOutputWithContext(context.Background())
+}
+
+func (i DeploymentWarningsItemResponseArgs) ToDeploymentWarningsItemResponseOutputWithContext(ctx context.Context) DeploymentWarningsItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWarningsItemResponseOutput)
+}
+
+// DeploymentWarningsItemResponseArrayInput is an input type that accepts DeploymentWarningsItemResponseArray and DeploymentWarningsItemResponseArrayOutput values.
+// You can construct a concrete instance of `DeploymentWarningsItemResponseArrayInput` via:
+//
+//          DeploymentWarningsItemResponseArray{ DeploymentWarningsItemResponseArgs{...} }
+type DeploymentWarningsItemResponseArrayInput interface {
+	pulumi.Input
+
+	ToDeploymentWarningsItemResponseArrayOutput() DeploymentWarningsItemResponseArrayOutput
+	ToDeploymentWarningsItemResponseArrayOutputWithContext(context.Context) DeploymentWarningsItemResponseArrayOutput
+}
+
+type DeploymentWarningsItemResponseArray []DeploymentWarningsItemResponseInput
+
+func (DeploymentWarningsItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentWarningsItemResponse)(nil)).Elem()
+}
+
+func (i DeploymentWarningsItemResponseArray) ToDeploymentWarningsItemResponseArrayOutput() DeploymentWarningsItemResponseArrayOutput {
+	return i.ToDeploymentWarningsItemResponseArrayOutputWithContext(context.Background())
+}
+
+func (i DeploymentWarningsItemResponseArray) ToDeploymentWarningsItemResponseArrayOutputWithContext(ctx context.Context) DeploymentWarningsItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeploymentWarningsItemResponseArrayOutput)
+}
+
+type DeploymentWarningsItemResponseOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWarningsItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeploymentWarningsItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentWarningsItemResponseOutput) ToDeploymentWarningsItemResponseOutput() DeploymentWarningsItemResponseOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemResponseOutput) ToDeploymentWarningsItemResponseOutputWithContext(ctx context.Context) DeploymentWarningsItemResponseOutput {
+	return o
+}
+
+// [Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
+func (o DeploymentWarningsItemResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWarningsItemResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// [Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+func (o DeploymentWarningsItemResponseOutput) Data() DeploymentDataItemResponseArrayOutput {
+	return o.ApplyT(func(v DeploymentWarningsItemResponse) []DeploymentDataItemResponse { return v.Data }).(DeploymentDataItemResponseArrayOutput)
+}
+
+// [Output Only] A human-readable description of the warning code.
+func (o DeploymentWarningsItemResponseOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v DeploymentWarningsItemResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type DeploymentWarningsItemResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DeploymentWarningsItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DeploymentWarningsItemResponse)(nil)).Elem()
+}
+
+func (o DeploymentWarningsItemResponseArrayOutput) ToDeploymentWarningsItemResponseArrayOutput() DeploymentWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemResponseArrayOutput) ToDeploymentWarningsItemResponseArrayOutputWithContext(ctx context.Context) DeploymentWarningsItemResponseArrayOutput {
+	return o
+}
+
+func (o DeploymentWarningsItemResponseArrayOutput) Index(i pulumi.IntInput) DeploymentWarningsItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DeploymentWarningsItemResponse {
+		return vs[0].([]DeploymentWarningsItemResponse)[vs[1].(int)]
+	}).(DeploymentWarningsItemResponseOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -2214,7 +3154,7 @@ type Operation struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime *string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error map[string]string `pulumi:"error"`
+	Error *DeploymentError `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage *string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -2250,7 +3190,7 @@ type Operation struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User *string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []DeploymentWarningsItem `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone *string `pulumi:"zone"`
 }
@@ -2277,7 +3217,7 @@ type OperationArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error pulumi.StringMapInput `pulumi:"error"`
+	Error DeploymentErrorPtrInput `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringPtrInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -2313,7 +3253,7 @@ type OperationArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringPtrInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings pulumi.StringMapArrayInput `pulumi:"warnings"`
+	Warnings DeploymentWarningsItemArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -2417,8 +3357,8 @@ func (o OperationOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v Operation) map[string]string { return v.Error }).(pulumi.StringMapOutput)
+func (o OperationOutput) Error() DeploymentErrorPtrOutput {
+	return o.ApplyT(func(v Operation) *DeploymentError { return v.Error }).(DeploymentErrorPtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -2507,8 +3447,8 @@ func (o OperationOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v Operation) []map[string]string { return v.Warnings }).(pulumi.StringMapArrayOutput)
+func (o OperationOutput) Warnings() DeploymentWarningsItemArrayOutput {
+	return o.ApplyT(func(v Operation) []DeploymentWarningsItem { return v.Warnings }).(DeploymentWarningsItemArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -2575,13 +3515,13 @@ func (o OperationPtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *Operation) map[string]string {
+func (o OperationPtrOutput) Error() DeploymentErrorPtrOutput {
+	return o.ApplyT(func(v *Operation) *DeploymentError {
 		if v == nil {
 			return nil
 		}
 		return v.Error
-	}).(pulumi.StringMapOutput)
+	}).(DeploymentErrorPtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -2755,13 +3695,13 @@ func (o OperationPtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationPtrOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *Operation) []map[string]string {
+func (o OperationPtrOutput) Warnings() DeploymentWarningsItemArrayOutput {
+	return o.ApplyT(func(v *Operation) []DeploymentWarningsItem {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(pulumi.StringMapArrayOutput)
+	}).(DeploymentWarningsItemArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -2785,7 +3725,7 @@ type OperationResponse struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime string `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error map[string]string `pulumi:"error"`
+	Error DeploymentErrorResponse `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage string `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -2819,7 +3759,7 @@ type OperationResponse struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User string `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings []map[string]string `pulumi:"warnings"`
+	Warnings []DeploymentWarningsItemResponse `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone string `pulumi:"zone"`
 }
@@ -2846,7 +3786,7 @@ type OperationResponseArgs struct {
 	// [Output Only] The time that this operation was completed. This value is in RFC3339 text format.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
 	// [Output Only] If errors are generated during processing of the operation, this field will be populated.
-	Error pulumi.StringMapInput `pulumi:"error"`
+	Error DeploymentErrorResponseInput `pulumi:"error"`
 	// [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
 	HttpErrorMessage pulumi.StringInput `pulumi:"httpErrorMessage"`
 	// [Output Only] If the operation fails, this field contains the HTTP error status code that was returned. For example, a `404` means the resource was not found.
@@ -2880,7 +3820,7 @@ type OperationResponseArgs struct {
 	// [Output Only] User who requested the operation, for example: `user@example.com`.
 	User pulumi.StringInput `pulumi:"user"`
 	// [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-	Warnings pulumi.StringMapArrayInput `pulumi:"warnings"`
+	Warnings DeploymentWarningsItemResponseArrayInput `pulumi:"warnings"`
 	// [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
 	Zone pulumi.StringInput `pulumi:"zone"`
 }
@@ -2984,8 +3924,8 @@ func (o OperationResponseOutput) EndTime() pulumi.StringOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v OperationResponse) map[string]string { return v.Error }).(pulumi.StringMapOutput)
+func (o OperationResponseOutput) Error() DeploymentErrorResponseOutput {
+	return o.ApplyT(func(v OperationResponse) DeploymentErrorResponse { return v.Error }).(DeploymentErrorResponseOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -3069,8 +4009,8 @@ func (o OperationResponseOutput) User() pulumi.StringOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponseOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v OperationResponse) []map[string]string { return v.Warnings }).(pulumi.StringMapArrayOutput)
+func (o OperationResponseOutput) Warnings() DeploymentWarningsItemResponseArrayOutput {
+	return o.ApplyT(func(v OperationResponse) []DeploymentWarningsItemResponse { return v.Warnings }).(DeploymentWarningsItemResponseArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -3137,13 +4077,13 @@ func (o OperationResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If errors are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Error() pulumi.StringMapOutput {
-	return o.ApplyT(func(v *OperationResponse) map[string]string {
+func (o OperationResponsePtrOutput) Error() DeploymentErrorResponsePtrOutput {
+	return o.ApplyT(func(v *OperationResponse) *DeploymentErrorResponse {
 		if v == nil {
 			return nil
 		}
-		return v.Error
-	}).(pulumi.StringMapOutput)
+		return &v.Error
+	}).(DeploymentErrorResponsePtrOutput)
 }
 
 // [Output Only] If the operation fails, this field contains the HTTP error message that was returned, such as `NOT FOUND`.
@@ -3307,13 +4247,13 @@ func (o OperationResponsePtrOutput) User() pulumi.StringPtrOutput {
 }
 
 // [Output Only] If warning messages are generated during processing of the operation, this field will be populated.
-func (o OperationResponsePtrOutput) Warnings() pulumi.StringMapArrayOutput {
-	return o.ApplyT(func(v *OperationResponse) []map[string]string {
+func (o OperationResponsePtrOutput) Warnings() DeploymentWarningsItemResponseArrayOutput {
+	return o.ApplyT(func(v *OperationResponse) []DeploymentWarningsItemResponse {
 		if v == nil {
 			return nil
 		}
 		return v.Warnings
-	}).(pulumi.StringMapArrayOutput)
+	}).(DeploymentWarningsItemResponseArrayOutput)
 }
 
 // [Output Only] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
@@ -3643,6 +4583,18 @@ func init() {
 	pulumi.RegisterOutputType(ConfigFilePtrOutput{})
 	pulumi.RegisterOutputType(ConfigFileResponseOutput{})
 	pulumi.RegisterOutputType(ConfigFileResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentDataItemOutput{})
+	pulumi.RegisterOutputType(DeploymentDataItemArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentDataItemResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentDataItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorPtrOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorsItemOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorsItemArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorsItemResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentErrorsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentLabelEntryResponseOutput{})
@@ -3655,6 +4607,10 @@ func init() {
 	pulumi.RegisterOutputType(DeploymentUpdateLabelEntryResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateResponseOutput{})
 	pulumi.RegisterOutputType(DeploymentUpdateResponsePtrOutput{})
+	pulumi.RegisterOutputType(DeploymentWarningsItemOutput{})
+	pulumi.RegisterOutputType(DeploymentWarningsItemArrayOutput{})
+	pulumi.RegisterOutputType(DeploymentWarningsItemResponseOutput{})
+	pulumi.RegisterOutputType(DeploymentWarningsItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

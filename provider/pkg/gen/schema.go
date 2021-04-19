@@ -335,7 +335,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 			}
 		}
 
-		bodyBag, err := g.genProperties(&createRequest, flatten, false)
+		bodyBag, err := g.genProperties(typeName, &createRequest, flatten, false)
 		if err != nil {
 			return err
 		}
@@ -361,7 +361,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 				}
 			}
 			resourceMeta.UpdateProperties = map[string]resources.CloudAPIProperty{}
-			updateBag, err := g.genProperties(&updateRequest, updateFlatten, false)
+			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false)
 			if err != nil {
 				return err
 			}
@@ -383,7 +383,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	requiredProperties := codegen.NewStringSet()
 	if getMethod.Response != nil {
 		response := g.rest.Schemas[getMethod.Response.Ref]
-		responseBag, err := g.genProperties(&response, "", true)
+		responseBag, err := g.genProperties(typeName, &response, "", true)
 		if err != nil {
 			return err
 		}
@@ -416,7 +416,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	return nil
 }
 
-func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatten string, isOutput bool) (*propertyBag, error) {
+func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten string, isOutput bool) (*propertyBag, error) {
 	result := propertyBag{
 		specs:         map[string]schema.PropertySpec{},
 		requiredSpecs: codegen.NewStringSet(),
@@ -438,7 +438,7 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatt
 
 		if name == flatten {
 			subtypeSchema := g.rest.Schemas[prop.Ref]
-			sub, err := g.genProperties(&subtypeSchema, "", isOutput)
+			sub, err := g.genProperties(typeName, &subtypeSchema, "", isOutput)
 			if err != nil {
 				return nil, err
 			}
@@ -456,7 +456,7 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatt
 			continue
 		}
 
-		typeSpec, err := g.genTypeSpec(&prop, isOutput)
+		typeSpec, err := g.genTypeSpec(typeName, name, &prop, isOutput)
 		if err != nil {
 			return nil, err
 		}
@@ -476,10 +476,10 @@ func (g *packageGenerator) genProperties(typeSchema *discovery.JsonSchema, flatt
 	return &result, nil
 }
 
-func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
+func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discovery.JsonSchema, isOutput bool) (*schema.TypeSpec, error) {
 	switch {
 	case prop.Items != nil:
-		items, err := g.genTypeSpec(prop.Items, isOutput)
+		items, err := g.genTypeSpec(typeName, propName + "Item", prop.Items, isOutput)
 		if err != nil {
 			return nil, err
 		}
@@ -490,6 +490,32 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool
 		}, nil
 	case prop.Type == "any":
 		return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
+	case prop.Type == "object" && len(prop.Properties) > 0:
+		schemaName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
+		if isOutput {
+			schemaName += "Response"
+		}
+		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, schemaName)
+		if _, has := g.rest.Schemas[schemaName]; has {
+			return nil, errors.Errorf("properties type name %q conflicts with a schema type", tok)
+		}
+		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
+		bag, err := g.genProperties(typeName, prop, "", isOutput)
+		if err != nil {
+			return nil, err
+		}
+		g.pkg.Types[tok] = schema.ComplexTypeSpec{
+			ObjectTypeSpec: schema.ObjectTypeSpec{
+				Description: prop.Description,
+				Type:        "object",
+				Properties:  bag.specs,
+				Required:    bag.requiredSpecs.SortedValues(),
+			},
+		}
+		return &schema.TypeSpec{
+			Type: "object",
+			Ref:  referencedTypeName,
+		}, nil
 	case prop.Type != "":
 		return &schema.TypeSpec{Type: prop.Type}, nil
 	case prop.Ref != "":
@@ -503,7 +529,7 @@ func (g *packageGenerator) genTypeSpec(prop *discovery.JsonSchema, isOutput bool
 			g.visitedTypes.Add(tok)
 
 			typeSchema := g.rest.Schemas[prop.Ref]
-			bag, err := g.genProperties(&typeSchema, "", isOutput)
+			bag, err := g.genProperties(typeName, &typeSchema, "", isOutput)
 			if err != nil {
 				return nil, err
 			}

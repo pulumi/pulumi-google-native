@@ -41,7 +41,7 @@ type BucketAccessControl struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapOutput `pulumi:"projectTeam"`
+	ProjectTeam BucketAccessControlProjectTeamResponseOutput `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role pulumi.StringOutput `pulumi:"role"`
 	// The link to this access-control entry.
@@ -109,7 +109,7 @@ type bucketAccessControlState struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
-	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	ProjectTeam *BucketAccessControlProjectTeamResponse `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -143,7 +143,7 @@ type BucketAccessControlState struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapInput
+	ProjectTeam BucketAccessControlProjectTeamResponsePtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
@@ -183,7 +183,7 @@ type bucketAccessControlArgs struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind *string `pulumi:"kind"`
 	// The project team associated with the entity, if any.
-	ProjectTeam map[string]string `pulumi:"projectTeam"`
+	ProjectTeam *BucketAccessControlProjectTeam `pulumi:"projectTeam"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
@@ -220,7 +220,7 @@ type BucketAccessControlArgs struct {
 	// The kind of item this is. For bucket access control entries, this is always storage#bucketAccessControl.
 	Kind pulumi.StringPtrInput
 	// The project team associated with the entity, if any.
-	ProjectTeam pulumi.StringMapInput
+	ProjectTeam BucketAccessControlProjectTeamPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
