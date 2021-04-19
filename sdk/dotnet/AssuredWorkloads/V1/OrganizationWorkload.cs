@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public Output<string> ProvisionedResourcesParent { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        /// </summary>
+        [Output("resourceSettings")]
+        public Output<ImmutableArray<Outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse>> ResourceSettings { get; private set; } = null!;
+
+        /// <summary>
         /// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
         /// </summary>
         [Output("resources")]
@@ -179,6 +185,18 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         /// </summary>
         [Input("provisionedResourcesParent")]
         public Input<string>? ProvisionedResourcesParent { get; set; }
+
+        [Input("resourceSettings")]
+        private InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>? _resourceSettings;
+
+        /// <summary>
+        /// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        /// </summary>
+        public InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs> ResourceSettings
+        {
+            get => _resourceSettings ?? (_resourceSettings = new InputList<Inputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>());
+            set => _resourceSettings = value;
+        }
 
         [Input("workloadsId", required: true)]
         public Input<string> WorkloadsId { get; set; } = null!;

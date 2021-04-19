@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly bool CausesDrop;
         /// <summary>
+        /// Display info of a Cloud SQL instance.
+        /// </summary>
+        public readonly Outputs.CloudSQLInstanceInfoResponse CloudSqlInstance;
+        /// <summary>
         /// Display info of the final state "deliver" and reason.
         /// </summary>
         public readonly Outputs.DeliverInfoResponse Deliver;
@@ -49,6 +53,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// Display info of a Compute Engine forwarding rule.
         /// </summary>
         public readonly Outputs.ForwardingRuleInfoResponse ForwardingRule;
+        /// <summary>
+        /// Display info of a Google Kubernetes Engine cluster master.
+        /// </summary>
+        public readonly Outputs.GKEMasterInfoResponse GkeMaster;
         /// <summary>
         /// Display info of a Compute Engine instance.
         /// </summary>
@@ -88,6 +96,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             bool causesDrop,
 
+            Outputs.CloudSQLInstanceInfoResponse cloudSqlInstance,
+
             Outputs.DeliverInfoResponse deliver,
 
             string description,
@@ -101,6 +111,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Outputs.ForwardInfoResponse forward,
 
             Outputs.ForwardingRuleInfoResponse forwardingRule,
+
+            Outputs.GKEMasterInfoResponse gkeMaster,
 
             Outputs.InstanceInfoResponse instance,
 
@@ -120,6 +132,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         {
             Abort = abort;
             CausesDrop = causesDrop;
+            CloudSqlInstance = cloudSqlInstance;
             Deliver = deliver;
             Description = description;
             Drop = drop;
@@ -127,6 +140,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Firewall = firewall;
             Forward = forward;
             ForwardingRule = forwardingRule;
+            GkeMaster = gkeMaster;
             Instance = instance;
             LoadBalancer = loadBalancer;
             Network = network;

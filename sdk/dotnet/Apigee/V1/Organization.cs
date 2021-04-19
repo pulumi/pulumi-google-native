@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class Organization : Pulumi.CustomResource
     {
         /// <summary>
+        /// Addon configurations of the Apigee organization.
+        /// </summary>
+        [Output("addonsConfig")]
+        public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Output("analyticsRegion")]
@@ -177,6 +183,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Addon configurations of the Apigee organization.
+        /// </summary>
+        [Input("addonsConfig")]
+        public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
+
         /// <summary>
         /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>

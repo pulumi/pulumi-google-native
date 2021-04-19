@@ -98,7 +98,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
                  specified_amount: Optional[pulumi.Input['GoogleTypeMoneyArgs']] = None):
         """
         The budgeted amount for each usage period.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs'] last_period_amount: Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs'] last_period_amount: Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
         :param pulumi.Input['GoogleTypeMoneyArgs'] specified_amount: A specified amount to use as the budget. `currency_code` is optional. If specified when creating a budget, it must match the currency of the billing account. If specified when updating a budget, it must match the currency_code of the existing budget. The `currency_code` is provided on output.
         """
         if last_period_amount is not None:
@@ -110,7 +110,7 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs:
     @pulumi.getter(name="lastPeriodAmount")
     def last_period_amount(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs']]:
         """
-        Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+        Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
         """
         return pulumi.get(self, "last_period_amount")
 
@@ -184,10 +184,10 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
                  subaccounts: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A filter for a budget, limiting the scope of the cost to calculate.
-        :param pulumi.Input[str] calendar_period: Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+        :param pulumi.Input[str] calendar_period: Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         :param pulumi.Input[str] credit_types_treatment: Optional. If not set, default behavior is `INCLUDE_ALL_CREDITS`.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs'] custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional).
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs'] custom_period: Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. A single label and value pair specifying that usage from only this set of labeled resources should be included in the budget. Currently, multiple entries or multiple values per entry are not allowed. If omitted, the report will include all labeled and unlabeled usage.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projects: Optional. A set of projects of the form `projects/{project}`, specifying that usage from only this set of projects should be included in the budget. If omitted, the report will include all usage for the billing account, regardless of which project the usage occurred on. Only zero or one project can be specified currently.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
@@ -214,7 +214,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     @pulumi.getter(name="calendarPeriod")
     def calendar_period(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+        Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
         """
         return pulumi.get(self, "calendar_period")
 
@@ -226,7 +226,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     @pulumi.getter(name="creditTypes")
     def credit_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+        Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
         """
         return pulumi.get(self, "credit_types")
 
@@ -250,7 +250,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
     @pulumi.getter(name="customPeriod")
     def custom_period(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs']]:
         """
-        Optional. Specifies to track usage from any start date (required) to any end date (optional).
+        Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
         """
         return pulumi.get(self, "custom_period")
 
@@ -311,7 +311,7 @@ class GoogleCloudBillingBudgetsV1beta1FilterArgs:
 class GoogleCloudBillingBudgetsV1beta1LastPeriodAmountArgs:
     def __init__(__self__):
         """
-        Describes a budget amount targeted to last period's spend. At this time, the amount is automatically 100% of last period's spend; that is, there are no other options yet. Future configuration will be described here (for example, configuring a percentage of last period's spend).
+        Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future configuration options will be described here (for example, configuring a percentage of last period's spend). LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
         """
         pass
 

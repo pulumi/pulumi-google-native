@@ -429,6 +429,224 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) In
 	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput)
 }
 
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettings struct {
+	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+	ResourceId *string `pulumi:"resourceId"`
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+	ResourceType *string `pulumi:"resourceType"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput
+}
+
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs struct {
+	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{ GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...} }
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray []GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput)
+}
+
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
+	return o
+}
+
+// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
+}
+
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1WorkloadResourceSettings {
+		return vs[0].([]GoogleCloudAssuredworkloadsV1WorkloadResourceSettings)[vs[1].(int)]
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput)
+}
+
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse struct {
+	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+	ResourceId string `pulumi:"resourceId"`
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+	ResourceType string `pulumi:"resourceType"`
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput
+}
+
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs struct {
+	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+	ResourceId pulumi.StringInput `pulumi:"resourceId"`
+	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+	ResourceType pulumi.StringInput `pulumi:"resourceType"`
+}
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray{ GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs{...} }
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray []GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+	return i.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArray) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput)
+}
+
+// Represent the custom settings for the resources to be created.
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
+	return o
+}
+
+// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ResourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceId }).(pulumi.StringOutput)
+}
+
+// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ResourceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.ResourceType }).(pulumi.StringOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse {
+		return vs[0].([]GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse)[vs[1].(int)]
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput{})
@@ -436,4 +654,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput{})
 }

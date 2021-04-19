@@ -16,6 +16,7 @@ __all__ = [
     'BindingArgs',
     'ClusterConfigArgs',
     'ClusterSelectorArgs',
+    'ConfidentialInstanceConfigArgs',
     'DiskConfigArgs',
     'EncryptionConfigArgs',
     'EndpointConfigArgs',
@@ -594,6 +595,30 @@ class ClusterSelectorArgs:
 
 
 @pulumi.input_type
+class ConfidentialInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
+        """
+        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        :param pulumi.Input[bool] enable_confidential_compute: Optional. Defines whether the instance should have confidential compute enabled.
+        """
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Defines whether the instance should have confidential compute enabled.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
+
+
+@pulumi.input_type
 class DiskConfigArgs:
     def __init__(__self__, *,
                  boot_disk_size_gb: Optional[pulumi.Input[int]] = None,
@@ -772,6 +797,7 @@ class ExprArgs:
 @pulumi.input_type
 class GceClusterConfigArgs:
     def __init__(__self__, *,
+                 confidential_instance_config: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network_uri: Optional[pulumi.Input[str]] = None,
@@ -786,6 +812,7 @@ class GceClusterConfigArgs:
                  zone_uri: Optional[pulumi.Input[str]] = None):
         """
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+        :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
@@ -799,6 +826,8 @@ class GceClusterConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param pulumi.Input[str] zone_uri: Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
         """
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if internal_ip_only is not None:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if metadata is not None:
@@ -823,6 +852,18 @@ class GceClusterConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if zone_uri is not None:
             pulumi.set(__self__, "zone_uri", zone_uri)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]:
+        """
+        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
 
     @property
     @pulumi.getter(name="internalIpOnly")

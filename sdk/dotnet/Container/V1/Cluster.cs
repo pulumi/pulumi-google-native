@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.Container.V1
         public Output<ImmutableArray<Outputs.StatusConditionResponse>> Conditions { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration of Confidential Nodes
+        /// </summary>
+        [Output("confidentialNodes")]
+        public Output<Outputs.ConfidentialNodesResponse> ConfidentialNodes { get; private set; } = null!;
+
+        /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         /// </summary>
         [Output("createTime")]
@@ -410,6 +416,12 @@ namespace Pulumi.GoogleNative.Container.V1
             get => _conditions ?? (_conditions = new InputList<Inputs.StatusConditionArgs>());
             set => _conditions = value;
         }
+
+        /// <summary>
+        /// Configuration of Confidential Nodes
+        /// </summary>
+        [Input("confidentialNodes")]
+        public Input<Inputs.ConfidentialNodesArgs>? ConfidentialNodes { get; set; }
 
         /// <summary>
         /// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.

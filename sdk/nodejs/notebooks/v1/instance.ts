@@ -108,6 +108,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+     */
+    public readonly nicType!: pulumi.Output<string>;
+    /**
      * If true, the notebook instance will not register with the proxy.
      */
     public readonly noProxyAccess!: pulumi.Output<boolean>;
@@ -201,6 +205,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["network"] = args ? args.network : undefined;
+            inputs["nicType"] = args ? args.nicType : undefined;
             inputs["noProxyAccess"] = args ? args.noProxyAccess : undefined;
             inputs["noPublicIp"] = args ? args.noPublicIp : undefined;
             inputs["noRemoveDataDisk"] = args ? args.noRemoveDataDisk : undefined;
@@ -238,6 +243,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["metadata"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
+            inputs["nicType"] = undefined /*out*/;
             inputs["noProxyAccess"] = undefined /*out*/;
             inputs["noPublicIp"] = undefined /*out*/;
             inputs["noRemoveDataDisk"] = undefined /*out*/;
@@ -326,6 +332,10 @@ export interface InstanceArgs {
      * The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
      */
     readonly network?: pulumi.Input<string>;
+    /**
+     * Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+     */
+    readonly nicType?: pulumi.Input<string>;
     /**
      * If true, the notebook instance will not register with the proxy.
      */

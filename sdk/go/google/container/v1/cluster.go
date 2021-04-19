@@ -29,6 +29,8 @@ type Cluster struct {
 	ClusterIpv4Cidr pulumi.StringOutput `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionResponseArrayOutput `pulumi:"conditions"`
+	// Configuration of Confidential Nodes
+	ConfidentialNodes ConfidentialNodesResponseOutput `pulumi:"confidentialNodes"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
@@ -169,6 +171,8 @@ type clusterState struct {
 	ClusterIpv4Cidr *string `pulumi:"clusterIpv4Cidr"`
 	// Which conditions caused the current cluster state.
 	Conditions []StatusConditionResponse `pulumi:"conditions"`
+	// Configuration of Confidential Nodes
+	ConfidentialNodes *ConfidentialNodesResponse `pulumi:"confidentialNodes"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime *string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
@@ -272,6 +276,8 @@ type ClusterState struct {
 	ClusterIpv4Cidr pulumi.StringPtrInput
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionResponseArrayInput
+	// Configuration of Confidential Nodes
+	ConfidentialNodes ConfidentialNodesResponsePtrInput
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime pulumi.StringPtrInput
 	// [Output only] The current software version of the master endpoint.
@@ -380,6 +386,8 @@ type clusterArgs struct {
 	ClustersId      string  `pulumi:"clustersId"`
 	// Which conditions caused the current cluster state.
 	Conditions []StatusCondition `pulumi:"conditions"`
+	// Configuration of Confidential Nodes
+	ConfidentialNodes *ConfidentialNodes `pulumi:"confidentialNodes"`
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime *string `pulumi:"createTime"`
 	// [Output only] The current software version of the master endpoint.
@@ -489,6 +497,8 @@ type ClusterArgs struct {
 	ClustersId      pulumi.StringInput
 	// Which conditions caused the current cluster state.
 	Conditions StatusConditionArrayInput
+	// Configuration of Confidential Nodes
+	ConfidentialNodes ConfidentialNodesPtrInput
 	// [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	CreateTime pulumi.StringPtrInput
 	// [Output only] The current software version of the master endpoint.

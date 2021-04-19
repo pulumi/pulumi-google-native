@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates a new Backup in a given project and location.
+ * Creates a new backup in a given project and location.
  */
 export class ServiceBackup extends pulumi.CustomResource {
     /**

@@ -43,7 +43,7 @@ type Build struct {
 	Results ResultsResponseOutput `pulumi:"results"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets SecretResponseArrayOutput `pulumi:"secrets"`
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source SourceResponseOutput `pulumi:"source"`
@@ -133,7 +133,7 @@ type buildState struct {
 	Results *ResultsResponse `pulumi:"results"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets []SecretResponse `pulumi:"secrets"`
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source *SourceResponse `pulumi:"source"`
@@ -186,7 +186,7 @@ type BuildState struct {
 	Results ResultsResponsePtrInput
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets SecretResponseArrayInput
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
 	ServiceAccount pulumi.StringPtrInput
 	// The location of the source files to build.
 	Source SourceResponsePtrInput
@@ -232,7 +232,7 @@ type buildArgs struct {
 	QueueTtl *string `pulumi:"queueTtl"`
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets []Secret `pulumi:"secrets"`
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source *Source `pulumi:"source"`
@@ -265,7 +265,7 @@ type BuildArgs struct {
 	QueueTtl pulumi.StringPtrInput
 	// Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
 	Secrets SecretArrayInput
-	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+	// IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account.
 	ServiceAccount pulumi.StringPtrInput
 	// The location of the source files to build.
 	Source SourcePtrInput

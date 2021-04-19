@@ -36,6 +36,10 @@ export class Organization extends pulumi.CustomResource {
     }
 
     /**
+     * Addon configurations of the Apigee organization.
+     */
+    public readonly addonsConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse>;
+    /**
      * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     public readonly analyticsRegion!: pulumi.Output<string>;
@@ -127,6 +131,7 @@ export class Organization extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
@@ -149,6 +154,7 @@ export class Organization extends pulumi.CustomResource {
             inputs["state"] = undefined /*out*/;
             inputs["subscriptionType"] = undefined /*out*/;
         } else {
+            inputs["addonsConfig"] = undefined /*out*/;
             inputs["analyticsRegion"] = undefined /*out*/;
             inputs["attributes"] = undefined /*out*/;
             inputs["authorizedNetwork"] = undefined /*out*/;
@@ -181,6 +187,10 @@ export class Organization extends pulumi.CustomResource {
  * The set of arguments for constructing a Organization resource.
  */
 export interface OrganizationArgs {
+    /**
+     * Addon configurations of the Apigee organization.
+     */
+    readonly addonsConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigArgs>;
     /**
      * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */

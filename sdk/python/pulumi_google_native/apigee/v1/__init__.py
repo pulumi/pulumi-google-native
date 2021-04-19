@@ -7,10 +7,12 @@ from .organization import *
 from .organization_analytic_datastore import *
 from .organization_api import *
 from .organization_apiproduct import *
+from .organization_apiproduct_rateplan import *
 from .organization_datacollector import *
 from .organization_developer import *
 from .organization_developer_app import *
 from .organization_developer_app_key import *
+from .organization_developer_subscription import *
 from .organization_envgroup import *
 from .organization_envgroup_attachment import *
 from .organization_environment import *
@@ -55,6 +57,8 @@ def _register_module():
                 return OrganizationApi(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationApiproduct":
                 return OrganizationApiproduct(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:OrganizationApiproductRateplan":
+                return OrganizationApiproductRateplan(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationDatacollector":
                 return OrganizationDatacollector(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationDeveloper":
@@ -63,6 +67,8 @@ def _register_module():
                 return OrganizationDeveloperApp(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationDeveloperAppKey":
                 return OrganizationDeveloperAppKey(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:apigee/v1:OrganizationDeveloperSubscription":
+                return OrganizationDeveloperSubscription(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationEnvgroup":
                 return OrganizationEnvgroup(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:apigee/v1:OrganizationEnvgroupAttachment":

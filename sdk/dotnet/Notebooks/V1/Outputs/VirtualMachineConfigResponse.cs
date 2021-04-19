@@ -54,6 +54,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
+        /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        /// </summary>
+        public readonly string NicType;
+        /// <summary>
         /// Optional. Shielded VM Instance configuration settings.
         /// </summary>
         public readonly Outputs.RuntimeShieldedInstanceConfigResponse ShieldedInstanceConfig;
@@ -92,6 +96,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string network,
 
+            string nicType,
+
             Outputs.RuntimeShieldedInstanceConfigResponse shieldedInstanceConfig,
 
             string subnet,
@@ -110,6 +116,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             MachineType = machineType;
             Metadata = metadata;
             Network = network;
+            NicType = nicType;
             ShieldedInstanceConfig = shieldedInstanceConfig;
             Subnet = subnet;
             Tags = tags;

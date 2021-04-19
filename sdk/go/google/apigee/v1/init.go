@@ -29,6 +29,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationApi{}
 	case "google-native:apigee/v1:OrganizationApiproduct":
 		r = &OrganizationApiproduct{}
+	case "google-native:apigee/v1:OrganizationApiproductRateplan":
+		r = &OrganizationApiproductRateplan{}
 	case "google-native:apigee/v1:OrganizationDatacollector":
 		r = &OrganizationDatacollector{}
 	case "google-native:apigee/v1:OrganizationDeveloper":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationDeveloperApp{}
 	case "google-native:apigee/v1:OrganizationDeveloperAppKey":
 		r = &OrganizationDeveloperAppKey{}
+	case "google-native:apigee/v1:OrganizationDeveloperSubscription":
+		r = &OrganizationDeveloperSubscription{}
 	case "google-native:apigee/v1:OrganizationEnvgroup":
 		r = &OrganizationEnvgroup{}
 	case "google-native:apigee/v1:OrganizationEnvgroupAttachment":

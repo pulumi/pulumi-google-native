@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// [Output Only] A consumer forwarding rule connected to this service attachment.
+    /// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
     /// </summary>
     public sealed class ServiceAttachmentConsumerForwardingRuleArgs : Pulumi.ResourceArgs
     {
@@ -20,6 +20,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         /// </summary>
         [Input("forwardingRule")]
         public Input<string>? ForwardingRule { get; set; }
+
+        /// <summary>
+        /// The PSC connection id of the PSC Forwarding Rule.
+        /// </summary>
+        [Input("pscConnectionId")]
+        public Input<string>? PscConnectionId { get; set; }
 
         /// <summary>
         /// The status of the forwarding rule.

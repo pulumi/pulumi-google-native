@@ -11,6 +11,7 @@ from ... import _utilities
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse',
     'GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse',
+    'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse',
 ]
 
 @pulumi.output_type
@@ -113,6 +114,58 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse(dict):
     def resource_type(self) -> str:
         """
         Indicates the type of resource.
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
+class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse(dict):
+    """
+    Represent the custom settings for the resources to be created.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceId":
+            suggest = "resource_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 resource_id: str,
+                 resource_type: str):
+        """
+        Represent the custom settings for the resources to be created.
+        :param str resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        :param str resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        """
+        pulumi.set(__self__, "resource_id", resource_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> str:
+        """
+        Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         """
         return pulumi.get(self, "resource_type")
 

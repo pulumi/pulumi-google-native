@@ -10,6 +10,7 @@ from ... import _utilities
 
 __all__ = [
     'GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs',
+    'GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs',
 ]
 
 @pulumi.input_type
@@ -50,5 +51,45 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
     @rotation_period.setter
     def rotation_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rotation_period", value)
+
+
+@pulumi.input_type
+class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs:
+    def __init__(__self__, *,
+                 resource_id: Optional[pulumi.Input[str]] = None,
+                 resource_type: Optional[pulumi.Input[str]] = None):
+        """
+        Represent the custom settings for the resources to be created.
+        :param pulumi.Input[str] resource_id: Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        :param pulumi.Input[str] resource_type: Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        """
+        if resource_id is not None:
+            pulumi.set(__self__, "resource_id", resource_id)
+        if resource_type is not None:
+            pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="resourceId")
+    def resource_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+        """
+        return pulumi.get(self, "resource_id")
+
+    @resource_id.setter
+    def resource_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+        """
+        return pulumi.get(self, "resource_type")
+
+    @resource_type.setter
+    def resource_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_type", value)
 
 

@@ -52,6 +52,10 @@ export class SettingSearchapplication extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+     */
+    public readonly enableAuditLog!: pulumi.Output<boolean>;
+    /**
      * Name of the Search Application. Format: searchapplications/{application_id}.
      */
     public readonly name!: pulumi.Output<string>;
@@ -86,6 +90,7 @@ export class SettingSearchapplication extends pulumi.CustomResource {
             inputs["defaultFacetOptions"] = args ? args.defaultFacetOptions : undefined;
             inputs["defaultSortOptions"] = args ? args.defaultSortOptions : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["enableAuditLog"] = args ? args.enableAuditLog : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["scoringConfig"] = args ? args.scoringConfig : undefined;
             inputs["searchapplicationsId"] = args ? args.searchapplicationsId : undefined;
@@ -96,6 +101,7 @@ export class SettingSearchapplication extends pulumi.CustomResource {
             inputs["defaultFacetOptions"] = undefined /*out*/;
             inputs["defaultSortOptions"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
+            inputs["enableAuditLog"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["operationIds"] = undefined /*out*/;
             inputs["scoringConfig"] = undefined /*out*/;
@@ -128,6 +134,10 @@ export interface SettingSearchapplicationArgs {
      * Display name of the Search Application. The maximum length is 300 characters.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+     */
+    readonly enableAuditLog?: pulumi.Input<boolean>;
     /**
      * Name of the Search Application. Format: searchapplications/{application_id}.
      */

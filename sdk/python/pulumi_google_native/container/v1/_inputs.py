@@ -21,6 +21,7 @@ __all__ = [
     'ClientCertificateConfigArgs',
     'CloudRunConfigArgs',
     'ClusterAutoscalingArgs',
+    'ConfidentialNodesArgs',
     'ConfigConnectorConfigArgs',
     'ConsumptionMeteringConfigArgs',
     'DailyMaintenanceWindowArgs',
@@ -722,6 +723,30 @@ class ClusterAutoscalingArgs:
     @resource_limits.setter
     def resource_limits(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceLimitArgs']]]]):
         pulumi.set(self, "resource_limits", value)
+
+
+@pulumi.input_type
+class ConfidentialNodesArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+        :param pulumi.Input[bool] enabled: Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type

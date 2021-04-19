@@ -36,6 +36,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     */
+    public readonly connectedEndpoints!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConnectedEndpointResponse[]>;
+    /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     public readonly connectionPreference!: pulumi.Output<string>;
@@ -72,6 +76,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly producerForwardingRule!: pulumi.Output<string>;
     /**
+     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     */
+    public readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.beta.Uint128Response>;
+    /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
@@ -79,6 +87,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * [Output Only] Server-defined URL for the resource.
      */
     public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The URL of a service serving the endpoint identified by this service attachment.
+     */
+    public readonly targetService!: pulumi.Output<string>;
 
     /**
      * Create a ServiceAttachment resource with the given unique name, arguments, and options.
@@ -100,6 +112,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.serviceAttachment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAttachment'");
             }
+            inputs["connectedEndpoints"] = args ? args.connectedEndpoints : undefined;
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
             inputs["consumerForwardingRules"] = args ? args.consumerForwardingRules : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
@@ -111,10 +124,13 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["natSubnets"] = args ? args.natSubnets : undefined;
             inputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pscServiceAttachmentId"] = args ? args.pscServiceAttachmentId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
+            inputs["targetService"] = args ? args.targetService : undefined;
         } else {
+            inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
             inputs["consumerForwardingRules"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -124,8 +140,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["natSubnets"] = undefined /*out*/;
             inputs["producerForwardingRule"] = undefined /*out*/;
+            inputs["pscServiceAttachmentId"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["targetService"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -138,6 +156,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
  * The set of arguments for constructing a ServiceAttachment resource.
  */
 export interface ServiceAttachmentArgs {
+    /**
+     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     */
+    readonly connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.beta.ServiceAttachmentConnectedEndpointArgs>[]>;
     /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
@@ -180,6 +202,10 @@ export interface ServiceAttachmentArgs {
     readonly producerForwardingRule?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
+     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     */
+    readonly pscServiceAttachmentId?: pulumi.Input<inputs.compute.beta.Uint128Args>;
+    /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
@@ -188,4 +214,8 @@ export interface ServiceAttachmentArgs {
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly serviceAttachment: pulumi.Input<string>;
+    /**
+     * The URL of a service serving the endpoint identified by this service attachment.
+     */
+    readonly targetService?: pulumi.Input<string>;
 }

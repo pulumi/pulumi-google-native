@@ -4372,6 +4372,8 @@ type ClusterUpdate struct {
 	DesiredTpuConfig *TpuConfig `pulumi:"desiredTpuConfig"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	DesiredVerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"desiredVerticalPodAutoscaling"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	DesiredWorkloadCertificates *WorkloadCertificates `pulumi:"desiredWorkloadCertificates"`
 	// Configuration for Workload Identity.
 	DesiredWorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"desiredWorkloadIdentityConfig"`
 }
@@ -4445,6 +4447,8 @@ type ClusterUpdateArgs struct {
 	DesiredTpuConfig TpuConfigPtrInput `pulumi:"desiredTpuConfig"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	DesiredVerticalPodAutoscaling VerticalPodAutoscalingPtrInput `pulumi:"desiredVerticalPodAutoscaling"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	DesiredWorkloadCertificates WorkloadCertificatesPtrInput `pulumi:"desiredWorkloadCertificates"`
 	// Configuration for Workload Identity.
 	DesiredWorkloadIdentityConfig WorkloadIdentityConfigPtrInput `pulumi:"desiredWorkloadIdentityConfig"`
 }
@@ -4614,6 +4618,11 @@ func (o ClusterUpdateOutput) DesiredTpuConfig() TpuConfigPtrOutput {
 // Cluster-level Vertical Pod Autoscaling configuration.
 func (o ClusterUpdateOutput) DesiredVerticalPodAutoscaling() VerticalPodAutoscalingPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *VerticalPodAutoscaling { return v.DesiredVerticalPodAutoscaling }).(VerticalPodAutoscalingPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+func (o ClusterUpdateOutput) DesiredWorkloadCertificates() WorkloadCertificatesPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *WorkloadCertificates { return v.DesiredWorkloadCertificates }).(WorkloadCertificatesPtrOutput)
 }
 
 // Configuration for Workload Identity.
@@ -13027,7 +13036,7 @@ func (o NetworkPolicyResponsePtrOutput) Provider() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
 type NetworkTags struct {
 	// List of network tags.
 	Tags []string `pulumi:"tags"`
@@ -13044,7 +13053,7 @@ type NetworkTagsInput interface {
 	ToNetworkTagsOutputWithContext(context.Context) NetworkTagsOutput
 }
 
-// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
 type NetworkTagsArgs struct {
 	// List of network tags.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
@@ -13062,7 +13071,7 @@ func (i NetworkTagsArgs) ToNetworkTagsOutputWithContext(ctx context.Context) Net
 	return pulumi.ToOutputWithContext(ctx, i).(NetworkTagsOutput)
 }
 
-// Collection of Compute Engine network tags that can be applied to a node's underyling VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
+// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance. (See `tags` field in [`NodeConfig`](/kubernetes-engine/docs/reference/rest/v1/NodeConfig)).
 type NetworkTagsOutput struct{ *pulumi.OutputState }
 
 func (NetworkTagsOutput) ElementType() reflect.Type {
@@ -21832,6 +21841,274 @@ func (o VerticalPodAutoscalingResponsePtrOutput) Enabled() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificates struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates *bool `pulumi:"enableCertificates"`
+}
+
+// WorkloadCertificatesInput is an input type that accepts WorkloadCertificatesArgs and WorkloadCertificatesOutput values.
+// You can construct a concrete instance of `WorkloadCertificatesInput` via:
+//
+//          WorkloadCertificatesArgs{...}
+type WorkloadCertificatesInput interface {
+	pulumi.Input
+
+	ToWorkloadCertificatesOutput() WorkloadCertificatesOutput
+	ToWorkloadCertificatesOutputWithContext(context.Context) WorkloadCertificatesOutput
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificatesArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolPtrInput `pulumi:"enableCertificates"`
+}
+
+func (WorkloadCertificatesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadCertificates)(nil)).Elem()
+}
+
+func (i WorkloadCertificatesArgs) ToWorkloadCertificatesOutput() WorkloadCertificatesOutput {
+	return i.ToWorkloadCertificatesOutputWithContext(context.Background())
+}
+
+func (i WorkloadCertificatesArgs) ToWorkloadCertificatesOutputWithContext(ctx context.Context) WorkloadCertificatesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesOutput)
+}
+
+func (i WorkloadCertificatesArgs) ToWorkloadCertificatesPtrOutput() WorkloadCertificatesPtrOutput {
+	return i.ToWorkloadCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadCertificatesArgs) ToWorkloadCertificatesPtrOutputWithContext(ctx context.Context) WorkloadCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesOutput).ToWorkloadCertificatesPtrOutputWithContext(ctx)
+}
+
+// WorkloadCertificatesPtrInput is an input type that accepts WorkloadCertificatesArgs, WorkloadCertificatesPtr and WorkloadCertificatesPtrOutput values.
+// You can construct a concrete instance of `WorkloadCertificatesPtrInput` via:
+//
+//          WorkloadCertificatesArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadCertificatesPtrInput interface {
+	pulumi.Input
+
+	ToWorkloadCertificatesPtrOutput() WorkloadCertificatesPtrOutput
+	ToWorkloadCertificatesPtrOutputWithContext(context.Context) WorkloadCertificatesPtrOutput
+}
+
+type workloadCertificatesPtrType WorkloadCertificatesArgs
+
+func WorkloadCertificatesPtr(v *WorkloadCertificatesArgs) WorkloadCertificatesPtrInput {
+	return (*workloadCertificatesPtrType)(v)
+}
+
+func (*workloadCertificatesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadCertificates)(nil)).Elem()
+}
+
+func (i *workloadCertificatesPtrType) ToWorkloadCertificatesPtrOutput() WorkloadCertificatesPtrOutput {
+	return i.ToWorkloadCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (i *workloadCertificatesPtrType) ToWorkloadCertificatesPtrOutputWithContext(ctx context.Context) WorkloadCertificatesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificatesOutput struct{ *pulumi.OutputState }
+
+func (WorkloadCertificatesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadCertificates)(nil)).Elem()
+}
+
+func (o WorkloadCertificatesOutput) ToWorkloadCertificatesOutput() WorkloadCertificatesOutput {
+	return o
+}
+
+func (o WorkloadCertificatesOutput) ToWorkloadCertificatesOutputWithContext(ctx context.Context) WorkloadCertificatesOutput {
+	return o
+}
+
+func (o WorkloadCertificatesOutput) ToWorkloadCertificatesPtrOutput() WorkloadCertificatesPtrOutput {
+	return o.ToWorkloadCertificatesPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadCertificatesOutput) ToWorkloadCertificatesPtrOutputWithContext(ctx context.Context) WorkloadCertificatesPtrOutput {
+	return o.ApplyT(func(v WorkloadCertificates) *WorkloadCertificates {
+		return &v
+	}).(WorkloadCertificatesPtrOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadCertificatesOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkloadCertificates) *bool { return v.EnableCertificates }).(pulumi.BoolPtrOutput)
+}
+
+type WorkloadCertificatesPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadCertificatesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadCertificates)(nil)).Elem()
+}
+
+func (o WorkloadCertificatesPtrOutput) ToWorkloadCertificatesPtrOutput() WorkloadCertificatesPtrOutput {
+	return o
+}
+
+func (o WorkloadCertificatesPtrOutput) ToWorkloadCertificatesPtrOutputWithContext(ctx context.Context) WorkloadCertificatesPtrOutput {
+	return o
+}
+
+func (o WorkloadCertificatesPtrOutput) Elem() WorkloadCertificatesOutput {
+	return o.ApplyT(func(v *WorkloadCertificates) WorkloadCertificates { return *v }).(WorkloadCertificatesOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadCertificatesPtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadCertificates) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificatesResponse struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates bool `pulumi:"enableCertificates"`
+}
+
+// WorkloadCertificatesResponseInput is an input type that accepts WorkloadCertificatesResponseArgs and WorkloadCertificatesResponseOutput values.
+// You can construct a concrete instance of `WorkloadCertificatesResponseInput` via:
+//
+//          WorkloadCertificatesResponseArgs{...}
+type WorkloadCertificatesResponseInput interface {
+	pulumi.Input
+
+	ToWorkloadCertificatesResponseOutput() WorkloadCertificatesResponseOutput
+	ToWorkloadCertificatesResponseOutputWithContext(context.Context) WorkloadCertificatesResponseOutput
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificatesResponseArgs struct {
+	// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+	EnableCertificates pulumi.BoolInput `pulumi:"enableCertificates"`
+}
+
+func (WorkloadCertificatesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadCertificatesResponse)(nil)).Elem()
+}
+
+func (i WorkloadCertificatesResponseArgs) ToWorkloadCertificatesResponseOutput() WorkloadCertificatesResponseOutput {
+	return i.ToWorkloadCertificatesResponseOutputWithContext(context.Background())
+}
+
+func (i WorkloadCertificatesResponseArgs) ToWorkloadCertificatesResponseOutputWithContext(ctx context.Context) WorkloadCertificatesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesResponseOutput)
+}
+
+func (i WorkloadCertificatesResponseArgs) ToWorkloadCertificatesResponsePtrOutput() WorkloadCertificatesResponsePtrOutput {
+	return i.ToWorkloadCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i WorkloadCertificatesResponseArgs) ToWorkloadCertificatesResponsePtrOutputWithContext(ctx context.Context) WorkloadCertificatesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesResponseOutput).ToWorkloadCertificatesResponsePtrOutputWithContext(ctx)
+}
+
+// WorkloadCertificatesResponsePtrInput is an input type that accepts WorkloadCertificatesResponseArgs, WorkloadCertificatesResponsePtr and WorkloadCertificatesResponsePtrOutput values.
+// You can construct a concrete instance of `WorkloadCertificatesResponsePtrInput` via:
+//
+//          WorkloadCertificatesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type WorkloadCertificatesResponsePtrInput interface {
+	pulumi.Input
+
+	ToWorkloadCertificatesResponsePtrOutput() WorkloadCertificatesResponsePtrOutput
+	ToWorkloadCertificatesResponsePtrOutputWithContext(context.Context) WorkloadCertificatesResponsePtrOutput
+}
+
+type workloadCertificatesResponsePtrType WorkloadCertificatesResponseArgs
+
+func WorkloadCertificatesResponsePtr(v *WorkloadCertificatesResponseArgs) WorkloadCertificatesResponsePtrInput {
+	return (*workloadCertificatesResponsePtrType)(v)
+}
+
+func (*workloadCertificatesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadCertificatesResponse)(nil)).Elem()
+}
+
+func (i *workloadCertificatesResponsePtrType) ToWorkloadCertificatesResponsePtrOutput() WorkloadCertificatesResponsePtrOutput {
+	return i.ToWorkloadCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *workloadCertificatesResponsePtrType) ToWorkloadCertificatesResponsePtrOutputWithContext(ctx context.Context) WorkloadCertificatesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkloadCertificatesResponsePtrOutput)
+}
+
+// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+type WorkloadCertificatesResponseOutput struct{ *pulumi.OutputState }
+
+func (WorkloadCertificatesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadCertificatesResponse)(nil)).Elem()
+}
+
+func (o WorkloadCertificatesResponseOutput) ToWorkloadCertificatesResponseOutput() WorkloadCertificatesResponseOutput {
+	return o
+}
+
+func (o WorkloadCertificatesResponseOutput) ToWorkloadCertificatesResponseOutputWithContext(ctx context.Context) WorkloadCertificatesResponseOutput {
+	return o
+}
+
+func (o WorkloadCertificatesResponseOutput) ToWorkloadCertificatesResponsePtrOutput() WorkloadCertificatesResponsePtrOutput {
+	return o.ToWorkloadCertificatesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadCertificatesResponseOutput) ToWorkloadCertificatesResponsePtrOutputWithContext(ctx context.Context) WorkloadCertificatesResponsePtrOutput {
+	return o.ApplyT(func(v WorkloadCertificatesResponse) *WorkloadCertificatesResponse {
+		return &v
+	}).(WorkloadCertificatesResponsePtrOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadCertificatesResponseOutput) EnableCertificates() pulumi.BoolOutput {
+	return o.ApplyT(func(v WorkloadCertificatesResponse) bool { return v.EnableCertificates }).(pulumi.BoolOutput)
+}
+
+type WorkloadCertificatesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadCertificatesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkloadCertificatesResponse)(nil)).Elem()
+}
+
+func (o WorkloadCertificatesResponsePtrOutput) ToWorkloadCertificatesResponsePtrOutput() WorkloadCertificatesResponsePtrOutput {
+	return o
+}
+
+func (o WorkloadCertificatesResponsePtrOutput) ToWorkloadCertificatesResponsePtrOutputWithContext(ctx context.Context) WorkloadCertificatesResponsePtrOutput {
+	return o
+}
+
+func (o WorkloadCertificatesResponsePtrOutput) Elem() WorkloadCertificatesResponseOutput {
+	return o.ApplyT(func(v *WorkloadCertificatesResponse) WorkloadCertificatesResponse { return *v }).(WorkloadCertificatesResponseOutput)
+}
+
+// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+func (o WorkloadCertificatesResponsePtrOutput) EnableCertificates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkloadCertificatesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableCertificates
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 type WorkloadIdentityConfig struct {
 	// IAM Identity Namespace to attach all Kubernetes Service Accounts to.
@@ -22747,6 +23024,10 @@ func init() {
 	pulumi.RegisterOutputType(VerticalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(VerticalPodAutoscalingResponseOutput{})
 	pulumi.RegisterOutputType(VerticalPodAutoscalingResponsePtrOutput{})
+	pulumi.RegisterOutputType(WorkloadCertificatesOutput{})
+	pulumi.RegisterOutputType(WorkloadCertificatesPtrOutput{})
+	pulumi.RegisterOutputType(WorkloadCertificatesResponseOutput{})
+	pulumi.RegisterOutputType(WorkloadCertificatesResponsePtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkloadIdentityConfigResponseOutput{})

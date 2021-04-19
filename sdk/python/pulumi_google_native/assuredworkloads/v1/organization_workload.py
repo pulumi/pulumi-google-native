@@ -25,7 +25,8 @@ class OrganizationWorkloadArgs:
                  kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 provisioned_resources_parent: Optional[pulumi.Input[str]] = None):
+                 provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] = None):
         """
         The set of arguments for constructing a OrganizationWorkload resource.
         :param pulumi.Input[str] billing_account: Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -36,6 +37,7 @@ class OrganizationWorkloadArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "organizations_id", organizations_id)
@@ -56,6 +58,8 @@ class OrganizationWorkloadArgs:
             pulumi.set(__self__, "name", name)
         if provisioned_resources_parent is not None:
             pulumi.set(__self__, "provisioned_resources_parent", provisioned_resources_parent)
+        if resource_settings is not None:
+            pulumi.set(__self__, "resource_settings", resource_settings)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -180,6 +184,18 @@ class OrganizationWorkloadArgs:
     def provisioned_resources_parent(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioned_resources_parent", value)
 
+    @property
+    @pulumi.getter(name="resourceSettings")
+    def resource_settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]:
+        """
+        Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        """
+        return pulumi.get(self, "resource_settings")
+
+    @resource_settings.setter
+    def resource_settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]):
+        pulumi.set(self, "resource_settings", value)
+
 
 class OrganizationWorkload(pulumi.CustomResource):
     @overload
@@ -196,6 +212,7 @@ class OrganizationWorkload(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
                  workloads_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -211,6 +228,7 @@ class OrganizationWorkload(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels applied to the workload.
         :param pulumi.Input[str] name: Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
         :param pulumi.Input[str] provisioned_resources_parent: Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]] resource_settings: Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
         """
         ...
     @overload
@@ -246,6 +264,7 @@ class OrganizationWorkload(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  provisioned_resources_parent: Optional[pulumi.Input[str]] = None,
+                 resource_settings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs']]]]] = None,
                  workloads_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -273,6 +292,7 @@ class OrganizationWorkload(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organizations_id'")
             __props__.__dict__["organizations_id"] = organizations_id
             __props__.__dict__["provisioned_resources_parent"] = provisioned_resources_parent
+            __props__.__dict__["resource_settings"] = resource_settings
             if workloads_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workloads_id'")
             __props__.__dict__["workloads_id"] = workloads_id
@@ -309,6 +329,7 @@ class OrganizationWorkload(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["provisioned_resources_parent"] = None
+        __props__.__dict__["resource_settings"] = None
         __props__.__dict__["resources"] = None
         return OrganizationWorkload(resource_name, opts=opts, __props__=__props__)
 
@@ -383,6 +404,14 @@ class OrganizationWorkload(pulumi.CustomResource):
         Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
         """
         return pulumi.get(self, "provisioned_resources_parent")
+
+    @property
+    @pulumi.getter(name="resourceSettings")
+    def resource_settings(self) -> pulumi.Output[Sequence['outputs.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse']]:
+        """
+        Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+        """
+        return pulumi.get(self, "resource_settings")
 
     @property
     @pulumi.getter

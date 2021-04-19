@@ -192,6 +192,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      * [Output Only] The PSC connection id of the PSC Forwarding Rule.
      */
     public readonly pscConnectionId!: pulumi.Output<string>;
+    public readonly pscConnectionStatus!: pulumi.Output<string>;
     /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
@@ -275,6 +276,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["ports"] = args ? args.ports : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["pscConnectionId"] = args ? args.pscConnectionId : undefined;
+            inputs["pscConnectionStatus"] = args ? args.pscConnectionStatus : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -305,6 +307,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["portRange"] = undefined /*out*/;
             inputs["ports"] = undefined /*out*/;
             inputs["pscConnectionId"] = undefined /*out*/;
+            inputs["pscConnectionStatus"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["selfLinkWithId"] = undefined /*out*/;
@@ -488,6 +491,7 @@ export interface GlobalForwardingRuleArgs {
      * [Output Only] The PSC connection id of the PSC Forwarding Rule.
      */
     readonly pscConnectionId?: pulumi.Input<string>;
+    readonly pscConnectionStatus?: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */

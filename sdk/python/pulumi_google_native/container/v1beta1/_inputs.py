@@ -73,6 +73,7 @@ __all__ = [
     'TpuConfigArgs',
     'UpgradeSettingsArgs',
     'VerticalPodAutoscalingArgs',
+    'WorkloadCertificatesArgs',
     'WorkloadIdentityConfigArgs',
     'WorkloadMetadataConfigArgs',
 ]
@@ -3608,6 +3609,30 @@ class VerticalPodAutoscalingArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class WorkloadCertificatesArgs:
+    def __init__(__self__, *,
+                 enable_certificates: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        :param pulumi.Input[bool] enable_certificates: enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        if enable_certificates is not None:
+            pulumi.set(__self__, "enable_certificates", enable_certificates)
+
+    @property
+    @pulumi.getter(name="enableCertificates")
+    def enable_certificates(self) -> Optional[pulumi.Input[bool]]:
+        """
+        enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_certificates")
+
+    @enable_certificates.setter
+    def enable_certificates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_certificates", value)
 
 
 @pulumi.input_type

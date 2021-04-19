@@ -39,6 +39,7 @@ class GlobalForwardingRuleArgs:
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -210,6 +211,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "ports", ports)
         if psc_connection_id is not None:
             pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if psc_connection_status is not None:
+            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if self_link is not None:
@@ -583,6 +586,15 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "psc_connection_id", value)
 
     @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "psc_connection_status")
+
+    @psc_connection_status.setter
+    def psc_connection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_status", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -717,6 +729,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -894,6 +907,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -942,6 +956,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["psc_connection_id"] = psc_connection_id
+            __props__.__dict__["psc_connection_status"] = psc_connection_status
             __props__.__dict__["region"] = region
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
@@ -993,6 +1008,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["port_range"] = None
         __props__.__dict__["ports"] = None
         __props__.__dict__["psc_connection_id"] = None
+        __props__.__dict__["psc_connection_status"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -1243,6 +1259,11 @@ class GlobalForwardingRule(pulumi.CustomResource):
         [Output Only] The PSC connection id of the PSC Forwarding Rule.
         """
         return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "psc_connection_status")
 
     @property
     @pulumi.getter

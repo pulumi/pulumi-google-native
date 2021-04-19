@@ -372,7 +372,7 @@ class BuildResponse(dict):
         :param str queue_ttl: TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
         :param 'ResultsResponse' results: Results of the build.
         :param Sequence['SecretResponse'] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
-        :param str service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+        :param str service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         :param 'SourceResponse' source: The location of the source files to build.
         :param 'SourceProvenanceResponse' source_provenance: A permanent fixed identifier for source.
         :param str start_time: Time at which execution of the build was started.
@@ -526,7 +526,7 @@ class BuildResponse(dict):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> str:
         """
-        IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+        IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         """
         return pulumi.get(self, "service_account")
 

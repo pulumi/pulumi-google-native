@@ -9,10 +9,12 @@ export * from "./organization";
 export * from "./organizationAnalyticDatastore";
 export * from "./organizationApi";
 export * from "./organizationApiproduct";
+export * from "./organizationApiproductRateplan";
 export * from "./organizationDatacollector";
 export * from "./organizationDeveloper";
 export * from "./organizationDeveloperApp";
 export * from "./organizationDeveloperAppKey";
+export * from "./organizationDeveloperSubscription";
 export * from "./organizationEnvgroup";
 export * from "./organizationEnvgroupAttachment";
 export * from "./organizationEnvironment";
@@ -40,10 +42,12 @@ import { Organization } from "./organization";
 import { OrganizationAnalyticDatastore } from "./organizationAnalyticDatastore";
 import { OrganizationApi } from "./organizationApi";
 import { OrganizationApiproduct } from "./organizationApiproduct";
+import { OrganizationApiproductRateplan } from "./organizationApiproductRateplan";
 import { OrganizationDatacollector } from "./organizationDatacollector";
 import { OrganizationDeveloper } from "./organizationDeveloper";
 import { OrganizationDeveloperApp } from "./organizationDeveloperApp";
 import { OrganizationDeveloperAppKey } from "./organizationDeveloperAppKey";
+import { OrganizationDeveloperSubscription } from "./organizationDeveloperSubscription";
 import { OrganizationEnvgroup } from "./organizationEnvgroup";
 import { OrganizationEnvgroupAttachment } from "./organizationEnvgroupAttachment";
 import { OrganizationEnvironment } from "./organizationEnvironment";
@@ -78,6 +82,8 @@ const _module = {
                 return new OrganizationApi(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationApiproduct":
                 return new OrganizationApiproduct(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:OrganizationApiproductRateplan":
+                return new OrganizationApiproductRateplan(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationDatacollector":
                 return new OrganizationDatacollector(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationDeveloper":
@@ -86,6 +92,8 @@ const _module = {
                 return new OrganizationDeveloperApp(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationDeveloperAppKey":
                 return new OrganizationDeveloperAppKey(name, <any>undefined, { urn })
+            case "google-native:apigee/v1:OrganizationDeveloperSubscription":
+                return new OrganizationDeveloperSubscription(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationEnvgroup":
                 return new OrganizationEnvgroup(name, <any>undefined, { urn })
             case "google-native:apigee/v1:OrganizationEnvgroupAttachment":

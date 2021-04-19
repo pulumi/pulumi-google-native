@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
     public sealed class GoogleCloudBillingBudgetsV1BudgetAmountResponse
     {
         /// <summary>
-        /// Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+        /// Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
         /// </summary>
         public readonly Outputs.GoogleCloudBillingBudgetsV1LastPeriodAmountResponse LastPeriodAmount;
         /// <summary>

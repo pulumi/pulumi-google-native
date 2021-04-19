@@ -220,7 +220,9 @@ __all__ = [
     'ServerBindingArgs',
     'ServerTlsSettingsArgs',
     'ServiceAccountArgs',
+    'ServiceAttachmentConnectedEndpointArgs',
     'ServiceAttachmentConsumerForwardingRuleArgs',
+    'ServiceAttachmentConsumerProjectLimitArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedInstanceIntegrityPolicyArgs',
     'ShieldedVmConfigArgs',
@@ -244,6 +246,7 @@ __all__ = [
     'TlsContextArgs',
     'TlsValidationContextArgs',
     'UDPHealthCheckArgs',
+    'Uint128Args',
     'UpcomingMaintenanceArgs',
     'UpcomingMaintenanceTimeWindowArgs',
     'UrlMapTestArgs',
@@ -16739,17 +16742,93 @@ class ServiceAccountArgs:
 
 
 @pulumi.input_type
+class ServiceAttachmentConnectedEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        [Output Only] A connection connected to this service attachment.
+        :param pulumi.Input[str] endpoint: The url of a connected endpoint.
+        :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the connected endpoint.
+        :param pulumi.Input[str] status: The status of a connected endpoint to this service attachment.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of a connected endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of a consumer forwarding rule. [Deprecated] Do not use.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection id of the connected endpoint.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of a connected endpoint to this service attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class ServiceAttachmentConsumerForwardingRuleArgs:
     def __init__(__self__, *,
                  forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        [Output Only] A consumer forwarding rule connected to this service attachment.
+        [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
         :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] status: The status of the forwarding rule.
         """
         if forwarding_rule is not None:
             pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -16766,6 +16845,18 @@ class ServiceAttachmentConsumerForwardingRuleArgs:
         pulumi.set(self, "forwarding_rule", value)
 
     @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
@@ -16776,6 +16867,45 @@ class ServiceAttachmentConsumerForwardingRuleArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class ServiceAttachmentConsumerProjectLimitArgs:
+    def __init__(__self__, *,
+                 connection_limit: Optional[pulumi.Input[int]] = None,
+                 project_id_or_num: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[int] connection_limit: The value of the limit to set.
+        :param pulumi.Input[str] project_id_or_num: The project id or number for the project to set the limit for.
+        """
+        if connection_limit is not None:
+            pulumi.set(__self__, "connection_limit", connection_limit)
+        if project_id_or_num is not None:
+            pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> Optional[pulumi.Input[int]]:
+        """
+        The value of the limit to set.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @connection_limit.setter
+    def connection_limit(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "connection_limit", value)
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project id or number for the project to set the limit for.
+        """
+        return pulumi.get(self, "project_id_or_num")
+
+    @project_id_or_num.setter
+    def project_id_or_num(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id_or_num", value)
 
 
 @pulumi.input_type
@@ -18087,6 +18217,35 @@ class UDPHealthCheckArgs:
     @response.setter
     def response(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "response", value)
+
+
+@pulumi.input_type
+class Uint128Args:
+    def __init__(__self__, *,
+                 high: Optional[pulumi.Input[str]] = None,
+                 low: Optional[pulumi.Input[str]] = None):
+        if high is not None:
+            pulumi.set(__self__, "high", high)
+        if low is not None:
+            pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter
+    def high(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "high")
+
+    @high.setter
+    def high(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "high", value)
+
+    @property
+    @pulumi.getter
+    def low(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "low")
+
+    @low.setter
+    def low(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "low", value)
 
 
 @pulumi.input_type

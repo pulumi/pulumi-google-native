@@ -14,6 +14,7 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
     'EndpointInfoResponse',
@@ -22,6 +23,7 @@ __all__ = [
     'FirewallInfoResponse',
     'ForwardInfoResponse',
     'ForwardingRuleInfoResponse',
+    'GKEMasterInfoResponse',
     'InstanceInfoResponse',
     'LoadBalancerBackendResponse',
     'LoadBalancerInfoResponse',
@@ -229,6 +231,106 @@ class BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CloudSQLInstanceInfoResponse(dict):
+    """
+    For display only. Metadata associated with a Cloud SQL instance.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "externalIp":
+            suggest = "external_ip"
+        elif key == "internalIp":
+            suggest = "internal_ip"
+        elif key == "networkUri":
+            suggest = "network_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudSQLInstanceInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudSQLInstanceInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudSQLInstanceInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 external_ip: str,
+                 internal_ip: str,
+                 network_uri: str,
+                 region: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with a Cloud SQL instance.
+        :param str display_name: Name of a Cloud SQL instance.
+        :param str external_ip: External IP address of Cloud SQL instance.
+        :param str internal_ip: Internal IP address of Cloud SQL instance.
+        :param str network_uri: URI of a Cloud SQL instance network or empty string if instance does not have one.
+        :param str region: Region in which the Cloud SQL instance is running.
+        :param str uri: URI of a Cloud SQL instance.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+        pulumi.set(__self__, "network_uri", network_uri)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a Cloud SQL instance.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> str:
+        """
+        External IP address of Cloud SQL instance.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        """
+        Internal IP address of Cloud SQL instance.
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @property
+    @pulumi.getter(name="networkUri")
+    def network_uri(self) -> str:
+        """
+        URI of a Cloud SQL instance network or empty string if instance does not have one.
+        """
+        return pulumi.get(self, "network_uri")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        Region in which the Cloud SQL instance is running.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a Cloud SQL instance.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -907,6 +1009,84 @@ class ForwardingRuleInfoResponse(dict):
 
 
 @pulumi.output_type
+class GKEMasterInfoResponse(dict):
+    """
+    For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterNetworkUri":
+            suggest = "cluster_network_uri"
+        elif key == "clusterUri":
+            suggest = "cluster_uri"
+        elif key == "externalIp":
+            suggest = "external_ip"
+        elif key == "internalIp":
+            suggest = "internal_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GKEMasterInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GKEMasterInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GKEMasterInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_network_uri: str,
+                 cluster_uri: str,
+                 external_ip: str,
+                 internal_ip: str):
+        """
+        For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+        :param str cluster_network_uri: URI of a Google Kubernetes Engine cluster network.
+        :param str cluster_uri: URI of a Google Kubernetes Engine cluster.
+        :param str external_ip: External IP address of a Google Kubernetes Engine cluster master.
+        :param str internal_ip: Internal IP address of a Google Kubernetes Engine cluster master.
+        """
+        pulumi.set(__self__, "cluster_network_uri", cluster_network_uri)
+        pulumi.set(__self__, "cluster_uri", cluster_uri)
+        pulumi.set(__self__, "external_ip", external_ip)
+        pulumi.set(__self__, "internal_ip", internal_ip)
+
+    @property
+    @pulumi.getter(name="clusterNetworkUri")
+    def cluster_network_uri(self) -> str:
+        """
+        URI of a Google Kubernetes Engine cluster network.
+        """
+        return pulumi.get(self, "cluster_network_uri")
+
+    @property
+    @pulumi.getter(name="clusterUri")
+    def cluster_uri(self) -> str:
+        """
+        URI of a Google Kubernetes Engine cluster.
+        """
+        return pulumi.get(self, "cluster_uri")
+
+    @property
+    @pulumi.getter(name="externalIp")
+    def external_ip(self) -> str:
+        """
+        External IP address of a Google Kubernetes Engine cluster master.
+        """
+        return pulumi.get(self, "external_ip")
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> str:
+        """
+        Internal IP address of a Google Kubernetes Engine cluster master.
+        """
+        return pulumi.get(self, "internal_ip")
+
+
+@pulumi.output_type
 class InstanceInfoResponse(dict):
     """
     For display only. Metadata associated with a Compute Engine instance.
@@ -1538,8 +1718,12 @@ class StepResponse(dict):
         suggest = None
         if key == "causesDrop":
             suggest = "causes_drop"
+        elif key == "cloudSqlInstance":
+            suggest = "cloud_sql_instance"
         elif key == "forwardingRule":
             suggest = "forwarding_rule"
+        elif key == "gkeMaster":
+            suggest = "gke_master"
         elif key == "loadBalancer":
             suggest = "load_balancer"
         elif key == "projectId":
@@ -1563,6 +1747,7 @@ class StepResponse(dict):
     def __init__(__self__, *,
                  abort: 'outputs.AbortInfoResponse',
                  causes_drop: bool,
+                 cloud_sql_instance: 'outputs.CloudSQLInstanceInfoResponse',
                  deliver: 'outputs.DeliverInfoResponse',
                  description: str,
                  drop: 'outputs.DropInfoResponse',
@@ -1570,6 +1755,7 @@ class StepResponse(dict):
                  firewall: 'outputs.FirewallInfoResponse',
                  forward: 'outputs.ForwardInfoResponse',
                  forwarding_rule: 'outputs.ForwardingRuleInfoResponse',
+                 gke_master: 'outputs.GKEMasterInfoResponse',
                  instance: 'outputs.InstanceInfoResponse',
                  load_balancer: 'outputs.LoadBalancerInfoResponse',
                  network: 'outputs.NetworkInfoResponse',
@@ -1582,6 +1768,7 @@ class StepResponse(dict):
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display info of the final state "abort" and reason.
         :param bool causes_drop: This is a step that leads to the final state Drop.
+        :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display info of a Cloud SQL instance.
         :param 'DeliverInfoResponse' deliver: Display info of the final state "deliver" and reason.
         :param str description: A description of the step. Usually this is a summary of the state.
         :param 'DropInfoResponse' drop: Display info of the final state "drop" and reason.
@@ -1589,6 +1776,7 @@ class StepResponse(dict):
         :param 'FirewallInfoResponse' firewall: Display info of a Compute Engine firewall rule.
         :param 'ForwardInfoResponse' forward: Display info of the final state "forward" and reason.
         :param 'ForwardingRuleInfoResponse' forwarding_rule: Display info of a Compute Engine forwarding rule.
+        :param 'GKEMasterInfoResponse' gke_master: Display info of a Google Kubernetes Engine cluster master.
         :param 'InstanceInfoResponse' instance: Display info of a Compute Engine instance.
         :param 'LoadBalancerInfoResponse' load_balancer: Display info of the load balancers.
         :param 'NetworkInfoResponse' network: Display info of a GCP network.
@@ -1600,6 +1788,7 @@ class StepResponse(dict):
         """
         pulumi.set(__self__, "abort", abort)
         pulumi.set(__self__, "causes_drop", causes_drop)
+        pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "deliver", deliver)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "drop", drop)
@@ -1607,6 +1796,7 @@ class StepResponse(dict):
         pulumi.set(__self__, "firewall", firewall)
         pulumi.set(__self__, "forward", forward)
         pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "gke_master", gke_master)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "load_balancer", load_balancer)
         pulumi.set(__self__, "network", network)
@@ -1631,6 +1821,14 @@ class StepResponse(dict):
         This is a step that leads to the final state Drop.
         """
         return pulumi.get(self, "causes_drop")
+
+    @property
+    @pulumi.getter(name="cloudSqlInstance")
+    def cloud_sql_instance(self) -> 'outputs.CloudSQLInstanceInfoResponse':
+        """
+        Display info of a Cloud SQL instance.
+        """
+        return pulumi.get(self, "cloud_sql_instance")
 
     @property
     @pulumi.getter
@@ -1687,6 +1885,14 @@ class StepResponse(dict):
         Display info of a Compute Engine forwarding rule.
         """
         return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="gkeMaster")
+    def gke_master(self) -> 'outputs.GKEMasterInfoResponse':
+        """
+        Display info of a Google Kubernetes Engine cluster master.
+        """
+        return pulumi.get(self, "gke_master")
 
     @property
     @pulumi.getter
@@ -1756,7 +1962,7 @@ class StepResponse(dict):
 @pulumi.output_type
 class TraceResponse(dict):
     """
-    Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
+    Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1779,7 +1985,7 @@ class TraceResponse(dict):
                  endpoint_info: 'outputs.EndpointInfoResponse',
                  steps: Sequence['outputs.StepResponse']):
         """
-        Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
+        Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
         :param 'EndpointInfoResponse' endpoint_info: Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
         :param Sequence['StepResponse'] steps: A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
         """

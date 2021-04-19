@@ -44,7 +44,7 @@ export class BillingAccountBudget extends pulumi.CustomResource {
      */
     public readonly amount!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse>;
     /**
-     * Optional. Filters that define which resources are used to compute the actual spend against the budget.
+     * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
     public readonly budgetFilter!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterResponse>;
     /**
@@ -120,7 +120,7 @@ export interface BillingAccountBudgetArgs {
     readonly amount?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs>;
     readonly billingAccountsId: pulumi.Input<string>;
     /**
-     * Optional. Filters that define which resources are used to compute the actual spend against the budget.
+     * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
     readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1FilterArgs>;
     readonly budgetsId: pulumi.Input<string>;

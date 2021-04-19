@@ -513,6 +513,8 @@ class ExecutionTemplateResponse(dict):
             suggest = "params_yaml_file"
         elif key == "scaleTier":
             suggest = "scale_tier"
+        elif key == "serviceAccount":
+            suggest = "service_account"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ExecutionTemplateResponse. Access the value via the '{suggest}' property getter instead.")
@@ -534,7 +536,8 @@ class ExecutionTemplateResponse(dict):
                  output_notebook_folder: str,
                  parameters: str,
                  params_yaml_file: str,
-                 scale_tier: str):
+                 scale_tier: str,
+                 service_account: str):
         """
         The description a notebook execution workload.
         :param 'SchedulerAcceleratorConfigResponse' accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
@@ -546,6 +549,7 @@ class ExecutionTemplateResponse(dict):
         :param str parameters: Parameters used within the 'input_notebook_file' notebook.
         :param str params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
         :param str scale_tier: Required. Scale tier of the hardware used for notebook execution.
+        :param str service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
         pulumi.set(__self__, "container_image_uri", container_image_uri)
@@ -556,6 +560,7 @@ class ExecutionTemplateResponse(dict):
         pulumi.set(__self__, "parameters", parameters)
         pulumi.set(__self__, "params_yaml_file", params_yaml_file)
         pulumi.set(__self__, "scale_tier", scale_tier)
+        pulumi.set(__self__, "service_account", service_account)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -628,6 +633,14 @@ class ExecutionTemplateResponse(dict):
         Required. Scale tier of the hardware used for notebook execution.
         """
         return pulumi.get(self, "scale_tier")
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> str:
+        """
+        The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+        """
+        return pulumi.get(self, "service_account")
 
 
 @pulumi.output_type
@@ -1601,6 +1614,8 @@ class VirtualMachineConfigResponse(dict):
             suggest = "internal_ip_only"
         elif key == "machineType":
             suggest = "machine_type"
+        elif key == "nicType":
+            suggest = "nic_type"
         elif key == "shieldedInstanceConfig":
             suggest = "shielded_instance_config"
 
@@ -1626,6 +1641,7 @@ class VirtualMachineConfigResponse(dict):
                  machine_type: str,
                  metadata: Mapping[str, str],
                  network: str,
+                 nic_type: str,
                  shielded_instance_config: 'outputs.RuntimeShieldedInstanceConfigResponse',
                  subnet: str,
                  tags: Sequence[str],
@@ -1642,6 +1658,7 @@ class VirtualMachineConfigResponse(dict):
         :param str machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param Mapping[str, str] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+        :param str nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param 'RuntimeShieldedInstanceConfigResponse' shielded_instance_config: Optional. Shielded VM Instance configuration settings.
         :param str subnet: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param Sequence[str] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
@@ -1657,6 +1674,7 @@ class VirtualMachineConfigResponse(dict):
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "nic_type", nic_type)
         pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         pulumi.set(__self__, "subnet", subnet)
         pulumi.set(__self__, "tags", tags)
@@ -1741,6 +1759,14 @@ class VirtualMachineConfigResponse(dict):
         Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> str:
+        """
+        Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        """
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter(name="shieldedInstanceConfig")

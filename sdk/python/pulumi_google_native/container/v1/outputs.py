@@ -22,6 +22,7 @@ __all__ = [
     'ClientCertificateConfigResponse',
     'CloudRunConfigResponse',
     'ClusterAutoscalingResponse',
+    'ConfidentialNodesResponse',
     'ConfigConnectorConfigResponse',
     'ConsumptionMeteringConfigResponse',
     'DailyMaintenanceWindowResponse',
@@ -792,6 +793,28 @@ class ClusterAutoscalingResponse(dict):
         Contains global constraints regarding minimum and maximum amount of resources in the cluster.
         """
         return pulumi.get(self, "resource_limits")
+
+
+@pulumi.output_type
+class ConfidentialNodesResponse(dict):
+    """
+    ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+        :param bool enabled: Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

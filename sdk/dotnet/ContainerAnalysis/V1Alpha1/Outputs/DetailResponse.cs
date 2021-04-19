@@ -53,6 +53,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// The source from which the information in this Detail was obtained.
         /// </summary>
         public readonly string Source;
+        /// <summary>
+        /// The vendor of the product. e.g. "google"
+        /// </summary>
+        public readonly string Vendor;
 
         [OutputConstructor]
         private DetailResponse(
@@ -74,7 +78,9 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string severityName,
 
-            string source)
+            string source,
+
+            string vendor)
         {
             CpeUri = cpeUri;
             Description = description;
@@ -86,6 +92,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             PackageType = packageType;
             SeverityName = severityName;
             Source = source;
+            Vendor = vendor;
         }
     }
 }

@@ -221,7 +221,9 @@ __all__ = [
     'ServerBindingResponse',
     'ServerTlsSettingsResponse',
     'ServiceAccountResponse',
+    'ServiceAttachmentConnectedEndpointResponse',
     'ServiceAttachmentConsumerForwardingRuleResponse',
+    'ServiceAttachmentConsumerProjectLimitResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedInstanceIntegrityPolicyResponse',
     'ShieldedVmConfigResponse',
@@ -245,6 +247,7 @@ __all__ = [
     'TlsContextResponse',
     'TlsValidationContextResponse',
     'UDPHealthCheckResponse',
+    'Uint128Response',
     'UpcomingMaintenanceResponse',
     'UpcomingMaintenanceTimeWindowResponse',
     'UrlMapTestHeaderResponse',
@@ -16592,15 +16595,91 @@ class ServiceAccountResponse(dict):
 
 
 @pulumi.output_type
-class ServiceAttachmentConsumerForwardingRuleResponse(dict):
+class ServiceAttachmentConnectedEndpointResponse(dict):
     """
-    [Output Only] A consumer forwarding rule connected to this service attachment.
+    [Output Only] A connection connected to this service attachment.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "forwardingRule":
             suggest = "forwarding_rule"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConnectedEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: str,
+                 forwarding_rule: str,
+                 psc_connection_id: str,
+                 status: str):
+        """
+        [Output Only] A connection connected to this service attachment.
+        :param str endpoint: The url of a connected endpoint.
+        :param str forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
+        :param str psc_connection_id: The PSC connection id of the connected endpoint.
+        :param str status: The status of a connected endpoint to this service attachment.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The url of a connected endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        The url of a consumer forwarding rule. [Deprecated] Do not use.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the connected endpoint.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of a connected endpoint to this service attachment.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ServiceAttachmentConsumerForwardingRuleResponse(dict):
+    """
+    [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConsumerForwardingRuleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -16615,13 +16694,16 @@ class ServiceAttachmentConsumerForwardingRuleResponse(dict):
 
     def __init__(__self__, *,
                  forwarding_rule: str,
+                 psc_connection_id: str,
                  status: str):
         """
-        [Output Only] A consumer forwarding rule connected to this service attachment.
+        [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
         :param str forwarding_rule: The url of a consumer forwarding rule.
+        :param str psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param str status: The status of the forwarding rule.
         """
         pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -16633,12 +16715,68 @@ class ServiceAttachmentConsumerForwardingRuleResponse(dict):
         return pulumi.get(self, "forwarding_rule")
 
     @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
     @pulumi.getter
     def status(self) -> str:
         """
         The status of the forwarding rule.
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ServiceAttachmentConsumerProjectLimitResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionLimit":
+            suggest = "connection_limit"
+        elif key == "projectIdOrNum":
+            suggest = "project_id_or_num"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConsumerProjectLimitResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceAttachmentConsumerProjectLimitResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceAttachmentConsumerProjectLimitResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_limit: int,
+                 project_id_or_num: str):
+        """
+        :param int connection_limit: The value of the limit to set.
+        :param str project_id_or_num: The project id or number for the project to set the limit for.
+        """
+        pulumi.set(__self__, "connection_limit", connection_limit)
+        pulumi.set(__self__, "project_id_or_num", project_id_or_num)
+
+    @property
+    @pulumi.getter(name="connectionLimit")
+    def connection_limit(self) -> int:
+        """
+        The value of the limit to set.
+        """
+        return pulumi.get(self, "connection_limit")
+
+    @property
+    @pulumi.getter(name="projectIdOrNum")
+    def project_id_or_num(self) -> str:
+        """
+        The project id or number for the project to set the limit for.
+        """
+        return pulumi.get(self, "project_id_or_num")
 
 
 @pulumi.output_type
@@ -18021,6 +18159,25 @@ class UDPHealthCheckResponse(dict):
         The bytes to match against the beginning of the response data. It is an error if this is empty. The response data can only be ASCII.
         """
         return pulumi.get(self, "response")
+
+
+@pulumi.output_type
+class Uint128Response(dict):
+    def __init__(__self__, *,
+                 high: str,
+                 low: str):
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter
+    def high(self) -> str:
+        return pulumi.get(self, "high")
+
+    @property
+    @pulumi.getter
+    def low(self) -> str:
+        return pulumi.get(self, "low")
 
 
 @pulumi.output_type

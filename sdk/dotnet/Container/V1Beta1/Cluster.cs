@@ -346,6 +346,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public Output<Outputs.VerticalPodAutoscalingResponse> VerticalPodAutoscaling { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        /// </summary>
+        [Output("workloadCertificates")]
+        public Output<Outputs.WorkloadCertificatesResponse> WorkloadCertificates { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         /// </summary>
         [Output("workloadIdentityConfig")]
@@ -767,6 +773,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// </summary>
         [Input("verticalPodAutoscaling")]
         public Input<Inputs.VerticalPodAutoscalingArgs>? VerticalPodAutoscaling { get; set; }
+
+        /// <summary>
+        /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        /// </summary>
+        [Input("workloadCertificates")]
+        public Input<Inputs.WorkloadCertificatesArgs>? WorkloadCertificates { get; set; }
 
         /// <summary>
         /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.

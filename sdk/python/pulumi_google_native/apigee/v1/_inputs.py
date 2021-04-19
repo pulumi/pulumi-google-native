@@ -9,6 +9,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
+    'GoogleCloudApigeeV1AddonsConfigArgs',
+    'GoogleCloudApigeeV1AdvancedApiOpsConfigArgs',
     'GoogleCloudApigeeV1AttributeArgs',
     'GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs',
     'GoogleCloudApigeeV1CustomReportMetricArgs',
@@ -17,6 +19,8 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationArgs',
     'GoogleCloudApigeeV1GraphQLOperationConfigArgs',
     'GoogleCloudApigeeV1GraphQLOperationGroupArgs',
+    'GoogleCloudApigeeV1IntegrationConfigArgs',
+    'GoogleCloudApigeeV1MonetizationConfigArgs',
     'GoogleCloudApigeeV1OperationArgs',
     'GoogleCloudApigeeV1OperationConfigArgs',
     'GoogleCloudApigeeV1OperationGroupArgs',
@@ -24,7 +28,9 @@ __all__ = [
     'GoogleCloudApigeeV1PropertyArgs',
     'GoogleCloudApigeeV1QueryMetricArgs',
     'GoogleCloudApigeeV1QuotaArgs',
+    'GoogleCloudApigeeV1RateRangeArgs',
     'GoogleCloudApigeeV1ReportPropertyArgs',
+    'GoogleCloudApigeeV1RevenueShareRangeArgs',
     'GoogleCloudApigeeV1TlsInfoArgs',
     'GoogleCloudApigeeV1TlsInfoCommonNameArgs',
     'GoogleCloudApigeeV1TraceSamplingConfigArgs',
@@ -32,7 +38,88 @@ __all__ = [
     'GoogleIamV1AuditLogConfigArgs',
     'GoogleIamV1BindingArgs',
     'GoogleTypeExprArgs',
+    'GoogleTypeMoneyArgs',
 ]
+
+@pulumi.input_type
+class GoogleCloudApigeeV1AddonsConfigArgs:
+    def __init__(__self__, *,
+                 advanced_api_ops_config: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']] = None,
+                 integration_config: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']] = None,
+                 monetization_config: Optional[pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs']] = None):
+        """
+        Add-on configurations for the Apigee organization.
+        :param pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs'] advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs'] integration_config: Configuration for the Integration add-on.
+        :param pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs'] monetization_config: Configuration for the Monetization add-on.
+        """
+        if advanced_api_ops_config is not None:
+            pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        if integration_config is not None:
+            pulumi.set(__self__, "integration_config", integration_config)
+        if monetization_config is not None:
+            pulumi.set(__self__, "monetization_config", monetization_config)
+
+    @property
+    @pulumi.getter(name="advancedApiOpsConfig")
+    def advanced_api_ops_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']]:
+        """
+        Configuration for the Advanced API Ops add-on.
+        """
+        return pulumi.get(self, "advanced_api_ops_config")
+
+    @advanced_api_ops_config.setter
+    def advanced_api_ops_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AdvancedApiOpsConfigArgs']]):
+        pulumi.set(self, "advanced_api_ops_config", value)
+
+    @property
+    @pulumi.getter(name="integrationConfig")
+    def integration_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']]:
+        """
+        Configuration for the Integration add-on.
+        """
+        return pulumi.get(self, "integration_config")
+
+    @integration_config.setter
+    def integration_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1IntegrationConfigArgs']]):
+        pulumi.set(self, "integration_config", value)
+
+    @property
+    @pulumi.getter(name="monetizationConfig")
+    def monetization_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs']]:
+        """
+        Configuration for the Monetization add-on.
+        """
+        return pulumi.get(self, "monetization_config")
+
+    @monetization_config.setter
+    def monetization_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1MonetizationConfigArgs']]):
+        pulumi.set(self, "monetization_config", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1AdvancedApiOpsConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Advanced API Ops add-on.
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
 
 @pulumi.input_type
 class GoogleCloudApigeeV1AttributeArgs:
@@ -451,6 +538,54 @@ class GoogleCloudApigeeV1GraphQLOperationGroupArgs:
 
 
 @pulumi.input_type
+class GoogleCloudApigeeV1IntegrationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Integration add-on.
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Integration add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Integration add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1MonetizationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for the Monetization add-on.
+        :param pulumi.Input[bool] enabled: Flag that specifies whether the Monetization add-on is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag that specifies whether the Monetization add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
 class GoogleCloudApigeeV1OperationArgs:
     def __init__(__self__, *,
                  methods: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -811,6 +946,62 @@ class GoogleCloudApigeeV1QuotaArgs:
 
 
 @pulumi.input_type
+class GoogleCloudApigeeV1RateRangeArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 fee: Optional[pulumi.Input['GoogleTypeMoneyArgs']] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        API call volume range and the fees charged when the total number of API calls is within the range.
+        :param pulumi.Input[str] end: Ending value of the range. Set to 0 or `null` for the last range of values.
+        :param pulumi.Input['GoogleTypeMoneyArgs'] fee: Fee to charge when total number of API calls falls within this range.
+        :param pulumi.Input[str] start: Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if fee is not None:
+            pulumi.set(__self__, "fee", fee)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ending value of the range. Set to 0 or `null` for the last range of values.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter
+    def fee(self) -> Optional[pulumi.Input['GoogleTypeMoneyArgs']]:
+        """
+        Fee to charge when total number of API calls falls within this range.
+        """
+        return pulumi.get(self, "fee")
+
+    @fee.setter
+    def fee(self, value: Optional[pulumi.Input['GoogleTypeMoneyArgs']]):
+        pulumi.set(self, "fee", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
 class GoogleCloudApigeeV1ReportPropertyArgs:
     def __init__(__self__, *,
                  property: Optional[pulumi.Input[str]] = None,
@@ -847,6 +1038,62 @@ class GoogleCloudApigeeV1ReportPropertyArgs:
     @property.setter
     def property(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "property", value)
+
+
+@pulumi.input_type
+class GoogleCloudApigeeV1RevenueShareRangeArgs:
+    def __init__(__self__, *,
+                 end: Optional[pulumi.Input[str]] = None,
+                 share_percentage: Optional[pulumi.Input[float]] = None,
+                 start: Optional[pulumi.Input[str]] = None):
+        """
+        API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+        :param pulumi.Input[str] end: Ending value of the range. Set to 0 or `null` for the last range of values.
+        :param pulumi.Input[float] share_percentage: Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+        :param pulumi.Input[str] start: Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if share_percentage is not None:
+            pulumi.set(__self__, "share_percentage", share_percentage)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> Optional[pulumi.Input[str]]:
+        """
+        Ending value of the range. Set to 0 or `null` for the last range of values.
+        """
+        return pulumi.get(self, "end")
+
+    @end.setter
+    def end(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end", value)
+
+    @property
+    @pulumi.getter(name="sharePercentage")
+    def share_percentage(self) -> Optional[pulumi.Input[float]]:
+        """
+        Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+        """
+        return pulumi.get(self, "share_percentage")
+
+    @share_percentage.setter
+    def share_percentage(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "share_percentage", value)
+
+    @property
+    @pulumi.getter
+    def start(self) -> Optional[pulumi.Input[str]]:
+        """
+        Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        return pulumi.get(self, "start")
+
+    @start.setter
+    def start(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start", value)
 
 
 @pulumi.input_type
@@ -1286,5 +1533,61 @@ class GoogleTypeExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleTypeMoneyArgs:
+    def __init__(__self__, *,
+                 currency_code: Optional[pulumi.Input[str]] = None,
+                 nanos: Optional[pulumi.Input[int]] = None,
+                 units: Optional[pulumi.Input[str]] = None):
+        """
+        Represents an amount of money with its currency type.
+        :param pulumi.Input[str] currency_code: The three-letter currency code defined in ISO 4217.
+        :param pulumi.Input[int] nanos: Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param pulumi.Input[str] units: The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        if currency_code is not None:
+            pulumi.set(__self__, "currency_code", currency_code)
+        if nanos is not None:
+            pulumi.set(__self__, "nanos", nanos)
+        if units is not None:
+            pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @currency_code.setter
+    def currency_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "currency_code", value)
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @nanos.setter
+    def nanos(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "nanos", value)
+
+    @property
+    @pulumi.getter
+    def units(self) -> Optional[pulumi.Input[str]]:
+        """
+        The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
+
+    @units.setter
+    def units(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "units", value)
 
 

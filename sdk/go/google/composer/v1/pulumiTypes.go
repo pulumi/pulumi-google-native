@@ -3142,7 +3142,7 @@ type SoftwareConfig struct {
 	ImageVersion *string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 	PythonVersion *string `pulumi:"pythonVersion"`
 }
 
@@ -3167,7 +3167,7 @@ type SoftwareConfigArgs struct {
 	ImageVersion pulumi.StringPtrInput `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
 }
 
@@ -3269,7 +3269,7 @@ func (o SoftwareConfigOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfig) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 func (o SoftwareConfigOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SoftwareConfig) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
@@ -3332,7 +3332,7 @@ func (o SoftwareConfigPtrOutput) PypiPackages() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 func (o SoftwareConfigPtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareConfig) *string {
 		if v == nil {
@@ -3352,7 +3352,7 @@ type SoftwareConfigResponse struct {
 	ImageVersion string `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages map[string]string `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 	PythonVersion string `pulumi:"pythonVersion"`
 }
 
@@ -3377,7 +3377,7 @@ type SoftwareConfigResponseArgs struct {
 	ImageVersion pulumi.StringInput `pulumi:"imageVersion"`
 	// Optional. Custom Python Package Index (PyPI) packages to be installed in the environment. Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without pinning it to a version specifier, use the empty string as the value.
 	PypiPackages pulumi.StringMapInput `pulumi:"pypiPackages"`
-	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+	// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
 }
 
@@ -3479,7 +3479,7 @@ func (o SoftwareConfigResponseOutput) PypiPackages() pulumi.StringMapOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) map[string]string { return v.PypiPackages }).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 func (o SoftwareConfigResponseOutput) PythonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareConfigResponse) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
@@ -3542,7 +3542,7 @@ func (o SoftwareConfigResponsePtrOutput) PypiPackages() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
 func (o SoftwareConfigResponsePtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareConfigResponse) *string {
 		if v == nil {

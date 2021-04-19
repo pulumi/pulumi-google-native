@@ -25,6 +25,7 @@ class ClusterArgs:
                  binary_authorization: Optional[pulumi.Input['BinaryAuthorizationArgs']] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]] = None,
+                 confidential_nodes: Optional[pulumi.Input['ConfidentialNodesArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  current_master_version: Optional[pulumi.Input[str]] = None,
                  current_node_version: Optional[pulumi.Input[str]] = None,
@@ -78,6 +79,7 @@ class ClusterArgs:
         :param pulumi.Input['BinaryAuthorizationArgs'] binary_authorization: Configuration for Binary Authorization.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         :param pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]] conditions: Which conditions caused the current cluster state.
+        :param pulumi.Input['ConfidentialNodesArgs'] confidential_nodes: Configuration of Confidential Nodes
         :param pulumi.Input[str] create_time: [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] current_master_version: [Output only] The current software version of the master endpoint.
         :param pulumi.Input[str] current_node_version: [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
@@ -140,6 +142,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_ipv4_cidr", cluster_ipv4_cidr)
         if conditions is not None:
             pulumi.set(__self__, "conditions", conditions)
+        if confidential_nodes is not None:
+            pulumi.set(__self__, "confidential_nodes", confidential_nodes)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if current_master_version is not None:
@@ -339,6 +343,18 @@ class ClusterArgs:
     @conditions.setter
     def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['StatusConditionArgs']]]]):
         pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> Optional[pulumi.Input['ConfidentialNodesArgs']]:
+        """
+        Configuration of Confidential Nodes
+        """
+        return pulumi.get(self, "confidential_nodes")
+
+    @confidential_nodes.setter
+    def confidential_nodes(self, value: Optional[pulumi.Input['ConfidentialNodesArgs']]):
+        pulumi.set(self, "confidential_nodes", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -882,6 +898,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
+                 confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  current_master_version: Optional[pulumi.Input[str]] = None,
                  current_node_version: Optional[pulumi.Input[str]] = None,
@@ -941,6 +958,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']] binary_authorization: Configuration for Binary Authorization.
         :param pulumi.Input[str] cluster_ipv4_cidr: The IP address range of the container pods in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`). Leave blank to have one automatically chosen or specify a `/14` block in `10.0.0.0/8`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]] conditions: Which conditions caused the current cluster state.
+        :param pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']] confidential_nodes: Configuration of Confidential Nodes
         :param pulumi.Input[str] create_time: [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
         :param pulumi.Input[str] current_master_version: [Output only] The current software version of the master endpoint.
         :param pulumi.Input[str] current_node_version: [Output only] Deprecated, use [NodePools.version](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools) instead. The current version of the node software components. If they are currently at multiple versions because they're in the process of being upgraded, this reflects the minimum version of all nodes.
@@ -1018,6 +1036,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
+                 confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  current_master_version: Optional[pulumi.Input[str]] = None,
                  current_node_version: Optional[pulumi.Input[str]] = None,
@@ -1086,6 +1105,7 @@ class Cluster(pulumi.CustomResource):
                 raise TypeError("Missing required property 'clusters_id'")
             __props__.__dict__["clusters_id"] = clusters_id
             __props__.__dict__["conditions"] = conditions
+            __props__.__dict__["confidential_nodes"] = confidential_nodes
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["current_master_version"] = current_master_version
             __props__.__dict__["current_node_version"] = current_node_version
@@ -1165,6 +1185,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["binary_authorization"] = None
         __props__.__dict__["cluster_ipv4_cidr"] = None
         __props__.__dict__["conditions"] = None
+        __props__.__dict__["confidential_nodes"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["current_master_version"] = None
         __props__.__dict__["current_node_version"] = None
@@ -1265,6 +1286,14 @@ class Cluster(pulumi.CustomResource):
         Which conditions caused the current cluster state.
         """
         return pulumi.get(self, "conditions")
+
+    @property
+    @pulumi.getter(name="confidentialNodes")
+    def confidential_nodes(self) -> pulumi.Output['outputs.ConfidentialNodesResponse']:
+        """
+        Configuration of Confidential Nodes
+        """
+        return pulumi.get(self, "confidential_nodes")
 
     @property
     @pulumi.getter(name="createTime")

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:dialogflow/v2:AgentEntityType":
 		r = &AgentEntityType{}
+	case "google-native:dialogflow/v2:AgentEnvironment":
+		r = &AgentEnvironment{}
 	case "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
 		r = &AgentEnvironmentUserSessionContext{}
 	case "google-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
@@ -37,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AgentSessionContext{}
 	case "google-native:dialogflow/v2:AgentSessionEntityType":
 		r = &AgentSessionEntityType{}
+	case "google-native:dialogflow/v2:AgentVersion":
+		r = &AgentVersion{}
 	case "google-native:dialogflow/v2:Conversation":
 		r = &Conversation{}
 	case "google-native:dialogflow/v2:ConversationParticipant":

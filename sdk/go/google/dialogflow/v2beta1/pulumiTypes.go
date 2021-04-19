@@ -1029,6 +1029,1066 @@ func (o GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput) Index(i
 	}).(GoogleCloudDialogflowV2beta1EntityTypeEntityResponseOutput)
 }
 
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1Fulfillment struct {
+	// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+	DisplayName *string `pulumi:"displayName"`
+	// Whether fulfillment is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	Features []GoogleCloudDialogflowV2beta1FulfillmentFeature `pulumi:"features"`
+	// Configuration for a generic web service.
+	GenericWebService *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService `pulumi:"genericWebService"`
+	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name *string `pulumi:"name"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentArgs and GoogleCloudDialogflowV2beta1FulfillmentOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentOutput() GoogleCloudDialogflowV2beta1FulfillmentOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentOutput
+}
+
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1FulfillmentArgs struct {
+	// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether fulfillment is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	Features GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput `pulumi:"features"`
+	// Configuration for a generic web service.
+	GenericWebService GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput `pulumi:"genericWebService"`
+	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1Fulfillment)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentArgs) ToGoogleCloudDialogflowV2beta1FulfillmentOutput() GoogleCloudDialogflowV2beta1FulfillmentOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentArgs) ToGoogleCloudDialogflowV2beta1FulfillmentOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentArgs) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutput() GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentArgs) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentOutput).ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentArgs, GoogleCloudDialogflowV2beta1FulfillmentPtr and GoogleCloudDialogflowV2beta1FulfillmentPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1FulfillmentPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutput() GoogleCloudDialogflowV2beta1FulfillmentPtrOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentPtrOutput
+}
+
+type googleCloudDialogflowV2beta1FulfillmentPtrType GoogleCloudDialogflowV2beta1FulfillmentArgs
+
+func GoogleCloudDialogflowV2beta1FulfillmentPtr(v *GoogleCloudDialogflowV2beta1FulfillmentArgs) GoogleCloudDialogflowV2beta1FulfillmentPtrInput {
+	return (*googleCloudDialogflowV2beta1FulfillmentPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1FulfillmentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1Fulfillment)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentPtrType) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutput() GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentPtrType) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentPtrOutput)
+}
+
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1FulfillmentOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1Fulfillment)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) ToGoogleCloudDialogflowV2beta1FulfillmentOutput() GoogleCloudDialogflowV2beta1FulfillmentOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) ToGoogleCloudDialogflowV2beta1FulfillmentOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutput() GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) *GoogleCloudDialogflowV2beta1Fulfillment {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentPtrOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Whether fulfillment is enabled.
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) Features() GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) []GoogleCloudDialogflowV2beta1FulfillmentFeature {
+		return v.Features
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) GenericWebService() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput)
+}
+
+// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1Fulfillment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1Fulfillment)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutput() GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) GoogleCloudDialogflowV2beta1Fulfillment { return *v }).(GoogleCloudDialogflowV2beta1FulfillmentOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether fulfillment is enabled.
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) Features() GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) []GoogleCloudDialogflowV2beta1FulfillmentFeature {
+		if v == nil {
+			return nil
+		}
+		return v.Features
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) GenericWebService() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
+		if v == nil {
+			return nil
+		}
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput)
+}
+
+// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1Fulfillment) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeature struct {
+	// The type of the feature that enabled for fulfillment.
+	Type *string `pulumi:"type"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentFeatureInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs and GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs struct {
+	// The type of the feature that enabled for fulfillment.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentFeature)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureArray and GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentFeatureArray{ GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...} }
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureArray []GoogleCloudDialogflowV2beta1FulfillmentFeatureInput
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1FulfillmentFeature)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureArray) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureArray) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput)
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentFeature)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput {
+	return o
+}
+
+// The type of the feature that enabled for fulfillment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1FulfillmentFeature)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1FulfillmentFeature {
+		return vs[0].([]GoogleCloudDialogflowV2beta1FulfillmentFeature)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput)
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse struct {
+	// The type of the feature that enabled for fulfillment.
+	Type string `pulumi:"type"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs and GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs struct {
+	// The type of the feature that enabled for fulfillment.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray and GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray{ GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArgs{...} }
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray []GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseInput
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArray) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput)
+}
+
+// Whether fulfillment is enabled for the specific feature.
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput {
+	return o
+}
+
+// The type of the feature that enabled for fulfillment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput) ToGoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse {
+		return vs[0].([]GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse)[vs[1].(int)]
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput)
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebService struct {
+	// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	IsCloudFunction *bool `pulumi:"isCloudFunction"`
+	// The password for HTTP Basic authentication.
+	Password *string `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri *string `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username *string `pulumi:"username"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs struct {
+	// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	IsCloudFunction pulumi.BoolPtrInput `pulumi:"isCloudFunction"`
+	// The password for HTTP Basic authentication.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput).ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs, GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtr and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput
+}
+
+type googleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrType GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs
+
+func GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtr(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput {
+	return (*googleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput)
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput)
+}
+
+// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) IsCloudFunction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *bool { return v.IsCloudFunction }).(pulumi.BoolPtrOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) map[string]string {
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentGenericWebService)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput)
+}
+
+// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) IsCloudFunction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IsCloudFunction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebService) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse struct {
+	// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	IsCloudFunction bool `pulumi:"isCloudFunction"`
+	// The password for HTTP Basic authentication.
+	Password string `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders map[string]string `pulumi:"requestHeaders"`
+	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri string `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username string `pulumi:"username"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs struct {
+	// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	IsCloudFunction pulumi.BoolInput `pulumi:"isCloudFunction"`
+	// The password for HTTP Basic authentication.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The HTTP request headers to send together with fulfillment requests.
+	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
+	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringInput `pulumi:"uri"`
+	// The user name for HTTP Basic authentication.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput).ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs, GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtr and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput
+}
+
+type googleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrType GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs
+
+func GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtr(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseArgs) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrInput {
+	return (*googleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput)
+}
+
+// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput)
+}
+
+// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) IsCloudFunction() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) bool {
+		return v.IsCloudFunction
+	}).(pulumi.BoolOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) map[string]string {
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput)
+}
+
+// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) IsCloudFunction() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsCloudFunction
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The password for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HTTP request headers to send together with fulfillment requests.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) RequestHeaders() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.RequestHeaders
+	}).(pulumi.StringMapOutput)
+}
+
+// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+// The user name for HTTP Basic authentication.
+func (o GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1FulfillmentResponse struct {
+	// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+	DisplayName string `pulumi:"displayName"`
+	// Whether fulfillment is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	Features []GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse `pulumi:"features"`
+	// Configuration for a generic web service.
+	GenericWebService GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse `pulumi:"genericWebService"`
+	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name string `pulumi:"name"`
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentResponseInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentResponseArgs and GoogleCloudDialogflowV2beta1FulfillmentResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentResponseInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentResponseArgs{...}
+type GoogleCloudDialogflowV2beta1FulfillmentResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponseOutput
+}
+
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1FulfillmentResponseArgs struct {
+	// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Whether fulfillment is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The field defines whether the fulfillment is enabled for certain features.
+	Features GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayInput `pulumi:"features"`
+	// Configuration for a generic web service.
+	GenericWebService GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseInput `pulumi:"genericWebService"`
+	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput).ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1FulfillmentResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentResponseArgs, GoogleCloudDialogflowV2beta1FulfillmentResponsePtr and GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1FulfillmentResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1FulfillmentResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput
+	ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput
+}
+
+type googleCloudDialogflowV2beta1FulfillmentResponsePtrType GoogleCloudDialogflowV2beta1FulfillmentResponseArgs
+
+func GoogleCloudDialogflowV2beta1FulfillmentResponsePtr(v *GoogleCloudDialogflowV2beta1FulfillmentResponseArgs) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrInput {
+	return (*googleCloudDialogflowV2beta1FulfillmentResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1FulfillmentResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentResponsePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1FulfillmentResponsePtrType) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput)
+}
+
+// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+type GoogleCloudDialogflowV2beta1FulfillmentResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1FulfillmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutput() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) *GoogleCloudDialogflowV2beta1FulfillmentResponse {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether fulfillment is enabled.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) Features() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) []GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse {
+		return v.Features
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) GenericWebService() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput)
+}
+
+// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1FulfillmentResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1FulfillmentResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput() GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) ToGoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) Elem() GoogleCloudDialogflowV2beta1FulfillmentResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) GoogleCloudDialogflowV2beta1FulfillmentResponse {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput)
+}
+
+// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DisplayName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether fulfillment is enabled.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The field defines whether the fulfillment is enabled for certain features.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) Features() GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) []GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Features
+	}).(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput)
+}
+
+// Configuration for a generic web service.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) GenericWebService() GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) *GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GenericWebService
+	}).(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput)
+}
+
+// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1FulfillmentResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 // Defines the Human Agent Assistant to connect to a conversation.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig struct {
 	// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -17203,6 +18263,396 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureResponseOutput) Type() pulu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1SuggestionFeatureResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
+	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech *bool `pulumi:"enableTextToSpeech"`
+	// Required. Audio encoding of the synthesized audio content.
+	OutputAudioEncoding *string `pulumi:"outputAudioEncoding"`
+	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+	SampleRateHertz *int `pulumi:"sampleRateHertz"`
+	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput` via:
+//
+//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput
+}
+
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs struct {
+	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech pulumi.BoolPtrInput `pulumi:"enableTextToSpeech"`
+	// Required. Audio encoding of the synthesized audio content.
+	OutputAudioEncoding pulumi.StringPtrInput `pulumi:"outputAudioEncoding"`
+	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
+	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
+}
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettings)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput).ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs, GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtr and GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput
+}
+
+type googleCloudDialogflowV2beta1TextToSpeechSettingsPtrType GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs
+
+func GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtr(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput {
+	return (*googleCloudDialogflowV2beta1TextToSpeechSettingsPtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1TextToSpeechSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1TextToSpeechSettings)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1TextToSpeechSettingsPtrType) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1TextToSpeechSettingsPtrType) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput)
+}
+
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *GoogleCloudDialogflowV2beta1TextToSpeechSettings {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput)
+}
+
+// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *bool { return v.EnableTextToSpeech }).(pulumi.BoolPtrOutput)
+}
+
+// Required. Audio encoding of the synthesized audio content.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *string { return v.OutputAudioEncoding }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) *int { return v.SampleRateHertz }).(pulumi.IntPtrOutput)
+}
+
+// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]string {
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1TextToSpeechSettings)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) Elem() GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) GoogleCloudDialogflowV2beta1TextToSpeechSettings {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput)
+}
+
+// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTextToSpeech
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. Audio encoding of the synthesized audio content.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputAudioEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SampleRateHertz
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse struct {
+	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech bool `pulumi:"enableTextToSpeech"`
+	// Required. Audio encoding of the synthesized audio content.
+	OutputAudioEncoding string `pulumi:"outputAudioEncoding"`
+	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+	SampleRateHertz int `pulumi:"sampleRateHertz"`
+	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs map[string]string `pulumi:"synthesizeSpeechConfigs"`
+}
+
+// GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseInput` via:
+//
+//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs{...}
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput
+}
+
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs struct {
+	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+	EnableTextToSpeech pulumi.BoolInput `pulumi:"enableTextToSpeech"`
+	// Required. Audio encoding of the synthesized audio content.
+	OutputAudioEncoding pulumi.StringInput `pulumi:"outputAudioEncoding"`
+	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+	SampleRateHertz pulumi.IntInput `pulumi:"sampleRateHertz"`
+	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+	SynthesizeSpeechConfigs pulumi.StringMapInput `pulumi:"synthesizeSpeechConfigs"`
+}
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput)
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput).ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs, GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtr and GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput
+	ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput
+}
+
+type googleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrType GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs
+
+func GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtr(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseArgs) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrInput {
+	return (*googleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrType) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrType) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput)
+}
+
+// Instructs the speech synthesizer on how to generate the output audio content.
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
+		return &v
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput)
+}
+
+// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) EnableTextToSpeech() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) bool { return v.EnableTextToSpeech }).(pulumi.BoolOutput)
+}
+
+// Required. Audio encoding of the synthesized audio content.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) OutputAudioEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) string { return v.OutputAudioEncoding }).(pulumi.StringOutput)
+}
+
+// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SampleRateHertz() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) int { return v.SampleRateHertz }).(pulumi.IntOutput)
+}
+
+// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) map[string]string {
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) ToGoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) Elem() GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
+		return *v
+	}).(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput)
+}
+
+// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) EnableTextToSpeech() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableTextToSpeech
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Required. Audio encoding of the synthesized audio content.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OutputAudioEncoding
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.SampleRateHertz
+	}).(pulumi.IntPtrOutput)
+}
+
+// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput) SynthesizeSpeechConfigs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.SynthesizeSpeechConfigs
+	}).(pulumi.StringMapOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -17392,6 +18842,18 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1EntityTypeEntityArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1EntityTypeEntityResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentFeatureResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1FulfillmentResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput{})
@@ -17611,6 +19073,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1SuggestionFeatureResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponsePtrOutput{})
 }

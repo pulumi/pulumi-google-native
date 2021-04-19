@@ -108,7 +108,7 @@ class ServiceBackup(pulumi.CustomResource):
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates a new Backup in a given project and location.
+        Creates a new backup in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,7 +122,7 @@ class ServiceBackup(pulumi.CustomResource):
                  args: ServiceBackupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new Backup in a given project and location.
+        Creates a new backup in a given project and location.
 
         :param str resource_name: The name of the resource.
         :param ServiceBackupArgs args: The arguments to use to populate this resource's properties.

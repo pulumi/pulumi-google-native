@@ -995,7 +995,8 @@ class DetailResponse(dict):
                  package: str,
                  package_type: str,
                  severity_name: str,
-                 source: str):
+                 source: str,
+                 vendor: str):
         """
         Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
         :param str cpe_uri: The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
@@ -1008,6 +1009,7 @@ class DetailResponse(dict):
         :param str package_type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         :param str severity_name: The severity (eg: distro assigned severity) for this vulnerability.
         :param str source: The source from which the information in this Detail was obtained.
+        :param str vendor: The vendor of the product. e.g. "google"
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "description", description)
@@ -1019,6 +1021,7 @@ class DetailResponse(dict):
         pulumi.set(__self__, "package_type", package_type)
         pulumi.set(__self__, "severity_name", severity_name)
         pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "vendor", vendor)
 
     @property
     @pulumi.getter(name="cpeUri")
@@ -1099,6 +1102,14 @@ class DetailResponse(dict):
         The source from which the information in this Detail was obtained.
         """
         return pulumi.get(self, "source")
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> str:
+        """
+        The vendor of the product. e.g. "google"
+        """
+        return pulumi.get(self, "vendor")
 
 
 @pulumi.output_type

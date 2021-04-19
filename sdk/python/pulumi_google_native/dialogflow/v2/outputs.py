@@ -15,6 +15,9 @@ __all__ = [
     'GoogleCloudDialogflowV2ConversationPhoneNumberResponse',
     'GoogleCloudDialogflowV2DocumentReloadStatusResponse',
     'GoogleCloudDialogflowV2EntityTypeEntityResponse',
+    'GoogleCloudDialogflowV2FulfillmentFeatureResponse',
+    'GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse',
+    'GoogleCloudDialogflowV2FulfillmentResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigResponse',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse',
@@ -65,6 +68,7 @@ __all__ = [
     'GoogleCloudDialogflowV2NotificationConfigResponse',
     'GoogleCloudDialogflowV2SpeechToTextConfigResponse',
     'GoogleCloudDialogflowV2SuggestionFeatureResponse',
+    'GoogleCloudDialogflowV2TextToSpeechSettingsResponse',
     'GoogleRpcStatusResponse',
 ]
 
@@ -254,6 +258,198 @@ class GoogleCloudDialogflowV2EntityTypeEntityResponse(dict):
         Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2FulfillmentFeatureResponse(dict):
+    """
+    Whether fulfillment is enabled for the specific feature.
+    """
+    def __init__(__self__, *,
+                 type: str):
+        """
+        Whether fulfillment is enabled for the specific feature.
+        :param str type: The type of the feature that enabled for fulfillment.
+        """
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the feature that enabled for fulfillment.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(dict):
+    """
+    Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "isCloudFunction":
+            suggest = "is_cloud_function"
+        elif key == "requestHeaders":
+            suggest = "request_headers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 is_cloud_function: bool,
+                 password: str,
+                 request_headers: Mapping[str, str],
+                 uri: str,
+                 username: str):
+        """
+        Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+        :param bool is_cloud_function: Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        :param str password: Optional. The password for HTTP Basic authentication.
+        :param Mapping[str, str] request_headers: Optional. The HTTP request headers to send together with fulfillment requests.
+        :param str uri: Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param str username: Optional. The user name for HTTP Basic authentication.
+        """
+        pulumi.set(__self__, "is_cloud_function", is_cloud_function)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "request_headers", request_headers)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="isCloudFunction")
+    def is_cloud_function(self) -> bool:
+        """
+        Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        """
+        return pulumi.get(self, "is_cloud_function")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Optional. The password for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Mapping[str, str]:
+        """
+        Optional. The HTTP request headers to send together with fulfillment requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Optional. The user name for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2FulfillmentResponse(dict):
+    """
+    By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "genericWebService":
+            suggest = "generic_web_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2FulfillmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2FulfillmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2FulfillmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 enabled: bool,
+                 features: Sequence['outputs.GoogleCloudDialogflowV2FulfillmentFeatureResponse'],
+                 generic_web_service: 'outputs.GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse',
+                 name: str):
+        """
+        By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+        :param str display_name: Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+        :param bool enabled: Optional. Whether fulfillment is enabled.
+        :param Sequence['GoogleCloudDialogflowV2FulfillmentFeatureResponse'] features: Optional. The field defines whether the fulfillment is enabled for certain features.
+        :param 'GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse' generic_web_service: Configuration for a generic web service.
+        :param str name: Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "features", features)
+        pulumi.set(__self__, "generic_web_service", generic_web_service)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Optional. Whether fulfillment is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Sequence['outputs.GoogleCloudDialogflowV2FulfillmentFeatureResponse']:
+        """
+        Optional. The field defines whether the fulfillment is enabled for certain features.
+        """
+        return pulumi.get(self, "features")
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> 'outputs.GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse':
+        """
+        Configuration for a generic web service.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -3026,6 +3222,84 @@ class GoogleCloudDialogflowV2SuggestionFeatureResponse(dict):
         Type of Human Agent Assistant API feature to request.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowV2TextToSpeechSettingsResponse(dict):
+    """
+    Instructs the speech synthesizer on how to generate the output audio content.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableTextToSpeech":
+            suggest = "enable_text_to_speech"
+        elif key == "outputAudioEncoding":
+            suggest = "output_audio_encoding"
+        elif key == "sampleRateHertz":
+            suggest = "sample_rate_hertz"
+        elif key == "synthesizeSpeechConfigs":
+            suggest = "synthesize_speech_configs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowV2TextToSpeechSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowV2TextToSpeechSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowV2TextToSpeechSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_text_to_speech: bool,
+                 output_audio_encoding: str,
+                 sample_rate_hertz: int,
+                 synthesize_speech_configs: Mapping[str, str]):
+        """
+        Instructs the speech synthesizer on how to generate the output audio content.
+        :param bool enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        :param str output_audio_encoding: Required. Audio encoding of the synthesized audio content.
+        :param int sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+        :param Mapping[str, str] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        pulumi.set(__self__, "enable_text_to_speech", enable_text_to_speech)
+        pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
+        pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
+        pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
+
+    @property
+    @pulumi.getter(name="enableTextToSpeech")
+    def enable_text_to_speech(self) -> bool:
+        """
+        Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        """
+        return pulumi.get(self, "enable_text_to_speech")
+
+    @property
+    @pulumi.getter(name="outputAudioEncoding")
+    def output_audio_encoding(self) -> str:
+        """
+        Required. Audio encoding of the synthesized audio content.
+        """
+        return pulumi.get(self, "output_audio_encoding")
+
+    @property
+    @pulumi.getter(name="sampleRateHertz")
+    def sample_rate_hertz(self) -> int:
+        """
+        Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+        """
+        return pulumi.get(self, "sample_rate_hertz")
+
+    @property
+    @pulumi.getter(name="synthesizeSpeechConfigs")
+    def synthesize_speech_configs(self) -> Mapping[str, str]:
+        """
+        Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        return pulumi.get(self, "synthesize_speech_configs")
 
 
 @pulumi.output_type

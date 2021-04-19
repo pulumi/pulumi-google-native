@@ -10,6 +10,632 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfig struct {
+	// Configuration for the Advanced API Ops add-on.
+	AdvancedApiOpsConfig *GoogleCloudApigeeV1AdvancedApiOpsConfig `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Integration add-on.
+	IntegrationConfig *GoogleCloudApigeeV1IntegrationConfig `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	MonetizationConfig *GoogleCloudApigeeV1MonetizationConfig `pulumi:"monetizationConfig"`
+}
+
+// GoogleCloudApigeeV1AddonsConfigInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigArgs and GoogleCloudApigeeV1AddonsConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigInput` via:
+//
+//          GoogleCloudApigeeV1AddonsConfigArgs{...}
+type GoogleCloudApigeeV1AddonsConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AddonsConfigOutput() GoogleCloudApigeeV1AddonsConfigOutput
+	ToGoogleCloudApigeeV1AddonsConfigOutputWithContext(context.Context) GoogleCloudApigeeV1AddonsConfigOutput
+}
+
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfigArgs struct {
+	// Configuration for the Advanced API Ops add-on.
+	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Integration add-on.
+	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigPtrInput `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigPtrInput `pulumi:"monetizationConfig"`
+}
+
+func (GoogleCloudApigeeV1AddonsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigOutput() GoogleCloudApigeeV1AddonsConfigOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigOutput).ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AddonsConfigPtrInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigArgs, GoogleCloudApigeeV1AddonsConfigPtr and GoogleCloudApigeeV1AddonsConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1AddonsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1AddonsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput
+	ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput
+}
+
+type googleCloudApigeeV1AddonsConfigPtrType GoogleCloudApigeeV1AddonsConfigArgs
+
+func GoogleCloudApigeeV1AddonsConfigPtr(v *GoogleCloudApigeeV1AddonsConfigArgs) GoogleCloudApigeeV1AddonsConfigPtrInput {
+	return (*googleCloudApigeeV1AddonsConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1AddonsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AddonsConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AddonsConfigPtrType) ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AddonsConfigPtrType) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigPtrOutput)
+}
+
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AddonsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfigOutput() GoogleCloudApigeeV1AddonsConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AddonsConfig {
+		return &v
+	}).(GoogleCloudApigeeV1AddonsConfigPtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+func (o GoogleCloudApigeeV1AddonsConfigOutput) AdvancedApiOpsConfig() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AdvancedApiOpsConfig {
+		return v.AdvancedApiOpsConfig
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
+}
+
+// Configuration for the Integration add-on.
+func (o GoogleCloudApigeeV1AddonsConfigOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1IntegrationConfig {
+		return v.IntegrationConfig
+	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+func (o GoogleCloudApigeeV1AddonsConfigOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1MonetizationConfig {
+		return v.MonetizationConfig
+	}).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
+}
+
+type GoogleCloudApigeeV1AddonsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AddonsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AddonsConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutput() GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) ToGoogleCloudApigeeV1AddonsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) Elem() GoogleCloudApigeeV1AddonsConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) GoogleCloudApigeeV1AddonsConfig { return *v }).(GoogleCloudApigeeV1AddonsConfigOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) AdvancedApiOpsConfig() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1AdvancedApiOpsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AdvancedApiOpsConfig
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
+}
+
+// Configuration for the Integration add-on.
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1IntegrationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrationConfig
+	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+func (o GoogleCloudApigeeV1AddonsConfigPtrOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfig) *GoogleCloudApigeeV1MonetizationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MonetizationConfig
+	}).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
+}
+
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfigResponse struct {
+	// Configuration for the Advanced API Ops add-on.
+	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigResponse `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Integration add-on.
+	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigResponse `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigResponse `pulumi:"monetizationConfig"`
+}
+
+// GoogleCloudApigeeV1AddonsConfigResponseInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigResponseArgs and GoogleCloudApigeeV1AddonsConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1AddonsConfigResponseArgs{...}
+type GoogleCloudApigeeV1AddonsConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AddonsConfigResponseOutput() GoogleCloudApigeeV1AddonsConfigResponseOutput
+	ToGoogleCloudApigeeV1AddonsConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1AddonsConfigResponseOutput
+}
+
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfigResponseArgs struct {
+	// Configuration for the Advanced API Ops add-on.
+	AdvancedApiOpsConfig GoogleCloudApigeeV1AdvancedApiOpsConfigResponseInput `pulumi:"advancedApiOpsConfig"`
+	// Configuration for the Integration add-on.
+	IntegrationConfig GoogleCloudApigeeV1IntegrationConfigResponseInput `pulumi:"integrationConfig"`
+	// Configuration for the Monetization add-on.
+	MonetizationConfig GoogleCloudApigeeV1MonetizationConfigResponseInput `pulumi:"monetizationConfig"`
+}
+
+func (GoogleCloudApigeeV1AddonsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigResponseArgs) ToGoogleCloudApigeeV1AddonsConfigResponseOutput() GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigResponseArgs) ToGoogleCloudApigeeV1AddonsConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigResponseArgs) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutput() GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AddonsConfigResponseArgs) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigResponseOutput).ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AddonsConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigResponseArgs, GoogleCloudApigeeV1AddonsConfigResponsePtr and GoogleCloudApigeeV1AddonsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1AddonsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1AddonsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutput() GoogleCloudApigeeV1AddonsConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1AddonsConfigResponsePtrType GoogleCloudApigeeV1AddonsConfigResponseArgs
+
+func GoogleCloudApigeeV1AddonsConfigResponsePtr(v *GoogleCloudApigeeV1AddonsConfigResponseArgs) GoogleCloudApigeeV1AddonsConfigResponsePtrInput {
+	return (*googleCloudApigeeV1AddonsConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1AddonsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AddonsConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AddonsConfigResponsePtrType) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutput() GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AddonsConfigResponsePtrType) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AddonsConfigResponsePtrOutput)
+}
+
+// Add-on configurations for the Apigee organization.
+type GoogleCloudApigeeV1AddonsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AddonsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AddonsConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1AddonsConfigResponseOutput() GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1AddonsConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutput() GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1AddonsConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1AddonsConfigResponsePtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) AdvancedApiOpsConfig() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+		return v.AdvancedApiOpsConfig
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
+}
+
+// Configuration for the Integration add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1IntegrationConfigResponse {
+		return v.IntegrationConfig
+	}).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
+}
+
+// Configuration for the Monetization add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponseOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1MonetizationConfigResponse {
+		return v.MonetizationConfig
+	}).(GoogleCloudApigeeV1MonetizationConfigResponseOutput)
+}
+
+type GoogleCloudApigeeV1AddonsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AddonsConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutput() GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) ToGoogleCloudApigeeV1AddonsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AddonsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1AddonsConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) GoogleCloudApigeeV1AddonsConfigResponse { return *v }).(GoogleCloudApigeeV1AddonsConfigResponseOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) AdvancedApiOpsConfig() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.AdvancedApiOpsConfig
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput)
+}
+
+// Configuration for the Integration add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) IntegrationConfig() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1IntegrationConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.IntegrationConfig
+	}).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+func (o GoogleCloudApigeeV1AddonsConfigResponsePtrOutput) MonetizationConfig() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AddonsConfigResponse) *GoogleCloudApigeeV1MonetizationConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.MonetizationConfig
+	}).(GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfig struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1AdvancedApiOpsConfigInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigArgs and GoogleCloudApigeeV1AdvancedApiOpsConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigInput` via:
+//
+//          GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
+type GoogleCloudApigeeV1AdvancedApiOpsConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutputWithContext(context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigOutput
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfigArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput).ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigArgs, GoogleCloudApigeeV1AdvancedApiOpsConfigPtr and GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput
+}
+
+type googleCloudApigeeV1AdvancedApiOpsConfigPtrType GoogleCloudApigeeV1AdvancedApiOpsConfigArgs
+
+func GoogleCloudApigeeV1AdvancedApiOpsConfigPtr(v *GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput {
+	return (*googleCloudApigeeV1AdvancedApiOpsConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1AdvancedApiOpsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AdvancedApiOpsConfigPtrType) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AdvancedApiOpsConfigPtrType) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfig) *GoogleCloudApigeeV1AdvancedApiOpsConfig {
+		return &v
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AdvancedApiOpsConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) Elem() GoogleCloudApigeeV1AdvancedApiOpsConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfig) GoogleCloudApigeeV1AdvancedApiOpsConfig { return *v }).(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponse struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1AdvancedApiOpsConfigResponseInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs and GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs{...}
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs struct {
+	// Flag that specifies whether the Advanced API Ops add-on is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput).ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs, GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtr and GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1AdvancedApiOpsConfigResponsePtrType GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs
+
+func GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtr(v *GoogleCloudApigeeV1AdvancedApiOpsConfigResponseArgs) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrInput {
+	return (*googleCloudApigeeV1AdvancedApiOpsConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1AdvancedApiOpsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AdvancedApiOpsConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1AdvancedApiOpsConfigResponsePtrType) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1AdvancedApiOpsConfigResponsePtrType) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput)
+}
+
+// Configuration for the Advanced API Ops add-on.
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1AdvancedApiOpsConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1AdvancedApiOpsConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput() GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) ToGoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+		return *v
+	}).(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput)
+}
+
+// Flag that specifies whether the Advanced API Ops add-on is enabled.
+func (o GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1AdvancedApiOpsConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // the Api category resource.
 type GoogleCloudApigeeV1ApiCategoryDataResponse struct {
 	// Name of the category.
@@ -3254,6 +3880,546 @@ func (o GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput) Index(i pulumi.I
 	}).(GoogleCloudApigeeV1GraphQLOperationResponseOutput)
 }
 
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfig struct {
+	// Flag that specifies whether the Integration add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1IntegrationConfigInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs and GoogleCloudApigeeV1IntegrationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigInput` via:
+//
+//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
+type GoogleCloudApigeeV1IntegrationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput
+	ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigOutput
+}
+
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfigArgs struct {
+	// Flag that specifies whether the Integration add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1IntegrationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigOutput).ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1IntegrationConfigPtrInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs, GoogleCloudApigeeV1IntegrationConfigPtr and GoogleCloudApigeeV1IntegrationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1IntegrationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput
+	ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput
+}
+
+type googleCloudApigeeV1IntegrationConfigPtrType GoogleCloudApigeeV1IntegrationConfigArgs
+
+func GoogleCloudApigeeV1IntegrationConfigPtr(v *GoogleCloudApigeeV1IntegrationConfigArgs) GoogleCloudApigeeV1IntegrationConfigPtrInput {
+	return (*googleCloudApigeeV1IntegrationConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1IntegrationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1IntegrationConfigPtrType) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
+}
+
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1IntegrationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigOutput() GoogleCloudApigeeV1IntegrationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfig) *GoogleCloudApigeeV1IntegrationConfig {
+		return &v
+	}).(GoogleCloudApigeeV1IntegrationConfigPtrOutput)
+}
+
+// Flag that specifies whether the Integration add-on is enabled.
+func (o GoogleCloudApigeeV1IntegrationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudApigeeV1IntegrationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1IntegrationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutput() GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) ToGoogleCloudApigeeV1IntegrationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) Elem() GoogleCloudApigeeV1IntegrationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfig) GoogleCloudApigeeV1IntegrationConfig { return *v }).(GoogleCloudApigeeV1IntegrationConfigOutput)
+}
+
+// Flag that specifies whether the Integration add-on is enabled.
+func (o GoogleCloudApigeeV1IntegrationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfigResponse struct {
+	// Flag that specifies whether the Integration add-on is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1IntegrationConfigResponseInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigResponseArgs and GoogleCloudApigeeV1IntegrationConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1IntegrationConfigResponseArgs{...}
+type GoogleCloudApigeeV1IntegrationConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput
+	ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput
+}
+
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfigResponseArgs struct {
+	// Flag that specifies whether the Integration add-on is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1IntegrationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1IntegrationConfigResponseArgs) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponseOutput).ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1IntegrationConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigResponseArgs, GoogleCloudApigeeV1IntegrationConfigResponsePtr and GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1IntegrationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1IntegrationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1IntegrationConfigResponsePtrType GoogleCloudApigeeV1IntegrationConfigResponseArgs
+
+func GoogleCloudApigeeV1IntegrationConfigResponsePtr(v *GoogleCloudApigeeV1IntegrationConfigResponseArgs) GoogleCloudApigeeV1IntegrationConfigResponsePtrInput {
+	return (*googleCloudApigeeV1IntegrationConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1IntegrationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1IntegrationConfigResponsePtrType) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1IntegrationConfigResponsePtrType) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
+}
+
+// Configuration for the Integration add-on.
+type GoogleCloudApigeeV1IntegrationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1IntegrationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponseOutput() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfigResponse) *GoogleCloudApigeeV1IntegrationConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput)
+}
+
+// Flag that specifies whether the Integration add-on is enabled.
+func (o GoogleCloudApigeeV1IntegrationConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1IntegrationConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1IntegrationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutput() GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) ToGoogleCloudApigeeV1IntegrationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1IntegrationConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfigResponse) GoogleCloudApigeeV1IntegrationConfigResponse {
+		return *v
+	}).(GoogleCloudApigeeV1IntegrationConfigResponseOutput)
+}
+
+// Flag that specifies whether the Integration add-on is enabled.
+func (o GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1IntegrationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfig struct {
+	// Flag that specifies whether the Monetization add-on is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1MonetizationConfigInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigArgs and GoogleCloudApigeeV1MonetizationConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigInput` via:
+//
+//          GoogleCloudApigeeV1MonetizationConfigArgs{...}
+type GoogleCloudApigeeV1MonetizationConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1MonetizationConfigOutput() GoogleCloudApigeeV1MonetizationConfigOutput
+	ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(context.Context) GoogleCloudApigeeV1MonetizationConfigOutput
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfigArgs struct {
+	// Flag that specifies whether the Monetization add-on is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1MonetizationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigOutput() GoogleCloudApigeeV1MonetizationConfigOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigOutput).ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1MonetizationConfigPtrInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigArgs, GoogleCloudApigeeV1MonetizationConfigPtr and GoogleCloudApigeeV1MonetizationConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigPtrInput` via:
+//
+//          GoogleCloudApigeeV1MonetizationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1MonetizationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput
+	ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput
+}
+
+type googleCloudApigeeV1MonetizationConfigPtrType GoogleCloudApigeeV1MonetizationConfigArgs
+
+func GoogleCloudApigeeV1MonetizationConfigPtr(v *GoogleCloudApigeeV1MonetizationConfigArgs) GoogleCloudApigeeV1MonetizationConfigPtrInput {
+	return (*googleCloudApigeeV1MonetizationConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1MonetizationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1MonetizationConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1MonetizationConfigPtrType) ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1MonetizationConfigPtrType) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1MonetizationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1MonetizationConfigOutput() GoogleCloudApigeeV1MonetizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1MonetizationConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfig) *GoogleCloudApigeeV1MonetizationConfig {
+		return &v
+	}).(GoogleCloudApigeeV1MonetizationConfigPtrOutput)
+}
+
+// Flag that specifies whether the Monetization add-on is enabled.
+func (o GoogleCloudApigeeV1MonetizationConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudApigeeV1MonetizationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1MonetizationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1MonetizationConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutput() GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) ToGoogleCloudApigeeV1MonetizationConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) Elem() GoogleCloudApigeeV1MonetizationConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfig) GoogleCloudApigeeV1MonetizationConfig { return *v }).(GoogleCloudApigeeV1MonetizationConfigOutput)
+}
+
+// Flag that specifies whether the Monetization add-on is enabled.
+func (o GoogleCloudApigeeV1MonetizationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfigResponse struct {
+	// Flag that specifies whether the Monetization add-on is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GoogleCloudApigeeV1MonetizationConfigResponseInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigResponseArgs and GoogleCloudApigeeV1MonetizationConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigResponseInput` via:
+//
+//          GoogleCloudApigeeV1MonetizationConfigResponseArgs{...}
+type GoogleCloudApigeeV1MonetizationConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1MonetizationConfigResponseOutput() GoogleCloudApigeeV1MonetizationConfigResponseOutput
+	ToGoogleCloudApigeeV1MonetizationConfigResponseOutputWithContext(context.Context) GoogleCloudApigeeV1MonetizationConfigResponseOutput
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfigResponseArgs struct {
+	// Flag that specifies whether the Monetization add-on is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudApigeeV1MonetizationConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigResponseArgs) ToGoogleCloudApigeeV1MonetizationConfigResponseOutput() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigResponseArgs) ToGoogleCloudApigeeV1MonetizationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigResponseOutput)
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigResponseArgs) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutput() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1MonetizationConfigResponseArgs) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigResponseOutput).ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1MonetizationConfigResponsePtrInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigResponseArgs, GoogleCloudApigeeV1MonetizationConfigResponsePtr and GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigResponsePtrInput` via:
+//
+//          GoogleCloudApigeeV1MonetizationConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudApigeeV1MonetizationConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutput() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput
+	ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput
+}
+
+type googleCloudApigeeV1MonetizationConfigResponsePtrType GoogleCloudApigeeV1MonetizationConfigResponseArgs
+
+func GoogleCloudApigeeV1MonetizationConfigResponsePtr(v *GoogleCloudApigeeV1MonetizationConfigResponseArgs) GoogleCloudApigeeV1MonetizationConfigResponsePtrInput {
+	return (*googleCloudApigeeV1MonetizationConfigResponsePtrType)(v)
+}
+
+func (*googleCloudApigeeV1MonetizationConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1MonetizationConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1MonetizationConfigResponsePtrType) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutput() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return i.ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1MonetizationConfigResponsePtrType) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput)
+}
+
+// Configuration for the Monetization add-on.
+type GoogleCloudApigeeV1MonetizationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1MonetizationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponseOutput() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutput() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return o.ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfigResponse) *GoogleCloudApigeeV1MonetizationConfigResponse {
+		return &v
+	}).(GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput)
+}
+
+// Flag that specifies whether the Monetization add-on is enabled.
+func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1MonetizationConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutput() GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) ToGoogleCloudApigeeV1MonetizationConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) Elem() GoogleCloudApigeeV1MonetizationConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfigResponse) GoogleCloudApigeeV1MonetizationConfigResponse {
+		return *v
+	}).(GoogleCloudApigeeV1MonetizationConfigResponseOutput)
+}
+
+// Flag that specifies whether the Monetization add-on is enabled.
+func (o GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1MonetizationConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Operation represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1Operation struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
@@ -5135,6 +6301,242 @@ func (o GoogleCloudApigeeV1QuotaResponseOutput) TimeUnit() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudApigeeV1QuotaResponse) string { return v.TimeUnit }).(pulumi.StringOutput)
 }
 
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRange struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End *string `pulumi:"end"`
+	// Fee to charge when total number of API calls falls within this range.
+	Fee *GoogleTypeMoney `pulumi:"fee"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start *string `pulumi:"start"`
+}
+
+// GoogleCloudApigeeV1RateRangeInput is an input type that accepts GoogleCloudApigeeV1RateRangeArgs and GoogleCloudApigeeV1RateRangeOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeInput` via:
+//
+//          GoogleCloudApigeeV1RateRangeArgs{...}
+type GoogleCloudApigeeV1RateRangeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RateRangeOutput() GoogleCloudApigeeV1RateRangeOutput
+	ToGoogleCloudApigeeV1RateRangeOutputWithContext(context.Context) GoogleCloudApigeeV1RateRangeOutput
+}
+
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRangeArgs struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Fee to charge when total number of API calls falls within this range.
+	Fee GoogleTypeMoneyPtrInput `pulumi:"fee"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (GoogleCloudApigeeV1RateRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RateRange)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RateRangeArgs) ToGoogleCloudApigeeV1RateRangeOutput() GoogleCloudApigeeV1RateRangeOutput {
+	return i.ToGoogleCloudApigeeV1RateRangeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RateRangeArgs) ToGoogleCloudApigeeV1RateRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeOutput)
+}
+
+// GoogleCloudApigeeV1RateRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RateRangeArray and GoogleCloudApigeeV1RateRangeArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeArrayInput` via:
+//
+//          GoogleCloudApigeeV1RateRangeArray{ GoogleCloudApigeeV1RateRangeArgs{...} }
+type GoogleCloudApigeeV1RateRangeArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RateRangeArrayOutput() GoogleCloudApigeeV1RateRangeArrayOutput
+	ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(context.Context) GoogleCloudApigeeV1RateRangeArrayOutput
+}
+
+type GoogleCloudApigeeV1RateRangeArray []GoogleCloudApigeeV1RateRangeInput
+
+func (GoogleCloudApigeeV1RateRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RateRange)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RateRangeArray) ToGoogleCloudApigeeV1RateRangeArrayOutput() GoogleCloudApigeeV1RateRangeArrayOutput {
+	return i.ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RateRangeArray) ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeArrayOutput)
+}
+
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRangeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RateRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RateRange)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RateRangeOutput) ToGoogleCloudApigeeV1RateRangeOutput() GoogleCloudApigeeV1RateRangeOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeOutput) ToGoogleCloudApigeeV1RateRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeOutput {
+	return o
+}
+
+// Ending value of the range. Set to 0 or `null` for the last range of values.
+func (o GoogleCloudApigeeV1RateRangeOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRange) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Fee to charge when total number of API calls falls within this range.
+func (o GoogleCloudApigeeV1RateRangeOutput) Fee() GoogleTypeMoneyPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRange) *GoogleTypeMoney { return v.Fee }).(GoogleTypeMoneyPtrOutput)
+}
+
+// Starting value of the range. Set to 0 or `null` for the initial range of values.
+func (o GoogleCloudApigeeV1RateRangeOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRange) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1RateRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RateRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RateRange)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RateRangeArrayOutput) ToGoogleCloudApigeeV1RateRangeArrayOutput() GoogleCloudApigeeV1RateRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeArrayOutput) ToGoogleCloudApigeeV1RateRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RateRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1RateRange {
+		return vs[0].([]GoogleCloudApigeeV1RateRange)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1RateRangeOutput)
+}
+
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRangeResponse struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End string `pulumi:"end"`
+	// Fee to charge when total number of API calls falls within this range.
+	Fee GoogleTypeMoneyResponse `pulumi:"fee"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start string `pulumi:"start"`
+}
+
+// GoogleCloudApigeeV1RateRangeResponseInput is an input type that accepts GoogleCloudApigeeV1RateRangeResponseArgs and GoogleCloudApigeeV1RateRangeResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeResponseInput` via:
+//
+//          GoogleCloudApigeeV1RateRangeResponseArgs{...}
+type GoogleCloudApigeeV1RateRangeResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RateRangeResponseOutput() GoogleCloudApigeeV1RateRangeResponseOutput
+	ToGoogleCloudApigeeV1RateRangeResponseOutputWithContext(context.Context) GoogleCloudApigeeV1RateRangeResponseOutput
+}
+
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRangeResponseArgs struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End pulumi.StringInput `pulumi:"end"`
+	// Fee to charge when total number of API calls falls within this range.
+	Fee GoogleTypeMoneyResponseInput `pulumi:"fee"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GoogleCloudApigeeV1RateRangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RateRangeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RateRangeResponseArgs) ToGoogleCloudApigeeV1RateRangeResponseOutput() GoogleCloudApigeeV1RateRangeResponseOutput {
+	return i.ToGoogleCloudApigeeV1RateRangeResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RateRangeResponseArgs) ToGoogleCloudApigeeV1RateRangeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeResponseOutput)
+}
+
+// GoogleCloudApigeeV1RateRangeResponseArrayInput is an input type that accepts GoogleCloudApigeeV1RateRangeResponseArray and GoogleCloudApigeeV1RateRangeResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1RateRangeResponseArray{ GoogleCloudApigeeV1RateRangeResponseArgs{...} }
+type GoogleCloudApigeeV1RateRangeResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RateRangeResponseArrayOutput() GoogleCloudApigeeV1RateRangeResponseArrayOutput
+	ToGoogleCloudApigeeV1RateRangeResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1RateRangeResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1RateRangeResponseArray []GoogleCloudApigeeV1RateRangeResponseInput
+
+func (GoogleCloudApigeeV1RateRangeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RateRangeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RateRangeResponseArray) ToGoogleCloudApigeeV1RateRangeResponseArrayOutput() GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1RateRangeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RateRangeResponseArray) ToGoogleCloudApigeeV1RateRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RateRangeResponseArrayOutput)
+}
+
+// API call volume range and the fees charged when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RateRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RateRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RateRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) ToGoogleCloudApigeeV1RateRangeResponseOutput() GoogleCloudApigeeV1RateRangeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) ToGoogleCloudApigeeV1RateRangeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeResponseOutput {
+	return o
+}
+
+// Ending value of the range. Set to 0 or `null` for the last range of values.
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRangeResponse) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Fee to charge when total number of API calls falls within this range.
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) Fee() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRangeResponse) GoogleTypeMoneyResponse { return v.Fee }).(GoogleTypeMoneyResponseOutput)
+}
+
+// Starting value of the range. Set to 0 or `null` for the initial range of values.
+func (o GoogleCloudApigeeV1RateRangeResponseOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RateRangeResponse) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1RateRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RateRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RateRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) ToGoogleCloudApigeeV1RateRangeResponseArrayOutput() GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) ToGoogleCloudApigeeV1RateRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RateRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RateRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RateRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1RateRangeResponse {
+		return vs[0].([]GoogleCloudApigeeV1RateRangeResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1RateRangeResponseOutput)
+}
+
 type GoogleCloudApigeeV1ReportProperty struct {
 	// name of the property
 	Property *string `pulumi:"property"`
@@ -5347,6 +6749,242 @@ func (o GoogleCloudApigeeV1ReportPropertyResponseArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1ReportPropertyResponse {
 		return vs[0].([]GoogleCloudApigeeV1ReportPropertyResponse)[vs[1].(int)]
 	}).(GoogleCloudApigeeV1ReportPropertyResponseOutput)
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRange struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End *string `pulumi:"end"`
+	// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+	SharePercentage *float64 `pulumi:"sharePercentage"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start *string `pulumi:"start"`
+}
+
+// GoogleCloudApigeeV1RevenueShareRangeInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeArgs and GoogleCloudApigeeV1RevenueShareRangeOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeInput` via:
+//
+//          GoogleCloudApigeeV1RevenueShareRangeArgs{...}
+type GoogleCloudApigeeV1RevenueShareRangeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RevenueShareRangeOutput() GoogleCloudApigeeV1RevenueShareRangeOutput
+	ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(context.Context) GoogleCloudApigeeV1RevenueShareRangeOutput
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRangeArgs struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End pulumi.StringPtrInput `pulumi:"end"`
+	// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+	SharePercentage pulumi.Float64PtrInput `pulumi:"sharePercentage"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start pulumi.StringPtrInput `pulumi:"start"`
+}
+
+func (GoogleCloudApigeeV1RevenueShareRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRange)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeArgs) ToGoogleCloudApigeeV1RevenueShareRangeOutput() GoogleCloudApigeeV1RevenueShareRangeOutput {
+	return i.ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeArgs) ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeOutput)
+}
+
+// GoogleCloudApigeeV1RevenueShareRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeArray and GoogleCloudApigeeV1RevenueShareRangeArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeArrayInput` via:
+//
+//          GoogleCloudApigeeV1RevenueShareRangeArray{ GoogleCloudApigeeV1RevenueShareRangeArgs{...} }
+type GoogleCloudApigeeV1RevenueShareRangeArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RevenueShareRangeArrayOutput() GoogleCloudApigeeV1RevenueShareRangeArrayOutput
+	ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(context.Context) GoogleCloudApigeeV1RevenueShareRangeArrayOutput
+}
+
+type GoogleCloudApigeeV1RevenueShareRangeArray []GoogleCloudApigeeV1RevenueShareRangeInput
+
+func (GoogleCloudApigeeV1RevenueShareRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RevenueShareRange)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeArray) ToGoogleCloudApigeeV1RevenueShareRangeArrayOutput() GoogleCloudApigeeV1RevenueShareRangeArrayOutput {
+	return i.ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeArray) ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeArrayOutput)
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRangeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RevenueShareRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRange)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) ToGoogleCloudApigeeV1RevenueShareRangeOutput() GoogleCloudApigeeV1RevenueShareRangeOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) ToGoogleCloudApigeeV1RevenueShareRangeOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeOutput {
+	return o
+}
+
+// Ending value of the range. Set to 0 or `null` for the last range of values.
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRange) *string { return v.End }).(pulumi.StringPtrOutput)
+}
+
+// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) SharePercentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRange) *float64 { return v.SharePercentage }).(pulumi.Float64PtrOutput)
+}
+
+// Starting value of the range. Set to 0 or `null` for the initial range of values.
+func (o GoogleCloudApigeeV1RevenueShareRangeOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRange) *string { return v.Start }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1RevenueShareRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RevenueShareRange)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeArrayOutput() GoogleCloudApigeeV1RevenueShareRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RevenueShareRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1RevenueShareRange {
+		return vs[0].([]GoogleCloudApigeeV1RevenueShareRange)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1RevenueShareRangeOutput)
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRangeResponse struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End string `pulumi:"end"`
+	// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+	SharePercentage float64 `pulumi:"sharePercentage"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start string `pulumi:"start"`
+}
+
+// GoogleCloudApigeeV1RevenueShareRangeResponseInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeResponseArgs and GoogleCloudApigeeV1RevenueShareRangeResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeResponseInput` via:
+//
+//          GoogleCloudApigeeV1RevenueShareRangeResponseArgs{...}
+type GoogleCloudApigeeV1RevenueShareRangeResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RevenueShareRangeResponseOutput() GoogleCloudApigeeV1RevenueShareRangeResponseOutput
+	ToGoogleCloudApigeeV1RevenueShareRangeResponseOutputWithContext(context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseOutput
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRangeResponseArgs struct {
+	// Ending value of the range. Set to 0 or `null` for the last range of values.
+	End pulumi.StringInput `pulumi:"end"`
+	// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+	SharePercentage pulumi.Float64Input `pulumi:"sharePercentage"`
+	// Starting value of the range. Set to 0 or `null` for the initial range of values.
+	Start pulumi.StringInput `pulumi:"start"`
+}
+
+func (GoogleCloudApigeeV1RevenueShareRangeResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRangeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeResponseArgs) ToGoogleCloudApigeeV1RevenueShareRangeResponseOutput() GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
+	return i.ToGoogleCloudApigeeV1RevenueShareRangeResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeResponseArgs) ToGoogleCloudApigeeV1RevenueShareRangeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeResponseOutput)
+}
+
+// GoogleCloudApigeeV1RevenueShareRangeResponseArrayInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeResponseArray and GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeResponseArrayInput` via:
+//
+//          GoogleCloudApigeeV1RevenueShareRangeResponseArray{ GoogleCloudApigeeV1RevenueShareRangeResponseArgs{...} }
+type GoogleCloudApigeeV1RevenueShareRangeResponseArrayInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput() GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput
+	ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutputWithContext(context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput
+}
+
+type GoogleCloudApigeeV1RevenueShareRangeResponseArray []GoogleCloudApigeeV1RevenueShareRangeResponseInput
+
+func (GoogleCloudApigeeV1RevenueShareRangeResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RevenueShareRangeResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeResponseArray) ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput() GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return i.ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1RevenueShareRangeResponseArray) ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput)
+}
+
+// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+type GoogleCloudApigeeV1RevenueShareRangeResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RevenueShareRangeResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1RevenueShareRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) ToGoogleCloudApigeeV1RevenueShareRangeResponseOutput() GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) ToGoogleCloudApigeeV1RevenueShareRangeResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
+	return o
+}
+
+// Ending value of the range. Set to 0 or `null` for the last range of values.
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) End() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRangeResponse) string { return v.End }).(pulumi.StringOutput)
+}
+
+// Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) SharePercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRangeResponse) float64 { return v.SharePercentage }).(pulumi.Float64Output)
+}
+
+// Starting value of the range. Set to 0 or `null` for the initial range of values.
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseOutput) Start() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1RevenueShareRangeResponse) string { return v.Start }).(pulumi.StringOutput)
+}
+
+type GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudApigeeV1RevenueShareRangeResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput() GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) ToGoogleCloudApigeeV1RevenueShareRangeResponseArrayOutputWithContext(ctx context.Context) GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudApigeeV1RevenueShareRangeResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudApigeeV1RevenueShareRangeResponse {
+		return vs[0].([]GoogleCloudApigeeV1RevenueShareRangeResponse)[vs[1].(int)]
+	}).(GoogleCloudApigeeV1RevenueShareRangeResponseOutput)
 }
 
 // TLS configuration information for VirtualHosts and TargetServers.
@@ -7478,7 +9116,359 @@ func (o GoogleTypeExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypeExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Represents an amount of money with its currency type.
+type GoogleTypeMoney struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode *string `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos *int `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units *string `pulumi:"units"`
+}
+
+// GoogleTypeMoneyInput is an input type that accepts GoogleTypeMoneyArgs and GoogleTypeMoneyOutput values.
+// You can construct a concrete instance of `GoogleTypeMoneyInput` via:
+//
+//          GoogleTypeMoneyArgs{...}
+type GoogleTypeMoneyInput interface {
+	pulumi.Input
+
+	ToGoogleTypeMoneyOutput() GoogleTypeMoneyOutput
+	ToGoogleTypeMoneyOutputWithContext(context.Context) GoogleTypeMoneyOutput
+}
+
+// Represents an amount of money with its currency type.
+type GoogleTypeMoneyArgs struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringPtrInput `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringPtrInput `pulumi:"units"`
+}
+
+func (GoogleTypeMoneyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeMoney)(nil)).Elem()
+}
+
+func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyOutput() GoogleTypeMoneyOutput {
+	return i.ToGoogleTypeMoneyOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyOutputWithContext(ctx context.Context) GoogleTypeMoneyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyOutput)
+}
+
+func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
+	return i.ToGoogleTypeMoneyPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyOutput).ToGoogleTypeMoneyPtrOutputWithContext(ctx)
+}
+
+// GoogleTypeMoneyPtrInput is an input type that accepts GoogleTypeMoneyArgs, GoogleTypeMoneyPtr and GoogleTypeMoneyPtrOutput values.
+// You can construct a concrete instance of `GoogleTypeMoneyPtrInput` via:
+//
+//          GoogleTypeMoneyArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleTypeMoneyPtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput
+	ToGoogleTypeMoneyPtrOutputWithContext(context.Context) GoogleTypeMoneyPtrOutput
+}
+
+type googleTypeMoneyPtrType GoogleTypeMoneyArgs
+
+func GoogleTypeMoneyPtr(v *GoogleTypeMoneyArgs) GoogleTypeMoneyPtrInput {
+	return (*googleTypeMoneyPtrType)(v)
+}
+
+func (*googleTypeMoneyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeMoney)(nil)).Elem()
+}
+
+func (i *googleTypeMoneyPtrType) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
+	return i.ToGoogleTypeMoneyPtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeMoneyPtrType) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyPtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type GoogleTypeMoneyOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeMoneyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeMoney)(nil)).Elem()
+}
+
+func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyOutput() GoogleTypeMoneyOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyOutputWithContext(ctx context.Context) GoogleTypeMoneyOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
+	return o.ToGoogleTypeMoneyPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeMoneyOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
+	return o.ApplyT(func(v GoogleTypeMoney) *GoogleTypeMoney {
+		return &v
+	}).(GoogleTypeMoneyPtrOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o GoogleTypeMoneyOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeMoney) *string { return v.CurrencyCode }).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o GoogleTypeMoneyOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GoogleTypeMoney) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o GoogleTypeMoneyOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleTypeMoney) *string { return v.Units }).(pulumi.StringPtrOutput)
+}
+
+type GoogleTypeMoneyPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeMoneyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeMoney)(nil)).Elem()
+}
+
+func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutput() GoogleTypeMoneyPtrOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyPtrOutput) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.Context) GoogleTypeMoneyPtrOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyPtrOutput) Elem() GoogleTypeMoneyOutput {
+	return o.ApplyT(func(v *GoogleTypeMoney) GoogleTypeMoney { return *v }).(GoogleTypeMoneyOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o GoogleTypeMoneyPtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoney) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o GoogleTypeMoneyPtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoney) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o GoogleTypeMoneyPtrOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoney) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Units
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type GoogleTypeMoneyResponse struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode string `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos int `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units string `pulumi:"units"`
+}
+
+// GoogleTypeMoneyResponseInput is an input type that accepts GoogleTypeMoneyResponseArgs and GoogleTypeMoneyResponseOutput values.
+// You can construct a concrete instance of `GoogleTypeMoneyResponseInput` via:
+//
+//          GoogleTypeMoneyResponseArgs{...}
+type GoogleTypeMoneyResponseInput interface {
+	pulumi.Input
+
+	ToGoogleTypeMoneyResponseOutput() GoogleTypeMoneyResponseOutput
+	ToGoogleTypeMoneyResponseOutputWithContext(context.Context) GoogleTypeMoneyResponseOutput
+}
+
+// Represents an amount of money with its currency type.
+type GoogleTypeMoneyResponseArgs struct {
+	// The three-letter currency code defined in ISO 4217.
+	CurrencyCode pulumi.StringInput `pulumi:"currencyCode"`
+	// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+	Units pulumi.StringInput `pulumi:"units"`
+}
+
+func (GoogleTypeMoneyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeMoneyResponse)(nil)).Elem()
+}
+
+func (i GoogleTypeMoneyResponseArgs) ToGoogleTypeMoneyResponseOutput() GoogleTypeMoneyResponseOutput {
+	return i.ToGoogleTypeMoneyResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeMoneyResponseArgs) ToGoogleTypeMoneyResponseOutputWithContext(ctx context.Context) GoogleTypeMoneyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyResponseOutput)
+}
+
+func (i GoogleTypeMoneyResponseArgs) ToGoogleTypeMoneyResponsePtrOutput() GoogleTypeMoneyResponsePtrOutput {
+	return i.ToGoogleTypeMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleTypeMoneyResponseArgs) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyResponseOutput).ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleTypeMoneyResponsePtrInput is an input type that accepts GoogleTypeMoneyResponseArgs, GoogleTypeMoneyResponsePtr and GoogleTypeMoneyResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleTypeMoneyResponsePtrInput` via:
+//
+//          GoogleTypeMoneyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleTypeMoneyResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleTypeMoneyResponsePtrOutput() GoogleTypeMoneyResponsePtrOutput
+	ToGoogleTypeMoneyResponsePtrOutputWithContext(context.Context) GoogleTypeMoneyResponsePtrOutput
+}
+
+type googleTypeMoneyResponsePtrType GoogleTypeMoneyResponseArgs
+
+func GoogleTypeMoneyResponsePtr(v *GoogleTypeMoneyResponseArgs) GoogleTypeMoneyResponsePtrInput {
+	return (*googleTypeMoneyResponsePtrType)(v)
+}
+
+func (*googleTypeMoneyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeMoneyResponse)(nil)).Elem()
+}
+
+func (i *googleTypeMoneyResponsePtrType) ToGoogleTypeMoneyResponsePtrOutput() GoogleTypeMoneyResponsePtrOutput {
+	return i.ToGoogleTypeMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleTypeMoneyResponsePtrType) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleTypeMoneyResponsePtrOutput)
+}
+
+// Represents an amount of money with its currency type.
+type GoogleTypeMoneyResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeMoneyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleTypeMoneyResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutput() GoogleTypeMoneyResponseOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponseOutputWithContext(ctx context.Context) GoogleTypeMoneyResponseOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutput() GoogleTypeMoneyResponsePtrOutput {
+	return o.ToGoogleTypeMoneyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleTypeMoneyResponseOutput) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
+	return o.ApplyT(func(v GoogleTypeMoneyResponse) *GoogleTypeMoneyResponse {
+		return &v
+	}).(GoogleTypeMoneyResponsePtrOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o GoogleTypeMoneyResponseOutput) CurrencyCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeMoneyResponse) string { return v.CurrencyCode }).(pulumi.StringOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o GoogleTypeMoneyResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleTypeMoneyResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o GoogleTypeMoneyResponseOutput) Units() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypeMoneyResponse) string { return v.Units }).(pulumi.StringOutput)
+}
+
+type GoogleTypeMoneyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleTypeMoneyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleTypeMoneyResponse)(nil)).Elem()
+}
+
+func (o GoogleTypeMoneyResponsePtrOutput) ToGoogleTypeMoneyResponsePtrOutput() GoogleTypeMoneyResponsePtrOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyResponsePtrOutput) ToGoogleTypeMoneyResponsePtrOutputWithContext(ctx context.Context) GoogleTypeMoneyResponsePtrOutput {
+	return o
+}
+
+func (o GoogleTypeMoneyResponsePtrOutput) Elem() GoogleTypeMoneyResponseOutput {
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) GoogleTypeMoneyResponse { return *v }).(GoogleTypeMoneyResponseOutput)
+}
+
+// The three-letter currency code defined in ISO 4217.
+func (o GoogleTypeMoneyResponsePtrOutput) CurrencyCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CurrencyCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+func (o GoogleTypeMoneyResponsePtrOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Nanos
+	}).(pulumi.IntPtrOutput)
+}
+
+// The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+func (o GoogleTypeMoneyResponsePtrOutput) Units() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleTypeMoneyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Units
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AddonsConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1AdvancedApiOpsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiCategoryDataResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ApiProductRefResponseOutput{})
@@ -7523,6 +9513,14 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationGroupResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1GraphQLOperationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1IntegrationConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigOutput{})
@@ -7550,10 +9548,18 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1QuotaResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RateRangeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RateRangeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RateRangeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RateRangeResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1ReportPropertyResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1RevenueShareRangeResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1TlsInfoCommonNameOutput{})
@@ -7581,4 +9587,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleTypeExprOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprPtrOutput{})
 	pulumi.RegisterOutputType(GoogleTypeExprResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeMoneyOutput{})
+	pulumi.RegisterOutputType(GoogleTypeMoneyPtrOutput{})
+	pulumi.RegisterOutputType(GoogleTypeMoneyResponseOutput{})
+	pulumi.RegisterOutputType(GoogleTypeMoneyResponsePtrOutput{})
 }

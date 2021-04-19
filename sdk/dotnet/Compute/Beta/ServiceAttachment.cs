@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class ServiceAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// </summary>
+        [Output("connectedEndpoints")]
+        public Output<ImmutableArray<Outputs.ServiceAttachmentConnectedEndpointResponse>> ConnectedEndpoints { get; private set; } = null!;
+
+        /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
         [Output("connectionPreference")]
@@ -70,6 +76,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ProducerForwardingRule { get; private set; } = null!;
 
         /// <summary>
+        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// </summary>
+        [Output("pscServiceAttachmentId")]
+        public Output<Outputs.Uint128Response> PscServiceAttachmentId { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
@@ -80,6 +92,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of a service serving the endpoint identified by this service attachment.
+        /// </summary>
+        [Output("targetService")]
+        public Output<string> TargetService { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,6 +144,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
     public sealed class ServiceAttachmentArgs : Pulumi.ResourceArgs
     {
+        [Input("connectedEndpoints")]
+        private InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>? _connectedEndpoints;
+
+        /// <summary>
+        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// </summary>
+        public InputList<Inputs.ServiceAttachmentConnectedEndpointArgs> ConnectedEndpoints
+        {
+            get => _connectedEndpoints ?? (_connectedEndpoints = new InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>());
+            set => _connectedEndpoints = value;
+        }
+
         /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
@@ -202,6 +232,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// </summary>
+        [Input("pscServiceAttachmentId")]
+        public Input<Inputs.Uint128Args>? PscServiceAttachmentId { get; set; }
+
+        /// <summary>
         /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Input("region", required: true)]
@@ -215,6 +251,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
         [Input("serviceAttachment", required: true)]
         public Input<string> ServiceAttachment { get; set; } = null!;
+
+        /// <summary>
+        /// The URL of a service serving the endpoint identified by this service attachment.
+        /// </summary>
+        [Input("targetService")]
+        public Input<string>? TargetService { get; set; }
 
         public ServiceAttachmentArgs()
         {
