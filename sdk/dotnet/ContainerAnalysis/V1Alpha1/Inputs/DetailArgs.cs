@@ -75,6 +75,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         [Input("source")]
         public Input<string>? Source { get; set; }
 
+        /// <summary>
+        /// The vendor of the product. e.g. "google"
+        /// </summary>
+        [Input("vendor")]
+        public Input<string>? Vendor { get; set; }
+
         public DetailArgs()
         {
         }

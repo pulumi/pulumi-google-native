@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// Required. Scale tier of the hardware used for notebook execution.
         /// </summary>
         public readonly string ScaleTier;
+        /// <summary>
+        /// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+        /// </summary>
+        public readonly string ServiceAccount;
 
         [OutputConstructor]
         private ExecutionTemplateResponse(
@@ -68,7 +72,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
 
             string paramsYamlFile,
 
-            string scaleTier)
+            string scaleTier,
+
+            string serviceAccount)
         {
             AcceleratorConfig = acceleratorConfig;
             ContainerImageUri = containerImageUri;
@@ -79,6 +85,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             Parameters = parameters;
             ParamsYamlFile = paramsYamlFile;
             ScaleTier = scaleTier;
+            ServiceAccount = serviceAccount;
         }
     }
 }

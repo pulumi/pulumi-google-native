@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public Output<Outputs.GoogleCloudBillingBudgetsV1BudgetAmountResponse> Amount { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         /// </summary>
         [Output("budgetFilter")]
         public Output<Outputs.GoogleCloudBillingBudgetsV1FilterResponse> BudgetFilter { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public Input<string> BillingAccountsId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        /// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         /// </summary>
         [Input("budgetFilter")]
         public Input<Inputs.GoogleCloudBillingBudgetsV1FilterArgs>? BudgetFilter { get; set; }

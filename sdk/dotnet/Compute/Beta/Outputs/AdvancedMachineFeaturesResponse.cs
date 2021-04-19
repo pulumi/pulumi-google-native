@@ -17,11 +17,19 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// Whether to enable nested virtualization or not (default is false).
         /// </summary>
         public readonly bool EnableNestedVirtualization;
+        /// <summary>
+        /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        /// </summary>
+        public readonly int ThreadsPerCore;
 
         [OutputConstructor]
-        private AdvancedMachineFeaturesResponse(bool enableNestedVirtualization)
+        private AdvancedMachineFeaturesResponse(
+            bool enableNestedVirtualization,
+
+            int threadsPerCore)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            ThreadsPerCore = threadsPerCore;
         }
     }
 }

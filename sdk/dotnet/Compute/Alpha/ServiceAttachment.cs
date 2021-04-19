@@ -16,16 +16,34 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     public partial class ServiceAttachment : Pulumi.CustomResource
     {
         /// <summary>
+        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// </summary>
+        [Output("connectedEndpoints")]
+        public Output<ImmutableArray<Outputs.ServiceAttachmentConnectedEndpointResponse>> ConnectedEndpoints { get; private set; } = null!;
+
+        /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
         [Output("connectionPreference")]
         public Output<string> ConnectionPreference { get; private set; } = null!;
 
         /// <summary>
+        /// Projects that are allowed to connect to this service attachment.
+        /// </summary>
+        [Output("consumerAcceptLists")]
+        public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse>> ConsumerAcceptLists { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
         /// </summary>
         [Output("consumerForwardingRules")]
         public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse>> ConsumerForwardingRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        /// </summary>
+        [Output("consumerRejectLists")]
+        public Output<ImmutableArray<string>> ConsumerRejectLists { get; private set; } = null!;
 
         /// <summary>
         /// [Output Only] Creation timestamp in RFC3339 text format.
@@ -44,6 +62,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("enableProxyProtocol")]
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
         /// [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
@@ -70,6 +94,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> ProducerForwardingRule { get; private set; } = null!;
 
         /// <summary>
+        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// </summary>
+        [Output("pscServiceAttachmentId")]
+        public Output<Outputs.Uint128Response> PscServiceAttachmentId { get; private set; } = null!;
+
+        /// <summary>
         /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Output("region")]
@@ -80,6 +110,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL of a service serving the endpoint identified by this service attachment.
+        /// </summary>
+        [Output("targetService")]
+        public Output<string> TargetService { get; private set; } = null!;
 
 
         /// <summary>
@@ -126,11 +162,35 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
     public sealed class ServiceAttachmentArgs : Pulumi.ResourceArgs
     {
+        [Input("connectedEndpoints")]
+        private InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>? _connectedEndpoints;
+
+        /// <summary>
+        /// [Output Only] An array of connections for all the consumers connected to this service attachment.
+        /// </summary>
+        public InputList<Inputs.ServiceAttachmentConnectedEndpointArgs> ConnectedEndpoints
+        {
+            get => _connectedEndpoints ?? (_connectedEndpoints = new InputList<Inputs.ServiceAttachmentConnectedEndpointArgs>());
+            set => _connectedEndpoints = value;
+        }
+
         /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
         /// </summary>
         [Input("connectionPreference")]
         public Input<string>? ConnectionPreference { get; set; }
+
+        [Input("consumerAcceptLists")]
+        private InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs>? _consumerAcceptLists;
+
+        /// <summary>
+        /// Projects that are allowed to connect to this service attachment.
+        /// </summary>
+        public InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs> ConsumerAcceptLists
+        {
+            get => _consumerAcceptLists ?? (_consumerAcceptLists = new InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs>());
+            set => _consumerAcceptLists = value;
+        }
 
         [Input("consumerForwardingRules")]
         private InputList<Inputs.ServiceAttachmentConsumerForwardingRuleArgs>? _consumerForwardingRules;
@@ -142,6 +202,18 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         {
             get => _consumerForwardingRules ?? (_consumerForwardingRules = new InputList<Inputs.ServiceAttachmentConsumerForwardingRuleArgs>());
             set => _consumerForwardingRules = value;
+        }
+
+        [Input("consumerRejectLists")]
+        private InputList<string>? _consumerRejectLists;
+
+        /// <summary>
+        /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        /// </summary>
+        public InputList<string> ConsumerRejectLists
+        {
+            get => _consumerRejectLists ?? (_consumerRejectLists = new InputList<string>());
+            set => _consumerRejectLists = value;
         }
 
         /// <summary>
@@ -161,6 +233,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        /// </summary>
+        [Input("fingerprint")]
+        public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
         /// [Output Only] The unique identifier for the resource type. The server generates this identifier.
@@ -202,6 +280,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
+        /// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+        /// </summary>
+        [Input("pscServiceAttachmentId")]
+        public Input<Inputs.Uint128Args>? PscServiceAttachmentId { get; set; }
+
+        /// <summary>
         /// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         [Input("region", required: true)]
@@ -215,6 +299,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("serviceAttachment", required: true)]
         public Input<string> ServiceAttachment { get; set; } = null!;
+
+        /// <summary>
+        /// The URL of a service serving the endpoint identified by this service attachment.
+        /// </summary>
+        [Input("targetService")]
+        public Input<string>? TargetService { get; set; }
 
         public ServiceAttachmentArgs()
         {

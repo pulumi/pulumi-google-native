@@ -214,6 +214,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("pscConnectionId")]
         public Output<string> PscConnectionId { get; private set; } = null!;
 
+        [Output("pscConnectionStatus")]
+        public Output<string> PscConnectionStatus { get; private set; } = null!;
+
         /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
@@ -544,6 +547,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("pscConnectionId")]
         public Input<string>? PscConnectionId { get; set; }
+
+        [Input("pscConnectionStatus")]
+        public Input<string>? PscConnectionStatus { get; set; }
 
         /// <summary>
         /// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.

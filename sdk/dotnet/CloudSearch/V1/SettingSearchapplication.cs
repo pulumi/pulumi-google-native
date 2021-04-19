@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+        /// </summary>
+        [Output("enableAuditLog")]
+        public Output<bool> EnableAuditLog { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the Search Application. Format: searchapplications/{application_id}.
         /// </summary>
         [Output("name")]
@@ -143,6 +149,12 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+        /// </summary>
+        [Input("enableAuditLog")]
+        public Input<bool>? EnableAuditLog { get; set; }
 
         /// <summary>
         /// Name of the Search Application. Format: searchapplications/{application_id}.

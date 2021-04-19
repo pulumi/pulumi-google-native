@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Metastore.V1Alpha
 {
     /// <summary>
-    /// Creates a new Backup in a given project and location.
+    /// Creates a new backup in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1alpha:ServiceBackup")]
     public partial class ServiceBackup : Pulumi.CustomResource

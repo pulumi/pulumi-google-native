@@ -124,6 +124,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        /// </summary>
+        [Output("nicType")]
+        public Output<string> NicType { get; private set; } = null!;
+
+        /// <summary>
         /// If true, the notebook instance will not register with the proxy.
         /// </summary>
         [Output("noProxyAccess")]
@@ -365,6 +371,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        /// </summary>
+        [Input("nicType")]
+        public Input<string>? NicType { get; set; }
 
         /// <summary>
         /// If true, the notebook instance will not register with the proxy.

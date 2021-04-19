@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string ForwardingRule;
         /// <summary>
+        /// The PSC connection id of the PSC Forwarding Rule.
+        /// </summary>
+        public readonly string PscConnectionId;
+        /// <summary>
         /// The status of the forwarding rule.
         /// </summary>
         public readonly string Status;
@@ -26,9 +30,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         private ServiceAttachmentConsumerForwardingRuleResponse(
             string forwardingRule,
 
+            string pscConnectionId,
+
             string status)
         {
             ForwardingRule = forwardingRule;
+            PscConnectionId = pscConnectionId;
             Status = status;
         }
     }
