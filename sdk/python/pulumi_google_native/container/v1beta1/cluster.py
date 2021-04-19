@@ -74,6 +74,7 @@ class ClusterArgs:
                  tpu_config: Optional[pulumi.Input['TpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['VerticalPodAutoscalingArgs']] = None,
+                 workload_certificates: Optional[pulumi.Input['WorkloadCertificatesArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['WorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -134,6 +135,7 @@ class ClusterArgs:
         :param pulumi.Input['TpuConfigArgs'] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['VerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
+        :param pulumi.Input['WorkloadCertificatesArgs'] workload_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
@@ -251,6 +253,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+        if workload_certificates is not None:
+            pulumi.set(__self__, "workload_certificates", workload_certificates)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
@@ -957,6 +961,18 @@ class ClusterArgs:
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @property
+    @pulumi.getter(name="workloadCertificates")
+    def workload_certificates(self) -> Optional[pulumi.Input['WorkloadCertificatesArgs']]:
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        """
+        return pulumi.get(self, "workload_certificates")
+
+    @workload_certificates.setter
+    def workload_certificates(self, value: Optional[pulumi.Input['WorkloadCertificatesArgs']]):
+        pulumi.set(self, "workload_certificates", value)
+
+    @property
     @pulumi.getter(name="workloadIdentityConfig")
     def workload_identity_config(self) -> Optional[pulumi.Input['WorkloadIdentityConfigArgs']]:
         """
@@ -1032,6 +1048,7 @@ class Cluster(pulumi.CustomResource):
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
+                 workload_certificates: Optional[pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1096,6 +1113,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['TpuConfigArgs']] tpu_config: Configuration for Cloud TPU support;
         :param pulumi.Input[str] tpu_ipv4_cidr_block: [Output only] The IP address range of the Cloud TPUs in this cluster, in [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Cluster-level Vertical Pod Autoscaling configuration.
+        :param pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']] workload_certificates: Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
         :param pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
@@ -1181,6 +1199,7 @@ class Cluster(pulumi.CustomResource):
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['TpuConfigArgs']]] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['VerticalPodAutoscalingArgs']]] = None,
+                 workload_certificates: Optional[pulumi.Input[pulumi.InputType['WorkloadCertificatesArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityConfigArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1257,6 +1276,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
+            __props__.__dict__["workload_certificates"] = workload_certificates
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             if zone is None and not opts.urn:
                 raise TypeError("Missing required property 'zone'")
@@ -1338,6 +1358,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tpu_config"] = None
         __props__.__dict__["tpu_ipv4_cidr_block"] = None
         __props__.__dict__["vertical_pod_autoscaling"] = None
+        __props__.__dict__["workload_certificates"] = None
         __props__.__dict__["workload_identity_config"] = None
         __props__.__dict__["zone"] = None
         return Cluster(resource_name, opts=opts, __props__=__props__)
@@ -1781,6 +1802,14 @@ class Cluster(pulumi.CustomResource):
         Cluster-level Vertical Pod Autoscaling configuration.
         """
         return pulumi.get(self, "vertical_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="workloadCertificates")
+    def workload_certificates(self) -> pulumi.Output['outputs.WorkloadCertificatesResponse']:
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        """
+        return pulumi.get(self, "workload_certificates")
 
     @property
     @pulumi.getter(name="workloadIdentityConfig")

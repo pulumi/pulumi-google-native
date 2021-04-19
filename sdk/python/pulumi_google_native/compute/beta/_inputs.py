@@ -181,6 +181,7 @@ __all__ = [
     'SecuritySettingsArgs',
     'ServerBindingArgs',
     'ServiceAccountArgs',
+    'ServiceAttachmentConnectedEndpointArgs',
     'ServiceAttachmentConsumerForwardingRuleArgs',
     'ShieldedInstanceConfigArgs',
     'ShieldedInstanceIntegrityPolicyArgs',
@@ -200,6 +201,7 @@ __all__ = [
     'SubsettingArgs',
     'TCPHealthCheckArgs',
     'TagsArgs',
+    'Uint128Args',
     'UrlMapTestArgs',
     'UrlMapTestHeaderArgs',
     'UrlRewriteArgs',
@@ -378,13 +380,17 @@ class AccessConfigArgs:
 @pulumi.input_type
 class AdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
-                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None):
+                 enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 threads_per_core: Optional[pulumi.Input[int]] = None):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if threads_per_core is not None:
+            pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -397,6 +403,18 @@ class AdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
+
+    @threads_per_core.setter
+    def threads_per_core(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "threads_per_core", value)
 
 
 @pulumi.input_type
@@ -7182,6 +7200,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
                  max_unavailable: Optional[pulumi.Input['FixedOrPercentArgs']] = None,
                  min_ready_sec: Optional[pulumi.Input[int]] = None,
                  minimal_action: Optional[pulumi.Input[str]] = None,
+                 most_disruptive_allowed_action: Optional[pulumi.Input[str]] = None,
                  replacement_method: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
@@ -7200,6 +7219,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
                At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
         :param pulumi.Input[int] min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
         :param pulumi.Input[str] minimal_action: Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param pulumi.Input[str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input[str] replacement_method: What action should be used to replace instances. See minimal_action.REPLACE
         :param pulumi.Input[str] type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
@@ -7213,6 +7233,8 @@ class InstanceGroupManagerUpdatePolicyArgs:
             pulumi.set(__self__, "min_ready_sec", min_ready_sec)
         if minimal_action is not None:
             pulumi.set(__self__, "minimal_action", minimal_action)
+        if most_disruptive_allowed_action is not None:
+            pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         if replacement_method is not None:
             pulumi.set(__self__, "replacement_method", replacement_method)
         if type is not None:
@@ -7287,6 +7309,18 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @minimal_action.setter
     def minimal_action(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "minimal_action", value)
+
+    @property
+    @pulumi.getter(name="mostDisruptiveAllowedAction")
+    def most_disruptive_allowed_action(self) -> Optional[pulumi.Input[str]]:
+        """
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        """
+        return pulumi.get(self, "most_disruptive_allowed_action")
+
+    @most_disruptive_allowed_action.setter
+    def most_disruptive_allowed_action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "most_disruptive_allowed_action", value)
 
     @property
     @pulumi.getter(name="replacementMethod")
@@ -13767,17 +13801,93 @@ class ServiceAccountArgs:
 
 
 @pulumi.input_type
+class ServiceAttachmentConnectedEndpointArgs:
+    def __init__(__self__, *,
+                 endpoint: Optional[pulumi.Input[str]] = None,
+                 forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 status: Optional[pulumi.Input[str]] = None):
+        """
+        [Output Only] A connection connected to this service attachment.
+        :param pulumi.Input[str] endpoint: The url of a connected endpoint.
+        :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the connected endpoint.
+        :param pulumi.Input[str] status: The status of a connected endpoint to this service attachment.
+        """
+        if endpoint is not None:
+            pulumi.set(__self__, "endpoint", endpoint)
+        if forwarding_rule is not None:
+            pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of a connected endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @endpoint.setter
+    def endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> Optional[pulumi.Input[str]]:
+        """
+        The url of a consumer forwarding rule. [Deprecated] Do not use.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection id of the connected endpoint.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[str]]:
+        """
+        The status of a connected endpoint to this service attachment.
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
 class ServiceAttachmentConsumerForwardingRuleArgs:
     def __init__(__self__, *,
                  forwarding_rule: Optional[pulumi.Input[str]] = None,
+                 psc_connection_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        [Output Only] A consumer forwarding rule connected to this service attachment.
+        [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
         :param pulumi.Input[str] forwarding_rule: The url of a consumer forwarding rule.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param pulumi.Input[str] status: The status of the forwarding rule.
         """
         if forwarding_rule is not None:
             pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        if psc_connection_id is not None:
+            pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         if status is not None:
             pulumi.set(__self__, "status", status)
 
@@ -13792,6 +13902,18 @@ class ServiceAttachmentConsumerForwardingRuleArgs:
     @forwarding_rule.setter
     def forwarding_rule(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "forwarding_rule", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_id", value)
 
     @property
     @pulumi.getter
@@ -14820,6 +14942,35 @@ class TagsArgs:
     @items.setter
     def items(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "items", value)
+
+
+@pulumi.input_type
+class Uint128Args:
+    def __init__(__self__, *,
+                 high: Optional[pulumi.Input[str]] = None,
+                 low: Optional[pulumi.Input[str]] = None):
+        if high is not None:
+            pulumi.set(__self__, "high", high)
+        if low is not None:
+            pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter
+    def high(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "high")
+
+    @high.setter
+    def high(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "high", value)
+
+    @property
+    @pulumi.getter
+    def low(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "low")
+
+    @low.setter
+    def low(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "low", value)
 
 
 @pulumi.input_type

@@ -74,6 +74,7 @@ __all__ = [
     'TpuConfigResponse',
     'UpgradeSettingsResponse',
     'VerticalPodAutoscalingResponse',
+    'WorkloadCertificatesResponse',
     'WorkloadIdentityConfigResponse',
     'WorkloadMetadataConfigResponse',
 ]
@@ -3638,6 +3639,45 @@ class VerticalPodAutoscalingResponse(dict):
         Enables vertical pod autoscaling.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class WorkloadCertificatesResponse(dict):
+    """
+    Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableCertificates":
+            suggest = "enable_certificates"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadCertificatesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadCertificatesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadCertificatesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_certificates: bool):
+        """
+        Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+        :param bool enable_certificates: enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        pulumi.set(__self__, "enable_certificates", enable_certificates)
+
+    @property
+    @pulumi.getter(name="enableCertificates")
+    def enable_certificates(self) -> bool:
+        """
+        enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+        """
+        return pulumi.get(self, "enable_certificates")
 
 
 @pulumi.output_type

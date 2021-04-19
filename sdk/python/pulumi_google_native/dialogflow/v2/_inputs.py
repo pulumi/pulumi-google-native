@@ -12,6 +12,9 @@ __all__ = [
     'GoogleCloudDialogflowV2AutomatedAgentConfigArgs',
     'GoogleCloudDialogflowV2ContextArgs',
     'GoogleCloudDialogflowV2EntityTypeEntityArgs',
+    'GoogleCloudDialogflowV2FulfillmentArgs',
+    'GoogleCloudDialogflowV2FulfillmentFeatureArgs',
+    'GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs',
@@ -62,6 +65,7 @@ __all__ = [
     'GoogleCloudDialogflowV2NotificationConfigArgs',
     'GoogleCloudDialogflowV2SpeechToTextConfigArgs',
     'GoogleCloudDialogflowV2SuggestionFeatureArgs',
+    'GoogleCloudDialogflowV2TextToSpeechSettingsArgs',
 ]
 
 @pulumi.input_type
@@ -182,6 +186,206 @@ class GoogleCloudDialogflowV2EntityTypeEntityArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2FulfillmentArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]] = None,
+                 generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+        :param pulumi.Input[str] display_name: Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+        :param pulumi.Input[bool] enabled: Optional. Whether fulfillment is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]] features: Optional. The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
+        :param pulumi.Input[str] name: Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
+        if generic_web_service is not None:
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether fulfillment is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]:
+        """
+        Optional. The field defines whether the fulfillment is enabled for certain features.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]):
+        pulumi.set(self, "features", value)
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]:
+        """
+        Configuration for a generic web service.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]):
+        pulumi.set(self, "generic_web_service", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2FulfillmentFeatureArgs:
+    def __init__(__self__, *,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Whether fulfillment is enabled for the specific feature.
+        :param pulumi.Input[str] type: The type of the feature that enabled for fulfillment.
+        """
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the feature that enabled for fulfillment.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs:
+    def __init__(__self__, *,
+                 is_cloud_function: Optional[pulumi.Input[bool]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 uri: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+        :param pulumi.Input[bool] is_cloud_function: Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        :param pulumi.Input[str] password: Optional. The password for HTTP Basic authentication.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] request_headers: Optional. The HTTP request headers to send together with fulfillment requests.
+        :param pulumi.Input[str] uri: Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        :param pulumi.Input[str] username: Optional. The user name for HTTP Basic authentication.
+        """
+        if is_cloud_function is not None:
+            pulumi.set(__self__, "is_cloud_function", is_cloud_function)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if request_headers is not None:
+            pulumi.set(__self__, "request_headers", request_headers)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="isCloudFunction")
+    def is_cloud_function(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        """
+        return pulumi.get(self, "is_cloud_function")
+
+    @is_cloud_function.setter
+    def is_cloud_function(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_cloud_function", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The password for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="requestHeaders")
+    def request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. The HTTP request headers to send together with fulfillment requests.
+        """
+        return pulumi.get(self, "request_headers")
+
+    @request_headers.setter
+    def request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "request_headers", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The user name for HTTP Basic authentication.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
@@ -2838,5 +3042,77 @@ class GoogleCloudDialogflowV2SuggestionFeatureArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2TextToSpeechSettingsArgs:
+    def __init__(__self__, *,
+                 enable_text_to_speech: Optional[pulumi.Input[bool]] = None,
+                 output_audio_encoding: Optional[pulumi.Input[str]] = None,
+                 sample_rate_hertz: Optional[pulumi.Input[int]] = None,
+                 synthesize_speech_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Instructs the speech synthesizer on how to generate the output audio content.
+        :param pulumi.Input[bool] enable_text_to_speech: Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        :param pulumi.Input[str] output_audio_encoding: Required. Audio encoding of the synthesized audio content.
+        :param pulumi.Input[int] sample_rate_hertz: Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] synthesize_speech_configs: Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        if enable_text_to_speech is not None:
+            pulumi.set(__self__, "enable_text_to_speech", enable_text_to_speech)
+        if output_audio_encoding is not None:
+            pulumi.set(__self__, "output_audio_encoding", output_audio_encoding)
+        if sample_rate_hertz is not None:
+            pulumi.set(__self__, "sample_rate_hertz", sample_rate_hertz)
+        if synthesize_speech_configs is not None:
+            pulumi.set(__self__, "synthesize_speech_configs", synthesize_speech_configs)
+
+    @property
+    @pulumi.getter(name="enableTextToSpeech")
+    def enable_text_to_speech(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+        """
+        return pulumi.get(self, "enable_text_to_speech")
+
+    @enable_text_to_speech.setter
+    def enable_text_to_speech(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_text_to_speech", value)
+
+    @property
+    @pulumi.getter(name="outputAudioEncoding")
+    def output_audio_encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Audio encoding of the synthesized audio content.
+        """
+        return pulumi.get(self, "output_audio_encoding")
+
+    @output_audio_encoding.setter
+    def output_audio_encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "output_audio_encoding", value)
+
+    @property
+    @pulumi.getter(name="sampleRateHertz")
+    def sample_rate_hertz(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+        """
+        return pulumi.get(self, "sample_rate_hertz")
+
+    @sample_rate_hertz.setter
+    def sample_rate_hertz(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sample_rate_hertz", value)
+
+    @property
+    @pulumi.getter(name="synthesizeSpeechConfigs")
+    def synthesize_speech_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+        """
+        return pulumi.get(self, "synthesize_speech_configs")
+
+    @synthesize_speech_configs.setter
+    def synthesize_speech_configs(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "synthesize_speech_configs", value)
 
 

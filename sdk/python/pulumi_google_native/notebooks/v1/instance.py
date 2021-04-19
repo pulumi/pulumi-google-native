@@ -33,6 +33,7 @@ class InstanceArgs:
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
@@ -61,6 +62,7 @@ class InstanceArgs:
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+        :param pulumi.Input[str] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
@@ -106,6 +108,8 @@ class InstanceArgs:
             pulumi.set(__self__, "metadata", metadata)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if nic_type is not None:
+            pulumi.set(__self__, "nic_type", nic_type)
         if no_proxy_access is not None:
             pulumi.set(__self__, "no_proxy_access", no_proxy_access)
         if no_public_ip is not None:
@@ -337,6 +341,18 @@ class InstanceArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        """
+        return pulumi.get(self, "nic_type")
+
+    @nic_type.setter
+    def nic_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "nic_type", value)
+
+    @property
     @pulumi.getter(name="noProxyAccess")
     def no_proxy_access(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -491,6 +507,7 @@ class Instance(pulumi.CustomResource):
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
@@ -524,6 +541,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] machine_type: Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to this instance.
         :param pulumi.Input[str] network: The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
+        :param pulumi.Input[str] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param pulumi.Input[bool] no_proxy_access: If true, the notebook instance will not register with the proxy.
         :param pulumi.Input[bool] no_public_ip: If true, no public IP will be assigned to this instance.
         :param pulumi.Input[bool] no_remove_data_disk: Input only. If true, the data disk will not be auto deleted when deleting the instance.
@@ -577,6 +595,7 @@ class Instance(pulumi.CustomResource):
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 nic_type: Optional[pulumi.Input[str]] = None,
                  no_proxy_access: Optional[pulumi.Input[bool]] = None,
                  no_public_ip: Optional[pulumi.Input[bool]] = None,
                  no_remove_data_disk: Optional[pulumi.Input[bool]] = None,
@@ -622,6 +641,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["network"] = network
+            __props__.__dict__["nic_type"] = nic_type
             __props__.__dict__["no_proxy_access"] = no_proxy_access
             __props__.__dict__["no_public_ip"] = no_public_ip
             __props__.__dict__["no_remove_data_disk"] = no_remove_data_disk
@@ -682,6 +702,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
+        __props__.__dict__["nic_type"] = None
         __props__.__dict__["no_proxy_access"] = None
         __props__.__dict__["no_public_ip"] = None
         __props__.__dict__["no_remove_data_disk"] = None
@@ -841,6 +862,14 @@ class Instance(pulumi.CustomResource):
         The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nicType")
+    def nic_type(self) -> pulumi.Output[str]:
+        """
+        Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+        """
+        return pulumi.get(self, "nic_type")
 
     @property
     @pulumi.getter(name="noProxyAccess")

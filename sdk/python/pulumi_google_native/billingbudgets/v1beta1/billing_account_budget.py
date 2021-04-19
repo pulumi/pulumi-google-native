@@ -27,7 +27,7 @@ class BillingAccountBudgetArgs:
         The set of arguments for constructing a BillingAccountBudget resource.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs'] all_updates_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs'] amount: Required. Budgeted amount.
-        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs'] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         :param pulumi.Input[str] display_name: User data for display name in UI. Validation: <= 60 chars.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
@@ -93,7 +93,7 @@ class BillingAccountBudgetArgs:
     @pulumi.getter(name="budgetFilter")
     def budget_filter(self) -> Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']]:
         """
-        Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         """
         return pulumi.get(self, "budget_filter")
 
@@ -159,7 +159,7 @@ class BillingAccountBudget(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']] all_updates_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']] amount: Required. Budgeted amount.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']] budget_filter: Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         :param pulumi.Input[str] display_name: User data for display name in UI. Validation: <= 60 chars.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
@@ -272,7 +272,7 @@ class BillingAccountBudget(pulumi.CustomResource):
     @pulumi.getter(name="budgetFilter")
     def budget_filter(self) -> pulumi.Output['outputs.GoogleCloudBillingBudgetsV1beta1FilterResponse']:
         """
-        Optional. Filters that define which resources are used to compute the actual spend against the budget.
+        Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
         """
         return pulumi.get(self, "budget_filter")
 

@@ -4,6 +4,7 @@
 
 # Export this package's modules as members:
 from .agent_entity_type import *
+from .agent_environment import *
 from .agent_environment_user_session_context import *
 from .agent_environment_user_session_entity_type import *
 from .agent_intent import *
@@ -11,6 +12,7 @@ from .agent_knowledge_base import *
 from .agent_knowledge_base_document import *
 from .agent_session_context import *
 from .agent_session_entity_type import *
+from .agent_version import *
 from .conversation import *
 from .conversation_participant import *
 from .conversation_profile import *
@@ -33,6 +35,8 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "google-native:dialogflow/v2:AgentEntityType":
                 return AgentEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:AgentEnvironment":
+                return AgentEnvironment(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:AgentEnvironmentUserSessionContext":
                 return AgentEnvironmentUserSessionContext(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:AgentEnvironmentUserSessionEntityType":
@@ -47,6 +51,8 @@ def _register_module():
                 return AgentSessionContext(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:AgentSessionEntityType":
                 return AgentSessionEntityType(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "google-native:dialogflow/v2:AgentVersion":
+                return AgentVersion(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:Conversation":
                 return Conversation(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "google-native:dialogflow/v2:ConversationParticipant":

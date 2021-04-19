@@ -182,6 +182,7 @@ __all__ = [
     'SecuritySettingsResponse',
     'ServerBindingResponse',
     'ServiceAccountResponse',
+    'ServiceAttachmentConnectedEndpointResponse',
     'ServiceAttachmentConsumerForwardingRuleResponse',
     'ShieldedInstanceConfigResponse',
     'ShieldedInstanceIntegrityPolicyResponse',
@@ -201,6 +202,7 @@ __all__ = [
     'SubsettingResponse',
     'TCPHealthCheckResponse',
     'TagsResponse',
+    'Uint128Response',
     'UrlMapTestHeaderResponse',
     'UrlMapTestResponse',
     'UrlRewriteResponse',
@@ -389,6 +391,8 @@ class AdvancedMachineFeaturesResponse(dict):
         suggest = None
         if key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "threadsPerCore":
+            suggest = "threads_per_core"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AdvancedMachineFeaturesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -402,12 +406,15 @@ class AdvancedMachineFeaturesResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_nested_virtualization: bool):
+                 enable_nested_virtualization: bool,
+                 threads_per_core: int):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -416,6 +423,14 @@ class AdvancedMachineFeaturesResponse(dict):
         Whether to enable nested virtualization or not (default is false).
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type
@@ -7183,6 +7198,8 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
             suggest = "min_ready_sec"
         elif key == "minimalAction":
             suggest = "minimal_action"
+        elif key == "mostDisruptiveAllowedAction":
+            suggest = "most_disruptive_allowed_action"
         elif key == "replacementMethod":
             suggest = "replacement_method"
 
@@ -7203,6 +7220,7 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
                  max_unavailable: 'outputs.FixedOrPercentResponse',
                  min_ready_sec: int,
                  minimal_action: str,
+                 most_disruptive_allowed_action: str,
                  replacement_method: str,
                  type: str):
         """
@@ -7221,6 +7239,7 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
                At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about maxUnavailable.
         :param int min_ready_sec: Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600].
         :param str minimal_action: Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
+        :param str most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param str replacement_method: What action should be used to replace instances. See minimal_action.REPLACE
         :param str type: The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
         """
@@ -7229,6 +7248,7 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
         pulumi.set(__self__, "max_unavailable", max_unavailable)
         pulumi.set(__self__, "min_ready_sec", min_ready_sec)
         pulumi.set(__self__, "minimal_action", minimal_action)
+        pulumi.set(__self__, "most_disruptive_allowed_action", most_disruptive_allowed_action)
         pulumi.set(__self__, "replacement_method", replacement_method)
         pulumi.set(__self__, "type", type)
 
@@ -7281,6 +7301,14 @@ class InstanceGroupManagerUpdatePolicyResponse(dict):
         Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
         """
         return pulumi.get(self, "minimal_action")
+
+    @property
+    @pulumi.getter(name="mostDisruptiveAllowedAction")
+    def most_disruptive_allowed_action(self) -> str:
+        """
+        Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+        """
+        return pulumi.get(self, "most_disruptive_allowed_action")
 
     @property
     @pulumi.getter(name="replacementMethod")
@@ -13650,15 +13678,91 @@ class ServiceAccountResponse(dict):
 
 
 @pulumi.output_type
-class ServiceAttachmentConsumerForwardingRuleResponse(dict):
+class ServiceAttachmentConnectedEndpointResponse(dict):
     """
-    [Output Only] A consumer forwarding rule connected to this service attachment.
+    [Output Only] A connection connected to this service attachment.
     """
     @staticmethod
     def __key_warning(key: str):
         suggest = None
         if key == "forwardingRule":
             suggest = "forwarding_rule"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConnectedEndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceAttachmentConnectedEndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoint: str,
+                 forwarding_rule: str,
+                 psc_connection_id: str,
+                 status: str):
+        """
+        [Output Only] A connection connected to this service attachment.
+        :param str endpoint: The url of a connected endpoint.
+        :param str forwarding_rule: The url of a consumer forwarding rule. [Deprecated] Do not use.
+        :param str psc_connection_id: The PSC connection id of the connected endpoint.
+        :param str status: The status of a connected endpoint to this service attachment.
+        """
+        pulumi.set(__self__, "endpoint", endpoint)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "status", status)
+
+    @property
+    @pulumi.getter
+    def endpoint(self) -> str:
+        """
+        The url of a connected endpoint.
+        """
+        return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> str:
+        """
+        The url of a consumer forwarding rule. [Deprecated] Do not use.
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the connected endpoint.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter
+    def status(self) -> str:
+        """
+        The status of a connected endpoint to this service attachment.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class ServiceAttachmentConsumerForwardingRuleResponse(dict):
+    """
+    [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "forwardingRule":
+            suggest = "forwarding_rule"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServiceAttachmentConsumerForwardingRuleResponse. Access the value via the '{suggest}' property getter instead.")
@@ -13673,13 +13777,16 @@ class ServiceAttachmentConsumerForwardingRuleResponse(dict):
 
     def __init__(__self__, *,
                  forwarding_rule: str,
+                 psc_connection_id: str,
                  status: str):
         """
-        [Output Only] A consumer forwarding rule connected to this service attachment.
+        [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
         :param str forwarding_rule: The url of a consumer forwarding rule.
+        :param str psc_connection_id: The PSC connection id of the PSC Forwarding Rule.
         :param str status: The status of the forwarding rule.
         """
         pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
         pulumi.set(__self__, "status", status)
 
     @property
@@ -13689,6 +13796,14 @@ class ServiceAttachmentConsumerForwardingRuleResponse(dict):
         The url of a consumer forwarding rule.
         """
         return pulumi.get(self, "forwarding_rule")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_id")
 
     @property
     @pulumi.getter
@@ -14736,6 +14851,25 @@ class TagsResponse(dict):
         An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
         """
         return pulumi.get(self, "items")
+
+
+@pulumi.output_type
+class Uint128Response(dict):
+    def __init__(__self__, *,
+                 high: str,
+                 low: str):
+        pulumi.set(__self__, "high", high)
+        pulumi.set(__self__, "low", low)
+
+    @property
+    @pulumi.getter
+    def high(self) -> str:
+        return pulumi.get(self, "high")
+
+    @property
+    @pulumi.getter
+    def low(self) -> str:
+        return pulumi.get(self, "low")
 
 
 @pulumi.output_type

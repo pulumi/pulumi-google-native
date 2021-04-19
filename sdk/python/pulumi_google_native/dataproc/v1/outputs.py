@@ -19,6 +19,7 @@ __all__ = [
     'ClusterMetricsResponse',
     'ClusterSelectorResponse',
     'ClusterStatusResponse',
+    'ConfidentialInstanceConfigResponse',
     'DiskConfigResponse',
     'EncryptionConfigResponse',
     'EndpointConfigResponse',
@@ -738,6 +739,45 @@ class ClusterStatusResponse(dict):
 
 
 @pulumi.output_type
+class ConfidentialInstanceConfigResponse(dict):
+    """
+    Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConfidentialInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConfidentialInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConfidentialInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_confidential_compute: bool):
+        """
+        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        :param bool enable_confidential_compute: Optional. Defines whether the instance should have confidential compute enabled.
+        """
+        pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> bool:
+        """
+        Optional. Defines whether the instance should have confidential compute enabled.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+
+@pulumi.output_type
 class DiskConfigResponse(dict):
     """
     Specifies the config of disk options for a group of VM instances.
@@ -956,7 +996,9 @@ class GceClusterConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "internalIpOnly":
+        if key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
+        elif key == "internalIpOnly":
             suggest = "internal_ip_only"
         elif key == "networkUri":
             suggest = "network_uri"
@@ -989,6 +1031,7 @@ class GceClusterConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 confidential_instance_config: 'outputs.ConfidentialInstanceConfigResponse',
                  internal_ip_only: bool,
                  metadata: Mapping[str, str],
                  network_uri: str,
@@ -1003,6 +1046,7 @@ class GceClusterConfigResponse(dict):
                  zone_uri: str):
         """
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
+        :param 'ConfidentialInstanceConfigResponse' confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
         :param bool internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param str network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
@@ -1016,6 +1060,7 @@ class GceClusterConfigResponse(dict):
         :param Sequence[str] tags: The Compute Engine tags to add to all instances (see Tagging instances (https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         :param str zone_uri: Optional. The zone where the Compute Engine cluster will be located. On a create request, it is required in the "global" region. If omitted in a non-global Dataproc region, the service will pick a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] us-central1-f
         """
+        pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "network_uri", network_uri)
@@ -1028,6 +1073,14 @@ class GceClusterConfigResponse(dict):
         pulumi.set(__self__, "subnetwork_uri", subnetwork_uri)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "zone_uri", zone_uri)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> 'outputs.ConfidentialInstanceConfigResponse':
+        """
+        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        """
+        return pulumi.get(self, "confidential_instance_config")
 
     @property
     @pulumi.getter(name="internalIpOnly")

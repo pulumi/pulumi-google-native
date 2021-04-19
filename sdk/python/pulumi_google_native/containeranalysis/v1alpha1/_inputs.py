@@ -991,7 +991,8 @@ class DetailArgs:
                  package: Optional[pulumi.Input[str]] = None,
                  package_type: Optional[pulumi.Input[str]] = None,
                  severity_name: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[str]] = None):
+                 source: Optional[pulumi.Input[str]] = None,
+                 vendor: Optional[pulumi.Input[str]] = None):
         """
         Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
         :param pulumi.Input[str] cpe_uri: The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
@@ -1004,6 +1005,7 @@ class DetailArgs:
         :param pulumi.Input[str] package_type: The type of package; whether native or non native(ruby gems, node.js packages etc)
         :param pulumi.Input[str] severity_name: The severity (eg: distro assigned severity) for this vulnerability.
         :param pulumi.Input[str] source: The source from which the information in this Detail was obtained.
+        :param pulumi.Input[str] vendor: The vendor of the product. e.g. "google"
         """
         if cpe_uri is not None:
             pulumi.set(__self__, "cpe_uri", cpe_uri)
@@ -1025,6 +1027,8 @@ class DetailArgs:
             pulumi.set(__self__, "severity_name", severity_name)
         if source is not None:
             pulumi.set(__self__, "source", source)
+        if vendor is not None:
+            pulumi.set(__self__, "vendor", vendor)
 
     @property
     @pulumi.getter(name="cpeUri")
@@ -1145,6 +1149,18 @@ class DetailArgs:
     @source.setter
     def source(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def vendor(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vendor of the product. e.g. "google"
+        """
+        return pulumi.get(self, "vendor")
+
+    @vendor.setter
+    def vendor(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vendor", value)
 
 
 @pulumi.input_type

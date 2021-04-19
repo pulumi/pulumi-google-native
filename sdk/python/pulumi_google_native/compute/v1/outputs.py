@@ -372,6 +372,8 @@ class AdvancedMachineFeaturesResponse(dict):
         suggest = None
         if key == "enableNestedVirtualization":
             suggest = "enable_nested_virtualization"
+        elif key == "threadsPerCore":
+            suggest = "threads_per_core"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AdvancedMachineFeaturesResponse. Access the value via the '{suggest}' property getter instead.")
@@ -385,12 +387,15 @@ class AdvancedMachineFeaturesResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 enable_nested_virtualization: bool):
+                 enable_nested_virtualization: bool,
+                 threads_per_core: int):
         """
         Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
         :param bool enable_nested_virtualization: Whether to enable nested virtualization or not (default is false).
+        :param int threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         """
         pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        pulumi.set(__self__, "threads_per_core", threads_per_core)
 
     @property
     @pulumi.getter(name="enableNestedVirtualization")
@@ -399,6 +404,14 @@ class AdvancedMachineFeaturesResponse(dict):
         Whether to enable nested virtualization or not (default is false).
         """
         return pulumi.get(self, "enable_nested_virtualization")
+
+    @property
+    @pulumi.getter(name="threadsPerCore")
+    def threads_per_core(self) -> int:
+        """
+        The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+        """
+        return pulumi.get(self, "threads_per_core")
 
 
 @pulumi.output_type

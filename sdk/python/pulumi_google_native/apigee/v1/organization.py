@@ -16,6 +16,7 @@ __all__ = ['OrganizationArgs', 'Organization']
 class OrganizationArgs:
     def __init__(__self__, *,
                  organizations_id: pulumi.Input[str],
+                 addons_config: Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class OrganizationArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Organization resource.
+        :param pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs'] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[str] analytics_region: Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -41,6 +43,8 @@ class OrganizationArgs:
         :param pulumi.Input[str] type: Not used by Apigee.
         """
         pulumi.set(__self__, "organizations_id", organizations_id)
+        if addons_config is not None:
+            pulumi.set(__self__, "addons_config", addons_config)
         if analytics_region is not None:
             pulumi.set(__self__, "analytics_region", analytics_region)
         if attributes is not None:
@@ -72,6 +76,18 @@ class OrganizationArgs:
     @organizations_id.setter
     def organizations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter(name="addonsConfig")
+    def addons_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']]:
+        """
+        Addon configurations of the Apigee organization.
+        """
+        return pulumi.get(self, "addons_config")
+
+    @addons_config.setter
+    def addons_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']]):
+        pulumi.set(self, "addons_config", value)
 
     @property
     @pulumi.getter(name="analyticsRegion")
@@ -208,6 +224,7 @@ class Organization(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
@@ -226,6 +243,7 @@ class Organization(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']] addons_config: Addon configurations of the Apigee organization.
         :param pulumi.Input[str] analytics_region: Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] attributes: Not used by Apigee.
         :param pulumi.Input[str] authorized_network: Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -261,6 +279,7 @@ class Organization(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 addons_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1AddonsConfigArgs']]] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
                  attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
@@ -285,6 +304,7 @@ class Organization(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
+            __props__.__dict__["addons_config"] = addons_config
             __props__.__dict__["analytics_region"] = analytics_region
             __props__.__dict__["attributes"] = attributes
             __props__.__dict__["authorized_network"] = authorized_network
@@ -330,6 +350,7 @@ class Organization(pulumi.CustomResource):
 
         __props__ = OrganizationArgs.__new__(OrganizationArgs)
 
+        __props__.__dict__["addons_config"] = None
         __props__.__dict__["analytics_region"] = None
         __props__.__dict__["attributes"] = None
         __props__.__dict__["authorized_network"] = None
@@ -351,6 +372,14 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["subscription_type"] = None
         __props__.__dict__["type"] = None
         return Organization(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="addonsConfig")
+    def addons_config(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1AddonsConfigResponse']:
+        """
+        Addon configurations of the Apigee organization.
+        """
+        return pulumi.get(self, "addons_config")
 
     @property
     @pulumi.getter(name="analyticsRegion")

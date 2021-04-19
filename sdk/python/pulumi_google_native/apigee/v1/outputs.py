@@ -10,6 +10,8 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
+    'GoogleCloudApigeeV1AddonsConfigResponse',
+    'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
     'GoogleCloudApigeeV1ApiCategoryDataResponse',
     'GoogleCloudApigeeV1ApiProductRefResponse',
     'GoogleCloudApigeeV1AsyncQueryResultResponse',
@@ -24,6 +26,8 @@ __all__ = [
     'GoogleCloudApigeeV1GraphQLOperationConfigResponse',
     'GoogleCloudApigeeV1GraphQLOperationGroupResponse',
     'GoogleCloudApigeeV1GraphQLOperationResponse',
+    'GoogleCloudApigeeV1IntegrationConfigResponse',
+    'GoogleCloudApigeeV1MonetizationConfigResponse',
     'GoogleCloudApigeeV1OperationConfigResponse',
     'GoogleCloudApigeeV1OperationGroupResponse',
     'GoogleCloudApigeeV1OperationResponse',
@@ -31,7 +35,9 @@ __all__ = [
     'GoogleCloudApigeeV1PropertyResponse',
     'GoogleCloudApigeeV1QueryMetadataResponse',
     'GoogleCloudApigeeV1QuotaResponse',
+    'GoogleCloudApigeeV1RateRangeResponse',
     'GoogleCloudApigeeV1ReportPropertyResponse',
+    'GoogleCloudApigeeV1RevenueShareRangeResponse',
     'GoogleCloudApigeeV1TlsInfoCommonNameResponse',
     'GoogleCloudApigeeV1TlsInfoResponse',
     'GoogleCloudApigeeV1TraceSamplingConfigResponse',
@@ -39,7 +45,95 @@ __all__ = [
     'GoogleIamV1AuditLogConfigResponse',
     'GoogleIamV1BindingResponse',
     'GoogleTypeExprResponse',
+    'GoogleTypeMoneyResponse',
 ]
+
+@pulumi.output_type
+class GoogleCloudApigeeV1AddonsConfigResponse(dict):
+    """
+    Add-on configurations for the Apigee organization.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "advancedApiOpsConfig":
+            suggest = "advanced_api_ops_config"
+        elif key == "integrationConfig":
+            suggest = "integration_config"
+        elif key == "monetizationConfig":
+            suggest = "monetization_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1AddonsConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1AddonsConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1AddonsConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 advanced_api_ops_config: 'outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse',
+                 integration_config: 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse',
+                 monetization_config: 'outputs.GoogleCloudApigeeV1MonetizationConfigResponse'):
+        """
+        Add-on configurations for the Apigee organization.
+        :param 'GoogleCloudApigeeV1AdvancedApiOpsConfigResponse' advanced_api_ops_config: Configuration for the Advanced API Ops add-on.
+        :param 'GoogleCloudApigeeV1IntegrationConfigResponse' integration_config: Configuration for the Integration add-on.
+        :param 'GoogleCloudApigeeV1MonetizationConfigResponse' monetization_config: Configuration for the Monetization add-on.
+        """
+        pulumi.set(__self__, "advanced_api_ops_config", advanced_api_ops_config)
+        pulumi.set(__self__, "integration_config", integration_config)
+        pulumi.set(__self__, "monetization_config", monetization_config)
+
+    @property
+    @pulumi.getter(name="advancedApiOpsConfig")
+    def advanced_api_ops_config(self) -> 'outputs.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse':
+        """
+        Configuration for the Advanced API Ops add-on.
+        """
+        return pulumi.get(self, "advanced_api_ops_config")
+
+    @property
+    @pulumi.getter(name="integrationConfig")
+    def integration_config(self) -> 'outputs.GoogleCloudApigeeV1IntegrationConfigResponse':
+        """
+        Configuration for the Integration add-on.
+        """
+        return pulumi.get(self, "integration_config")
+
+    @property
+    @pulumi.getter(name="monetizationConfig")
+    def monetization_config(self) -> 'outputs.GoogleCloudApigeeV1MonetizationConfigResponse':
+        """
+        Configuration for the Monetization add-on.
+        """
+        return pulumi.get(self, "monetization_config")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse(dict):
+    """
+    Configuration for the Advanced API Ops add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Advanced API Ops add-on.
+        :param bool enabled: Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the Advanced API Ops add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
 
 @pulumi.output_type
 class GoogleCloudApigeeV1ApiCategoryDataResponse(dict):
@@ -919,6 +1013,50 @@ class GoogleCloudApigeeV1GraphQLOperationResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudApigeeV1IntegrationConfigResponse(dict):
+    """
+    Configuration for the Integration add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Integration add-on.
+        :param bool enabled: Flag that specifies whether the Integration add-on is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the Integration add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1MonetizationConfigResponse(dict):
+    """
+    Configuration for the Monetization add-on.
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for the Monetization add-on.
+        :param bool enabled: Flag that specifies whether the Monetization add-on is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Flag that specifies whether the Monetization add-on is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GoogleCloudApigeeV1OperationConfigResponse(dict):
     """
     OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
@@ -1288,6 +1426,50 @@ class GoogleCloudApigeeV1QuotaResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudApigeeV1RateRangeResponse(dict):
+    """
+    API call volume range and the fees charged when the total number of API calls is within the range.
+    """
+    def __init__(__self__, *,
+                 end: str,
+                 fee: 'outputs.GoogleTypeMoneyResponse',
+                 start: str):
+        """
+        API call volume range and the fees charged when the total number of API calls is within the range.
+        :param str end: Ending value of the range. Set to 0 or `null` for the last range of values.
+        :param 'GoogleTypeMoneyResponse' fee: Fee to charge when total number of API calls falls within this range.
+        :param str start: Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "fee", fee)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        Ending value of the range. Set to 0 or `null` for the last range of values.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter
+    def fee(self) -> 'outputs.GoogleTypeMoneyResponse':
+        """
+        Fee to charge when total number of API calls falls within this range.
+        """
+        return pulumi.get(self, "fee")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        return pulumi.get(self, "start")
+
+
+@pulumi.output_type
 class GoogleCloudApigeeV1ReportPropertyResponse(dict):
     def __init__(__self__, *,
                  property: str,
@@ -1314,6 +1496,67 @@ class GoogleCloudApigeeV1ReportPropertyResponse(dict):
         name of the property
         """
         return pulumi.get(self, "property")
+
+
+@pulumi.output_type
+class GoogleCloudApigeeV1RevenueShareRangeResponse(dict):
+    """
+    API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sharePercentage":
+            suggest = "share_percentage"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1RevenueShareRangeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1RevenueShareRangeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1RevenueShareRangeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end: str,
+                 share_percentage: float,
+                 start: str):
+        """
+        API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+        :param str end: Ending value of the range. Set to 0 or `null` for the last range of values.
+        :param float share_percentage: Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+        :param str start: Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        pulumi.set(__self__, "end", end)
+        pulumi.set(__self__, "share_percentage", share_percentage)
+        pulumi.set(__self__, "start", start)
+
+    @property
+    @pulumi.getter
+    def end(self) -> str:
+        """
+        Ending value of the range. Set to 0 or `null` for the last range of values.
+        """
+        return pulumi.get(self, "end")
+
+    @property
+    @pulumi.getter(name="sharePercentage")
+    def share_percentage(self) -> float:
+        """
+        Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+        """
+        return pulumi.get(self, "share_percentage")
+
+    @property
+    @pulumi.getter
+    def start(self) -> str:
+        """
+        Starting value of the range. Set to 0 or `null` for the initial range of values.
+        """
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type
@@ -1748,5 +1991,66 @@ class GoogleTypeExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class GoogleTypeMoneyResponse(dict):
+    """
+    Represents an amount of money with its currency type.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currencyCode":
+            suggest = "currency_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleTypeMoneyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleTypeMoneyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleTypeMoneyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 currency_code: str,
+                 nanos: int,
+                 units: str):
+        """
+        Represents an amount of money with its currency type.
+        :param str currency_code: The three-letter currency code defined in ISO 4217.
+        :param int nanos: Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        :param str units: The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        pulumi.set(__self__, "currency_code", currency_code)
+        pulumi.set(__self__, "nanos", nanos)
+        pulumi.set(__self__, "units", units)
+
+    @property
+    @pulumi.getter(name="currencyCode")
+    def currency_code(self) -> str:
+        """
+        The three-letter currency code defined in ISO 4217.
+        """
+        return pulumi.get(self, "currency_code")
+
+    @property
+    @pulumi.getter
+    def nanos(self) -> int:
+        """
+        Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+        """
+        return pulumi.get(self, "nanos")
+
+    @property
+    @pulumi.getter
+    def units(self) -> str:
+        """
+        The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+        """
+        return pulumi.get(self, "units")
 
 

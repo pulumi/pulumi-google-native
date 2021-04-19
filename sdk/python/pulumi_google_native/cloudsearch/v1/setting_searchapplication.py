@@ -20,6 +20,7 @@ class SettingSearchapplicationArgs:
                  default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input['FacetOptionsArgs']]]] = None,
                  default_sort_options: Optional[pulumi.Input['SortOptionsArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scoring_config: Optional[pulumi.Input['ScoringConfigArgs']] = None,
                  source_config: Optional[pulumi.Input[Sequence[pulumi.Input['SourceConfigArgs']]]] = None):
@@ -29,6 +30,7 @@ class SettingSearchapplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FacetOptionsArgs']]] default_facet_options: The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
         :param pulumi.Input['SortOptionsArgs'] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
+        :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
         :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input['ScoringConfigArgs'] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input['SourceConfigArgs']]] source_config: Configuration for a sources specified in data_source_restrictions.
@@ -42,6 +44,8 @@ class SettingSearchapplicationArgs:
             pulumi.set(__self__, "default_sort_options", default_sort_options)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enable_audit_log is not None:
+            pulumi.set(__self__, "enable_audit_log", enable_audit_log)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if scoring_config is not None:
@@ -107,6 +111,18 @@ class SettingSearchapplicationArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="enableAuditLog")
+    def enable_audit_log(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+        """
+        return pulumi.get(self, "enable_audit_log")
+
+    @enable_audit_log.setter
+    def enable_audit_log(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_audit_log", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,6 +168,7 @@ class SettingSearchapplication(pulumi.CustomResource):
                  default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]]] = None,
                  default_sort_options: Optional[pulumi.Input[pulumi.InputType['SortOptionsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
                  searchapplications_id: Optional[pulumi.Input[str]] = None,
@@ -166,6 +183,7 @@ class SettingSearchapplication(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]] default_facet_options: The default fields for returning facet results. The sources specified here also have been included in data_source_restrictions above.
         :param pulumi.Input[pulumi.InputType['SortOptionsArgs']] default_sort_options: The default options for sorting the search results
         :param pulumi.Input[str] display_name: Display name of the Search Application. The maximum length is 300 characters.
+        :param pulumi.Input[bool] enable_audit_log: Indicates whether audit logging is on/off for requests made for the search application in query APIs.
         :param pulumi.Input[str] name: Name of the Search Application. Format: searchapplications/{application_id}.
         :param pulumi.Input[pulumi.InputType['ScoringConfigArgs']] scoring_config: Configuration for ranking results.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SourceConfigArgs']]]] source_config: Configuration for a sources specified in data_source_restrictions.
@@ -198,6 +216,7 @@ class SettingSearchapplication(pulumi.CustomResource):
                  default_facet_options: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FacetOptionsArgs']]]]] = None,
                  default_sort_options: Optional[pulumi.Input[pulumi.InputType['SortOptionsArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enable_audit_log: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  scoring_config: Optional[pulumi.Input[pulumi.InputType['ScoringConfigArgs']]] = None,
                  searchapplications_id: Optional[pulumi.Input[str]] = None,
@@ -218,6 +237,7 @@ class SettingSearchapplication(pulumi.CustomResource):
             __props__.__dict__["default_facet_options"] = default_facet_options
             __props__.__dict__["default_sort_options"] = default_sort_options
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enable_audit_log"] = enable_audit_log
             __props__.__dict__["name"] = name
             __props__.__dict__["scoring_config"] = scoring_config
             if searchapplications_id is None and not opts.urn:
@@ -251,6 +271,7 @@ class SettingSearchapplication(pulumi.CustomResource):
         __props__.__dict__["default_facet_options"] = None
         __props__.__dict__["default_sort_options"] = None
         __props__.__dict__["display_name"] = None
+        __props__.__dict__["enable_audit_log"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["operation_ids"] = None
         __props__.__dict__["scoring_config"] = None
@@ -288,6 +309,14 @@ class SettingSearchapplication(pulumi.CustomResource):
         Display name of the Search Application. The maximum length is 300 characters.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="enableAuditLog")
+    def enable_audit_log(self) -> pulumi.Output[bool]:
+        """
+        Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+        """
+        return pulumi.get(self, "enable_audit_log")
 
     @property
     @pulumi.getter
