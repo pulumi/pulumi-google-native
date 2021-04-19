@@ -491,11 +491,12 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 	case prop.Type == "any":
 		return &schema.TypeSpec{Ref: "pulumi.json#/Any"}, nil
 	case prop.Type == "object" && len(prop.Properties) > 0:
-		tok := fmt.Sprintf(`%s:%s:%s%s`, g.pkg.Name, g.mod, typeName, strings.Title(propName))
+		schemaName := fmt.Sprintf(`%s%s`, typeName, strings.Title(propName))
 		if isOutput {
-			tok += "Response"
+			schemaName += "Response"
 		}
-		if g.visitedTypes.Has(tok) {
+		tok := fmt.Sprintf(`%s:%s:%s`, g.pkg.Name, g.mod, schemaName)
+		if _, has := g.rest.Schemas[schemaName]; has {
 			return nil, errors.Errorf("properties type name %q conflicts with a schema type", tok)
 		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
