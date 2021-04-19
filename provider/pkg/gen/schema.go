@@ -102,7 +102,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"dependencies": map[string]string{
-			"@pulumi/pulumi": "^3.0.0-alpha.0",
+			"@pulumi/pulumi": "^3.0.0",
 		},
 		"readme": `TODO`,
 	})
@@ -110,7 +110,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	pkg.Language["python"] = rawMessage(map[string]interface{}{
 		"moduleNameOverrides": pythonModuleNames,
 		"requires": map[string]string{
-			"pulumi": ">=3.0.0a1,<4.0.0",
+			"pulumi": ">=3.0.0,<4.0.0",
 		},
 		"usesIOClasses": true,
 		"readme":        `TODO`,
@@ -118,7 +118,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
-			"Pulumi":                       "3.*-*",
+			"Pulumi":                       "3.*",
 			"System.Collections.Immutable": "1.6.0",
 		},
 		"namespaces": csharpNamespaces,
