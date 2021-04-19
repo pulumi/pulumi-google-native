@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new Backup in a given project and location.
+// Creates a new backup in a given project and location.
 type ServiceBackup struct {
 	pulumi.CustomResourceState
 

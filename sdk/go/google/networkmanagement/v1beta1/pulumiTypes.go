@@ -4100,7 +4100,7 @@ func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	}).(StepResponseOutput)
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponse struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoResponse `pulumi:"endpointInfo"`
@@ -4119,7 +4119,7 @@ type TraceResponseInput interface {
 	ToTraceResponseOutputWithContext(context.Context) TraceResponseOutput
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponseArgs struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoResponseInput `pulumi:"endpointInfo"`
@@ -4164,7 +4164,7 @@ func (i TraceResponseArray) ToTraceResponseArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TraceResponseArrayOutput)
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponseOutput struct{ *pulumi.OutputState }
 
 func (TraceResponseOutput) ElementType() reflect.Type {

@@ -33,6 +33,8 @@ type OrganizationWorkload struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringOutput `pulumi:"provisionedResourcesParent"`
+	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayOutput `pulumi:"resourceSettings"`
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput `pulumi:"resources"`
 }
@@ -93,6 +95,8 @@ type organizationWorkloadState struct {
 	Name *string `pulumi:"name"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
+	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse `pulumi:"resourceSettings"`
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources []GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse `pulumi:"resources"`
 }
@@ -116,6 +120,8 @@ type OrganizationWorkloadState struct {
 	Name pulumi.StringPtrInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
+	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArrayInput
 	// The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
 	Resources GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayInput
 }
@@ -143,7 +149,9 @@ type organizationWorkloadArgs struct {
 	OrganizationsId string  `pulumi:"organizationsId"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
-	WorkloadsId                string  `pulumi:"workloadsId"`
+	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettings `pulumi:"resourceSettings"`
+	WorkloadsId      string                                                  `pulumi:"workloadsId"`
 }
 
 // The set of arguments for constructing a OrganizationWorkload resource.
@@ -166,7 +174,9 @@ type OrganizationWorkloadArgs struct {
 	OrganizationsId pulumi.StringInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
-	WorkloadsId                pulumi.StringInput
+	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput
+	WorkloadsId      pulumi.StringInput
 }
 
 func (OrganizationWorkloadArgs) ElementType() reflect.Type {

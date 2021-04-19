@@ -564,6 +564,8 @@ func (o AccessConfigResponseArrayOutput) Index(i pulumi.IntInput) AccessConfigRe
 type AdvancedMachineFeatures struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
 }
 
 // AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
@@ -581,6 +583,8 @@ type AdvancedMachineFeaturesInput interface {
 type AdvancedMachineFeaturesArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
 }
 
 func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
@@ -666,6 +670,11 @@ func (o AdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolP
 	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
+}
+
 type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
 
 func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
@@ -694,10 +703,22 @@ func (o AdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
 type AdvancedMachineFeaturesResponse struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
 
 // AdvancedMachineFeaturesResponseInput is an input type that accepts AdvancedMachineFeaturesResponseArgs and AdvancedMachineFeaturesResponseOutput values.
@@ -715,6 +736,8 @@ type AdvancedMachineFeaturesResponseInput interface {
 type AdvancedMachineFeaturesResponseArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
 
 func (AdvancedMachineFeaturesResponseArgs) ElementType() reflect.Type {
@@ -800,6 +823,11 @@ func (o AdvancedMachineFeaturesResponseOutput) EnableNestedVirtualization() pulu
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
 type AdvancedMachineFeaturesResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (AdvancedMachineFeaturesResponsePtrOutput) ElementType() reflect.Type {
@@ -826,6 +854,16 @@ func (o AdvancedMachineFeaturesResponsePtrOutput) EnableNestedVirtualization() p
 		}
 		return &v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponsePtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 // An alias IP range attached to an instance's network interface.
@@ -30570,6 +30608,8 @@ type InstanceGroupManagerUpdatePolicy struct {
 	MinReadySec *int `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
 	MinimalAction *string `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction *string `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod *string `pulumi:"replacementMethod"`
 	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -30607,6 +30647,8 @@ type InstanceGroupManagerUpdatePolicyArgs struct {
 	MinReadySec pulumi.IntPtrInput `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
 	MinimalAction pulumi.StringPtrInput `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction pulumi.StringPtrInput `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod pulumi.StringPtrInput `pulumi:"replacementMethod"`
 	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -30724,6 +30766,11 @@ func (o InstanceGroupManagerUpdatePolicyOutput) MinimalAction() pulumi.StringPtr
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.MinimalAction }).(pulumi.StringPtrOutput)
 }
 
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o InstanceGroupManagerUpdatePolicyOutput) MostDisruptiveAllowedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.MostDisruptiveAllowedAction }).(pulumi.StringPtrOutput)
+}
+
 // What action should be used to replace instances. See minimal_action.REPLACE
 func (o InstanceGroupManagerUpdatePolicyOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicy) *string { return v.ReplacementMethod }).(pulumi.StringPtrOutput)
@@ -30811,6 +30858,16 @@ func (o InstanceGroupManagerUpdatePolicyPtrOutput) MinimalAction() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o InstanceGroupManagerUpdatePolicyPtrOutput) MostDisruptiveAllowedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MostDisruptiveAllowedAction
+	}).(pulumi.StringPtrOutput)
+}
+
 // What action should be used to replace instances. See minimal_action.REPLACE
 func (o InstanceGroupManagerUpdatePolicyPtrOutput) ReplacementMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicy) *string {
@@ -30851,6 +30908,8 @@ type InstanceGroupManagerUpdatePolicyResponse struct {
 	MinReadySec int `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
 	MinimalAction string `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction string `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod string `pulumi:"replacementMethod"`
 	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -30888,6 +30947,8 @@ type InstanceGroupManagerUpdatePolicyResponseArgs struct {
 	MinReadySec pulumi.IntInput `pulumi:"minReadySec"`
 	// Minimal action to be taken on an instance. You can specify either RESTART to restart existing instances or REPLACE to delete and create new instances from the target template. If you specify a RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that the minimal action you specify is not enough to perform the update, it might perform a more disruptive action.
 	MinimalAction pulumi.StringInput `pulumi:"minimalAction"`
+	// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+	MostDisruptiveAllowedAction pulumi.StringInput `pulumi:"mostDisruptiveAllowedAction"`
 	// What action should be used to replace instances. See minimal_action.REPLACE
 	ReplacementMethod pulumi.StringInput `pulumi:"replacementMethod"`
 	// The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).
@@ -31005,6 +31066,11 @@ func (o InstanceGroupManagerUpdatePolicyResponseOutput) MinimalAction() pulumi.S
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.MinimalAction }).(pulumi.StringOutput)
 }
 
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o InstanceGroupManagerUpdatePolicyResponseOutput) MostDisruptiveAllowedAction() pulumi.StringOutput {
+	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.MostDisruptiveAllowedAction }).(pulumi.StringOutput)
+}
+
 // What action should be used to replace instances. See minimal_action.REPLACE
 func (o InstanceGroupManagerUpdatePolicyResponseOutput) ReplacementMethod() pulumi.StringOutput {
 	return o.ApplyT(func(v InstanceGroupManagerUpdatePolicyResponse) string { return v.ReplacementMethod }).(pulumi.StringOutput)
@@ -31089,6 +31155,16 @@ func (o InstanceGroupManagerUpdatePolicyResponsePtrOutput) MinimalAction() pulum
 			return nil
 		}
 		return &v.MinimalAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+func (o InstanceGroupManagerUpdatePolicyResponsePtrOutput) MostDisruptiveAllowedAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceGroupManagerUpdatePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MostDisruptiveAllowedAction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -58577,10 +58653,266 @@ func (o ServiceAccountResponseArrayOutput) Index(i pulumi.IntInput) ServiceAccou
 	}).(ServiceAccountResponseOutput)
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpoint struct {
+	// The url of a connected endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+	// The url of a consumer forwarding rule. [Deprecated] Do not use.
+	ForwardingRule *string `pulumi:"forwardingRule"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
+	// The status of a connected endpoint to this service attachment.
+	Status *string `pulumi:"status"`
+}
+
+// ServiceAttachmentConnectedEndpointInput is an input type that accepts ServiceAttachmentConnectedEndpointArgs and ServiceAttachmentConnectedEndpointOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointInput` via:
+//
+//          ServiceAttachmentConnectedEndpointArgs{...}
+type ServiceAttachmentConnectedEndpointInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput
+	ToServiceAttachmentConnectedEndpointOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointOutput
+}
+
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpointArgs struct {
+	// The url of a connected endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+	// The url of a consumer forwarding rule. [Deprecated] Do not use.
+	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
+	// The status of a connected endpoint to this service attachment.
+	Status pulumi.StringPtrInput `pulumi:"status"`
+}
+
+func (ServiceAttachmentConnectedEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return i.ToServiceAttachmentConnectedEndpointOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArgs) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+// ServiceAttachmentConnectedEndpointArrayInput is an input type that accepts ServiceAttachmentConnectedEndpointArray and ServiceAttachmentConnectedEndpointArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointArrayInput` via:
+//
+//          ServiceAttachmentConnectedEndpointArray{ ServiceAttachmentConnectedEndpointArgs{...} }
+type ServiceAttachmentConnectedEndpointArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput
+	ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointArrayOutput
+}
+
+type ServiceAttachmentConnectedEndpointArray []ServiceAttachmentConnectedEndpointInput
+
+func (ServiceAttachmentConnectedEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return i.ToServiceAttachmentConnectedEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointArray) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointArrayOutput)
+}
+
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpointOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutput() ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointOutput) ToServiceAttachmentConnectedEndpointOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointOutput {
+	return o
+}
+
+// The url of a connected endpoint.
+func (o ServiceAttachmentConnectedEndpointOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+// The url of a consumer forwarding rule. [Deprecated] Do not use.
+func (o ServiceAttachmentConnectedEndpointOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the connected endpoint.
+func (o ServiceAttachmentConnectedEndpointOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// The status of a connected endpoint to this service attachment.
+func (o ServiceAttachmentConnectedEndpointOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpoint) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+type ServiceAttachmentConnectedEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpoint)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutput() ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) ToServiceAttachmentConnectedEndpointArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConnectedEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConnectedEndpoint {
+		return vs[0].([]ServiceAttachmentConnectedEndpoint)[vs[1].(int)]
+	}).(ServiceAttachmentConnectedEndpointOutput)
+}
+
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpointResponse struct {
+	// The url of a connected endpoint.
+	Endpoint string `pulumi:"endpoint"`
+	// The url of a consumer forwarding rule. [Deprecated] Do not use.
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The status of a connected endpoint to this service attachment.
+	Status string `pulumi:"status"`
+}
+
+// ServiceAttachmentConnectedEndpointResponseInput is an input type that accepts ServiceAttachmentConnectedEndpointResponseArgs and ServiceAttachmentConnectedEndpointResponseOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointResponseInput` via:
+//
+//          ServiceAttachmentConnectedEndpointResponseArgs{...}
+type ServiceAttachmentConnectedEndpointResponseInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointResponseOutput() ServiceAttachmentConnectedEndpointResponseOutput
+	ToServiceAttachmentConnectedEndpointResponseOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointResponseOutput
+}
+
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpointResponseArgs struct {
+	// The url of a connected endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The url of a consumer forwarding rule. [Deprecated] Do not use.
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// The PSC connection id of the connected endpoint.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// The status of a connected endpoint to this service attachment.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (ServiceAttachmentConnectedEndpointResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointResponseArgs) ToServiceAttachmentConnectedEndpointResponseOutput() ServiceAttachmentConnectedEndpointResponseOutput {
+	return i.ToServiceAttachmentConnectedEndpointResponseOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointResponseArgs) ToServiceAttachmentConnectedEndpointResponseOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointResponseOutput)
+}
+
+// ServiceAttachmentConnectedEndpointResponseArrayInput is an input type that accepts ServiceAttachmentConnectedEndpointResponseArray and ServiceAttachmentConnectedEndpointResponseArrayOutput values.
+// You can construct a concrete instance of `ServiceAttachmentConnectedEndpointResponseArrayInput` via:
+//
+//          ServiceAttachmentConnectedEndpointResponseArray{ ServiceAttachmentConnectedEndpointResponseArgs{...} }
+type ServiceAttachmentConnectedEndpointResponseArrayInput interface {
+	pulumi.Input
+
+	ToServiceAttachmentConnectedEndpointResponseArrayOutput() ServiceAttachmentConnectedEndpointResponseArrayOutput
+	ToServiceAttachmentConnectedEndpointResponseArrayOutputWithContext(context.Context) ServiceAttachmentConnectedEndpointResponseArrayOutput
+}
+
+type ServiceAttachmentConnectedEndpointResponseArray []ServiceAttachmentConnectedEndpointResponseInput
+
+func (ServiceAttachmentConnectedEndpointResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (i ServiceAttachmentConnectedEndpointResponseArray) ToServiceAttachmentConnectedEndpointResponseArrayOutput() ServiceAttachmentConnectedEndpointResponseArrayOutput {
+	return i.ToServiceAttachmentConnectedEndpointResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAttachmentConnectedEndpointResponseArray) ToServiceAttachmentConnectedEndpointResponseArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConnectedEndpointResponseArrayOutput)
+}
+
+// [Output Only] A connection connected to this service attachment.
+type ServiceAttachmentConnectedEndpointResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointResponseOutput) ToServiceAttachmentConnectedEndpointResponseOutput() ServiceAttachmentConnectedEndpointResponseOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointResponseOutput) ToServiceAttachmentConnectedEndpointResponseOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointResponseOutput {
+	return o
+}
+
+// The url of a connected endpoint.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The url of a consumer forwarding rule. [Deprecated] Do not use.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the connected endpoint.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The status of a connected endpoint to this service attachment.
+func (o ServiceAttachmentConnectedEndpointResponseOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConnectedEndpointResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type ServiceAttachmentConnectedEndpointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAttachmentConnectedEndpointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAttachmentConnectedEndpointResponse)(nil)).Elem()
+}
+
+func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) ToServiceAttachmentConnectedEndpointResponseArrayOutput() ServiceAttachmentConnectedEndpointResponseArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) ToServiceAttachmentConnectedEndpointResponseArrayOutputWithContext(ctx context.Context) ServiceAttachmentConnectedEndpointResponseArrayOutput {
+	return o
+}
+
+func (o ServiceAttachmentConnectedEndpointResponseArrayOutput) Index(i pulumi.IntInput) ServiceAttachmentConnectedEndpointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAttachmentConnectedEndpointResponse {
+		return vs[0].([]ServiceAttachmentConnectedEndpointResponse)[vs[1].(int)]
+	}).(ServiceAttachmentConnectedEndpointResponseOutput)
+}
+
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRule struct {
 	// The url of a consumer forwarding rule.
 	ForwardingRule *string `pulumi:"forwardingRule"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId *string `pulumi:"pscConnectionId"`
 	// The status of the forwarding rule.
 	Status *string `pulumi:"status"`
 }
@@ -58596,10 +58928,12 @@ type ServiceAttachmentConsumerForwardingRuleInput interface {
 	ToServiceAttachmentConsumerForwardingRuleOutputWithContext(context.Context) ServiceAttachmentConsumerForwardingRuleOutput
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRuleArgs struct {
 	// The url of a consumer forwarding rule.
 	ForwardingRule pulumi.StringPtrInput `pulumi:"forwardingRule"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringPtrInput `pulumi:"pscConnectionId"`
 	// The status of the forwarding rule.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
@@ -58641,7 +58975,7 @@ func (i ServiceAttachmentConsumerForwardingRuleArray) ToServiceAttachmentConsume
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerForwardingRuleArrayOutput)
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRuleOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentConsumerForwardingRuleOutput) ElementType() reflect.Type {
@@ -58659,6 +58993,11 @@ func (o ServiceAttachmentConsumerForwardingRuleOutput) ToServiceAttachmentConsum
 // The url of a consumer forwarding rule.
 func (o ServiceAttachmentConsumerForwardingRuleOutput) ForwardingRule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRule) *string { return v.ForwardingRule }).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o ServiceAttachmentConsumerForwardingRuleOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRule) *string { return v.PscConnectionId }).(pulumi.StringPtrOutput)
 }
 
 // The status of the forwarding rule.
@@ -58686,10 +59025,12 @@ func (o ServiceAttachmentConsumerForwardingRuleArrayOutput) Index(i pulumi.IntIn
 	}).(ServiceAttachmentConsumerForwardingRuleOutput)
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRuleResponse struct {
 	// The url of a consumer forwarding rule.
 	ForwardingRule string `pulumi:"forwardingRule"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId string `pulumi:"pscConnectionId"`
 	// The status of the forwarding rule.
 	Status string `pulumi:"status"`
 }
@@ -58705,10 +59046,12 @@ type ServiceAttachmentConsumerForwardingRuleResponseInput interface {
 	ToServiceAttachmentConsumerForwardingRuleResponseOutputWithContext(context.Context) ServiceAttachmentConsumerForwardingRuleResponseOutput
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRuleResponseArgs struct {
 	// The url of a consumer forwarding rule.
 	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// The PSC connection id of the PSC Forwarding Rule.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
 	// The status of the forwarding rule.
 	Status pulumi.StringInput `pulumi:"status"`
 }
@@ -58750,7 +59093,7 @@ func (i ServiceAttachmentConsumerForwardingRuleResponseArray) ToServiceAttachmen
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceAttachmentConsumerForwardingRuleResponseArrayOutput)
 }
 
-// [Output Only] A consumer forwarding rule connected to this service attachment.
+// [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
 type ServiceAttachmentConsumerForwardingRuleResponseOutput struct{ *pulumi.OutputState }
 
 func (ServiceAttachmentConsumerForwardingRuleResponseOutput) ElementType() reflect.Type {
@@ -58768,6 +59111,11 @@ func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) ToServiceAttachme
 // The url of a consumer forwarding rule.
 func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) ForwardingRule() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRuleResponse) string { return v.ForwardingRule }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Forwarding Rule.
+func (o ServiceAttachmentConsumerForwardingRuleResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAttachmentConsumerForwardingRuleResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
 }
 
 // The status of the forwarding rule.
@@ -64643,6 +64991,288 @@ func (o TagsResponsePtrOutput) Items() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type Uint128 struct {
+	High *string `pulumi:"high"`
+	Low  *string `pulumi:"low"`
+}
+
+// Uint128Input is an input type that accepts Uint128Args and Uint128Output values.
+// You can construct a concrete instance of `Uint128Input` via:
+//
+//          Uint128Args{...}
+type Uint128Input interface {
+	pulumi.Input
+
+	ToUint128Output() Uint128Output
+	ToUint128OutputWithContext(context.Context) Uint128Output
+}
+
+type Uint128Args struct {
+	High pulumi.StringPtrInput `pulumi:"high"`
+	Low  pulumi.StringPtrInput `pulumi:"low"`
+}
+
+func (Uint128Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*Uint128)(nil)).Elem()
+}
+
+func (i Uint128Args) ToUint128Output() Uint128Output {
+	return i.ToUint128OutputWithContext(context.Background())
+}
+
+func (i Uint128Args) ToUint128OutputWithContext(ctx context.Context) Uint128Output {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128Output)
+}
+
+func (i Uint128Args) ToUint128PtrOutput() Uint128PtrOutput {
+	return i.ToUint128PtrOutputWithContext(context.Background())
+}
+
+func (i Uint128Args) ToUint128PtrOutputWithContext(ctx context.Context) Uint128PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128Output).ToUint128PtrOutputWithContext(ctx)
+}
+
+// Uint128PtrInput is an input type that accepts Uint128Args, Uint128Ptr and Uint128PtrOutput values.
+// You can construct a concrete instance of `Uint128PtrInput` via:
+//
+//          Uint128Args{...}
+//
+//  or:
+//
+//          nil
+type Uint128PtrInput interface {
+	pulumi.Input
+
+	ToUint128PtrOutput() Uint128PtrOutput
+	ToUint128PtrOutputWithContext(context.Context) Uint128PtrOutput
+}
+
+type uint128PtrType Uint128Args
+
+func Uint128Ptr(v *Uint128Args) Uint128PtrInput {
+	return (*uint128PtrType)(v)
+}
+
+func (*uint128PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Uint128)(nil)).Elem()
+}
+
+func (i *uint128PtrType) ToUint128PtrOutput() Uint128PtrOutput {
+	return i.ToUint128PtrOutputWithContext(context.Background())
+}
+
+func (i *uint128PtrType) ToUint128PtrOutputWithContext(ctx context.Context) Uint128PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128PtrOutput)
+}
+
+type Uint128Output struct{ *pulumi.OutputState }
+
+func (Uint128Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*Uint128)(nil)).Elem()
+}
+
+func (o Uint128Output) ToUint128Output() Uint128Output {
+	return o
+}
+
+func (o Uint128Output) ToUint128OutputWithContext(ctx context.Context) Uint128Output {
+	return o
+}
+
+func (o Uint128Output) ToUint128PtrOutput() Uint128PtrOutput {
+	return o.ToUint128PtrOutputWithContext(context.Background())
+}
+
+func (o Uint128Output) ToUint128PtrOutputWithContext(ctx context.Context) Uint128PtrOutput {
+	return o.ApplyT(func(v Uint128) *Uint128 {
+		return &v
+	}).(Uint128PtrOutput)
+}
+func (o Uint128Output) High() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Uint128) *string { return v.High }).(pulumi.StringPtrOutput)
+}
+
+func (o Uint128Output) Low() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Uint128) *string { return v.Low }).(pulumi.StringPtrOutput)
+}
+
+type Uint128PtrOutput struct{ *pulumi.OutputState }
+
+func (Uint128PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Uint128)(nil)).Elem()
+}
+
+func (o Uint128PtrOutput) ToUint128PtrOutput() Uint128PtrOutput {
+	return o
+}
+
+func (o Uint128PtrOutput) ToUint128PtrOutputWithContext(ctx context.Context) Uint128PtrOutput {
+	return o
+}
+
+func (o Uint128PtrOutput) Elem() Uint128Output {
+	return o.ApplyT(func(v *Uint128) Uint128 { return *v }).(Uint128Output)
+}
+
+func (o Uint128PtrOutput) High() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Uint128) *string {
+		if v == nil {
+			return nil
+		}
+		return v.High
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Uint128PtrOutput) Low() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Uint128) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Low
+	}).(pulumi.StringPtrOutput)
+}
+
+type Uint128Response struct {
+	High string `pulumi:"high"`
+	Low  string `pulumi:"low"`
+}
+
+// Uint128ResponseInput is an input type that accepts Uint128ResponseArgs and Uint128ResponseOutput values.
+// You can construct a concrete instance of `Uint128ResponseInput` via:
+//
+//          Uint128ResponseArgs{...}
+type Uint128ResponseInput interface {
+	pulumi.Input
+
+	ToUint128ResponseOutput() Uint128ResponseOutput
+	ToUint128ResponseOutputWithContext(context.Context) Uint128ResponseOutput
+}
+
+type Uint128ResponseArgs struct {
+	High pulumi.StringInput `pulumi:"high"`
+	Low  pulumi.StringInput `pulumi:"low"`
+}
+
+func (Uint128ResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Uint128Response)(nil)).Elem()
+}
+
+func (i Uint128ResponseArgs) ToUint128ResponseOutput() Uint128ResponseOutput {
+	return i.ToUint128ResponseOutputWithContext(context.Background())
+}
+
+func (i Uint128ResponseArgs) ToUint128ResponseOutputWithContext(ctx context.Context) Uint128ResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128ResponseOutput)
+}
+
+func (i Uint128ResponseArgs) ToUint128ResponsePtrOutput() Uint128ResponsePtrOutput {
+	return i.ToUint128ResponsePtrOutputWithContext(context.Background())
+}
+
+func (i Uint128ResponseArgs) ToUint128ResponsePtrOutputWithContext(ctx context.Context) Uint128ResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128ResponseOutput).ToUint128ResponsePtrOutputWithContext(ctx)
+}
+
+// Uint128ResponsePtrInput is an input type that accepts Uint128ResponseArgs, Uint128ResponsePtr and Uint128ResponsePtrOutput values.
+// You can construct a concrete instance of `Uint128ResponsePtrInput` via:
+//
+//          Uint128ResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type Uint128ResponsePtrInput interface {
+	pulumi.Input
+
+	ToUint128ResponsePtrOutput() Uint128ResponsePtrOutput
+	ToUint128ResponsePtrOutputWithContext(context.Context) Uint128ResponsePtrOutput
+}
+
+type uint128ResponsePtrType Uint128ResponseArgs
+
+func Uint128ResponsePtr(v *Uint128ResponseArgs) Uint128ResponsePtrInput {
+	return (*uint128ResponsePtrType)(v)
+}
+
+func (*uint128ResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Uint128Response)(nil)).Elem()
+}
+
+func (i *uint128ResponsePtrType) ToUint128ResponsePtrOutput() Uint128ResponsePtrOutput {
+	return i.ToUint128ResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *uint128ResponsePtrType) ToUint128ResponsePtrOutputWithContext(ctx context.Context) Uint128ResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(Uint128ResponsePtrOutput)
+}
+
+type Uint128ResponseOutput struct{ *pulumi.OutputState }
+
+func (Uint128ResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Uint128Response)(nil)).Elem()
+}
+
+func (o Uint128ResponseOutput) ToUint128ResponseOutput() Uint128ResponseOutput {
+	return o
+}
+
+func (o Uint128ResponseOutput) ToUint128ResponseOutputWithContext(ctx context.Context) Uint128ResponseOutput {
+	return o
+}
+
+func (o Uint128ResponseOutput) ToUint128ResponsePtrOutput() Uint128ResponsePtrOutput {
+	return o.ToUint128ResponsePtrOutputWithContext(context.Background())
+}
+
+func (o Uint128ResponseOutput) ToUint128ResponsePtrOutputWithContext(ctx context.Context) Uint128ResponsePtrOutput {
+	return o.ApplyT(func(v Uint128Response) *Uint128Response {
+		return &v
+	}).(Uint128ResponsePtrOutput)
+}
+func (o Uint128ResponseOutput) High() pulumi.StringOutput {
+	return o.ApplyT(func(v Uint128Response) string { return v.High }).(pulumi.StringOutput)
+}
+
+func (o Uint128ResponseOutput) Low() pulumi.StringOutput {
+	return o.ApplyT(func(v Uint128Response) string { return v.Low }).(pulumi.StringOutput)
+}
+
+type Uint128ResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (Uint128ResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Uint128Response)(nil)).Elem()
+}
+
+func (o Uint128ResponsePtrOutput) ToUint128ResponsePtrOutput() Uint128ResponsePtrOutput {
+	return o
+}
+
+func (o Uint128ResponsePtrOutput) ToUint128ResponsePtrOutputWithContext(ctx context.Context) Uint128ResponsePtrOutput {
+	return o
+}
+
+func (o Uint128ResponsePtrOutput) Elem() Uint128ResponseOutput {
+	return o.ApplyT(func(v *Uint128Response) Uint128Response { return *v }).(Uint128ResponseOutput)
+}
+
+func (o Uint128ResponsePtrOutput) High() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Uint128Response) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.High
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o Uint128ResponsePtrOutput) Low() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Uint128Response) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Low
+	}).(pulumi.StringPtrOutput)
+}
+
 // Message for the expected URL mappings.
 type UrlMapTest struct {
 	// Description of this test case.
@@ -66699,6 +67329,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseOutput{})
+	pulumi.RegisterOutputType(ServiceAttachmentConnectedEndpointResponseArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerForwardingRuleOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerForwardingRuleArrayOutput{})
 	pulumi.RegisterOutputType(ServiceAttachmentConsumerForwardingRuleResponseOutput{})
@@ -66775,6 +67409,10 @@ func init() {
 	pulumi.RegisterOutputType(TagsPtrOutput{})
 	pulumi.RegisterOutputType(TagsResponseOutput{})
 	pulumi.RegisterOutputType(TagsResponsePtrOutput{})
+	pulumi.RegisterOutputType(Uint128Output{})
+	pulumi.RegisterOutputType(Uint128PtrOutput{})
+	pulumi.RegisterOutputType(Uint128ResponseOutput{})
+	pulumi.RegisterOutputType(Uint128ResponsePtrOutput{})
 	pulumi.RegisterOutputType(UrlMapTestOutput{})
 	pulumi.RegisterOutputType(UrlMapTestArrayOutput{})
 	pulumi.RegisterOutputType(UrlMapTestHeaderOutput{})

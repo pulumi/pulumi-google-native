@@ -1598,6 +1598,8 @@ type ExecutionTemplate struct {
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
 	// Required. Scale tier of the hardware used for notebook execution.
 	ScaleTier *string `pulumi:"scaleTier"`
+	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+	ServiceAccount *string `pulumi:"serviceAccount"`
 }
 
 // ExecutionTemplateInput is an input type that accepts ExecutionTemplateArgs and ExecutionTemplateOutput values.
@@ -1631,6 +1633,8 @@ type ExecutionTemplateArgs struct {
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
 	// Required. Scale tier of the hardware used for notebook execution.
 	ScaleTier pulumi.StringPtrInput `pulumi:"scaleTier"`
+	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
 
 func (ExecutionTemplateArgs) ElementType() reflect.Type {
@@ -1756,6 +1760,11 @@ func (o ExecutionTemplateOutput) ScaleTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ScaleTier }).(pulumi.StringPtrOutput)
 }
 
+// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+func (o ExecutionTemplateOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
 type ExecutionTemplatePtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionTemplatePtrOutput) ElementType() reflect.Type {
@@ -1864,6 +1873,16 @@ func (o ExecutionTemplatePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+func (o ExecutionTemplatePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 // The description a notebook execution workload.
 type ExecutionTemplateResponse struct {
 	// Configuration (count and accelerator type) for hardware running notebook execution.
@@ -1884,6 +1903,8 @@ type ExecutionTemplateResponse struct {
 	ParamsYamlFile string `pulumi:"paramsYamlFile"`
 	// Required. Scale tier of the hardware used for notebook execution.
 	ScaleTier string `pulumi:"scaleTier"`
+	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+	ServiceAccount string `pulumi:"serviceAccount"`
 }
 
 // ExecutionTemplateResponseInput is an input type that accepts ExecutionTemplateResponseArgs and ExecutionTemplateResponseOutput values.
@@ -1917,6 +1938,8 @@ type ExecutionTemplateResponseArgs struct {
 	ParamsYamlFile pulumi.StringInput `pulumi:"paramsYamlFile"`
 	// Required. Scale tier of the hardware used for notebook execution.
 	ScaleTier pulumi.StringInput `pulumi:"scaleTier"`
+	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 }
 
 func (ExecutionTemplateResponseArgs) ElementType() reflect.Type {
@@ -2042,6 +2065,11 @@ func (o ExecutionTemplateResponseOutput) ScaleTier() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
 
+// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+func (o ExecutionTemplateResponseOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 type ExecutionTemplateResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (ExecutionTemplateResponsePtrOutput) ElementType() reflect.Type {
@@ -2147,6 +2175,16 @@ func (o ExecutionTemplateResponsePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.ScaleTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+func (o ExecutionTemplateResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6367,6 +6405,8 @@ type VirtualMachineConfig struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network *string `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType *string `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig *RuntimeShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6406,6 +6446,8 @@ type VirtualMachineConfigArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType pulumi.StringPtrInput `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6537,6 +6579,11 @@ func (o VirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+func (o VirtualMachineConfigOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.NicType }).(pulumi.StringPtrOutput)
+}
+
 // Optional. Shielded VM Instance configuration settings.
 func (o VirtualMachineConfigOutput) ShieldedInstanceConfig() RuntimeShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) *RuntimeShieldedInstanceConfig { return v.ShieldedInstanceConfig }).(RuntimeShieldedInstanceConfigPtrOutput)
@@ -6660,6 +6707,16 @@ func (o VirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+func (o VirtualMachineConfigPtrOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NicType
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional. Shielded VM Instance configuration settings.
 func (o VirtualMachineConfigPtrOutput) ShieldedInstanceConfig() RuntimeShieldedInstanceConfigPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) *RuntimeShieldedInstanceConfig {
@@ -6712,6 +6769,8 @@ type VirtualMachineConfigResponse struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network string `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType string `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6755,6 +6814,8 @@ type VirtualMachineConfigResponseArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network pulumi.StringInput `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType pulumi.StringInput `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigResponseInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6891,6 +6952,11 @@ func (o VirtualMachineConfigResponseOutput) Metadata() pulumi.StringMapOutput {
 // Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 func (o VirtualMachineConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+func (o VirtualMachineConfigResponseOutput) NicType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.NicType }).(pulumi.StringOutput)
 }
 
 // Optional. Shielded VM Instance configuration settings.
@@ -7030,6 +7096,16 @@ func (o VirtualMachineConfigResponsePtrOutput) Network() pulumi.StringPtrOutput 
 			return nil
 		}
 		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+func (o VirtualMachineConfigResponsePtrOutput) NicType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NicType
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -564,6 +564,8 @@ func (o AccessConfigResponseArrayOutput) Index(i pulumi.IntInput) AccessConfigRe
 type AdvancedMachineFeatures struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization *bool `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore *int `pulumi:"threadsPerCore"`
 }
 
 // AdvancedMachineFeaturesInput is an input type that accepts AdvancedMachineFeaturesArgs and AdvancedMachineFeaturesOutput values.
@@ -581,6 +583,8 @@ type AdvancedMachineFeaturesInput interface {
 type AdvancedMachineFeaturesArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolPtrInput `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntPtrInput `pulumi:"threadsPerCore"`
 }
 
 func (AdvancedMachineFeaturesArgs) ElementType() reflect.Type {
@@ -666,6 +670,11 @@ func (o AdvancedMachineFeaturesOutput) EnableNestedVirtualization() pulumi.BoolP
 	return o.ApplyT(func(v AdvancedMachineFeatures) *bool { return v.EnableNestedVirtualization }).(pulumi.BoolPtrOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AdvancedMachineFeatures) *int { return v.ThreadsPerCore }).(pulumi.IntPtrOutput)
+}
+
 type AdvancedMachineFeaturesPtrOutput struct{ *pulumi.OutputState }
 
 func (AdvancedMachineFeaturesPtrOutput) ElementType() reflect.Type {
@@ -694,10 +703,22 @@ func (o AdvancedMachineFeaturesPtrOutput) EnableNestedVirtualization() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesPtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeatures) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
+}
+
 // Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
 type AdvancedMachineFeaturesResponse struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore int `pulumi:"threadsPerCore"`
 }
 
 // AdvancedMachineFeaturesResponseInput is an input type that accepts AdvancedMachineFeaturesResponseArgs and AdvancedMachineFeaturesResponseOutput values.
@@ -715,6 +736,8 @@ type AdvancedMachineFeaturesResponseInput interface {
 type AdvancedMachineFeaturesResponseArgs struct {
 	// Whether to enable nested virtualization or not (default is false).
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 }
 
 func (AdvancedMachineFeaturesResponseArgs) ElementType() reflect.Type {
@@ -800,6 +823,11 @@ func (o AdvancedMachineFeaturesResponseOutput) EnableNestedVirtualization() pulu
 	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
 }
 
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponseOutput) ThreadsPerCore() pulumi.IntOutput {
+	return o.ApplyT(func(v AdvancedMachineFeaturesResponse) int { return v.ThreadsPerCore }).(pulumi.IntOutput)
+}
+
 type AdvancedMachineFeaturesResponsePtrOutput struct{ *pulumi.OutputState }
 
 func (AdvancedMachineFeaturesResponsePtrOutput) ElementType() reflect.Type {
@@ -826,6 +854,16 @@ func (o AdvancedMachineFeaturesResponsePtrOutput) EnableNestedVirtualization() p
 		}
 		return &v.EnableNestedVirtualization
 	}).(pulumi.BoolPtrOutput)
+}
+
+// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+func (o AdvancedMachineFeaturesResponsePtrOutput) ThreadsPerCore() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AdvancedMachineFeaturesResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ThreadsPerCore
+	}).(pulumi.IntPtrOutput)
 }
 
 // An alias IP range attached to an instance's network interface.

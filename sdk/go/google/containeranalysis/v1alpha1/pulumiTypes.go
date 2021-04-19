@@ -4729,6 +4729,8 @@ type Detail struct {
 	SeverityName *string `pulumi:"severityName"`
 	// The source from which the information in this Detail was obtained.
 	Source *string `pulumi:"source"`
+	// The vendor of the product. e.g. "google"
+	Vendor *string `pulumi:"vendor"`
 }
 
 // DetailInput is an input type that accepts DetailArgs and DetailOutput values.
@@ -4764,6 +4766,8 @@ type DetailArgs struct {
 	SeverityName pulumi.StringPtrInput `pulumi:"severityName"`
 	// The source from which the information in this Detail was obtained.
 	Source pulumi.StringPtrInput `pulumi:"source"`
+	// The vendor of the product. e.g. "google"
+	Vendor pulumi.StringPtrInput `pulumi:"vendor"`
 }
 
 func (DetailArgs) ElementType() reflect.Type {
@@ -4868,6 +4872,11 @@ func (o DetailOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Detail) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
+// The vendor of the product. e.g. "google"
+func (o DetailOutput) Vendor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Detail) *string { return v.Vendor }).(pulumi.StringPtrOutput)
+}
+
 type DetailArrayOutput struct{ *pulumi.OutputState }
 
 func (DetailArrayOutput) ElementType() reflect.Type {
@@ -4910,6 +4919,8 @@ type DetailResponse struct {
 	SeverityName string `pulumi:"severityName"`
 	// The source from which the information in this Detail was obtained.
 	Source string `pulumi:"source"`
+	// The vendor of the product. e.g. "google"
+	Vendor string `pulumi:"vendor"`
 }
 
 // DetailResponseInput is an input type that accepts DetailResponseArgs and DetailResponseOutput values.
@@ -4945,6 +4956,8 @@ type DetailResponseArgs struct {
 	SeverityName pulumi.StringInput `pulumi:"severityName"`
 	// The source from which the information in this Detail was obtained.
 	Source pulumi.StringInput `pulumi:"source"`
+	// The vendor of the product. e.g. "google"
+	Vendor pulumi.StringInput `pulumi:"vendor"`
 }
 
 func (DetailResponseArgs) ElementType() reflect.Type {
@@ -5047,6 +5060,11 @@ func (o DetailResponseOutput) SeverityName() pulumi.StringOutput {
 // The source from which the information in this Detail was obtained.
 func (o DetailResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v DetailResponse) string { return v.Source }).(pulumi.StringOutput)
+}
+
+// The vendor of the product. e.g. "google"
+func (o DetailResponseOutput) Vendor() pulumi.StringOutput {
+	return o.ApplyT(func(v DetailResponse) string { return v.Vendor }).(pulumi.StringOutput)
 }
 
 type DetailResponseArrayOutput struct{ *pulumi.OutputState }

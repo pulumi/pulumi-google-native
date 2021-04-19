@@ -746,6 +746,106 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// For display only. Metadata associated with a Cloud SQL instance.
+type CloudSQLInstanceInfoResponse struct {
+	// Name of a Cloud SQL instance.
+	DisplayName string `pulumi:"displayName"`
+	// External IP address of Cloud SQL instance.
+	ExternalIp string `pulumi:"externalIp"`
+	// Internal IP address of Cloud SQL instance.
+	InternalIp string `pulumi:"internalIp"`
+	// URI of a Cloud SQL instance network or empty string if instance does not have one.
+	NetworkUri string `pulumi:"networkUri"`
+	// Region in which the Cloud SQL instance is running.
+	Region string `pulumi:"region"`
+	// URI of a Cloud SQL instance.
+	Uri string `pulumi:"uri"`
+}
+
+// CloudSQLInstanceInfoResponseInput is an input type that accepts CloudSQLInstanceInfoResponseArgs and CloudSQLInstanceInfoResponseOutput values.
+// You can construct a concrete instance of `CloudSQLInstanceInfoResponseInput` via:
+//
+//          CloudSQLInstanceInfoResponseArgs{...}
+type CloudSQLInstanceInfoResponseInput interface {
+	pulumi.Input
+
+	ToCloudSQLInstanceInfoResponseOutput() CloudSQLInstanceInfoResponseOutput
+	ToCloudSQLInstanceInfoResponseOutputWithContext(context.Context) CloudSQLInstanceInfoResponseOutput
+}
+
+// For display only. Metadata associated with a Cloud SQL instance.
+type CloudSQLInstanceInfoResponseArgs struct {
+	// Name of a Cloud SQL instance.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// External IP address of Cloud SQL instance.
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+	// Internal IP address of Cloud SQL instance.
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+	// URI of a Cloud SQL instance network or empty string if instance does not have one.
+	NetworkUri pulumi.StringInput `pulumi:"networkUri"`
+	// Region in which the Cloud SQL instance is running.
+	Region pulumi.StringInput `pulumi:"region"`
+	// URI of a Cloud SQL instance.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (CloudSQLInstanceInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSQLInstanceInfoResponse)(nil)).Elem()
+}
+
+func (i CloudSQLInstanceInfoResponseArgs) ToCloudSQLInstanceInfoResponseOutput() CloudSQLInstanceInfoResponseOutput {
+	return i.ToCloudSQLInstanceInfoResponseOutputWithContext(context.Background())
+}
+
+func (i CloudSQLInstanceInfoResponseArgs) ToCloudSQLInstanceInfoResponseOutputWithContext(ctx context.Context) CloudSQLInstanceInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudSQLInstanceInfoResponseOutput)
+}
+
+// For display only. Metadata associated with a Cloud SQL instance.
+type CloudSQLInstanceInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudSQLInstanceInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSQLInstanceInfoResponse)(nil)).Elem()
+}
+
+func (o CloudSQLInstanceInfoResponseOutput) ToCloudSQLInstanceInfoResponseOutput() CloudSQLInstanceInfoResponseOutput {
+	return o
+}
+
+func (o CloudSQLInstanceInfoResponseOutput) ToCloudSQLInstanceInfoResponseOutputWithContext(ctx context.Context) CloudSQLInstanceInfoResponseOutput {
+	return o
+}
+
+// Name of a Cloud SQL instance.
+func (o CloudSQLInstanceInfoResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// External IP address of Cloud SQL instance.
+func (o CloudSQLInstanceInfoResponseOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// Internal IP address of Cloud SQL instance.
+func (o CloudSQLInstanceInfoResponseOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
+// URI of a Cloud SQL instance network or empty string if instance does not have one.
+func (o CloudSQLInstanceInfoResponseOutput) NetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.NetworkUri }).(pulumi.StringOutput)
+}
+
+// Region in which the Cloud SQL instance is running.
+func (o CloudSQLInstanceInfoResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// URI of a Cloud SQL instance.
+func (o CloudSQLInstanceInfoResponseOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudSQLInstanceInfoResponse) string { return v.Uri }).(pulumi.StringOutput)
+}
+
 // Details of the final state "deliver" and associated resource.
 type DeliverInfoResponse struct {
 	// URI of the resource that the packet is delivered to.
@@ -2023,6 +2123,88 @@ func (o ForwardingRuleInfoResponseOutput) Vip() pulumi.StringOutput {
 	return o.ApplyT(func(v ForwardingRuleInfoResponse) string { return v.Vip }).(pulumi.StringOutput)
 }
 
+// For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+type GKEMasterInfoResponse struct {
+	// URI of a Google Kubernetes Engine cluster network.
+	ClusterNetworkUri string `pulumi:"clusterNetworkUri"`
+	// URI of a Google Kubernetes Engine cluster.
+	ClusterUri string `pulumi:"clusterUri"`
+	// External IP address of a Google Kubernetes Engine cluster master.
+	ExternalIp string `pulumi:"externalIp"`
+	// Internal IP address of a Google Kubernetes Engine cluster master.
+	InternalIp string `pulumi:"internalIp"`
+}
+
+// GKEMasterInfoResponseInput is an input type that accepts GKEMasterInfoResponseArgs and GKEMasterInfoResponseOutput values.
+// You can construct a concrete instance of `GKEMasterInfoResponseInput` via:
+//
+//          GKEMasterInfoResponseArgs{...}
+type GKEMasterInfoResponseInput interface {
+	pulumi.Input
+
+	ToGKEMasterInfoResponseOutput() GKEMasterInfoResponseOutput
+	ToGKEMasterInfoResponseOutputWithContext(context.Context) GKEMasterInfoResponseOutput
+}
+
+// For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+type GKEMasterInfoResponseArgs struct {
+	// URI of a Google Kubernetes Engine cluster network.
+	ClusterNetworkUri pulumi.StringInput `pulumi:"clusterNetworkUri"`
+	// URI of a Google Kubernetes Engine cluster.
+	ClusterUri pulumi.StringInput `pulumi:"clusterUri"`
+	// External IP address of a Google Kubernetes Engine cluster master.
+	ExternalIp pulumi.StringInput `pulumi:"externalIp"`
+	// Internal IP address of a Google Kubernetes Engine cluster master.
+	InternalIp pulumi.StringInput `pulumi:"internalIp"`
+}
+
+func (GKEMasterInfoResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GKEMasterInfoResponse)(nil)).Elem()
+}
+
+func (i GKEMasterInfoResponseArgs) ToGKEMasterInfoResponseOutput() GKEMasterInfoResponseOutput {
+	return i.ToGKEMasterInfoResponseOutputWithContext(context.Background())
+}
+
+func (i GKEMasterInfoResponseArgs) ToGKEMasterInfoResponseOutputWithContext(ctx context.Context) GKEMasterInfoResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GKEMasterInfoResponseOutput)
+}
+
+// For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+type GKEMasterInfoResponseOutput struct{ *pulumi.OutputState }
+
+func (GKEMasterInfoResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GKEMasterInfoResponse)(nil)).Elem()
+}
+
+func (o GKEMasterInfoResponseOutput) ToGKEMasterInfoResponseOutput() GKEMasterInfoResponseOutput {
+	return o
+}
+
+func (o GKEMasterInfoResponseOutput) ToGKEMasterInfoResponseOutputWithContext(ctx context.Context) GKEMasterInfoResponseOutput {
+	return o
+}
+
+// URI of a Google Kubernetes Engine cluster network.
+func (o GKEMasterInfoResponseOutput) ClusterNetworkUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.ClusterNetworkUri }).(pulumi.StringOutput)
+}
+
+// URI of a Google Kubernetes Engine cluster.
+func (o GKEMasterInfoResponseOutput) ClusterUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.ClusterUri }).(pulumi.StringOutput)
+}
+
+// External IP address of a Google Kubernetes Engine cluster master.
+func (o GKEMasterInfoResponseOutput) ExternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.ExternalIp }).(pulumi.StringOutput)
+}
+
+// Internal IP address of a Google Kubernetes Engine cluster master.
+func (o GKEMasterInfoResponseOutput) InternalIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GKEMasterInfoResponse) string { return v.InternalIp }).(pulumi.StringOutput)
+}
+
 // For display only. Metadata associated with a Compute Engine instance.
 type InstanceInfoResponse struct {
 	// Name of a Compute Engine instance.
@@ -2937,6 +3119,8 @@ type StepResponse struct {
 	Abort AbortInfoResponse `pulumi:"abort"`
 	// This is a step that leads to the final state Drop.
 	CausesDrop bool `pulumi:"causesDrop"`
+	// Display info of a Cloud SQL instance.
+	CloudSqlInstance CloudSQLInstanceInfoResponse `pulumi:"cloudSqlInstance"`
 	// Display info of the final state "deliver" and reason.
 	Deliver DeliverInfoResponse `pulumi:"deliver"`
 	// A description of the step. Usually this is a summary of the state.
@@ -2951,6 +3135,8 @@ type StepResponse struct {
 	Forward ForwardInfoResponse `pulumi:"forward"`
 	// Display info of a Compute Engine forwarding rule.
 	ForwardingRule ForwardingRuleInfoResponse `pulumi:"forwardingRule"`
+	// Display info of a Google Kubernetes Engine cluster master.
+	GkeMaster GKEMasterInfoResponse `pulumi:"gkeMaster"`
 	// Display info of a Compute Engine instance.
 	Instance InstanceInfoResponse `pulumi:"instance"`
 	// Display info of the load balancers.
@@ -2986,6 +3172,8 @@ type StepResponseArgs struct {
 	Abort AbortInfoResponseInput `pulumi:"abort"`
 	// This is a step that leads to the final state Drop.
 	CausesDrop pulumi.BoolInput `pulumi:"causesDrop"`
+	// Display info of a Cloud SQL instance.
+	CloudSqlInstance CloudSQLInstanceInfoResponseInput `pulumi:"cloudSqlInstance"`
 	// Display info of the final state "deliver" and reason.
 	Deliver DeliverInfoResponseInput `pulumi:"deliver"`
 	// A description of the step. Usually this is a summary of the state.
@@ -3000,6 +3188,8 @@ type StepResponseArgs struct {
 	Forward ForwardInfoResponseInput `pulumi:"forward"`
 	// Display info of a Compute Engine forwarding rule.
 	ForwardingRule ForwardingRuleInfoResponseInput `pulumi:"forwardingRule"`
+	// Display info of a Google Kubernetes Engine cluster master.
+	GkeMaster GKEMasterInfoResponseInput `pulumi:"gkeMaster"`
 	// Display info of a Compute Engine instance.
 	Instance InstanceInfoResponseInput `pulumi:"instance"`
 	// Display info of the load balancers.
@@ -3080,6 +3270,11 @@ func (o StepResponseOutput) CausesDrop() pulumi.BoolOutput {
 	return o.ApplyT(func(v StepResponse) bool { return v.CausesDrop }).(pulumi.BoolOutput)
 }
 
+// Display info of a Cloud SQL instance.
+func (o StepResponseOutput) CloudSqlInstance() CloudSQLInstanceInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) CloudSQLInstanceInfoResponse { return v.CloudSqlInstance }).(CloudSQLInstanceInfoResponseOutput)
+}
+
 // Display info of the final state "deliver" and reason.
 func (o StepResponseOutput) Deliver() DeliverInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) DeliverInfoResponse { return v.Deliver }).(DeliverInfoResponseOutput)
@@ -3113,6 +3308,11 @@ func (o StepResponseOutput) Forward() ForwardInfoResponseOutput {
 // Display info of a Compute Engine forwarding rule.
 func (o StepResponseOutput) ForwardingRule() ForwardingRuleInfoResponseOutput {
 	return o.ApplyT(func(v StepResponse) ForwardingRuleInfoResponse { return v.ForwardingRule }).(ForwardingRuleInfoResponseOutput)
+}
+
+// Display info of a Google Kubernetes Engine cluster master.
+func (o StepResponseOutput) GkeMaster() GKEMasterInfoResponseOutput {
+	return o.ApplyT(func(v StepResponse) GKEMasterInfoResponse { return v.GkeMaster }).(GKEMasterInfoResponseOutput)
 }
 
 // Display info of a Compute Engine instance.
@@ -3175,7 +3375,7 @@ func (o StepResponseArrayOutput) Index(i pulumi.IntInput) StepResponseOutput {
 	}).(StepResponseOutput)
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponse struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoResponse `pulumi:"endpointInfo"`
@@ -3194,7 +3394,7 @@ type TraceResponseInput interface {
 	ToTraceResponseOutputWithContext(context.Context) TraceResponseOutput
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponseArgs struct {
 	// Derived from the source and destination endpoints definition, and validated by the data plane model. If there are multiple traces starting from different source locations, then the endpoint_info may be different between traces.
 	EndpointInfo EndpointInfoResponseInput `pulumi:"endpointInfo"`
@@ -3239,7 +3439,7 @@ func (i TraceResponseArray) ToTraceResponseArrayOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(TraceResponseArrayOutput)
 }
 
-// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
+// Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ```|---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final))```
 type TraceResponseOutput struct{ *pulumi.OutputState }
 
 func (TraceResponseOutput) ElementType() reflect.Type {
@@ -3525,6 +3725,7 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloudSQLInstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(DeliverInfoResponseOutput{})
 	pulumi.RegisterOutputType(DropInfoResponseOutput{})
 	pulumi.RegisterOutputType(EndpointOutput{})
@@ -3538,6 +3739,7 @@ func init() {
 	pulumi.RegisterOutputType(FirewallInfoResponseOutput{})
 	pulumi.RegisterOutputType(ForwardInfoResponseOutput{})
 	pulumi.RegisterOutputType(ForwardingRuleInfoResponseOutput{})
+	pulumi.RegisterOutputType(GKEMasterInfoResponseOutput{})
 	pulumi.RegisterOutputType(InstanceInfoResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendResponseOutput{})
 	pulumi.RegisterOutputType(LoadBalancerBackendResponseArrayOutput{})

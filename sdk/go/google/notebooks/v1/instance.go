@@ -51,6 +51,8 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringOutput `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType pulumi.StringOutput `pulumi:"nicType"`
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolOutput `pulumi:"noProxyAccess"`
 	// If true, no public IP will be assigned to this instance.
@@ -155,6 +157,8 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network *string `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType *string `pulumi:"nicType"`
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
 	// If true, no public IP will be assigned to this instance.
@@ -222,6 +226,8 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType pulumi.StringPtrInput
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolPtrInput
 	// If true, no public IP will be assigned to this instance.
@@ -289,6 +295,8 @@ type instanceArgs struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network *string `pulumi:"network"`
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType *string `pulumi:"nicType"`
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess *bool `pulumi:"noProxyAccess"`
 	// If true, no public IP will be assigned to this instance.
@@ -348,6 +356,8 @@ type InstanceArgs struct {
 	Metadata pulumi.StringMapInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
 	Network pulumi.StringPtrInput
+	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+	NicType pulumi.StringPtrInput
 	// If true, the notebook instance will not register with the proxy.
 	NoProxyAccess pulumi.BoolPtrInput
 	// If true, no public IP will be assigned to this instance.

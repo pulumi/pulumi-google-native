@@ -6367,13 +6367,13 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseOutput) SingleUtte
 
 // An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3beta1Intent struct {
-	// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
 	// Required. The human-readable name of the intent, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback *bool `pulumi:"isFallback"`
-	// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels map[string]string `pulumi:"labels"`
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name *string `pulumi:"name"`
@@ -6398,13 +6398,13 @@ type GoogleCloudDialogflowCxV3beta1IntentInput interface {
 
 // An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3beta1IntentArgs struct {
-	// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Required. The human-readable name of the intent, unique within the agent.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolPtrInput `pulumi:"isFallback"`
-	// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -6494,7 +6494,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentOutput) ToGoogleCloudDialogflowCxV3b
 	}).(GoogleCloudDialogflowCxV3beta1IntentPtrOutput)
 }
 
-// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 func (o GoogleCloudDialogflowCxV3beta1IntentOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -6509,7 +6509,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentOutput) IsFallback() pulumi.BoolPtrO
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) *bool { return v.IsFallback }).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 func (o GoogleCloudDialogflowCxV3beta1IntentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -6556,7 +6556,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) Elem() GoogleCloudDialogf
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Intent) GoogleCloudDialogflowCxV3beta1Intent { return *v }).(GoogleCloudDialogflowCxV3beta1IntentOutput)
 }
 
-// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Intent) *string {
 		if v == nil {
@@ -6586,7 +6586,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) IsFallback() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Intent) map[string]string {
 		if v == nil {
@@ -7074,13 +7074,13 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterResponseArrayOutput) Index(
 
 // An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3beta1IntentResponse struct {
-	// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description string `pulumi:"description"`
 	// Required. The human-readable name of the intent, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback bool `pulumi:"isFallback"`
-	// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels map[string]string `pulumi:"labels"`
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name string `pulumi:"name"`
@@ -7105,13 +7105,13 @@ type GoogleCloudDialogflowCxV3beta1IntentResponseInput interface {
 
 // An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
 type GoogleCloudDialogflowCxV3beta1IntentResponseArgs struct {
-	// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Required. The human-readable name of the intent, unique within the agent.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolInput `pulumi:"isFallback"`
-	// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -7150,7 +7150,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) ToGoogleCloudDialogf
 	return o
 }
 
-// Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentResponse) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -7165,7 +7165,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) IsFallback() pulumi.
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentResponse) bool { return v.IsFallback }).(pulumi.BoolOutput)
 }
 
-// Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
 func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

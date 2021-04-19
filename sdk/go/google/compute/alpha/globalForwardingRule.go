@@ -128,7 +128,8 @@ type GlobalForwardingRule struct {
 	// For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
 	Ports pulumi.StringArrayOutput `pulumi:"ports"`
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId pulumi.StringOutput `pulumi:"pscConnectionId"`
+	PscConnectionId     pulumi.StringOutput `pulumi:"pscConnectionId"`
+	PscConnectionStatus pulumi.StringOutput `pulumi:"pscConnectionStatus"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
@@ -306,7 +307,8 @@ type globalForwardingRuleState struct {
 	// For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
 	Ports []string `pulumi:"ports"`
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId *string `pulumi:"pscConnectionId"`
+	PscConnectionId     *string `pulumi:"pscConnectionId"`
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
@@ -450,7 +452,8 @@ type GlobalForwardingRuleState struct {
 	// For more information, see [Port specifications](/load-balancing/docs/forwarding-rule-concepts#port_specifications).
 	Ports pulumi.StringArrayInput
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId pulumi.StringPtrInput
+	PscConnectionId     pulumi.StringPtrInput
+	PscConnectionStatus pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
@@ -602,7 +605,8 @@ type globalForwardingRuleArgs struct {
 	Ports   []string `pulumi:"ports"`
 	Project string   `pulumi:"project"`
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId *string `pulumi:"pscConnectionId"`
+	PscConnectionId     *string `pulumi:"pscConnectionId"`
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
@@ -751,7 +755,8 @@ type GlobalForwardingRuleArgs struct {
 	Ports   pulumi.StringArrayInput
 	Project pulumi.StringInput
 	// [Output Only] The PSC connection id of the PSC Forwarding Rule.
-	PscConnectionId pulumi.StringPtrInput
+	PscConnectionId     pulumi.StringPtrInput
+	PscConnectionStatus pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.

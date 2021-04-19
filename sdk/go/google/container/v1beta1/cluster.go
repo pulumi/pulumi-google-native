@@ -125,6 +125,8 @@ type Cluster struct {
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingResponseOutput `pulumi:"verticalPodAutoscaling"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	WorkloadCertificates WorkloadCertificatesResponseOutput `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponseOutput `pulumi:"workloadIdentityConfig"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
@@ -279,6 +281,8 @@ type clusterState struct {
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling *VerticalPodAutoscalingResponse `pulumi:"verticalPodAutoscaling"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	WorkloadCertificates *WorkloadCertificatesResponse `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfigResponse `pulumi:"workloadIdentityConfig"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
@@ -396,6 +400,8 @@ type ClusterState struct {
 	TpuIpv4CidrBlock pulumi.StringPtrInput
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingResponsePtrInput
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	WorkloadCertificates WorkloadCertificatesResponsePtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigResponsePtrInput
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
@@ -521,6 +527,8 @@ type clusterArgs struct {
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling *VerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	WorkloadCertificates *WorkloadCertificates `pulumi:"workloadCertificates"`
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig *WorkloadIdentityConfig `pulumi:"workloadIdentityConfig"`
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
@@ -643,6 +651,8 @@ type ClusterArgs struct {
 	TpuIpv4CidrBlock pulumi.StringPtrInput
 	// Cluster-level Vertical Pod Autoscaling configuration.
 	VerticalPodAutoscaling VerticalPodAutoscalingPtrInput
+	// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+	WorkloadCertificates WorkloadCertificatesPtrInput
 	// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
 	WorkloadIdentityConfig WorkloadIdentityConfigPtrInput
 	// [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.

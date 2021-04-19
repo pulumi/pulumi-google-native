@@ -17,7 +17,7 @@ type BillingAccountBudget struct {
 
 	// Required. Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1BudgetAmountResponseOutput `pulumi:"amount"`
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponseOutput `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -68,7 +68,7 @@ func GetBillingAccountBudget(ctx *pulumi.Context,
 type billingAccountBudgetState struct {
 	// Required. Budgeted amount.
 	Amount *GoogleCloudBillingBudgetsV1BudgetAmountResponse `pulumi:"amount"`
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter *GoogleCloudBillingBudgetsV1FilterResponse `pulumi:"budgetFilter"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName *string `pulumi:"displayName"`
@@ -85,7 +85,7 @@ type billingAccountBudgetState struct {
 type BillingAccountBudgetState struct {
 	// Required. Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1BudgetAmountResponsePtrInput
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponsePtrInput
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName pulumi.StringPtrInput
@@ -107,7 +107,7 @@ type billingAccountBudgetArgs struct {
 	// Required. Budgeted amount.
 	Amount            *GoogleCloudBillingBudgetsV1BudgetAmount `pulumi:"amount"`
 	BillingAccountsId string                                   `pulumi:"billingAccountsId"`
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter *GoogleCloudBillingBudgetsV1Filter `pulumi:"budgetFilter"`
 	BudgetsId    string                             `pulumi:"budgetsId"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
@@ -125,7 +125,7 @@ type BillingAccountBudgetArgs struct {
 	// Required. Budgeted amount.
 	Amount            GoogleCloudBillingBudgetsV1BudgetAmountPtrInput
 	BillingAccountsId pulumi.StringInput
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget.
+	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterPtrInput
 	BudgetsId    pulumi.StringInput
 	// User data for display name in UI. The name must be less than or equal to 60 characters.

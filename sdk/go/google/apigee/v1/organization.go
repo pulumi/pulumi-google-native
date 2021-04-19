@@ -15,6 +15,8 @@ import (
 type Organization struct {
 	pulumi.CustomResourceState
 
+	// Addon configurations of the Apigee organization.
+	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponseOutput `pulumi:"addonsConfig"`
 	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringOutput `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
@@ -88,6 +90,8 @@ func GetOrganization(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Organization resources.
 type organizationState struct {
+	// Addon configurations of the Apigee organization.
+	AddonsConfig *GoogleCloudApigeeV1AddonsConfigResponse `pulumi:"addonsConfig"`
 	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
@@ -130,6 +134,8 @@ type organizationState struct {
 }
 
 type OrganizationState struct {
+	// Addon configurations of the Apigee organization.
+	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponsePtrInput
 	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
 	// Not used by Apigee.
@@ -176,6 +182,8 @@ func (OrganizationState) ElementType() reflect.Type {
 }
 
 type organizationArgs struct {
+	// Addon configurations of the Apigee organization.
+	AddonsConfig *GoogleCloudApigeeV1AddonsConfig `pulumi:"addonsConfig"`
 	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
@@ -202,6 +210,8 @@ type organizationArgs struct {
 
 // The set of arguments for constructing a Organization resource.
 type OrganizationArgs struct {
+	// Addon configurations of the Apigee organization.
+	AddonsConfig GoogleCloudApigeeV1AddonsConfigPtrInput
 	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
 	// Not used by Apigee.

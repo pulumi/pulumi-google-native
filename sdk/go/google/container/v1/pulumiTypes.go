@@ -4185,6 +4185,274 @@ func (o ClusterUpdateOutput) DesiredWorkloadIdentityConfig() WorkloadIdentityCon
 	return o.ApplyT(func(v ClusterUpdate) *WorkloadIdentityConfig { return v.DesiredWorkloadIdentityConfig }).(WorkloadIdentityConfigPtrOutput)
 }
 
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodes struct {
+	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ConfidentialNodesInput is an input type that accepts ConfidentialNodesArgs and ConfidentialNodesOutput values.
+// You can construct a concrete instance of `ConfidentialNodesInput` via:
+//
+//          ConfidentialNodesArgs{...}
+type ConfidentialNodesInput interface {
+	pulumi.Input
+
+	ToConfidentialNodesOutput() ConfidentialNodesOutput
+	ToConfidentialNodesOutputWithContext(context.Context) ConfidentialNodesOutput
+}
+
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodesArgs struct {
+	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ConfidentialNodesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialNodes)(nil)).Elem()
+}
+
+func (i ConfidentialNodesArgs) ToConfidentialNodesOutput() ConfidentialNodesOutput {
+	return i.ToConfidentialNodesOutputWithContext(context.Background())
+}
+
+func (i ConfidentialNodesArgs) ToConfidentialNodesOutputWithContext(ctx context.Context) ConfidentialNodesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesOutput)
+}
+
+func (i ConfidentialNodesArgs) ToConfidentialNodesPtrOutput() ConfidentialNodesPtrOutput {
+	return i.ToConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i ConfidentialNodesArgs) ToConfidentialNodesPtrOutputWithContext(ctx context.Context) ConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesOutput).ToConfidentialNodesPtrOutputWithContext(ctx)
+}
+
+// ConfidentialNodesPtrInput is an input type that accepts ConfidentialNodesArgs, ConfidentialNodesPtr and ConfidentialNodesPtrOutput values.
+// You can construct a concrete instance of `ConfidentialNodesPtrInput` via:
+//
+//          ConfidentialNodesArgs{...}
+//
+//  or:
+//
+//          nil
+type ConfidentialNodesPtrInput interface {
+	pulumi.Input
+
+	ToConfidentialNodesPtrOutput() ConfidentialNodesPtrOutput
+	ToConfidentialNodesPtrOutputWithContext(context.Context) ConfidentialNodesPtrOutput
+}
+
+type confidentialNodesPtrType ConfidentialNodesArgs
+
+func ConfidentialNodesPtr(v *ConfidentialNodesArgs) ConfidentialNodesPtrInput {
+	return (*confidentialNodesPtrType)(v)
+}
+
+func (*confidentialNodesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialNodes)(nil)).Elem()
+}
+
+func (i *confidentialNodesPtrType) ToConfidentialNodesPtrOutput() ConfidentialNodesPtrOutput {
+	return i.ToConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (i *confidentialNodesPtrType) ToConfidentialNodesPtrOutputWithContext(ctx context.Context) ConfidentialNodesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesPtrOutput)
+}
+
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodesOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialNodesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialNodes)(nil)).Elem()
+}
+
+func (o ConfidentialNodesOutput) ToConfidentialNodesOutput() ConfidentialNodesOutput {
+	return o
+}
+
+func (o ConfidentialNodesOutput) ToConfidentialNodesOutputWithContext(ctx context.Context) ConfidentialNodesOutput {
+	return o
+}
+
+func (o ConfidentialNodesOutput) ToConfidentialNodesPtrOutput() ConfidentialNodesPtrOutput {
+	return o.ToConfidentialNodesPtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialNodesOutput) ToConfidentialNodesPtrOutputWithContext(ctx context.Context) ConfidentialNodesPtrOutput {
+	return o.ApplyT(func(v ConfidentialNodes) *ConfidentialNodes {
+		return &v
+	}).(ConfidentialNodesPtrOutput)
+}
+
+// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+func (o ConfidentialNodesOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConfidentialNodes) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ConfidentialNodesPtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialNodesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialNodes)(nil)).Elem()
+}
+
+func (o ConfidentialNodesPtrOutput) ToConfidentialNodesPtrOutput() ConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ConfidentialNodesPtrOutput) ToConfidentialNodesPtrOutputWithContext(ctx context.Context) ConfidentialNodesPtrOutput {
+	return o
+}
+
+func (o ConfidentialNodesPtrOutput) Elem() ConfidentialNodesOutput {
+	return o.ApplyT(func(v *ConfidentialNodes) ConfidentialNodes { return *v }).(ConfidentialNodesOutput)
+}
+
+// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+func (o ConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfidentialNodes) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodesResponse struct {
+	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ConfidentialNodesResponseInput is an input type that accepts ConfidentialNodesResponseArgs and ConfidentialNodesResponseOutput values.
+// You can construct a concrete instance of `ConfidentialNodesResponseInput` via:
+//
+//          ConfidentialNodesResponseArgs{...}
+type ConfidentialNodesResponseInput interface {
+	pulumi.Input
+
+	ToConfidentialNodesResponseOutput() ConfidentialNodesResponseOutput
+	ToConfidentialNodesResponseOutputWithContext(context.Context) ConfidentialNodesResponseOutput
+}
+
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodesResponseArgs struct {
+	// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ConfidentialNodesResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialNodesResponse)(nil)).Elem()
+}
+
+func (i ConfidentialNodesResponseArgs) ToConfidentialNodesResponseOutput() ConfidentialNodesResponseOutput {
+	return i.ToConfidentialNodesResponseOutputWithContext(context.Background())
+}
+
+func (i ConfidentialNodesResponseArgs) ToConfidentialNodesResponseOutputWithContext(ctx context.Context) ConfidentialNodesResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesResponseOutput)
+}
+
+func (i ConfidentialNodesResponseArgs) ToConfidentialNodesResponsePtrOutput() ConfidentialNodesResponsePtrOutput {
+	return i.ToConfidentialNodesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ConfidentialNodesResponseArgs) ToConfidentialNodesResponsePtrOutputWithContext(ctx context.Context) ConfidentialNodesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesResponseOutput).ToConfidentialNodesResponsePtrOutputWithContext(ctx)
+}
+
+// ConfidentialNodesResponsePtrInput is an input type that accepts ConfidentialNodesResponseArgs, ConfidentialNodesResponsePtr and ConfidentialNodesResponsePtrOutput values.
+// You can construct a concrete instance of `ConfidentialNodesResponsePtrInput` via:
+//
+//          ConfidentialNodesResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ConfidentialNodesResponsePtrInput interface {
+	pulumi.Input
+
+	ToConfidentialNodesResponsePtrOutput() ConfidentialNodesResponsePtrOutput
+	ToConfidentialNodesResponsePtrOutputWithContext(context.Context) ConfidentialNodesResponsePtrOutput
+}
+
+type confidentialNodesResponsePtrType ConfidentialNodesResponseArgs
+
+func ConfidentialNodesResponsePtr(v *ConfidentialNodesResponseArgs) ConfidentialNodesResponsePtrInput {
+	return (*confidentialNodesResponsePtrType)(v)
+}
+
+func (*confidentialNodesResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialNodesResponse)(nil)).Elem()
+}
+
+func (i *confidentialNodesResponsePtrType) ToConfidentialNodesResponsePtrOutput() ConfidentialNodesResponsePtrOutput {
+	return i.ToConfidentialNodesResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *confidentialNodesResponsePtrType) ToConfidentialNodesResponsePtrOutputWithContext(ctx context.Context) ConfidentialNodesResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConfidentialNodesResponsePtrOutput)
+}
+
+// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+type ConfidentialNodesResponseOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialNodesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConfidentialNodesResponse)(nil)).Elem()
+}
+
+func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponseOutput() ConfidentialNodesResponseOutput {
+	return o
+}
+
+func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponseOutputWithContext(ctx context.Context) ConfidentialNodesResponseOutput {
+	return o
+}
+
+func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponsePtrOutput() ConfidentialNodesResponsePtrOutput {
+	return o.ToConfidentialNodesResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ConfidentialNodesResponseOutput) ToConfidentialNodesResponsePtrOutputWithContext(ctx context.Context) ConfidentialNodesResponsePtrOutput {
+	return o.ApplyT(func(v ConfidentialNodesResponse) *ConfidentialNodesResponse {
+		return &v
+	}).(ConfidentialNodesResponsePtrOutput)
+}
+
+// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+func (o ConfidentialNodesResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ConfidentialNodesResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ConfidentialNodesResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ConfidentialNodesResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConfidentialNodesResponse)(nil)).Elem()
+}
+
+func (o ConfidentialNodesResponsePtrOutput) ToConfidentialNodesResponsePtrOutput() ConfidentialNodesResponsePtrOutput {
+	return o
+}
+
+func (o ConfidentialNodesResponsePtrOutput) ToConfidentialNodesResponsePtrOutputWithContext(ctx context.Context) ConfidentialNodesResponsePtrOutput {
+	return o
+}
+
+func (o ConfidentialNodesResponsePtrOutput) Elem() ConfidentialNodesResponseOutput {
+	return o.ApplyT(func(v *ConfidentialNodesResponse) ConfidentialNodesResponse { return *v }).(ConfidentialNodesResponseOutput)
+}
+
+// Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+func (o ConfidentialNodesResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConfidentialNodesResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration options for the Config Connector add-on.
 type ConfigConnectorConfig struct {
 	// Whether Cloud Connector is enabled for this cluster.
@@ -19187,6 +19455,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAutoscalingResponseOutput{})
 	pulumi.RegisterOutputType(ClusterAutoscalingResponsePtrOutput{})
 	pulumi.RegisterOutputType(ClusterUpdateOutput{})
+	pulumi.RegisterOutputType(ConfidentialNodesOutput{})
+	pulumi.RegisterOutputType(ConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ConfidentialNodesResponseOutput{})
+	pulumi.RegisterOutputType(ConfidentialNodesResponsePtrOutput{})
 	pulumi.RegisterOutputType(ConfigConnectorConfigOutput{})
 	pulumi.RegisterOutputType(ConfigConnectorConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConfigConnectorConfigResponseOutput{})

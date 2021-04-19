@@ -15,6 +15,8 @@ import (
 type ServiceAttachment struct {
 	pulumi.CustomResourceState
 
+	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	ConnectedEndpoints ServiceAttachmentConnectedEndpointResponseArrayOutput `pulumi:"connectedEndpoints"`
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference pulumi.StringOutput `pulumi:"connectionPreference"`
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
@@ -33,10 +35,14 @@ type ServiceAttachment struct {
 	NatSubnets pulumi.StringArrayOutput `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringOutput `pulumi:"producerForwardingRule"`
+	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentId Uint128ResponseOutput `pulumi:"pscServiceAttachmentId"`
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// The URL of a service serving the endpoint identified by this service attachment.
+	TargetService pulumi.StringOutput `pulumi:"targetService"`
 }
 
 // NewServiceAttachment registers a new resource with the given unique name, arguments, and options.
@@ -77,6 +83,8 @@ func GetServiceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServiceAttachment resources.
 type serviceAttachmentState struct {
+	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	ConnectedEndpoints []ServiceAttachmentConnectedEndpointResponse `pulumi:"connectedEndpoints"`
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference *string `pulumi:"connectionPreference"`
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
@@ -95,13 +103,19 @@ type serviceAttachmentState struct {
 	NatSubnets []string `pulumi:"natSubnets"`
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
+	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentId *Uint128Response `pulumi:"pscServiceAttachmentId"`
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region *string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// The URL of a service serving the endpoint identified by this service attachment.
+	TargetService *string `pulumi:"targetService"`
 }
 
 type ServiceAttachmentState struct {
+	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	ConnectedEndpoints ServiceAttachmentConnectedEndpointResponseArrayInput
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference pulumi.StringPtrInput
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
@@ -120,10 +134,14 @@ type ServiceAttachmentState struct {
 	NatSubnets pulumi.StringArrayInput
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
+	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentId Uint128ResponsePtrInput
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
+	// The URL of a service serving the endpoint identified by this service attachment.
+	TargetService pulumi.StringPtrInput
 }
 
 func (ServiceAttachmentState) ElementType() reflect.Type {
@@ -131,6 +149,8 @@ func (ServiceAttachmentState) ElementType() reflect.Type {
 }
 
 type serviceAttachmentArgs struct {
+	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	ConnectedEndpoints []ServiceAttachmentConnectedEndpoint `pulumi:"connectedEndpoints"`
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference *string `pulumi:"connectionPreference"`
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
@@ -152,15 +172,21 @@ type serviceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule *string `pulumi:"producerForwardingRule"`
 	Project                string  `pulumi:"project"`
+	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentId *Uint128 `pulumi:"pscServiceAttachmentId"`
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region string `pulumi:"region"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink          *string `pulumi:"selfLink"`
 	ServiceAttachment string  `pulumi:"serviceAttachment"`
+	// The URL of a service serving the endpoint identified by this service attachment.
+	TargetService *string `pulumi:"targetService"`
 }
 
 // The set of arguments for constructing a ServiceAttachment resource.
 type ServiceAttachmentArgs struct {
+	// [Output Only] An array of connections for all the consumers connected to this service attachment.
+	ConnectedEndpoints ServiceAttachmentConnectedEndpointArrayInput
 	// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
 	ConnectionPreference pulumi.StringPtrInput
 	// [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
@@ -182,11 +208,15 @@ type ServiceAttachmentArgs struct {
 	// The URL of a forwarding rule with loadBalancingScheme INTERNAL* that is serving the endpoint identified by this service attachment.
 	ProducerForwardingRule pulumi.StringPtrInput
 	Project                pulumi.StringInput
+	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
+	PscServiceAttachmentId Uint128PtrInput
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
 	Region pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink          pulumi.StringPtrInput
 	ServiceAttachment pulumi.StringInput
+	// The URL of a service serving the endpoint identified by this service attachment.
+	TargetService pulumi.StringPtrInput
 }
 
 func (ServiceAttachmentArgs) ElementType() reflect.Type {

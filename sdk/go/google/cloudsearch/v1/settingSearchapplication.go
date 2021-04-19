@@ -23,6 +23,8 @@ type SettingSearchapplication struct {
 	DefaultSortOptions SortOptionsResponseOutput `pulumi:"defaultSortOptions"`
 	// Display name of the Search Application. The maximum length is 300 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+	EnableAuditLog pulumi.BoolOutput `pulumi:"enableAuditLog"`
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
@@ -73,6 +75,8 @@ type settingSearchapplicationState struct {
 	DefaultSortOptions *SortOptionsResponse `pulumi:"defaultSortOptions"`
 	// Display name of the Search Application. The maximum length is 300 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+	EnableAuditLog *bool `pulumi:"enableAuditLog"`
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
@@ -92,6 +96,8 @@ type SettingSearchapplicationState struct {
 	DefaultSortOptions SortOptionsResponsePtrInput
 	// Display name of the Search Application. The maximum length is 300 characters.
 	DisplayName pulumi.StringPtrInput
+	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+	EnableAuditLog pulumi.BoolPtrInput
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
 	// IDs of the Long Running Operations (LROs) currently running for this schema. Output only field.
@@ -115,6 +121,8 @@ type settingSearchapplicationArgs struct {
 	DefaultSortOptions *SortOptions `pulumi:"defaultSortOptions"`
 	// Display name of the Search Application. The maximum length is 300 characters.
 	DisplayName *string `pulumi:"displayName"`
+	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+	EnableAuditLog *bool `pulumi:"enableAuditLog"`
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
 	// Configuration for ranking results.
@@ -134,6 +142,8 @@ type SettingSearchapplicationArgs struct {
 	DefaultSortOptions SortOptionsPtrInput
 	// Display name of the Search Application. The maximum length is 300 characters.
 	DisplayName pulumi.StringPtrInput
+	// Indicates whether audit logging is on/off for requests made for the search application in query APIs.
+	EnableAuditLog pulumi.BoolPtrInput
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
 	// Configuration for ranking results.
