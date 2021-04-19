@@ -709,6 +709,34 @@ export namespace apigateway {
 export namespace apigee {
     export namespace v1 {
         /**
+         * Add-on configurations for the Apigee organization.
+         */
+        export interface GoogleCloudApigeeV1AddonsConfigResponse {
+            /**
+             * Configuration for the Advanced API Ops add-on.
+             */
+            advancedApiOpsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AdvancedApiOpsConfigResponse;
+            /**
+             * Configuration for the Integration add-on.
+             */
+            integrationConfig: outputs.apigee.v1.GoogleCloudApigeeV1IntegrationConfigResponse;
+            /**
+             * Configuration for the Monetization add-on.
+             */
+            monetizationConfig: outputs.apigee.v1.GoogleCloudApigeeV1MonetizationConfigResponse;
+        }
+
+        /**
+         * Configuration for the Advanced API Ops add-on.
+         */
+        export interface GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
+            /**
+             * Flag that specifies whether the Advanced API Ops add-on is enabled.
+             */
+            enabled: boolean;
+        }
+
+        /**
          * the Api category resource.
          */
         export interface GoogleCloudApigeeV1ApiCategoryDataResponse {
@@ -981,6 +1009,26 @@ export namespace apigee {
         }
 
         /**
+         * Configuration for the Integration add-on.
+         */
+        export interface GoogleCloudApigeeV1IntegrationConfigResponse {
+            /**
+             * Flag that specifies whether the Integration add-on is enabled.
+             */
+            enabled: boolean;
+        }
+
+        /**
+         * Configuration for the Monetization add-on.
+         */
+        export interface GoogleCloudApigeeV1MonetizationConfigResponse {
+            /**
+             * Flag that specifies whether the Monetization add-on is enabled.
+             */
+            enabled: boolean;
+        }
+
+        /**
          * OperationConfig binds the resources in a proxy or remote service with the allowed REST methods and its associated quota enforcement.
          */
         export interface GoogleCloudApigeeV1OperationConfigResponse {
@@ -1099,6 +1147,24 @@ export namespace apigee {
             timeUnit: string;
         }
 
+        /**
+         * API call volume range and the fees charged when the total number of API calls is within the range.
+         */
+        export interface GoogleCloudApigeeV1RateRangeResponse {
+            /**
+             * Ending value of the range. Set to 0 or `null` for the last range of values.
+             */
+            end: string;
+            /**
+             * Fee to charge when total number of API calls falls within this range.
+             */
+            fee: outputs.apigee.v1.GoogleTypeMoneyResponse;
+            /**
+             * Starting value of the range. Set to 0 or `null` for the initial range of values.
+             */
+            start: string;
+        }
+
         export interface GoogleCloudApigeeV1ReportPropertyResponse {
             /**
              * name of the property
@@ -1108,6 +1174,24 @@ export namespace apigee {
              * property values
              */
             value: outputs.apigee.v1.GoogleCloudApigeeV1AttributeResponse[];
+        }
+
+        /**
+         * API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
+         */
+        export interface GoogleCloudApigeeV1RevenueShareRangeResponse {
+            /**
+             * Ending value of the range. Set to 0 or `null` for the last range of values.
+             */
+            end: string;
+            /**
+             * Percentage of the revenue to be shared with the developer. For example, to share 21 percent of the total revenue with the developer, set this value to 21. Specify a decimal number with a maximum of two digits following the decimal point.
+             */
+            sharePercentage: number;
+            /**
+             * Starting value of the range. Set to 0 or `null` for the initial range of values.
+             */
+            start: string;
         }
 
         export interface GoogleCloudApigeeV1TlsInfoCommonNameResponse {
@@ -1243,6 +1327,24 @@ export namespace apigee {
              * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
              */
             title: string;
+        }
+
+        /**
+         * Represents an amount of money with its currency type.
+         */
+        export interface GoogleTypeMoneyResponse {
+            /**
+             * The three-letter currency code defined in ISO 4217.
+             */
+            currencyCode: string;
+            /**
+             * Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.
+             */
+            nanos: number;
+            /**
+             * The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
+             */
+            units: string;
         }
     }
 }
@@ -2910,6 +3012,20 @@ export namespace assuredworkloads {
              */
             resourceType: string;
         }
+
+        /**
+         * Represent the custom settings for the resources to be created.
+         */
+        export interface GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse {
+            /**
+             * Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
+             */
+            resourceId: string;
+            /**
+             * Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
+             */
+            resourceType: string;
+        }
     }
 }
 
@@ -4435,7 +4551,7 @@ export namespace bigquery {
              */
             mode: string;
             /**
-             * [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 128 characters.
+             * [Required] The field name. The name must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum length is 300 characters.
              */
             name: string;
             policyTags: outputs.bigquery.v2.JobPolicyTagsResponse;
@@ -4916,7 +5032,7 @@ export namespace billingbudgets {
          */
         export interface GoogleCloudBillingBudgetsV1BudgetAmountResponse {
             /**
-             * Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+             * Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
              */
             lastPeriodAmount: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1LastPeriodAmountResponse;
             /**
@@ -4944,11 +5060,11 @@ export namespace billingbudgets {
          */
         export interface GoogleCloudBillingBudgetsV1FilterResponse {
             /**
-             * Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+             * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
              */
             calendarPeriod: string;
             /**
-             * Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+             * Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
              */
             creditTypes: string[];
             /**
@@ -4956,7 +5072,7 @@ export namespace billingbudgets {
              */
             creditTypesTreatment: string;
             /**
-             * Optional. Specifies to track usage from any start date (required) to any end date (optional).
+             * Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
              */
             customPeriod: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1CustomPeriodResponse;
             /**
@@ -4978,7 +5094,7 @@ export namespace billingbudgets {
         }
 
         /**
-         * Describes a budget amount targeted to last period's spend. At this time, the amount is automatically 100% of last period's spend; that is, there are no other options yet. Future configuration will be described here (for example, configuring a percentage of last period's spend).
+         * Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future configuration options will be described here (for example, configuring a percentage of last period's spend). LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
          */
         export interface GoogleCloudBillingBudgetsV1LastPeriodAmountResponse {
         }
@@ -5084,7 +5200,7 @@ export namespace billingbudgets {
          */
         export interface GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse {
             /**
-             * Use the last period's actual spend as the budget for the present period. Cannot be set in combination with Filter.custom_period.
+             * Use the last period's actual spend as the budget for the present period. LastPeriodAmount can only be set when the budget's time period is a Filter.calendar_period. It cannot be set in combination with Filter.custom_period.
              */
             lastPeriodAmount: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse;
             /**
@@ -5112,11 +5228,11 @@ export namespace billingbudgets {
          */
         export interface GoogleCloudBillingBudgetsV1beta1FilterResponse {
             /**
-             * Optional. Specifies to track usage for recurring calendar period. E.g. Assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when current calendar month is July, August, September, and so on.
+             * Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
              */
             calendarPeriod: string;
             /**
-             * Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type).
+             * Optional. If Filter.credit_types_treatment is INCLUDE_SPECIFIED_CREDITS, this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See [a list of acceptable credit type values](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables#credits-type). If Filter.credit_types_treatment is **not** INCLUDE_SPECIFIED_CREDITS, this field must be empty.
              */
             creditTypes: string[];
             /**
@@ -5124,7 +5240,7 @@ export namespace billingbudgets {
              */
             creditTypesTreatment: string;
             /**
-             * Optional. Specifies to track usage from any start date (required) to any end date (optional).
+             * Optional. Specifies to track usage from any start date (required) to any end date (optional). This time period is static, it does not recur.
              */
             customPeriod: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse;
             /**
@@ -5146,7 +5262,7 @@ export namespace billingbudgets {
         }
 
         /**
-         * Describes a budget amount targeted to last period's spend. At this time, the amount is automatically 100% of last period's spend; that is, there are no other options yet. Future configuration will be described here (for example, configuring a percentage of last period's spend).
+         * Describes a budget amount targeted to the last Filter.calendar_period spend. At this time, the amount is automatically 100% of the last calendar period's spend; that is, there are no other options yet. Future configuration options will be described here (for example, configuring a percentage of last period's spend). LastPeriodAmount cannot be set for a budget configured with a Filter.custom_period.
          */
         export interface GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponse {
         }
@@ -5656,7 +5772,7 @@ export namespace cloudbuild {
              */
             secrets: outputs.cloudbuild.v1.SecretResponse[];
             /**
-             * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+             * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
              */
             serviceAccount: string;
             /**
@@ -9179,7 +9295,7 @@ export namespace composer {
              */
             pypiPackages: {[key: string]: string};
             /**
-             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
              */
             pythonVersion: string;
         }
@@ -9449,7 +9565,7 @@ export namespace composer {
              */
             pypiPackages: {[key: string]: string};
             /**
-             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '2'. Cannot be updated.
+             * Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
              */
             pythonVersion: string;
         }
@@ -14521,7 +14637,29 @@ export namespace compute {
         }
 
         /**
-         * [Output Only] A consumer forwarding rule connected to this service attachment.
+         * [Output Only] A connection connected to this service attachment.
+         */
+        export interface ServiceAttachmentConnectedEndpointResponse {
+            /**
+             * The url of a connected endpoint.
+             */
+            endpoint: string;
+            /**
+             * The url of a consumer forwarding rule. [Deprecated] Do not use.
+             */
+            forwardingRule: string;
+            /**
+             * The PSC connection id of the connected endpoint.
+             */
+            pscConnectionId: string;
+            /**
+             * The status of a connected endpoint to this service attachment.
+             */
+            status: string;
+        }
+
+        /**
+         * [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
          */
         export interface ServiceAttachmentConsumerForwardingRuleResponse {
             /**
@@ -14529,9 +14667,24 @@ export namespace compute {
              */
             forwardingRule: string;
             /**
+             * The PSC connection id of the PSC Forwarding Rule.
+             */
+            pscConnectionId: string;
+            /**
              * The status of the forwarding rule.
              */
             status: string;
+        }
+
+        export interface ServiceAttachmentConsumerProjectLimitResponse {
+            /**
+             * The value of the limit to set.
+             */
+            connectionLimit: number;
+            /**
+             * The project id or number for the project to set the limit for.
+             */
+            projectIdOrNum: string;
         }
 
         /**
@@ -14937,6 +15090,11 @@ export namespace compute {
             response: string;
         }
 
+        export interface Uint128Response {
+            high: string;
+            low: string;
+        }
+
         /**
          * Upcoming Maintenance notification information.
          */
@@ -15144,6 +15302,10 @@ export namespace compute {
              * Whether to enable nested virtualization or not (default is false).
              */
             enableNestedVirtualization: boolean;
+            /**
+             * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+             */
+            threadsPerCore: number;
         }
 
         /**
@@ -17317,6 +17479,10 @@ export namespace compute {
              */
             minimalAction: string;
             /**
+             * Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
+             */
+            mostDisruptiveAllowedAction: string;
+            /**
              * What action should be used to replace instances. See minimal_action.REPLACE
              */
             replacementMethod: string;
@@ -19259,13 +19425,39 @@ export namespace compute {
         }
 
         /**
-         * [Output Only] A consumer forwarding rule connected to this service attachment.
+         * [Output Only] A connection connected to this service attachment.
+         */
+        export interface ServiceAttachmentConnectedEndpointResponse {
+            /**
+             * The url of a connected endpoint.
+             */
+            endpoint: string;
+            /**
+             * The url of a consumer forwarding rule. [Deprecated] Do not use.
+             */
+            forwardingRule: string;
+            /**
+             * The PSC connection id of the connected endpoint.
+             */
+            pscConnectionId: string;
+            /**
+             * The status of a connected endpoint to this service attachment.
+             */
+            status: string;
+        }
+
+        /**
+         * [Output Only] A consumer forwarding rule connected to this service attachment. [Deprecated] Do not use.
          */
         export interface ServiceAttachmentConsumerForwardingRuleResponse {
             /**
              * The url of a consumer forwarding rule.
              */
             forwardingRule: string;
+            /**
+             * The PSC connection id of the PSC Forwarding Rule.
+             */
+            pscConnectionId: string;
             /**
              * The status of the forwarding rule.
              */
@@ -19584,6 +19776,11 @@ export namespace compute {
             items: string[];
         }
 
+        export interface Uint128Response {
+            high: string;
+            low: string;
+        }
+
         /**
          * HTTP headers used in UrlMapTests.
          */
@@ -19753,6 +19950,10 @@ export namespace compute {
              * Whether to enable nested virtualization or not (default is false).
              */
             enableNestedVirtualization: boolean;
+            /**
+             * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+             */
+            threadsPerCore: number;
         }
 
         /**
@@ -24014,6 +24215,16 @@ export namespace container {
         }
 
         /**
+         * ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
+         */
+        export interface ConfidentialNodesResponse {
+            /**
+             * Whether Confidential Nodes feature is enabled for all nodes in this cluster.
+             */
+            enabled: boolean;
+        }
+
+        /**
          * Configuration options for the Config Connector add-on.
          */
         export interface ConfigConnectorConfigResponse {
@@ -25959,6 +26170,16 @@ export namespace container {
         }
 
         /**
+         * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+         */
+        export interface WorkloadCertificatesResponse {
+            /**
+             * enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
+             */
+            enableCertificates: boolean;
+        }
+
+        /**
          * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
          */
         export interface WorkloadIdentityConfigResponse {
@@ -26308,6 +26529,10 @@ export namespace containeranalysis {
              * The source from which the information in this Detail was obtained.
              */
             source: string;
+            /**
+             * The vendor of the product. e.g. "google"
+             */
+            vendor: string;
         }
 
         /**
@@ -30511,6 +30736,16 @@ export namespace dataproc {
         }
 
         /**
+         * Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+         */
+        export interface ConfidentialInstanceConfigResponse {
+            /**
+             * Optional. Defines whether the instance should have confidential compute enabled.
+             */
+            enableConfidentialCompute: boolean;
+        }
+
+        /**
          * Specifies the config of disk options for a group of VM instances.
          */
         export interface DiskConfigResponse {
@@ -30578,6 +30813,10 @@ export namespace dataproc {
          * Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
          */
         export interface GceClusterConfigResponse {
+            /**
+             * Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+             */
+            confidentialInstanceConfig: outputs.dataproc.v1.ConfidentialInstanceConfigResponse;
             /**
              * Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
              */
@@ -34060,6 +34299,68 @@ export namespace dialogflow {
         }
 
         /**
+         * Whether fulfillment is enabled for the specific feature.
+         */
+        export interface GoogleCloudDialogflowV2FulfillmentFeatureResponse {
+            /**
+             * The type of the feature that enabled for fulfillment.
+             */
+            type: string;
+        }
+
+        /**
+         * Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+         */
+        export interface GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
+            /**
+             * Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+             */
+            isCloudFunction: boolean;
+            /**
+             * Optional. The password for HTTP Basic authentication.
+             */
+            password: string;
+            /**
+             * Optional. The HTTP request headers to send together with fulfillment requests.
+             */
+            requestHeaders: {[key: string]: string};
+            /**
+             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             */
+            uri: string;
+            /**
+             * Optional. The user name for HTTP Basic authentication.
+             */
+            username: string;
+        }
+
+        /**
+         * By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+         */
+        export interface GoogleCloudDialogflowV2FulfillmentResponse {
+            /**
+             * Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+             */
+            displayName: string;
+            /**
+             * Optional. Whether fulfillment is enabled.
+             */
+            enabled: boolean;
+            /**
+             * Optional. The field defines whether the fulfillment is enabled for certain features.
+             */
+            features: outputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentFeatureResponse[];
+            /**
+             * Configuration for a generic web service.
+             */
+            genericWebService: outputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse;
+            /**
+             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             */
+            name: string;
+        }
+
+        /**
          * Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse {
@@ -34924,6 +35225,28 @@ export namespace dialogflow {
         }
 
         /**
+         * Instructs the speech synthesizer on how to generate the output audio content.
+         */
+        export interface GoogleCloudDialogflowV2TextToSpeechSettingsResponse {
+            /**
+             * Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+             */
+            enableTextToSpeech: boolean;
+            /**
+             * Required. Audio encoding of the synthesized audio content.
+             */
+            outputAudioEncoding: string;
+            /**
+             * Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+             */
+            sampleRateHertz: number;
+            /**
+             * Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+             */
+            synthesizeSpeechConfigs: {[key: string]: string};
+        }
+
+        /**
          * The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
          */
         export interface GoogleRpcStatusResponse {
@@ -35007,6 +35330,68 @@ export namespace dialogflow {
              * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
             value: string;
+        }
+
+        /**
+         * Whether fulfillment is enabled for the specific feature.
+         */
+        export interface GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse {
+            /**
+             * The type of the feature that enabled for fulfillment.
+             */
+            type: string;
+        }
+
+        /**
+         * Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
+         */
+        export interface GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
+            /**
+             * Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+             */
+            isCloudFunction: boolean;
+            /**
+             * The password for HTTP Basic authentication.
+             */
+            password: string;
+            /**
+             * The HTTP request headers to send together with fulfillment requests.
+             */
+            requestHeaders: {[key: string]: string};
+            /**
+             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             */
+            uri: string;
+            /**
+             * The user name for HTTP Basic authentication.
+             */
+            username: string;
+        }
+
+        /**
+         * By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+         */
+        export interface GoogleCloudDialogflowV2beta1FulfillmentResponse {
+            /**
+             * The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+             */
+            displayName: string;
+            /**
+             * Whether fulfillment is enabled.
+             */
+            enabled: boolean;
+            /**
+             * The field defines whether the fulfillment is enabled for certain features.
+             */
+            features: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentFeatureResponse[];
+            /**
+             * Configuration for a generic web service.
+             */
+            genericWebService: outputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse;
+            /**
+             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             */
+            name: string;
         }
 
         /**
@@ -36098,6 +36483,28 @@ export namespace dialogflow {
         }
 
         /**
+         * Instructs the speech synthesizer on how to generate the output audio content.
+         */
+        export interface GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
+            /**
+             * Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
+             */
+            enableTextToSpeech: boolean;
+            /**
+             * Required. Audio encoding of the synthesized audio content.
+             */
+            outputAudioEncoding: string;
+            /**
+             * Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
+             */
+            sampleRateHertz: number;
+            /**
+             * Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
+             */
+            synthesizeSpeechConfigs: {[key: string]: string};
+        }
+
+        /**
          * The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
          */
         export interface GoogleRpcStatusResponse {
@@ -36578,7 +36985,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentResponse {
             /**
-             * Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+             * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
              */
             description: string;
             /**
@@ -36590,7 +36997,7 @@ export namespace dialogflow {
              */
             isFallback: boolean;
             /**
-             * Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
+             * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
              */
             labels: {[key: string]: string};
             /**
@@ -37508,7 +37915,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentResponse {
             /**
-             * Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+             * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
              */
             description: string;
             /**
@@ -37520,7 +37927,7 @@ export namespace dialogflow {
              */
             isFallback: boolean;
             /**
-             * Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
+             * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
              */
             labels: {[key: string]: string};
             /**
@@ -48579,6 +48986,36 @@ export namespace networkmanagement {
         }
 
         /**
+         * For display only. Metadata associated with a Cloud SQL instance.
+         */
+        export interface CloudSQLInstanceInfoResponse {
+            /**
+             * Name of a Cloud SQL instance.
+             */
+            displayName: string;
+            /**
+             * External IP address of Cloud SQL instance.
+             */
+            externalIp: string;
+            /**
+             * Internal IP address of Cloud SQL instance.
+             */
+            internalIp: string;
+            /**
+             * URI of a Cloud SQL instance network or empty string if instance does not have one.
+             */
+            networkUri: string;
+            /**
+             * Region in which the Cloud SQL instance is running.
+             */
+            region: string;
+            /**
+             * URI of a Cloud SQL instance.
+             */
+            uri: string;
+        }
+
+        /**
          * Details of the final state "deliver" and associated resource.
          */
         export interface DeliverInfoResponse {
@@ -48787,6 +49224,28 @@ export namespace networkmanagement {
         }
 
         /**
+         * For display only. Metadata associated with a Google Kubernetes Engine cluster master.
+         */
+        export interface GKEMasterInfoResponse {
+            /**
+             * URI of a Google Kubernetes Engine cluster network.
+             */
+            clusterNetworkUri: string;
+            /**
+             * URI of a Google Kubernetes Engine cluster.
+             */
+            clusterUri: string;
+            /**
+             * External IP address of a Google Kubernetes Engine cluster master.
+             */
+            externalIp: string;
+            /**
+             * Internal IP address of a Google Kubernetes Engine cluster master.
+             */
+            internalIp: string;
+        }
+
+        /**
          * For display only. Metadata associated with a Compute Engine instance.
          */
         export interface InstanceInfoResponse {
@@ -48989,6 +49448,10 @@ export namespace networkmanagement {
              */
             causesDrop: boolean;
             /**
+             * Display info of a Cloud SQL instance.
+             */
+            cloudSqlInstance: outputs.networkmanagement.v1.CloudSQLInstanceInfoResponse;
+            /**
              * Display info of the final state "deliver" and reason.
              */
             deliver: outputs.networkmanagement.v1.DeliverInfoResponse;
@@ -49016,6 +49479,10 @@ export namespace networkmanagement {
              * Display info of a Compute Engine forwarding rule.
              */
             forwardingRule: outputs.networkmanagement.v1.ForwardingRuleInfoResponse;
+            /**
+             * Display info of a Google Kubernetes Engine cluster master.
+             */
+            gkeMaster: outputs.networkmanagement.v1.GKEMasterInfoResponse;
             /**
              * Display info of a Compute Engine instance.
              */
@@ -49051,7 +49518,7 @@ export namespace networkmanagement {
         }
 
         /**
-         * Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
+         * Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
          */
         export interface TraceResponse {
             /**
@@ -49801,7 +50268,7 @@ export namespace networkmanagement {
         }
 
         /**
-         * Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered Steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
+         * Trace represents one simulated packet forwarding path. * Each trace contains multiple ordered steps. * Each step is in a particular state with associated configuration. * State is categorized as final or non-final states. * Each final state has a reason associated. * Each trace must end with a final state (the last step). ``` |---------------------Trace----------------------| Step1(State) Step2(State) --- StepN(State(final)) ```
          */
         export interface TraceResponse {
             /**
@@ -50078,6 +50545,10 @@ export namespace notebooks {
              * Required. Scale tier of the hardware used for notebook execution.
              */
             scaleTier: string;
+            /**
+             * The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
+             */
+            serviceAccount: string;
         }
 
         /**
@@ -50418,6 +50889,10 @@ export namespace notebooks {
              * Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
              */
             network: string;
+            /**
+             * Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
+             */
+            nicType: string;
             /**
              * Optional. Shielded VM Instance configuration settings.
              */
@@ -53364,6 +53839,10 @@ export namespace run {
              */
             securityContext: outputs.run.v1.SecurityContextResponse;
             /**
+             * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: not supported Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+             */
+            startupProbe: outputs.run.v1.ProbeResponse;
+            /**
              * (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
              */
             terminationMessagePath: string;
@@ -54011,63 +54490,6 @@ export namespace run {
 
     export namespace v1alpha1 {
         /**
-         * Information for connecting over HTTP(s).
-         */
-        export interface AddressableResponse {
-            /**
-             * Deprecated - use url instead.
-             */
-            hostname: string;
-            url: string;
-        }
-
-        /**
-         * Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts jose@example.com from DATA_READ logging, and aliya@example.com from DATA_WRITE logging.
-         */
-        export interface AuditConfigResponse {
-            /**
-             * The configuration for logging of each type of permission.
-             */
-            auditLogConfigs: outputs.run.v1alpha1.AuditLogConfigResponse[];
-            /**
-             * Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-             */
-            service: string;
-        }
-
-        /**
-         * Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
-         */
-        export interface AuditLogConfigResponse {
-            /**
-             * Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
-             */
-            exemptedMembers: string[];
-            /**
-             * The log type that this config enables.
-             */
-            logType: string;
-        }
-
-        /**
-         * Associates `members` with a `role`.
-         */
-        export interface BindingResponse {
-            /**
-             * The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-             */
-            condition: outputs.run.v1alpha1.ExprResponse;
-            /**
-             * Specifies the identities requesting access for a Cloud Platform resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
-             */
-            members: string[];
-            /**
-             * Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
-             */
-            role: string;
-        }
-
-        /**
          * Adds and removes POSIX capabilities from running containers.
          */
         export interface CapabilitiesResponse {
@@ -54141,24 +54563,6 @@ export namespace run {
              * Specify whether the Secret or its keys must be defined.
              */
             optional: boolean;
-        }
-
-        /**
-         * ConfigurationSpec holds the desired state of the Configuration (from the client).
-         */
-        export interface ConfigurationSpecResponse {
-            /**
-             * Deprecated and not currently populated by Cloud Run. See metadata.generation instead, which is the sequence number containing the latest generation of the desired state. Read-only.
-             */
-            generation: number;
-            /**
-             * RevisionTemplate holds the latest specification for the Revision to be stamped out. The template references the container image, and may also include labels and annotations that should be attached to the Revision. To correlate a Revision, and/or to force a Revision to be created when the spec doesn't otherwise change, a nonce label may be provided in the template metadata. For more details, see: https://github.com/knative/serving/blob/master/docs/client-conventions.md#associate-modifications-with-revisions Cloud Run does not currently support referencing a build that is responsible for materializing the container image from source.
-             */
-            revisionTemplate: outputs.run.v1alpha1.RevisionTemplateResponse;
-            /**
-             * Template holds the latest specification for the Revision to be stamped out.
-             */
-            template: outputs.run.v1alpha1.RevisionTemplateResponse;
         }
 
         /**
@@ -54278,80 +54682,6 @@ export namespace run {
         }
 
         /**
-         * DomainMappingCondition contains state information for a DomainMapping.
-         */
-        export interface DomainMappingConditionResponse {
-            /**
-             * Last time the condition transitioned from one status to another. +optional
-             */
-            lastTransitionTime: string;
-            /**
-             * Human readable message indicating details about the current status. +optional
-             */
-            message: string;
-            /**
-             * One-word CamelCase reason for the condition's current status. +optional
-             */
-            reason: string;
-            /**
-             * How to interpret failures of this condition, one of Error, Warning, Info +optional
-             */
-            severity: string;
-            /**
-             * Status of the condition, one of True, False, Unknown.
-             */
-            status: string;
-            /**
-             * Type of domain mapping condition.
-             */
-            type: string;
-        }
-
-        /**
-         * The desired state of the Domain Mapping.
-         */
-        export interface DomainMappingSpecResponse {
-            /**
-             * The mode of the certificate.
-             */
-            certificateMode: string;
-            /**
-             * If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
-             */
-            forceOverride: boolean;
-            /**
-             * The name of the Knative Route that this DomainMapping applies to. The route must exist.
-             */
-            routeName: string;
-        }
-
-        /**
-         * The current state of the Domain Mapping.
-         */
-        export interface DomainMappingStatusResponse {
-            /**
-             * Array of observed DomainMappingConditions, indicating the current state of the DomainMapping.
-             */
-            conditions: outputs.run.v1alpha1.DomainMappingConditionResponse[];
-            /**
-             * The name of the route that the mapping currently points to.
-             */
-            mappedRouteName: string;
-            /**
-             * ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-             */
-            observedGeneration: number;
-            /**
-             * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-             */
-            resourceRecords: outputs.run.v1alpha1.ResourceRecordResponse[];
-            /**
-             * Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping. +optional
-             */
-            url: string;
-        }
-
-        /**
          * EnvFromSource represents the source of a set of ConfigMaps
          */
         export interface EnvFromSourceResponse {
@@ -54409,28 +54739,6 @@ export namespace run {
              * Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional
              */
             command: string[];
-        }
-
-        /**
-         * Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
-         */
-        export interface ExprResponse {
-            /**
-             * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
-             */
-            description: string;
-            /**
-             * Textual representation of an expression in Common Expression Language syntax.
-             */
-            expression: string;
-            /**
-             * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
-             */
-            location: string;
-            /**
-             * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-             */
-            title: string;
         }
 
         /**
@@ -54854,24 +55162,6 @@ export namespace run {
         }
 
         /**
-         * A DNS resource record.
-         */
-        export interface ResourceRecordResponse {
-            /**
-             * Relative name of the object affected by this record. Only applicable for `CNAME` records. Example: 'www'.
-             */
-            name: string;
-            /**
-             * Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
-             */
-            rrdata: string;
-            /**
-             * Resource record type. Example: `AAAA`.
-             */
-            type: string;
-        }
-
-        /**
          * ResourceRequirements describes the compute resource requirements.
          */
         export interface ResourceRequirementsResponse {
@@ -54891,59 +55181,6 @@ export namespace run {
              * Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. This is a temporary field created to migrate away from the map requests field. This is done to become compliant with k8s style API. This field is deprecated in favor of requests field.
              */
             requestsInMap: {[key: string]: string};
-        }
-
-        /**
-         * RevisionSpec holds the desired state of the Revision (from the client).
-         */
-        export interface RevisionSpecResponse {
-            /**
-             * ConcurrencyModel specifies the desired concurrency model (Single or Multi) for the Revision. Defaults to Multi. Deprecated in favor of ContainerConcurrency. +optional
-             */
-            concurrencyModel: string;
-            /**
-             * Container defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of the fields of this Container, including: name, ports, and volumeMounts. The runtime contract is documented here: https://github.com/knative/serving/blob/master/docs/runtime-contract.md
-             */
-            container: outputs.run.v1alpha1.ContainerResponse;
-            /**
-             * (Optional) ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run on GKE: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
-             */
-            containerConcurrency: number;
-            /**
-             * Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided.
-             */
-            containers: outputs.run.v1alpha1.ContainerResponse[];
-            /**
-             * Deprecated and not currently populated by Cloud Run. See metadata.generation instead, which is the sequence number containing the latest generation of the desired state. Read-only.
-             */
-            generation: number;
-            /**
-             * Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-             */
-            serviceAccountName: string;
-            /**
-             * ServingState holds a value describing the state the resources are in for this Revision. Users must not specify this when creating a revision. It is expected that the system will manipulate this based on routability and load. Populated by the system. Read-only.
-             */
-            servingState: string;
-            /**
-             * TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Not currently used by Cloud Run.
-             */
-            timeoutSeconds: number;
-            volumes: outputs.run.v1alpha1.VolumeResponse[];
-        }
-
-        /**
-         * RevisionTemplateSpec describes the data a revision should have when created from a template. Based on: https://github.com/kubernetes/api/blob/e771f807/core/v1/types.go#L3179-L3190
-         */
-        export interface RevisionTemplateResponse {
-            /**
-             * Optional metadata for this Revision, including labels and annotations. Name will be generated by the Configuration. To set minimum instances for this revision, use the "autoscaling.knative.dev/minScale" annotation key. (Cloud Run on GKE only). To set maximum instances for this revision, use the "autoscaling.knative.dev/maxScale" annotation key. To set Cloud SQL connections for the revision, use the "run.googleapis.com/cloudsql-instances" annotation key. Values should be comma separated.
-             */
-            metadata: outputs.run.v1alpha1.ObjectMetaResponse;
-            /**
-             * RevisionSpec holds the desired state of the Revision (from the client).
-             */
-            spec: outputs.run.v1alpha1.RevisionSpecResponse;
         }
 
         /**
@@ -55069,156 +55306,6 @@ export namespace run {
         }
 
         /**
-         * ServiceCondition defines a readiness condition for a Service.
-         */
-        export interface ServiceConditionResponse {
-            /**
-             * Last time the condition transitioned from one status to another. +optional
-             */
-            lastTransitionTime: string;
-            /**
-             * Human-readable message indicating details about last transition. +optional
-             */
-            message: string;
-            /**
-             * One-word CamelCase reason for the condition's last transition. +optional
-             */
-            reason: string;
-            /**
-             * How to interpret failures of this condition, one of Error, Warning, Info +optional
-             */
-            severity: string;
-            /**
-             * Status of the condition, one of True, False, Unknown.
-             */
-            status: string;
-            /**
-             * ServiceConditionType is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: "Ready", "ConfigurationsReady", and "RoutesReady". "Ready" will be true when the underlying Route and Configuration are ready.
-             */
-            type: string;
-        }
-
-        /**
-         * ServiceSpecManualType contains the options for configuring a manual service. See ServiceSpec for more details. Not currently supported by Cloud Run.
-         */
-        export interface ServiceSpecManualTypeResponse {
-        }
-
-        /**
-         * ServiceSpecPinnedType Pins this service to a specific revision name. The revision must be owned by the configuration provided. Deprecated and not supported by Cloud Run.
-         */
-        export interface ServiceSpecPinnedTypeResponse {
-            /**
-             * The configuration for this service.
-             */
-            configuration: outputs.run.v1alpha1.ConfigurationSpecResponse;
-            /**
-             * The revision name to pin this service to until changed to a different service type.
-             */
-            revisionName: string;
-        }
-
-        /**
-         * ServiceSpecReleaseType contains the options for slowly releasing revisions. See ServiceSpec for more details. Not currently supported by Cloud Run.
-         */
-        export interface ServiceSpecReleaseTypeResponse {
-            /**
-             * The configuration for this service. All revisions from this service must come from a single configuration.
-             */
-            configuration: outputs.run.v1alpha1.ConfigurationSpecResponse;
-            /**
-             * Revisions is an ordered list of 1 or 2 revisions. The first is the current revision, and the second is the candidate revision. If a single revision is provided, traffic will be pinned at that revision. "@latest" is a shortcut for usage that refers to the latest created revision by the configuration.
-             */
-            revisions: string[];
-            /**
-             * RolloutPercent is the percent of traffic that should be sent to the candidate revision, i.e. the 2nd revision in the revisions list. Valid values are between 0 and 99 inclusive.
-             */
-            rolloutPercent: number;
-        }
-
-        /**
-         * ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
-         */
-        export interface ServiceSpecResponse {
-            /**
-             * Deprecated and not currently populated by Cloud Run. See metadata.generation instead, which is the sequence number containing the latest generation of the desired state. Read-only.
-             */
-            generation: number;
-            /**
-             * Manual contains the options for configuring a manual service. See ServiceSpec for more details. Not currently supported by Cloud Run.
-             */
-            manual: outputs.run.v1alpha1.ServiceSpecManualTypeResponse;
-            /**
-             * Pins this service to a specific revision name. The revision must be owned by the configuration provided. Deprecated and not supported by Cloud Run. +optional
-             */
-            pinned: outputs.run.v1alpha1.ServiceSpecPinnedTypeResponse;
-            /**
-             * Release enables gradual promotion of new revisions by allowing traffic to be split between two revisions. This type replaces the deprecated Pinned type. Not currently supported by Cloud Run.
-             */
-            release: outputs.run.v1alpha1.ServiceSpecReleaseTypeResponse;
-            /**
-             * RunLatest defines a simple Service. It will automatically configure a route that keeps the latest ready revision from the supplied configuration running. +optional
-             */
-            runLatest: outputs.run.v1alpha1.ServiceSpecRunLatestResponse;
-            /**
-             * Template holds the latest specification for the Revision to be stamped out.
-             */
-            template: outputs.run.v1alpha1.RevisionTemplateResponse;
-            /**
-             * Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
-             */
-            traffic: outputs.run.v1alpha1.TrafficTargetResponse[];
-        }
-
-        /**
-         * ServiceSpecRunLatest contains the options for always having a route to the latest configuration. See ServiceSpec for more details.
-         */
-        export interface ServiceSpecRunLatestResponse {
-            /**
-             * The configuration for this service.
-             */
-            configuration: outputs.run.v1alpha1.ConfigurationSpecResponse;
-        }
-
-        /**
-         * The current state of the Service. Output only.
-         */
-        export interface ServiceStatusResponse {
-            /**
-             * From RouteStatus. Similar to url, information on where the service is available on HTTP.
-             */
-            address: outputs.run.v1alpha1.AddressableResponse;
-            /**
-             * Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world.
-             */
-            conditions: outputs.run.v1alpha1.ServiceConditionResponse[];
-            /**
-             * From RouteStatus. Domain holds the top-level domain that will distribute traffic over the provided targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-             */
-            domain: string;
-            /**
-             * From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-             */
-            latestCreatedRevisionName: string;
-            /**
-             * From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-             */
-            latestReadyRevisionName: string;
-            /**
-             * ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-             */
-            observedGeneration: number;
-            /**
-             * From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-             */
-            traffic: outputs.run.v1alpha1.TrafficTargetResponse[];
-            /**
-             * From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
-             */
-            url: string;
-        }
-
-        /**
          * TCPSocketAction describes an action based on opening a socket
          */
         export interface TCPSocketActionResponse {
@@ -55230,40 +55317,6 @@ export namespace run {
              * Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
              */
             port: outputs.run.v1alpha1.IntOrStringResponse;
-        }
-
-        /**
-         * TrafficTarget holds a single entry of the routing table for a Route.
-         */
-        export interface TrafficTargetResponse {
-            /**
-             * ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
-             */
-            configurationName: string;
-            /**
-             * LatestRevision may be optionally provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty. +optional
-             */
-            latestRevision: boolean;
-            /**
-             * Name is optionally used to expose a dedicated hostname for referencing this target exclusively. Not currently supported by Cloud Run. +optional
-             */
-            name: string;
-            /**
-             * Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified. Cloud Run currently requires 100 percent for a single ConfigurationName TrafficTarget entry.
-             */
-            percent: number;
-            /**
-             * RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName. Providing RevisionName in spec is not currently supported by Cloud Run.
-             */
-            revisionName: string;
-            /**
-             * Tag is optionally used to expose a dedicated url for referencing this target exclusively. Not currently supported in Cloud Run. +optional
-             */
-            tag: string;
-            /**
-             * URL displays the URL for accessing named traffic targets. URL is displayed in status, and is disallowed on spec. URL must contain a scheme (e.g. http://) and a hostname, but may not contain anything else (e.g. basic auth, url path, etc. Not currently supported in Cloud Run.
-             */
-            url: string;
         }
 
         /**
@@ -56329,10 +56382,6 @@ export namespace servicemanagement {
          * `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
          */
         export interface EndpointResponse {
-            /**
-             * DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
-             */
-            aliases: string[];
             /**
              * Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
              */
@@ -60899,7 +60948,7 @@ export namespace transcoder {
              */
             entropyCoder: string;
             /**
-             * Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. The following table shows the computed video FPS given the target FPS (in parenthesis) and input FPS (in the first column): ``` | | (30) | (60) | (25) | (50) | |--------|--------|--------|------|------| | 240 | Fail | Fail | Fail | Fail | | 120 | 30 | 60 | 20 | 30 | | 100 | 25 | 50 | 20 | 30 | | 50 | 25 | 50 | 20 | 30 | | 60 | 30 | 60 | 20 | 30 | | 59.94 | 29.97 | 59.94 | 20 | 30 | | 48 | 24 | 48 | 20 | 30 | | 30 | 30 | 30 | 20 | 30 | | 25 | 25 | 25 | 20 | 30 | | 24 | 24 | 24 | 20 | 30 | | 23.976 | 23.976 | 23.976 | 20 | 30 | | 15 | 15 | 15 | 20 | 30 | | 12 | 12 | 12 | 20 | 30 | | 10 | 10 | 10 | 20 | 30 | ```
+             * Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
              */
             frameRate: number;
             /**

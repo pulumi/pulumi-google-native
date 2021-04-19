@@ -72,6 +72,10 @@ export class OrganizationWorkload extends pulumi.CustomResource {
      */
     public readonly provisionedResourcesParent!: pulumi.Output<string>;
     /**
+     * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+     */
+    public readonly resourceSettings!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse[]>;
+    /**
      * The resources associated with this workload. These resources will be created when creating the workload. If any of the projects already exist, the workload creation will fail. Always read only.
      */
     public /*out*/ readonly resources!: pulumi.Output<outputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponse[]>;
@@ -106,6 +110,7 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
+            inputs["resourceSettings"] = args ? args.resourceSettings : undefined;
             inputs["workloadsId"] = args ? args.workloadsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["resources"] = undefined /*out*/;
@@ -119,6 +124,7 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["provisionedResourcesParent"] = undefined /*out*/;
+            inputs["resourceSettings"] = undefined /*out*/;
             inputs["resources"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -166,5 +172,9 @@ export interface OrganizationWorkloadArgs {
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
      */
     readonly provisionedResourcesParent?: pulumi.Input<string>;
+    /**
+     * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
+     */
+    readonly resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>[]>;
     readonly workloadsId: pulumi.Input<string>;
 }

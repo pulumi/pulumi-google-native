@@ -92,7 +92,7 @@ export class Build extends pulumi.CustomResource {
      */
     public readonly secrets!: pulumi.Output<outputs.cloudbuild.v1.SecretResponse[]>;
     /**
-     * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+     * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
      */
     public readonly serviceAccount!: pulumi.Output<string>;
     /**
@@ -254,7 +254,7 @@ export interface BuildArgs {
      */
     readonly secrets?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.SecretArgs>[]>;
     /**
-     * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. This field is in beta.
+     * IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
      */
     readonly serviceAccount?: pulumi.Input<string>;
     /**

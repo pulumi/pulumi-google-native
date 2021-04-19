@@ -36,7 +36,7 @@ export class AgentIntent extends pulumi.CustomResource {
     }
 
     /**
-     * Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+     * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class AgentIntent extends pulumi.CustomResource {
      */
     public readonly isFallback!: pulumi.Output<boolean>;
     /**
-     * Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
+     * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -126,7 +126,7 @@ export class AgentIntent extends pulumi.CustomResource {
 export interface AgentIntentArgs {
     readonly agentsId: pulumi.Input<string>;
     /**
-     * Optional. Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
+     * Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
      */
     readonly description?: pulumi.Input<string>;
     /**
@@ -139,7 +139,7 @@ export interface AgentIntentArgs {
      */
     readonly isFallback?: pulumi.Input<boolean>;
     /**
-     * Optional. The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
+     * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys." is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys.head * sys.contextual The above labels do not require value. "sys.head" means the intent is a head intent. "sys.contextual" means the intent is a contextual intent.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;

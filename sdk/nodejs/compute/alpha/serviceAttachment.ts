@@ -36,13 +36,25 @@ export class ServiceAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     */
+    public readonly connectedEndpoints!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentConnectedEndpointResponse[]>;
+    /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     public readonly connectionPreference!: pulumi.Output<string>;
     /**
+     * Projects that are allowed to connect to this service attachment.
+     */
+    public readonly consumerAcceptLists!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentConsumerProjectLimitResponse[]>;
+    /**
      * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
      */
     public readonly consumerForwardingRules!: pulumi.Output<outputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleResponse[]>;
+    /**
+     * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+     */
+    public readonly consumerRejectLists!: pulumi.Output<string[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -55,6 +67,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+     */
+    public readonly fingerprint!: pulumi.Output<string>;
     /**
      * [Output Only] Type of the resource. Always compute#serviceAttachment for service attachments.
      */
@@ -72,6 +88,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly producerForwardingRule!: pulumi.Output<string>;
     /**
+     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     */
+    public readonly pscServiceAttachmentId!: pulumi.Output<outputs.compute.alpha.Uint128Response>;
+    /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public readonly region!: pulumi.Output<string>;
@@ -79,6 +99,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * [Output Only] Server-defined URL for the resource.
      */
     public readonly selfLink!: pulumi.Output<string>;
+    /**
+     * The URL of a service serving the endpoint identified by this service attachment.
+     */
+    public readonly targetService!: pulumi.Output<string>;
 
     /**
      * Create a ServiceAttachment resource with the given unique name, arguments, and options.
@@ -100,32 +124,44 @@ export class ServiceAttachment extends pulumi.CustomResource {
             if ((!args || args.serviceAttachment === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAttachment'");
             }
+            inputs["connectedEndpoints"] = args ? args.connectedEndpoints : undefined;
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
+            inputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
             inputs["consumerForwardingRules"] = args ? args.consumerForwardingRules : undefined;
+            inputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
+            inputs["fingerprint"] = args ? args.fingerprint : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["natSubnets"] = args ? args.natSubnets : undefined;
             inputs["producerForwardingRule"] = args ? args.producerForwardingRule : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["pscServiceAttachmentId"] = args ? args.pscServiceAttachmentId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
+            inputs["targetService"] = args ? args.targetService : undefined;
         } else {
+            inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
+            inputs["consumerAcceptLists"] = undefined /*out*/;
             inputs["consumerForwardingRules"] = undefined /*out*/;
+            inputs["consumerRejectLists"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["enableProxyProtocol"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["natSubnets"] = undefined /*out*/;
             inputs["producerForwardingRule"] = undefined /*out*/;
+            inputs["pscServiceAttachmentId"] = undefined /*out*/;
             inputs["region"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["targetService"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -139,13 +175,25 @@ export class ServiceAttachment extends pulumi.CustomResource {
  */
 export interface ServiceAttachmentArgs {
     /**
+     * [Output Only] An array of connections for all the consumers connected to this service attachment.
+     */
+    readonly connectedEndpoints?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConnectedEndpointArgs>[]>;
+    /**
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     readonly connectionPreference?: pulumi.Input<string>;
     /**
+     * Projects that are allowed to connect to this service attachment.
+     */
+    readonly consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerProjectLimitArgs>[]>;
+    /**
      * [Output Only] An array of forwarding rules for all the consumers connected to this service attachment.
      */
     readonly consumerForwardingRules?: pulumi.Input<pulumi.Input<inputs.compute.alpha.ServiceAttachmentConsumerForwardingRuleArgs>[]>;
+    /**
+     * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+     */
+    readonly consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * [Output Only] Creation timestamp in RFC3339 text format.
      */
@@ -158,6 +206,10 @@ export interface ServiceAttachmentArgs {
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     readonly enableProxyProtocol?: pulumi.Input<boolean>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+     */
+    readonly fingerprint?: pulumi.Input<string>;
     /**
      * [Output Only] The unique identifier for the resource type. The server generates this identifier.
      */
@@ -180,6 +232,10 @@ export interface ServiceAttachmentArgs {
     readonly producerForwardingRule?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
+     * [Output Only] An 128-bit global unique ID of the PSC service attachment.
+     */
+    readonly pscServiceAttachmentId?: pulumi.Input<inputs.compute.alpha.Uint128Args>;
+    /**
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
@@ -188,4 +244,8 @@ export interface ServiceAttachmentArgs {
      */
     readonly selfLink?: pulumi.Input<string>;
     readonly serviceAttachment: pulumi.Input<string>;
+    /**
+     * The URL of a service serving the endpoint identified by this service attachment.
+     */
+    readonly targetService?: pulumi.Input<string>;
 }

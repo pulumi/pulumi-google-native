@@ -64,6 +64,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly conditions!: pulumi.Output<outputs.container.v1.StatusConditionResponse[]>;
     /**
+     * Configuration of Confidential Nodes
+     */
+    public readonly confidentialNodes!: pulumi.Output<outputs.container.v1.ConfidentialNodesResponse>;
+    /**
      * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */
     public readonly createTime!: pulumi.Output<string>;
@@ -264,6 +268,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["clusterIpv4Cidr"] = args ? args.clusterIpv4Cidr : undefined;
             inputs["clustersId"] = args ? args.clustersId : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
+            inputs["confidentialNodes"] = args ? args.confidentialNodes : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["currentMasterVersion"] = args ? args.currentMasterVersion : undefined;
             inputs["currentNodeVersion"] = args ? args.currentNodeVersion : undefined;
@@ -318,6 +323,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["binaryAuthorization"] = undefined /*out*/;
             inputs["clusterIpv4Cidr"] = undefined /*out*/;
             inputs["conditions"] = undefined /*out*/;
+            inputs["confidentialNodes"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["currentMasterVersion"] = undefined /*out*/;
             inputs["currentNodeVersion"] = undefined /*out*/;
@@ -402,6 +408,10 @@ export interface ClusterArgs {
      * Which conditions caused the current cluster state.
      */
     readonly conditions?: pulumi.Input<pulumi.Input<inputs.container.v1.StatusConditionArgs>[]>;
+    /**
+     * Configuration of Confidential Nodes
+     */
+    readonly confidentialNodes?: pulumi.Input<inputs.container.v1.ConfidentialNodesArgs>;
     /**
      * [Output only] The time the cluster was created, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
      */

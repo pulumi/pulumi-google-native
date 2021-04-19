@@ -256,6 +256,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.v1beta1.VerticalPodAutoscalingResponse>;
     /**
+     * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+     */
+    public readonly workloadCertificates!: pulumi.Output<outputs.container.v1beta1.WorkloadCertificatesResponse>;
+    /**
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
     public readonly workloadIdentityConfig!: pulumi.Output<outputs.container.v1beta1.WorkloadIdentityConfigResponse>;
@@ -342,6 +346,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tpuConfig"] = args ? args.tpuConfig : undefined;
             inputs["tpuIpv4CidrBlock"] = args ? args.tpuIpv4CidrBlock : undefined;
             inputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
+            inputs["workloadCertificates"] = args ? args.workloadCertificates : undefined;
             inputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             inputs["zone"] = args ? args.zone : undefined;
         } else {
@@ -400,6 +405,7 @@ export class Cluster extends pulumi.CustomResource {
             inputs["tpuConfig"] = undefined /*out*/;
             inputs["tpuIpv4CidrBlock"] = undefined /*out*/;
             inputs["verticalPodAutoscaling"] = undefined /*out*/;
+            inputs["workloadCertificates"] = undefined /*out*/;
             inputs["workloadIdentityConfig"] = undefined /*out*/;
             inputs["zone"] = undefined /*out*/;
         }
@@ -640,6 +646,10 @@ export interface ClusterArgs {
      * Cluster-level Vertical Pod Autoscaling configuration.
      */
     readonly verticalPodAutoscaling?: pulumi.Input<inputs.container.v1beta1.VerticalPodAutoscalingArgs>;
+    /**
+     * Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
+     */
+    readonly workloadCertificates?: pulumi.Input<inputs.container.v1beta1.WorkloadCertificatesArgs>;
     /**
      * Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
      */
