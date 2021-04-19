@@ -411,7 +411,7 @@
       }
     }
   },
-  "revision": "20210326",
+  "revision": "20210409",
   "rootUrl": "https://cloudasset.googleapis.com/",
   "schemas": {
     "AnalyzeIamPolicyLongrunningResponse": {
