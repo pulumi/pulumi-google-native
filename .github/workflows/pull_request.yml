@@ -3,6 +3,8 @@ name: pull-request
   pull_request:
     branches:
       - master
+    paths-ignore:
+      - CHANGELOG.md
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   GOOGLE_PROJECT: pulumi-ci-gcp-provider
