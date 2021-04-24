@@ -12,7 +12,7 @@ To use this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 This package is available in many languages in the standard packaging formats.
 
-### Node.js (Java/TypeScript)
+### Node.js (Java-/TypeScript)
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
