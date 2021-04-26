@@ -295,13 +295,8 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			key := resource.PropertyKey(param)
 			value := inputs[key].StringValue()
 			path = strings.Replace(path, fmt.Sprintf("{%s}", param), value, 1)
-			delete(inputs, key)
 		}
 		uri = res.RelativePath(path)
-		for _, param := range res.IdParams {
-			key := resource.PropertyKey(param)
-			delete(inputs, key)
-		}
 
 		inputsMap := inputs.Mappable()
 		body := map[string]interface{}{}
