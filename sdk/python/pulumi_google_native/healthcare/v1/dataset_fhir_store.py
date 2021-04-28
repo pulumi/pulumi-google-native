@@ -19,6 +19,7 @@ class DatasetFhirStoreArgs:
                  fhir_stores_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +30,7 @@ class DatasetFhirStoreArgs:
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DatasetFhirStore resource.
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
@@ -42,6 +44,8 @@ class DatasetFhirStoreArgs:
         pulumi.set(__self__, "fhir_stores_id", fhir_stores_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if default_search_handling_strict is not None:
+            pulumi.set(__self__, "default_search_handling_strict", default_search_handling_strict)
         if disable_referential_integrity is not None:
             pulumi.set(__self__, "disable_referential_integrity", disable_referential_integrity)
         if disable_resource_versioning is not None:
@@ -94,6 +98,18 @@ class DatasetFhirStoreArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="defaultSearchHandlingStrict")
+    def default_search_handling_strict(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        """
+        return pulumi.get(self, "default_search_handling_strict")
+
+    @default_search_handling_strict.setter
+    def default_search_handling_strict(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "default_search_handling_strict", value)
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")
@@ -198,6 +214,7 @@ class DatasetFhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
@@ -215,6 +232,7 @@ class DatasetFhirStore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] default_search_handling_strict: If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
         :param pulumi.Input[bool] disable_referential_integrity: Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         :param pulumi.Input[bool] disable_resource_versioning: Immutable. Whether to disable resource versioning for this FHIR store. This field can not be changed after the creation of FHIR store. If set to false, which is the default behavior, all write operations cause historical versions to be recorded automatically. The historical versions can be fetched through the history APIs, but cannot be updated. If set to true, no historical versions are kept. The server sends errors for attempts to read the historical versions.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
@@ -249,6 +267,7 @@ class DatasetFhirStore(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
+                 default_search_handling_strict: Optional[pulumi.Input[bool]] = None,
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
@@ -275,6 +294,7 @@ class DatasetFhirStore(pulumi.CustomResource):
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
             __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["default_search_handling_strict"] = default_search_handling_strict
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_update_create"] = enable_update_create
@@ -314,6 +334,7 @@ class DatasetFhirStore(pulumi.CustomResource):
 
         __props__ = DatasetFhirStoreArgs.__new__(DatasetFhirStoreArgs)
 
+        __props__.__dict__["default_search_handling_strict"] = None
         __props__.__dict__["disable_referential_integrity"] = None
         __props__.__dict__["disable_resource_versioning"] = None
         __props__.__dict__["enable_update_create"] = None
@@ -323,6 +344,14 @@ class DatasetFhirStore(pulumi.CustomResource):
         __props__.__dict__["stream_configs"] = None
         __props__.__dict__["version"] = None
         return DatasetFhirStore(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="defaultSearchHandlingStrict")
+    def default_search_handling_strict(self) -> pulumi.Output[bool]:
+        """
+        If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        """
+        return pulumi.get(self, "default_search_handling_strict")
 
     @property
     @pulumi.getter(name="disableReferentialIntegrity")

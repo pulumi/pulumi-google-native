@@ -19,7 +19,10 @@ class ConnectorArgs:
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -27,7 +30,10 @@ class ConnectorArgs:
         """
         The set of arguments for constructing a Connector resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The resource name in the format `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] network: Name of a VPC network.
@@ -38,8 +44,14 @@ class ConnectorArgs:
         pulumi.set(__self__, "projects_id", projects_id)
         if ip_cidr_range is not None:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if max_instances is not None:
+            pulumi.set(__self__, "max_instances", max_instances)
         if max_throughput is not None:
             pulumi.set(__self__, "max_throughput", max_throughput)
+        if min_instances is not None:
+            pulumi.set(__self__, "min_instances", min_instances)
         if min_throughput is not None:
             pulumi.set(__self__, "min_throughput", min_throughput)
         if name is not None:
@@ -89,6 +101,30 @@ class ConnectorArgs:
         pulumi.set(self, "ip_cidr_range", value)
 
     @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Machine type of VM Instance underlying connector. Default is e2-micro
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter(name="maxInstances")
+    def max_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum value of instances in autoscaling group underlying the connector.
+        """
+        return pulumi.get(self, "max_instances")
+
+    @max_instances.setter
+    def max_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_instances", value)
+
+    @property
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> Optional[pulumi.Input[int]]:
         """
@@ -99,6 +135,18 @@ class ConnectorArgs:
     @max_throughput.setter
     def max_throughput(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_throughput", value)
+
+    @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum value of instances in autoscaling group underlying the connector.
+        """
+        return pulumi.get(self, "min_instances")
+
+    @min_instances.setter
+    def min_instances(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_instances", value)
 
     @property
     @pulumi.getter(name="minThroughput")
@@ -157,7 +205,10 @@ class Connector(pulumi.CustomResource):
                  connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -170,7 +221,10 @@ class Connector(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ip_cidr_range: The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
+        :param pulumi.Input[str] machine_type: Machine type of VM Instance underlying connector. Default is e2-micro
+        :param pulumi.Input[int] max_instances: Maximum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] max_throughput: Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        :param pulumi.Input[int] min_instances: Minimum value of instances in autoscaling group underlying the connector.
         :param pulumi.Input[int] min_throughput: Minimum throughput of the connector in Mbps. Default and min is 200.
         :param pulumi.Input[str] name: The resource name in the format `projects/*/locations/*/connectors/*`.
         :param pulumi.Input[str] network: Name of a VPC network.
@@ -203,7 +257,10 @@ class Connector(pulumi.CustomResource):
                  connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 max_instances: Optional[pulumi.Input[int]] = None,
                  max_throughput: Optional[pulumi.Input[int]] = None,
+                 min_instances: Optional[pulumi.Input[int]] = None,
                  min_throughput: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -228,7 +285,10 @@ class Connector(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
+            __props__.__dict__["machine_type"] = machine_type
+            __props__.__dict__["max_instances"] = max_instances
             __props__.__dict__["max_throughput"] = max_throughput
+            __props__.__dict__["min_instances"] = min_instances
             __props__.__dict__["min_throughput"] = min_throughput
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
@@ -262,7 +322,10 @@ class Connector(pulumi.CustomResource):
 
         __props__.__dict__["connected_projects"] = None
         __props__.__dict__["ip_cidr_range"] = None
+        __props__.__dict__["machine_type"] = None
+        __props__.__dict__["max_instances"] = None
         __props__.__dict__["max_throughput"] = None
+        __props__.__dict__["min_instances"] = None
         __props__.__dict__["min_throughput"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -287,12 +350,36 @@ class Connector(pulumi.CustomResource):
         return pulumi.get(self, "ip_cidr_range")
 
     @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Output[str]:
+        """
+        Machine type of VM Instance underlying connector. Default is e2-micro
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="maxInstances")
+    def max_instances(self) -> pulumi.Output[int]:
+        """
+        Maximum value of instances in autoscaling group underlying the connector.
+        """
+        return pulumi.get(self, "max_instances")
+
+    @property
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> pulumi.Output[int]:
         """
         Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
         """
         return pulumi.get(self, "max_throughput")
+
+    @property
+    @pulumi.getter(name="minInstances")
+    def min_instances(self) -> pulumi.Output[int]:
+        """
+        Minimum value of instances in autoscaling group underlying the connector.
+        """
+        return pulumi.get(self, "min_instances")
 
     @property
     @pulumi.getter(name="minThroughput")

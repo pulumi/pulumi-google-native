@@ -16,6 +16,7 @@ __all__ = [
     'BuildStepArgs',
     'GitHubEventsConfigArgs',
     'InlineSecretArgs',
+    'PubsubConfigArgs',
     'PullRequestFilterArgs',
     'PushFilterArgs',
     'RepoSourceArgs',
@@ -818,6 +819,62 @@ class InlineSecretArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class PubsubConfigArgs:
+    def __init__(__self__, *,
+                 service_account_email: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 topic: Optional[pulumi.Input[str]] = None):
+        """
+        PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        :param pulumi.Input[str] service_account_email: Service account that will make the push request.
+        :param pulumi.Input[str] state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+        """
+        if service_account_email is not None:
+            pulumi.set(__self__, "service_account_email", service_account_email)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if topic is not None:
+            pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account that will make the push request.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account_email", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def topic(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+        """
+        return pulumi.get(self, "topic")
+
+    @topic.setter
+    def topic(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "topic", value)
 
 
 @pulumi.input_type

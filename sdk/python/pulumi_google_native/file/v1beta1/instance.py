@@ -238,6 +238,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["tier"] = tier
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["status_message"] = None
         super(Instance, __self__).__init__(
@@ -269,6 +270,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["networks"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["status_message"] = None
         __props__.__dict__["tier"] = None
@@ -329,6 +331,14 @@ class Instance(pulumi.CustomResource):
         VPC networks to which the instance is connected. For this version, only a single network is supported.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
 
     @property
     @pulumi.getter

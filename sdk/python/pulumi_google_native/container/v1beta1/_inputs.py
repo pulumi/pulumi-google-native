@@ -82,16 +82,20 @@ __all__ = [
 class AcceleratorConfigArgs:
     def __init__(__self__, *,
                  accelerator_count: Optional[pulumi.Input[str]] = None,
-                 accelerator_type: Optional[pulumi.Input[str]] = None):
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 gpu_partition_size: Optional[pulumi.Input[str]] = None):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param pulumi.Input[str] accelerator_count: The number of the accelerator cards exposed to an instance.
         :param pulumi.Input[str] accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
+        :param pulumi.Input[str] gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         if accelerator_count is not None:
             pulumi.set(__self__, "accelerator_count", accelerator_count)
         if accelerator_type is not None:
             pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if gpu_partition_size is not None:
+            pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -116,6 +120,18 @@ class AcceleratorConfigArgs:
     @accelerator_type.setter
     def accelerator_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
+
+    @gpu_partition_size.setter
+    def gpu_partition_size(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gpu_partition_size", value)
 
 
 @pulumi.input_type

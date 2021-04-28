@@ -91,6 +91,8 @@ class AcceleratorConfigResponse(dict):
             suggest = "accelerator_count"
         elif key == "acceleratorType":
             suggest = "accelerator_type"
+        elif key == "gpuPartitionSize":
+            suggest = "gpu_partition_size"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AcceleratorConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -105,14 +107,17 @@ class AcceleratorConfigResponse(dict):
 
     def __init__(__self__, *,
                  accelerator_count: str,
-                 accelerator_type: str):
+                 accelerator_type: str,
+                 gpu_partition_size: str):
         """
         AcceleratorConfig represents a Hardware Accelerator request.
         :param str accelerator_count: The number of the accelerator cards exposed to an instance.
         :param str accelerator_type: The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
+        :param str gpu_partition_size: Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
         """
         pulumi.set(__self__, "accelerator_count", accelerator_count)
         pulumi.set(__self__, "accelerator_type", accelerator_type)
+        pulumi.set(__self__, "gpu_partition_size", gpu_partition_size)
 
     @property
     @pulumi.getter(name="acceleratorCount")
@@ -129,6 +134,14 @@ class AcceleratorConfigResponse(dict):
         The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
         """
         return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter(name="gpuPartitionSize")
+    def gpu_partition_size(self) -> str:
+        """
+        Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        """
+        return pulumi.get(self, "gpu_partition_size")
 
 
 @pulumi.output_type

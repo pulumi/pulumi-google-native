@@ -18,11 +18,13 @@ class FolderBucketArgs:
                  locations_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a FolderBucket resource.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] locked: Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_fields: Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         pulumi.set(__self__, "buckets_id", buckets_id)
@@ -32,6 +34,8 @@ class FolderBucketArgs:
             pulumi.set(__self__, "description", description)
         if locked is not None:
             pulumi.set(__self__, "locked", locked)
+        if restricted_fields is not None:
+            pulumi.set(__self__, "restricted_fields", restricted_fields)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
@@ -87,6 +91,18 @@ class FolderBucketArgs:
         pulumi.set(self, "locked", value)
 
     @property
+    @pulumi.getter(name="restrictedFields")
+    def restricted_fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+        """
+        return pulumi.get(self, "restricted_fields")
+
+    @restricted_fields.setter
+    def restricted_fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "restricted_fields", value)
+
+    @property
     @pulumi.getter(name="retentionDays")
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
@@ -109,6 +125,7 @@ class FolderBucket(pulumi.CustomResource):
                  folders_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -118,6 +135,7 @@ class FolderBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Describes this bucket.
         :param pulumi.Input[bool] locked: Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_fields: Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
         ...
@@ -149,6 +167,7 @@ class FolderBucket(pulumi.CustomResource):
                  folders_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  locked: Optional[pulumi.Input[bool]] = None,
+                 restricted_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  retention_days: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -173,6 +192,7 @@ class FolderBucket(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["locked"] = locked
+            __props__.__dict__["restricted_fields"] = restricted_fields
             __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None
@@ -205,6 +225,7 @@ class FolderBucket(pulumi.CustomResource):
         __props__.__dict__["lifecycle_state"] = None
         __props__.__dict__["locked"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["restricted_fields"] = None
         __props__.__dict__["retention_days"] = None
         __props__.__dict__["update_time"] = None
         return FolderBucket(resource_name, opts=opts, __props__=__props__)
@@ -248,6 +269,14 @@ class FolderBucket(pulumi.CustomResource):
         The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="restrictedFields")
+    def restricted_fields(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+        """
+        return pulumi.get(self, "restricted_fields")
 
     @property
     @pulumi.getter(name="retentionDays")

@@ -21,6 +21,7 @@ class ScanConfigArgs:
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
+                 ignore_http_status_errors: Optional[pulumi.Input[bool]] = None,
                  latest_run: Optional[pulumi.Input['ScanRunArgs']] = None,
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
@@ -37,6 +38,7 @@ class ScanConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
         :param pulumi.Input[str] display_name: Required. The user provided display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Security Command Center.
+        :param pulumi.Input[bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input['ScanRunArgs'] latest_run: Latest ScanRun if available.
         :param pulumi.Input[bool] managed_scan: Whether the scan config is managed by Web Security Scanner, output only.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -58,6 +60,8 @@ class ScanConfigArgs:
             pulumi.set(__self__, "display_name", display_name)
         if export_to_security_command_center is not None:
             pulumi.set(__self__, "export_to_security_command_center", export_to_security_command_center)
+        if ignore_http_status_errors is not None:
+            pulumi.set(__self__, "ignore_http_status_errors", ignore_http_status_errors)
         if latest_run is not None:
             pulumi.set(__self__, "latest_run", latest_run)
         if managed_scan is not None:
@@ -144,6 +148,18 @@ class ScanConfigArgs:
     @export_to_security_command_center.setter
     def export_to_security_command_center(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "export_to_security_command_center", value)
+
+    @property
+    @pulumi.getter(name="ignoreHttpStatusErrors")
+    def ignore_http_status_errors(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to keep scanning even if most requests return HTTP error codes.
+        """
+        return pulumi.get(self, "ignore_http_status_errors")
+
+    @ignore_http_status_errors.setter
+    def ignore_http_status_errors(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "ignore_http_status_errors", value)
 
     @property
     @pulumi.getter(name="latestRun")
@@ -275,6 +291,7 @@ class ScanConfig(pulumi.CustomResource):
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
+                 ignore_http_status_errors: Optional[pulumi.Input[bool]] = None,
                  latest_run: Optional[pulumi.Input[pulumi.InputType['ScanRunArgs']]] = None,
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
@@ -297,6 +314,7 @@ class ScanConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] blacklist_patterns: The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
         :param pulumi.Input[str] display_name: Required. The user provided display name of the ScanConfig.
         :param pulumi.Input[str] export_to_security_command_center: Controls export of scan configurations and results to Security Command Center.
+        :param pulumi.Input[bool] ignore_http_status_errors: Whether to keep scanning even if most requests return HTTP error codes.
         :param pulumi.Input[pulumi.InputType['ScanRunArgs']] latest_run: Latest ScanRun if available.
         :param pulumi.Input[bool] managed_scan: Whether the scan config is managed by Web Security Scanner, output only.
         :param pulumi.Input[int] max_qps: The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -336,6 +354,7 @@ class ScanConfig(pulumi.CustomResource):
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  export_to_security_command_center: Optional[pulumi.Input[str]] = None,
+                 ignore_http_status_errors: Optional[pulumi.Input[bool]] = None,
                  latest_run: Optional[pulumi.Input[pulumi.InputType['ScanRunArgs']]] = None,
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
@@ -364,6 +383,7 @@ class ScanConfig(pulumi.CustomResource):
             __props__.__dict__["blacklist_patterns"] = blacklist_patterns
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["export_to_security_command_center"] = export_to_security_command_center
+            __props__.__dict__["ignore_http_status_errors"] = ignore_http_status_errors
             __props__.__dict__["latest_run"] = latest_run
             __props__.__dict__["managed_scan"] = managed_scan
             __props__.__dict__["max_qps"] = max_qps
@@ -406,6 +426,7 @@ class ScanConfig(pulumi.CustomResource):
         __props__.__dict__["blacklist_patterns"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["export_to_security_command_center"] = None
+        __props__.__dict__["ignore_http_status_errors"] = None
         __props__.__dict__["latest_run"] = None
         __props__.__dict__["managed_scan"] = None
         __props__.__dict__["max_qps"] = None
@@ -449,6 +470,14 @@ class ScanConfig(pulumi.CustomResource):
         Controls export of scan configurations and results to Security Command Center.
         """
         return pulumi.get(self, "export_to_security_command_center")
+
+    @property
+    @pulumi.getter(name="ignoreHttpStatusErrors")
+    def ignore_http_status_errors(self) -> pulumi.Output[bool]:
+        """
+        Whether to keep scanning even if most requests return HTTP error codes.
+        """
+        return pulumi.get(self, "ignore_http_status_errors")
 
     @property
     @pulumi.getter(name="latestRun")

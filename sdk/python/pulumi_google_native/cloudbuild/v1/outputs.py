@@ -18,6 +18,7 @@ __all__ = [
     'BuiltImageResponse',
     'GitHubEventsConfigResponse',
     'InlineSecretResponse',
+    'PubsubConfigResponse',
     'PullRequestFilterResponse',
     'PushFilterResponse',
     'RepoSourceResponse',
@@ -971,6 +972,78 @@ class InlineSecretResponse(dict):
         Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/*/locations/*/keyRings/*/cryptoKeys/*
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class PubsubConfigResponse(dict):
+    """
+    PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PubsubConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PubsubConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PubsubConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 service_account_email: str,
+                 state: str,
+                 subscription: str,
+                 topic: str):
+        """
+        PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        :param str service_account_email: Service account that will make the push request.
+        :param str state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        :param str subscription: Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+        :param str topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+        """
+        pulumi.set(__self__, "service_account_email", service_account_email)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "subscription", subscription)
+        pulumi.set(__self__, "topic", topic)
+
+    @property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> str:
+        """
+        Service account that will make the push request.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def subscription(self) -> str:
+        """
+        Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+        """
+        return pulumi.get(self, "subscription")
+
+    @property
+    @pulumi.getter
+    def topic(self) -> str:
+        """
+        The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+        """
+        return pulumi.get(self, "topic")
 
 
 @pulumi.output_type

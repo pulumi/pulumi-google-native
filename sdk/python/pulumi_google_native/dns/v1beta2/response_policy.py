@@ -18,6 +18,7 @@ class ResponsePolicyArgs:
                  project: pulumi.Input[str],
                  response_policy: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]]] = None,
@@ -25,6 +26,7 @@ class ResponsePolicyArgs:
         """
         The set of arguments for constructing a ResponsePolicy resource.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
+        :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[Sequence[pulumi.Input['ResponsePolicyNetworkArgs']]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
@@ -33,6 +35,8 @@ class ResponsePolicyArgs:
         pulumi.set(__self__, "response_policy", response_policy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
         if id is not None:
             pulumi.set(__self__, "id", id)
         if kind is not None:
@@ -71,6 +75,18 @@ class ResponsePolicyArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]]:
+        """
+        The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
 
     @property
     @pulumi.getter
@@ -124,6 +140,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
@@ -137,6 +154,7 @@ class ResponsePolicy(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: User-provided description for this Response Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]] gke_clusters: The list of Google Kubernetes Engine clusters to which this response policy is applied.
         :param pulumi.Input[str] id: Unique identifier for the resource; defined by the server (output only).
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]] networks: List of network names specifying networks to which this policy is applied.
         :param pulumi.Input[str] response_policy_name: User assigned name for this Response Policy.
@@ -166,6 +184,7 @@ class ResponsePolicy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyNetworkArgs']]]]] = None,
@@ -185,6 +204,7 @@ class ResponsePolicy(pulumi.CustomResource):
             __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["gke_clusters"] = gke_clusters
             __props__.__dict__["id"] = id
             __props__.__dict__["kind"] = kind
             __props__.__dict__["networks"] = networks
@@ -218,6 +238,7 @@ class ResponsePolicy(pulumi.CustomResource):
         __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
         __props__.__dict__["description"] = None
+        __props__.__dict__["gke_clusters"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["networks"] = None
         __props__.__dict__["response_policy_name"] = None
@@ -230,6 +251,14 @@ class ResponsePolicy(pulumi.CustomResource):
         User-provided description for this Response Policy.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> pulumi.Output[Sequence['outputs.ResponsePolicyGKEClusterResponse']]:
+        """
+        The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        """
+        return pulumi.get(self, "gke_clusters")
 
     @property
     @pulumi.getter

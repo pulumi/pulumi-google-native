@@ -16,6 +16,7 @@ __all__ = [
     'ManagedZoneForwardingConfigResponse',
     'ManagedZonePeeringConfigResponse',
     'ManagedZonePeeringConfigTargetNetworkResponse',
+    'ManagedZonePrivateVisibilityConfigGKEClusterResponse',
     'ManagedZonePrivateVisibilityConfigNetworkResponse',
     'ManagedZonePrivateVisibilityConfigResponse',
     'ManagedZoneReverseLookupConfigResponse',
@@ -25,6 +26,7 @@ __all__ = [
     'PolicyAlternativeNameServerConfigTargetNameServerResponse',
     'PolicyNetworkResponse',
     'ResourceRecordSetResponse',
+    'ResponsePolicyGKEClusterResponse',
     'ResponsePolicyNetworkResponse',
     'ResponsePolicyRuleLocalDataResponse',
 ]
@@ -373,6 +375,48 @@ class ManagedZonePeeringConfigTargetNetworkResponse(dict):
 
 
 @pulumi.output_type
+class ManagedZonePrivateVisibilityConfigGKEClusterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterName":
+            suggest = "gke_cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePrivateVisibilityConfigGKEClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePrivateVisibilityConfigGKEClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePrivateVisibilityConfigGKEClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_cluster_name: str,
+                 kind: str):
+        """
+        :param str gke_cluster_name: The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> str:
+        """
+        The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+
+@pulumi.output_type
 class ManagedZonePrivateVisibilityConfigNetworkResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -416,14 +460,42 @@ class ManagedZonePrivateVisibilityConfigNetworkResponse(dict):
 
 @pulumi.output_type
 class ManagedZonePrivateVisibilityConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusters":
+            suggest = "gke_clusters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ManagedZonePrivateVisibilityConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ManagedZonePrivateVisibilityConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ManagedZonePrivateVisibilityConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 gke_clusters: Sequence['outputs.ManagedZonePrivateVisibilityConfigGKEClusterResponse'],
                  kind: str,
                  networks: Sequence['outputs.ManagedZonePrivateVisibilityConfigNetworkResponse']):
         """
+        :param Sequence['ManagedZonePrivateVisibilityConfigGKEClusterResponse'] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
         :param Sequence['ManagedZonePrivateVisibilityConfigNetworkResponse'] networks: The list of VPC networks that can see this zone.
         """
+        pulumi.set(__self__, "gke_clusters", gke_clusters)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Sequence['outputs.ManagedZonePrivateVisibilityConfigGKEClusterResponse']:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        """
+        return pulumi.get(self, "gke_clusters")
 
     @property
     @pulumi.getter
@@ -775,6 +847,48 @@ class ResourceRecordSetResponse(dict):
         The identifier of a supported record type. See the list of Supported DNS record types.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ResponsePolicyGKEClusterResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gkeClusterName":
+            suggest = "gke_cluster_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ResponsePolicyGKEClusterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ResponsePolicyGKEClusterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ResponsePolicyGKEClusterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gke_cluster_name: str,
+                 kind: str):
+        """
+        :param str gke_cluster_name: The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> str:
+        """
+        The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
 
 
 @pulumi.output_type
