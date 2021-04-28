@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public Input<Inputs.DatabaseConfigArgs>? DatabaseConfig { get; set; }
 
         /// <summary>
-        /// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         /// </summary>
         [Input("encryptionConfig")]
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }

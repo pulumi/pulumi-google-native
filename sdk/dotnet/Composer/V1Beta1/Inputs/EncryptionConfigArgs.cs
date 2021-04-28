@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
 {
 
     /// <summary>
-    /// The encryption options for the Composer environment and its dependencies.
+    /// The encryption options for the Cloud Composer environment and its dependencies.
     /// </summary>
     public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
     {

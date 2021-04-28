@@ -28,10 +28,28 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public Output<string> IpCidrRange { get; private set; } = null!;
 
         /// <summary>
+        /// Machine type of VM Instance underlying connector. Default is e2-micro
+        /// </summary>
+        [Output("machineType")]
+        public Output<string> MachineType { get; private set; } = null!;
+
+        /// <summary>
+        /// Maximum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Output("maxInstances")]
+        public Output<int> MaxInstances { get; private set; } = null!;
+
+        /// <summary>
         /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
         /// </summary>
         [Output("maxThroughput")]
         public Output<int> MaxThroughput { get; private set; } = null!;
+
+        /// <summary>
+        /// Minimum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Output("minInstances")]
+        public Output<int> MinInstances { get; private set; } = null!;
 
         /// <summary>
         /// Minimum throughput of the connector in Mbps. Default and min is 200.
@@ -121,10 +139,28 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public Input<string> LocationsId { get; set; } = null!;
 
         /// <summary>
+        /// Machine type of VM Instance underlying connector. Default is e2-micro
+        /// </summary>
+        [Input("machineType")]
+        public Input<string>? MachineType { get; set; }
+
+        /// <summary>
+        /// Maximum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("maxInstances")]
+        public Input<int>? MaxInstances { get; set; }
+
+        /// <summary>
         /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }
+
+        /// <summary>
+        /// Minimum value of instances in autoscaling group underlying the connector.
+        /// </summary>
+        [Input("minInstances")]
+        public Input<int>? MinInstances { get; set; }
 
         /// <summary>
         /// Minimum throughput of the connector in Mbps. Default and min is 200.

@@ -28,12 +28,6 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         public Output<bool> IgnoreIdleSlots { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-        /// </summary>
-        [Output("maxConcurrency")]
-        public Output<string> MaxConcurrency { get; private set; } = null!;
-
-        /// <summary>
         /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         /// </summary>
         [Output("name")]
@@ -104,12 +98,6 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
-
-        /// <summary>
-        /// Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-        /// </summary>
-        [Input("maxConcurrency")]
-        public Input<string>? MaxConcurrency { get; set; }
 
         /// <summary>
         /// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly string CloudSqlIpv4CidrBlock;
         /// <summary>
-        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+        /// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
         /// </summary>
         public readonly bool EnablePrivateEnvironment;
         /// <summary>

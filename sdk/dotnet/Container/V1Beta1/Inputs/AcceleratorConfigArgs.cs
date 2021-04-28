@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         [Input("acceleratorType")]
         public Input<string>? AcceleratorType { get; set; }
 
+        /// <summary>
+        /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+        /// </summary>
+        [Input("gpuPartitionSize")]
+        public Input<string>? GpuPartitionSize { get; set; }
+
         public AcceleratorConfigArgs()
         {
         }

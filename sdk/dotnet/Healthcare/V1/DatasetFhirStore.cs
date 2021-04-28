@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public partial class DatasetFhirStore : Pulumi.CustomResource
     {
         /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        /// </summary>
+        [Output("defaultSearchHandlingStrict")]
+        public Output<bool> DefaultSearchHandlingStrict { get; private set; } = null!;
+
+        /// <summary>
         /// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
         /// </summary>
         [Output("disableReferentialIntegrity")]
@@ -110,6 +116,12 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     {
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
+
+        /// <summary>
+        /// If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+        /// </summary>
+        [Input("defaultSearchHandlingStrict")]
+        public Input<bool>? DefaultSearchHandlingStrict { get; set; }
 
         /// <summary>
         /// Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
