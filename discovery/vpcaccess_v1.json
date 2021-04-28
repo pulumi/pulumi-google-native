@@ -131,7 +131,7 @@
                   "type": "string"
                 },
                 "pageSize": {
-                  "description": "The maximum number of results to return. If not set, the service will select a default.",
+                  "description": "The maximum number of results to return. If not set, the service selects a default.",
                   "format": "int32",
                   "location": "query",
                   "type": "integer"
@@ -350,7 +350,7 @@
       }
     }
   },
-  "revision": "20210329",
+  "revision": "20210415",
   "rootUrl": "https://vpcaccess.googleapis.com/",
   "schemas": {
     "Connector": {
@@ -369,8 +369,22 @@
           "description": "The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.",
           "type": "string"
         },
+        "machineType": {
+          "description": "Machine type of VM Instance underlying connector. Default is e2-micro",
+          "type": "string"
+        },
+        "maxInstances": {
+          "description": "Maximum value of instances in autoscaling group underlying the connector.",
+          "format": "int32",
+          "type": "integer"
+        },
         "maxThroughput": {
           "description": "Maximum throughput of the connector in Mbps. Default is 200, max is 1000.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "minInstances": {
+          "description": "Minimum value of instances in autoscaling group underlying the connector.",
           "format": "int32",
           "type": "integer"
         },

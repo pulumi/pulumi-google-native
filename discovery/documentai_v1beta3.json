@@ -109,6 +109,31 @@
       "resources": {
         "locations": {
           "methods": {
+            "fetchProcessorTypes": {
+              "description": "Fetches processor types.",
+              "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}:fetchProcessorTypes",
+              "httpMethod": "GET",
+              "id": "documentai.projects.locations.fetchProcessorTypes",
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "parent": {
+                  "description": "Required. The project of processor type to list. The available processor types may depend on the whitelisting on projects. Format: projects/{project}/locations/{location}",
+                  "location": "path",
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "path": "v1beta3/{+parent}:fetchProcessorTypes",
+              "response": {
+                "$ref": "GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ]
+            },
             "get": {
               "description": "Gets information about a location.",
               "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}",
@@ -231,6 +256,151 @@
                   },
                   "response": {
                     "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "create": {
+                  "description": "Creates a processor from the type processor that the user chose. The processor will be at \"ENABLED\" state by default after its creation.",
+                  "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
+                  "httpMethod": "POST",
+                  "id": "documentai.projects.locations.processors.create",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "description": "Required. The parent (project and location) under which to create the processor. Format: projects/{project}/locations/{location}",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta3/{+parent}/processors",
+                  "request": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3Processor"
+                  },
+                  "response": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3Processor"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "delete": {
+                  "description": "Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all artifacts associated with this processor.",
+                  "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}",
+                  "httpMethod": "DELETE",
+                  "id": "documentai.projects.locations.processors.delete",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The processor resource name to be deleted.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta3/{+name}",
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "disable": {
+                  "description": "Disables a processor",
+                  "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:disable",
+                  "httpMethod": "POST",
+                  "id": "documentai.projects.locations.processors.disable",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The processor resource name to be disabled.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta3/{+name}:disable",
+                  "request": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3DisableProcessorRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "enable": {
+                  "description": "Enables a processor",
+                  "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors/{processorsId}:enable",
+                  "httpMethod": "POST",
+                  "id": "documentai.projects.locations.processors.enable",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The processor resource name to be enabled.",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta3/{+name}:enable",
+                  "request": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3EnableProcessorRequest"
+                  },
+                  "response": {
+                    "$ref": "GoogleLongrunningOperation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "list": {
+                  "description": "Lists all processors which belong to this project.",
+                  "flatPath": "v1beta3/projects/{projectsId}/locations/{locationsId}/processors",
+                  "httpMethod": "GET",
+                  "id": "documentai.projects.locations.processors.list",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "parameters": {
+                    "pageSize": {
+                      "description": "The maximum number of processors to return. If unspecified, at most 50 processors will be returned. The maximum value is 100; values above 100 will be coerced to 100.",
+                      "format": "int32",
+                      "location": "query",
+                      "type": "integer"
+                    },
+                    "pageToken": {
+                      "description": "We will return the processors sorted by creation time. The page token will point to the next processor.",
+                      "location": "query",
+                      "type": "string"
+                    },
+                    "parent": {
+                      "description": "Required. The parent (project and location) which owns this collection of Processors. Format: projects/{project}/locations/{location}",
+                      "location": "path",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "path": "v1beta3/{+parent}/processors",
+                  "response": {
+                    "$ref": "GoogleCloudDocumentaiV1beta3ListProcessorsResponse"
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
@@ -365,7 +535,7 @@
       }
     }
   },
-  "revision": "20210415",
+  "revision": "20210426",
   "rootUrl": "https://documentai.googleapis.com/",
   "schemas": {
     "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata": {
@@ -3302,6 +3472,12 @@
       },
       "type": "object"
     },
+    "GoogleCloudDocumentaiV1beta3DisableProcessorRequest": {
+      "description": "Request message for the disable processor method.",
+      "id": "GoogleCloudDocumentaiV1beta3DisableProcessorRequest",
+      "properties": {},
+      "type": "object"
+    },
     "GoogleCloudDocumentaiV1beta3Document": {
       "description": "Document represents the canonical document resource in Document Understanding AI. It is an interchange format that provides insights into documents and allows for collaboration between users and Document Understanding AI to iterate and optimize for quality.",
       "id": "GoogleCloudDocumentaiV1beta3Document",
@@ -4264,6 +4440,26 @@
       },
       "type": "object"
     },
+    "GoogleCloudDocumentaiV1beta3EnableProcessorRequest": {
+      "description": "Request message for the enable processor method.",
+      "id": "GoogleCloudDocumentaiV1beta3EnableProcessorRequest",
+      "properties": {},
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse": {
+      "description": "Response message for fetch processor types.",
+      "id": "GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse",
+      "properties": {
+        "processorTypes": {
+          "description": "The list of processor types.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta3ProcessorType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDocumentaiV1beta3GcsDocument": {
       "description": "Specifies a document stored on Cloud Storage.",
       "id": "GoogleCloudDocumentaiV1beta3GcsDocument",
@@ -4337,6 +4533,24 @@
       },
       "type": "object"
     },
+    "GoogleCloudDocumentaiV1beta3ListProcessorsResponse": {
+      "description": "Response message for list processors.",
+      "id": "GoogleCloudDocumentaiV1beta3ListProcessorsResponse",
+      "properties": {
+        "nextPageToken": {
+          "description": "Points to the next processor, otherwise empty.",
+          "type": "string"
+        },
+        "processors": {
+          "description": "The list of processors.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta3Processor"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "GoogleCloudDocumentaiV1beta3NormalizedVertex": {
       "description": "A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.",
       "id": "GoogleCloudDocumentaiV1beta3NormalizedVertex",
@@ -4392,6 +4606,114 @@
         "humanReviewStatus": {
           "$ref": "GoogleCloudDocumentaiV1beta3HumanReviewStatus",
           "description": "The status of human review on the processed document."
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3Processor": {
+      "description": "The first-class citizen for DAI. Each processor defines how to extract structural information from a document.",
+      "id": "GoogleCloudDocumentaiV1beta3Processor",
+      "properties": {
+        "createTime": {
+          "description": "The time the processor was created.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "defaultProcessorVersion": {
+          "description": "The default processor version.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "The display name of the processor.",
+          "type": "string"
+        },
+        "kmsKeyName": {
+          "description": "The KMS key used for encryption/decryption in CMEK scenarios. See https://cloud.google.com/security-key-management.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Output only. Immutable. The resource name of the processor. Format: projects/{project}/locations/{location}/processors/{processor}",
+          "readOnly": true,
+          "type": "string"
+        },
+        "processEndpoint": {
+          "description": "Output only. Immutable. The http endpoint that can be called to invoke processing.",
+          "readOnly": true,
+          "type": "string"
+        },
+        "state": {
+          "description": "Output only. The state of the processor.",
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "ENABLED",
+            "DISABLED",
+            "ENABLING",
+            "DISABLING",
+            "CREATING",
+            "FAILED",
+            "DELETING"
+          ],
+          "enumDescriptions": [
+            "The processor is in an unspecified state.",
+            "The processor is enabled, i.e, has an enabled version which can currently serve processing requests and all the feature dependencies have been successfully initialized.",
+            "The processor is disabled.",
+            "The processor is being enabled, will become ENABLED if successful.",
+            "The processor is being disabled, will become DISABLED if successful.",
+            "The processor is being created, will become either ENABLED (for successful creation) or FAILED (for failed ones). Once a processor is in this state, it can then be used for document processing, but the feature dependencies of the processor might not be fully created yet.",
+            "The processor failed during creation or initialization of feature dependencies. The user should delete the processor and recreate one as all the functionalities of the processor are disabled.",
+            "The processor is being deleted, will be removed if successful."
+          ],
+          "readOnly": true,
+          "type": "string"
+        },
+        "type": {
+          "description": "The processor type, e.g., INVOICE_PARSING, W2_PARSING, etc.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3ProcessorType": {
+      "description": "A processor type is responsible for performing a certain document understanding task on a certain type of document. All processor types are created by the documentai service internally. User will only list all available processor types via UI. For different users (projects), the available processor types may be different since we'll expose the access of some types via EAP whitelisting. We make the ProcessorType a resource under location so we have a unified API and keep the possibility that UI will load different available processor types from different regions. But for alpha the behavior is that the user will always get the union of all available processor types among all regions no matter which regionalized endpoint is called, and then we use the 'available_locations' field to show under which regions a processor type is available. For example, users can call either the 'US' or 'EU' endpoint to feach processor types. In the return, we will have an 'invoice parsing' processor with 'available_locations' field only containing 'US'. So the user can try to create an 'invoice parsing' processor under the location 'US'. Such attempt of creating under the location 'EU' will fail. Next ID: 7.",
+      "id": "GoogleCloudDocumentaiV1beta3ProcessorType",
+      "properties": {
+        "allowCreation": {
+          "description": "Whether the processor type allows creation. If yes, user can create a processor of this processor type. Otherwise, user needs to require for whitelisting.",
+          "type": "boolean"
+        },
+        "availableLocations": {
+          "description": "The locations in which this processor is available.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo"
+          },
+          "type": "array"
+        },
+        "category": {
+          "description": "The processor category, used by UI to group processor types.",
+          "type": "string"
+        },
+        "name": {
+          "description": "The resource name of the processor type. Format: projects/{project}/processorTypes/{processor_type}",
+          "type": "string"
+        },
+        "schema": {
+          "$ref": "GoogleCloudDocumentaiV1beta3Schema",
+          "description": "The schema of the default version of this processor type."
+        },
+        "type": {
+          "description": "The type of the processor, e.g, \"invoice_parsing\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo": {
+      "description": "The location information about where the processor is available.",
+      "id": "GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo",
+      "properties": {
+        "locationId": {
+          "description": "The location id, currently must be one of [us, eu].",
+          "type": "string"
         }
       },
       "type": "object"
@@ -4478,6 +4800,93 @@
       "properties": {
         "gcsDestination": {
           "description": "The Cloud Storage uri for the human reviewed document.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3Schema": {
+      "description": "The schema defines the output of the processed document by a processor.",
+      "id": "GoogleCloudDocumentaiV1beta3Schema",
+      "properties": {
+        "description": {
+          "description": "Description of the schema.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Display name to show to users.",
+          "type": "string"
+        },
+        "entityTypes": {
+          "description": "Entity types of the schema.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta3SchemaEntityType"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "GoogleCloudDocumentaiV1beta3SchemaEntityType": {
+      "description": "EntityType is the wrapper of a label of the corresponding model with detailed attributes and limitations for entity-based processors. Multiple types can also compose a dependency tree to represent nested types.",
+      "id": "GoogleCloudDocumentaiV1beta3SchemaEntityType",
+      "properties": {
+        "baseType": {
+          "description": "Type of the entity. It must be one of the following: `document` - the entity represents a classification of a logical document. `object` - if the entity has properties it is likely an object (or or a document.) `datetime` - the entity is a date or time value. `money` - the entity represents a money value amount. `number` - the entity is a number - integer or floating point. `string` - the entity is a string value. `boolean` - the entity is a boolean value. `address` - the entity is a location address.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the entity type.",
+          "type": "string"
+        },
+        "enumValues": {
+          "description": "For some entity types there are only a few possible values. They can be specified here.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "occurrenceType": {
+          "description": "Occurrence type limits the number of times an entity type appears in the document.",
+          "enum": [
+            "OCCURRENCE_TYPE_UNSPECIFIED",
+            "OPTIONAL_ONCE",
+            "OPTIONAL_MULTIPLE",
+            "REQUIRED_ONCE",
+            "REQUIRED_MULTIPLE"
+          ],
+          "enumDescriptions": [
+            "Unspecified occurrence type.",
+            "The entity type will appear zero times or once.",
+            "The entity type will appear zero or multiple times.",
+            "The entity type will only appear exactly once.",
+            "The entity type will appear once or more times."
+          ],
+          "type": "string"
+        },
+        "properties": {
+          "description": "Describing the nested structure of an entity. An EntityType may consist of several other EntityTypes. For example, in a document there can be an EntityType 'ID', which consists of EntityType 'name' and 'address', with corresponding attributes, such as TEXT for both types and ONCE for occurrence types.",
+          "items": {
+            "$ref": "GoogleCloudDocumentaiV1beta3SchemaEntityType"
+          },
+          "type": "array"
+        },
+        "source": {
+          "description": "Source of this entity type.",
+          "enum": [
+            "SOURCE_UNSPECIFIED",
+            "PREDEFINED",
+            "USER_INPUT"
+          ],
+          "enumDescriptions": [
+            "Unspecified source.",
+            "The entity type is in the predefined schema of a pretrained version of a processor.",
+            "The entity type is added by the users either: - during an uptraining of an existing processor, or - during the process of creating a customized processor."
+          ],
+          "type": "string"
+        },
+        "type": {
+          "description": "Name of the type. It must be unique within the set of same level types.",
           "type": "string"
         }
       },
