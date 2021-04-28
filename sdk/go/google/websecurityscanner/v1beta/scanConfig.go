@@ -23,6 +23,8 @@ type ScanConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringOutput `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolOutput `pulumi:"ignoreHttpStatusErrors"`
 	// Latest ScanRun if available.
 	LatestRun ScanRunResponseOutput `pulumi:"latestRun"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
@@ -88,6 +90,8 @@ type scanConfigState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// Latest ScanRun if available.
 	LatestRun *ScanRunResponse `pulumi:"latestRun"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
@@ -119,6 +123,8 @@ type ScanConfigState struct {
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// Latest ScanRun if available.
 	LatestRun ScanRunResponsePtrInput
 	// Whether the scan config is managed by Web Security Scanner, output only.
@@ -154,6 +160,8 @@ type scanConfigArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// Latest ScanRun if available.
 	LatestRun *ScanRun `pulumi:"latestRun"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
@@ -188,6 +196,8 @@ type ScanConfigArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// Latest ScanRun if available.
 	LatestRun ScanRunPtrInput
 	// Whether the scan config is managed by Web Security Scanner, output only.

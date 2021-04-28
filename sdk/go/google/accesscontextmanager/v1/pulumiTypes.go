@@ -1421,7 +1421,7 @@ func (o DevicePolicyResponseOutput) RequireScreenlock() pulumi.BoolOutput {
 	return o.ApplyT(func(v DevicePolicyResponse) bool { return v.RequireScreenlock }).(pulumi.BoolOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFrom struct {
 	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
@@ -1440,7 +1440,7 @@ type EgressFromInput interface {
 	ToEgressFromOutputWithContext(context.Context) EgressFromOutput
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromArgs struct {
 	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
@@ -1501,7 +1501,7 @@ func (i *egressFromPtrType) ToEgressFromPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(EgressFromPtrOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromOutput struct{ *pulumi.OutputState }
 
 func (EgressFromOutput) ElementType() reflect.Type {
@@ -1574,7 +1574,7 @@ func (o EgressFromPtrOutput) IdentityType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromResponse struct {
 	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
@@ -1593,7 +1593,7 @@ type EgressFromResponseInput interface {
 	ToEgressFromResponseOutputWithContext(context.Context) EgressFromResponseOutput
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromResponseArgs struct {
 	// A list of identities that are allowed access through this [EgressPolicy]. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
@@ -1613,7 +1613,7 @@ func (i EgressFromResponseArgs) ToEgressFromResponseOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, i).(EgressFromResponseOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
 type EgressFromResponseOutput struct{ *pulumi.OutputState }
 
 func (EgressFromResponseOutput) ElementType() reflect.Type {
@@ -1856,11 +1856,11 @@ func (o EgressPolicyResponseArrayOutput) Index(i pulumi.IntInput) EgressPolicyRe
 	}).(EgressPolicyResponseOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressTo struct {
-	// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations []ApiOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -1875,11 +1875,11 @@ type EgressToInput interface {
 	ToEgressToOutputWithContext(context.Context) EgressToOutput
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToArgs struct {
-	// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations ApiOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -1936,7 +1936,7 @@ func (i *egressToPtrType) ToEgressToPtrOutputWithContext(ctx context.Context) Eg
 	return pulumi.ToOutputWithContext(ctx, i).(EgressToPtrOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToOutput struct{ *pulumi.OutputState }
 
 func (EgressToOutput) ElementType() reflect.Type {
@@ -1961,12 +1961,12 @@ func (o EgressToOutput) ToEgressToPtrOutputWithContext(ctx context.Context) Egre
 	}).(EgressToPtrOutput)
 }
 
-// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 func (o EgressToOutput) Operations() ApiOperationArrayOutput {
 	return o.ApplyT(func(v EgressTo) []ApiOperation { return v.Operations }).(ApiOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 func (o EgressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -1989,7 +1989,7 @@ func (o EgressToPtrOutput) Elem() EgressToOutput {
 	return o.ApplyT(func(v *EgressTo) EgressTo { return *v }).(EgressToOutput)
 }
 
-// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 func (o EgressToPtrOutput) Operations() ApiOperationArrayOutput {
 	return o.ApplyT(func(v *EgressTo) []ApiOperation {
 		if v == nil {
@@ -1999,7 +1999,7 @@ func (o EgressToPtrOutput) Operations() ApiOperationArrayOutput {
 	}).(ApiOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 func (o EgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *EgressTo) []string {
 		if v == nil {
@@ -2009,11 +2009,11 @@ func (o EgressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToResponse struct {
-	// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations []ApiOperationResponse `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -2028,11 +2028,11 @@ type EgressToResponseInput interface {
 	ToEgressToResponseOutputWithContext(context.Context) EgressToResponseOutput
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToResponseArgs struct {
-	// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+	// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 	Operations ApiOperationResponseArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+	// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -2048,7 +2048,7 @@ func (i EgressToResponseArgs) ToEgressToResponseOutputWithContext(ctx context.Co
 	return pulumi.ToOutputWithContext(ctx, i).(EgressToResponseOutput)
 }
 
-// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+// Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
 type EgressToResponseOutput struct{ *pulumi.OutputState }
 
 func (EgressToResponseOutput) ElementType() reflect.Type {
@@ -2063,12 +2063,12 @@ func (o EgressToResponseOutput) ToEgressToResponseOutputWithContext(ctx context.
 	return o
 }
 
-// A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+// A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
 func (o EgressToResponseOutput) Operations() ApiOperationResponseArrayOutput {
 	return o.ApplyT(func(v EgressToResponse) []ApiOperationResponse { return v.Operations }).(ApiOperationResponseArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+// A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
 func (o EgressToResponseOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v EgressToResponse) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -2455,7 +2455,7 @@ func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFrom struct {
 	// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
@@ -2476,7 +2476,7 @@ type IngressFromInput interface {
 	ToIngressFromOutputWithContext(context.Context) IngressFromOutput
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromArgs struct {
 	// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
@@ -2539,7 +2539,7 @@ func (i *ingressFromPtrType) ToIngressFromPtrOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(IngressFromPtrOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromOutput struct{ *pulumi.OutputState }
 
 func (IngressFromOutput) ElementType() reflect.Type {
@@ -2627,7 +2627,7 @@ func (o IngressFromPtrOutput) Sources() IngressSourceArrayOutput {
 	}).(IngressSourceArrayOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromResponse struct {
 	// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities []string `pulumi:"identities"`
@@ -2648,7 +2648,7 @@ type IngressFromResponseInput interface {
 	ToIngressFromResponseOutputWithContext(context.Context) IngressFromResponseOutput
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromResponseArgs struct {
 	// A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
@@ -2670,7 +2670,7 @@ func (i IngressFromResponseArgs) ToIngressFromResponseOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(IngressFromResponseOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
 type IngressFromResponseOutput struct{ *pulumi.OutputState }
 
 func (IngressFromResponseOutput) ElementType() reflect.Type {
@@ -2920,7 +2920,7 @@ func (o IngressPolicyResponseArrayOutput) Index(i pulumi.IntInput) IngressPolicy
 
 // The source that IngressPolicy authorizes access from.
 type IngressSource struct {
-	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel *string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource *string `pulumi:"resource"`
@@ -2939,7 +2939,7 @@ type IngressSourceInput interface {
 
 // The source that IngressPolicy authorizes access from.
 type IngressSourceArgs struct {
-	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringPtrInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringPtrInput `pulumi:"resource"`
@@ -2997,7 +2997,7 @@ func (o IngressSourceOutput) ToIngressSourceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 func (o IngressSourceOutput) AccessLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v IngressSource) *string { return v.AccessLevel }).(pulumi.StringPtrOutput)
 }
@@ -3029,7 +3029,7 @@ func (o IngressSourceArrayOutput) Index(i pulumi.IntInput) IngressSourceOutput {
 
 // The source that IngressPolicy authorizes access from.
 type IngressSourceResponse struct {
-	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel string `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource string `pulumi:"resource"`
@@ -3048,7 +3048,7 @@ type IngressSourceResponseInput interface {
 
 // The source that IngressPolicy authorizes access from.
 type IngressSourceResponseArgs struct {
-	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+	// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 	AccessLevel pulumi.StringInput `pulumi:"accessLevel"`
 	// A Google Cloud resource that is allowed to ingress the perimeter. Requests from these resources will be allowed to access perimeter data. Currently only projects are allowed. Format: `projects/{project_number}` The project may be in any Google Cloud organization, not just the organization that the perimeter is defined in. `*` is not allowed, the case of allowing all Google Cloud resources only is not supported.
 	Resource pulumi.StringInput `pulumi:"resource"`
@@ -3106,7 +3106,7 @@ func (o IngressSourceResponseOutput) ToIngressSourceResponseOutputWithContext(ct
 	return o
 }
 
-// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
 func (o IngressSourceResponseOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v IngressSourceResponse) string { return v.AccessLevel }).(pulumi.StringOutput)
 }
@@ -3136,11 +3136,11 @@ func (o IngressSourceResponseArrayOutput) Index(i pulumi.IntInput) IngressSource
 	}).(IngressSourceResponseOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressTo struct {
-	// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+	// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 	Operations []ApiOperation `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -3155,11 +3155,11 @@ type IngressToInput interface {
 	ToIngressToOutputWithContext(context.Context) IngressToOutput
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToArgs struct {
-	// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+	// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 	Operations ApiOperationArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -3216,7 +3216,7 @@ func (i *ingressToPtrType) ToIngressToPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(IngressToPtrOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToOutput struct{ *pulumi.OutputState }
 
 func (IngressToOutput) ElementType() reflect.Type {
@@ -3241,12 +3241,12 @@ func (o IngressToOutput) ToIngressToPtrOutputWithContext(ctx context.Context) In
 	}).(IngressToPtrOutput)
 }
 
-// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 func (o IngressToOutput) Operations() ApiOperationArrayOutput {
 	return o.ApplyT(func(v IngressTo) []ApiOperation { return v.Operations }).(ApiOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 func (o IngressToOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IngressTo) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }
@@ -3269,7 +3269,7 @@ func (o IngressToPtrOutput) Elem() IngressToOutput {
 	return o.ApplyT(func(v *IngressTo) IngressTo { return *v }).(IngressToOutput)
 }
 
-// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 func (o IngressToPtrOutput) Operations() ApiOperationArrayOutput {
 	return o.ApplyT(func(v *IngressTo) []ApiOperation {
 		if v == nil {
@@ -3279,7 +3279,7 @@ func (o IngressToPtrOutput) Operations() ApiOperationArrayOutput {
 	}).(ApiOperationArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 func (o IngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *IngressTo) []string {
 		if v == nil {
@@ -3289,11 +3289,11 @@ func (o IngressToPtrOutput) Resources() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToResponse struct {
-	// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+	// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 	Operations []ApiOperationResponse `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 	Resources []string `pulumi:"resources"`
 }
 
@@ -3308,11 +3308,11 @@ type IngressToResponseInput interface {
 	ToIngressToResponseOutputWithContext(context.Context) IngressToResponseOutput
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToResponseArgs struct {
-	// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+	// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 	Operations ApiOperationResponseArrayInput `pulumi:"operations"`
-	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+	// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 	Resources pulumi.StringArrayInput `pulumi:"resources"`
 }
 
@@ -3328,7 +3328,7 @@ func (i IngressToResponseArgs) ToIngressToResponseOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(IngressToResponseOutput)
 }
 
-// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
 type IngressToResponseOutput struct{ *pulumi.OutputState }
 
 func (IngressToResponseOutput) ElementType() reflect.Type {
@@ -3343,12 +3343,12 @@ func (o IngressToResponseOutput) ToIngressToResponseOutputWithContext(ctx contex
 	return o
 }
 
-// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
 func (o IngressToResponseOutput) Operations() ApiOperationResponseArrayOutput {
 	return o.ApplyT(func(v IngressToResponse) []ApiOperationResponse { return v.Operations }).(ApiOperationResponseArrayOutput)
 }
 
-// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
 func (o IngressToResponseOutput) Resources() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v IngressToResponse) []string { return v.Resources }).(pulumi.StringArrayOutput)
 }

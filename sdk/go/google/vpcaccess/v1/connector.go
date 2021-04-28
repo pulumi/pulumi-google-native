@@ -19,8 +19,14 @@ type Connector struct {
 	ConnectedProjects pulumi.StringArrayOutput `pulumi:"connectedProjects"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringOutput `pulumi:"ipCidrRange"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringOutput `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntOutput `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
 	MaxThroughput pulumi.IntOutput `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntOutput `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntOutput `pulumi:"minThroughput"`
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
@@ -75,8 +81,14 @@ type connectorState struct {
 	ConnectedProjects []string `pulumi:"connectedProjects"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType *string `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances *int `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
@@ -94,8 +106,14 @@ type ConnectorState struct {
 	ConnectedProjects pulumi.StringArrayInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringPtrInput
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntPtrInput
 	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
 	MaxThroughput pulumi.IntPtrInput
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
@@ -117,8 +135,14 @@ type connectorArgs struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
 	LocationsId string  `pulumi:"locationsId"`
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType *string `pulumi:"machineType"`
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances *int `pulumi:"maxInstances"`
 	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
 	MaxThroughput *int `pulumi:"maxThroughput"`
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances *int `pulumi:"minInstances"`
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput *int `pulumi:"minThroughput"`
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
@@ -136,8 +160,14 @@ type ConnectorArgs struct {
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
+	// Machine type of VM Instance underlying connector. Default is e2-micro
+	MachineType pulumi.StringPtrInput
+	// Maximum value of instances in autoscaling group underlying the connector.
+	MaxInstances pulumi.IntPtrInput
 	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
 	MaxThroughput pulumi.IntPtrInput
+	// Minimum value of instances in autoscaling group underlying the connector.
+	MinInstances pulumi.IntPtrInput
 	// Minimum throughput of the connector in Mbps. Default and min is 200.
 	MinThroughput pulumi.IntPtrInput
 	// The resource name in the format `projects/*/locations/*/connectors/*`.

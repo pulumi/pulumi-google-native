@@ -496,7 +496,7 @@ func (o DatabaseConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfig struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName *string `pulumi:"kmsKeyName"`
@@ -513,7 +513,7 @@ type EncryptionConfigInput interface {
 	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfigArgs struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
@@ -572,7 +572,7 @@ func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfigOutput struct{ *pulumi.OutputState }
 
 func (EncryptionConfigOutput) ElementType() reflect.Type {
@@ -630,7 +630,7 @@ func (o EncryptionConfigPtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfigResponse struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -647,7 +647,7 @@ type EncryptionConfigResponseInput interface {
 	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfigResponseArgs struct {
 	// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
 	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
@@ -706,7 +706,7 @@ func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
 }
 
-// The encryption options for the Composer environment and its dependencies.
+// The encryption options for the Cloud Composer environment and its dependencies.
 type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
@@ -768,7 +768,7 @@ func (o EncryptionConfigResponsePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
 type EnvironmentConfig struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig *DatabaseConfig `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
@@ -801,7 +801,7 @@ type EnvironmentConfigInput interface {
 type EnvironmentConfigArgs struct {
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigPtrInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
@@ -902,7 +902,7 @@ func (o EnvironmentConfigOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *DatabaseConfig { return v.DatabaseConfig }).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EncryptionConfig { return v.EncryptionConfig }).(EncryptionConfigPtrOutput)
 }
@@ -970,7 +970,7 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() DatabaseConfigPtrOutput {
 	}).(DatabaseConfigPtrOutput)
 }
 
-// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfig) *EncryptionConfig {
 		if v == nil {
@@ -1058,7 +1058,7 @@ type EnvironmentConfigResponse struct {
 	DagGcsPrefix string `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigResponse `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster string `pulumi:"gkeCluster"`
@@ -1097,7 +1097,7 @@ type EnvironmentConfigResponseArgs struct {
 	DagGcsPrefix pulumi.StringInput `pulumi:"dagGcsPrefix"`
 	// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
 	DatabaseConfig DatabaseConfigResponseInput `pulumi:"databaseConfig"`
-	// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// The Kubernetes Engine cluster used to run this environment.
 	GkeCluster pulumi.StringInput `pulumi:"gkeCluster"`
@@ -1210,7 +1210,7 @@ func (o EnvironmentConfigResponseOutput) DatabaseConfig() DatabaseConfigResponse
 	return o.ApplyT(func(v EnvironmentConfigResponse) DatabaseConfigResponse { return v.DatabaseConfig }).(DatabaseConfigResponseOutput)
 }
 
-// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
 	return o.ApplyT(func(v EnvironmentConfigResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
@@ -1305,7 +1305,7 @@ func (o EnvironmentConfigResponsePtrOutput) DatabaseConfig() DatabaseConfigRespo
 	}).(DatabaseConfigResponsePtrOutput)
 }
 
-// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 func (o EnvironmentConfigResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigResponse) *EncryptionConfigResponse {
 		if v == nil {
@@ -2175,7 +2175,7 @@ type NodeConfig struct {
 	Network *string `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes []string `pulumi:"oauthScopes"`
-	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+	// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork *string `pulumi:"subnetwork"`
@@ -2210,7 +2210,7 @@ type NodeConfigArgs struct {
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+	// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
@@ -2331,7 +2331,7 @@ func (o NodeConfigOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfig) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 func (o NodeConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
 }
@@ -2434,7 +2434,7 @@ func (o NodeConfigPtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 func (o NodeConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
 		if v == nil {
@@ -2480,7 +2480,7 @@ type NodeConfigResponse struct {
 	Network string `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes []string `pulumi:"oauthScopes"`
-	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+	// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork string `pulumi:"subnetwork"`
@@ -2515,7 +2515,7 @@ type NodeConfigResponseArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.
 	OauthScopes pulumi.StringArrayInput `pulumi:"oauthScopes"`
-	// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+	// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}" If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to the enclosing environment's project and location.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
@@ -2636,7 +2636,7 @@ func (o NodeConfigResponseOutput) OauthScopes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NodeConfigResponse) []string { return v.OauthScopes }).(pulumi.StringArrayOutput)
 }
 
-// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 func (o NodeConfigResponseOutput) ServiceAccount() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeConfigResponse) string { return v.ServiceAccount }).(pulumi.StringOutput)
 }
@@ -2739,7 +2739,7 @@ func (o NodeConfigResponsePtrOutput) OauthScopes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+// Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
 func (o NodeConfigResponsePtrOutput) ServiceAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *string {
 		if v == nil {
@@ -3098,7 +3098,7 @@ func (o PrivateClusterConfigResponsePtrOutput) MasterIpv4ReservedRange() pulumi.
 type PrivateEnvironmentConfig struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock *string `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 	EnablePrivateEnvironment *bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
@@ -3121,7 +3121,7 @@ type PrivateEnvironmentConfigInput interface {
 type PrivateEnvironmentConfigArgs struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock pulumi.StringPtrInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 	EnablePrivateEnvironment pulumi.BoolPtrInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"privateClusterConfig"`
@@ -3212,7 +3212,7 @@ func (o PrivateEnvironmentConfigOutput) CloudSqlIpv4CidrBlock() pulumi.StringPtr
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 func (o PrivateEnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfig) *bool { return v.EnablePrivateEnvironment }).(pulumi.BoolPtrOutput)
 }
@@ -3255,7 +3255,7 @@ func (o PrivateEnvironmentConfigPtrOutput) CloudSqlIpv4CidrBlock() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 func (o PrivateEnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfig) *bool {
 		if v == nil {
@@ -3289,7 +3289,7 @@ func (o PrivateEnvironmentConfigPtrOutput) WebServerIpv4CidrBlock() pulumi.Strin
 type PrivateEnvironmentConfigResponse struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock string `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 	EnablePrivateEnvironment bool `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigResponse `pulumi:"privateClusterConfig"`
@@ -3314,7 +3314,7 @@ type PrivateEnvironmentConfigResponseInput interface {
 type PrivateEnvironmentConfigResponseArgs struct {
 	// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
 	CloudSqlIpv4CidrBlock pulumi.StringInput `pulumi:"cloudSqlIpv4CidrBlock"`
-	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+	// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 	EnablePrivateEnvironment pulumi.BoolInput `pulumi:"enablePrivateEnvironment"`
 	// Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
 	PrivateClusterConfig PrivateClusterConfigResponseInput `pulumi:"privateClusterConfig"`
@@ -3407,7 +3407,7 @@ func (o PrivateEnvironmentConfigResponseOutput) CloudSqlIpv4CidrBlock() pulumi.S
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) string { return v.CloudSqlIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 func (o PrivateEnvironmentConfigResponseOutput) EnablePrivateEnvironment() pulumi.BoolOutput {
 	return o.ApplyT(func(v PrivateEnvironmentConfigResponse) bool { return v.EnablePrivateEnvironment }).(pulumi.BoolOutput)
 }
@@ -3455,7 +3455,7 @@ func (o PrivateEnvironmentConfigResponsePtrOutput) CloudSqlIpv4CidrBlock() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+// Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
 func (o PrivateEnvironmentConfigResponsePtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *PrivateEnvironmentConfigResponse) *bool {
 		if v == nil {

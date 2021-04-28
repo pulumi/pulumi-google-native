@@ -23,6 +23,8 @@ type ScanConfig struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringOutput `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolOutput `pulumi:"ignoreHttpStatusErrors"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
 	ManagedScan pulumi.BoolOutput `pulumi:"managedScan"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -84,6 +86,8 @@ type scanConfigState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
 	ManagedScan *bool `pulumi:"managedScan"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -111,6 +115,8 @@ type ScanConfigState struct {
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// Whether the scan config is managed by Web Security Scanner, output only.
 	ManagedScan pulumi.BoolPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -142,6 +148,8 @@ type scanConfigArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors *bool `pulumi:"ignoreHttpStatusErrors"`
 	// Whether the scan config is managed by Web Security Scanner, output only.
 	ManagedScan *bool `pulumi:"managedScan"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -172,6 +180,8 @@ type ScanConfigArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
+	// Whether to keep scanning even if most requests return HTTP error codes.
+	IgnoreHttpStatusErrors pulumi.BoolPtrInput
 	// Whether the scan config is managed by Web Security Scanner, output only.
 	ManagedScan pulumi.BoolPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.

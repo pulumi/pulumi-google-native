@@ -25,6 +25,8 @@ type FolderBucket struct {
 	Locked pulumi.BoolOutput `pulumi:"locked"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+	RestrictedFields pulumi.StringArrayOutput `pulumi:"restrictedFields"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
 	// The last update timestamp of the bucket.
@@ -79,6 +81,8 @@ type folderBucketState struct {
 	Locked *bool `pulumi:"locked"`
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
 	Name *string `pulumi:"name"`
+	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+	RestrictedFields []string `pulumi:"restrictedFields"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The last update timestamp of the bucket.
@@ -96,6 +100,8 @@ type FolderBucketState struct {
 	Locked pulumi.BoolPtrInput
 	// The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id" The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.For the location of global it is unspecified where logs are actually stored. Once a bucket has been created, the location can not be changed.
 	Name pulumi.StringPtrInput
+	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+	RestrictedFields pulumi.StringArrayInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntPtrInput
 	// The last update timestamp of the bucket.
@@ -114,6 +120,8 @@ type folderBucketArgs struct {
 	LocationsId string  `pulumi:"locationsId"`
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked *bool `pulumi:"locked"`
+	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+	RestrictedFields []string `pulumi:"restrictedFields"`
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
@@ -127,6 +135,8 @@ type FolderBucketArgs struct {
 	LocationsId pulumi.StringInput
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrInput
+	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+	RestrictedFields pulumi.StringArrayInput
 	// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
 	RetentionDays pulumi.IntPtrInput
 }

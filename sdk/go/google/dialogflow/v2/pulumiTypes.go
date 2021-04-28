@@ -1443,7 +1443,7 @@ func (o GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayOutput) Index(i pu
 
 // Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 type GoogleCloudDialogflowV2FulfillmentGenericWebService struct {
-	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 	IsCloudFunction *bool `pulumi:"isCloudFunction"`
 	// Optional. The password for HTTP Basic authentication.
 	Password *string `pulumi:"password"`
@@ -1468,7 +1468,7 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceInput interface {
 
 // Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 type GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs struct {
-	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 	IsCloudFunction pulumi.BoolPtrInput `pulumi:"isCloudFunction"`
 	// Optional. The password for HTTP Basic authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
@@ -1558,7 +1558,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) ToGoogleCloud
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput)
 }
 
-// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) IsCloudFunction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebService) *bool { return v.IsCloudFunction }).(pulumi.BoolPtrOutput)
 }
@@ -1603,7 +1603,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) Elem() Goo
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput)
 }
 
-// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) IsCloudFunction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebService) *bool {
 		if v == nil {
@@ -1655,7 +1655,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) Username()
 
 // Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse struct {
-	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 	IsCloudFunction bool `pulumi:"isCloudFunction"`
 	// Optional. The password for HTTP Basic authentication.
 	Password string `pulumi:"password"`
@@ -1680,7 +1680,7 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput interface 
 
 // Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
 type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs struct {
-	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+	// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 	IsCloudFunction pulumi.BoolInput `pulumi:"isCloudFunction"`
 	// Optional. The password for HTTP Basic authentication.
 	Password pulumi.StringInput `pulumi:"password"`
@@ -1770,7 +1770,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) ToGoo
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
 }
 
-// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) IsCloudFunction() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) bool { return v.IsCloudFunction }).(pulumi.BoolOutput)
 }
@@ -1817,7 +1817,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) El
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput)
 }
 
-// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) IsCloudFunction() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *bool {
 		if v == nil {

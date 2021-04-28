@@ -29,6 +29,8 @@ type Instance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayOutput `pulumi:"networks"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the instance state, if available.
@@ -89,6 +91,8 @@ type instanceState struct {
 	Name *string `pulumi:"name"`
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks []NetworkConfigResponse `pulumi:"networks"`
+	// Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// The instance state.
 	State *string `pulumi:"state"`
 	// Additional information about the instance state, if available.
@@ -112,6 +116,8 @@ type InstanceState struct {
 	Name pulumi.StringPtrInput
 	// VPC networks to which the instance is connected. For this version, only a single network is supported.
 	Networks NetworkConfigResponseArrayInput
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// The instance state.
 	State pulumi.StringPtrInput
 	// Additional information about the instance state, if available.

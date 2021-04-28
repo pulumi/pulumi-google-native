@@ -1671,7 +1671,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestination struct {
 	Force *bool `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig *SchemaConfig `pulumi:"schemaConfig"`
-	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 	WriteDisposition *string `pulumi:"writeDisposition"`
 }
 
@@ -1694,7 +1694,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationArgs struct {
 	Force pulumi.BoolPtrInput `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigPtrInput `pulumi:"schemaConfig"`
-	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 	WriteDisposition pulumi.StringPtrInput `pulumi:"writeDisposition"`
 }
 
@@ -1791,7 +1791,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) SchemaConfig() Sch
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *SchemaConfig { return v.SchemaConfig }).(SchemaConfigPtrOutput)
 }
 
-// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
 }
@@ -1846,7 +1846,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) SchemaConfig() 
 	}).(SchemaConfigPtrOutput)
 }
 
-// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) *string {
 		if v == nil {
@@ -1864,7 +1864,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationResponse struct {
 	Force bool `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigResponse `pulumi:"schemaConfig"`
-	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 	WriteDisposition string `pulumi:"writeDisposition"`
 }
 
@@ -1887,7 +1887,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationResponseArgs struct {
 	Force pulumi.BoolInput `pulumi:"force"`
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigResponseInput `pulumi:"schemaConfig"`
-	// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 	WriteDisposition pulumi.StringInput `pulumi:"writeDisposition"`
 }
 
@@ -1935,7 +1935,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput) SchemaConf
 	}).(SchemaConfigResponseOutput)
 }
 
-// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
 func (o GoogleCloudHealthcareV1FhirBigQueryDestinationResponseOutput) WriteDisposition() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestinationResponse) string { return v.WriteDisposition }).(pulumi.StringOutput)
 }

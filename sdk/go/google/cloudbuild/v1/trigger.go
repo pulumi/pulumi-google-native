@@ -25,6 +25,8 @@ type Trigger struct {
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringOutput `pulumi:"filename"`
+	// Optional. A Common Expression Language string.
+	Filter pulumi.StringOutput `pulumi:"filter"`
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github GitHubEventsConfigResponseOutput `pulumi:"github"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
@@ -33,6 +35,8 @@ type Trigger struct {
 	IncludedFiles pulumi.StringArrayOutput `pulumi:"includedFiles"`
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+	PubsubConfig PubsubConfigResponseOutput `pulumi:"pubsubConfig"`
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
 	// Tags for annotation of a `BuildTrigger`
@@ -86,6 +90,8 @@ type triggerState struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename *string `pulumi:"filename"`
+	// Optional. A Common Expression Language string.
+	Filter *string `pulumi:"filter"`
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github *GitHubEventsConfigResponse `pulumi:"github"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
@@ -94,6 +100,8 @@ type triggerState struct {
 	IncludedFiles []string `pulumi:"includedFiles"`
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name *string `pulumi:"name"`
+	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+	PubsubConfig *PubsubConfigResponse `pulumi:"pubsubConfig"`
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `BuildTrigger`
@@ -113,6 +121,8 @@ type TriggerState struct {
 	Disabled pulumi.BoolPtrInput
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringPtrInput
+	// Optional. A Common Expression Language string.
+	Filter pulumi.StringPtrInput
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github GitHubEventsConfigResponsePtrInput
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
@@ -121,6 +131,8 @@ type TriggerState struct {
 	IncludedFiles pulumi.StringArrayInput
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name pulumi.StringPtrInput
+	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+	PubsubConfig PubsubConfigResponsePtrInput
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions pulumi.StringMapInput
 	// Tags for annotation of a `BuildTrigger`
@@ -142,6 +154,8 @@ type triggerArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename *string `pulumi:"filename"`
+	// Optional. A Common Expression Language string.
+	Filter *string `pulumi:"filter"`
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github *GitHubEventsConfig `pulumi:"github"`
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
@@ -151,6 +165,8 @@ type triggerArgs struct {
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name      *string `pulumi:"name"`
 	ProjectId string  `pulumi:"projectId"`
+	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+	PubsubConfig *PubsubConfig `pulumi:"pubsubConfig"`
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions map[string]string `pulumi:"substitutions"`
 	// Tags for annotation of a `BuildTrigger`
@@ -170,6 +186,8 @@ type TriggerArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
 	Filename pulumi.StringPtrInput
+	// Optional. A Common Expression Language string.
+	Filter pulumi.StringPtrInput
 	// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
 	Github GitHubEventsConfigPtrInput
 	// ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
@@ -179,6 +197,8 @@ type TriggerArgs struct {
 	// User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
 	Name      pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
+	// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+	PubsubConfig PubsubConfigPtrInput
 	// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
 	Substitutions pulumi.StringMapInput
 	// Tags for annotation of a `BuildTrigger`
