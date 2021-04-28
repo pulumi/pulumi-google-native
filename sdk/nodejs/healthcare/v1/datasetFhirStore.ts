@@ -36,6 +36,10 @@ export class DatasetFhirStore extends pulumi.CustomResource {
     }
 
     /**
+     * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+     */
+    public readonly defaultSearchHandlingStrict!: pulumi.Output<boolean>;
+    /**
      * Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
      */
     public readonly disableReferentialIntegrity!: pulumi.Output<boolean>;
@@ -92,6 +96,7 @@ export class DatasetFhirStore extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["defaultSearchHandlingStrict"] = args ? args.defaultSearchHandlingStrict : undefined;
             inputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             inputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
             inputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
@@ -104,6 +109,7 @@ export class DatasetFhirStore extends pulumi.CustomResource {
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
+            inputs["defaultSearchHandlingStrict"] = undefined /*out*/;
             inputs["disableReferentialIntegrity"] = undefined /*out*/;
             inputs["disableResourceVersioning"] = undefined /*out*/;
             inputs["enableUpdateCreate"] = undefined /*out*/;
@@ -125,6 +131,10 @@ export class DatasetFhirStore extends pulumi.CustomResource {
  */
 export interface DatasetFhirStoreArgs {
     readonly datasetsId: pulumi.Input<string>;
+    /**
+     * If true, overrides the default search behavior for this FHIR store to `handling=strict` which returns an error for unrecognized search parameters. If false, uses the FHIR specification default `handling=lenient` which ignores unrecognized search parameters. The handling can always be changed from the default on an individual API call by setting the HTTP header `Prefer: handling=strict` or `Prefer: handling=lenient`.
+     */
+    readonly defaultSearchHandlingStrict?: pulumi.Input<boolean>;
     /**
      * Immutable. Whether to disable referential integrity in this FHIR store. This field is immutable after FHIR store creation. The default value is false, meaning that the API enforces referential integrity and fails the requests that result in inconsistent state in the FHIR store. When this field is set to true, the API skips referential integrity checks. Consequently, operations that rely on references, such as GetPatientEverything, do not return all the results if broken references exist.
      */

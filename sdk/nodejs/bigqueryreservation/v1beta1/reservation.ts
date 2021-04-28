@@ -43,10 +43,6 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly ignoreIdleSlots!: pulumi.Output<boolean>;
     /**
-     * Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-     */
-    public readonly maxConcurrency!: pulumi.Output<string>;
-    /**
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */
     public readonly name!: pulumi.Output<string>;
@@ -81,7 +77,6 @@ export class Reservation extends pulumi.CustomResource {
             }
             inputs["ignoreIdleSlots"] = args ? args.ignoreIdleSlots : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["maxConcurrency"] = args ? args.maxConcurrency : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["reservationsId"] = args ? args.reservationsId : undefined;
@@ -91,7 +86,6 @@ export class Reservation extends pulumi.CustomResource {
         } else {
             inputs["creationTime"] = undefined /*out*/;
             inputs["ignoreIdleSlots"] = undefined /*out*/;
-            inputs["maxConcurrency"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["slotCapacity"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -112,10 +106,6 @@ export interface ReservationArgs {
      */
     readonly ignoreIdleSlots?: pulumi.Input<boolean>;
     readonly locationsId: pulumi.Input<string>;
-    /**
-     * Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-     */
-    readonly maxConcurrency?: pulumi.Input<string>;
     /**
      * The resource name of the reservation, e.g., `projects/*&#47;locations/*&#47;reservations/team1-prod`.
      */

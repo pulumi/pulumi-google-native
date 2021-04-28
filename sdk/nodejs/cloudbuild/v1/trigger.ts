@@ -56,6 +56,10 @@ export class Trigger extends pulumi.CustomResource {
      */
     public readonly filename!: pulumi.Output<string>;
     /**
+     * Optional. A Common Expression Language string.
+     */
+    public readonly filter!: pulumi.Output<string>;
+    /**
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
     public readonly github!: pulumi.Output<outputs.cloudbuild.v1.GitHubEventsConfigResponse>;
@@ -71,6 +75,10 @@ export class Trigger extends pulumi.CustomResource {
      * User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+     */
+    public readonly pubsubConfig!: pulumi.Output<outputs.cloudbuild.v1.PubsubConfigResponse>;
     /**
      * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
      */
@@ -105,11 +113,13 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["filename"] = args ? args.filename : undefined;
+            inputs["filter"] = args ? args.filter : undefined;
             inputs["github"] = args ? args.github : undefined;
             inputs["ignoredFiles"] = args ? args.ignoredFiles : undefined;
             inputs["includedFiles"] = args ? args.includedFiles : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["pubsubConfig"] = args ? args.pubsubConfig : undefined;
             inputs["substitutions"] = args ? args.substitutions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
@@ -121,10 +131,12 @@ export class Trigger extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["disabled"] = undefined /*out*/;
             inputs["filename"] = undefined /*out*/;
+            inputs["filter"] = undefined /*out*/;
             inputs["github"] = undefined /*out*/;
             inputs["ignoredFiles"] = undefined /*out*/;
             inputs["includedFiles"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["pubsubConfig"] = undefined /*out*/;
             inputs["substitutions"] = undefined /*out*/;
             inputs["tags"] = undefined /*out*/;
             inputs["triggerTemplate"] = undefined /*out*/;
@@ -157,6 +169,10 @@ export interface TriggerArgs {
      */
     readonly filename?: pulumi.Input<string>;
     /**
+     * Optional. A Common Expression Language string.
+     */
+    readonly filter?: pulumi.Input<string>;
+    /**
      * GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
      */
     readonly github?: pulumi.Input<inputs.cloudbuild.v1.GitHubEventsConfigArgs>;
@@ -173,6 +189,10 @@ export interface TriggerArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectId: pulumi.Input<string>;
+    /**
+     * Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+     */
+    readonly pubsubConfig?: pulumi.Input<inputs.cloudbuild.v1.PubsubConfigArgs>;
     /**
      * Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
      */

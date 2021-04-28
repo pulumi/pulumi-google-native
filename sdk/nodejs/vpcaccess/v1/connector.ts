@@ -44,9 +44,21 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
     /**
+     * Machine type of VM Instance underlying connector. Default is e2-micro
+     */
+    public readonly machineType!: pulumi.Output<string>;
+    /**
+     * Maximum value of instances in autoscaling group underlying the connector.
+     */
+    public readonly maxInstances!: pulumi.Output<number>;
+    /**
      * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
      */
     public readonly maxThroughput!: pulumi.Output<number>;
+    /**
+     * Minimum value of instances in autoscaling group underlying the connector.
+     */
+    public readonly minInstances!: pulumi.Output<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */
@@ -91,7 +103,10 @@ export class Connector extends pulumi.CustomResource {
             inputs["connectorsId"] = args ? args.connectorsId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["machineType"] = args ? args.machineType : undefined;
+            inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
+            inputs["minInstances"] = args ? args.minInstances : undefined;
             inputs["minThroughput"] = args ? args.minThroughput : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -102,7 +117,10 @@ export class Connector extends pulumi.CustomResource {
         } else {
             inputs["connectedProjects"] = undefined /*out*/;
             inputs["ipCidrRange"] = undefined /*out*/;
+            inputs["machineType"] = undefined /*out*/;
+            inputs["maxInstances"] = undefined /*out*/;
             inputs["maxThroughput"] = undefined /*out*/;
+            inputs["minInstances"] = undefined /*out*/;
             inputs["minThroughput"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["network"] = undefined /*out*/;
@@ -127,9 +145,21 @@ export interface ConnectorArgs {
     readonly ipCidrRange?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
+     * Machine type of VM Instance underlying connector. Default is e2-micro
+     */
+    readonly machineType?: pulumi.Input<string>;
+    /**
+     * Maximum value of instances in autoscaling group underlying the connector.
+     */
+    readonly maxInstances?: pulumi.Input<number>;
+    /**
      * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
      */
     readonly maxThroughput?: pulumi.Input<number>;
+    /**
+     * Minimum value of instances in autoscaling group underlying the connector.
+     */
+    readonly minInstances?: pulumi.Input<number>;
     /**
      * Minimum throughput of the connector in Mbps. Default and min is 200.
      */

@@ -55,6 +55,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+     */
+    public readonly restrictedFields!: pulumi.Output<string[]>;
+    /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
     public readonly retentionDays!: pulumi.Output<number>;
@@ -88,6 +92,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["locked"] = args ? args.locked : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["restrictedFields"] = args ? args.restrictedFields : undefined;
             inputs["retentionDays"] = args ? args.retentionDays : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["lifecycleState"] = undefined /*out*/;
@@ -99,6 +104,7 @@ export class Bucket extends pulumi.CustomResource {
             inputs["lifecycleState"] = undefined /*out*/;
             inputs["locked"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["restrictedFields"] = undefined /*out*/;
             inputs["retentionDays"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
@@ -124,6 +130,10 @@ export interface BucketArgs {
      */
     readonly locked?: pulumi.Input<boolean>;
     readonly projectsId: pulumi.Input<string>;
+    /**
+     * Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+     */
+    readonly restrictedFields?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
      */
