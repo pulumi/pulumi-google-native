@@ -429,10 +429,8 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 		return nil, err
 	}
 
-	// Extract old inputs from the `__inputs` field of the old state.
-	inputs := parseCheckpointObject(oldState)
-
-	resp, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
+	// Read the current state of the resource from the API.
+	newState, err := p.client.sendRequestWithTimeout("GET", uri, nil, 0)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -441,16 +439,44 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
+	// Extract old inputs from the `__inputs` field of the old state.
+	inputs := parseCheckpointObject(oldState)
+	newStateProps := resource.NewPropertyMapFromMap(newState)
+	if inputs == nil {
+		return nil, status.Error(codes.Unimplemented, "Import is not yet implemented")
+	} else {
+		// It's hard to infer the changes in the inputs shape based on the outputs without false positives.
+		// The current approach is complicated but it's aimed to minimize the noise while refreshing:
+		// 0. We have "old" inputs and outputs before refresh and "new" outputs read from API.
+		// 1. Project old outputs to their corresponding input shape (exclude read-only properties).
+		oldInputProjection := getInputsFromState(res, oldState)
+		// 2. Project new outputs to their corresponding input shape (exclude read-only properties).
+		newInputProjection := getInputsFromState(res, newStateProps)
+		// 3. Calculate the difference between two projections. This should give us actual significant changes
+		// that happened in Google Cloud between the last resource update and its current state.
+		diff := oldInputProjection.Diff(newInputProjection)
+		// 4. Apply this difference to the actual inputs (not a projection) that we have in state.
+		inputs = applyDiff(inputs, diff)
+	}
+
 	// Store both outputs and inputs into the state checkpoint.
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, resp),
+		checkpointObject(inputs, newState),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
 		return nil, err
 	}
 
-	return &rpc.ReadResponse{Id: id, Properties: checkpoint}, nil
+	inputsRecord, err := plugin.MarshalProperties(
+		inputs,
+		plugin.MarshalOptions{Label: fmt.Sprintf("%s.inputs", label), KeepUnknowns: true, SkipNulls: true},
+	)
+	if err != nil {
+		return nil, err
+	}
+
+	return &rpc.ReadResponse{Id: id, Properties: checkpoint, Inputs: inputsRecord}, nil
 }
 
 // Update updates an existing resource with new values.
