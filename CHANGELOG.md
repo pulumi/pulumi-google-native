@@ -3,7 +3,8 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Fix refresh to re-populate inputs and provide accurate diff and drift detection
+  [#65](https://github.com/pulumi/pulumi-google-native/issues/65)
 
 ---
 
