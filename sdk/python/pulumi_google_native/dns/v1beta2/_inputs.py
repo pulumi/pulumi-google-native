@@ -16,6 +16,7 @@ __all__ = [
     'ManagedZonePeeringConfigArgs',
     'ManagedZonePeeringConfigTargetNetworkArgs',
     'ManagedZonePrivateVisibilityConfigArgs',
+    'ManagedZonePrivateVisibilityConfigGKEClusterArgs',
     'ManagedZonePrivateVisibilityConfigNetworkArgs',
     'ManagedZoneReverseLookupConfigArgs',
     'ManagedZoneServiceDirectoryConfigArgs',
@@ -24,6 +25,7 @@ __all__ = [
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
     'PolicyNetworkArgs',
     'ResourceRecordSetArgs',
+    'ResponsePolicyGKEClusterArgs',
     'ResponsePolicyNetworkArgs',
     'ResponsePolicyRuleLocalDataArgs',
 ]
@@ -354,15 +356,31 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 @pulumi.input_type
 class ManagedZonePrivateVisibilityConfigArgs:
     def __init__(__self__, *,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGKEClusterArgs']]]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGKEClusterArgs']]] gke_clusters: The list of Google Kubernetes Engine clusters that can see this zone.
         :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone.
         """
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGKEClusterArgs']]]]:
+        """
+        The list of Google Kubernetes Engine clusters that can see this zone.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigGKEClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
 
     @property
     @pulumi.getter
@@ -384,6 +402,41 @@ class ManagedZonePrivateVisibilityConfigArgs:
     @networks.setter
     def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]):
         pulumi.set(self, "networks", value)
+
+
+@pulumi.input_type
+class ManagedZonePrivateVisibilityConfigGKEClusterArgs:
+    def __init__(__self__, *,
+                 gke_cluster_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] gke_cluster_name: The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        if gke_cluster_name is not None:
+            pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @gke_cluster_name.setter
+    def gke_cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
 
 
 @pulumi.input_type
@@ -760,6 +813,41 @@ class ResourceRecordSetArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ResponsePolicyGKEClusterArgs:
+    def __init__(__self__, *,
+                 gke_cluster_name: Optional[pulumi.Input[str]] = None,
+                 kind: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] gke_cluster_name: The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        if gke_cluster_name is not None:
+            pulumi.set(__self__, "gke_cluster_name", gke_cluster_name)
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="gkeClusterName")
+    def gke_cluster_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+        """
+        return pulumi.get(self, "gke_cluster_name")
+
+    @gke_cluster_name.setter
+    def gke_cluster_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gke_cluster_name", value)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
 
 
 @pulumi.input_type

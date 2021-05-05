@@ -1787,7 +1787,9 @@ func (o ManagedZonePeeringConfigTargetNetworkResponsePtrOutput) NetworkUrl() pul
 }
 
 type ManagedZonePrivateVisibilityConfig struct {
-	Kind *string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters []ManagedZonePrivateVisibilityConfigGKECluster `pulumi:"gkeClusters"`
+	Kind        *string                                        `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks []ManagedZonePrivateVisibilityConfigNetwork `pulumi:"networks"`
 }
@@ -1804,7 +1806,9 @@ type ManagedZonePrivateVisibilityConfigInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigArgs struct {
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters ManagedZonePrivateVisibilityConfigGKEClusterArrayInput `pulumi:"gkeClusters"`
+	Kind        pulumi.StringPtrInput                                  `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks ManagedZonePrivateVisibilityConfigNetworkArrayInput `pulumi:"networks"`
 }
@@ -1885,6 +1889,14 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
+
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigGKECluster {
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
 func (o ManagedZonePrivateVisibilityConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -1914,6 +1926,16 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVi
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) ManagedZonePrivateVisibilityConfig { return *v }).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigPtrOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigGKECluster {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) *string {
 		if v == nil {
@@ -1931,6 +1953,212 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePriva
 		}
 		return v.Networks
 	}).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKECluster struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName *string `pulumi:"gkeClusterName"`
+	Kind           *string `pulumi:"kind"`
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterArgs and ManagedZonePrivateVisibilityConfigGKEClusterOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigGKEClusterArgs{...}
+type ManagedZonePrivateVisibilityConfigGKEClusterInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArgs struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName pulumi.StringPtrInput `pulumi:"gkeClusterName"`
+	Kind           pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArgs) ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArgs) ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterOutput)
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterArray and ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterArrayInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigGKEClusterArray{ ManagedZonePrivateVisibilityConfigGKEClusterArgs{...} }
+type ManagedZonePrivateVisibilityConfigGKEClusterArrayInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArray []ManagedZonePrivateVisibilityConfigGKEClusterInput
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArray) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArray) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) GkeClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKECluster) *string { return v.GkeClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKECluster) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigGKECluster {
+		return vs[0].([]ManagedZonePrivateVisibilityConfigGKECluster)[vs[1].(int)]
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponse struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName string `pulumi:"gkeClusterName"`
+	Kind           string `pulumi:"kind"`
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterResponseInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs and ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterResponseInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs{...}
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName pulumi.StringInput `pulumi:"gkeClusterName"`
+	Kind           pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput)
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterResponseArray and ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayInput` via:
+//
+//          ManagedZonePrivateVisibilityConfigGKEClusterResponseArray{ ManagedZonePrivateVisibilityConfigGKEClusterResponseArgs{...} }
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseArray []ManagedZonePrivateVisibilityConfigGKEClusterResponseInput
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterResponseArray) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterResponseArray) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) GkeClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKEClusterResponse) string { return v.GkeClusterName }).(pulumi.StringOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKEClusterResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+		return vs[0].([]ManagedZonePrivateVisibilityConfigGKEClusterResponse)[vs[1].(int)]
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput)
 }
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
@@ -2140,7 +2368,9 @@ func (o ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) Index(i pu
 }
 
 type ManagedZonePrivateVisibilityConfigResponse struct {
-	Kind string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters []ManagedZonePrivateVisibilityConfigGKEClusterResponse `pulumi:"gkeClusters"`
+	Kind        string                                                 `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks []ManagedZonePrivateVisibilityConfigNetworkResponse `pulumi:"networks"`
 }
@@ -2157,7 +2387,9 @@ type ManagedZonePrivateVisibilityConfigResponseInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigResponseArgs struct {
-	Kind pulumi.StringInput `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayInput `pulumi:"gkeClusters"`
+	Kind        pulumi.StringInput                                             `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks ManagedZonePrivateVisibilityConfigNetworkResponseArrayInput `pulumi:"networks"`
 }
@@ -2238,6 +2470,14 @@ func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVi
 		return &v
 	}).(ManagedZonePrivateVisibilityConfigResponsePtrOutput)
 }
+
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) []ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput)
+}
+
 func (o ManagedZonePrivateVisibilityConfigResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -2267,6 +2507,16 @@ func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Elem() ManagedZoneP
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) ManagedZonePrivateVisibilityConfigResponse {
 		return *v
 	}).(ManagedZonePrivateVisibilityConfigResponseOutput)
+}
+
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfigResponse) []ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput)
 }
 
 func (o ManagedZonePrivateVisibilityConfigResponsePtrOutput) Kind() pulumi.StringPtrOutput {
@@ -4204,6 +4454,212 @@ func (o ResourceRecordSetResponseArrayOutput) Index(i pulumi.IntInput) ResourceR
 	}).(ResourceRecordSetResponseOutput)
 }
 
+type ResponsePolicyGKECluster struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName *string `pulumi:"gkeClusterName"`
+	Kind           *string `pulumi:"kind"`
+}
+
+// ResponsePolicyGKEClusterInput is an input type that accepts ResponsePolicyGKEClusterArgs and ResponsePolicyGKEClusterOutput values.
+// You can construct a concrete instance of `ResponsePolicyGKEClusterInput` via:
+//
+//          ResponsePolicyGKEClusterArgs{...}
+type ResponsePolicyGKEClusterInput interface {
+	pulumi.Input
+
+	ToResponsePolicyGKEClusterOutput() ResponsePolicyGKEClusterOutput
+	ToResponsePolicyGKEClusterOutputWithContext(context.Context) ResponsePolicyGKEClusterOutput
+}
+
+type ResponsePolicyGKEClusterArgs struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName pulumi.StringPtrInput `pulumi:"gkeClusterName"`
+	Kind           pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (ResponsePolicyGKEClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyGKECluster)(nil)).Elem()
+}
+
+func (i ResponsePolicyGKEClusterArgs) ToResponsePolicyGKEClusterOutput() ResponsePolicyGKEClusterOutput {
+	return i.ToResponsePolicyGKEClusterOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyGKEClusterArgs) ToResponsePolicyGKEClusterOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGKEClusterOutput)
+}
+
+// ResponsePolicyGKEClusterArrayInput is an input type that accepts ResponsePolicyGKEClusterArray and ResponsePolicyGKEClusterArrayOutput values.
+// You can construct a concrete instance of `ResponsePolicyGKEClusterArrayInput` via:
+//
+//          ResponsePolicyGKEClusterArray{ ResponsePolicyGKEClusterArgs{...} }
+type ResponsePolicyGKEClusterArrayInput interface {
+	pulumi.Input
+
+	ToResponsePolicyGKEClusterArrayOutput() ResponsePolicyGKEClusterArrayOutput
+	ToResponsePolicyGKEClusterArrayOutputWithContext(context.Context) ResponsePolicyGKEClusterArrayOutput
+}
+
+type ResponsePolicyGKEClusterArray []ResponsePolicyGKEClusterInput
+
+func (ResponsePolicyGKEClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyGKECluster)(nil)).Elem()
+}
+
+func (i ResponsePolicyGKEClusterArray) ToResponsePolicyGKEClusterArrayOutput() ResponsePolicyGKEClusterArrayOutput {
+	return i.ToResponsePolicyGKEClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyGKEClusterArray) ToResponsePolicyGKEClusterArrayOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGKEClusterArrayOutput)
+}
+
+type ResponsePolicyGKEClusterOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyGKECluster)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterOutput) ToResponsePolicyGKEClusterOutput() ResponsePolicyGKEClusterOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterOutput) ToResponsePolicyGKEClusterOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ResponsePolicyGKEClusterOutput) GkeClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResponsePolicyGKECluster) *string { return v.GkeClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o ResponsePolicyGKEClusterOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ResponsePolicyGKECluster) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type ResponsePolicyGKEClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyGKECluster)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterArrayOutput) ToResponsePolicyGKEClusterArrayOutput() ResponsePolicyGKEClusterArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterArrayOutput) ToResponsePolicyGKEClusterArrayOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterArrayOutput) Index(i pulumi.IntInput) ResponsePolicyGKEClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyGKECluster {
+		return vs[0].([]ResponsePolicyGKECluster)[vs[1].(int)]
+	}).(ResponsePolicyGKEClusterOutput)
+}
+
+type ResponsePolicyGKEClusterResponse struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName string `pulumi:"gkeClusterName"`
+	Kind           string `pulumi:"kind"`
+}
+
+// ResponsePolicyGKEClusterResponseInput is an input type that accepts ResponsePolicyGKEClusterResponseArgs and ResponsePolicyGKEClusterResponseOutput values.
+// You can construct a concrete instance of `ResponsePolicyGKEClusterResponseInput` via:
+//
+//          ResponsePolicyGKEClusterResponseArgs{...}
+type ResponsePolicyGKEClusterResponseInput interface {
+	pulumi.Input
+
+	ToResponsePolicyGKEClusterResponseOutput() ResponsePolicyGKEClusterResponseOutput
+	ToResponsePolicyGKEClusterResponseOutputWithContext(context.Context) ResponsePolicyGKEClusterResponseOutput
+}
+
+type ResponsePolicyGKEClusterResponseArgs struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName pulumi.StringInput `pulumi:"gkeClusterName"`
+	Kind           pulumi.StringInput `pulumi:"kind"`
+}
+
+func (ResponsePolicyGKEClusterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (i ResponsePolicyGKEClusterResponseArgs) ToResponsePolicyGKEClusterResponseOutput() ResponsePolicyGKEClusterResponseOutput {
+	return i.ToResponsePolicyGKEClusterResponseOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyGKEClusterResponseArgs) ToResponsePolicyGKEClusterResponseOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGKEClusterResponseOutput)
+}
+
+// ResponsePolicyGKEClusterResponseArrayInput is an input type that accepts ResponsePolicyGKEClusterResponseArray and ResponsePolicyGKEClusterResponseArrayOutput values.
+// You can construct a concrete instance of `ResponsePolicyGKEClusterResponseArrayInput` via:
+//
+//          ResponsePolicyGKEClusterResponseArray{ ResponsePolicyGKEClusterResponseArgs{...} }
+type ResponsePolicyGKEClusterResponseArrayInput interface {
+	pulumi.Input
+
+	ToResponsePolicyGKEClusterResponseArrayOutput() ResponsePolicyGKEClusterResponseArrayOutput
+	ToResponsePolicyGKEClusterResponseArrayOutputWithContext(context.Context) ResponsePolicyGKEClusterResponseArrayOutput
+}
+
+type ResponsePolicyGKEClusterResponseArray []ResponsePolicyGKEClusterResponseInput
+
+func (ResponsePolicyGKEClusterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (i ResponsePolicyGKEClusterResponseArray) ToResponsePolicyGKEClusterResponseArrayOutput() ResponsePolicyGKEClusterResponseArrayOutput {
+	return i.ToResponsePolicyGKEClusterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ResponsePolicyGKEClusterResponseArray) ToResponsePolicyGKEClusterResponseArrayOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ResponsePolicyGKEClusterResponseArrayOutput)
+}
+
+type ResponsePolicyGKEClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) ToResponsePolicyGKEClusterResponseOutput() ResponsePolicyGKEClusterResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) ToResponsePolicyGKEClusterResponseOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ResponsePolicyGKEClusterResponseOutput) GkeClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyGKEClusterResponse) string { return v.GkeClusterName }).(pulumi.StringOutput)
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyGKEClusterResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ResponsePolicyGKEClusterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) ToResponsePolicyGKEClusterResponseArrayOutput() ResponsePolicyGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) ToResponsePolicyGKEClusterResponseArrayOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) Index(i pulumi.IntInput) ResponsePolicyGKEClusterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyGKEClusterResponse {
+		return vs[0].([]ResponsePolicyGKEClusterResponse)[vs[1].(int)]
+	}).(ResponsePolicyGKEClusterResponseOutput)
+}
+
 type ResponsePolicyNetwork struct {
 	Kind *string `pulumi:"kind"`
 	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
@@ -4699,6 +5155,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkResponsePtrOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkResponseOutput{})
@@ -4733,6 +5193,10 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRecordSetArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterResponseOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkResponseOutput{})

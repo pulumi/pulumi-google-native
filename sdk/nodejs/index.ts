@@ -11,6 +11,7 @@ export * from "./provider";
 import * as accesscontextmanager from "./accesscontextmanager";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
+import * as apikeys from "./apikeys";
 import * as appengine from "./appengine";
 import * as artifactregistry from "./artifactregistry";
 import * as assuredworkloads from "./assuredworkloads";
@@ -50,6 +51,7 @@ import * as dialogflow from "./dialogflow";
 import * as dlp from "./dlp";
 import * as dns from "./dns";
 import * as domains from "./domains";
+import * as essentialcontacts from "./essentialcontacts";
 import * as eventarc from "./eventarc";
 import * as file from "./file";
 import * as firebase from "./firebase";
@@ -111,6 +113,7 @@ export {
     accesscontextmanager,
     apigateway,
     apigee,
+    apikeys,
     appengine,
     artifactregistry,
     assuredworkloads,
@@ -150,6 +153,7 @@ export {
     dlp,
     dns,
     domains,
+    essentialcontacts,
     eventarc,
     file,
     firebase,

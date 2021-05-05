@@ -52,6 +52,10 @@ export class ScanConfig extends pulumi.CustomResource {
      */
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string>;
     /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    public readonly ignoreHttpStatusErrors!: pulumi.Output<boolean>;
+    /**
      * Whether the scan config is managed by Web Security Scanner, output only.
      */
     public readonly managedScan!: pulumi.Output<boolean>;
@@ -105,6 +109,7 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["exportToSecurityCommandCenter"] = args ? args.exportToSecurityCommandCenter : undefined;
+            inputs["ignoreHttpStatusErrors"] = args ? args.ignoreHttpStatusErrors : undefined;
             inputs["managedScan"] = args ? args.managedScan : undefined;
             inputs["maxQps"] = args ? args.maxQps : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -120,6 +125,7 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["blacklistPatterns"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["exportToSecurityCommandCenter"] = undefined /*out*/;
+            inputs["ignoreHttpStatusErrors"] = undefined /*out*/;
             inputs["managedScan"] = undefined /*out*/;
             inputs["maxQps"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -156,6 +162,10 @@ export interface ScanConfigArgs {
      * Controls export of scan configurations and results to Security Command Center.
      */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    readonly ignoreHttpStatusErrors?: pulumi.Input<boolean>;
     /**
      * Whether the scan config is managed by Web Security Scanner, output only.
      */

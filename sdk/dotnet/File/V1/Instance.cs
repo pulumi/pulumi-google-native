@@ -58,6 +58,12 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<ImmutableArray<Outputs.NetworkConfigResponse>> Networks { get; private set; } = null!;
 
         /// <summary>
+        /// Reserved for future use.
+        /// </summary>
+        [Output("satisfiesPzs")]
+        public Output<bool> SatisfiesPzs { get; private set; } = null!;
+
+        /// <summary>
         /// The instance state.
         /// </summary>
         [Output("state")]

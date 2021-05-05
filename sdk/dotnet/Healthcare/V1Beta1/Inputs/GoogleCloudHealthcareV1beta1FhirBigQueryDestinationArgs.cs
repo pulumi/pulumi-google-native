@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public Input<Inputs.SchemaConfigArgs>? SchemaConfig { get; set; }
 
         /// <summary>
-        /// Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        /// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         /// </summary>
         [Input("writeDisposition")]
         public Input<string>? WriteDisposition { get; set; }

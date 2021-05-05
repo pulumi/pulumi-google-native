@@ -64,6 +64,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly networks!: pulumi.Output<outputs.file.v1.NetworkConfigResponse[]>;
     /**
+     * Reserved for future use.
+     */
+    public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
+    /**
      * The instance state.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -107,6 +111,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["tier"] = args ? args.tier : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["statusMessage"] = undefined /*out*/;
         } else {
@@ -117,6 +122,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["networks"] = undefined /*out*/;
+            inputs["satisfiesPzs"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["statusMessage"] = undefined /*out*/;
             inputs["tier"] = undefined /*out*/;

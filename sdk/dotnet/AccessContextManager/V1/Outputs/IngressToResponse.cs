@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Outputs
     public sealed class IngressToResponse
     {
         /// <summary>
-        /// A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+        /// A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApiOperationResponse> Operations;
         /// <summary>
-        /// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+        /// A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
         /// </summary>
         public readonly ImmutableArray<string> Resources;
 

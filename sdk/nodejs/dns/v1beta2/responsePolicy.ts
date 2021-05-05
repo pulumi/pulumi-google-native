@@ -39,6 +39,10 @@ export class ResponsePolicy extends pulumi.CustomResource {
      * User-provided description for this Response Policy.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The list of Google Kubernetes Engine clusters to which this response policy is applied.
+     */
+    public readonly gkeClusters!: pulumi.Output<outputs.dns.v1beta2.ResponsePolicyGKEClusterResponse[]>;
     public readonly kind!: pulumi.Output<string>;
     /**
      * List of network names specifying networks to which this policy is applied.
@@ -67,6 +71,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'responsePolicy'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["gkeClusters"] = args ? args.gkeClusters : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["networks"] = args ? args.networks : undefined;
@@ -75,6 +80,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             inputs["responsePolicyName"] = args ? args.responsePolicyName : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
+            inputs["gkeClusters"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["networks"] = undefined /*out*/;
             inputs["responsePolicyName"] = undefined /*out*/;
@@ -94,6 +100,10 @@ export interface ResponsePolicyArgs {
      * User-provided description for this Response Policy.
      */
     readonly description?: pulumi.Input<string>;
+    /**
+     * The list of Google Kubernetes Engine clusters to which this response policy is applied.
+     */
+    readonly gkeClusters?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResponsePolicyGKEClusterArgs>[]>;
     /**
      * Unique identifier for the resource; defined by the server (output only).
      */

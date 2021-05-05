@@ -1542,6 +1542,30 @@
                 "apicategoriesId"
             ]
         },
+        "google-native:apikeys/v2:Key": {
+            "baseUrl": "https://apikeys.googleapis.com/",
+            "createPath": "v2/projects/{projectsId}/locations/{locationsId}/keys",
+            "createParams": [
+                "projectsId",
+                "locationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "displayName": {},
+                "restrictions": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "displayName": {},
+                "restrictions": {}
+            },
+            "idPath": "v2/projects/{projectsId}/locations/{locationsId}/keys/{keysId}",
+            "idParams": [
+                "projectsId",
+                "locationsId",
+                "keysId"
+            ]
+        },
         "google-native:appengine/v1:App": {
             "baseUrl": "https://appengine.googleapis.com/",
             "createPath": "v1/apps",
@@ -2798,14 +2822,12 @@
             "createVerb": "POST",
             "createProperties": {
                 "ignoreIdleSlots": {},
-                "maxConcurrency": {},
                 "name": {},
                 "slotCapacity": {}
             },
             "updateVerb": "PATCH",
             "updateProperties": {
                 "ignoreIdleSlots": {},
-                "maxConcurrency": {},
                 "name": {},
                 "slotCapacity": {}
             },
@@ -3557,10 +3579,12 @@
                 "description": {},
                 "disabled": {},
                 "filename": {},
+                "filter": {},
                 "github": {},
                 "ignoredFiles": {},
                 "includedFiles": {},
                 "name": {},
+                "pubsubConfig": {},
                 "substitutions": {},
                 "tags": {},
                 "triggerTemplate": {}
@@ -3571,10 +3595,12 @@
                 "description": {},
                 "disabled": {},
                 "filename": {},
+                "filter": {},
                 "github": {},
                 "ignoredFiles": {},
                 "includedFiles": {},
                 "name": {},
+                "pubsubConfig": {},
                 "substitutions": {},
                 "tags": {},
                 "triggerTemplate": {}
@@ -24420,6 +24446,7 @@
             "createVerb": "POST",
             "createProperties": {
                 "description": {},
+                "gkeClusters": {},
                 "id": {},
                 "kind": {},
                 "networks": {},
@@ -24428,6 +24455,7 @@
             "updateVerb": "PUT",
             "updateProperties": {
                 "description": {},
+                "gkeClusters": {},
                 "id": {},
                 "kind": {},
                 "networks": {},
@@ -24652,6 +24680,96 @@
                 "registrationsId"
             ],
             "noDelete": true
+        },
+        "google-native:essentialcontacts/v1:Contact": {
+            "baseUrl": "https://essentialcontacts.googleapis.com/",
+            "createPath": "v1/projects/{projectsId}/contacts",
+            "createParams": [
+                "projectsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "idPath": "v1/projects/{projectsId}/contacts/{contactsId}",
+            "idParams": [
+                "projectsId",
+                "contactsId"
+            ]
+        },
+        "google-native:essentialcontacts/v1:FolderContact": {
+            "baseUrl": "https://essentialcontacts.googleapis.com/",
+            "createPath": "v1/folders/{foldersId}/contacts",
+            "createParams": [
+                "foldersId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "idPath": "v1/folders/{foldersId}/contacts/{contactsId}",
+            "idParams": [
+                "foldersId",
+                "contactsId"
+            ]
+        },
+        "google-native:essentialcontacts/v1:OrganizationContact": {
+            "baseUrl": "https://essentialcontacts.googleapis.com/",
+            "createPath": "v1/organizations/{organizationsId}/contacts",
+            "createParams": [
+                "organizationsId"
+            ],
+            "createVerb": "POST",
+            "createProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "updateVerb": "PATCH",
+            "updateProperties": {
+                "email": {},
+                "languageTag": {},
+                "name": {},
+                "notificationCategorySubscriptions": {},
+                "validateTime": {},
+                "validationState": {}
+            },
+            "idPath": "v1/organizations/{organizationsId}/contacts/{contactsId}",
+            "idParams": [
+                "organizationsId",
+                "contactsId"
+            ]
         },
         "google-native:eventarc/v1:Trigger": {
             "baseUrl": "https://eventarc.googleapis.com/",
@@ -26443,6 +26561,7 @@
             ],
             "createVerb": "POST",
             "createProperties": {
+                "defaultSearchHandlingStrict": {},
                 "disableReferentialIntegrity": {},
                 "disableResourceVersioning": {},
                 "enableUpdateCreate": {},
@@ -26454,6 +26573,7 @@
             },
             "updateVerb": "PATCH",
             "updateProperties": {
+                "defaultSearchHandlingStrict": {},
                 "disableReferentialIntegrity": {},
                 "disableResourceVersioning": {},
                 "enableUpdateCreate": {},
@@ -28337,12 +28457,14 @@
             "createProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "updateVerb": "PATCH",
             "updateProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "idPath": "v2/projects/{projectsId}/locations/{locationsId}/buckets/{bucketsId}",
@@ -28417,12 +28539,14 @@
             "createProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "updateVerb": "PATCH",
             "updateProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "idPath": "v2/folders/{foldersId}/locations/{locationsId}/buckets/{bucketsId}",
@@ -28563,12 +28687,14 @@
             "createProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "updateVerb": "PATCH",
             "updateProperties": {
                 "description": {},
                 "locked": {},
+                "restrictedFields": {},
                 "retentionDays": {}
             },
             "idPath": "v2/organizations/{organizationsId}/locations/{locationsId}/buckets/{bucketsId}",
@@ -33365,6 +33491,7 @@
                 "maxDiskSize": {},
                 "name": {},
                 "onPremisesConfiguration": {},
+                "outOfDiskReport": {},
                 "project": {},
                 "region": {},
                 "replicaConfiguration": {},
@@ -33399,6 +33526,7 @@
                 "maxDiskSize": {},
                 "name": {},
                 "onPremisesConfiguration": {},
+                "outOfDiskReport": {},
                 "project": {},
                 "region": {},
                 "replicaConfiguration": {},
@@ -34261,7 +34389,10 @@
             "createVerb": "POST",
             "createProperties": {
                 "ipCidrRange": {},
+                "machineType": {},
+                "maxInstances": {},
                 "maxThroughput": {},
+                "minInstances": {},
                 "minThroughput": {},
                 "name": {},
                 "network": {},
@@ -34286,6 +34417,7 @@
                 "blacklistPatterns": {},
                 "displayName": {},
                 "exportToSecurityCommandCenter": {},
+                "ignoreHttpStatusErrors": {},
                 "managedScan": {},
                 "maxQps": {},
                 "name": {},
@@ -34301,6 +34433,7 @@
                 "blacklistPatterns": {},
                 "displayName": {},
                 "exportToSecurityCommandCenter": {},
+                "ignoreHttpStatusErrors": {},
                 "managedScan": {},
                 "maxQps": {},
                 "name": {},
@@ -34366,6 +34499,7 @@
                 "blacklistPatterns": {},
                 "displayName": {},
                 "exportToSecurityCommandCenter": {},
+                "ignoreHttpStatusErrors": {},
                 "latestRun": {},
                 "managedScan": {},
                 "maxQps": {},
@@ -34383,6 +34517,7 @@
                 "blacklistPatterns": {},
                 "displayName": {},
                 "exportToSecurityCommandCenter": {},
+                "ignoreHttpStatusErrors": {},
                 "latestRun": {},
                 "managedScan": {},
                 "maxQps": {},

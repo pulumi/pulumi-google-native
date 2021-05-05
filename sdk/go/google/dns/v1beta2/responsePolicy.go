@@ -17,7 +17,9 @@ type ResponsePolicy struct {
 
 	// User-provided description for this Response Policy.
 	Description pulumi.StringOutput `pulumi:"description"`
-	Kind        pulumi.StringOutput `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters ResponsePolicyGKEClusterResponseArrayOutput `pulumi:"gkeClusters"`
+	Kind        pulumi.StringOutput                         `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayOutput `pulumi:"networks"`
 	// User assigned name for this Response Policy.
@@ -61,7 +63,9 @@ func GetResponsePolicy(ctx *pulumi.Context,
 type responsePolicyState struct {
 	// User-provided description for this Response Policy.
 	Description *string `pulumi:"description"`
-	Kind        *string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters []ResponsePolicyGKEClusterResponse `pulumi:"gkeClusters"`
+	Kind        *string                            `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
 	// User assigned name for this Response Policy.
@@ -71,6 +75,8 @@ type responsePolicyState struct {
 type ResponsePolicyState struct {
 	// User-provided description for this Response Policy.
 	Description pulumi.StringPtrInput
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters ResponsePolicyGKEClusterResponseArrayInput
 	Kind        pulumi.StringPtrInput
 	// List of network names specifying networks to which this policy is applied.
 	Networks ResponsePolicyNetworkResponseArrayInput
@@ -85,6 +91,8 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 type responsePolicyArgs struct {
 	// User-provided description for this Response Policy.
 	Description *string `pulumi:"description"`
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters []ResponsePolicyGKECluster `pulumi:"gkeClusters"`
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   *string `pulumi:"id"`
 	Kind *string `pulumi:"kind"`
@@ -100,6 +108,8 @@ type responsePolicyArgs struct {
 type ResponsePolicyArgs struct {
 	// User-provided description for this Response Policy.
 	Description pulumi.StringPtrInput
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters ResponsePolicyGKEClusterArrayInput
 	// Unique identifier for the resource; defined by the server (output only).
 	Id   pulumi.StringPtrInput
 	Kind pulumi.StringPtrInput

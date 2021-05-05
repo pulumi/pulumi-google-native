@@ -314,7 +314,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(dict):
                  username: str):
         """
         Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
-        :param bool is_cloud_function: Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        :param bool is_cloud_function: Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
         :param str password: Optional. The password for HTTP Basic authentication.
         :param Mapping[str, str] request_headers: Optional. The HTTP request headers to send together with fulfillment requests.
         :param str uri: Required. The fulfillment URI for receiving POST requests. It must use https protocol.
@@ -330,7 +330,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse(dict):
     @pulumi.getter(name="isCloudFunction")
     def is_cloud_function(self) -> bool:
         """
-        Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
         """
         return pulumi.get(self, "is_cloud_function")
 

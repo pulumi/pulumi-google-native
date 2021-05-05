@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+        /// </summary>
+        [Output("restrictedFields")]
+        public Output<ImmutableArray<string>> RestrictedFields { get; private set; } = null!;
+
+        /// <summary>
         /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         /// </summary>
         [Output("retentionDays")]
@@ -122,6 +128,18 @@ namespace Pulumi.GoogleNative.Logging.V2
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("restrictedFields")]
+        private InputList<string>? _restrictedFields;
+
+        /// <summary>
+        /// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
+        /// </summary>
+        public InputList<string> RestrictedFields
+        {
+            get => _restrictedFields ?? (_restrictedFields = new InputList<string>());
+            set => _restrictedFields = value;
+        }
 
         /// <summary>
         /// Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         public Output<string> ExportToSecurityCommandCenter { get; private set; } = null!;
 
         /// <summary>
+        /// Whether to keep scanning even if most requests return HTTP error codes.
+        /// </summary>
+        [Output("ignoreHttpStatusErrors")]
+        public Output<bool> IgnoreHttpStatusErrors { get; private set; } = null!;
+
+        /// <summary>
         /// Latest ScanRun if available.
         /// </summary>
         [Output("latestRun")]
@@ -173,6 +179,12 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         /// </summary>
         [Input("exportToSecurityCommandCenter")]
         public Input<string>? ExportToSecurityCommandCenter { get; set; }
+
+        /// <summary>
+        /// Whether to keep scanning even if most requests return HTTP error codes.
+        /// </summary>
+        [Input("ignoreHttpStatusErrors")]
+        public Input<bool>? IgnoreHttpStatusErrors { get; set; }
 
         /// <summary>
         /// Latest ScanRun if available.

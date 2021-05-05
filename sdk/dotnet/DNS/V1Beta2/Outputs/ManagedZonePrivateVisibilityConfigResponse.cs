@@ -13,6 +13,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     [OutputType]
     public sealed class ManagedZonePrivateVisibilityConfigResponse
     {
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters that can see this zone.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigGKEClusterResponse> GkeClusters;
         public readonly string Kind;
         /// <summary>
         /// The list of VPC networks that can see this zone.
@@ -21,10 +25,13 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
         [OutputConstructor]
         private ManagedZonePrivateVisibilityConfigResponse(
+            ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigGKEClusterResponse> gkeClusters,
+
             string kind,
 
             ImmutableArray<Outputs.ManagedZonePrivateVisibilityConfigNetworkResponse> networks)
         {
+            GkeClusters = gkeClusters;
             Kind = kind;
             Networks = networks;
         }

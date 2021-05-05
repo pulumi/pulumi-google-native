@@ -3415,6 +3415,369 @@ func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretRe
 	}).(InlineSecretResponseOutput)
 }
 
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfig struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State *string `pulumi:"state"`
+	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+	Topic *string `pulumi:"topic"`
+}
+
+// PubsubConfigInput is an input type that accepts PubsubConfigArgs and PubsubConfigOutput values.
+// You can construct a concrete instance of `PubsubConfigInput` via:
+//
+//          PubsubConfigArgs{...}
+type PubsubConfigInput interface {
+	pulumi.Input
+
+	ToPubsubConfigOutput() PubsubConfigOutput
+	ToPubsubConfigOutputWithContext(context.Context) PubsubConfigOutput
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfigArgs struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+	Topic pulumi.StringPtrInput `pulumi:"topic"`
+}
+
+func (PubsubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfig)(nil)).Elem()
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigOutput() PubsubConfigOutput {
+	return i.ToPubsubConfigOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigOutputWithContext(ctx context.Context) PubsubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput)
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
+	return i.ToPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigArgs) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigOutput).ToPubsubConfigPtrOutputWithContext(ctx)
+}
+
+// PubsubConfigPtrInput is an input type that accepts PubsubConfigArgs, PubsubConfigPtr and PubsubConfigPtrOutput values.
+// You can construct a concrete instance of `PubsubConfigPtrInput` via:
+//
+//          PubsubConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type PubsubConfigPtrInput interface {
+	pulumi.Input
+
+	ToPubsubConfigPtrOutput() PubsubConfigPtrOutput
+	ToPubsubConfigPtrOutputWithContext(context.Context) PubsubConfigPtrOutput
+}
+
+type pubsubConfigPtrType PubsubConfigArgs
+
+func PubsubConfigPtr(v *PubsubConfigArgs) PubsubConfigPtrInput {
+	return (*pubsubConfigPtrType)(v)
+}
+
+func (*pubsubConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubConfig)(nil)).Elem()
+}
+
+func (i *pubsubConfigPtrType) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
+	return i.ToPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pubsubConfigPtrType) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigPtrOutput)
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfigOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfig)(nil)).Elem()
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigOutput() PubsubConfigOutput {
+	return o
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigOutputWithContext(ctx context.Context) PubsubConfigOutput {
+	return o
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
+	return o.ToPubsubConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *PubsubConfig {
+		return &v
+	}).(PubsubConfigPtrOutput)
+}
+
+// Service account that will make the push request.
+func (o PubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o PubsubConfigOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+func (o PubsubConfigOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *string { return v.Topic }).(pulumi.StringPtrOutput)
+}
+
+type PubsubConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubConfig)(nil)).Elem()
+}
+
+func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutput() PubsubConfigPtrOutput {
+	return o
+}
+
+func (o PubsubConfigPtrOutput) ToPubsubConfigPtrOutputWithContext(ctx context.Context) PubsubConfigPtrOutput {
+	return o
+}
+
+func (o PubsubConfigPtrOutput) Elem() PubsubConfigOutput {
+	return o.ApplyT(func(v *PubsubConfig) PubsubConfig { return *v }).(PubsubConfigOutput)
+}
+
+// Service account that will make the push request.
+func (o PubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o PubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+func (o PubsubConfigPtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfigResponse struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State string `pulumi:"state"`
+	// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+	Subscription string `pulumi:"subscription"`
+	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+	Topic string `pulumi:"topic"`
+}
+
+// PubsubConfigResponseInput is an input type that accepts PubsubConfigResponseArgs and PubsubConfigResponseOutput values.
+// You can construct a concrete instance of `PubsubConfigResponseInput` via:
+//
+//          PubsubConfigResponseArgs{...}
+type PubsubConfigResponseInput interface {
+	pulumi.Input
+
+	ToPubsubConfigResponseOutput() PubsubConfigResponseOutput
+	ToPubsubConfigResponseOutputWithContext(context.Context) PubsubConfigResponseOutput
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfigResponseArgs struct {
+	// Service account that will make the push request.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+	State pulumi.StringInput `pulumi:"state"`
+	// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+	Subscription pulumi.StringInput `pulumi:"subscription"`
+	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+	Topic pulumi.StringInput `pulumi:"topic"`
+}
+
+func (PubsubConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfigResponse)(nil)).Elem()
+}
+
+func (i PubsubConfigResponseArgs) ToPubsubConfigResponseOutput() PubsubConfigResponseOutput {
+	return i.ToPubsubConfigResponseOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigResponseArgs) ToPubsubConfigResponseOutputWithContext(ctx context.Context) PubsubConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponseOutput)
+}
+
+func (i PubsubConfigResponseArgs) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
+	return i.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i PubsubConfigResponseArgs) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponseOutput).ToPubsubConfigResponsePtrOutputWithContext(ctx)
+}
+
+// PubsubConfigResponsePtrInput is an input type that accepts PubsubConfigResponseArgs, PubsubConfigResponsePtr and PubsubConfigResponsePtrOutput values.
+// You can construct a concrete instance of `PubsubConfigResponsePtrInput` via:
+//
+//          PubsubConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type PubsubConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput
+	ToPubsubConfigResponsePtrOutputWithContext(context.Context) PubsubConfigResponsePtrOutput
+}
+
+type pubsubConfigResponsePtrType PubsubConfigResponseArgs
+
+func PubsubConfigResponsePtr(v *PubsubConfigResponseArgs) PubsubConfigResponsePtrInput {
+	return (*pubsubConfigResponsePtrType)(v)
+}
+
+func (*pubsubConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubConfigResponse)(nil)).Elem()
+}
+
+func (i *pubsubConfigResponsePtrType) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
+	return i.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *pubsubConfigResponsePtrType) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PubsubConfigResponsePtrOutput)
+}
+
+// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+type PubsubConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfigResponse)(nil)).Elem()
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutput() PubsubConfigResponseOutput {
+	return o
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponseOutputWithContext(ctx context.Context) PubsubConfigResponseOutput {
+	return o
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
+	return o.ToPubsubConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigResponseOutput) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) *PubsubConfigResponse {
+		return &v
+	}).(PubsubConfigResponsePtrOutput)
+}
+
+// Service account that will make the push request.
+func (o PubsubConfigResponseOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o PubsubConfigResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+func (o PubsubConfigResponseOutput) Subscription() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.Subscription }).(pulumi.StringOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+func (o PubsubConfigResponseOutput) Topic() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubConfigResponse) string { return v.Topic }).(pulumi.StringOutput)
+}
+
+type PubsubConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PubsubConfigResponse)(nil)).Elem()
+}
+
+func (o PubsubConfigResponsePtrOutput) ToPubsubConfigResponsePtrOutput() PubsubConfigResponsePtrOutput {
+	return o
+}
+
+func (o PubsubConfigResponsePtrOutput) ToPubsubConfigResponsePtrOutputWithContext(ctx context.Context) PubsubConfigResponsePtrOutput {
+	return o
+}
+
+func (o PubsubConfigResponsePtrOutput) Elem() PubsubConfigResponseOutput {
+	return o.ApplyT(func(v *PubsubConfigResponse) PubsubConfigResponse { return *v }).(PubsubConfigResponseOutput)
+}
+
+// Service account that will make the push request.
+func (o PubsubConfigResponsePtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+func (o PubsubConfigResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+func (o PubsubConfigResponsePtrOutput) Subscription() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Subscription
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+func (o PubsubConfigResponsePtrOutput) Topic() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PubsubConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Topic
+	}).(pulumi.StringPtrOutput)
+}
+
 // PullRequestFilter contains filter properties for matching GitHub Pull Requests.
 type PullRequestFilter struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -7233,6 +7596,10 @@ func init() {
 	pulumi.RegisterOutputType(InlineSecretArrayOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseOutput{})
 	pulumi.RegisterOutputType(InlineSecretResponseArrayOutput{})
+	pulumi.RegisterOutputType(PubsubConfigOutput{})
+	pulumi.RegisterOutputType(PubsubConfigPtrOutput{})
+	pulumi.RegisterOutputType(PubsubConfigResponseOutput{})
+	pulumi.RegisterOutputType(PubsubConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterPtrOutput{})
 	pulumi.RegisterOutputType(PullRequestFilterResponseOutput{})

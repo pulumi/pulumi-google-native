@@ -52,6 +52,10 @@ export class ScanConfig extends pulumi.CustomResource {
      */
     public readonly exportToSecurityCommandCenter!: pulumi.Output<string>;
     /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    public readonly ignoreHttpStatusErrors!: pulumi.Output<boolean>;
+    /**
      * Latest ScanRun if available.
      */
     public readonly latestRun!: pulumi.Output<outputs.websecurityscanner.v1beta.ScanRunResponse>;
@@ -113,6 +117,7 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["blacklistPatterns"] = args ? args.blacklistPatterns : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["exportToSecurityCommandCenter"] = args ? args.exportToSecurityCommandCenter : undefined;
+            inputs["ignoreHttpStatusErrors"] = args ? args.ignoreHttpStatusErrors : undefined;
             inputs["latestRun"] = args ? args.latestRun : undefined;
             inputs["managedScan"] = args ? args.managedScan : undefined;
             inputs["maxQps"] = args ? args.maxQps : undefined;
@@ -130,6 +135,7 @@ export class ScanConfig extends pulumi.CustomResource {
             inputs["blacklistPatterns"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["exportToSecurityCommandCenter"] = undefined /*out*/;
+            inputs["ignoreHttpStatusErrors"] = undefined /*out*/;
             inputs["latestRun"] = undefined /*out*/;
             inputs["managedScan"] = undefined /*out*/;
             inputs["maxQps"] = undefined /*out*/;
@@ -168,6 +174,10 @@ export interface ScanConfigArgs {
      * Controls export of scan configurations and results to Security Command Center.
      */
     readonly exportToSecurityCommandCenter?: pulumi.Input<string>;
+    /**
+     * Whether to keep scanning even if most requests return HTTP error codes.
+     */
+    readonly ignoreHttpStatusErrors?: pulumi.Input<boolean>;
     /**
      * Latest ScanRun if available.
      */

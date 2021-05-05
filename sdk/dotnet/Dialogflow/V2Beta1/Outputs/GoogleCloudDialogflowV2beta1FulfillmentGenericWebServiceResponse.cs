@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse
     {
         /// <summary>
-        /// Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+        /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
         /// </summary>
         public readonly bool IsCloudFunction;
         /// <summary>

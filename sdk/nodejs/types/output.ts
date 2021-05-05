@@ -105,7 +105,7 @@ export namespace accesscontextmanager {
         }
 
         /**
-         * Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+         * Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
          */
         export interface EgressFromResponse {
             /**
@@ -133,15 +133,15 @@ export namespace accesscontextmanager {
         }
 
         /**
-         * Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
+         * Defines the conditions under which an EgressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the `resources` specified. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed. The request must match `operations` AND `resources` fields in order to be allowed egress out of the perimeter.
          */
         export interface EgressToResponse {
             /**
-             * A list of ApiOperations that this egress rule applies to. A request matches if it contains an operation/service in this list.
+             * A list of ApiOperations allowed to be performed by the sources specified in the corresponding EgressFrom. A request matches if it uses an operation/service in this list.
              */
             operations: outputs.accesscontextmanager.v1.ApiOperationResponse[];
             /**
-             * A list of resources, currently only projects in the form `projects/`, that match this to stanza. A request matches if it contains a resource in this list. If `*` is specified for resources, then this EgressTo rule will authorize access to all resources outside the perimeter.
+             * A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter.
              */
             resources: string[];
         }
@@ -169,7 +169,7 @@ export namespace accesscontextmanager {
         }
 
         /**
-         * Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request.
+         * Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the source of the request. The request must satisfy what is defined in `sources` AND identity related fields in order to match.
          */
         export interface IngressFromResponse {
             /**
@@ -205,7 +205,7 @@ export namespace accesscontextmanager {
          */
         export interface IngressSourceResponse {
             /**
-             * An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If `*` is specified, then all IngressSources will be allowed.
+             * An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
              */
             accessLevel: string;
             /**
@@ -215,15 +215,15 @@ export namespace accesscontextmanager {
         }
 
         /**
-         * Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the destination of the request.
+         * Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
          */
         export interface IngressToResponse {
             /**
-             * A list of ApiOperations the sources specified in corresponding IngressFrom are allowed to perform in this ServicePerimeter.
+             * A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter.
              */
             operations: outputs.accesscontextmanager.v1.ApiOperationResponse[];
             /**
-             * A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. A request matches if it contains a resource in this list. If `*` is specified for resources, then this IngressTo rule will authorize access to all resources inside the perimeter, provided that the request also matches the `operations` field.
+             * A list of resources, currently only projects in the form `projects/`, protected by this ServicePerimeter that are allowed to be accessed by sources defined in the corresponding IngressFrom. If a single `*` is specified, then access to all resources inside the perimeter are allowed.
              */
             resources: string[];
         }
@@ -1345,6 +1345,104 @@ export namespace apigee {
              * The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US dollar.
              */
             units: string;
+        }
+    }
+}
+
+export namespace apikeys {
+    export namespace v2 {
+        /**
+         * Identifier of an Android application for key use.
+         */
+        export interface V2AndroidApplicationResponse {
+            /**
+             * The package name of the application.
+             */
+            packageName: string;
+            /**
+             * The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter.
+             */
+            sha1Fingerprint: string;
+        }
+
+        /**
+         * The Android apps that are allowed to use the key.
+         */
+        export interface V2AndroidKeyRestrictionsResponse {
+            /**
+             * A list of Android applications that are allowed to make API calls with this key.
+             */
+            allowedApplications: outputs.apikeys.v2.V2AndroidApplicationResponse[];
+        }
+
+        /**
+         * A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
+         */
+        export interface V2ApiTargetResponse {
+            /**
+             * Optional. List of one or more methods that can be called. If empty, all methods for the service are allowed. A wildcard (*) can be used as the last symbol. Valid examples: `google.cloud.translate.v2.TranslateService.GetSupportedLanguage` `TranslateText` `Get*` `translate.googleapis.com.Get*`
+             */
+            methods: string[];
+            /**
+             * The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project.
+             */
+            service: string;
+        }
+
+        /**
+         * The HTTP referrers (websites) that are allowed to use the key.
+         */
+        export interface V2BrowserKeyRestrictionsResponse {
+            /**
+             * A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
+             */
+            allowedReferrers: string[];
+        }
+
+        /**
+         * The iOS apps that are allowed to use the key.
+         */
+        export interface V2IosKeyRestrictionsResponse {
+            /**
+             * A list of bundle IDs that are allowed when making API calls with this key.
+             */
+            allowedBundleIds: string[];
+        }
+
+        /**
+         * Describes the restrictions on the key.
+         */
+        export interface V2RestrictionsResponse {
+            /**
+             * The Android apps that are allowed to use the key.
+             */
+            androidKeyRestrictions: outputs.apikeys.v2.V2AndroidKeyRestrictionsResponse;
+            /**
+             * A restriction for a specific service and optionally one or more specific methods. Requests are allowed if they match any of these restrictions. If no restrictions are specified, all targets are allowed.
+             */
+            apiTargets: outputs.apikeys.v2.V2ApiTargetResponse[];
+            /**
+             * The HTTP referrers (websites) that are allowed to use the key.
+             */
+            browserKeyRestrictions: outputs.apikeys.v2.V2BrowserKeyRestrictionsResponse;
+            /**
+             * The iOS apps that are allowed to use the key.
+             */
+            iosKeyRestrictions: outputs.apikeys.v2.V2IosKeyRestrictionsResponse;
+            /**
+             * The IP addresses of callers that are allowed to use the key.
+             */
+            serverKeyRestrictions: outputs.apikeys.v2.V2ServerKeyRestrictionsResponse;
+        }
+
+        /**
+         * The IP addresses of callers that are allowed to use the key.
+         */
+        export interface V2ServerKeyRestrictionsResponse {
+            /**
+             * A list of the caller IP addresses that are allowed to make API calls with this key.
+             */
+            allowedIps: string[];
         }
     }
 }
@@ -5930,6 +6028,28 @@ export namespace cloudbuild {
         }
 
         /**
+         * PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+         */
+        export interface PubsubConfigResponse {
+            /**
+             * Service account that will make the push request.
+             */
+            serviceAccountEmail: string;
+            /**
+             * Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+             */
+            state: string;
+            /**
+             * Name of the subscription. Format is `projects/{project}/subscriptions/{subscription}`.
+             */
+            subscription: string;
+            /**
+             * The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
+             */
+            topic: string;
+        }
+
+        /**
          * PullRequestFilter contains filter properties for matching GitHub Pull Requests.
          */
         export interface PullRequestFilterResponse {
@@ -9347,7 +9467,7 @@ export namespace composer {
         }
 
         /**
-         * The encryption options for the Composer environment and its dependencies.
+         * The encryption options for the Cloud Composer environment and its dependencies.
          */
         export interface EncryptionConfigResponse {
             /**
@@ -9373,7 +9493,7 @@ export namespace composer {
              */
             databaseConfig: outputs.composer.v1beta1.DatabaseConfigResponse;
             /**
-             * Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+             * Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
              */
             encryptionConfig: outputs.composer.v1beta1.EncryptionConfigResponse;
             /**
@@ -9487,7 +9607,7 @@ export namespace composer {
              */
             oauthScopes: string[];
             /**
-             * Optional. The Google Cloud Platform Service Account to be used by the node VMs. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated.
+             * Optional. The Google Cloud Platform Service Account to be used by the workloads. If a service account is not specified, the "default" Compute Engine service account is used. Cannot be updated .
              */
             serviceAccount: string;
             /**
@@ -9527,7 +9647,7 @@ export namespace composer {
              */
             cloudSqlIpv4CidrBlock: string;
             /**
-             * Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true.
+             * Optional. If `true`, a Private IP Cloud Composer environment is created. If this field is set to true, `IPAllocationPolicy.use_ip_aliases` must be set to true .
              */
             enablePrivateEnvironment: boolean;
             /**
@@ -25044,6 +25164,10 @@ export namespace container {
              * The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
              */
             acceleratorType: string;
+            /**
+             * Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+             */
+            gpuPartitionSize: string;
         }
 
         /**
@@ -34313,7 +34437,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse {
             /**
-             * Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+             * Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
              */
             isCloudFunction: boolean;
             /**
@@ -35347,7 +35471,7 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceResponse {
             /**
-             * Indicates if generic web service is created through Cloud Functions integration. Defaults to false.
+             * Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
              */
             isCloudFunction: boolean;
             /**
@@ -40697,6 +40821,14 @@ export namespace dns {
             networkUrl: string;
         }
 
+        export interface ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+            /**
+             * The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*&#47;locations/*&#47;clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+             */
+            gkeClusterName: string;
+            kind: string;
+        }
+
         export interface ManagedZonePrivateVisibilityConfigNetworkResponse {
             kind: string;
             /**
@@ -40706,6 +40838,10 @@ export namespace dns {
         }
 
         export interface ManagedZonePrivateVisibilityConfigResponse {
+            /**
+             * The list of Google Kubernetes Engine clusters that can see this zone.
+             */
+            gkeClusters: outputs.dns.v1beta2.ManagedZonePrivateVisibilityConfigGKEClusterResponse[];
             kind: string;
             /**
              * The list of VPC networks that can see this zone.
@@ -40797,6 +40933,14 @@ export namespace dns {
              * The identifier of a supported record type. See the list of Supported DNS record types.
              */
             type: string;
+        }
+
+        export interface ResponsePolicyGKEClusterResponse {
+            /**
+             * The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*&#47;locations/*&#47;clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+             */
+            gkeClusterName: string;
+            kind: string;
         }
 
         export interface ResponsePolicyNetworkResponse {
@@ -44097,7 +44241,7 @@ export namespace healthcare {
              */
             schemaConfig: outputs.healthcare.v1.SchemaConfigResponse;
             /**
-             * Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+             * Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
              */
             writeDisposition: string;
         }
@@ -44546,7 +44690,7 @@ export namespace healthcare {
              */
             schemaConfig: outputs.healthcare.v1beta1.SchemaConfigResponse;
             /**
-             * Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+             * Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
              */
             writeDisposition: string;
         }
@@ -56110,7 +56254,7 @@ export namespace servicemanagement {
         }
 
         /**
-         * `Authentication` defines the authentication configuration for an API. Example for an API targeted for external use: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth
+         * `Authentication` defines the authentication configuration for API methods provided by an API service. Example: name: calendar.googleapis.com authentication: providers: - id: google_calendar_auth jwks_uri: https://www.googleapis.com/oauth2/v1/certs issuer: https://securetoken.google.com rules: - selector: "*" requirements: provider_id: google_calendar_auth - selector: google.calendar.Delegate oauth: canonical_scopes: https://www.googleapis.com/auth/calendar.read
          */
         export interface AuthenticationResponse {
             /**
@@ -56382,6 +56526,10 @@ export namespace servicemanagement {
          * `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
          */
         export interface EndpointResponse {
+            /**
+             * Unimplemented. Dot not use. DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple google.api.Endpoint for each of the intended aliases. Additional names that this endpoint will be hosted on.
+             */
+            aliases: string[];
             /**
              * Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
              */
@@ -57794,6 +57942,20 @@ export namespace sqladmin {
              * This is always sql#activeDirectoryConfig.
              */
             kind: string;
+        }
+
+        /**
+         * This message wraps up the information written by out-of-disk detection job.
+         */
+        export interface SqlOutOfDiskReportResponse {
+            /**
+             * The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend
+             */
+            sqlMinRecommendedIncreaseSizeGb: number;
+            /**
+             * This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the Pantheon frontend -- the proactive database wellness job
+             */
+            sqlOutOfDiskState: string;
         }
 
         /**

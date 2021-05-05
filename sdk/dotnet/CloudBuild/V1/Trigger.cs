@@ -46,6 +46,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Output<string> Filename { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. A Common Expression Language string.
+        /// </summary>
+        [Output("filter")]
+        public Output<string> Filter { get; private set; } = null!;
+
+        /// <summary>
         /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         /// </summary>
         [Output("github")]
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        /// </summary>
+        [Output("pubsubConfig")]
+        public Output<Outputs.PubsubConfigResponse> PubsubConfig { get; private set; } = null!;
 
         /// <summary>
         /// Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
@@ -157,6 +169,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public Input<string>? Filename { get; set; }
 
         /// <summary>
+        /// Optional. A Common Expression Language string.
+        /// </summary>
+        [Input("filter")]
+        public Input<string>? Filter { get; set; }
+
+        /// <summary>
         /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         /// </summary>
         [Input("github")]
@@ -194,6 +212,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        /// </summary>
+        [Input("pubsubConfig")]
+        public Input<Inputs.PubsubConfigArgs>? PubsubConfig { get; set; }
 
         [Input("substitutions")]
         private InputMap<string>? _substitutions;

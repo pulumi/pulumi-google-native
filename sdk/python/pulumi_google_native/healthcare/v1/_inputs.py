@@ -421,7 +421,7 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs:
         :param pulumi.Input[str] dataset_uri: BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
         :param pulumi.Input[bool] force: If this flag is `TRUE`, all tables are deleted from the dataset before the new exported tables are written. If the flag is not set and the destination dataset contains tables, the export call returns an error. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
         :param pulumi.Input['SchemaConfigArgs'] schema_config: The configuration for the exported BigQuery schema.
-        :param pulumi.Input[str] write_disposition: Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        :param pulumi.Input[str] write_disposition: Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         """
         if dataset_uri is not None:
             pulumi.set(__self__, "dataset_uri", dataset_uri)
@@ -472,7 +472,7 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs:
     @pulumi.getter(name="writeDisposition")
     def write_disposition(self) -> Optional[pulumi.Input[str]]:
         """
-        Determines whether existing tables in the destination dataset are overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
+        Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
         """
         return pulumi.get(self, "write_disposition")
 

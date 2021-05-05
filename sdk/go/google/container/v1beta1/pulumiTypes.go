@@ -16,6 +16,8 @@ type AcceleratorConfig struct {
 	AcceleratorCount *string `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize *string `pulumi:"gpuPartitionSize"`
 }
 
 // AcceleratorConfigInput is an input type that accepts AcceleratorConfigArgs and AcceleratorConfigOutput values.
@@ -35,6 +37,8 @@ type AcceleratorConfigArgs struct {
 	AcceleratorCount pulumi.StringPtrInput `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize pulumi.StringPtrInput `pulumi:"gpuPartitionSize"`
 }
 
 func (AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -99,6 +103,11 @@ func (o AcceleratorConfigOutput) AcceleratorType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AcceleratorConfig) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
 }
 
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o AcceleratorConfigOutput) GpuPartitionSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AcceleratorConfig) *string { return v.GpuPartitionSize }).(pulumi.StringPtrOutput)
+}
+
 type AcceleratorConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (AcceleratorConfigArrayOutput) ElementType() reflect.Type {
@@ -125,6 +134,8 @@ type AcceleratorConfigResponse struct {
 	AcceleratorCount string `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType string `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize string `pulumi:"gpuPartitionSize"`
 }
 
 // AcceleratorConfigResponseInput is an input type that accepts AcceleratorConfigResponseArgs and AcceleratorConfigResponseOutput values.
@@ -144,6 +155,8 @@ type AcceleratorConfigResponseArgs struct {
 	AcceleratorCount pulumi.StringInput `pulumi:"acceleratorCount"`
 	// The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
+	// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+	GpuPartitionSize pulumi.StringInput `pulumi:"gpuPartitionSize"`
 }
 
 func (AcceleratorConfigResponseArgs) ElementType() reflect.Type {
@@ -206,6 +219,11 @@ func (o AcceleratorConfigResponseOutput) AcceleratorCount() pulumi.StringOutput 
 // The accelerator type resource name. List of supported accelerators [here](https://cloud.google.com/compute/docs/gpus)
 func (o AcceleratorConfigResponseOutput) AcceleratorType() pulumi.StringOutput {
 	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.AcceleratorType }).(pulumi.StringOutput)
+}
+
+// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+func (o AcceleratorConfigResponseOutput) GpuPartitionSize() pulumi.StringOutput {
+	return o.ApplyT(func(v AcceleratorConfigResponse) string { return v.GpuPartitionSize }).(pulumi.StringOutput)
 }
 
 type AcceleratorConfigResponseArrayOutput struct{ *pulumi.OutputState }
@@ -4318,6 +4336,8 @@ func (o ClusterTelemetryResponsePtrOutput) Type() pulumi.StringPtrOutput {
 type ClusterUpdate struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
+	// The desired Autopilot configuration for the cluster.
+	DesiredAutopilot *Autopilot `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization *BinaryAuthorization `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4393,6 +4413,8 @@ type ClusterUpdateInput interface {
 type ClusterUpdateArgs struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
+	// The desired Autopilot configuration for the cluster.
+	DesiredAutopilot AutopilotPtrInput `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
 	DesiredBinaryAuthorization BinaryAuthorizationPtrInput `pulumi:"desiredBinaryAuthorization"`
 	// Cluster-level autoscaling configuration.
@@ -4483,6 +4505,11 @@ func (o ClusterUpdateOutput) ToClusterUpdateOutputWithContext(ctx context.Contex
 // Configurations for the various addons available to run in the cluster.
 func (o ClusterUpdateOutput) DesiredAddonsConfig() AddonsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *AddonsConfig { return v.DesiredAddonsConfig }).(AddonsConfigPtrOutput)
+}
+
+// The desired Autopilot configuration for the cluster.
+func (o ClusterUpdateOutput) DesiredAutopilot() AutopilotPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *Autopilot { return v.DesiredAutopilot }).(AutopilotPtrOutput)
 }
 
 // The desired configuration options for the Binary Authorization feature.

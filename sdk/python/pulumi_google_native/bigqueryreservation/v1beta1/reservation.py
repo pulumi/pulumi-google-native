@@ -17,13 +17,11 @@ class ReservationArgs:
                  projects_id: pulumi.Input[str],
                  reservations_id: pulumi.Input[str],
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
-                 max_concurrency: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
-        :param pulumi.Input[str] max_concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
         """
@@ -32,8 +30,6 @@ class ReservationArgs:
         pulumi.set(__self__, "reservations_id", reservations_id)
         if ignore_idle_slots is not None:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
-        if max_concurrency is not None:
-            pulumi.set(__self__, "max_concurrency", max_concurrency)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if slot_capacity is not None:
@@ -79,18 +75,6 @@ class ReservationArgs:
         pulumi.set(self, "ignore_idle_slots", value)
 
     @property
-    @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> Optional[pulumi.Input[str]]:
-        """
-        Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-        """
-        return pulumi.get(self, "max_concurrency")
-
-    @max_concurrency.setter
-    def max_concurrency(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "max_concurrency", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -122,7 +106,6 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 max_concurrency: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
@@ -134,7 +117,6 @@ class Reservation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] ignore_idle_slots: If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
-        :param pulumi.Input[str] max_concurrency: Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
         :param pulumi.Input[str] name: The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
         :param pulumi.Input[str] slot_capacity: Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
         """
@@ -164,7 +146,6 @@ class Reservation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
-                 max_concurrency: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
@@ -185,7 +166,6 @@ class Reservation(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
-            __props__.__dict__["max_concurrency"] = max_concurrency
             __props__.__dict__["name"] = name
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
@@ -220,7 +200,6 @@ class Reservation(pulumi.CustomResource):
 
         __props__.__dict__["creation_time"] = None
         __props__.__dict__["ignore_idle_slots"] = None
-        __props__.__dict__["max_concurrency"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["slot_capacity"] = None
         __props__.__dict__["update_time"] = None
@@ -241,14 +220,6 @@ class Reservation(pulumi.CustomResource):
         If false, any query using this reservation will use idle slots from other reservations within the same admin project. If true, a query using this reservation will execute with the slot capacity specified above at most.
         """
         return pulumi.get(self, "ignore_idle_slots")
-
-    @property
-    @pulumi.getter(name="maxConcurrency")
-    def max_concurrency(self) -> pulumi.Output[str]:
-        """
-        Maximum number of queries that are allowed to run concurrently in this reservation. Default value is 0 which means that maximum concurrency will be automatically set based on the reservation size.
-        """
-        return pulumi.get(self, "max_concurrency")
 
     @property
     @pulumi.getter

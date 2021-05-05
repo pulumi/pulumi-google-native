@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        /// </summary>
+        [Output("gkeClusters")]
+        public Output<ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse>> GkeClusters { get; private set; } = null!;
+
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
 
@@ -86,6 +92,18 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("gkeClusters")]
+        private InputList<Inputs.ResponsePolicyGKEClusterArgs>? _gkeClusters;
+
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        /// </summary>
+        public InputList<Inputs.ResponsePolicyGKEClusterArgs> GkeClusters
+        {
+            get => _gkeClusters ?? (_gkeClusters = new InputList<Inputs.ResponsePolicyGKEClusterArgs>());
+            set => _gkeClusters = value;
+        }
 
         /// <summary>
         /// Unique identifier for the resource; defined by the server (output only).

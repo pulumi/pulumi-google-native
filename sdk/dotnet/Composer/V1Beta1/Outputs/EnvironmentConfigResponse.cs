@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.DatabaseConfigResponse DatabaseConfig;
         /// <summary>
-        /// Optional. The encryption options for the Composer environment and its dependencies. Cannot be updated.
+        /// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
         /// </summary>
         public readonly Outputs.EncryptionConfigResponse EncryptionConfig;
         /// <summary>

@@ -21,10 +21,12 @@ class TriggerArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  github: Optional[pulumi.Input['GitHubEventsConfigArgs']] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pubsub_config: Optional[pulumi.Input['PubsubConfigArgs']] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_template: Optional[pulumi.Input['RepoSourceArgs']] = None):
@@ -34,10 +36,12 @@ class TriggerArgs:
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
+        :param pulumi.Input[str] filter: Optional. A Common Expression Language string.
         :param pulumi.Input['GitHubEventsConfigArgs'] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        :param pulumi.Input['PubsubConfigArgs'] pubsub_config: Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
         :param pulumi.Input['RepoSourceArgs'] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
@@ -52,6 +56,8 @@ class TriggerArgs:
             pulumi.set(__self__, "disabled", disabled)
         if filename is not None:
             pulumi.set(__self__, "filename", filename)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
         if github is not None:
             pulumi.set(__self__, "github", github)
         if ignored_files is not None:
@@ -60,6 +66,8 @@ class TriggerArgs:
             pulumi.set(__self__, "included_files", included_files)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pubsub_config is not None:
+            pulumi.set(__self__, "pubsub_config", pubsub_config)
         if substitutions is not None:
             pulumi.set(__self__, "substitutions", substitutions)
         if tags is not None:
@@ -135,6 +143,18 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A Common Expression Language string.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter
     def github(self) -> Optional[pulumi.Input['GitHubEventsConfigArgs']]:
         """
         GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
@@ -182,6 +202,18 @@ class TriggerArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pubsubConfig")
+    def pubsub_config(self) -> Optional[pulumi.Input['PubsubConfigArgs']]:
+        """
+        Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        """
+        return pulumi.get(self, "pubsub_config")
+
+    @pubsub_config.setter
+    def pubsub_config(self, value: Optional[pulumi.Input['PubsubConfigArgs']]):
+        pulumi.set(self, "pubsub_config", value)
+
+    @property
     @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -227,11 +259,13 @@ class Trigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
@@ -246,10 +280,12 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] description: Human-readable description of this trigger.
         :param pulumi.Input[bool] disabled: If true, the trigger will never automatically execute a build.
         :param pulumi.Input[str] filename: Path, from the source root, to the build configuration file (i.e. cloudbuild.yaml).
+        :param pulumi.Input[str] filter: Optional. A Common Expression Language string.
         :param pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']] github: GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ignored_files: ignored_files and included_files are file glob matches using https://golang.org/pkg/path/filepath/#Match extended with support for "**". If ignored_files and changed files are both empty, then they are not used to determine whether or not to trigger a build. If ignored_files is not empty, then we ignore any files that match any of the ignored_file globs. If the change has no files that are outside of the ignored_files globs, then we do not trigger a build.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_files: If any of the files altered in the commit pass the ignored_files filter and included_files is empty, then as far as this filter is concerned, we should trigger the build. If any of the files altered in the commit pass the ignored_files filter and included_files is not empty, then we make sure that at least one of those files matches a included_files glob. If not, then we do not trigger a build.
         :param pulumi.Input[str] name: User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
+        :param pulumi.Input[pulumi.InputType['PubsubConfigArgs']] pubsub_config: Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions for Build resource. The keys must match the following regular expression: `^_[A-Z0-9_]+$`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `BuildTrigger`
         :param pulumi.Input[pulumi.InputType['RepoSourceArgs']] trigger_template: Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
@@ -282,11 +318,13 @@ class Trigger(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filename: Optional[pulumi.Input[str]] = None,
+                 filter: Optional[pulumi.Input[str]] = None,
                  github: Optional[pulumi.Input[pulumi.InputType['GitHubEventsConfigArgs']]] = None,
                  ignored_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 pubsub_config: Optional[pulumi.Input[pulumi.InputType['PubsubConfigArgs']]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
@@ -307,6 +345,7 @@ class Trigger(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["filename"] = filename
+            __props__.__dict__["filter"] = filter
             __props__.__dict__["github"] = github
             __props__.__dict__["ignored_files"] = ignored_files
             __props__.__dict__["included_files"] = included_files
@@ -314,6 +353,7 @@ class Trigger(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["pubsub_config"] = pubsub_config
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
             if trigger_id is None and not opts.urn:
@@ -348,10 +388,12 @@ class Trigger(pulumi.CustomResource):
         __props__.__dict__["description"] = None
         __props__.__dict__["disabled"] = None
         __props__.__dict__["filename"] = None
+        __props__.__dict__["filter"] = None
         __props__.__dict__["github"] = None
         __props__.__dict__["ignored_files"] = None
         __props__.__dict__["included_files"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["pubsub_config"] = None
         __props__.__dict__["substitutions"] = None
         __props__.__dict__["tags"] = None
         __props__.__dict__["trigger_template"] = None
@@ -399,6 +441,14 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter
+    def filter(self) -> pulumi.Output[str]:
+        """
+        Optional. A Common Expression Language string.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter
     def github(self) -> pulumi.Output['outputs.GitHubEventsConfigResponse']:
         """
         GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received. Mutually exclusive with `trigger_template`.
@@ -428,6 +478,14 @@ class Trigger(pulumi.CustomResource):
         User-assigned name of the trigger. Must be unique within the project. Trigger names must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pubsubConfig")
+    def pubsub_config(self) -> pulumi.Output['outputs.PubsubConfigResponse']:
+        """
+        Optional. PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
+        """
+        return pulumi.get(self, "pubsub_config")
 
     @property
     @pulumi.getter
