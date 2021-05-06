@@ -223,7 +223,8 @@ type urlMapArgs struct {
 	PathMatchers []PathMatcher `pulumi:"pathMatchers"`
 	Project      string        `pulumi:"project"`
 	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
@@ -272,7 +273,8 @@ type UrlMapArgs struct {
 	PathMatchers PathMatcherArrayInput
 	Project      pulumi.StringInput
 	// [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.

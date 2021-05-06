@@ -32,6 +32,12 @@ func NewOrganizationSharedflow(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OrganizationsId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
 	}
@@ -86,24 +92,28 @@ func (OrganizationSharedflowState) ElementType() reflect.Type {
 }
 
 type organizationSharedflowArgs struct {
+	Action string `pulumi:"action"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions      []map[string]string `pulumi:"extensions"`
+	Name            string              `pulumi:"name"`
 	OrganizationsId string              `pulumi:"organizationsId"`
 	SharedflowsId   string              `pulumi:"sharedflowsId"`
 }
 
 // The set of arguments for constructing a OrganizationSharedflow resource.
 type OrganizationSharedflowArgs struct {
+	Action pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions      pulumi.StringMapArrayInput
+	Name            pulumi.StringInput
 	OrganizationsId pulumi.StringInput
 	SharedflowsId   pulumi.StringInput
 }

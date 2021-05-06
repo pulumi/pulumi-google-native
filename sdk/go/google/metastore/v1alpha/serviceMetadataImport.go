@@ -39,6 +39,9 @@ func NewServiceMetadataImport(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.MetadataImportId == nil {
+		return nil, errors.New("invalid value for required argument 'MetadataImportId'")
+	}
 	if args.MetadataImportsId == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataImportsId'")
 	}
@@ -109,10 +112,12 @@ type serviceMetadataImportArgs struct {
 	// The description of the metadata import.
 	Description       *string `pulumi:"description"`
 	LocationsId       string  `pulumi:"locationsId"`
+	MetadataImportId  string  `pulumi:"metadataImportId"`
 	MetadataImportsId string  `pulumi:"metadataImportsId"`
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
 	ServicesId string  `pulumi:"servicesId"`
 }
 
@@ -123,10 +128,12 @@ type ServiceMetadataImportArgs struct {
 	// The description of the metadata import.
 	Description       pulumi.StringPtrInput
 	LocationsId       pulumi.StringInput
+	MetadataImportId  pulumi.StringInput
 	MetadataImportsId pulumi.StringInput
 	// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 	ServicesId pulumi.StringInput
 }
 

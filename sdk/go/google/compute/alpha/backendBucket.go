@@ -148,8 +148,9 @@ type backendBucketArgs struct {
 	// Type of the resource.
 	Kind *string `pulumi:"kind"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -178,8 +179,9 @@ type BackendBucketArgs struct {
 	// Type of the resource.
 	Kind pulumi.StringPtrInput
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

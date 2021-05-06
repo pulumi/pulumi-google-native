@@ -32,6 +32,9 @@ func NewEntryGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EntryGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
+	}
 	if args.EntryGroupsId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupsId'")
 	}
@@ -93,6 +96,7 @@ type entryGroupArgs struct {
 	Description *string `pulumi:"description"`
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName   *string `pulumi:"displayName"`
+	EntryGroupId  string  `pulumi:"entryGroupId"`
 	EntryGroupsId string  `pulumi:"entryGroupsId"`
 	LocationsId   string  `pulumi:"locationsId"`
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
@@ -106,6 +110,7 @@ type EntryGroupArgs struct {
 	Description pulumi.StringPtrInput
 	// A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
 	DisplayName   pulumi.StringPtrInput
+	EntryGroupId  pulumi.StringInput
 	EntryGroupsId pulumi.StringInput
 	LocationsId   pulumi.StringInput
 	// The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.

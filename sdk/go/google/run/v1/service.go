@@ -97,6 +97,7 @@ func (ServiceState) ElementType() reflect.Type {
 type serviceArgs struct {
 	// The API version for this call such as "serving.knative.dev/v1".
 	ApiVersion *string `pulumi:"apiVersion"`
+	DryRun     *string `pulumi:"dryRun"`
 	// The kind of resource, in this case "Service".
 	Kind        *string `pulumi:"kind"`
 	LocationsId string  `pulumi:"locationsId"`
@@ -114,6 +115,7 @@ type serviceArgs struct {
 type ServiceArgs struct {
 	// The API version for this call such as "serving.knative.dev/v1".
 	ApiVersion pulumi.StringPtrInput
+	DryRun     pulumi.StringPtrInput
 	// The kind of resource, in this case "Service".
 	Kind        pulumi.StringPtrInput
 	LocationsId pulumi.StringInput

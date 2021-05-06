@@ -90,6 +90,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
 	if args.InstancesId == nil {
 		return nil, errors.New("invalid value for required argument 'InstancesId'")
 	}
@@ -280,7 +283,8 @@ type instanceArgs struct {
 	// Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
 	DiskEncryption *string `pulumi:"diskEncryption"`
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
-	InstallGpuDriver *bool `pulumi:"installGpuDriver"`
+	InstallGpuDriver *bool  `pulumi:"installGpuDriver"`
+	InstanceId       string `pulumi:"instanceId"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners []string `pulumi:"instanceOwners"`
 	InstancesId    string   `pulumi:"instancesId"`
@@ -342,6 +346,7 @@ type InstanceArgs struct {
 	DiskEncryption pulumi.StringPtrInput
 	// Whether the end user authorizes Google Cloud to install GPU driver on this instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
 	InstallGpuDriver pulumi.BoolPtrInput
+	InstanceId       pulumi.StringInput
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayInput
 	InstancesId    pulumi.StringInput

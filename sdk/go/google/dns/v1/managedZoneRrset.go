@@ -101,8 +101,9 @@ func (ManagedZoneRrsetState) ElementType() reflect.Type {
 }
 
 type managedZoneRrsetArgs struct {
-	Kind        *string `pulumi:"kind"`
-	ManagedZone string  `pulumi:"managedZone"`
+	ClientOperationId *string `pulumi:"clientOperationId"`
+	Kind              *string `pulumi:"kind"`
+	ManagedZone       string  `pulumi:"managedZone"`
 	// For example, www.example.com.
 	Name    string `pulumi:"name"`
 	Project string `pulumi:"project"`
@@ -118,8 +119,9 @@ type managedZoneRrsetArgs struct {
 
 // The set of arguments for constructing a ManagedZoneRrset resource.
 type ManagedZoneRrsetArgs struct {
-	Kind        pulumi.StringPtrInput
-	ManagedZone pulumi.StringInput
+	ClientOperationId pulumi.StringPtrInput
+	Kind              pulumi.StringPtrInput
+	ManagedZone       pulumi.StringInput
 	// For example, www.example.com.
 	Name    pulumi.StringInput
 	Project pulumi.StringInput

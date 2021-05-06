@@ -89,6 +89,7 @@ type repositoryPackageTagArgs struct {
 	PackagesId     string  `pulumi:"packagesId"`
 	ProjectsId     string  `pulumi:"projectsId"`
 	RepositoriesId string  `pulumi:"repositoriesId"`
+	TagId          *string `pulumi:"tagId"`
 	TagsId         string  `pulumi:"tagsId"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
 	Version *string `pulumi:"version"`
@@ -102,6 +103,7 @@ type RepositoryPackageTagArgs struct {
 	PackagesId     pulumi.StringInput
 	ProjectsId     pulumi.StringInput
 	RepositoriesId pulumi.StringInput
+	TagId          pulumi.StringPtrInput
 	TagsId         pulumi.StringInput
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
 	Version pulumi.StringPtrInput

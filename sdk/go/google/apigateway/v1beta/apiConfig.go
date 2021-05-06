@@ -48,6 +48,9 @@ func NewApiConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiConfigId'")
+	}
 	if args.ApisId == nil {
 		return nil, errors.New("invalid value for required argument 'ApisId'")
 	}
@@ -140,8 +143,9 @@ func (ApiConfigState) ElementType() reflect.Type {
 }
 
 type apiConfigArgs struct {
-	ApisId    string `pulumi:"apisId"`
-	ConfigsId string `pulumi:"configsId"`
+	ApiConfigId string `pulumi:"apiConfigId"`
+	ApisId      string `pulumi:"apisId"`
+	ConfigsId   string `pulumi:"configsId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -162,8 +166,9 @@ type apiConfigArgs struct {
 
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
-	ApisId    pulumi.StringInput
-	ConfigsId pulumi.StringInput
+	ApiConfigId pulumi.StringInput
+	ApisId      pulumi.StringInput
+	ConfigsId   pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.

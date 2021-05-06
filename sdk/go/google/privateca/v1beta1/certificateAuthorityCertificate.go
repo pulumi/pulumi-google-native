@@ -134,8 +134,9 @@ func (CertificateAuthorityCertificateState) ElementType() reflect.Type {
 }
 
 type certificateAuthorityCertificateArgs struct {
-	CertificateAuthoritiesId string `pulumi:"certificateAuthoritiesId"`
-	CertificatesId           string `pulumi:"certificatesId"`
+	CertificateAuthoritiesId string  `pulumi:"certificateAuthoritiesId"`
+	CertificateId            *string `pulumi:"certificateId"`
+	CertificatesId           string  `pulumi:"certificatesId"`
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config *CertificateConfig `pulumi:"config"`
 	// Optional. Labels with user-defined metadata.
@@ -146,11 +147,13 @@ type certificateAuthorityCertificateArgs struct {
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr     *string `pulumi:"pemCsr"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a CertificateAuthorityCertificate resource.
 type CertificateAuthorityCertificateArgs struct {
 	CertificateAuthoritiesId pulumi.StringInput
+	CertificateId            pulumi.StringPtrInput
 	CertificatesId           pulumi.StringInput
 	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
 	Config CertificateConfigPtrInput
@@ -162,6 +165,7 @@ type CertificateAuthorityCertificateArgs struct {
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr     pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 }
 
 func (CertificateAuthorityCertificateArgs) ElementType() reflect.Type {

@@ -85,6 +85,7 @@ type schemaArgs struct {
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	SchemaId   *string `pulumi:"schemaId"`
 	SchemasId  string  `pulumi:"schemasId"`
 	// The type of the schema definition.
 	Type *string `pulumi:"type"`
@@ -97,6 +98,7 @@ type SchemaArgs struct {
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	SchemaId   pulumi.StringPtrInput
 	SchemasId  pulumi.StringInput
 	// The type of the schema definition.
 	Type pulumi.StringPtrInput

@@ -169,9 +169,11 @@ type firewallPolicyArgs struct {
 	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name *string `pulumi:"name"`
 	// [Output Only] The parent of the firewall policy.
-	Parent *string `pulumi:"parent"`
+	Parent   *string `pulumi:"parent"`
+	ParentId *string `pulumi:"parentId"`
 	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.
@@ -206,9 +208,11 @@ type FirewallPolicyArgs struct {
 	// [Output Only] Name of the resource. It is a numeric ID allocated by GCP which uniquely identifies the Firewall Policy.
 	Name pulumi.StringPtrInput
 	// [Output Only] The parent of the firewall policy.
-	Parent pulumi.StringPtrInput
+	Parent   pulumi.StringPtrInput
+	ParentId pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
 	// A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a firewall policy, a default rule with action "allow" will be added.

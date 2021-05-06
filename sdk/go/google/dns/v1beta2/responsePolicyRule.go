@@ -93,7 +93,8 @@ func (ResponsePolicyRuleState) ElementType() reflect.Type {
 
 type responsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
-	Behavior *string `pulumi:"behavior"`
+	Behavior          *string `pulumi:"behavior"`
+	ClientOperationId *string `pulumi:"clientOperationId"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName *string `pulumi:"dnsName"`
 	Kind    *string `pulumi:"kind"`
@@ -109,7 +110,8 @@ type responsePolicyRuleArgs struct {
 // The set of arguments for constructing a ResponsePolicyRule resource.
 type ResponsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
-	Behavior pulumi.StringPtrInput
+	Behavior          pulumi.StringPtrInput
+	ClientOperationId pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringPtrInput
 	Kind    pulumi.StringPtrInput

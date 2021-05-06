@@ -36,6 +36,9 @@ func NewOrganizationEnvironmentKeystoreAlias(ctx *pulumi.Context,
 	if args.EnvironmentsId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
 	}
+	if args.Format == nil {
+		return nil, errors.New("invalid value for required argument 'Format'")
+	}
 	if args.KeystoresId == nil {
 		return nil, errors.New("invalid value for required argument 'KeystoresId'")
 	}
@@ -86,20 +89,26 @@ func (OrganizationEnvironmentKeystoreAliasState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentKeystoreAliasArgs struct {
-	AliasesId string `pulumi:"aliasesId"`
+	Alias     *string `pulumi:"alias"`
+	AliasesId string  `pulumi:"aliasesId"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
 	Data           *string `pulumi:"data"`
 	EnvironmentsId string  `pulumi:"environmentsId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      []map[string]string `pulumi:"extensions"`
-	KeystoresId     string              `pulumi:"keystoresId"`
-	OrganizationsId string              `pulumi:"organizationsId"`
+	Extensions              []map[string]string `pulumi:"extensions"`
+	Format                  string              `pulumi:"format"`
+	IgnoreExpiryValidation  *string             `pulumi:"ignoreExpiryValidation"`
+	IgnoreNewlineValidation *string             `pulumi:"ignoreNewlineValidation"`
+	KeystoresId             string              `pulumi:"keystoresId"`
+	OrganizationsId         string              `pulumi:"organizationsId"`
+	Password                *string             `pulumi:"password"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
 type OrganizationEnvironmentKeystoreAliasArgs struct {
+	Alias     pulumi.StringPtrInput
 	AliasesId pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
@@ -107,9 +116,13 @@ type OrganizationEnvironmentKeystoreAliasArgs struct {
 	Data           pulumi.StringPtrInput
 	EnvironmentsId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      pulumi.StringMapArrayInput
-	KeystoresId     pulumi.StringInput
-	OrganizationsId pulumi.StringInput
+	Extensions              pulumi.StringMapArrayInput
+	Format                  pulumi.StringInput
+	IgnoreExpiryValidation  pulumi.StringPtrInput
+	IgnoreNewlineValidation pulumi.StringPtrInput
+	KeystoresId             pulumi.StringInput
+	OrganizationsId         pulumi.StringInput
+	Password                pulumi.StringPtrInput
 }
 
 func (OrganizationEnvironmentKeystoreAliasArgs) ElementType() reflect.Type {

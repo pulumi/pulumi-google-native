@@ -144,6 +144,7 @@ type externalVpnGatewayArgs struct {
 	Project string  `pulumi:"project"`
 	// Indicates the user-supplied redundancy type of this external VPN gateway.
 	RedundancyType *string `pulumi:"redundancyType"`
+	RequestId      *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -172,6 +173,7 @@ type ExternalVpnGatewayArgs struct {
 	Project pulumi.StringInput
 	// Indicates the user-supplied redundancy type of this external VPN gateway.
 	RedundancyType pulumi.StringPtrInput
+	RequestId      pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 }

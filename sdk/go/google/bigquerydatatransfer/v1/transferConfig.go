@@ -152,6 +152,7 @@ func (TransferConfigState) ElementType() reflect.Type {
 }
 
 type transferConfigArgs struct {
+	AuthorizationCode *string `pulumi:"authorizationCode"`
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays *int `pulumi:"dataRefreshWindowDays"`
 	// Data source id. Cannot be changed once data transfer is created.
@@ -174,12 +175,15 @@ type transferConfigArgs struct {
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule *string `pulumi:"schedule"`
 	// Options customizing the data transfer schedule.
-	ScheduleOptions   *ScheduleOptions `pulumi:"scheduleOptions"`
-	TransferConfigsId string           `pulumi:"transferConfigsId"`
+	ScheduleOptions    *ScheduleOptions `pulumi:"scheduleOptions"`
+	ServiceAccountName *string          `pulumi:"serviceAccountName"`
+	TransferConfigsId  string           `pulumi:"transferConfigsId"`
+	VersionInfo        *string          `pulumi:"versionInfo"`
 }
 
 // The set of arguments for constructing a TransferConfig resource.
 type TransferConfigArgs struct {
+	AuthorizationCode pulumi.StringPtrInput
 	// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
 	DataRefreshWindowDays pulumi.IntPtrInput
 	// Data source id. Cannot be changed once data transfer is created.
@@ -202,8 +206,10 @@ type TransferConfigArgs struct {
 	// Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: the granularity should be at least 8 hours, or less frequent.
 	Schedule pulumi.StringPtrInput
 	// Options customizing the data transfer schedule.
-	ScheduleOptions   ScheduleOptionsPtrInput
-	TransferConfigsId pulumi.StringInput
+	ScheduleOptions    ScheduleOptionsPtrInput
+	ServiceAccountName pulumi.StringPtrInput
+	TransferConfigsId  pulumi.StringInput
+	VersionInfo        pulumi.StringPtrInput
 }
 
 func (TransferConfigArgs) ElementType() reflect.Type {

@@ -289,6 +289,7 @@ type vpnTunnelArgs struct {
 	Region string `pulumi:"region"`
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector []string `pulumi:"remoteTrafficSelector"`
+	RequestId             *string  `pulumi:"requestId"`
 	// URL of the router resource to be used for dynamic routing.
 	Router *string `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
@@ -360,6 +361,7 @@ type VpnTunnelArgs struct {
 	Region pulumi.StringInput
 	// Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
 	RemoteTrafficSelector pulumi.StringArrayInput
+	RequestId             pulumi.StringPtrInput
 	// URL of the router resource to be used for dynamic routing.
 	Router pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.

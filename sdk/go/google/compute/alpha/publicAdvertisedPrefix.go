@@ -162,6 +162,7 @@ type publicAdvertisedPrefixArgs struct {
 	PublicAdvertisedPrefix string  `pulumi:"publicAdvertisedPrefix"`
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs []PublicAdvertisedPrefixPublicDelegatedPrefix `pulumi:"publicDelegatedPrefixs"`
+	RequestId              *string                                       `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL with id for the resource.
@@ -196,6 +197,7 @@ type PublicAdvertisedPrefixArgs struct {
 	PublicAdvertisedPrefix pulumi.StringInput
 	// [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
 	PublicDelegatedPrefixs PublicAdvertisedPrefixPublicDelegatedPrefixArrayInput
+	RequestId              pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL with id for the resource.

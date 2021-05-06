@@ -140,6 +140,7 @@ type targetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy *string `pulumi:"natPolicy"`
 	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink       *string `pulumi:"selfLink"`
 	TargetInstance string  `pulumi:"targetInstance"`
@@ -167,6 +168,7 @@ type TargetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringPtrInput
 	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink       pulumi.StringPtrInput
 	TargetInstance pulumi.StringInput

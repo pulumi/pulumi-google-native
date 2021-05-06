@@ -273,7 +273,8 @@ type regionTargetHttpsProxyArgs struct {
 	// - If the quic-override flag is not specified, NONE is implied.
 	QuicOverride *string `pulumi:"quicOverride"`
 	// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -337,7 +338,8 @@ type RegionTargetHttpsProxyArgs struct {
 	// - If the quic-override flag is not specified, NONE is implied.
 	QuicOverride pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

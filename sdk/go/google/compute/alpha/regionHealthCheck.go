@@ -187,7 +187,8 @@ type regionHealthCheckArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -228,7 +229,8 @@ type RegionHealthCheckArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] Region where the health check resides. Not applicable to global health checks.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

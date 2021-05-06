@@ -93,6 +93,7 @@ type historyArgs struct {
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      *string `pulumi:"name"`
 	ProjectId string  `pulumi:"projectId"`
+	RequestId *string `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform *string `pulumi:"testPlatform"`
 }
@@ -106,6 +107,7 @@ type HistoryArgs struct {
 	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
 	Name      pulumi.StringPtrInput
 	ProjectId pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
 	TestPlatform pulumi.StringPtrInput
 }

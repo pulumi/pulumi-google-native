@@ -36,6 +36,9 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'DeploymentId'")
+	}
 	if args.GameServerDeploymentsId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerDeploymentsId'")
 	}
@@ -101,6 +104,7 @@ func (GameServerDeploymentState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentArgs struct {
+	DeploymentId string `pulumi:"deploymentId"`
 	// Human readable description of the game server delpoyment.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
@@ -116,6 +120,7 @@ type gameServerDeploymentArgs struct {
 
 // The set of arguments for constructing a GameServerDeployment resource.
 type GameServerDeploymentArgs struct {
+	DeploymentId pulumi.StringInput
 	// Human readable description of the game server delpoyment.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.

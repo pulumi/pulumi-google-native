@@ -427,6 +427,7 @@ type instanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	Project                 string  `pulumi:"project"`
+	RequestId               *string `pulumi:"requestId"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
@@ -447,6 +448,7 @@ type instanceArgs struct {
 	ShieldedVmConfig *ShieldedVmConfig `pulumi:"shieldedVmConfig"`
 	// Deprecating, please use shielded_instance_integrity_policy.
 	ShieldedVmIntegrityPolicy *ShieldedVmIntegrityPolicy `pulumi:"shieldedVmIntegrityPolicy"`
+	SourceInstanceTemplate    *string                    `pulumi:"sourceInstanceTemplate"`
 	// Source machine image
 	SourceMachineImage *string `pulumi:"sourceMachineImage"`
 	// Source machine image encryption key when creating an instance from a machine image.
@@ -533,6 +535,7 @@ type InstanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	Project                 pulumi.StringInput
+	RequestId               pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
@@ -553,6 +556,7 @@ type InstanceArgs struct {
 	ShieldedVmConfig ShieldedVmConfigPtrInput
 	// Deprecating, please use shielded_instance_integrity_policy.
 	ShieldedVmIntegrityPolicy ShieldedVmIntegrityPolicyPtrInput
+	SourceInstanceTemplate    pulumi.StringPtrInput
 	// Source machine image
 	SourceMachineImage pulumi.StringPtrInput
 	// Source machine image encryption key when creating an instance from a machine image.

@@ -172,6 +172,7 @@ type nodeGroupArgs struct {
 	// URL of the node template to create the node group from.
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	Project      string  `pulumi:"project"`
+	RequestId    *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -208,6 +209,7 @@ type NodeGroupArgs struct {
 	// URL of the node template to create the node group from.
 	NodeTemplate pulumi.StringPtrInput
 	Project      pulumi.StringInput
+	RequestId    pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

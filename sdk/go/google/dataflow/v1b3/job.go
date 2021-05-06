@@ -252,6 +252,7 @@ type jobArgs struct {
 	TransformNameMapping map[string]string `pulumi:"transformNameMapping"`
 	// The type of Cloud Dataflow job.
 	Type *string `pulumi:"type"`
+	View *string `pulumi:"view"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -305,6 +306,7 @@ type JobArgs struct {
 	TransformNameMapping pulumi.StringMapInput
 	// The type of Cloud Dataflow job.
 	Type pulumi.StringPtrInput
+	View pulumi.StringPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

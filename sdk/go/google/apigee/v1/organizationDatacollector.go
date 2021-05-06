@@ -92,7 +92,8 @@ func (OrganizationDatacollectorState) ElementType() reflect.Type {
 }
 
 type organizationDatacollectorArgs struct {
-	DatacollectorsId string `pulumi:"datacollectorsId"`
+	DataCollectorId  *string `pulumi:"dataCollectorId"`
+	DatacollectorsId string  `pulumi:"datacollectorsId"`
 	// A description of the data collector.
 	Description *string `pulumi:"description"`
 	// ID of the data collector. Must begin with `dc_`.
@@ -104,6 +105,7 @@ type organizationDatacollectorArgs struct {
 
 // The set of arguments for constructing a OrganizationDatacollector resource.
 type OrganizationDatacollectorArgs struct {
+	DataCollectorId  pulumi.StringPtrInput
 	DatacollectorsId pulumi.StringInput
 	// A description of the data collector.
 	Description pulumi.StringPtrInput

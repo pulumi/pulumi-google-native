@@ -50,6 +50,9 @@ func NewWorkflow(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.WorkflowId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowId'")
+	}
 	if args.WorkflowsId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkflowsId'")
 	}
@@ -137,6 +140,7 @@ type workflowArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents *string `pulumi:"sourceContents"`
+	WorkflowId     string  `pulumi:"workflowId"`
 	WorkflowsId    string  `pulumi:"workflowsId"`
 }
 
@@ -154,6 +158,7 @@ type WorkflowArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// Workflow code to be executed. The size limit is 128KB.
 	SourceContents pulumi.StringPtrInput
+	WorkflowId     pulumi.StringInput
 	WorkflowsId    pulumi.StringInput
 }
 

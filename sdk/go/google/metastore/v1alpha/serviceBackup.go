@@ -36,6 +36,9 @@ func NewServiceBackup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupId'")
+	}
 	if args.BackupsId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupsId'")
 	}
@@ -104,6 +107,7 @@ func (ServiceBackupState) ElementType() reflect.Type {
 }
 
 type serviceBackupArgs struct {
+	BackupId  string `pulumi:"backupId"`
 	BackupsId string `pulumi:"backupsId"`
 	// The description of the backup.
 	Description *string `pulumi:"description"`
@@ -111,11 +115,13 @@ type serviceBackupArgs struct {
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
 	ServicesId string  `pulumi:"servicesId"`
 }
 
 // The set of arguments for constructing a ServiceBackup resource.
 type ServiceBackupArgs struct {
+	BackupId  pulumi.StringInput
 	BackupsId pulumi.StringInput
 	// The description of the backup.
 	Description pulumi.StringPtrInput
@@ -123,6 +129,7 @@ type ServiceBackupArgs struct {
 	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 	ServicesId pulumi.StringInput
 }
 

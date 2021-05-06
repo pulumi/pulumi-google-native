@@ -135,6 +135,7 @@ type serviceArgs struct {
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name       *string `pulumi:"name"`
+	ServiceId  *string `pulumi:"serviceId"`
 	ServicesId string  `pulumi:"servicesId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *Telemetry `pulumi:"telemetry"`
@@ -160,6 +161,7 @@ type ServiceArgs struct {
 	MeshIstio MeshIstioPtrInput
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
 	Name       pulumi.StringPtrInput
+	ServiceId  pulumi.StringPtrInput
 	ServicesId pulumi.StringInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryPtrInput

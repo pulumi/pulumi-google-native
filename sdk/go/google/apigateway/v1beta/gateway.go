@@ -40,6 +40,9 @@ func NewGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GatewayId == nil {
+		return nil, errors.New("invalid value for required argument 'GatewayId'")
+	}
 	if args.GatewaysId == nil {
 		return nil, errors.New("invalid value for required argument 'GatewaysId'")
 	}
@@ -117,6 +120,7 @@ type gatewayArgs struct {
 	ApiConfig *string `pulumi:"apiConfig"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
+	GatewayId   string  `pulumi:"gatewayId"`
 	GatewaysId  string  `pulumi:"gatewaysId"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels      map[string]string `pulumi:"labels"`
@@ -130,6 +134,7 @@ type GatewayArgs struct {
 	ApiConfig pulumi.StringPtrInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
+	GatewayId   pulumi.StringInput
 	GatewaysId  pulumi.StringInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels      pulumi.StringMapInput

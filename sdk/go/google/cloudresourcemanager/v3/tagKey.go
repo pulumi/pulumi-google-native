@@ -116,8 +116,9 @@ type tagKeyArgs struct {
 	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName *string `pulumi:"shortName"`
-	TagKeysId string  `pulumi:"tagKeysId"`
+	ShortName    *string `pulumi:"shortName"`
+	TagKeysId    string  `pulumi:"tagKeysId"`
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a TagKey resource.
@@ -131,8 +132,9 @@ type TagKeyArgs struct {
 	// Immutable. The resource name of the new TagKey's parent. Must be of the form `organizations/{org_id}`.
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName pulumi.StringPtrInput
-	TagKeysId pulumi.StringInput
+	ShortName    pulumi.StringPtrInput
+	TagKeysId    pulumi.StringInput
+	ValidateOnly pulumi.StringPtrInput
 }
 
 func (TagKeyArgs) ElementType() reflect.Type {

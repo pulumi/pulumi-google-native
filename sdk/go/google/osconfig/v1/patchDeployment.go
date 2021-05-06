@@ -46,6 +46,9 @@ func NewPatchDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.PatchDeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'PatchDeploymentId'")
+	}
 	if args.PatchDeploymentsId == nil {
 		return nil, errors.New("invalid value for required argument 'PatchDeploymentsId'")
 	}
@@ -140,6 +143,7 @@ type patchDeploymentArgs struct {
 	OneTimeSchedule *OneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig        *PatchConfig `pulumi:"patchConfig"`
+	PatchDeploymentId  string       `pulumi:"patchDeploymentId"`
 	PatchDeploymentsId string       `pulumi:"patchDeploymentsId"`
 	ProjectsId         string       `pulumi:"projectsId"`
 	// Required. Schedule recurring executions.
@@ -162,6 +166,7 @@ type PatchDeploymentArgs struct {
 	OneTimeSchedule OneTimeSchedulePtrInput
 	// Optional. Patch configuration that is applied.
 	PatchConfig        PatchConfigPtrInput
+	PatchDeploymentId  pulumi.StringInput
 	PatchDeploymentsId pulumi.StringInput
 	ProjectsId         pulumi.StringInput
 	// Required. Schedule recurring executions.

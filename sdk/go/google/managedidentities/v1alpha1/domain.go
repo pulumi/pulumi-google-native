@@ -146,6 +146,7 @@ type domainArgs struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime *string `pulumi:"createTime"`
+	DomainName *string `pulumi:"domainName"`
 	DomainsId  string  `pulumi:"domainsId"`
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
@@ -178,6 +179,7 @@ type DomainArgs struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime pulumi.StringPtrInput
+	DomainName pulumi.StringPtrInput
 	DomainsId  pulumi.StringInput
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn pulumi.StringPtrInput

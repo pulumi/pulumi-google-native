@@ -68,6 +68,9 @@ func NewMachineImage(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.SourceInstance == nil {
+		return nil, errors.New("invalid value for required argument 'SourceInstance'")
+	}
 	var resource MachineImage
 	err := ctx.RegisterResource("google-native:compute/alpha:MachineImage", name, args, &resource, opts...)
 	if err != nil {
@@ -196,8 +199,9 @@ type machineImageArgs struct {
 	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey *CustomerEncryptionKey `pulumi:"machineImageEncryptionKey"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] The URL for this machine image. The server defines this URL.
@@ -209,7 +213,7 @@ type machineImageArgs struct {
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
-	SourceInstance *string `pulumi:"sourceInstance"`
+	SourceInstance string `pulumi:"sourceInstance"`
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties *SourceInstanceProperties `pulumi:"sourceInstanceProperties"`
 	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
@@ -242,8 +246,9 @@ type MachineImageArgs struct {
 	// If you do not provide an encryption key when creating the machine image, then the machine image will be encrypted using an automatically generated key and you do not need to provide a key to use the machine image later.
 	MachineImageEncryptionKey CustomerEncryptionKeyPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name    pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] The URL for this machine image. The server defines this URL.
@@ -255,7 +260,7 @@ type MachineImageArgs struct {
 	// The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
 	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
 	// - projects/project/zones/zone/instances/instance
-	SourceInstance pulumi.StringPtrInput
+	SourceInstance pulumi.StringInput
 	// [Output Only] Properties of source instance.
 	SourceInstanceProperties SourceInstancePropertiesPtrInput
 	// [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.

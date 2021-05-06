@@ -28,6 +28,9 @@ func NewJobTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.JobTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'JobTemplateId'")
+	}
 	if args.JobTemplatesId == nil {
 		return nil, errors.New("invalid value for required argument 'JobTemplatesId'")
 	}
@@ -79,6 +82,7 @@ func (JobTemplateState) ElementType() reflect.Type {
 type jobTemplateArgs struct {
 	// The configuration for this template.
 	Config         *JobConfig `pulumi:"config"`
+	JobTemplateId  string     `pulumi:"jobTemplateId"`
 	JobTemplatesId string     `pulumi:"jobTemplatesId"`
 	LocationsId    string     `pulumi:"locationsId"`
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
@@ -90,6 +94,7 @@ type jobTemplateArgs struct {
 type JobTemplateArgs struct {
 	// The configuration for this template.
 	Config         JobConfigPtrInput
+	JobTemplateId  pulumi.StringInput
 	JobTemplatesId pulumi.StringInput
 	LocationsId    pulumi.StringInput
 	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`

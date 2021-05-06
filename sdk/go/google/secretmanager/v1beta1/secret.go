@@ -35,6 +35,9 @@ func NewSecret(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.SecretId == nil {
+		return nil, errors.New("invalid value for required argument 'SecretId'")
+	}
 	if args.SecretsId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretsId'")
 	}
@@ -91,6 +94,7 @@ type secretArgs struct {
 	ProjectsId string            `pulumi:"projectsId"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
+	SecretId    string       `pulumi:"secretId"`
 	SecretsId   string       `pulumi:"secretsId"`
 }
 
@@ -101,6 +105,7 @@ type SecretArgs struct {
 	ProjectsId pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput
+	SecretId    pulumi.StringInput
 	SecretsId   pulumi.StringInput
 }
 

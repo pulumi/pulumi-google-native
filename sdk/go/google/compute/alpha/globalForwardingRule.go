@@ -608,7 +608,8 @@ type globalForwardingRuleArgs struct {
 	PscConnectionId     *string `pulumi:"pscConnectionId"`
 	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -758,7 +759,8 @@ type GlobalForwardingRuleArgs struct {
 	PscConnectionId     pulumi.StringPtrInput
 	PscConnectionStatus pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

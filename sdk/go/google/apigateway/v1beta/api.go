@@ -38,6 +38,9 @@ func NewApi(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
+	}
 	if args.ApisId == nil {
 		return nil, errors.New("invalid value for required argument 'ApisId'")
 	}
@@ -107,6 +110,7 @@ func (ApiState) ElementType() reflect.Type {
 }
 
 type apiArgs struct {
+	ApiId  string `pulumi:"apiId"`
 	ApisId string `pulumi:"apisId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -120,6 +124,7 @@ type apiArgs struct {
 
 // The set of arguments for constructing a Api resource.
 type ApiArgs struct {
+	ApiId  pulumi.StringInput
 	ApisId pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput

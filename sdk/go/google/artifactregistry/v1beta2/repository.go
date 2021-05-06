@@ -122,6 +122,7 @@ type repositoryArgs struct {
 	Name           *string `pulumi:"name"`
 	ProjectsId     string  `pulumi:"projectsId"`
 	RepositoriesId string  `pulumi:"repositoriesId"`
+	RepositoryId   *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -143,6 +144,7 @@ type RepositoryArgs struct {
 	Name           pulumi.StringPtrInput
 	ProjectsId     pulumi.StringInput
 	RepositoriesId pulumi.StringInput
+	RepositoryId   pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
 }

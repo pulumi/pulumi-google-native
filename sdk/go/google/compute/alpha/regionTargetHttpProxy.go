@@ -169,7 +169,8 @@ type regionTargetHttpProxyArgs struct {
 	// The default is false.
 	ProxyBind *bool `pulumi:"proxyBind"`
 	// [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -204,7 +205,8 @@ type RegionTargetHttpProxyArgs struct {
 	// The default is false.
 	ProxyBind pulumi.BoolPtrInput
 	// [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

@@ -40,6 +40,9 @@ func NewFolderBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
 	if args.BucketsId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketsId'")
 	}
@@ -113,6 +116,7 @@ func (FolderBucketState) ElementType() reflect.Type {
 }
 
 type folderBucketArgs struct {
+	BucketId  string `pulumi:"bucketId"`
 	BucketsId string `pulumi:"bucketsId"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -128,6 +132,7 @@ type folderBucketArgs struct {
 
 // The set of arguments for constructing a FolderBucket resource.
 type FolderBucketArgs struct {
+	BucketId  pulumi.StringInput
 	BucketsId pulumi.StringInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput

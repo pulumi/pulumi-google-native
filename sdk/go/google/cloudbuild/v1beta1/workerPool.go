@@ -44,6 +44,9 @@ func NewWorkerPool(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.WorkerPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
+	}
 	if args.WorkerPoolsId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
 	}
@@ -113,6 +116,7 @@ type workerPoolArgs struct {
 	ProjectsId    string         `pulumi:"projectsId"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
+	WorkerPoolId  string        `pulumi:"workerPoolId"`
 	WorkerPoolsId string        `pulumi:"workerPoolsId"`
 }
 
@@ -124,6 +128,7 @@ type WorkerPoolArgs struct {
 	ProjectsId    pulumi.StringInput
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig  WorkerConfigPtrInput
+	WorkerPoolId  pulumi.StringInput
 	WorkerPoolsId pulumi.StringInput
 }
 

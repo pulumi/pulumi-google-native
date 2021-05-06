@@ -36,6 +36,9 @@ func NewAdminSubscription(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.SubscriptionId == nil {
+		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
+	}
 	if args.SubscriptionsId == nil {
 		return nil, errors.New("invalid value for required argument 'SubscriptionsId'")
 	}
@@ -89,6 +92,8 @@ type adminSubscriptionArgs struct {
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name            *string `pulumi:"name"`
 	ProjectsId      string  `pulumi:"projectsId"`
+	SkipBacklog     *string `pulumi:"skipBacklog"`
+	SubscriptionId  string  `pulumi:"subscriptionId"`
 	SubscriptionsId string  `pulumi:"subscriptionsId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic *string `pulumi:"topic"`
@@ -102,6 +107,8 @@ type AdminSubscriptionArgs struct {
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
 	Name            pulumi.StringPtrInput
 	ProjectsId      pulumi.StringInput
+	SkipBacklog     pulumi.StringPtrInput
+	SubscriptionId  pulumi.StringInput
 	SubscriptionsId pulumi.StringInput
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic pulumi.StringPtrInput

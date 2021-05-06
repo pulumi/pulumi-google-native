@@ -184,7 +184,8 @@ type packetMirroringArgs struct {
 	Priority *int   `pulumi:"priority"`
 	Project  string `pulumi:"project"`
 	// [Output Only] URI of the region where the packetMirroring resides.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -222,7 +223,8 @@ type PacketMirroringArgs struct {
 	Priority pulumi.IntPtrInput
 	Project  pulumi.StringInput
 	// [Output Only] URI of the region where the packetMirroring resides.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

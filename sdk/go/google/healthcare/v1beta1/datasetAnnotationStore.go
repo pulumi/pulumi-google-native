@@ -80,8 +80,9 @@ func (DatasetAnnotationStoreState) ElementType() reflect.Type {
 }
 
 type datasetAnnotationStoreArgs struct {
-	AnnotationStoresId string `pulumi:"annotationStoresId"`
-	DatasetsId         string `pulumi:"datasetsId"`
+	AnnotationStoreId  *string `pulumi:"annotationStoreId"`
+	AnnotationStoresId string  `pulumi:"annotationStoresId"`
+	DatasetsId         string  `pulumi:"datasetsId"`
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
@@ -92,6 +93,7 @@ type datasetAnnotationStoreArgs struct {
 
 // The set of arguments for constructing a DatasetAnnotationStore resource.
 type DatasetAnnotationStoreArgs struct {
+	AnnotationStoreId  pulumi.StringPtrInput
 	AnnotationStoresId pulumi.StringInput
 	DatasetsId         pulumi.StringInput
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.

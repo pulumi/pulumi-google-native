@@ -46,6 +46,9 @@ func NewApiConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiConfigId'")
+	}
 	if args.ApisId == nil {
 		return nil, errors.New("invalid value for required argument 'ApisId'")
 	}
@@ -134,8 +137,9 @@ func (ApiConfigState) ElementType() reflect.Type {
 }
 
 type apiConfigArgs struct {
-	ApisId    string `pulumi:"apisId"`
-	ConfigsId string `pulumi:"configsId"`
+	ApiConfigId string `pulumi:"apiConfigId"`
+	ApisId      string `pulumi:"apisId"`
+	ConfigsId   string `pulumi:"configsId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.
@@ -154,8 +158,9 @@ type apiConfigArgs struct {
 
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
-	ApisId    pulumi.StringInput
-	ConfigsId pulumi.StringInput
+	ApiConfigId pulumi.StringInput
+	ApisId      pulumi.StringInput
+	ConfigsId   pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. The Google Cloud IAM Service Account that Gateways serving this config should use to authenticate to other services. This may either be the Service Account's email (`{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`) or its full resource name (`projects/{PROJECT}/accounts/{UNIQUE_ID}`). This is most often used when the service is a GCP resource such as a Cloud Run Service or an IAP-secured service.

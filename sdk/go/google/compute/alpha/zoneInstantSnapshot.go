@@ -208,7 +208,8 @@ type zoneInstantSnapshotArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// [Output Only] URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
@@ -256,7 +257,8 @@ type ZoneInstantSnapshotArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.

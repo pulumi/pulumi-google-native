@@ -40,6 +40,9 @@ func NewInstanceClusterBackup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupId'")
+	}
 	if args.BackupsId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupsId'")
 	}
@@ -116,6 +119,7 @@ func (InstanceClusterBackupState) ElementType() reflect.Type {
 }
 
 type instanceClusterBackupArgs struct {
+	BackupId   string `pulumi:"backupId"`
 	BackupsId  string `pulumi:"backupsId"`
 	ClustersId string `pulumi:"clustersId"`
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
@@ -130,6 +134,7 @@ type instanceClusterBackupArgs struct {
 
 // The set of arguments for constructing a InstanceClusterBackup resource.
 type InstanceClusterBackupArgs struct {
+	BackupId   pulumi.StringInput
 	BackupsId  pulumi.StringInput
 	ClustersId pulumi.StringInput
 	// Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.

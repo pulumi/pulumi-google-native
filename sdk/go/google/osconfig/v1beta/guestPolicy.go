@@ -45,6 +45,9 @@ func NewGuestPolicy(ctx *pulumi.Context,
 	if args.GuestPoliciesId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPoliciesId'")
 	}
+	if args.GuestPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
+	}
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
@@ -123,6 +126,7 @@ type guestPolicyArgs struct {
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag            *string `pulumi:"etag"`
 	GuestPoliciesId string  `pulumi:"guestPoliciesId"`
+	GuestPolicyId   string  `pulumi:"guestPolicyId"`
 	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
@@ -143,6 +147,7 @@ type GuestPolicyArgs struct {
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag            pulumi.StringPtrInput
 	GuestPoliciesId pulumi.StringInput
+	GuestPolicyId   pulumi.StringInput
 	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.

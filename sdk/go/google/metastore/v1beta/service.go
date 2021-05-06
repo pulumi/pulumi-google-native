@@ -64,6 +64,9 @@ func NewService(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
+	}
 	if args.ServicesId == nil {
 		return nil, errors.New("invalid value for required argument 'ServicesId'")
 	}
@@ -185,6 +188,8 @@ type serviceArgs struct {
 	ProjectsId string `pulumi:"projectsId"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
+	RequestId      *string `pulumi:"requestId"`
+	ServiceId      string  `pulumi:"serviceId"`
 	ServicesId     string  `pulumi:"servicesId"`
 	// The tier of the service.
 	Tier *string `pulumi:"tier"`
@@ -210,6 +215,8 @@ type ServiceArgs struct {
 	ProjectsId pulumi.StringInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel pulumi.StringPtrInput
+	RequestId      pulumi.StringPtrInput
+	ServiceId      pulumi.StringInput
 	ServicesId     pulumi.StringInput
 	// The tier of the service.
 	Tier pulumi.StringPtrInput

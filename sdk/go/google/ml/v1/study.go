@@ -43,6 +43,9 @@ func NewStudy(ctx *pulumi.Context,
 	if args.StudiesId == nil {
 		return nil, errors.New("invalid value for required argument 'StudiesId'")
 	}
+	if args.StudyId == nil {
+		return nil, errors.New("invalid value for required argument 'StudyId'")
+	}
 	var resource Study
 	err := ctx.RegisterResource("google-native:ml/v1:Study", name, args, &resource, opts...)
 	if err != nil {
@@ -100,6 +103,7 @@ type studyArgs struct {
 	StudiesId   string `pulumi:"studiesId"`
 	// Required. Configuration of the study.
 	StudyConfig *GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
+	StudyId     string                        `pulumi:"studyId"`
 }
 
 // The set of arguments for constructing a Study resource.
@@ -109,6 +113,7 @@ type StudyArgs struct {
 	StudiesId   pulumi.StringInput
 	// Required. Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigPtrInput
+	StudyId     pulumi.StringInput
 }
 
 func (StudyArgs) ElementType() reflect.Type {

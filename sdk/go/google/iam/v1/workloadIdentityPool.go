@@ -40,6 +40,9 @@ func NewWorkloadIdentityPool(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.WorkloadIdentityPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
+	}
 	if args.WorkloadIdentityPoolsId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolsId'")
 	}
@@ -103,6 +106,7 @@ type workloadIdentityPoolArgs struct {
 	DisplayName             *string `pulumi:"displayName"`
 	LocationsId             string  `pulumi:"locationsId"`
 	ProjectsId              string  `pulumi:"projectsId"`
+	WorkloadIdentityPoolId  string  `pulumi:"workloadIdentityPoolId"`
 	WorkloadIdentityPoolsId string  `pulumi:"workloadIdentityPoolsId"`
 }
 
@@ -116,6 +120,7 @@ type WorkloadIdentityPoolArgs struct {
 	DisplayName             pulumi.StringPtrInput
 	LocationsId             pulumi.StringInput
 	ProjectsId              pulumi.StringInput
+	WorkloadIdentityPoolId  pulumi.StringInput
 	WorkloadIdentityPoolsId pulumi.StringInput
 }
 

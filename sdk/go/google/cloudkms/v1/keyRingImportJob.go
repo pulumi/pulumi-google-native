@@ -44,6 +44,9 @@ func NewKeyRingImportJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ImportJobId == nil {
+		return nil, errors.New("invalid value for required argument 'ImportJobId'")
+	}
 	if args.ImportJobsId == nil {
 		return nil, errors.New("invalid value for required argument 'ImportJobsId'")
 	}
@@ -128,6 +131,7 @@ func (KeyRingImportJobState) ElementType() reflect.Type {
 }
 
 type keyRingImportJobArgs struct {
+	ImportJobId  string `pulumi:"importJobId"`
 	ImportJobsId string `pulumi:"importJobsId"`
 	// Required. Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod *string `pulumi:"importMethod"`
@@ -140,6 +144,7 @@ type keyRingImportJobArgs struct {
 
 // The set of arguments for constructing a KeyRingImportJob resource.
 type KeyRingImportJobArgs struct {
+	ImportJobId  pulumi.StringInput
 	ImportJobsId pulumi.StringInput
 	// Required. Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod pulumi.StringPtrInput

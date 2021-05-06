@@ -166,7 +166,8 @@ type sslCertificateArgs struct {
 	PrivateKey *string `pulumi:"privateKey"`
 	Project    string  `pulumi:"project"`
 	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -202,7 +203,8 @@ type SslCertificateArgs struct {
 	PrivateKey pulumi.StringPtrInput
 	Project    pulumi.StringInput
 	// [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

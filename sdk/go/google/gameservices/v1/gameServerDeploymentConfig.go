@@ -38,6 +38,9 @@ func NewGameServerDeploymentConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
+	}
 	if args.ConfigsId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigsId'")
 	}
@@ -110,6 +113,7 @@ func (GameServerDeploymentConfigState) ElementType() reflect.Type {
 }
 
 type gameServerDeploymentConfigArgs struct {
+	ConfigId  string `pulumi:"configId"`
 	ConfigsId string `pulumi:"configsId"`
 	// The description of the game server config.
 	Description *string `pulumi:"description"`
@@ -128,6 +132,7 @@ type gameServerDeploymentConfigArgs struct {
 
 // The set of arguments for constructing a GameServerDeploymentConfig resource.
 type GameServerDeploymentConfigArgs struct {
+	ConfigId  pulumi.StringInput
 	ConfigsId pulumi.StringInput
 	// The description of the game server config.
 	Description pulumi.StringPtrInput

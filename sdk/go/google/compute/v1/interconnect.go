@@ -264,7 +264,8 @@ type interconnectArgs struct {
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
 	Project       string  `pulumi:"project"`
 	// [Output Only] Number of links actually provisioned in this interconnect.
-	ProvisionedLinkCount *int `pulumi:"provisionedLinkCount"`
+	ProvisionedLinkCount *int    `pulumi:"provisionedLinkCount"`
+	RequestId            *string `pulumi:"requestId"`
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
 	// [Output Only] Server-defined URL for the resource.
@@ -325,6 +326,7 @@ type InterconnectArgs struct {
 	Project       pulumi.StringInput
 	// [Output Only] Number of links actually provisioned in this interconnect.
 	ProvisionedLinkCount pulumi.IntPtrInput
+	RequestId            pulumi.StringPtrInput
 	// Target number of physical links in the link bundle, as requested by the customer.
 	RequestedLinkCount pulumi.IntPtrInput
 	// [Output Only] Server-defined URL for the resource.

@@ -63,6 +63,9 @@ func NewCertificateAuthority(ctx *pulumi.Context,
 	if args.CertificateAuthoritiesId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateAuthoritiesId'")
 	}
+	if args.CertificateAuthorityId == nil {
+		return nil, errors.New("invalid value for required argument 'CertificateAuthorityId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -174,6 +177,7 @@ func (CertificateAuthorityState) ElementType() reflect.Type {
 
 type certificateAuthorityArgs struct {
 	CertificateAuthoritiesId string `pulumi:"certificateAuthoritiesId"`
+	CertificateAuthorityId   string `pulumi:"certificateAuthorityId"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy *CertificateAuthorityPolicy `pulumi:"certificatePolicy"`
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -190,6 +194,7 @@ type certificateAuthorityArgs struct {
 	Lifetime    *string `pulumi:"lifetime"`
 	LocationsId string  `pulumi:"locationsId"`
 	ProjectsId  string  `pulumi:"projectsId"`
+	RequestId   *string `pulumi:"requestId"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig *SubordinateConfig `pulumi:"subordinateConfig"`
 	// Required. Immutable. The Tier of this CertificateAuthority.
@@ -201,6 +206,7 @@ type certificateAuthorityArgs struct {
 // The set of arguments for constructing a CertificateAuthority resource.
 type CertificateAuthorityArgs struct {
 	CertificateAuthoritiesId pulumi.StringInput
+	CertificateAuthorityId   pulumi.StringInput
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyPtrInput
 	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
@@ -217,6 +223,7 @@ type CertificateAuthorityArgs struct {
 	Lifetime    pulumi.StringPtrInput
 	LocationsId pulumi.StringInput
 	ProjectsId  pulumi.StringInput
+	RequestId   pulumi.StringPtrInput
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigPtrInput
 	// Required. Immutable. The Tier of this CertificateAuthority.

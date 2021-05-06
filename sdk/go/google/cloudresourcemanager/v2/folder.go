@@ -37,6 +37,9 @@ func NewFolder(ctx *pulumi.Context,
 	if args.FoldersId == nil {
 		return nil, errors.New("invalid value for required argument 'FoldersId'")
 	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	var resource Folder
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v2:Folder", name, args, &resource, opts...)
 	if err != nil {
@@ -93,7 +96,7 @@ type folderArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	FoldersId   string  `pulumi:"foldersId"`
 	// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
-	Parent *string `pulumi:"parent"`
+	Parent string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a Folder resource.
@@ -102,7 +105,7 @@ type FolderArgs struct {
 	DisplayName pulumi.StringPtrInput
 	FoldersId   pulumi.StringInput
 	// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
-	Parent pulumi.StringPtrInput
+	Parent pulumi.StringInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {

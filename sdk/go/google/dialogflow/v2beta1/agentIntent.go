@@ -203,9 +203,11 @@ type agentIntentArgs struct {
 	Events []string `pulumi:"events"`
 	// Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
 	InputContextNames []string `pulumi:"inputContextNames"`
+	IntentView        *string  `pulumi:"intentView"`
 	IntentsId         string   `pulumi:"intentsId"`
 	// Optional. Indicates whether this is a fallback intent.
-	IsFallback *bool `pulumi:"isFallback"`
+	IsFallback   *bool   `pulumi:"isFallback"`
+	LanguageCode *string `pulumi:"languageCode"`
 	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
 	LiveAgentHandoff *bool  `pulumi:"liveAgentHandoff"`
 	LocationsId      string `pulumi:"locationsId"`
@@ -248,9 +250,11 @@ type AgentIntentArgs struct {
 	Events pulumi.StringArrayInput
 	// Optional. The list of context names required for this intent to be triggered. Formats: - `projects//agent/sessions/-/contexts/` - `projects//locations//agent/sessions/-/contexts/`
 	InputContextNames pulumi.StringArrayInput
+	IntentView        pulumi.StringPtrInput
 	IntentsId         pulumi.StringInput
 	// Optional. Indicates whether this is a fallback intent.
-	IsFallback pulumi.BoolPtrInput
+	IsFallback   pulumi.BoolPtrInput
+	LanguageCode pulumi.StringPtrInput
 	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
 	LiveAgentHandoff pulumi.BoolPtrInput
 	LocationsId      pulumi.StringInput

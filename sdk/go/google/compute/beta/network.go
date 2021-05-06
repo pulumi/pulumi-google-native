@@ -178,8 +178,9 @@ type networkArgs struct {
 	Name    *string `pulumi:"name"`
 	Network string  `pulumi:"network"`
 	// [Output Only] A list of network peerings for the resource.
-	Peerings []NetworkPeering `pulumi:"peerings"`
-	Project  string           `pulumi:"project"`
+	Peerings  []NetworkPeering `pulumi:"peerings"`
+	Project   string           `pulumi:"project"`
+	RequestId *string          `pulumi:"requestId"`
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig *NetworkRoutingConfig `pulumi:"routingConfig"`
 	// [Output Only] Server-defined URL for the resource.
@@ -216,8 +217,9 @@ type NetworkArgs struct {
 	Name    pulumi.StringPtrInput
 	Network pulumi.StringInput
 	// [Output Only] A list of network peerings for the resource.
-	Peerings NetworkPeeringArrayInput
-	Project  pulumi.StringInput
+	Peerings  NetworkPeeringArrayInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
 	RoutingConfig NetworkRoutingConfigPtrInput
 	// [Output Only] Server-defined URL for the resource.

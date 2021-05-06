@@ -122,8 +122,9 @@ type agentFlowPageArgs struct {
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
 	FlowsId       string                                  `pulumi:"flowsId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form        *GoogleCloudDialogflowCxV3Form `pulumi:"form"`
-	LocationsId string                         `pulumi:"locationsId"`
+	Form         *GoogleCloudDialogflowCxV3Form `pulumi:"form"`
+	LanguageCode *string                        `pulumi:"languageCode"`
+	LocationsId  string                         `pulumi:"locationsId"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name       *string `pulumi:"name"`
 	PagesId    string  `pulumi:"pagesId"`
@@ -145,8 +146,9 @@ type AgentFlowPageArgs struct {
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
 	FlowsId       pulumi.StringInput
 	// The form associated with the page, used for collecting parameters relevant to the page.
-	Form        GoogleCloudDialogflowCxV3FormPtrInput
-	LocationsId pulumi.StringInput
+	Form         GoogleCloudDialogflowCxV3FormPtrInput
+	LanguageCode pulumi.StringPtrInput
+	LocationsId  pulumi.StringInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
 	Name       pulumi.StringPtrInput
 	PagesId    pulumi.StringInput

@@ -202,11 +202,13 @@ type objectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object string `pulumi:"object"`
 	// The project team associated with the entity, if any.
-	ProjectTeam *ObjectAccessControlProjectTeam `pulumi:"projectTeam"`
+	ProjectTeam            *ObjectAccessControlProjectTeam `pulumi:"projectTeam"`
+	ProvisionalUserProject *string                         `pulumi:"provisionalUserProject"`
 	// The access permission for the entity.
 	Role *string `pulumi:"role"`
 	// The link to this access-control entry.
-	SelfLink *string `pulumi:"selfLink"`
+	SelfLink    *string `pulumi:"selfLink"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a ObjectAccessControl resource.
@@ -243,11 +245,13 @@ type ObjectAccessControlArgs struct {
 	// The name of the object, if applied to an object.
 	Object pulumi.StringInput
 	// The project team associated with the entity, if any.
-	ProjectTeam ObjectAccessControlProjectTeamPtrInput
+	ProjectTeam            ObjectAccessControlProjectTeamPtrInput
+	ProvisionalUserProject pulumi.StringPtrInput
 	// The access permission for the entity.
 	Role pulumi.StringPtrInput
 	// The link to this access-control entry.
-	SelfLink pulumi.StringPtrInput
+	SelfLink    pulumi.StringPtrInput
+	UserProject pulumi.StringPtrInput
 }
 
 func (ObjectAccessControlArgs) ElementType() reflect.Type {

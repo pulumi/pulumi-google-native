@@ -43,6 +43,9 @@ func NewFolderBucketView(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.ViewId == nil {
+		return nil, errors.New("invalid value for required argument 'ViewId'")
+	}
 	if args.ViewsId == nil {
 		return nil, errors.New("invalid value for required argument 'ViewsId'")
 	}
@@ -107,6 +110,7 @@ type folderBucketViewArgs struct {
 	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name    *string `pulumi:"name"`
+	ViewId  string  `pulumi:"viewId"`
 	ViewsId string  `pulumi:"viewsId"`
 }
 
@@ -121,6 +125,7 @@ type FolderBucketViewArgs struct {
 	LocationsId pulumi.StringInput
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name    pulumi.StringPtrInput
+	ViewId  pulumi.StringInput
 	ViewsId pulumi.StringInput
 }
 

@@ -49,6 +49,9 @@ func NewSchedule(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.ScheduleId == nil {
+		return nil, errors.New("invalid value for required argument 'ScheduleId'")
+	}
 	if args.SchedulesId == nil {
 		return nil, errors.New("invalid value for required argument 'SchedulesId'")
 	}
@@ -130,6 +133,7 @@ type scheduleArgs struct {
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
 	LocationsId       string             `pulumi:"locationsId"`
 	ProjectsId        string             `pulumi:"projectsId"`
+	ScheduleId        string             `pulumi:"scheduleId"`
 	SchedulesId       string             `pulumi:"schedulesId"`
 	State             *string            `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
@@ -146,6 +150,7 @@ type ScheduleArgs struct {
 	ExecutionTemplate ExecutionTemplatePtrInput
 	LocationsId       pulumi.StringInput
 	ProjectsId        pulumi.StringInput
+	ScheduleId        pulumi.StringInput
 	SchedulesId       pulumi.StringInput
 	State             pulumi.StringPtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).

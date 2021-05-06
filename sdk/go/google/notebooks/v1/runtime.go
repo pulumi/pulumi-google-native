@@ -48,6 +48,9 @@ func NewRuntime(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.RuntimeId == nil {
+		return nil, errors.New("invalid value for required argument 'RuntimeId'")
+	}
 	if args.RuntimesId == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimesId'")
 	}
@@ -123,6 +126,7 @@ type runtimeArgs struct {
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
 	LocationsId  string               `pulumi:"locationsId"`
 	ProjectsId   string               `pulumi:"projectsId"`
+	RuntimeId    string               `pulumi:"runtimeId"`
 	RuntimesId   string               `pulumi:"runtimesId"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig *RuntimeSoftwareConfig `pulumi:"softwareConfig"`
@@ -136,6 +140,7 @@ type RuntimeArgs struct {
 	AccessConfig RuntimeAccessConfigPtrInput
 	LocationsId  pulumi.StringInput
 	ProjectsId   pulumi.StringInput
+	RuntimeId    pulumi.StringInput
 	RuntimesId   pulumi.StringInput
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigPtrInput
