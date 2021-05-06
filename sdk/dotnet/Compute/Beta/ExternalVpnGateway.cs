@@ -190,6 +190,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("redundancyType")]
         public Input<string>? RedundancyType { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>

@@ -492,6 +492,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
         /// </summary>
@@ -547,6 +550,9 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("shieldedInstanceIntegrityPolicy")]
         public Input<Inputs.ShieldedInstanceIntegrityPolicyArgs>? ShieldedInstanceIntegrityPolicy { get; set; }
+
+        [Input("sourceInstanceTemplate")]
+        public Input<string>? SourceInstanceTemplate { get; set; }
 
         /// <summary>
         /// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.

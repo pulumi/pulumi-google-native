@@ -96,6 +96,12 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("skipBacklog")]
+        public Input<string>? SkipBacklog { get; set; }
+
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
+
         [Input("subscriptionsId", required: true)]
         public Input<string> SubscriptionsId { get; set; } = null!;
 

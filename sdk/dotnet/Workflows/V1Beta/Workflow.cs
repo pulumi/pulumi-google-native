@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.Workflows.V1Beta
         [Input("sourceContents")]
         public Input<string>? SourceContents { get; set; }
 
+        [Input("workflowId", required: true)]
+        public Input<string> WorkflowId { get; set; } = null!;
+
         [Input("workflowsId", required: true)]
         public Input<string> WorkflowsId { get; set; } = null!;
 

@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         [Input("resourceRequirements")]
         public Input<Inputs.LicenseResourceRequirementsArgs>? ResourceRequirements { get; set; }
 

@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
         /// </summary>

@@ -129,6 +129,9 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Input("certificateAuthoritiesId", required: true)]
         public Input<string> CertificateAuthoritiesId { get; set; } = null!;
 
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
+
         [Input("certificatesId", required: true)]
         public Input<string> CertificatesId { get; set; } = null!;
 
@@ -167,6 +170,9 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         public CertificateAuthorityCertificateArgs()
         {

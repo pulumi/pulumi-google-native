@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationApiArgs : Pulumi.ResourceArgs
     {
+        [Input("action")]
+        public Input<string>? Action { get; set; }
+
         [Input("apisId", required: true)]
         public Input<string> ApisId { get; set; } = null!;
 
@@ -111,8 +114,14 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
+        [Input("name")]
+        public Input<string>? Name { get; set; }
+
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
+
+        [Input("validate")]
+        public Input<string>? Validate { get; set; }
 
         public OrganizationApiArgs()
         {

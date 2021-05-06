@@ -196,6 +196,9 @@ namespace Pulumi.GoogleNative.Compute.V1
             set => _publicDelegatedPrefixs = value;
         }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>

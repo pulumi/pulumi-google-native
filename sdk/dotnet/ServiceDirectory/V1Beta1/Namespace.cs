@@ -93,6 +93,9 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
+
         [Input("namespacesId", required: true)]
         public Input<string> NamespacesId { get; set; } = null!;
 

@@ -111,6 +111,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
+        [Input("metadataImportId", required: true)]
+        public Input<string> MetadataImportId { get; set; } = null!;
+
         [Input("metadataImportsId", required: true)]
         public Input<string> MetadataImportsId { get; set; } = null!;
 
@@ -122,6 +125,9 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;

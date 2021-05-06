@@ -237,6 +237,9 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [Input("primaryProductId")]
         public Input<string>? PrimaryProductId { get; set; }
 
+        [Input("productId", required: true)]
+        public Input<string> ProductId { get; set; } = null!;
+
         [Input("productsId", required: true)]
         public Input<string> ProductsId { get; set; } = null!;
 

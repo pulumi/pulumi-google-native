@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
             set => _authorizedNetworks = value;
         }
 
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
+
         [Input("domainsId", required: true)]
         public Input<string> DomainsId { get; set; } = null!;
 

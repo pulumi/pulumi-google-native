@@ -357,6 +357,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("owner")]
         public Input<Inputs.BucketOwnerArgs>? Owner { get; set; }
 
+        [Input("predefinedAcl")]
+        public Input<string>? PredefinedAcl { get; set; }
+
+        [Input("predefinedDefaultObjectAcl")]
+        public Input<string>? PredefinedDefaultObjectAcl { get; set; }
+
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
@@ -365,6 +371,12 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
+
+        [Input("projection")]
+        public Input<string>? Projection { get; set; }
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
 
         /// <summary>
         /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
@@ -401,6 +413,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
 
         /// <summary>
         /// The bucket's versioning configuration.

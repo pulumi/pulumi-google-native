@@ -141,6 +141,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Input("groupsId", required: true)]
         public Input<string> GroupsId { get; set; } = null!;
 
+        [Input("initialGroupConfig")]
+        public Input<string>? InitialGroupConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

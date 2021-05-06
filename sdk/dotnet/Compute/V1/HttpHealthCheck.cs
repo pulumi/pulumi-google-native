@@ -192,6 +192,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
         /// </summary>

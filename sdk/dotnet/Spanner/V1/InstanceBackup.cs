@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
     public sealed class InstanceBackupArgs : Pulumi.ResourceArgs
     {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
         [Input("backupsId", required: true)]
         public Input<string> BackupsId { get; set; } = null!;
 
@@ -122,6 +125,12 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        [Input("encryptionConfigEncryptionType", required: true)]
+        public Input<string> EncryptionConfigEncryptionType { get; set; } = null!;
+
+        [Input("encryptionConfigKmsKeyName")]
+        public Input<string>? EncryptionConfigKmsKeyName { get; set; }
 
         /// <summary>
         /// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.

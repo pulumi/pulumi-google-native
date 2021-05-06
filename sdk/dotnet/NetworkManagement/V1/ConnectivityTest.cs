@@ -186,6 +186,9 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         [Input("source")]
         public Input<Inputs.EndpointArgs>? Source { get; set; }
 
+        [Input("testId", required: true)]
+        public Input<string> TestId { get; set; } = null!;
+
         public ConnectivityTestArgs()
         {
         }

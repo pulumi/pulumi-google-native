@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("reservationId")]
+        public Input<string>? ReservationId { get; set; }
+
         [Input("reservationsId", required: true)]
         public Input<string> ReservationsId { get; set; } = null!;
 

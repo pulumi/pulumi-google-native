@@ -312,6 +312,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("installGpuDriver")]
         public Input<bool>? InstallGpuDriver { get; set; }
 
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
         [Input("instanceOwners")]
         private InputList<string>? _instanceOwners;
 

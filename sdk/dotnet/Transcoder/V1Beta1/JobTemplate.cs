@@ -78,6 +78,9 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("config")]
         public Input<Inputs.JobConfigArgs>? Config { get; set; }
 
+        [Input("jobTemplateId", required: true)]
+        public Input<string> JobTemplateId { get; set; } = null!;
+
         [Input("jobTemplatesId", required: true)]
         public Input<string> JobTemplatesId { get; set; } = null!;
 

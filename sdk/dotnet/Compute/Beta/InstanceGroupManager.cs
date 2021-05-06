@@ -314,6 +314,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] The URL for this managed instance group. The server defines this URL.
         /// </summary>

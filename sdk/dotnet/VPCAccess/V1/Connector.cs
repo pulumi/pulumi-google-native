@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
 
     public sealed class ConnectorArgs : Pulumi.ResourceArgs
     {
+        [Input("connectorId", required: true)]
+        public Input<string> ConnectorId { get; set; } = null!;
+
         [Input("connectorsId", required: true)]
         public Input<string> ConnectorsId { get; set; } = null!;
 

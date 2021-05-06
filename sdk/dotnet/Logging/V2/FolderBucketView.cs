@@ -117,6 +117,9 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("viewId", required: true)]
+        public Input<string> ViewId { get; set; } = null!;
+
         [Input("viewsId", required: true)]
         public Input<string> ViewsId { get; set; } = null!;
 

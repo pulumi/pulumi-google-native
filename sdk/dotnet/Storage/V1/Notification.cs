@@ -168,6 +168,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("payload_format")]
         public Input<string>? Payload_format { get; set; }
 
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
         /// <summary>
         /// The canonical URL of this notification.
         /// </summary>
@@ -179,6 +182,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("topic")]
         public Input<string>? Topic { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
 
         public NotificationArgs()
         {

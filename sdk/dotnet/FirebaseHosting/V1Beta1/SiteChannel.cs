@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 
     public sealed class SiteChannelArgs : Pulumi.ResourceArgs
     {
+        [Input("channelId", required: true)]
+        public Input<string> ChannelId { get; set; } = null!;
+
         [Input("channelsId", required: true)]
         public Input<string> ChannelsId { get; set; } = null!;
 

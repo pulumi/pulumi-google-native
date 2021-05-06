@@ -168,6 +168,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("entryGroupsId", required: true)]
         public Input<string> EntryGroupsId { get; set; } = null!;
 
+        [Input("entryId", required: true)]
+        public Input<string> EntryId { get; set; } = null!;
+
         /// <summary>
         /// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
         /// </summary>

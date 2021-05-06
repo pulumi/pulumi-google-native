@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         [Input("repositoriesId", required: true)]
         public Input<string> RepositoriesId { get; set; } = null!;
 
+        [Input("tagId")]
+        public Input<string>? TagId { get; set; }
+
         [Input("tagsId", required: true)]
         public Input<string> TagsId { get; set; } = null!;
 

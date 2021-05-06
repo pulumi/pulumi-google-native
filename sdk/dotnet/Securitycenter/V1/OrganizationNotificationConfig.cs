@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
 
     public sealed class OrganizationNotificationConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
         /// <summary>
         /// The description of the notification config (max of 1024 characters).
         /// </summary>

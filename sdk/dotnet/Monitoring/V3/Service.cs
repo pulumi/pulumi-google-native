@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("serviceId")]
+        public Input<string>? ServiceId { get; set; }
+
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;
 

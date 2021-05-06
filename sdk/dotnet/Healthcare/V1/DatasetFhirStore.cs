@@ -141,6 +141,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("enableUpdateCreate")]
         public Input<bool>? EnableUpdateCreate { get; set; }
 
+        [Input("fhirStoreId")]
+        public Input<string>? FhirStoreId { get; set; }
+
         [Input("fhirStoresId", required: true)]
         public Input<string> FhirStoresId { get; set; } = null!;
 

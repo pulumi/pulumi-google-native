@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("form")]
         public Input<Inputs.GoogleCloudDialogflowCxV3FormArgs>? Form { get; set; }
 
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 

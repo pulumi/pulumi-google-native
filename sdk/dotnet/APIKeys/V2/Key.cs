@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("keyId")]
+        public Input<string>? KeyId { get; set; }
+
         [Input("keysId", required: true)]
         public Input<string> KeysId { get; set; } = null!;
 

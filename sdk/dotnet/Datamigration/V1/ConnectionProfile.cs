@@ -132,6 +132,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("cloudsql")]
         public Input<Inputs.CloudSqlConnectionProfileArgs>? Cloudsql { get; set; }
 
+        [Input("connectionProfileId", required: true)]
+        public Input<string> ConnectionProfileId { get; set; } = null!;
+
         [Input("connectionProfilesId", required: true)]
         public Input<string> ConnectionProfilesId { get; set; } = null!;
 
@@ -182,6 +185,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// </summary>
         [Input("provider")]
         public Input<string>? Provider { get; set; }
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// The current connection profile state (e.g. DRAFT, READY, or FAILED).

@@ -114,6 +114,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("executionId", required: true)]
+        public Input<string> ExecutionId { get; set; } = null!;
+
         /// <summary>
         /// execute metadata including name, hardware spec, region, labels, etc.
         /// </summary>

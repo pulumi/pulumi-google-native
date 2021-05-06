@@ -375,6 +375,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("provisionedLinkCount")]
         public Input<int>? ProvisionedLinkCount { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// Target number of physical links in the link bundle, as requested by the customer.
         /// </summary>

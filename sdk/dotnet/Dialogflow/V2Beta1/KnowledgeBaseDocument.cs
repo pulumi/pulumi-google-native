@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("enableAutoReload")]
         public Input<bool>? EnableAutoReload { get; set; }
 
+        [Input("importGcsCustomMetadata")]
+        public Input<string>? ImportGcsCustomMetadata { get; set; }
+
         [Input("knowledgeBasesId", required: true)]
         public Input<string> KnowledgeBasesId { get; set; } = null!;
 

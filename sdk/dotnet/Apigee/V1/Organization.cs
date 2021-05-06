@@ -237,6 +237,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
 
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
+
         /// <summary>
         /// Properties defined in the Apigee organization profile.
         /// </summary>

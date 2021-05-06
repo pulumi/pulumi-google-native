@@ -102,6 +102,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
 
     public sealed class GameServerDeploymentConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
+
         [Input("configsId", required: true)]
         public Input<string> ConfigsId { get; set; } = null!;
 

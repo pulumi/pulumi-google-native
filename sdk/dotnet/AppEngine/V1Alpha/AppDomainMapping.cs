@@ -96,6 +96,12 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("noManagedCertificate")]
+        public Input<string>? NoManagedCertificate { get; set; }
+
+        [Input("overrideStrategy")]
+        public Input<string>? OverrideStrategy { get; set; }
+
         [Input("resourceRecords")]
         private InputList<Inputs.ResourceRecordArgs>? _resourceRecords;
 

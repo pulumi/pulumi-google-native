@@ -96,6 +96,9 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("entryGroupId", required: true)]
+        public Input<string> EntryGroupId { get; set; } = null!;
+
         [Input("entryGroupsId", required: true)]
         public Input<string> EntryGroupsId { get; set; } = null!;
 

@@ -222,6 +222,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("releaseChannel")]
         public Input<string>? ReleaseChannel { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;
 

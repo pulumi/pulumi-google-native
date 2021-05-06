@@ -153,6 +153,9 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         [Input("repositoriesId", required: true)]
         public Input<string> RepositoriesId { get; set; } = null!;
 
+        [Input("repositoryId")]
+        public Input<string>? RepositoryId { get; set; }
+
         /// <summary>
         /// The time when the repository was last updated.
         /// </summary>

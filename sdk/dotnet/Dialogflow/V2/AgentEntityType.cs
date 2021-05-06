@@ -135,6 +135,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 

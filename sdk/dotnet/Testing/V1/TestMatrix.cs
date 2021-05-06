@@ -180,6 +180,9 @@ namespace Pulumi.GoogleNative.Testing.V1
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// Required. Where the results for the matrix are written.
         /// </summary>

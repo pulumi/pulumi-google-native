@@ -300,6 +300,9 @@ namespace Pulumi.GoogleNative.Compute.V1
             set => _remoteTrafficSelector = value;
         }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// URL of the router resource to be used for dynamic routing.
         /// </summary>

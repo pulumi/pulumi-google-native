@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        [Input("gameServerClusterId", required: true)]
+        public Input<string> GameServerClusterId { get; set; } = null!;
+
         [Input("gameServerClustersId", required: true)]
         public Input<string> GameServerClustersId { get; set; } = null!;
 

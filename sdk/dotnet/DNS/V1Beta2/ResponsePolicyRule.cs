@@ -93,6 +93,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }
 
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         /// <summary>
         /// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
         /// </summary>

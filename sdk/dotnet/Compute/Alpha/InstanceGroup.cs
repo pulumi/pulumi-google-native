@@ -212,6 +212,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] The URL for this instance group. The server generates this URL.
         /// </summary>

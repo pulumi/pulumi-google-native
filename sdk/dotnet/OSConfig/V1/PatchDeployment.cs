@@ -162,6 +162,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         [Input("patchConfig")]
         public Input<Inputs.PatchConfigArgs>? PatchConfig { get; set; }
 
+        [Input("patchDeploymentId", required: true)]
+        public Input<string> PatchDeploymentId { get; set; } = null!;
+
         [Input("patchDeploymentsId", required: true)]
         public Input<string> PatchDeploymentsId { get; set; } = null!;
 

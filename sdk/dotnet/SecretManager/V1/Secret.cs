@@ -141,6 +141,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         [Input("rotation")]
         public Input<Inputs.RotationArgs>? Rotation { get; set; }
 
+        [Input("secretId", required: true)]
+        public Input<string> SecretId { get; set; } = null!;
+
         [Input("secretsId", required: true)]
         public Input<string> SecretsId { get; set; } = null!;
 

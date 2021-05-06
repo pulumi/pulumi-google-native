@@ -102,6 +102,9 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
             set => _annotations = value;
         }
 
+        [Input("endpointId", required: true)]
+        public Input<string> EndpointId { get; set; } = null!;
+
         [Input("endpointsId", required: true)]
         public Input<string> EndpointsId { get; set; } = null!;
 

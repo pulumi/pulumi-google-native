@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("gatewayId", required: true)]
+        public Input<string> GatewayId { get; set; } = null!;
+
         [Input("gatewaysId", required: true)]
         public Input<string> GatewaysId { get; set; } = null!;
 

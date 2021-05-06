@@ -93,6 +93,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
     public sealed class ManagedZoneRrsetArgs : Pulumi.ResourceArgs
     {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

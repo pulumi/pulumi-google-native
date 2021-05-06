@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("studyConfig")]
         public Input<Inputs.GoogleCloudMlV1__StudyConfigArgs>? StudyConfig { get; set; }
 
+        [Input("studyId", required: true)]
+        public Input<string> StudyId { get; set; } = null!;
+
         public StudyArgs()
         {
         }

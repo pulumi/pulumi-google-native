@@ -132,6 +132,9 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
 
     public sealed class ApiConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("apiConfigId", required: true)]
+        public Input<string> ApiConfigId { get; set; } = null!;
+
         [Input("apisId", required: true)]
         public Input<string> ApisId { get; set; } = null!;
 

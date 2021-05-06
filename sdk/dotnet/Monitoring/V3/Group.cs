@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
+
         public GroupArgs()
         {
         }

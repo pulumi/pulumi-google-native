@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
         [Input("environmentsId", required: true)]
         public Input<string> EnvironmentsId { get; set; } = null!;
 

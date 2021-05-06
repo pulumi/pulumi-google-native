@@ -93,6 +93,9 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("schemaId")]
+        public Input<string>? SchemaId { get; set; }
+
         [Input("schemasId", required: true)]
         public Input<string> SchemasId { get; set; } = null!;
 

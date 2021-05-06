@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
+        [Input("databaseId")]
+        public Input<string>? DatabaseId { get; set; }
+
         /// <summary>
         /// Immutable. The globally unique hostname of the database.
         /// </summary>
@@ -128,6 +131,9 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
 
         public InstanceArgs()
         {

@@ -463,6 +463,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network &amp; region within which the Cloud Router is configured.
         /// </summary>
@@ -495,6 +498,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
 
         /// <summary>
         /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

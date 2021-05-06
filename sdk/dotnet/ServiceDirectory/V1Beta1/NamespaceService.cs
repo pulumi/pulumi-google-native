@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
         [Input("servicesId", required: true)]
         public Input<string> ServicesId { get; set; } = null!;
 

@@ -240,6 +240,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
             set => _inputContextNames = value;
         }
 
+        [Input("intentView")]
+        public Input<string>? IntentView { get; set; }
+
         [Input("intentsId", required: true)]
         public Input<string> IntentsId { get; set; } = null!;
 
@@ -248,6 +251,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         [Input("isFallback")]
         public Input<bool>? IsFallback { get; set; }
+
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
 
         /// <summary>
         /// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.

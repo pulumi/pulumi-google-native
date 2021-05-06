@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
     public sealed class FeatureArgs : Pulumi.ResourceArgs
     {
+        [Input("featureId")]
+        public Input<string>? FeatureId { get; set; }
+
         [Input("featuresId", required: true)]
         public Input<string> FeaturesId { get; set; } = null!;
 
@@ -149,6 +152,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

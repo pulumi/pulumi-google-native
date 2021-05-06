@@ -108,8 +108,14 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
 
     public sealed class CapacityCommitmentArgs : Pulumi.ResourceArgs
     {
+        [Input("capacityCommitmentId")]
+        public Input<string>? CapacityCommitmentId { get; set; }
+
         [Input("capacityCommitmentsId", required: true)]
         public Input<string> CapacityCommitmentsId { get; set; } = null!;
+
+        [Input("enforceSingleAdminProjectPerOrg")]
+        public Input<string>? EnforceSingleAdminProjectPerOrg { get; set; }
 
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;

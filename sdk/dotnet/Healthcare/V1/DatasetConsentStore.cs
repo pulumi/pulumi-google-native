@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 
     public sealed class DatasetConsentStoreArgs : Pulumi.ResourceArgs
     {
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
+
         [Input("consentStoresId", required: true)]
         public Input<string> ConsentStoresId { get; set; } = null!;
 
