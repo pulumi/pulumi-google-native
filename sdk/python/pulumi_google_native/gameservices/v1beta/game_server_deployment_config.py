@@ -15,6 +15,7 @@ __all__ = ['GameServerDeploymentConfigArgs', 'GameServerDeploymentConfig']
 @pulumi.input_type
 class GameServerDeploymentConfigArgs:
     def __init__(__self__, *,
+                 config_id: pulumi.Input[str],
                  configs_id: pulumi.Input[str],
                  game_server_deployments_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -32,6 +33,7 @@ class GameServerDeploymentConfigArgs:
         :param pulumi.Input[str] name: The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigArgs']]] scaling_configs: The autoscaling settings.
         """
+        pulumi.set(__self__, "config_id", config_id)
         pulumi.set(__self__, "configs_id", configs_id)
         pulumi.set(__self__, "game_server_deployments_id", game_server_deployments_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -46,6 +48,15 @@ class GameServerDeploymentConfigArgs:
             pulumi.set(__self__, "name", name)
         if scaling_configs is not None:
             pulumi.set(__self__, "scaling_configs", scaling_configs)
+
+    @property
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "config_id")
+
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
 
     @property
     @pulumi.getter(name="configsId")
@@ -149,6 +160,7 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  configs_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
@@ -194,6 +206,7 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  configs_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fleet_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FleetConfigArgs']]]]] = None,
@@ -215,6 +228,9 @@ class GameServerDeploymentConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GameServerDeploymentConfigArgs.__new__(GameServerDeploymentConfigArgs)
 
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__.__dict__["config_id"] = config_id
             if configs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'configs_id'")
             __props__.__dict__["configs_id"] = configs_id

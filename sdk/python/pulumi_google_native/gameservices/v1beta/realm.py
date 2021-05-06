@@ -15,6 +15,7 @@ class RealmArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 realm_id: pulumi.Input[str],
                  realms_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -31,6 +32,7 @@ class RealmArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "realm_id", realm_id)
         pulumi.set(__self__, "realms_id", realms_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -60,6 +62,15 @@ class RealmArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="realmId")
+    def realm_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "realm_id")
+
+    @realm_id.setter
+    def realm_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "realm_id", value)
 
     @property
     @pulumi.getter(name="realmsId")
@@ -142,6 +153,7 @@ class Realm(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 realm_id: Optional[pulumi.Input[str]] = None,
                  realms_id: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -186,6 +198,7 @@ class Realm(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 realm_id: Optional[pulumi.Input[str]] = None,
                  realms_id: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -210,6 +223,9 @@ class Realm(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if realm_id is None and not opts.urn:
+                raise TypeError("Missing required property 'realm_id'")
+            __props__.__dict__["realm_id"] = realm_id
             if realms_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realms_id'")
             __props__.__dict__["realms_id"] = realms_id

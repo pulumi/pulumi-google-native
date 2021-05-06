@@ -16,6 +16,7 @@ class DatasetArgs:
                  datasets_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
@@ -26,6 +27,8 @@ class DatasetArgs:
         pulumi.set(__self__, "datasets_id", datasets_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if time_zone is not None:
@@ -59,6 +62,15 @@ class DatasetArgs:
         pulumi.set(self, "projects_id", value)
 
     @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -88,6 +100,7 @@ class Dataset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -126,6 +139,7 @@ class Dataset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,6 +157,7 @@ class Dataset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetArgs.__new__(DatasetArgs)
 
+            __props__.__dict__["dataset_id"] = dataset_id
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
             __props__.__dict__["datasets_id"] = datasets_id

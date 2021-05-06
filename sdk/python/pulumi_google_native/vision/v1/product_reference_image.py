@@ -21,6 +21,7 @@ class ProductReferenceImageArgs:
                  reference_images_id: pulumi.Input[str],
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 reference_image_id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProductReferenceImage resource.
@@ -36,6 +37,8 @@ class ProductReferenceImageArgs:
             pulumi.set(__self__, "bounding_polys", bounding_polys)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reference_image_id is not None:
+            pulumi.set(__self__, "reference_image_id", reference_image_id)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
 
@@ -100,6 +103,15 @@ class ProductReferenceImageArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="referenceImageId")
+    def reference_image_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "reference_image_id")
+
+    @reference_image_id.setter
+    def reference_image_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_image_id", value)
+
+    @property
     @pulumi.getter
     def uri(self) -> Optional[pulumi.Input[str]]:
         """
@@ -122,6 +134,7 @@ class ProductReferenceImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 reference_image_id: Optional[pulumi.Input[str]] = None,
                  reference_images_id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -163,6 +176,7 @@ class ProductReferenceImage(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 reference_image_id: Optional[pulumi.Input[str]] = None,
                  reference_images_id: Optional[pulumi.Input[str]] = None,
                  uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -188,6 +202,7 @@ class ProductReferenceImage(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["reference_image_id"] = reference_image_id
             if reference_images_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reference_images_id'")
             __props__.__dict__["reference_images_id"] = reference_images_id

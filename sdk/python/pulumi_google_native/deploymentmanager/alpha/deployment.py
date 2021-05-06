@@ -17,6 +17,7 @@ class DeploymentArgs:
     def __init__(__self__, *,
                  deployment: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input['CredentialArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  fingerprint: Optional[pulumi.Input[str]] = None,
@@ -27,6 +28,7 @@ class DeploymentArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  operation: Optional[pulumi.Input['OperationArgs']] = None,
                  outputs: Optional[pulumi.Input[Sequence[pulumi.Input['DeploymentOutputEntryArgs']]]] = None,
+                 preview: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input['TargetConfigurationArgs']] = None,
                  update: Optional[pulumi.Input['DeploymentUpdateArgs']] = None,
@@ -49,6 +51,8 @@ class DeploymentArgs:
         """
         pulumi.set(__self__, "deployment", deployment)
         pulumi.set(__self__, "project", project)
+        if create_policy is not None:
+            pulumi.set(__self__, "create_policy", create_policy)
         if credential is not None:
             pulumi.set(__self__, "credential", credential)
         if description is not None:
@@ -69,6 +73,8 @@ class DeploymentArgs:
             pulumi.set(__self__, "operation", operation)
         if outputs is not None:
             pulumi.set(__self__, "outputs", outputs)
+        if preview is not None:
+            pulumi.set(__self__, "preview", preview)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if target is not None:
@@ -95,6 +101,15 @@ class DeploymentArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="createPolicy")
+    def create_policy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "create_policy")
+
+    @create_policy.setter
+    def create_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_policy", value)
 
     @property
     @pulumi.getter
@@ -214,6 +229,15 @@ class DeploymentArgs:
         pulumi.set(self, "outputs", value)
 
     @property
+    @pulumi.getter
+    def preview(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "preview")
+
+    @preview.setter
+    def preview(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preview", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,6 +291,7 @@ class Deployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
                  deployment: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -278,6 +303,7 @@ class Deployment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentOutputEntryArgs']]]]] = None,
+                 preview: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
@@ -327,6 +353,7 @@ class Deployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 create_policy: Optional[pulumi.Input[str]] = None,
                  credential: Optional[pulumi.Input[pulumi.InputType['CredentialArgs']]] = None,
                  deployment: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -338,6 +365,7 @@ class Deployment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  operation: Optional[pulumi.Input[pulumi.InputType['OperationArgs']]] = None,
                  outputs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeploymentOutputEntryArgs']]]]] = None,
+                 preview: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[pulumi.InputType['TargetConfigurationArgs']]] = None,
@@ -355,6 +383,7 @@ class Deployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DeploymentArgs.__new__(DeploymentArgs)
 
+            __props__.__dict__["create_policy"] = create_policy
             __props__.__dict__["credential"] = credential
             if deployment is None and not opts.urn:
                 raise TypeError("Missing required property 'deployment'")
@@ -368,6 +397,7 @@ class Deployment(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["operation"] = operation
             __props__.__dict__["outputs"] = outputs
+            __props__.__dict__["preview"] = preview
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project

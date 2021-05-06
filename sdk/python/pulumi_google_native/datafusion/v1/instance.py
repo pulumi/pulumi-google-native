@@ -26,6 +26,7 @@ class InstanceArgs:
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  options: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -70,6 +71,8 @@ class InstanceArgs:
             pulumi.set(__self__, "enable_stackdriver_logging", enable_stackdriver_logging)
         if enable_stackdriver_monitoring is not None:
             pulumi.set(__self__, "enable_stackdriver_monitoring", enable_stackdriver_monitoring)
+        if instance_id is not None:
+            pulumi.set(__self__, "instance_id", instance_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network_config is not None:
@@ -209,6 +212,15 @@ class InstanceArgs:
         pulumi.set(self, "enable_stackdriver_monitoring", value)
 
     @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -306,6 +318,7 @@ class Instance(pulumi.CustomResource):
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -370,6 +383,7 @@ class Instance(pulumi.CustomResource):
                  enable_rbac: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_monitoring: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -400,6 +414,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["enable_rbac"] = enable_rbac
             __props__.__dict__["enable_stackdriver_logging"] = enable_stackdriver_logging
             __props__.__dict__["enable_stackdriver_monitoring"] = enable_stackdriver_monitoring
+            __props__.__dict__["instance_id"] = instance_id
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__.__dict__["instances_id"] = instances_id

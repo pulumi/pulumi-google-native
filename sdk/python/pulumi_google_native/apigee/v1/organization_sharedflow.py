@@ -14,6 +14,8 @@ __all__ = ['OrganizationSharedflowArgs', 'OrganizationSharedflow']
 @pulumi.input_type
 class OrganizationSharedflowArgs:
     def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  organizations_id: pulumi.Input[str],
                  sharedflows_id: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
@@ -25,6 +27,8 @@ class OrganizationSharedflowArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organizations_id", organizations_id)
         pulumi.set(__self__, "sharedflows_id", sharedflows_id)
         if content_type is not None:
@@ -33,6 +37,24 @@ class OrganizationSharedflowArgs:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationsId")
@@ -94,9 +116,11 @@ class OrganizationSharedflow(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  sharedflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -133,9 +157,11 @@ class OrganizationSharedflow(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
                  sharedflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -150,9 +176,15 @@ class OrganizationSharedflow(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationSharedflowArgs.__new__(OrganizationSharedflowArgs)
 
+            if action is None and not opts.urn:
+                raise TypeError("Missing required property 'action'")
+            __props__.__dict__["action"] = action
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__.__dict__["organizations_id"] = organizations_id
@@ -161,7 +193,6 @@ class OrganizationSharedflow(pulumi.CustomResource):
             __props__.__dict__["sharedflows_id"] = sharedflows_id
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["revision"] = None
         super(OrganizationSharedflow, __self__).__init__(
             'google-native:apigee/v1:OrganizationSharedflow',

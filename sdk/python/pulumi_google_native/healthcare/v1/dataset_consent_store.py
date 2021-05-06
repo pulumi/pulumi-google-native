@@ -13,6 +13,7 @@ __all__ = ['DatasetConsentStoreArgs', 'DatasetConsentStore']
 @pulumi.input_type
 class DatasetConsentStoreArgs:
     def __init__(__self__, *,
+                 consent_store_id: pulumi.Input[str],
                  consent_stores_id: pulumi.Input[str],
                  datasets_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -28,6 +29,7 @@ class DatasetConsentStoreArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-supplied key-value pairs used to organize consent stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}. Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63}. No more than 64 labels can be associated with a given store. For more information: https://cloud.google.com/healthcare/docs/how-tos/labeling-resources
         :param pulumi.Input[str] name: Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation.
         """
+        pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "consent_stores_id", consent_stores_id)
         pulumi.set(__self__, "datasets_id", datasets_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -40,6 +42,15 @@ class DatasetConsentStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_store_id")
+
+    @consent_store_id.setter
+    def consent_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_store_id", value)
 
     @property
     @pulumi.getter(name="consentStoresId")
@@ -131,6 +142,7 @@ class DatasetConsentStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
                  consent_stores_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
@@ -174,6 +186,7 @@ class DatasetConsentStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
                  consent_stores_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  default_consent_ttl: Optional[pulumi.Input[str]] = None,
@@ -194,6 +207,9 @@ class DatasetConsentStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetConsentStoreArgs.__new__(DatasetConsentStoreArgs)
 
+            if consent_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_store_id'")
+            __props__.__dict__["consent_store_id"] = consent_store_id
             if consent_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'consent_stores_id'")
             __props__.__dict__["consent_stores_id"] = consent_stores_id

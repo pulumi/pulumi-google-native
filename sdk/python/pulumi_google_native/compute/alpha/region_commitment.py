@@ -27,6 +27,7 @@ class RegionCommitmentArgs:
                  license_resource: Optional[pulumi.Input['LicenseResourceCommitmentArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  plan: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceCommitmentArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -77,6 +78,8 @@ class RegionCommitmentArgs:
             pulumi.set(__self__, "name", name)
         if plan is not None:
             pulumi.set(__self__, "plan", plan)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if reservations is not None:
             pulumi.set(__self__, "reservations", reservations)
         if resources is not None:
@@ -233,6 +236,15 @@ class RegionCommitmentArgs:
         pulumi.set(self, "plan", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def reservations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReservationArgs']]]]:
         """
@@ -346,6 +358,7 @@ class RegionCommitment(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -415,6 +428,7 @@ class RegionCommitment(pulumi.CustomResource):
                  plan: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservationArgs']]]]] = None,
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceCommitmentArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -453,6 +467,7 @@ class RegionCommitment(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservations"] = reservations
             __props__.__dict__["resources"] = resources
             __props__.__dict__["self_link"] = self_link

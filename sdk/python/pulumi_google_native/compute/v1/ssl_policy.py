@@ -27,6 +27,7 @@ class SslPolicyArgs:
                  min_tls_version: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input['SslPolicyWarningsItemArgs']]]] = None):
         """
@@ -69,6 +70,8 @@ class SslPolicyArgs:
             pulumi.set(__self__, "name", name)
         if profile is not None:
             pulumi.set(__self__, "profile", profile)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if warnings is not None:
@@ -216,6 +219,15 @@ class SslPolicyArgs:
         pulumi.set(self, "profile", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -256,6 +268,7 @@ class SslPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SslPolicyWarningsItemArgs']]]]] = None,
@@ -316,6 +329,7 @@ class SslPolicy(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  profile: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_policy: Optional[pulumi.Input[str]] = None,
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SslPolicyWarningsItemArgs']]]]] = None,
@@ -344,6 +358,7 @@ class SslPolicy(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             if ssl_policy is None and not opts.urn:
                 raise TypeError("Missing required property 'ssl_policy'")

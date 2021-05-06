@@ -28,6 +28,7 @@ class GlobalPublicDelegatedPrefixArgs:
                  parent_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
@@ -74,6 +75,8 @@ class GlobalPublicDelegatedPrefixArgs:
             pulumi.set(__self__, "public_delegated_sub_prefixs", public_delegated_sub_prefixs)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
@@ -234,6 +237,15 @@ class GlobalPublicDelegatedPrefixArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -288,6 +300,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
                  public_delegated_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -351,6 +364,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
                  public_delegated_prefix: Optional[pulumi.Input[str]] = None,
                  public_delegated_sub_prefixs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PublicDelegatedPrefixPublicDelegatedSubPrefixArgs']]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
@@ -383,6 +397,7 @@ class GlobalPublicDelegatedPrefix(pulumi.CustomResource):
             __props__.__dict__["public_delegated_prefix"] = public_delegated_prefix
             __props__.__dict__["public_delegated_sub_prefixs"] = public_delegated_sub_prefixs
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["status"] = status

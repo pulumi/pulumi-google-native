@@ -14,10 +14,13 @@ __all__ = ['InstanceBackupArgs', 'InstanceBackup']
 @pulumi.input_type
 class InstanceBackupArgs:
     def __init__(__self__, *,
+                 backup_id: pulumi.Input[str],
                  backups_id: pulumi.Input[str],
+                 encryption_config_encryption_type: pulumi.Input[str],
                  instances_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config_kms_key_name: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  version_time: Optional[pulumi.Input[str]] = None):
@@ -28,17 +31,30 @@ class InstanceBackupArgs:
         :param pulumi.Input[str] name: Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
         :param pulumi.Input[str] version_time: The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
         """
+        pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "backups_id", backups_id)
+        pulumi.set(__self__, "encryption_config_encryption_type", encryption_config_encryption_type)
         pulumi.set(__self__, "instances_id", instances_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if encryption_config_kms_key_name is not None:
+            pulumi.set(__self__, "encryption_config_kms_key_name", encryption_config_kms_key_name)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if version_time is not None:
             pulumi.set(__self__, "version_time", version_time)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_id", value)
 
     @property
     @pulumi.getter(name="backupsId")
@@ -48,6 +64,15 @@ class InstanceBackupArgs:
     @backups_id.setter
     def backups_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "backups_id", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfigEncryptionType")
+    def encryption_config_encryption_type(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "encryption_config_encryption_type")
+
+    @encryption_config_encryption_type.setter
+    def encryption_config_encryption_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "encryption_config_encryption_type", value)
 
     @property
     @pulumi.getter(name="instancesId")
@@ -78,6 +103,15 @@ class InstanceBackupArgs:
     @database.setter
     def database(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfigKmsKeyName")
+    def encryption_config_kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "encryption_config_kms_key_name")
+
+    @encryption_config_kms_key_name.setter
+    def encryption_config_kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_config_kms_key_name", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -121,8 +155,11 @@ class InstanceBackup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config_encryption_type: Optional[pulumi.Input[str]] = None,
+                 encryption_config_kms_key_name: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -163,8 +200,11 @@ class InstanceBackup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 encryption_config_encryption_type: Optional[pulumi.Input[str]] = None,
+                 encryption_config_kms_key_name: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -182,10 +222,17 @@ class InstanceBackup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceBackupArgs.__new__(InstanceBackupArgs)
 
+            if backup_id is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_id'")
+            __props__.__dict__["backup_id"] = backup_id
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
             __props__.__dict__["backups_id"] = backups_id
             __props__.__dict__["database"] = database
+            if encryption_config_encryption_type is None and not opts.urn:
+                raise TypeError("Missing required property 'encryption_config_encryption_type'")
+            __props__.__dict__["encryption_config_encryption_type"] = encryption_config_encryption_type
+            __props__.__dict__["encryption_config_kms_key_name"] = encryption_config_kms_key_name
             __props__.__dict__["expire_time"] = expire_time
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")

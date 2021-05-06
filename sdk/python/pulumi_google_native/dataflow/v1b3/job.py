@@ -39,7 +39,8 @@ class JobArgs:
                  steps_location: Optional[pulumi.Input[str]] = None,
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job.
@@ -114,6 +115,8 @@ class JobArgs:
             pulumi.set(__self__, "transform_name_mapping", transform_name_mapping)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if view is not None:
+            pulumi.set(__self__, "view", view)
 
     @property
     @pulumi.getter(name="jobId")
@@ -412,6 +415,15 @@ class JobArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter
+    def view(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "view")
+
+    @view.setter
+    def view(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "view", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -443,6 +455,7 @@ class Job(pulumi.CustomResource):
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`.
@@ -523,6 +536,7 @@ class Job(pulumi.CustomResource):
                  temp_files: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transform_name_mapping: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -566,6 +580,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["temp_files"] = temp_files
             __props__.__dict__["transform_name_mapping"] = transform_name_mapping
             __props__.__dict__["type"] = type
+            __props__.__dict__["view"] = view
         super(Job, __self__).__init__(
             'google-native:dataflow/v1b3:Job',
             resource_name,

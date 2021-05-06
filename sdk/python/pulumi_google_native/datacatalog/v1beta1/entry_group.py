@@ -14,6 +14,7 @@ __all__ = ['EntryGroupArgs', 'EntryGroup']
 @pulumi.input_type
 class EntryGroupArgs:
     def __init__(__self__, *,
+                 entry_group_id: pulumi.Input[str],
                  entry_groups_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -26,6 +27,7 @@ class EntryGroupArgs:
         :param pulumi.Input[str] display_name: A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
         :param pulumi.Input[str] name: The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
         """
+        pulumi.set(__self__, "entry_group_id", entry_group_id)
         pulumi.set(__self__, "entry_groups_id", entry_groups_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -35,6 +37,15 @@ class EntryGroupArgs:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="entryGroupId")
+    def entry_group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_group_id")
+
+    @entry_group_id.setter
+    def entry_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_group_id", value)
 
     @property
     @pulumi.getter(name="entryGroupsId")
@@ -107,6 +118,7 @@ class EntryGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_groups_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -147,6 +159,7 @@ class EntryGroup(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 entry_group_id: Optional[pulumi.Input[str]] = None,
                  entry_groups_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -165,6 +178,9 @@ class EntryGroup(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if entry_group_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entry_group_id'")
+            __props__.__dict__["entry_group_id"] = entry_group_id
             if entry_groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_groups_id'")
             __props__.__dict__["entry_groups_id"] = entry_groups_id

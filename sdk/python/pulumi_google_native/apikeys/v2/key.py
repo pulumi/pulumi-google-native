@@ -19,6 +19,7 @@ class KeyArgs:
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
                  restrictions: Optional[pulumi.Input['V2RestrictionsArgs']] = None):
         """
         The set of arguments for constructing a Key resource.
@@ -30,6 +31,8 @@ class KeyArgs:
         pulumi.set(__self__, "projects_id", projects_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
         if restrictions is not None:
             pulumi.set(__self__, "restrictions", restrictions)
 
@@ -73,6 +76,15 @@ class KeyArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
     @pulumi.getter
     def restrictions(self) -> Optional[pulumi.Input['V2RestrictionsArgs']]:
         """
@@ -91,6 +103,7 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
                  keys_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -129,6 +142,7 @@ class Key(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
                  keys_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -146,6 +160,7 @@ class Key(pulumi.CustomResource):
             __props__ = KeyArgs.__new__(KeyArgs)
 
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["key_id"] = key_id
             if keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'keys_id'")
             __props__.__dict__["keys_id"] = keys_id

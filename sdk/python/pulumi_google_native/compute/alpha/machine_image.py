@@ -17,6 +17,7 @@ class MachineImageArgs:
     def __init__(__self__, *,
                  machine_image: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 source_instance: pulumi.Input[str],
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  guest_flush: Optional[pulumi.Input[bool]] = None,
@@ -24,17 +25,20 @@ class MachineImageArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_keys: Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]] = None,
-                 source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_properties: Optional[pulumi.Input['SourceInstancePropertiesArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  total_storage_bytes: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a MachineImage resource.
+        :param pulumi.Input[str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
+               - projects/project/zones/zone/instances/instance
         :param pulumi.Input[str] creation_timestamp: [Output Only] The creation timestamp for this machine image in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[bool] guest_flush: [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
@@ -52,9 +56,6 @@ class MachineImageArgs:
         :param pulumi.Input[str] self_link: [Output Only] The URL for this machine image. The server defines this URL.
         :param pulumi.Input[str] self_link_with_id: [Output Only] Server-defined URL for this resource with the resource id.
         :param pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]] source_disk_encryption_keys: [Input Only] The customer-supplied encryption key of the disks attached to the source instance. Required if the source disk is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_instance: The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-               - projects/project/zones/zone/instances/instance
         :param pulumi.Input['SourceInstancePropertiesArgs'] source_instance_properties: [Output Only] Properties of source instance.
         :param pulumi.Input[str] status: [Output Only] The status of the machine image. One of the following values: INVALID, CREATING, READY, DELETING, and UPLOADING.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
@@ -62,6 +63,7 @@ class MachineImageArgs:
         """
         pulumi.set(__self__, "machine_image", machine_image)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "source_instance", source_instance)
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
@@ -76,6 +78,8 @@ class MachineImageArgs:
             pulumi.set(__self__, "machine_image_encryption_key", machine_image_encryption_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
@@ -84,8 +88,6 @@ class MachineImageArgs:
             pulumi.set(__self__, "self_link_with_id", self_link_with_id)
         if source_disk_encryption_keys is not None:
             pulumi.set(__self__, "source_disk_encryption_keys", source_disk_encryption_keys)
-        if source_instance is not None:
-            pulumi.set(__self__, "source_instance", source_instance)
         if source_instance_properties is not None:
             pulumi.set(__self__, "source_instance_properties", source_instance_properties)
         if status is not None:
@@ -112,6 +114,20 @@ class MachineImageArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="sourceInstance")
+    def source_instance(self) -> pulumi.Input[str]:
+        """
+        The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
+        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
+        - projects/project/zones/zone/instances/instance
+        """
+        return pulumi.get(self, "source_instance")
+
+    @source_instance.setter
+    def source_instance(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_instance", value)
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -204,6 +220,15 @@ class MachineImageArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -250,20 +275,6 @@ class MachineImageArgs:
     @source_disk_encryption_keys.setter
     def source_disk_encryption_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SourceDiskEncryptionKeyArgs']]]]):
         pulumi.set(self, "source_disk_encryption_keys", value)
-
-    @property
-    @pulumi.getter(name="sourceInstance")
-    def source_instance(self) -> Optional[pulumi.Input[str]]:
-        """
-        The source instance used to create the machine image. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
-        - projects/project/zones/zone/instances/instance
-        """
-        return pulumi.get(self, "source_instance")
-
-    @source_instance.setter
-    def source_instance(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source_instance", value)
 
     @property
     @pulumi.getter(name="sourceInstanceProperties")
@@ -328,6 +339,7 @@ class MachineImage(pulumi.CustomResource):
                  machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -401,6 +413,7 @@ class MachineImage(pulumi.CustomResource):
                  machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -435,10 +448,13 @@ class MachineImage(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["source_disk_encryption_keys"] = source_disk_encryption_keys
+            if source_instance is None and not opts.urn:
+                raise TypeError("Missing required property 'source_instance'")
             __props__.__dict__["source_instance"] = source_instance
             __props__.__dict__["source_instance_properties"] = source_instance_properties
             __props__.__dict__["status"] = status

@@ -16,7 +16,8 @@ class ConfigArgs:
                  configs_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Config resource.
         :param pulumi.Input[str] description: An optional description of the RuntimeConfig object.
@@ -28,6 +29,8 @@ class ConfigArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
 
     @property
     @pulumi.getter(name="configsId")
@@ -71,6 +74,15 @@ class ConfigArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
 
 class Config(pulumi.CustomResource):
     @overload
@@ -81,6 +93,7 @@ class Config(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new RuntimeConfig resource. The configuration name must be unique within project.
@@ -118,6 +131,7 @@ class Config(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -138,6 +152,7 @@ class Config(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
         super(Config, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:Config',
             resource_name,

@@ -25,7 +25,9 @@ class FirewallPolicyArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -70,8 +72,12 @@ class FirewallPolicyArgs:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
+        if parent_id is not None:
+            pulumi.set(__self__, "parent_id", parent_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if rule_tuple_count is not None:
             pulumi.set(__self__, "rule_tuple_count", rule_tuple_count)
         if rules is not None:
@@ -203,6 +209,15 @@ class FirewallPolicyArgs:
         pulumi.set(self, "parent", value)
 
     @property
+    @pulumi.getter(name="parentId")
+    def parent_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent_id")
+
+    @parent_id.setter
+    def parent_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent_id", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
@@ -213,6 +228,15 @@ class FirewallPolicyArgs:
     @region.setter
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
 
     @property
     @pulumi.getter(name="ruleTupleCount")
@@ -290,7 +314,9 @@ class FirewallPolicy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -354,7 +380,9 @@ class FirewallPolicy(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
+                 parent_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  rule_tuple_count: Optional[pulumi.Input[int]] = None,
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallPolicyRuleArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -384,7 +412,9 @@ class FirewallPolicy(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["name"] = name
             __props__.__dict__["parent"] = parent
+            __props__.__dict__["parent_id"] = parent_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["rule_tuple_count"] = rule_tuple_count
             __props__.__dict__["rules"] = rules
             __props__.__dict__["self_link"] = self_link

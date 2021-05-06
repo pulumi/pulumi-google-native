@@ -22,6 +22,7 @@ class OrganizationWorkloadArgs:
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -50,6 +51,8 @@ class OrganizationWorkloadArgs:
             pulumi.set(__self__, "display_name", display_name)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if external_id is not None:
+            pulumi.set(__self__, "external_id", external_id)
         if kms_settings is not None:
             pulumi.set(__self__, "kms_settings", kms_settings)
         if labels is not None:
@@ -137,6 +140,15 @@ class OrganizationWorkloadArgs:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="externalId")
+    def external_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "external_id")
+
+    @external_id.setter
+    def external_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_id", value)
+
+    @property
     @pulumi.getter(name="kmsSettings")
     def kms_settings(self) -> Optional[pulumi.Input['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]:
         """
@@ -206,6 +218,7 @@ class OrganizationWorkload(pulumi.CustomResource):
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -258,6 +271,7 @@ class OrganizationWorkload(pulumi.CustomResource):
                  compliance_regime: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 external_id: Optional[pulumi.Input[str]] = None,
                  kms_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -282,6 +296,7 @@ class OrganizationWorkload(pulumi.CustomResource):
             __props__.__dict__["compliance_regime"] = compliance_regime
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["external_id"] = external_id
             __props__.__dict__["kms_settings"] = kms_settings
             __props__.__dict__["labels"] = labels
             if locations_id is None and not opts.urn:

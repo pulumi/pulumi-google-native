@@ -21,7 +21,8 @@ class ProjectArgs:
                  lifecycle_state: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
-                 project_number: Optional[pulumi.Input[str]] = None):
+                 project_number: Optional[pulumi.Input[str]] = None,
+                 use_legacy_stack: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
@@ -45,6 +46,8 @@ class ProjectArgs:
             pulumi.set(__self__, "parent", parent)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
+        if use_legacy_stack is not None:
+            pulumi.set(__self__, "use_legacy_stack", use_legacy_stack)
 
     @property
     @pulumi.getter(name="projectId")
@@ -130,6 +133,15 @@ class ProjectArgs:
     def project_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_number", value)
 
+    @property
+    @pulumi.getter(name="useLegacyStack")
+    def use_legacy_stack(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "use_legacy_stack")
+
+    @use_legacy_stack.setter
+    def use_legacy_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "use_legacy_stack", value)
+
 
 class Project(pulumi.CustomResource):
     @overload
@@ -143,6 +155,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 use_legacy_stack: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
@@ -188,6 +201,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 use_legacy_stack: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -209,6 +223,7 @@ class Project(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["project_number"] = project_number
+            __props__.__dict__["use_legacy_stack"] = use_legacy_stack
         super(Project, __self__).__init__(
             'google-native:cloudresourcemanager/v1beta1:Project',
             resource_name,

@@ -29,6 +29,7 @@ class HistoryExecutionStepArgs:
                  multi_step: Optional[pulumi.Input['MultiStepArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input['OutcomeArgs']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input['DurationArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_execution_step: Optional[pulumi.Input['TestExecutionStepArgs']] = None,
@@ -75,6 +76,8 @@ class HistoryExecutionStepArgs:
             pulumi.set(__self__, "name", name)
         if outcome is not None:
             pulumi.set(__self__, "outcome", outcome)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if run_duration is not None:
             pulumi.set(__self__, "run_duration", run_duration)
         if state is not None:
@@ -244,6 +247,15 @@ class HistoryExecutionStepArgs:
         pulumi.set(self, "outcome", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="runDuration")
     def run_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
@@ -310,6 +322,7 @@ class HistoryExecutionStep(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
@@ -374,6 +387,7 @@ class HistoryExecutionStep(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  run_duration: Optional[pulumi.Input[pulumi.InputType['DurationArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
@@ -410,6 +424,7 @@ class HistoryExecutionStep(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["run_duration"] = run_duration
             __props__.__dict__["state"] = state
             if step_id is None and not opts.urn:

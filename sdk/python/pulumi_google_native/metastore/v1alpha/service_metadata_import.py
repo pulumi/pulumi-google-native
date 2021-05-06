@@ -16,12 +16,14 @@ __all__ = ['ServiceMetadataImportArgs', 'ServiceMetadataImport']
 class ServiceMetadataImportArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
+                 metadata_import_id: pulumi.Input[str],
                  metadata_imports_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  services_id: pulumi.Input[str],
                  database_dump: Optional[pulumi.Input['DatabaseDumpArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceMetadataImport resource.
         :param pulumi.Input['DatabaseDumpArgs'] database_dump: Immutable. A database dump from a pre-existing metastore's database.
@@ -29,6 +31,7 @@ class ServiceMetadataImportArgs:
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
         """
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "metadata_import_id", metadata_import_id)
         pulumi.set(__self__, "metadata_imports_id", metadata_imports_id)
         pulumi.set(__self__, "projects_id", projects_id)
         pulumi.set(__self__, "services_id", services_id)
@@ -38,6 +41,8 @@ class ServiceMetadataImportArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -47,6 +52,15 @@ class ServiceMetadataImportArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="metadataImportId")
+    def metadata_import_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metadata_import_id")
+
+    @metadata_import_id.setter
+    def metadata_import_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metadata_import_id", value)
 
     @property
     @pulumi.getter(name="metadataImportsId")
@@ -111,6 +125,15 @@ class ServiceMetadataImportArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
 
 class ServiceMetadataImport(pulumi.CustomResource):
     @overload
@@ -120,9 +143,11 @@ class ServiceMetadataImport(pulumi.CustomResource):
                  database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 metadata_import_id: Optional[pulumi.Input[str]] = None,
                  metadata_imports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -161,9 +186,11 @@ class ServiceMetadataImport(pulumi.CustomResource):
                  database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 metadata_import_id: Optional[pulumi.Input[str]] = None,
                  metadata_imports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -182,6 +209,9 @@ class ServiceMetadataImport(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
+            if metadata_import_id is None and not opts.urn:
+                raise TypeError("Missing required property 'metadata_import_id'")
+            __props__.__dict__["metadata_import_id"] = metadata_import_id
             if metadata_imports_id is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata_imports_id'")
             __props__.__dict__["metadata_imports_id"] = metadata_imports_id
@@ -189,6 +219,7 @@ class ServiceMetadataImport(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__.__dict__["services_id"] = services_id

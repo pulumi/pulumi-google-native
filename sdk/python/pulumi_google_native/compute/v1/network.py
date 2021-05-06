@@ -27,6 +27,7 @@ class NetworkArgs:
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peerings: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkPeeringArgs']]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input['NetworkRoutingConfigArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -74,6 +75,8 @@ class NetworkArgs:
             pulumi.set(__self__, "name", name)
         if peerings is not None:
             pulumi.set(__self__, "peerings", peerings)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if routing_config is not None:
             pulumi.set(__self__, "routing_config", routing_config)
         if self_link is not None:
@@ -226,6 +229,15 @@ class NetworkArgs:
         pulumi.set(self, "peerings", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="routingConfig")
     def routing_config(self) -> Optional[pulumi.Input['NetworkRoutingConfigArgs']]:
         """
@@ -279,6 +291,7 @@ class Network(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -344,6 +357,7 @@ class Network(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  peerings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkPeeringArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  routing_config: Optional[pulumi.Input[pulumi.InputType['NetworkRoutingConfigArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -375,6 +389,7 @@ class Network(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["routing_config"] = routing_config
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["subnetworks"] = subnetworks

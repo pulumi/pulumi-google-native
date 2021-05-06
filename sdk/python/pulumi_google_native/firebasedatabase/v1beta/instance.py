@@ -16,11 +16,13 @@ class InstanceArgs:
                  instances_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
@@ -32,6 +34,8 @@ class InstanceArgs:
         pulumi.set(__self__, "instances_id", instances_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
         if database_url is not None:
             pulumi.set(__self__, "database_url", database_url)
         if name is not None:
@@ -42,6 +46,8 @@ class InstanceArgs:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="instancesId")
@@ -69,6 +75,15 @@ class InstanceArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_id", value)
 
     @property
     @pulumi.getter(name="databaseUrl")
@@ -130,12 +145,22 @@ class InstanceArgs:
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -144,6 +169,7 @@ class Instance(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
@@ -180,6 +206,7 @@ class Instance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  database_url: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -188,6 +215,7 @@ class Instance(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -200,6 +228,7 @@ class Instance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
+            __props__.__dict__["database_id"] = database_id
             __props__.__dict__["database_url"] = database_url
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
@@ -214,6 +243,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["state"] = state
             __props__.__dict__["type"] = type
+            __props__.__dict__["validate_only"] = validate_only
         super(Instance, __self__).__init__(
             'google-native:firebasedatabase/v1beta:Instance',
             resource_name,

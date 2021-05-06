@@ -19,7 +19,8 @@ class GroupArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parent_name: Optional[pulumi.Input[str]] = None):
+                 parent_name: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] display_name: A user-assigned name for this group, used only for display purposes.
@@ -40,6 +41,8 @@ class GroupArgs:
             pulumi.set(__self__, "name", name)
         if parent_name is not None:
             pulumi.set(__self__, "parent_name", parent_name)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="groupsId")
@@ -119,6 +122,15 @@ class GroupArgs:
     def parent_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_name", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
@@ -132,6 +144,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new group.
@@ -175,6 +188,7 @@ class Group(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -198,6 +212,7 @@ class Group(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["validate_only"] = validate_only
         super(Group, __self__).__init__(
             'google-native:monitoring/v3:Group',
             resource_name,

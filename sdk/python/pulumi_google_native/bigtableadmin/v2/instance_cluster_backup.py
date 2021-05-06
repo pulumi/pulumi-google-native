@@ -14,6 +14,7 @@ __all__ = ['InstanceClusterBackupArgs', 'InstanceClusterBackup']
 @pulumi.input_type
 class InstanceClusterBackupArgs:
     def __init__(__self__, *,
+                 backup_id: pulumi.Input[str],
                  backups_id: pulumi.Input[str],
                  clusters_id: pulumi.Input[str],
                  instances_id: pulumi.Input[str],
@@ -27,6 +28,7 @@ class InstanceClusterBackupArgs:
         :param pulumi.Input[str] name: A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
         :param pulumi.Input[str] source_table: Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
+        pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "backups_id", backups_id)
         pulumi.set(__self__, "clusters_id", clusters_id)
         pulumi.set(__self__, "instances_id", instances_id)
@@ -37,6 +39,15 @@ class InstanceClusterBackupArgs:
             pulumi.set(__self__, "name", name)
         if source_table is not None:
             pulumi.set(__self__, "source_table", source_table)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_id", value)
 
     @property
     @pulumi.getter(name="backupsId")
@@ -116,6 +127,7 @@ class InstanceClusterBackup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -157,6 +169,7 @@ class InstanceClusterBackup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  clusters_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -176,6 +189,9 @@ class InstanceClusterBackup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceClusterBackupArgs.__new__(InstanceClusterBackupArgs)
 
+            if backup_id is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_id'")
+            __props__.__dict__["backup_id"] = backup_id
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
             __props__.__dict__["backups_id"] = backups_id

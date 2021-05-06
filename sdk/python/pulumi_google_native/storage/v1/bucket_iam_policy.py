@@ -19,7 +19,9 @@ class BucketIamPolicyArgs:
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BucketIamPolicyBindingsItemArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BucketIamPolicy resource.
@@ -36,8 +38,12 @@ class BucketIamPolicyArgs:
             pulumi.set(__self__, "etag", etag)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if provisional_user_project is not None:
+            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -87,6 +93,15 @@ class BucketIamPolicyArgs:
         pulumi.set(self, "kind", value)
 
     @property
+    @pulumi.getter(name="provisionalUserProject")
+    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisional_user_project")
+
+    @provisional_user_project.setter
+    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisional_user_project", value)
+
+    @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -97,6 +112,15 @@ class BucketIamPolicyArgs:
     @resource_id.setter
     def resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
 
     @property
     @pulumi.getter
@@ -120,7 +144,9 @@ class BucketIamPolicy(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -162,7 +188,9 @@ class BucketIamPolicy(pulumi.CustomResource):
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -182,7 +210,9 @@ class BucketIamPolicy(pulumi.CustomResource):
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["etag"] = etag
             __props__.__dict__["kind"] = kind
+            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["user_project"] = user_project
             __props__.__dict__["version"] = version
         super(BucketIamPolicy, __self__).__init__(
             'google-native:storage/v1:BucketIamPolicy',

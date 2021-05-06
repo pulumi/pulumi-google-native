@@ -17,8 +17,10 @@ class HubArgs:
                  projects_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 hub_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Hub resource.
@@ -34,10 +36,14 @@ class HubArgs:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if hub_id is not None:
+            pulumi.set(__self__, "hub_id", hub_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -84,6 +90,15 @@ class HubArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="hubId")
+    def hub_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hub_id")
+
+    @hub_id.setter
+    def hub_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hub_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -108,6 +123,15 @@ class HubArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -127,10 +151,12 @@ class Hub(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 hub_id: Optional[pulumi.Input[str]] = None,
                  hubs_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -170,10 +196,12 @@ class Hub(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 hub_id: Optional[pulumi.Input[str]] = None,
                  hubs_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -189,6 +217,7 @@ class Hub(pulumi.CustomResource):
 
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["description"] = description
+            __props__.__dict__["hub_id"] = hub_id
             if hubs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hubs_id'")
             __props__.__dict__["hubs_id"] = hubs_id
@@ -197,6 +226,7 @@ class Hub(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["spokes"] = None
             __props__.__dict__["state"] = None

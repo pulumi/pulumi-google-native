@@ -30,6 +30,7 @@ class UrlMapArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['PathMatcherArgs']]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input['UrlMapTestArgs']]]] = None):
         """
@@ -91,6 +92,8 @@ class UrlMapArgs:
             pulumi.set(__self__, "path_matchers", path_matchers)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if tests is not None:
@@ -283,6 +286,15 @@ class UrlMapArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -327,6 +339,7 @@ class UrlMap(pulumi.CustomResource):
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -403,6 +416,7 @@ class UrlMap(pulumi.CustomResource):
                  path_matchers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PathMatcherArgs']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tests: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['UrlMapTestArgs']]]]] = None,
                  url_map: Optional[pulumi.Input[str]] = None,
@@ -434,6 +448,7 @@ class UrlMap(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["tests"] = tests
             if url_map is None and not opts.urn:

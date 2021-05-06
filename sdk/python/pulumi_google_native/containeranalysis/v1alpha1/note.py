@@ -27,6 +27,7 @@ class NoteArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input['PackageArgs']] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -74,6 +75,8 @@ class NoteArgs:
             pulumi.set(__self__, "long_description", long_description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if note_id is not None:
+            pulumi.set(__self__, "note_id", note_id)
         if package is not None:
             pulumi.set(__self__, "package", package)
         if related_url is not None:
@@ -226,6 +229,15 @@ class NoteArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="noteId")
+    def note_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "note_id")
+
+    @note_id.setter
+    def note_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "note_id", value)
+
+    @property
     @pulumi.getter
     def package(self) -> Optional[pulumi.Input['PackageArgs']]:
         """
@@ -313,6 +325,7 @@ class Note(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -378,6 +391,7 @@ class Note(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -408,6 +422,7 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["long_description"] = long_description
             __props__.__dict__["name"] = name
+            __props__.__dict__["note_id"] = note_id
             if notes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'notes_id'")
             __props__.__dict__["notes_id"] = notes_id

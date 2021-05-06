@@ -27,7 +27,9 @@ class ProviderNoteArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input['PackageArgs']] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input['RelatedUrlArgs']]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
@@ -74,8 +76,12 @@ class ProviderNoteArgs:
             pulumi.set(__self__, "long_description", long_description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if note_id is not None:
+            pulumi.set(__self__, "note_id", note_id)
         if package is not None:
             pulumi.set(__self__, "package", package)
+        if parent is not None:
+            pulumi.set(__self__, "parent", parent)
         if related_url is not None:
             pulumi.set(__self__, "related_url", related_url)
         if short_description is not None:
@@ -226,6 +232,15 @@ class ProviderNoteArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="noteId")
+    def note_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "note_id")
+
+    @note_id.setter
+    def note_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "note_id", value)
+
+    @property
     @pulumi.getter
     def package(self) -> Optional[pulumi.Input['PackageArgs']]:
         """
@@ -236,6 +251,15 @@ class ProviderNoteArgs:
     @package.setter
     def package(self, value: Optional[pulumi.Input['PackageArgs']]):
         pulumi.set(self, "package", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter(name="relatedUrl")
@@ -313,8 +337,10 @@ class ProviderNote(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  providers_id: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -378,8 +404,10 @@ class ProviderNote(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
+                 parent: Optional[pulumi.Input[str]] = None,
                  providers_id: Optional[pulumi.Input[str]] = None,
                  related_url: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RelatedUrlArgs']]]]] = None,
                  short_description: Optional[pulumi.Input[str]] = None,
@@ -408,10 +436,12 @@ class ProviderNote(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["long_description"] = long_description
             __props__.__dict__["name"] = name
+            __props__.__dict__["note_id"] = note_id
             if notes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'notes_id'")
             __props__.__dict__["notes_id"] = notes_id
             __props__.__dict__["package"] = package
+            __props__.__dict__["parent"] = parent
             if providers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'providers_id'")
             __props__.__dict__["providers_id"] = providers_id

@@ -15,6 +15,7 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 @pulumi.input_type
 class ConnectionProfileArgs:
     def __init__(__self__, *,
+                 connection_profile_id: pulumi.Input[str],
                  connection_profiles_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -25,6 +26,7 @@ class ConnectionProfileArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  postgresql: Optional[pulumi.Input['PostgreSqlConnectionProfileArgs']] = None,
                  provider: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
@@ -37,6 +39,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input[str] provider: The database provider.
         :param pulumi.Input[str] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
+        pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "connection_profiles_id", connection_profiles_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -54,8 +57,19 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "postgresql", postgresql)
         if provider is not None:
             pulumi.set(__self__, "provider", provider)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="connectionProfileId")
+    def connection_profile_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connection_profile_id")
+
+    @connection_profile_id.setter
+    def connection_profile_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection_profile_id", value)
 
     @property
     @pulumi.getter(name="connectionProfilesId")
@@ -169,6 +183,15 @@ class ConnectionProfileArgs:
         pulumi.set(self, "provider", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -187,6 +210,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
+                 connection_profile_id: Optional[pulumi.Input[str]] = None,
                  connection_profiles_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -196,6 +220,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -237,6 +262,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
+                 connection_profile_id: Optional[pulumi.Input[str]] = None,
                  connection_profiles_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -246,6 +272,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  postgresql: Optional[pulumi.Input[pulumi.InputType['PostgreSqlConnectionProfileArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -260,6 +287,9 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
             __props__.__dict__["cloudsql"] = cloudsql
+            if connection_profile_id is None and not opts.urn:
+                raise TypeError("Missing required property 'connection_profile_id'")
+            __props__.__dict__["connection_profile_id"] = connection_profile_id
             if connection_profiles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profiles_id'")
             __props__.__dict__["connection_profiles_id"] = connection_profiles_id
@@ -275,6 +305,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["provider"] = provider
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["state"] = state
             __props__.__dict__["create_time"] = None
             __props__.__dict__["error"] = None

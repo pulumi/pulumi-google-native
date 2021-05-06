@@ -25,6 +25,7 @@ class NodeArgs:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['SchedulingConfigArgs']] = None,
                  tensorflow_version: Optional[pulumi.Input[str]] = None,
@@ -60,6 +61,8 @@ class NodeArgs:
             pulumi.set(__self__, "labels", labels)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if scheduling_config is not None:
@@ -181,6 +184,15 @@ class NodeArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id", value)
+
+    @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
@@ -242,6 +254,7 @@ class Node(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  nodes_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -298,6 +311,7 @@ class Node(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 node_id: Optional[pulumi.Input[str]] = None,
                  nodes_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -326,6 +340,7 @@ class Node(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["network"] = network
+            __props__.__dict__["node_id"] = node_id
             if nodes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'nodes_id'")
             __props__.__dict__["nodes_id"] = nodes_id

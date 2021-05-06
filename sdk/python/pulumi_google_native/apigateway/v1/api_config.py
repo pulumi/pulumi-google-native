@@ -15,6 +15,7 @@ __all__ = ['ApiConfigArgs', 'ApiConfig']
 @pulumi.input_type
 class ApiConfigArgs:
     def __init__(__self__, *,
+                 api_config_id: pulumi.Input[str],
                  apis_id: pulumi.Input[str],
                  configs_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -34,6 +35,7 @@ class ApiConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigFileArgs']]] managed_service_configs: Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
         :param pulumi.Input[Sequence[pulumi.Input['ApigatewayApiConfigOpenApiDocumentArgs']]] openapi_documents: Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
         """
+        pulumi.set(__self__, "api_config_id", api_config_id)
         pulumi.set(__self__, "apis_id", apis_id)
         pulumi.set(__self__, "configs_id", configs_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -50,6 +52,15 @@ class ApiConfigArgs:
             pulumi.set(__self__, "managed_service_configs", managed_service_configs)
         if openapi_documents is not None:
             pulumi.set(__self__, "openapi_documents", openapi_documents)
+
+    @property
+    @pulumi.getter(name="apiConfigId")
+    def api_config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_config_id")
+
+    @api_config_id.setter
+    def api_config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_config_id", value)
 
     @property
     @pulumi.getter(name="apisId")
@@ -165,6 +176,7 @@ class ApiConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_config_id: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  configs_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -212,6 +224,7 @@ class ApiConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_config_id: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  configs_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -234,6 +247,9 @@ class ApiConfig(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiConfigArgs.__new__(ApiConfigArgs)
 
+            if api_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_config_id'")
+            __props__.__dict__["api_config_id"] = api_config_id
             if apis_id is None and not opts.urn:
                 raise TypeError("Missing required property 'apis_id'")
             __props__.__dict__["apis_id"] = apis_id

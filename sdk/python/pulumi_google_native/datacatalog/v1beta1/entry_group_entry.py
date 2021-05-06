@@ -17,6 +17,7 @@ class EntryGroupEntryArgs:
     def __init__(__self__, *,
                  entries_id: pulumi.Input[str],
                  entry_groups_id: pulumi.Input[str],
+                 entry_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  bigquery_date_sharded_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs']] = None,
@@ -44,6 +45,7 @@ class EntryGroupEntryArgs:
         """
         pulumi.set(__self__, "entries_id", entries_id)
         pulumi.set(__self__, "entry_groups_id", entry_groups_id)
+        pulumi.set(__self__, "entry_id", entry_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if bigquery_date_sharded_spec is not None:
@@ -84,6 +86,15 @@ class EntryGroupEntryArgs:
     @entry_groups_id.setter
     def entry_groups_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "entry_groups_id", value)
+
+    @property
+    @pulumi.getter(name="entryId")
+    def entry_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "entry_id")
+
+    @entry_id.setter
+    def entry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entry_id", value)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -235,6 +246,7 @@ class EntryGroupEntry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entries_id: Optional[pulumi.Input[str]] = None,
                  entry_groups_id: Optional[pulumi.Input[str]] = None,
+                 entry_id: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -290,6 +302,7 @@ class EntryGroupEntry(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  entries_id: Optional[pulumi.Input[str]] = None,
                  entry_groups_id: Optional[pulumi.Input[str]] = None,
+                 entry_id: Optional[pulumi.Input[str]] = None,
                  gcs_fileset_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs']]] = None,
                  linked_resource: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -320,6 +333,9 @@ class EntryGroupEntry(pulumi.CustomResource):
             if entry_groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'entry_groups_id'")
             __props__.__dict__["entry_groups_id"] = entry_groups_id
+            if entry_id is None and not opts.urn:
+                raise TypeError("Missing required property 'entry_id'")
+            __props__.__dict__["entry_id"] = entry_id
             __props__.__dict__["gcs_fileset_spec"] = gcs_fileset_spec
             __props__.__dict__["linked_resource"] = linked_resource
             if locations_id is None and not opts.urn:

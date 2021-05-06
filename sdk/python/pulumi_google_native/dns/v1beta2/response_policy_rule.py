@@ -19,6 +19,7 @@ class ResponsePolicyRuleArgs:
                  response_policy: pulumi.Input[str],
                  response_policy_rule: pulumi.Input[str],
                  behavior: Optional[pulumi.Input[str]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  local_data: Optional[pulumi.Input['ResponsePolicyRuleLocalDataArgs']] = None,
@@ -35,6 +36,8 @@ class ResponsePolicyRuleArgs:
         pulumi.set(__self__, "response_policy_rule", response_policy_rule)
         if behavior is not None:
             pulumi.set(__self__, "behavior", behavior)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if dns_name is not None:
             pulumi.set(__self__, "dns_name", dns_name)
         if kind is not None:
@@ -82,6 +85,15 @@ class ResponsePolicyRuleArgs:
     @behavior.setter
     def behavior(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "behavior", value)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
 
     @property
     @pulumi.getter(name="dnsName")
@@ -135,6 +147,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  behavior: Optional[pulumi.Input[str]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
@@ -178,6 +191,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  behavior: Optional[pulumi.Input[str]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  local_data: Optional[pulumi.Input[pulumi.InputType['ResponsePolicyRuleLocalDataArgs']]] = None,
@@ -198,6 +212,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
             __props__ = ResponsePolicyRuleArgs.__new__(ResponsePolicyRuleArgs)
 
             __props__.__dict__["behavior"] = behavior
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["dns_name"] = dns_name
             __props__.__dict__["kind"] = kind
             __props__.__dict__["local_data"] = local_data

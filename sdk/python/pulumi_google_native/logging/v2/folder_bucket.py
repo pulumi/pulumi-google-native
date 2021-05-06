@@ -13,6 +13,7 @@ __all__ = ['FolderBucketArgs', 'FolderBucket']
 @pulumi.input_type
 class FolderBucketArgs:
     def __init__(__self__, *,
+                 bucket_id: pulumi.Input[str],
                  buckets_id: pulumi.Input[str],
                  folders_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -27,6 +28,7 @@ class FolderBucketArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_fields: Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
         :param pulumi.Input[int] retention_days: Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used.
         """
+        pulumi.set(__self__, "bucket_id", bucket_id)
         pulumi.set(__self__, "buckets_id", buckets_id)
         pulumi.set(__self__, "folders_id", folders_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -38,6 +40,15 @@ class FolderBucketArgs:
             pulumi.set(__self__, "restricted_fields", restricted_fields)
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
+
+    @property
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket_id")
+
+    @bucket_id.setter
+    def bucket_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_id", value)
 
     @property
     @pulumi.getter(name="bucketsId")
@@ -120,6 +131,7 @@ class FolderBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  buckets_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folders_id: Optional[pulumi.Input[str]] = None,
@@ -162,6 +174,7 @@ class FolderBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  buckets_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  folders_id: Optional[pulumi.Input[str]] = None,
@@ -181,6 +194,9 @@ class FolderBucket(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FolderBucketArgs.__new__(FolderBucketArgs)
 
+            if bucket_id is None and not opts.urn:
+                raise TypeError("Missing required property 'bucket_id'")
+            __props__.__dict__["bucket_id"] = bucket_id
             if buckets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'buckets_id'")
             __props__.__dict__["buckets_id"] = buckets_id

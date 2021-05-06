@@ -19,6 +19,7 @@ class RepositoryPackageTagArgs:
                  repositories_id: pulumi.Input[str],
                  tags_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
+                 tag_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RepositoryPackageTag resource.
@@ -32,6 +33,8 @@ class RepositoryPackageTagArgs:
         pulumi.set(__self__, "tags_id", tags_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if tag_id is not None:
+            pulumi.set(__self__, "tag_id", tag_id)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -93,6 +96,15 @@ class RepositoryPackageTagArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="tagId")
+    def tag_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "tag_id")
+
+    @tag_id.setter
+    def tag_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tag_id", value)
+
+    @property
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
@@ -115,6 +127,7 @@ class RepositoryPackageTag(pulumi.CustomResource):
                  packages_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  repositories_id: Optional[pulumi.Input[str]] = None,
+                 tag_id: Optional[pulumi.Input[str]] = None,
                  tags_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -155,6 +168,7 @@ class RepositoryPackageTag(pulumi.CustomResource):
                  packages_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  repositories_id: Optional[pulumi.Input[str]] = None,
+                 tag_id: Optional[pulumi.Input[str]] = None,
                  tags_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -182,6 +196,7 @@ class RepositoryPackageTag(pulumi.CustomResource):
             if repositories_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repositories_id'")
             __props__.__dict__["repositories_id"] = repositories_id
+            __props__.__dict__["tag_id"] = tag_id
             if tags_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tags_id'")
             __props__.__dict__["tags_id"] = tags_id

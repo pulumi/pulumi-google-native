@@ -17,7 +17,9 @@ class TriggerArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 trigger_id: pulumi.Input[str],
                  triggers_id: pulumi.Input[str],
+                 validate_only: pulumi.Input[str],
                  destination: Optional[pulumi.Input['DestinationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]] = None,
@@ -33,7 +35,9 @@ class TriggerArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "triggers_id", triggers_id)
+        pulumi.set(__self__, "validate_only", validate_only)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
         if labels is not None:
@@ -64,6 +68,15 @@ class TriggerArgs:
         pulumi.set(self, "projects_id", value)
 
     @property
+    @pulumi.getter(name="triggerId")
+    def trigger_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "trigger_id")
+
+    @trigger_id.setter
+    def trigger_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "trigger_id", value)
+
+    @property
     @pulumi.getter(name="triggersId")
     def triggers_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "triggers_id")
@@ -71,6 +84,15 @@ class TriggerArgs:
     @triggers_id.setter
     def triggers_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "triggers_id", value)
+
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: pulumi.Input[str]):
+        pulumi.set(self, "validate_only", value)
 
     @property
     @pulumi.getter
@@ -145,7 +167,9 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a new trigger in a particular project and location.
@@ -189,7 +213,9 @@ class Trigger(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
+                 trigger_id: Optional[pulumi.Input[str]] = None,
                  triggers_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -213,9 +239,15 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["service_account"] = service_account
+            if trigger_id is None and not opts.urn:
+                raise TypeError("Missing required property 'trigger_id'")
+            __props__.__dict__["trigger_id"] = trigger_id
             if triggers_id is None and not opts.urn:
                 raise TypeError("Missing required property 'triggers_id'")
             __props__.__dict__["triggers_id"] = triggers_id
+            if validate_only is None and not opts.urn:
+                raise TypeError("Missing required property 'validate_only'")
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["etag"] = None
             __props__.__dict__["transport"] = None

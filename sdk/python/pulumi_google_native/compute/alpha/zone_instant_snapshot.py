@@ -26,6 +26,7 @@ class ZoneInstantSnapshotArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -83,6 +84,8 @@ class ZoneInstantSnapshotArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
@@ -249,6 +252,15 @@ class ZoneInstantSnapshotArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="satisfiesPzs")
     def satisfies_pzs(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -344,6 +356,7 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -419,6 +432,7 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -454,6 +468,7 @@ class ZoneInstantSnapshot(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id

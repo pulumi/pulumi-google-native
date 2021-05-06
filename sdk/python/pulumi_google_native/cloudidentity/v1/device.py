@@ -16,6 +16,7 @@ class DeviceArgs:
     def __init__(__self__, *,
                  devices_id: pulumi.Input[str],
                  asset_tag: Optional[pulumi.Input[str]] = None,
+                 customer: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
                  wifi_mac_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -29,6 +30,8 @@ class DeviceArgs:
         pulumi.set(__self__, "devices_id", devices_id)
         if asset_tag is not None:
             pulumi.set(__self__, "asset_tag", asset_tag)
+        if customer is not None:
+            pulumi.set(__self__, "customer", customer)
         if last_sync_time is not None:
             pulumi.set(__self__, "last_sync_time", last_sync_time)
         if serial_number is not None:
@@ -56,6 +59,15 @@ class DeviceArgs:
     @asset_tag.setter
     def asset_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "asset_tag", value)
+
+    @property
+    @pulumi.getter
+    def customer(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "customer")
+
+    @customer.setter
+    def customer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer", value)
 
     @property
     @pulumi.getter(name="lastSyncTime")
@@ -100,6 +112,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
+                 customer: Optional[pulumi.Input[str]] = None,
                  devices_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
@@ -140,6 +153,7 @@ class Device(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  asset_tag: Optional[pulumi.Input[str]] = None,
+                 customer: Optional[pulumi.Input[str]] = None,
                  devices_id: Optional[pulumi.Input[str]] = None,
                  last_sync_time: Optional[pulumi.Input[str]] = None,
                  serial_number: Optional[pulumi.Input[str]] = None,
@@ -157,6 +171,7 @@ class Device(pulumi.CustomResource):
             __props__ = DeviceArgs.__new__(DeviceArgs)
 
             __props__.__dict__["asset_tag"] = asset_tag
+            __props__.__dict__["customer"] = customer
             if devices_id is None and not opts.urn:
                 raise TypeError("Missing required property 'devices_id'")
             __props__.__dict__["devices_id"] = devices_id

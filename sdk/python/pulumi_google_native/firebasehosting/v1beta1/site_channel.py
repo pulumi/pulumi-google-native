@@ -14,6 +14,7 @@ __all__ = ['SiteChannelArgs', 'SiteChannel']
 @pulumi.input_type
 class SiteChannelArgs:
     def __init__(__self__, *,
+                 channel_id: pulumi.Input[str],
                  channels_id: pulumi.Input[str],
                  sites_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class SiteChannelArgs:
         :param pulumi.Input[int] retained_release_count: The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
         """
+        pulumi.set(__self__, "channel_id", channel_id)
         pulumi.set(__self__, "channels_id", channels_id)
         pulumi.set(__self__, "sites_id", sites_id)
         if expire_time is not None:
@@ -41,6 +43,15 @@ class SiteChannelArgs:
             pulumi.set(__self__, "retained_release_count", retained_release_count)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter(name="channelId")
+    def channel_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channel_id")
+
+    @channel_id.setter
+    def channel_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channel_id", value)
 
     @property
     @pulumi.getter(name="channelsId")
@@ -126,6 +137,7 @@ class SiteChannel(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 channel_id: Optional[pulumi.Input[str]] = None,
                  channels_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -169,6 +181,7 @@ class SiteChannel(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 channel_id: Optional[pulumi.Input[str]] = None,
                  channels_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -188,6 +201,9 @@ class SiteChannel(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SiteChannelArgs.__new__(SiteChannelArgs)
 
+            if channel_id is None and not opts.urn:
+                raise TypeError("Missing required property 'channel_id'")
+            __props__.__dict__["channel_id"] = channel_id
             if channels_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channels_id'")
             __props__.__dict__["channels_id"] = channels_id

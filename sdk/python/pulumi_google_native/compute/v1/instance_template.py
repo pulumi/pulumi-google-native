@@ -23,6 +23,7 @@ class InstanceTemplateArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['InstancePropertiesArgs']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input['SourceInstanceParamsArgs']] = None):
@@ -54,6 +55,8 @@ class InstanceTemplateArgs:
             pulumi.set(__self__, "name", name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if source_instance is not None:
@@ -152,6 +155,15 @@ class InstanceTemplateArgs:
         pulumi.set(self, "properties", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -203,6 +215,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
@@ -256,6 +269,7 @@ class InstanceTemplate(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['InstancePropertiesArgs']]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_params: Optional[pulumi.Input[pulumi.InputType['SourceInstanceParamsArgs']]] = None,
@@ -283,6 +297,7 @@ class InstanceTemplate(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["properties"] = properties
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["source_instance"] = source_instance
             __props__.__dict__["source_instance_params"] = source_instance_params

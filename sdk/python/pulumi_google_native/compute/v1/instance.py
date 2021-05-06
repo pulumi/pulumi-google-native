@@ -44,6 +44,7 @@ class InstanceArgs:
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -52,6 +53,7 @@ class InstanceArgs:
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
@@ -166,6 +168,8 @@ class InstanceArgs:
             pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_policies is not None:
@@ -182,6 +186,8 @@ class InstanceArgs:
             pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if shielded_instance_integrity_policy is not None:
             pulumi.set(__self__, "shielded_instance_integrity_policy", shielded_instance_integrity_policy)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
         if start_restricted is not None:
             pulumi.set(__self__, "start_restricted", start_restricted)
         if status is not None:
@@ -545,6 +551,15 @@ class InstanceArgs:
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional[pulumi.Input['ReservationAffinityArgs']]:
         """
@@ -637,6 +652,15 @@ class InstanceArgs:
         pulumi.set(self, "shielded_instance_integrity_policy", value)
 
     @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_template", value)
+
+    @property
     @pulumi.getter(name="startRestricted")
     def start_restricted(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -718,6 +742,7 @@ class Instance(pulumi.CustomResource):
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -726,6 +751,7 @@ class Instance(pulumi.CustomResource):
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
@@ -842,6 +868,7 @@ class Instance(pulumi.CustomResource):
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -850,6 +877,7 @@ class Instance(pulumi.CustomResource):
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  status_message: Optional[pulumi.Input[str]] = None,
@@ -899,6 +927,7 @@ class Instance(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
@@ -907,6 +936,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["service_accounts"] = service_accounts
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["shielded_instance_integrity_policy"] = shielded_instance_integrity_policy
+            __props__.__dict__["source_instance_template"] = source_instance_template
             __props__.__dict__["start_restricted"] = start_restricted
             __props__.__dict__["status"] = status
             __props__.__dict__["status_message"] = status_message

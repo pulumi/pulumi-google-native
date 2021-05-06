@@ -15,6 +15,7 @@ __all__ = ['AgentEnvironmentArgs', 'AgentEnvironment']
 @pulumi.input_type
 class AgentEnvironmentArgs:
     def __init__(__self__, *,
+                 environment_id: pulumi.Input[str],
                  environments_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -29,6 +30,7 @@ class AgentEnvironmentArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2beta1FulfillmentArgs'] fulfillment: Optional. The fulfillment settings to use for this environment.
         :param pulumi.Input['GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs'] text_to_speech_settings: Optional. Text to speech settings for this environment.
         """
+        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "environments_id", environments_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -40,6 +42,15 @@ class AgentEnvironmentArgs:
             pulumi.set(__self__, "fulfillment", fulfillment)
         if text_to_speech_settings is not None:
             pulumi.set(__self__, "text_to_speech_settings", text_to_speech_settings)
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter(name="environmentsId")
@@ -124,6 +135,7 @@ class AgentEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1FulfillmentArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -166,6 +178,7 @@ class AgentEnvironment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  agent_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2beta1FulfillmentArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -185,6 +198,9 @@ class AgentEnvironment(pulumi.CustomResource):
 
             __props__.__dict__["agent_version"] = agent_version
             __props__.__dict__["description"] = description
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__.__dict__["environments_id"] = environments_id

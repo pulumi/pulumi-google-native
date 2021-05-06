@@ -22,8 +22,10 @@ class NotificationArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
-                 topic: Optional[pulumi.Input[str]] = None):
+                 topic: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Notification resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
@@ -52,10 +54,14 @@ class NotificationArgs:
             pulumi.set(__self__, "object_name_prefix", object_name_prefix)
         if payload_format is not None:
             pulumi.set(__self__, "payload_format", payload_format)
+        if provisional_user_project is not None:
+            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if topic is not None:
             pulumi.set(__self__, "topic", topic)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
 
     @property
     @pulumi.getter
@@ -160,6 +166,15 @@ class NotificationArgs:
         pulumi.set(self, "payload_format", value)
 
     @property
+    @pulumi.getter(name="provisionalUserProject")
+    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisional_user_project")
+
+    @provisional_user_project.setter
+    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisional_user_project", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -183,6 +198,15 @@ class NotificationArgs:
     def topic(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "topic", value)
 
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
+
 
 class Notification(pulumi.CustomResource):
     @overload
@@ -198,8 +222,10 @@ class Notification(pulumi.CustomResource):
                  notification: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a notification subscription for a given bucket.
@@ -249,8 +275,10 @@ class Notification(pulumi.CustomResource):
                  notification: Optional[pulumi.Input[str]] = None,
                  object_name_prefix: Optional[pulumi.Input[str]] = None,
                  payload_format: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -276,8 +304,10 @@ class Notification(pulumi.CustomResource):
             __props__.__dict__["notification"] = notification
             __props__.__dict__["object_name_prefix"] = object_name_prefix
             __props__.__dict__["payload_format"] = payload_format
+            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["topic"] = topic
+            __props__.__dict__["user_project"] = user_project
         super(Notification, __self__).__init__(
             'google-native:storage/v1:Notification',
             resource_name,

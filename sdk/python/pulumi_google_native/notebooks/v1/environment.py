@@ -15,6 +15,7 @@ __all__ = ['EnvironmentArgs', 'Environment']
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
+                 environment_id: pulumi.Input[str],
                  environments_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -31,6 +32,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] post_startup_script: Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
         :param pulumi.Input['VmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
+        pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "environments_id", environments_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -44,6 +46,15 @@ class EnvironmentArgs:
             pulumi.set(__self__, "post_startup_script", post_startup_script)
         if vm_image is not None:
             pulumi.set(__self__, "vm_image", vm_image)
+
+    @property
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
+
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
     @pulumi.getter(name="environmentsId")
@@ -141,6 +152,7 @@ class Environment(pulumi.CustomResource):
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
@@ -185,6 +197,7 @@ class Environment(pulumi.CustomResource):
                  container_image: Optional[pulumi.Input[pulumi.InputType['ContainerImageArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  post_startup_script: Optional[pulumi.Input[str]] = None,
@@ -205,6 +218,9 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["container_image"] = container_image
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
             if environments_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environments_id'")
             __props__.__dict__["environments_id"] = environments_id

@@ -14,6 +14,7 @@ __all__ = ['KeyRingImportJobArgs', 'KeyRingImportJob']
 @pulumi.input_type
 class KeyRingImportJobArgs:
     def __init__(__self__, *,
+                 import_job_id: pulumi.Input[str],
                  import_jobs_id: pulumi.Input[str],
                  key_rings_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -25,6 +26,7 @@ class KeyRingImportJobArgs:
         :param pulumi.Input[str] import_method: Required. Immutable. The wrapping method to be used for incoming key material.
         :param pulumi.Input[str] protection_level: Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
+        pulumi.set(__self__, "import_job_id", import_job_id)
         pulumi.set(__self__, "import_jobs_id", import_jobs_id)
         pulumi.set(__self__, "key_rings_id", key_rings_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -33,6 +35,15 @@ class KeyRingImportJobArgs:
             pulumi.set(__self__, "import_method", import_method)
         if protection_level is not None:
             pulumi.set(__self__, "protection_level", protection_level)
+
+    @property
+    @pulumi.getter(name="importJobId")
+    def import_job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "import_job_id")
+
+    @import_job_id.setter
+    def import_job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "import_job_id", value)
 
     @property
     @pulumi.getter(name="importJobsId")
@@ -100,6 +111,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 import_job_id: Optional[pulumi.Input[str]] = None,
                  import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
@@ -139,6 +151,7 @@ class KeyRingImportJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 import_job_id: Optional[pulumi.Input[str]] = None,
                  import_jobs_id: Optional[pulumi.Input[str]] = None,
                  import_method: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
@@ -157,6 +170,9 @@ class KeyRingImportJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingImportJobArgs.__new__(KeyRingImportJobArgs)
 
+            if import_job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'import_job_id'")
+            __props__.__dict__["import_job_id"] = import_job_id
             if import_jobs_id is None and not opts.urn:
                 raise TypeError("Missing required property 'import_jobs_id'")
             __props__.__dict__["import_jobs_id"] = import_jobs_id

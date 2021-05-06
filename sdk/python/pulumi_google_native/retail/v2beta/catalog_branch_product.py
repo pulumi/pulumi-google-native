@@ -18,6 +18,7 @@ class CatalogBranchProductArgs:
                  branches_id: pulumi.Input[str],
                  catalogs_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
+                 product_id: pulumi.Input[str],
                  products_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -56,6 +57,7 @@ class CatalogBranchProductArgs:
         pulumi.set(__self__, "branches_id", branches_id)
         pulumi.set(__self__, "catalogs_id", catalogs_id)
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "product_id", product_id)
         pulumi.set(__self__, "products_id", products_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if attributes is not None:
@@ -115,6 +117,15 @@ class CatalogBranchProductArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="productId")
+    def product_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "product_id")
+
+    @product_id.setter
+    def product_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "product_id", value)
 
     @property
     @pulumi.getter(name="productsId")
@@ -334,6 +345,7 @@ class CatalogBranchProduct(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaPriceInfoArgs']]] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -400,6 +412,7 @@ class CatalogBranchProduct(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  price_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaPriceInfoArgs']]] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -438,6 +451,9 @@ class CatalogBranchProduct(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["price_info"] = price_info
             __props__.__dict__["primary_product_id"] = primary_product_id
+            if product_id is None and not opts.urn:
+                raise TypeError("Missing required property 'product_id'")
+            __props__.__dict__["product_id"] = product_id
             if products_id is None and not opts.urn:
                 raise TypeError("Missing required property 'products_id'")
             __props__.__dict__["products_id"] = products_id

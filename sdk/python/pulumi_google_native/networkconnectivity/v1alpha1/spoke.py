@@ -26,6 +26,8 @@ class SpokeArgs:
                  linked_router_appliance_instances: Optional[pulumi.Input[Sequence[pulumi.Input['RouterApplianceInstanceArgs']]]] = None,
                  linked_vpn_tunnels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 spoke_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Spoke resource.
@@ -58,6 +60,10 @@ class SpokeArgs:
             pulumi.set(__self__, "linked_vpn_tunnels", linked_vpn_tunnels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
+        if spoke_id is not None:
+            pulumi.set(__self__, "spoke_id", spoke_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -185,6 +191,24 @@ class SpokeArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
+    @pulumi.getter(name="spokeId")
+    def spoke_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "spoke_id")
+
+    @spoke_id.setter
+    def spoke_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spoke_id", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -212,6 +236,8 @@ class Spoke(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 spoke_id: Optional[pulumi.Input[str]] = None,
                  spokes_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -264,6 +290,8 @@ class Spoke(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 spoke_id: Optional[pulumi.Input[str]] = None,
                  spokes_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -292,6 +320,8 @@ class Spoke(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["spoke_id"] = spoke_id
             if spokes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'spokes_id'")
             __props__.__dict__["spokes_id"] = spokes_id

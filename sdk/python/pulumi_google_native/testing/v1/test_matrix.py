@@ -23,6 +23,7 @@ class TestMatrixArgs:
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input['ResultStorageArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input['TestExecutionArgs']]]] = None,
@@ -58,6 +59,8 @@ class TestMatrixArgs:
             pulumi.set(__self__, "invalid_matrix_details", invalid_matrix_details)
         if outcome_summary is not None:
             pulumi.set(__self__, "outcome_summary", outcome_summary)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if result_storage is not None:
             pulumi.set(__self__, "result_storage", result_storage)
         if state is not None:
@@ -166,6 +169,15 @@ class TestMatrixArgs:
         pulumi.set(self, "outcome_summary", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="resultStorage")
     def result_storage(self) -> Optional[pulumi.Input['ResultStorageArgs']]:
         """
@@ -238,6 +250,7 @@ class TestMatrix(pulumi.CustomResource):
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
@@ -295,6 +308,7 @@ class TestMatrix(pulumi.CustomResource):
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  test_executions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]]] = None,
@@ -322,6 +336,7 @@ class TestMatrix(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["result_storage"] = result_storage
             __props__.__dict__["state"] = state
             __props__.__dict__["test_executions"] = test_executions

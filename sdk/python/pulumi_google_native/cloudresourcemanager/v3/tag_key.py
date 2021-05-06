@@ -18,7 +18,8 @@ class TagKeyArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
-                 short_name: Optional[pulumi.Input[str]] = None):
+                 short_name: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TagKey resource.
         :param pulumi.Input[str] description: Optional. User-assigned description of the TagKey. Must not exceed 256 characters. Read-write.
@@ -38,6 +39,8 @@ class TagKeyArgs:
             pulumi.set(__self__, "parent", parent)
         if short_name is not None:
             pulumi.set(__self__, "short_name", short_name)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
 
     @property
     @pulumi.getter(name="tagKeysId")
@@ -108,6 +111,15 @@ class TagKeyArgs:
     def short_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "short_name", value)
 
+    @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
 
 class TagKey(pulumi.CustomResource):
     @overload
@@ -120,6 +132,7 @@ class TagKey(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  tag_keys_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new TagKey. If another request with the same parameters is sent while the original request is in process, the second request will receive an error. A maximum of 300 TagKeys can exist under a parent at any given time.
@@ -162,6 +175,7 @@ class TagKey(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  short_name: Optional[pulumi.Input[str]] = None,
                  tag_keys_id: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -182,6 +196,7 @@ class TagKey(pulumi.CustomResource):
             if tag_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_keys_id'")
             __props__.__dict__["tag_keys_id"] = tag_keys_id
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["create_time"] = None
             __props__.__dict__["namespaced_name"] = None
             __props__.__dict__["update_time"] = None

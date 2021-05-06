@@ -23,6 +23,7 @@ class DatasetFhirStoreArgs:
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
@@ -54,6 +55,8 @@ class DatasetFhirStoreArgs:
             pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
         if enable_update_create is not None:
             pulumi.set(__self__, "enable_update_create", enable_update_create)
+        if fhir_store_id is not None:
+            pulumi.set(__self__, "fhir_store_id", fhir_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -152,6 +155,15 @@ class DatasetFhirStoreArgs:
         pulumi.set(self, "enable_update_create", value)
 
     @property
+    @pulumi.getter(name="fhirStoreId")
+    def fhir_store_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "fhir_store_id")
+
+    @fhir_store_id.setter
+    def fhir_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "fhir_store_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -234,6 +246,7 @@ class DatasetFhirStore(pulumi.CustomResource):
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
                  fhir_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -289,6 +302,7 @@ class DatasetFhirStore(pulumi.CustomResource):
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
                  fhir_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -317,6 +331,7 @@ class DatasetFhirStore(pulumi.CustomResource):
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_update_create"] = enable_update_create
+            __props__.__dict__["fhir_store_id"] = fhir_store_id
             if fhir_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_stores_id'")
             __props__.__dict__["fhir_stores_id"] = fhir_stores_id

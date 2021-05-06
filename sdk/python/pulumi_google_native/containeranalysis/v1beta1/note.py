@@ -15,6 +15,7 @@ __all__ = ['NoteArgs', 'Note']
 @pulumi.input_type
 class NoteArgs:
     def __init__(__self__, *,
+                 note_id: pulumi.Input[str],
                  notes_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  attestation_authority: Optional[pulumi.Input['AuthorityArgs']] = None,
@@ -54,6 +55,7 @@ class NoteArgs:
         :param pulumi.Input[str] update_time: The time this note was last updated. This field can be used as a filter in list requests.
         :param pulumi.Input['VulnerabilityArgs'] vulnerability: A note describing a package vulnerability.
         """
+        pulumi.set(__self__, "note_id", note_id)
         pulumi.set(__self__, "notes_id", notes_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if attestation_authority is not None:
@@ -90,6 +92,15 @@ class NoteArgs:
             pulumi.set(__self__, "update_time", update_time)
         if vulnerability is not None:
             pulumi.set(__self__, "vulnerability", vulnerability)
+
+    @property
+    @pulumi.getter(name="noteId")
+    def note_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "note_id")
+
+    @note_id.setter
+    def note_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "note_id", value)
 
     @property
     @pulumi.getter(name="notesId")
@@ -330,6 +341,7 @@ class Note(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -397,6 +409,7 @@ class Note(pulumi.CustomResource):
                  kind: Optional[pulumi.Input[str]] = None,
                  long_description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
                  notes_id: Optional[pulumi.Input[str]] = None,
                  package: Optional[pulumi.Input[pulumi.InputType['PackageArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -428,6 +441,9 @@ class Note(pulumi.CustomResource):
             __props__.__dict__["kind"] = kind
             __props__.__dict__["long_description"] = long_description
             __props__.__dict__["name"] = name
+            if note_id is None and not opts.urn:
+                raise TypeError("Missing required property 'note_id'")
+            __props__.__dict__["note_id"] = note_id
             if notes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'notes_id'")
             __props__.__dict__["notes_id"] = notes_id

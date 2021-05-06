@@ -19,10 +19,12 @@ class CertificateAuthorityCertificateArgs:
                  certificates_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 certificate_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input['CertificateConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
-                 pem_csr: Optional[pulumi.Input[str]] = None):
+                 pem_csr: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a CertificateAuthorityCertificate resource.
         :param pulumi.Input['CertificateConfigArgs'] config: Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
@@ -34,6 +36,8 @@ class CertificateAuthorityCertificateArgs:
         pulumi.set(__self__, "certificates_id", certificates_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
         if labels is not None:
@@ -42,6 +46,8 @@ class CertificateAuthorityCertificateArgs:
             pulumi.set(__self__, "lifetime", lifetime)
         if pem_csr is not None:
             pulumi.set(__self__, "pem_csr", pem_csr)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
 
     @property
     @pulumi.getter(name="certificateAuthoritiesId")
@@ -78,6 +84,15 @@ class CertificateAuthorityCertificateArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "certificate_id", value)
 
     @property
     @pulumi.getter
@@ -127,6 +142,15 @@ class CertificateAuthorityCertificateArgs:
     def pem_csr(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pem_csr", value)
 
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
 
 class CertificateAuthorityCertificate(pulumi.CustomResource):
     @overload
@@ -134,6 +158,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
                  certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -141,6 +166,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a new Certificate in a given Project, Location from a particular CertificateAuthority.
@@ -177,6 +203,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_id: Optional[pulumi.Input[str]] = None,
                  certificates_id: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -184,6 +211,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  pem_csr: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -199,6 +227,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
             if certificate_authorities_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authorities_id'")
             __props__.__dict__["certificate_authorities_id"] = certificate_authorities_id
+            __props__.__dict__["certificate_id"] = certificate_id
             if certificates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificates_id'")
             __props__.__dict__["certificates_id"] = certificates_id
@@ -212,6 +241,7 @@ class CertificateAuthorityCertificate(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["certificate_description"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

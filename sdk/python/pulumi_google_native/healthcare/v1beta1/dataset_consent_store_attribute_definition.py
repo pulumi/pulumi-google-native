@@ -13,6 +13,7 @@ __all__ = ['DatasetConsentStoreAttributeDefinitionArgs', 'DatasetConsentStoreAtt
 @pulumi.input_type
 class DatasetConsentStoreAttributeDefinitionArgs:
     def __init__(__self__, *,
+                 attribute_definition_id: pulumi.Input[str],
                  attribute_definitions_id: pulumi.Input[str],
                  consent_stores_id: pulumi.Input[str],
                  datasets_id: pulumi.Input[str],
@@ -33,6 +34,7 @@ class DatasetConsentStoreAttributeDefinitionArgs:
         :param pulumi.Input[str] description: Optional. A description of the attribute.
         :param pulumi.Input[str] name: Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
+        pulumi.set(__self__, "attribute_definition_id", attribute_definition_id)
         pulumi.set(__self__, "attribute_definitions_id", attribute_definitions_id)
         pulumi.set(__self__, "consent_stores_id", consent_stores_id)
         pulumi.set(__self__, "datasets_id", datasets_id)
@@ -50,6 +52,15 @@ class DatasetConsentStoreAttributeDefinitionArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="attributeDefinitionId")
+    def attribute_definition_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attribute_definition_id")
+
+    @attribute_definition_id.setter
+    def attribute_definition_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attribute_definition_id", value)
 
     @property
     @pulumi.getter(name="attributeDefinitionsId")
@@ -175,6 +186,7 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 attribute_definition_id: Optional[pulumi.Input[str]] = None,
                  attribute_definitions_id: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -223,6 +235,7 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 attribute_definition_id: Optional[pulumi.Input[str]] = None,
                  attribute_definitions_id: Optional[pulumi.Input[str]] = None,
                  category: Optional[pulumi.Input[str]] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -246,6 +259,9 @@ class DatasetConsentStoreAttributeDefinition(pulumi.CustomResource):
             __props__ = DatasetConsentStoreAttributeDefinitionArgs.__new__(DatasetConsentStoreAttributeDefinitionArgs)
 
             __props__.__dict__["allowed_values"] = allowed_values
+            if attribute_definition_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attribute_definition_id'")
+            __props__.__dict__["attribute_definition_id"] = attribute_definition_id
             if attribute_definitions_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attribute_definitions_id'")
             __props__.__dict__["attribute_definitions_id"] = attribute_definitions_id

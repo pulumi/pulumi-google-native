@@ -25,7 +25,8 @@ class SinkArgs:
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Sink resource.
         :param pulumi.Input['BigQueryOptionsArgs'] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
@@ -56,6 +57,8 @@ class SinkArgs:
             pulumi.set(__self__, "include_children", include_children)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if unique_writer_identity is not None:
+            pulumi.set(__self__, "unique_writer_identity", unique_writer_identity)
 
     @property
     @pulumi.getter(name="sinksId")
@@ -180,6 +183,15 @@ class SinkArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="uniqueWriterIdentity")
+    def unique_writer_identity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unique_writer_identity")
+
+    @unique_writer_identity.setter
+    def unique_writer_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unique_writer_identity", value)
+
 
 class Sink(pulumi.CustomResource):
     @overload
@@ -195,6 +207,7 @@ class Sink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  v2_id: Optional[pulumi.Input[str]] = None,
                  v2_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -245,6 +258,7 @@ class Sink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  v2_id: Optional[pulumi.Input[str]] = None,
                  v2_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -270,6 +284,7 @@ class Sink(pulumi.CustomResource):
             if sinks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sinks_id'")
             __props__.__dict__["sinks_id"] = sinks_id
+            __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             if v2_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v2_id'")
             __props__.__dict__["v2_id"] = v2_id

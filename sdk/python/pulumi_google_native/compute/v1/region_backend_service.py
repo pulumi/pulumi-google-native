@@ -45,6 +45,7 @@ class RegionBackendServiceArgs:
                  port: Optional[pulumi.Input[int]] = None,
                  port_name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input['SecuritySettingsArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -202,6 +203,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "port_name", port_name)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if security_policy is not None:
             pulumi.set(__self__, "security_policy", security_policy)
         if security_settings is not None:
@@ -615,6 +618,15 @@ class RegionBackendServiceArgs:
         pulumi.set(self, "protocol", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
@@ -720,6 +732,7 @@ class RegionBackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -878,6 +891,7 @@ class RegionBackendService(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  security_policy: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[pulumi.InputType['SecuritySettingsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -931,6 +945,7 @@ class RegionBackendService(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["security_policy"] = security_policy
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["self_link"] = self_link

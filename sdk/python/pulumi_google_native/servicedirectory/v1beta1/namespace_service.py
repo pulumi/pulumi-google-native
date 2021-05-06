@@ -17,6 +17,7 @@ class NamespaceServiceArgs:
                  locations_id: pulumi.Input[str],
                  namespaces_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
                  services_id: pulumi.Input[str],
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -28,6 +29,7 @@ class NamespaceServiceArgs:
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "namespaces_id", namespaces_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "services_id", services_id)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
@@ -60,6 +62,15 @@ class NamespaceServiceArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="servicesId")
@@ -105,6 +116,7 @@ class NamespaceService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespaces_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -144,6 +156,7 @@ class NamespaceService(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  namespaces_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -168,6 +181,9 @@ class NamespaceService(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__.__dict__["services_id"] = services_id

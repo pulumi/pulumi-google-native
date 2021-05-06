@@ -18,6 +18,7 @@ class StudyArgs:
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  studies_id: pulumi.Input[str],
+                 study_id: pulumi.Input[str],
                  study_config: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']] = None):
         """
         The set of arguments for constructing a Study resource.
@@ -26,6 +27,7 @@ class StudyArgs:
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
         pulumi.set(__self__, "studies_id", studies_id)
+        pulumi.set(__self__, "study_id", study_id)
         if study_config is not None:
             pulumi.set(__self__, "study_config", study_config)
 
@@ -57,6 +59,15 @@ class StudyArgs:
         pulumi.set(self, "studies_id", value)
 
     @property
+    @pulumi.getter(name="studyId")
+    def study_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "study_id")
+
+    @study_id.setter
+    def study_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "study_id", value)
+
+    @property
     @pulumi.getter(name="studyConfig")
     def study_config(self) -> Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']]:
         """
@@ -78,6 +89,7 @@ class Study(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  studies_id: Optional[pulumi.Input[str]] = None,
                  study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
+                 study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a study.
@@ -114,6 +126,7 @@ class Study(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  studies_id: Optional[pulumi.Input[str]] = None,
                  study_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']]] = None,
+                 study_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -136,6 +149,9 @@ class Study(pulumi.CustomResource):
                 raise TypeError("Missing required property 'studies_id'")
             __props__.__dict__["studies_id"] = studies_id
             __props__.__dict__["study_config"] = study_config
+            if study_id is None and not opts.urn:
+                raise TypeError("Missing required property 'study_id'")
+            __props__.__dict__["study_id"] = study_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["inactive_reason"] = None
             __props__.__dict__["name"] = None

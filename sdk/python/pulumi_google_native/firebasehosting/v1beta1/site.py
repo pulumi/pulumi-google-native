@@ -14,6 +14,7 @@ __all__ = ['SiteArgs', 'Site']
 class SiteArgs:
     def __init__(__self__, *,
                  projects_id: pulumi.Input[str],
+                 site_id: pulumi.Input[str],
                  sites_id: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
@@ -23,6 +24,7 @@ class SiteArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User-specified labels for the Hosting site.
         """
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "site_id", site_id)
         pulumi.set(__self__, "sites_id", sites_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -37,6 +39,15 @@ class SiteArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "site_id")
+
+    @site_id.setter
+    def site_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter(name="sitesId")
@@ -80,6 +91,7 @@ class Site(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 site_id: Optional[pulumi.Input[str]] = None,
                  sites_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -117,6 +129,7 @@ class Site(pulumi.CustomResource):
                  app_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 site_id: Optional[pulumi.Input[str]] = None,
                  sites_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -135,6 +148,9 @@ class Site(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if site_id is None and not opts.urn:
+                raise TypeError("Missing required property 'site_id'")
+            __props__.__dict__["site_id"] = site_id
             if sites_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sites_id'")
             __props__.__dict__["sites_id"] = sites_id

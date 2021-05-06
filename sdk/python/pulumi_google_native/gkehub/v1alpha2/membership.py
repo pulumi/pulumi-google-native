@@ -16,6 +16,7 @@ __all__ = ['MembershipArgs', 'Membership']
 class MembershipArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
+                 membership_id: pulumi.Input[str],
                  memberships_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  authority: Optional[pulumi.Input['AuthorityArgs']] = None,
@@ -32,6 +33,7 @@ class MembershipArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "membership_id", membership_id)
         pulumi.set(__self__, "memberships_id", memberships_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if authority is not None:
@@ -53,6 +55,15 @@ class MembershipArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="membershipId")
+    def membership_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "membership_id")
+
+    @membership_id.setter
+    def membership_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "membership_id", value)
 
     @property
     @pulumi.getter(name="membershipsId")
@@ -144,6 +155,7 @@ class Membership(pulumi.CustomResource):
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -188,6 +200,7 @@ class Membership(pulumi.CustomResource):
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -210,6 +223,9 @@ class Membership(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
+            if membership_id is None and not opts.urn:
+                raise TypeError("Missing required property 'membership_id'")
+            __props__.__dict__["membership_id"] = membership_id
             if memberships_id is None and not opts.urn:
                 raise TypeError("Missing required property 'memberships_id'")
             __props__.__dict__["memberships_id"] = memberships_id
