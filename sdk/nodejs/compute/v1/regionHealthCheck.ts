@@ -125,6 +125,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sslHealthCheck"] = args ? args.sslHealthCheck : undefined;
             inputs["tcpHealthCheck"] = args ? args.tcpHealthCheck : undefined;
@@ -204,6 +205,7 @@ export interface RegionHealthCheckArgs {
      * [Output Only] Region where the health check resides. Not applicable to global health checks.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

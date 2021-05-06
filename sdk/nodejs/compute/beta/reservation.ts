@@ -107,6 +107,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservation"] = args ? args.reservation : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -163,6 +164,7 @@ export interface ReservationArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     readonly reservation: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.

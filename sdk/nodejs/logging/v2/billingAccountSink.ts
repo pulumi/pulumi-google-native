@@ -107,6 +107,7 @@ export class BillingAccountSink extends pulumi.CustomResource {
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sinksId"] = args ? args.sinksId : undefined;
+            inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
             inputs["writerIdentity"] = undefined /*out*/;
@@ -168,4 +169,5 @@ export interface BillingAccountSinkArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly sinksId: pulumi.Input<string>;
+    readonly uniqueWriterIdentity?: pulumi.Input<string>;
 }

@@ -211,6 +211,7 @@ export class Image extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskSizeGb"] = args ? args.diskSizeGb : undefined;
             inputs["family"] = args ? args.family : undefined;
+            inputs["forceCreate"] = args ? args.forceCreate : undefined;
             inputs["guestOsFeatures"] = args ? args.guestOsFeatures : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["image"] = args ? args.image : undefined;
@@ -223,6 +224,7 @@ export class Image extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rawDisk"] = args ? args.rawDisk : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["rolloutOverride"] = args ? args.rolloutOverride : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -309,6 +311,7 @@ export interface ImageArgs {
      * The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
      */
     readonly family?: pulumi.Input<string>;
+    readonly forceCreate?: pulumi.Input<string>;
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
      */
@@ -359,6 +362,7 @@ export interface ImageArgs {
      * The parameters of the raw disk image.
      */
     readonly rawDisk?: pulumi.Input<inputs.compute.alpha.ImageRawDiskArgs>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * A rollout policy to apply to this image. When specified, the rollout policy overrides per-zone references to the image via the associated image family. The rollout policy restricts the zones where this image is accessible when using a zonal image family reference. When the rollout policy does not include the user specified zone, or if the zone is rolled out, this image is accessible.
      */

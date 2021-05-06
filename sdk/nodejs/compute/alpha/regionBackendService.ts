@@ -283,6 +283,7 @@ export class RegionBackendService extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -505,6 +506,7 @@ export interface RegionBackendServiceArgs {
      * [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The resource URL for the security policy associated with this backend service.
      */

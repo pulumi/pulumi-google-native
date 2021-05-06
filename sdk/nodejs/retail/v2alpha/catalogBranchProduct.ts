@@ -112,6 +112,9 @@ export class CatalogBranchProduct extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.productId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'productId'");
+            }
             if ((!args || args.productsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'productsId'");
             }
@@ -132,6 +135,7 @@ export class CatalogBranchProduct extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["priceInfo"] = args ? args.priceInfo : undefined;
             inputs["primaryProductId"] = args ? args.primaryProductId : undefined;
+            inputs["productId"] = args ? args.productId : undefined;
             inputs["productsId"] = args ? args.productsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -212,6 +216,7 @@ export interface CatalogBranchProductArgs {
      * Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
     readonly primaryProductId?: pulumi.Input<string>;
+    readonly productId: pulumi.Input<string>;
     readonly productsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**

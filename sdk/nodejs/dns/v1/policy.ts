@@ -79,6 +79,7 @@ export class Policy extends pulumi.CustomResource {
                 throw new Error("Missing required property 'project'");
             }
             inputs["alternativeNameServerConfig"] = args ? args.alternativeNameServerConfig : undefined;
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableInboundForwarding"] = args ? args.enableInboundForwarding : undefined;
             inputs["enableLogging"] = args ? args.enableLogging : undefined;
@@ -112,6 +113,7 @@ export interface PolicyArgs {
      * Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
      */
     readonly alternativeNameServerConfig?: pulumi.Input<inputs.dns.v1.PolicyAlternativeNameServerConfigArgs>;
+    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
      */

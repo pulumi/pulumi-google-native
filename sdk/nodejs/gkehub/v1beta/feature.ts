@@ -93,10 +93,12 @@ export class Feature extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["featureId"] = args ? args.featureId : undefined;
             inputs["featuresId"] = args ? args.featuresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
@@ -128,6 +130,7 @@ export class Feature extends pulumi.CustomResource {
  * The set of arguments for constructing a Feature resource.
  */
 export interface FeatureArgs {
+    readonly featureId?: pulumi.Input<string>;
     readonly featuresId: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
@@ -138,6 +141,7 @@ export interface FeatureArgs {
      */
     readonly membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
      */

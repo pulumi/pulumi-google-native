@@ -86,6 +86,7 @@ export class AgentEntityType extends pulumi.CustomResource {
             inputs["entities"] = args ? args.entities : undefined;
             inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -129,6 +130,7 @@ export interface AgentEntityTypeArgs {
      * Required. Indicates the kind of entity type.
      */
     readonly kind?: pulumi.Input<string>;
+    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.

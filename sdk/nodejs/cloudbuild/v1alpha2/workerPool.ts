@@ -82,6 +82,9 @@ export class WorkerPool extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.workerPoolId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerPoolId'");
+            }
             if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolsId'");
             }
@@ -89,6 +92,7 @@ export class WorkerPool extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
+            inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
             inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
@@ -129,5 +133,6 @@ export interface WorkerPoolArgs {
      * Worker configuration for the `WorkerPool`.
      */
     readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1alpha2.WorkerConfigArgs>;
+    readonly workerPoolId: pulumi.Input<string>;
     readonly workerPoolsId: pulumi.Input<string>;
 }

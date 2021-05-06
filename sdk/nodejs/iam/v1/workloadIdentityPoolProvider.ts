@@ -92,6 +92,9 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             if ((!args || args.providersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'providersId'");
             }
+            if ((!args || args.workloadIdentityPoolProviderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workloadIdentityPoolProviderId'");
+            }
             if ((!args || args.workloadIdentityPoolsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolsId'");
             }
@@ -105,6 +108,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             inputs["oidc"] = args ? args.oidc : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["providersId"] = args ? args.providersId : undefined;
+            inputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
             inputs["workloadIdentityPoolsId"] = args ? args.workloadIdentityPoolsId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -161,5 +165,6 @@ export interface WorkloadIdentityPoolProviderArgs {
     readonly oidc?: pulumi.Input<inputs.iam.v1.OidcArgs>;
     readonly projectsId: pulumi.Input<string>;
     readonly providersId: pulumi.Input<string>;
+    readonly workloadIdentityPoolProviderId: pulumi.Input<string>;
     readonly workloadIdentityPoolsId: pulumi.Input<string>;
 }

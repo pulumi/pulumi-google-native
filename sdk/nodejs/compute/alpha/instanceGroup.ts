@@ -123,6 +123,7 @@ export class InstanceGroup extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -196,6 +197,7 @@ export interface InstanceGroupArgs {
      * [Output Only] The URL of the region where the instance group is located (for regional resources).
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this instance group. The server generates this URL.
      */

@@ -63,12 +63,16 @@ export class Attestor extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.attestorId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'attestorId'");
+            }
             if ((!args || args.attestorsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestorsId'");
             }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["attestorId"] = args ? args.attestorId : undefined;
             inputs["attestorsId"] = args ? args.attestorsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -92,6 +96,7 @@ export class Attestor extends pulumi.CustomResource {
  * The set of arguments for constructing a Attestor resource.
  */
 export interface AttestorArgs {
+    readonly attestorId: pulumi.Input<string>;
     readonly attestorsId: pulumi.Input<string>;
     /**
      * Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.

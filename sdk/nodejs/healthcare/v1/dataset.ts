@@ -63,6 +63,7 @@ export class Dataset extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -83,6 +84,7 @@ export class Dataset extends pulumi.CustomResource {
  * The set of arguments for constructing a Dataset resource.
  */
 export interface DatasetArgs {
+    readonly datasetId?: pulumi.Input<string>;
     readonly datasetsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

@@ -110,6 +110,8 @@ export class Spoke extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["spokeId"] = args ? args.spokeId : undefined;
             inputs["spokesId"] = args ? args.spokesId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["state"] = undefined /*out*/;
@@ -172,6 +174,8 @@ export interface SpokeArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
+    readonly spokeId?: pulumi.Input<string>;
     readonly spokesId: pulumi.Input<string>;
     /**
      * The time when the Spoke was updated.

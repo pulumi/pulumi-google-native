@@ -115,6 +115,9 @@ export class Note extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.noteId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'noteId'");
+            }
             if ((!args || args.notesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notesId'");
             }
@@ -132,6 +135,7 @@ export class Note extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["noteId"] = args ? args.noteId : undefined;
             inputs["notesId"] = args ? args.notesId : undefined;
             inputs["package"] = args ? args.package : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -214,6 +218,7 @@ export interface NoteArgs {
      * The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
      */
     readonly name?: pulumi.Input<string>;
+    readonly noteId: pulumi.Input<string>;
     readonly notesId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.

@@ -109,6 +109,7 @@ export class Sink extends pulumi.CustomResource {
             inputs["includeChildren"] = args ? args.includeChildren : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["sinksId"] = args ? args.sinksId : undefined;
+            inputs["uniqueWriterIdentity"] = args ? args.uniqueWriterIdentity : undefined;
             inputs["v2Id"] = args ? args.v2Id : undefined;
             inputs["v2Id1"] = args ? args.v2Id1 : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -171,6 +172,7 @@ export interface SinkArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly sinksId: pulumi.Input<string>;
+    readonly uniqueWriterIdentity?: pulumi.Input<string>;
     readonly v2Id: pulumi.Input<string>;
     readonly v2Id1: pulumi.Input<string>;
 }

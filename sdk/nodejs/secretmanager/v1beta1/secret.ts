@@ -66,12 +66,16 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.secretId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'secretId'");
+            }
             if ((!args || args.secretsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretsId'");
             }
             inputs["labels"] = args ? args.labels : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["replication"] = args ? args.replication : undefined;
+            inputs["secretId"] = args ? args.secretId : undefined;
             inputs["secretsId"] = args ? args.secretsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -101,5 +105,6 @@ export interface SecretArgs {
      * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     readonly replication?: pulumi.Input<inputs.secretmanager.v1beta1.ReplicationArgs>;
+    readonly secretId: pulumi.Input<string>;
     readonly secretsId: pulumi.Input<string>;
 }

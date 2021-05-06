@@ -93,6 +93,7 @@ export class Key extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["keyId"] = args ? args.keyId : undefined;
             inputs["keysId"] = args ? args.keysId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -130,6 +131,7 @@ export interface KeyArgs {
      * Human-readable display name of this key that you can modify. The maximum length is 63 characters.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly keyId?: pulumi.Input<string>;
     readonly keysId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;

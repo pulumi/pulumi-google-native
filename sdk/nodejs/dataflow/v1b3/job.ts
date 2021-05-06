@@ -173,6 +173,7 @@ export class Job extends pulumi.CustomResource {
             inputs["tempFiles"] = args ? args.tempFiles : undefined;
             inputs["transformNameMapping"] = args ? args.transformNameMapping : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["view"] = args ? args.view : undefined;
         } else {
             inputs["clientRequestId"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -306,4 +307,5 @@ export interface JobArgs {
      * The type of Cloud Dataflow job.
      */
     readonly type?: pulumi.Input<string>;
+    readonly view?: pulumi.Input<string>;
 }

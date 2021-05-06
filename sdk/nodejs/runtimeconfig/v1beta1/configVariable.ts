@@ -78,6 +78,7 @@ export class ConfigVariable extends pulumi.CustomResource {
             inputs["configsId"] = args ? args.configsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["text"] = args ? args.text : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -107,6 +108,7 @@ export interface ConfigVariableArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The current state of the variable. The variable state indicates the outcome of the `variables().watch` call and is visible through the `get` and `list` calls.
      */

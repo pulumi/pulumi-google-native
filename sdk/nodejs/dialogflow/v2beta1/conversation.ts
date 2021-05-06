@@ -84,6 +84,7 @@ export class Conversation extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["conversationId"] = args ? args.conversationId : undefined;
             inputs["conversationProfile"] = args ? args.conversationProfile : undefined;
             inputs["conversationStage"] = args ? args.conversationStage : undefined;
             inputs["conversationsId"] = args ? args.conversationsId : undefined;
@@ -114,6 +115,7 @@ export class Conversation extends pulumi.CustomResource {
  * The set of arguments for constructing a Conversation resource.
  */
 export interface ConversationArgs {
+    readonly conversationId?: pulumi.Input<string>;
     /**
      * Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
      */

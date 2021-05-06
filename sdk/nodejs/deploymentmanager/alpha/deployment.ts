@@ -105,6 +105,7 @@ export class Deployment extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["credential"] = args ? args.credential : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -116,6 +117,7 @@ export class Deployment extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["operation"] = args ? args.operation : undefined;
             inputs["outputs"] = args ? args.outputs : undefined;
+            inputs["preview"] = args ? args.preview : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["target"] = args ? args.target : undefined;
@@ -147,6 +149,7 @@ export class Deployment extends pulumi.CustomResource {
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
+    readonly createPolicy?: pulumi.Input<string>;
     /**
      * User provided default credential for the deployment.
      */
@@ -185,6 +188,7 @@ export interface DeploymentArgs {
      * List of outputs from the last manifest that deployed successfully.
      */
     readonly outputs?: pulumi.Input<pulumi.Input<inputs.deploymentmanager.alpha.DeploymentOutputEntryArgs>[]>;
+    readonly preview?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.

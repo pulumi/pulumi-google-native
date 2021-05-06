@@ -143,8 +143,10 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["events"] = args ? args.events : undefined;
             inputs["followupIntentInfo"] = args ? args.followupIntentInfo : undefined;
             inputs["inputContextNames"] = args ? args.inputContextNames : undefined;
+            inputs["intentView"] = args ? args.intentView : undefined;
             inputs["intentsId"] = args ? args.intentsId : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["liveAgentHandoff"] = args ? args.liveAgentHandoff : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["messages"] = args ? args.messages : undefined;
@@ -220,11 +222,13 @@ export interface AgentIntentArgs {
      * Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
      */
     readonly inputContextNames?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly intentView?: pulumi.Input<string>;
     readonly intentsId: pulumi.Input<string>;
     /**
      * Optional. Indicates whether this is a fallback intent.
      */
     readonly isFallback?: pulumi.Input<boolean>;
+    readonly languageCode?: pulumi.Input<string>;
     /**
      * Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
      */

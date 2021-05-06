@@ -90,6 +90,9 @@ export class Backup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.backupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupId'");
+            }
             if ((!args || args.backupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupsId'");
             }
@@ -99,6 +102,7 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["backupId"] = args ? args.backupId : undefined;
             inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -137,6 +141,7 @@ export class Backup extends pulumi.CustomResource {
  * The set of arguments for constructing a Backup resource.
  */
 export interface BackupArgs {
+    readonly backupId: pulumi.Input<string>;
     readonly backupsId: pulumi.Input<string>;
     /**
      * A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.

@@ -76,6 +76,7 @@ export class ProductReferenceImage extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["productsId"] = args ? args.productsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["referenceImageId"] = args ? args.referenceImageId : undefined;
             inputs["referenceImagesId"] = args ? args.referenceImagesId : undefined;
             inputs["uri"] = args ? args.uri : undefined;
         } else {
@@ -105,6 +106,7 @@ export interface ProductReferenceImageArgs {
     readonly name?: pulumi.Input<string>;
     readonly productsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly referenceImageId?: pulumi.Input<string>;
     readonly referenceImagesId: pulumi.Input<string>;
     /**
      * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.

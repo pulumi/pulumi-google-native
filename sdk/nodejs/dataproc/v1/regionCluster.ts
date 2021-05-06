@@ -93,6 +93,7 @@ export class RegionCluster extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["clusterUuid"] = undefined /*out*/;
             inputs["metrics"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -135,4 +136,5 @@ export interface RegionClusterArgs {
      */
     readonly projectId: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
 }

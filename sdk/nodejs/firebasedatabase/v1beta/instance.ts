@@ -75,6 +75,7 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["databaseUrl"] = args ? args.databaseUrl : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -83,6 +84,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             inputs["databaseUrl"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -101,6 +103,7 @@ export class Instance extends pulumi.CustomResource {
  * The set of arguments for constructing a Instance resource.
  */
 export interface InstanceArgs {
+    readonly databaseId?: pulumi.Input<string>;
     /**
      * Immutable. The globally unique hostname of the database.
      */
@@ -124,4 +127,5 @@ export interface InstanceArgs {
      * The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
      */
     readonly type?: pulumi.Input<string>;
+    readonly validateOnly?: pulumi.Input<string>;
 }

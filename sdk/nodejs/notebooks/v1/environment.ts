@@ -75,6 +75,9 @@ export class Environment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
+            }
             if ((!args || args.environmentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentsId'");
             }
@@ -87,6 +90,7 @@ export class Environment extends pulumi.CustomResource {
             inputs["containerImage"] = args ? args.containerImage : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["postStartupScript"] = args ? args.postStartupScript : undefined;
@@ -126,6 +130,7 @@ export interface EnvironmentArgs {
      * Display name of this environment for the UI.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

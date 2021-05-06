@@ -71,6 +71,9 @@ export class InstanceCluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterId'");
+            }
             if ((!args || args.clustersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clustersId'");
             }
@@ -80,6 +83,7 @@ export class InstanceCluster extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["clustersId"] = args ? args.clustersId : undefined;
             inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -108,6 +112,7 @@ export class InstanceCluster extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceCluster resource.
  */
 export interface InstanceClusterArgs {
+    readonly clusterId: pulumi.Input<string>;
     readonly clustersId: pulumi.Input<string>;
     /**
      * Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.

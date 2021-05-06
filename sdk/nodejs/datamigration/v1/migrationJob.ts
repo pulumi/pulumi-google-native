@@ -126,6 +126,9 @@ export class MigrationJob extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.migrationJobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'migrationJobId'");
+            }
             if ((!args || args.migrationJobsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'migrationJobsId'");
             }
@@ -138,9 +141,11 @@ export class MigrationJob extends pulumi.CustomResource {
             inputs["dumpPath"] = args ? args.dumpPath : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["migrationJobId"] = args ? args.migrationJobId : undefined;
             inputs["migrationJobsId"] = args ? args.migrationJobsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
             inputs["source"] = args ? args.source : undefined;
             inputs["sourceDatabase"] = args ? args.sourceDatabase : undefined;
@@ -207,12 +212,14 @@ export interface MigrationJobArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
+    readonly migrationJobId: pulumi.Input<string>;
     readonly migrationJobsId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.
      */

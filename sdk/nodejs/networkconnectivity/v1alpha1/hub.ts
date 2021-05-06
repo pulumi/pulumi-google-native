@@ -86,10 +86,12 @@ export class Hub extends pulumi.CustomResource {
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["hubId"] = args ? args.hubId : undefined;
             inputs["hubsId"] = args ? args.hubsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["spokes"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -123,6 +125,7 @@ export interface HubArgs {
      * Short description of the hub resource.
      */
     readonly description?: pulumi.Input<string>;
+    readonly hubId?: pulumi.Input<string>;
     readonly hubsId: pulumi.Input<string>;
     /**
      * User-defined labels.
@@ -133,6 +136,7 @@ export interface HubArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Time when the Hub was updated.
      */

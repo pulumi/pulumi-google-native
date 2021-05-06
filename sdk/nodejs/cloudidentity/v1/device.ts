@@ -163,6 +163,7 @@ export class Device extends pulumi.CustomResource {
                 throw new Error("Missing required property 'devicesId'");
             }
             inputs["assetTag"] = args ? args.assetTag : undefined;
+            inputs["customer"] = args ? args.customer : undefined;
             inputs["devicesId"] = args ? args.devicesId : undefined;
             inputs["lastSyncTime"] = args ? args.lastSyncTime : undefined;
             inputs["serialNumber"] = args ? args.serialNumber : undefined;
@@ -236,6 +237,7 @@ export interface DeviceArgs {
      * Asset tag of the device.
      */
     readonly assetTag?: pulumi.Input<string>;
+    readonly customer?: pulumi.Input<string>;
     readonly devicesId: pulumi.Input<string>;
     /**
      * Most recent time when device synced with this service.

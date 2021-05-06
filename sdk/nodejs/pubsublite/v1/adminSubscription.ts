@@ -65,6 +65,9 @@ export class AdminSubscription extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subscriptionId'");
+            }
             if ((!args || args.subscriptionsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionsId'");
             }
@@ -72,6 +75,8 @@ export class AdminSubscription extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["skipBacklog"] = args ? args.skipBacklog : undefined;
+            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
@@ -100,6 +105,8 @@ export interface AdminSubscriptionArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly skipBacklog?: pulumi.Input<string>;
+    readonly subscriptionId: pulumi.Input<string>;
     readonly subscriptionsId: pulumi.Input<string>;
     /**
      * The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}

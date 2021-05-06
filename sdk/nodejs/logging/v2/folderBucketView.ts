@@ -75,6 +75,9 @@ export class FolderBucketView extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.viewId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'viewId'");
+            }
             if ((!args || args.viewsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'viewsId'");
             }
@@ -84,6 +87,7 @@ export class FolderBucketView extends pulumi.CustomResource {
             inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["viewId"] = args ? args.viewId : undefined;
             inputs["viewsId"] = args ? args.viewsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -120,5 +124,6 @@ export interface FolderBucketViewArgs {
      * The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
      */
     readonly name?: pulumi.Input<string>;
+    readonly viewId: pulumi.Input<string>;
     readonly viewsId: pulumi.Input<string>;
 }

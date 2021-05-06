@@ -110,6 +110,7 @@ export class ManagedZone extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
@@ -156,6 +157,7 @@ export class ManagedZone extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedZone resource.
  */
 export interface ManagedZoneArgs {
+    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * The time that this resource was created on the server. This is in RFC3339 text format. Output only.
      */

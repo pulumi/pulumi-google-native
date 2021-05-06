@@ -140,6 +140,7 @@ export class Node extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["network"] = args ? args.network : undefined;
+            inputs["nodeId"] = args ? args.nodeId : undefined;
             inputs["nodesId"] = args ? args.nodesId : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -215,6 +216,7 @@ export interface NodeArgs {
      * The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
      */
     readonly network?: pulumi.Input<string>;
+    readonly nodeId?: pulumi.Input<string>;
     readonly nodesId: pulumi.Input<string>;
     /**
      * DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.

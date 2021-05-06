@@ -132,6 +132,7 @@ export class HistoryExecutionStep extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["outcome"] = args ? args.outcome : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["runDuration"] = args ? args.runDuration : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["stepId"] = args ? args.stepId : undefined;
@@ -208,6 +209,7 @@ export interface HistoryExecutionStepArgs {
      */
     readonly outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
     readonly projectId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
      */

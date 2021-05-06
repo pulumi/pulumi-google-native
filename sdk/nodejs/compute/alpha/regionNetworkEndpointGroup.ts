@@ -157,6 +157,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
@@ -260,6 +261,7 @@ export interface RegionNetworkEndpointGroupArgs {
      * [Output Only] The URL of the region where the network endpoint group is located.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

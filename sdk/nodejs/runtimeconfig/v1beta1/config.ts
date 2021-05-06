@@ -64,6 +64,7 @@ export class Config extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -89,4 +90,5 @@ export interface ConfigArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
 }

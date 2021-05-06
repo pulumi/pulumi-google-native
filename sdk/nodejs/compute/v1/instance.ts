@@ -243,6 +243,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
@@ -251,6 +252,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["serviceAccounts"] = args ? args.serviceAccounts : undefined;
             inputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             inputs["shieldedInstanceIntegrityPolicy"] = args ? args.shieldedInstanceIntegrityPolicy : undefined;
+            inputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
             inputs["startRestricted"] = args ? args.startRestricted : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["statusMessage"] = args ? args.statusMessage : undefined;
@@ -424,6 +426,7 @@ export interface InstanceArgs {
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -452,6 +455,7 @@ export interface InstanceArgs {
     readonly serviceAccounts?: pulumi.Input<pulumi.Input<inputs.compute.v1.ServiceAccountArgs>[]>;
     readonly shieldedInstanceConfig?: pulumi.Input<inputs.compute.v1.ShieldedInstanceConfigArgs>;
     readonly shieldedInstanceIntegrityPolicy?: pulumi.Input<inputs.compute.v1.ShieldedInstanceIntegrityPolicyArgs>;
+    readonly sourceInstanceTemplate?: pulumi.Input<string>;
     /**
      * [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
      */

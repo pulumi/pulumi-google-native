@@ -67,6 +67,9 @@ export class InstanceAppProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.appProfileId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appProfileId'");
+            }
             if ((!args || args.appProfilesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appProfilesId'");
             }
@@ -76,9 +79,11 @@ export class InstanceAppProfile extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["appProfileId"] = args ? args.appProfileId : undefined;
             inputs["appProfilesId"] = args ? args.appProfilesId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -102,6 +107,7 @@ export class InstanceAppProfile extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceAppProfile resource.
  */
 export interface InstanceAppProfileArgs {
+    readonly appProfileId: pulumi.Input<string>;
     readonly appProfilesId: pulumi.Input<string>;
     /**
      * Long form description of the use case for this AppProfile.
@@ -111,6 +117,7 @@ export interface InstanceAppProfileArgs {
      * Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly ignoreWarnings?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Use a multi-cluster routing policy.

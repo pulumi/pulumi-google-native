@@ -79,6 +79,7 @@ export class Change extends pulumi.CustomResource {
             }
             inputs["additions"] = args ? args.additions : undefined;
             inputs["changeId"] = args ? args.changeId : undefined;
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["deletions"] = args ? args.deletions : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["isServing"] = args ? args.isServing : undefined;
@@ -111,6 +112,7 @@ export interface ChangeArgs {
      */
     readonly additions?: pulumi.Input<pulumi.Input<inputs.dns.v1beta2.ResourceRecordSetArgs>[]>;
     readonly changeId: pulumi.Input<string>;
+    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * Which ResourceRecordSets to remove? Must match existing data exactly.
      */

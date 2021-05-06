@@ -85,6 +85,7 @@ export class Project extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
+            inputs["useLegacyStack"] = args ? args.useLegacyStack : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
@@ -133,4 +134,5 @@ export interface ProjectArgs {
      * The number uniquely identifying the project. Example: `415104041262` Read-only.
      */
     readonly projectNumber?: pulumi.Input<string>;
+    readonly useLegacyStack?: pulumi.Input<string>;
 }

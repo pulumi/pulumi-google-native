@@ -91,6 +91,9 @@ export class ConnectionProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectionProfileId'");
+            }
             if ((!args || args.connectionProfilesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfilesId'");
             }
@@ -101,6 +104,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
+            inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             inputs["connectionProfilesId"] = args ? args.connectionProfilesId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -110,6 +114,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             inputs["postgresql"] = args ? args.postgresql : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["provider"] = args ? args.provider : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["error"] = undefined /*out*/;
@@ -142,6 +147,7 @@ export interface ConnectionProfileArgs {
      * A CloudSQL database connection profile.
      */
     readonly cloudsql?: pulumi.Input<inputs.datamigration.v1.CloudSqlConnectionProfileArgs>;
+    readonly connectionProfileId: pulumi.Input<string>;
     readonly connectionProfilesId: pulumi.Input<string>;
     /**
      * The connection profile display name.
@@ -169,6 +175,7 @@ export interface ConnectionProfileArgs {
      * The database provider.
      */
     readonly provider?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The current connection profile state (e.g. DRAFT, READY, or FAILED).
      */

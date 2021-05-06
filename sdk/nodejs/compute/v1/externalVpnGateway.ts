@@ -102,6 +102,7 @@ export class ExternalVpnGateway extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["redundancyType"] = args ? args.redundancyType : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -165,6 +166,7 @@ export interface ExternalVpnGatewayArgs {
      * Indicates the user-supplied redundancy type of this external VPN gateway.
      */
     readonly redundancyType?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

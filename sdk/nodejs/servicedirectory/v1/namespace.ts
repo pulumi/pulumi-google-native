@@ -57,6 +57,9 @@ export class Namespace extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
+            }
             if ((!args || args.namespacesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'namespacesId'");
             }
@@ -66,6 +69,7 @@ export class Namespace extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["namespacesId"] = args ? args.namespacesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
         } else {
@@ -92,6 +96,7 @@ export interface NamespaceArgs {
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     readonly name?: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
     readonly namespacesId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

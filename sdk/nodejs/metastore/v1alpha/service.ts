@@ -121,6 +121,9 @@ export class Service extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
+            }
             if ((!args || args.servicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicesId'");
             }
@@ -134,6 +137,8 @@ export class Service extends pulumi.CustomResource {
             inputs["port"] = args ? args.port : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["artifactGcsUri"] = undefined /*out*/;
@@ -208,6 +213,8 @@ export interface ServiceArgs {
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */
     readonly releaseChannel?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
     /**
      * The tier of the service.

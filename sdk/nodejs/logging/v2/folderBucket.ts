@@ -78,6 +78,9 @@ export class FolderBucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.bucketId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucketId'");
+            }
             if ((!args || args.bucketsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketsId'");
             }
@@ -87,6 +90,7 @@ export class FolderBucket extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            inputs["bucketId"] = args ? args.bucketId : undefined;
             inputs["bucketsId"] = args ? args.bucketsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["foldersId"] = args ? args.foldersId : undefined;
@@ -119,6 +123,7 @@ export class FolderBucket extends pulumi.CustomResource {
  * The set of arguments for constructing a FolderBucket resource.
  */
 export interface FolderBucketArgs {
+    readonly bucketId: pulumi.Input<string>;
     readonly bucketsId: pulumi.Input<string>;
     /**
      * Describes this bucket.

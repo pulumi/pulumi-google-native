@@ -89,8 +89,14 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.triggerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'triggerId'");
+            }
             if ((!args || args.triggersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggersId'");
+            }
+            if ((!args || args.validateOnly === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'validateOnly'");
             }
             inputs["destination"] = args ? args.destination : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -99,7 +105,9 @@ export class Trigger extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            inputs["triggerId"] = args ? args.triggerId : undefined;
             inputs["triggersId"] = args ? args.triggersId : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["transport"] = undefined /*out*/;
@@ -148,5 +156,7 @@ export interface TriggerArgs {
      * Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
      */
     readonly serviceAccount?: pulumi.Input<string>;
+    readonly triggerId: pulumi.Input<string>;
     readonly triggersId: pulumi.Input<string>;
+    readonly validateOnly: pulumi.Input<string>;
 }

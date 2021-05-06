@@ -115,6 +115,7 @@ export class HttpHealthCheck extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["requestPath"] = args ? args.requestPath : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -184,6 +185,7 @@ export interface HttpHealthCheckArgs {
      */
     readonly port?: pulumi.Input<number>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The request path of the HTTP health check request. The default value is /. This field does not support query parameters.
      */

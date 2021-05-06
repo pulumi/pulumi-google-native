@@ -108,6 +108,7 @@ export class VpnGateway extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["vpnGateway"] = args ? args.vpnGateway : undefined;
             inputs["vpnInterfaces"] = args ? args.vpnInterfaces : undefined;
@@ -173,6 +174,7 @@ export interface VpnGatewayArgs {
      * [Output Only] URL of the region where the VPN gateway resides.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

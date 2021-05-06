@@ -76,10 +76,14 @@ export class Study extends pulumi.CustomResource {
             if ((!args || args.studiesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studiesId'");
             }
+            if ((!args || args.studyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'studyId'");
+            }
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["studiesId"] = args ? args.studiesId : undefined;
             inputs["studyConfig"] = args ? args.studyConfig : undefined;
+            inputs["studyId"] = args ? args.studyId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["inactiveReason"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -109,4 +113,5 @@ export interface StudyArgs {
      * Required. Configuration of the study.
      */
     readonly studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
+    readonly studyId: pulumi.Input<string>;
 }

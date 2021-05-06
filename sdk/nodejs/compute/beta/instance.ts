@@ -266,6 +266,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["postKeyRevocationActionType"] = args ? args.postKeyRevocationActionType : undefined;
             inputs["privateIpv6GoogleAccess"] = args ? args.privateIpv6GoogleAccess : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
@@ -276,6 +277,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["shieldedInstanceIntegrityPolicy"] = args ? args.shieldedInstanceIntegrityPolicy : undefined;
             inputs["shieldedVmConfig"] = args ? args.shieldedVmConfig : undefined;
             inputs["shieldedVmIntegrityPolicy"] = args ? args.shieldedVmIntegrityPolicy : undefined;
+            inputs["sourceInstanceTemplate"] = args ? args.sourceInstanceTemplate : undefined;
             inputs["sourceMachineImage"] = args ? args.sourceMachineImage : undefined;
             inputs["sourceMachineImageEncryptionKey"] = args ? args.sourceMachineImageEncryptionKey : undefined;
             inputs["startRestricted"] = args ? args.startRestricted : undefined;
@@ -462,6 +464,7 @@ export interface InstanceArgs {
      */
     readonly privateIpv6GoogleAccess?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Specifies the reservations that this instance can consume from.
      */
@@ -498,6 +501,7 @@ export interface InstanceArgs {
      * Deprecating, please use shielded_instance_integrity_policy.
      */
     readonly shieldedVmIntegrityPolicy?: pulumi.Input<inputs.compute.beta.ShieldedVmIntegrityPolicyArgs>;
+    readonly sourceInstanceTemplate?: pulumi.Input<string>;
     /**
      * Source machine image
      */

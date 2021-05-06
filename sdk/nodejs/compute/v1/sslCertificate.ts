@@ -116,6 +116,7 @@ export class SslCertificate extends pulumi.CustomResource {
             inputs["privateKey"] = args ? args.privateKey : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfManaged"] = args ? args.selfManaged : undefined;
             inputs["sslCertificate"] = args ? args.sslCertificate : undefined;
@@ -188,6 +189,7 @@ export interface SslCertificateArgs {
      * [Output Only] URL of the region where the regional SSL Certificate resides. This field is not applicable to global SSL Certificate.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */

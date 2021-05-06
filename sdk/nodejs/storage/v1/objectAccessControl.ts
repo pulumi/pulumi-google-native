@@ -126,8 +126,10 @@ export class ObjectAccessControl extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["object"] = args ? args.object : undefined;
             inputs["projectTeam"] = args ? args.projectTeam : undefined;
+            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
             inputs["bucket"] = undefined /*out*/;
             inputs["domain"] = undefined /*out*/;
@@ -208,6 +210,7 @@ export interface ObjectAccessControlArgs {
      * The project team associated with the entity, if any.
      */
     readonly projectTeam?: pulumi.Input<inputs.storage.v1.ObjectAccessControlProjectTeamArgs>;
+    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * The access permission for the entity.
      */
@@ -216,4 +219,5 @@ export interface ObjectAccessControlArgs {
      * The link to this access-control entry.
      */
     readonly selfLink?: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
 }

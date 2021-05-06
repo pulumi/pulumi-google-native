@@ -192,6 +192,10 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["eventBasedHold"] = args ? args.eventBasedHold : undefined;
             inputs["generation"] = args ? args.generation : undefined;
             inputs["id"] = args ? args.id : undefined;
+            inputs["ifGenerationMatch"] = args ? args.ifGenerationMatch : undefined;
+            inputs["ifGenerationNotMatch"] = args ? args.ifGenerationNotMatch : undefined;
+            inputs["ifMetagenerationMatch"] = args ? args.ifMetagenerationMatch : undefined;
+            inputs["ifMetagenerationNotMatch"] = args ? args.ifMetagenerationNotMatch : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["md5Hash"] = args ? args.md5Hash : undefined;
@@ -201,6 +205,9 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["object"] = args ? args.object : undefined;
             inputs["owner"] = args ? args.owner : undefined;
+            inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
+            inputs["projection"] = args ? args.projection : undefined;
+            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionExpirationTime"] = args ? args.retentionExpirationTime : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -211,6 +218,7 @@ export class BucketObject extends pulumi.CustomResource {
             inputs["timeDeleted"] = args ? args.timeDeleted : undefined;
             inputs["timeStorageClassUpdated"] = args ? args.timeStorageClassUpdated : undefined;
             inputs["updated"] = args ? args.updated : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
             inputs["acl"] = undefined /*out*/;
             inputs["bucket"] = undefined /*out*/;
@@ -315,6 +323,10 @@ export interface BucketObjectArgs {
      * The ID of the object, including the bucket name, object name, and generation number.
      */
     readonly id?: pulumi.Input<string>;
+    readonly ifGenerationMatch?: pulumi.Input<string>;
+    readonly ifGenerationNotMatch?: pulumi.Input<string>;
+    readonly ifMetagenerationMatch?: pulumi.Input<string>;
+    readonly ifMetagenerationNotMatch?: pulumi.Input<string>;
     /**
      * The kind of item this is. For objects, this is always storage#object.
      */
@@ -348,6 +360,9 @@ export interface BucketObjectArgs {
      * The owner of the object. This will always be the uploader of the object.
      */
     readonly owner?: pulumi.Input<inputs.storage.v1.ObjectOwnerArgs>;
+    readonly predefinedAcl?: pulumi.Input<string>;
+    readonly projection?: pulumi.Input<string>;
+    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
@@ -385,4 +400,5 @@ export interface BucketObjectArgs {
      * The modification time of the object metadata in RFC 3339 format.
      */
     readonly updated?: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
 }

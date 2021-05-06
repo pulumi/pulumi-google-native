@@ -140,6 +140,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             inputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["size"] = args ? args.size : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -232,6 +233,7 @@ export interface RegionNetworkEndpointGroupArgs {
      * [Output Only] The URL of the region where the network endpoint group is located.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

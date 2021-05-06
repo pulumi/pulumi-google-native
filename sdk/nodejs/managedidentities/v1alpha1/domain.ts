@@ -108,6 +108,7 @@ export class Domain extends pulumi.CustomResource {
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
+            inputs["domainName"] = args ? args.domainName : undefined;
             inputs["domainsId"] = args ? args.domainsId : undefined;
             inputs["fqdn"] = args ? args.fqdn : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -158,6 +159,7 @@ export interface DomainArgs {
      * The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
      */
     readonly createTime?: pulumi.Input<string>;
+    readonly domainName?: pulumi.Input<string>;
     readonly domainsId: pulumi.Input<string>;
     /**
      * Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.

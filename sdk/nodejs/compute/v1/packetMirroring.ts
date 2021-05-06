@@ -122,6 +122,7 @@ export class PacketMirroring extends pulumi.CustomResource {
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
             inputs["collectorIlb"] = undefined /*out*/;
@@ -202,6 +203,7 @@ export interface PacketMirroringArgs {
      * [Output Only] URI of the region where the packetMirroring resides.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -82,6 +82,9 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.secretId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'secretId'");
+            }
             if ((!args || args.secretsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretsId'");
             }
@@ -90,6 +93,7 @@ export class Secret extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["replication"] = args ? args.replication : undefined;
             inputs["rotation"] = args ? args.rotation : undefined;
+            inputs["secretId"] = args ? args.secretId : undefined;
             inputs["secretsId"] = args ? args.secretsId : undefined;
             inputs["topics"] = args ? args.topics : undefined;
             inputs["ttl"] = args ? args.ttl : undefined;
@@ -133,6 +137,7 @@ export interface SecretArgs {
      * Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
      */
     readonly rotation?: pulumi.Input<inputs.secretmanager.v1.RotationArgs>;
+    readonly secretId: pulumi.Input<string>;
     readonly secretsId: pulumi.Input<string>;
     /**
      * Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.

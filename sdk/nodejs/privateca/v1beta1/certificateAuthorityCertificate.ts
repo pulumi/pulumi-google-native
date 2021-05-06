@@ -104,6 +104,7 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
+            inputs["certificateId"] = args ? args.certificateId : undefined;
             inputs["certificatesId"] = args ? args.certificatesId : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -111,6 +112,7 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["pemCsr"] = args ? args.pemCsr : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["certificateDescription"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -143,6 +145,7 @@ export class CertificateAuthorityCertificate extends pulumi.CustomResource {
  */
 export interface CertificateAuthorityCertificateArgs {
     readonly certificateAuthoritiesId: pulumi.Input<string>;
+    readonly certificateId?: pulumi.Input<string>;
     readonly certificatesId: pulumi.Input<string>;
     /**
      * Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
@@ -162,4 +165,5 @@ export interface CertificateAuthorityCertificateArgs {
      */
     readonly pemCsr?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
 }

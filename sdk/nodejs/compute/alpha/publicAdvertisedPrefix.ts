@@ -114,6 +114,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["publicAdvertisedPrefix"] = args ? args.publicAdvertisedPrefix : undefined;
             inputs["publicDelegatedPrefixs"] = args ? args.publicDelegatedPrefixs : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
@@ -183,6 +184,7 @@ export interface PublicAdvertisedPrefixArgs {
      * [Output Only] The list of public delegated prefixes that exist for this public advertised prefix.
      */
     readonly publicDelegatedPrefixs?: pulumi.Input<pulumi.Input<inputs.compute.alpha.PublicAdvertisedPrefixPublicDelegatedPrefixArgs>[]>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

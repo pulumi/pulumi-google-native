@@ -77,6 +77,7 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
             inputs["agentsId"] = args ? args.agentsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["flowsId"] = args ? args.flowsId : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -104,6 +105,7 @@ export interface AgentFlowTransitionRouteGroupArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly flowsId: pulumi.Input<string>;
+    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.

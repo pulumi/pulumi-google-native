@@ -69,6 +69,9 @@ export class Folder extends pulumi.CustomResource {
             if ((!args || args.foldersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'foldersId'");
             }
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["foldersId"] = args ? args.foldersId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
@@ -101,5 +104,5 @@ export interface FolderArgs {
     /**
      * Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
      */
-    readonly parent?: pulumi.Input<string>;
+    readonly parent: pulumi.Input<string>;
 }

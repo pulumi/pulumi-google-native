@@ -74,6 +74,9 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.metadataImportId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metadataImportId'");
+            }
             if ((!args || args.metadataImportsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataImportsId'");
             }
@@ -86,9 +89,11 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
             inputs["databaseDump"] = args ? args.databaseDump : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["metadataImportId"] = args ? args.metadataImportId : undefined;
             inputs["metadataImportsId"] = args ? args.metadataImportsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -121,11 +126,13 @@ export interface ServiceMetadataImportArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
+    readonly metadataImportId: pulumi.Input<string>;
     readonly metadataImportsId: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
 }

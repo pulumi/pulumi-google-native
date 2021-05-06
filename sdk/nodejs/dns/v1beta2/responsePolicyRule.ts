@@ -74,6 +74,7 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
                 throw new Error("Missing required property 'responsePolicyRule'");
             }
             inputs["behavior"] = args ? args.behavior : undefined;
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["dnsName"] = args ? args.dnsName : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["localData"] = args ? args.localData : undefined;
@@ -103,6 +104,7 @@ export interface ResponsePolicyRuleArgs {
      * Answer this query with a behavior rather than DNS data.
      */
     readonly behavior?: pulumi.Input<string>;
+    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
      */

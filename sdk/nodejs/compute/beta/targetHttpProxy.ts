@@ -107,6 +107,7 @@ export class TargetHttpProxy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["targetHttpProxy"] = args ? args.targetHttpProxy : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
@@ -175,6 +176,7 @@ export interface TargetHttpProxyArgs {
      * [Output Only] URL of the region where the regional Target HTTP Proxy resides. This field is not applicable to global Target HTTP Proxies.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

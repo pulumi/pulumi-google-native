@@ -92,6 +92,7 @@ export class Repository extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["repositoriesId"] = args ? args.repositoriesId : undefined;
+            inputs["repositoryId"] = args ? args.repositoryId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
             inputs["createTime"] = undefined /*out*/;
@@ -140,6 +141,7 @@ export interface RepositoryArgs {
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly repositoriesId: pulumi.Input<string>;
+    readonly repositoryId?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.
      */

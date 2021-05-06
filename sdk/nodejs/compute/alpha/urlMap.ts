@@ -136,6 +136,7 @@ export class UrlMap extends pulumi.CustomResource {
             inputs["pathMatchers"] = args ? args.pathMatchers : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tests"] = args ? args.tests : undefined;
             inputs["urlMap"] = args ? args.urlMap : undefined;
@@ -231,6 +232,7 @@ export interface UrlMapArgs {
      * [Output Only] URL of the region where the regional URL map resides. This field is not applicable to global URL maps. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

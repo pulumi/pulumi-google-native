@@ -78,6 +78,9 @@ export class OrganizationBucket extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.bucketId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucketId'");
+            }
             if ((!args || args.bucketsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'bucketsId'");
             }
@@ -87,6 +90,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["bucketId"] = args ? args.bucketId : undefined;
             inputs["bucketsId"] = args ? args.bucketsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -119,6 +123,7 @@ export class OrganizationBucket extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationBucket resource.
  */
 export interface OrganizationBucketArgs {
+    readonly bucketId: pulumi.Input<string>;
     readonly bucketsId: pulumi.Input<string>;
     /**
      * Describes this bucket.

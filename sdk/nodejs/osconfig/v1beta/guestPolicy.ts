@@ -86,6 +86,9 @@ export class GuestPolicy extends pulumi.CustomResource {
             if ((!args || args.guestPoliciesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPoliciesId'");
             }
+            if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'guestPolicyId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -93,6 +96,7 @@ export class GuestPolicy extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["guestPoliciesId"] = args ? args.guestPoliciesId : undefined;
+            inputs["guestPolicyId"] = args ? args.guestPolicyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["packageRepositories"] = args ? args.packageRepositories : undefined;
             inputs["packages"] = args ? args.packages : undefined;
@@ -135,6 +139,7 @@ export interface GuestPolicyArgs {
      */
     readonly etag?: pulumi.Input<string>;
     readonly guestPoliciesId: pulumi.Input<string>;
+    readonly guestPolicyId: pulumi.Input<string>;
     /**
      * Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
      */

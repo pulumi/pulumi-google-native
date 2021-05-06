@@ -107,6 +107,7 @@ export class TargetInstance extends pulumi.CustomResource {
             inputs["natPolicy"] = args ? args.natPolicy : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["targetInstance"] = args ? args.targetInstance : undefined;
@@ -170,6 +171,7 @@ export interface TargetInstanceArgs {
      */
     readonly network?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -112,6 +112,7 @@ export class TestMatrix extends pulumi.CustomResource {
             inputs["invalidMatrixDetails"] = args ? args.invalidMatrixDetails : undefined;
             inputs["outcomeSummary"] = args ? args.outcomeSummary : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resultStorage"] = args ? args.resultStorage : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["testExecutions"] = args ? args.testExecutions : undefined;
@@ -172,6 +173,7 @@ export interface TestMatrixArgs {
      * The cloud project that owns the test matrix.
      */
     readonly projectId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Required. Where the results for the matrix are written.
      */

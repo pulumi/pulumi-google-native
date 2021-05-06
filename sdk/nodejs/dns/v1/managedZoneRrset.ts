@@ -79,6 +79,7 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["managedZone"] = args ? args.managedZone : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -106,6 +107,7 @@ export class ManagedZoneRrset extends pulumi.CustomResource {
  * The set of arguments for constructing a ManagedZoneRrset resource.
  */
 export interface ManagedZoneRrsetArgs {
+    readonly clientOperationId?: pulumi.Input<string>;
     readonly kind?: pulumi.Input<string>;
     readonly managedZone: pulumi.Input<string>;
     /**

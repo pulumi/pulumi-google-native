@@ -275,6 +275,7 @@ export class RegionDisk extends pulumi.CustomResource {
             inputs["provisionedIops"] = args ? args.provisionedIops : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["replicaZones"] = args ? args.replicaZones : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -443,6 +444,7 @@ export interface RegionDiskArgs {
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */
     readonly replicaZones?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Resource policies applied to this disk for automatic snapshot creations.
      */

@@ -65,6 +65,9 @@ export class AdminTopic extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.topicId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'topicId'");
+            }
             if ((!args || args.topicsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicsId'");
             }
@@ -73,6 +76,7 @@ export class AdminTopic extends pulumi.CustomResource {
             inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
+            inputs["topicId"] = args ? args.topicId : undefined;
             inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -104,5 +108,6 @@ export interface AdminTopicArgs {
      * The settings for this topic's message retention.
      */
     readonly retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
+    readonly topicId: pulumi.Input<string>;
     readonly topicsId: pulumi.Input<string>;
 }
