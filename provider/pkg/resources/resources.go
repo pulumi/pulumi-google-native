@@ -16,7 +16,7 @@ type CloudAPIMetadata struct {
 type CloudAPIResource struct {
 	BaseUrl          string                      `json:"baseUrl"`
 	CreatePath       string                      `json:"createPath"`
-	CreateParams     []string                    `json:"createParams"`
+	CreateParams     []CloudAPIResourceParam     `json:"createParams"`
 	CreateVerb       string                      `json:"createVerb,omitempty"`
 	CreateProperties map[string]CloudAPIProperty `json:"createProperties,omitempty"`
 	UpdateVerb       string                      `json:"updateVerb,omitempty"`
@@ -24,6 +24,13 @@ type CloudAPIResource struct {
 	IdPath           string                      `json:"idPath,omitempty"`
 	IdParams         []string                    `json:"idParams,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
+}
+
+// CloudAPIResourceParam is a URL parameter of an API resource.
+type CloudAPIResourceParam struct {
+	Name     string `json:"name"`
+	SdkName  string `json:"sdkName,omitempty"`
+	Location string `json:"location"`
 }
 
 // RelativePath joins the resource base URL with the given path.

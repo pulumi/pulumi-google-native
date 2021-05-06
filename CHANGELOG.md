@@ -6,6 +6,9 @@ CHANGELOG
 - Fix refresh to re-populate inputs and provide accurate diff and drift detection
   [#65](https://github.com/pulumi/pulumi-google-native/issues/65)
 
+- Generate properties for optional query parameters. Fix pub/sub schema creation
+  [#67](https://github.com/pulumi/pulumi-google-native/issues/67)
+
 ---
 
 ## 0.1.1 (2021-04-26)

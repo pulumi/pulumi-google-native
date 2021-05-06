@@ -26,6 +26,7 @@ import (
 	"google.golang.org/grpc/status"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -220,7 +221,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		}
 	}
 
-	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces}, nil
+	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces, DeleteBeforeReplace: true}, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
@@ -291,10 +292,30 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		}
 	default:
 		path := res.CreatePath
+		querySep := "?"
+		if strings.Contains(path, "?") {
+			querySep = "&"
+		}
 		for _, param := range res.CreateParams {
-			key := resource.PropertyKey(param)
+			sdkName := param.Name
+			if param.SdkName != "" {
+				sdkName = param.SdkName
+			}
+			key := resource.PropertyKey(sdkName)
+			if !inputs[key].HasValue() {
+				continue
+			}
+
 			value := inputs[key].StringValue()
-			path = strings.Replace(path, fmt.Sprintf("{%s}", param), value, 1)
+			switch param.Location {
+			case "path":
+				path = strings.Replace(path, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
+			case "query":
+				path = fmt.Sprintf("%s%s%s=%s", path, querySep, key, url.QueryEscape(value))
+				querySep = "&"
+			default:
+				return nil, errors.Errorf("unknown param location %q", param.Location)
+			}
 		}
 		uri = res.RelativePath(path)
 

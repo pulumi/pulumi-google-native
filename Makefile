@@ -82,7 +82,6 @@ clean::
 	rm -rf sdk/python && mkdir sdk/python && touch sdk/python/go.mod && cp README.md sdk/python
 	rm -rf sdk/dotnet && mkdir sdk/dotnet && touch sdk/dotnet/go.mod
 	rm -rf sdk/go/google
-	rm -rf sdk/schema
 
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
