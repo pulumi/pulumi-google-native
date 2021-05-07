@@ -48,7 +48,7 @@ type googleHttpClient struct {
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
-	reqHeaders.Set("User-Agent", "pulumi") // TODO: Pulumi UA
+	reqHeaders.Set("User-Agent", "pulumi") // TODO: Pulumi UA https://github.com/pulumi/pulumi-google-native/issues/73
 	reqHeaders.Set("Content-Type", "application/json")
 
 	if timeout == 0 {
