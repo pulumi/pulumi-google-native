@@ -228,8 +228,7 @@ func (g *packageGenerator) findResources(parent string, resources map[string]dis
 		typeName := fmt.Sprintf("%s%s", parent, name)
 		switch {
 		case createMethod != nil && getMethod != nil && getMethod.HttpMethod != "GET":
-			// We support read with GET method only. Warn about others.
-			fmt.Printf("Get method %q is not supported: %s (%s), skipping.\n", getMethod.HttpMethod, typeName, g.docName)
+			return errors.Errorf("get method %q is not supported: %s (%s)", getMethod.HttpMethod, typeName, g.docName)
 		case createMethod != nil && getMethod != nil:
 			err := g.genResource(typeName, createMethod, getMethod, updateMethod, deleteMethod)
 			if err != nil {
