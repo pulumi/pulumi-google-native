@@ -76,9 +76,12 @@ export class ObjectIamPolicy extends pulumi.CustomResource {
             inputs["bindings"] = args ? args.bindings : undefined;
             inputs["bucket"] = args ? args.bucket : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["generation"] = args ? args.generation : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["object"] = args ? args.object : undefined;
+            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["resourceId"] = args ? args.resourceId : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
             inputs["bindings"] = undefined /*out*/;
@@ -107,15 +110,18 @@ export interface ObjectIamPolicyArgs {
      * HTTP 1.1  Entity tag for the policy.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly generation?: pulumi.Input<string>;
     /**
      * The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
      */
     readonly kind?: pulumi.Input<string>;
     readonly object: pulumi.Input<string>;
+    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
      */
     readonly resourceId?: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
     /**
      * The IAM policy format version.
      */

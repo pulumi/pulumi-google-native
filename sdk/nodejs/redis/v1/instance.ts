@@ -135,6 +135,9 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
+            }
             if ((!args || args.instancesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instancesId'");
             }
@@ -149,6 +152,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["connectMode"] = args ? args.connectMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationId"] = args ? args.locationId : undefined;
@@ -224,6 +228,7 @@ export interface InstanceArgs {
      * An arbitrary and optional user-provided name for the instance.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata

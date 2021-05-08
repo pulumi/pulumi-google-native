@@ -220,6 +220,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         /// </summary>

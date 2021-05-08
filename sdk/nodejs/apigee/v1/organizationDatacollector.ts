@@ -72,6 +72,7 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["dataCollectorId"] = args ? args.dataCollectorId : undefined;
             inputs["datacollectorsId"] = args ? args.datacollectorsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -97,6 +98,7 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationDatacollector resource.
  */
 export interface OrganizationDatacollectorArgs {
+    readonly dataCollectorId?: pulumi.Input<string>;
     readonly datacollectorsId: pulumi.Input<string>;
     /**
      * A description of the data collector.

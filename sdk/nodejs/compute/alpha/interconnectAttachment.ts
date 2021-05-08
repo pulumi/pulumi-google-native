@@ -235,11 +235,13 @@ export class InterconnectAttachment extends pulumi.CustomResource {
             inputs["privateInterconnectInfo"] = args ? args.privateInterconnectInfo : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["router"] = args ? args.router : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["vlanTag8021q"] = args ? args.vlanTag8021q : undefined;
         } else {
             inputs["adminEnabled"] = undefined /*out*/;
@@ -409,6 +411,7 @@ export interface InterconnectAttachmentArgs {
      * [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
      */
@@ -438,6 +441,7 @@ export interface InterconnectAttachmentArgs {
      * - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
      */
     readonly type?: pulumi.Input<string>;
+    readonly validateOnly?: pulumi.Input<string>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */

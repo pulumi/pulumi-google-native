@@ -14,18 +14,17 @@ __all__ = ['FolderArgs', 'Folder']
 class FolderArgs:
     def __init__(__self__, *,
                  folders_id: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 parent: Optional[pulumi.Input[str]] = None):
+                 parent: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Folder resource.
-        :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         """
         pulumi.set(__self__, "folders_id", folders_id)
+        pulumi.set(__self__, "parent", parent)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
-        if parent is not None:
-            pulumi.set(__self__, "parent", parent)
 
     @property
     @pulumi.getter(name="foldersId")
@@ -35,6 +34,18 @@ class FolderArgs:
     @folders_id.setter
     def folders_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "folders_id", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -47,18 +58,6 @@ class FolderArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def parent(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
-        """
-        return pulumi.get(self, "parent")
-
-    @parent.setter
-    def parent(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parent", value)
 
 
 class Folder(pulumi.CustomResource):
@@ -121,6 +120,8 @@ class Folder(pulumi.CustomResource):
             if folders_id is None and not opts.urn:
                 raise TypeError("Missing required property 'folders_id'")
             __props__.__dict__["folders_id"] = folders_id
+            if parent is None and not opts.urn:
+                raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
             __props__.__dict__["create_time"] = None
             __props__.__dict__["lifecycle_state"] = None

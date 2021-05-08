@@ -119,6 +119,7 @@ export class Network extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["peerings"] = args ? args.peerings : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["routingConfig"] = args ? args.routingConfig : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["subnetworks"] = args ? args.subnetworks : undefined;
@@ -195,6 +196,7 @@ export interface NetworkArgs {
      */
     readonly peerings?: pulumi.Input<pulumi.Input<inputs.compute.v1.NetworkPeeringArgs>[]>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
      */

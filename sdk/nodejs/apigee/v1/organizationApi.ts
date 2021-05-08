@@ -46,7 +46,7 @@ export class OrganizationApi extends pulumi.CustomResource {
     /**
      * Name of the API proxy.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * List of revisons defined for the API proxy.
      */
@@ -69,14 +69,16 @@ export class OrganizationApi extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["action"] = args ? args.action : undefined;
             inputs["apisId"] = args ? args.apisId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["validate"] = args ? args.validate : undefined;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
             inputs["revision"] = undefined /*out*/;
         } else {
             inputs["latestRevisionId"] = undefined /*out*/;
@@ -95,6 +97,7 @@ export class OrganizationApi extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationApi resource.
  */
 export interface OrganizationApiArgs {
+    readonly action?: pulumi.Input<string>;
     readonly apisId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
@@ -108,5 +111,7 @@ export interface OrganizationApiArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
+    readonly validate?: pulumi.Input<string>;
 }

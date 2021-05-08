@@ -113,8 +113,10 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 }
 
 type capacityCommitmentArgs struct {
-	CapacityCommitmentsId string `pulumi:"capacityCommitmentsId"`
-	LocationsId           string `pulumi:"locationsId"`
+	CapacityCommitmentId            *string `pulumi:"capacityCommitmentId"`
+	CapacityCommitmentsId           string  `pulumi:"capacityCommitmentsId"`
+	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
+	LocationsId                     string  `pulumi:"locationsId"`
 	// Capacity commitment commitment plan.
 	Plan       *string `pulumi:"plan"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -126,8 +128,10 @@ type capacityCommitmentArgs struct {
 
 // The set of arguments for constructing a CapacityCommitment resource.
 type CapacityCommitmentArgs struct {
-	CapacityCommitmentsId pulumi.StringInput
-	LocationsId           pulumi.StringInput
+	CapacityCommitmentId            pulumi.StringPtrInput
+	CapacityCommitmentsId           pulumi.StringInput
+	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
+	LocationsId                     pulumi.StringInput
 	// Capacity commitment commitment plan.
 	Plan       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

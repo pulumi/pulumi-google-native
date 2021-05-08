@@ -35,13 +35,18 @@ class BucketArgs:
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input['BucketOwnerArgs']] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input['BucketRetentionPolicyArgs']] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input['BucketVersioningArgs']] = None,
                  website: Optional[pulumi.Input['BucketWebsiteArgs']] = None,
                  zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -114,8 +119,16 @@ class BucketArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if predefined_acl is not None:
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
+        if predefined_default_object_acl is not None:
+            pulumi.set(__self__, "predefined_default_object_acl", predefined_default_object_acl)
         if project_number is not None:
             pulumi.set(__self__, "project_number", project_number)
+        if projection is not None:
+            pulumi.set(__self__, "projection", projection)
+        if provisional_user_project is not None:
+            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if retention_policy is not None:
             pulumi.set(__self__, "retention_policy", retention_policy)
         if satisfies_pzs is not None:
@@ -128,6 +141,8 @@ class BucketArgs:
             pulumi.set(__self__, "time_created", time_created)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
         if versioning is not None:
             pulumi.set(__self__, "versioning", versioning)
         if website is not None:
@@ -370,6 +385,24 @@ class BucketArgs:
         pulumi.set(self, "owner", value)
 
     @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "predefined_acl")
+
+    @predefined_acl.setter
+    def predefined_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_acl", value)
+
+    @property
+    @pulumi.getter(name="predefinedDefaultObjectAcl")
+    def predefined_default_object_acl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "predefined_default_object_acl")
+
+    @predefined_default_object_acl.setter
+    def predefined_default_object_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_default_object_acl", value)
+
+    @property
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[pulumi.Input[str]]:
         """
@@ -380,6 +413,24 @@ class BucketArgs:
     @project_number.setter
     def project_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project_number", value)
+
+    @property
+    @pulumi.getter
+    def projection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "projection")
+
+    @projection.setter
+    def projection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "projection", value)
+
+    @property
+    @pulumi.getter(name="provisionalUserProject")
+    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisional_user_project")
+
+    @provisional_user_project.setter
+    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisional_user_project", value)
 
     @property
     @pulumi.getter(name="retentionPolicy")
@@ -454,6 +505,15 @@ class BucketArgs:
         pulumi.set(self, "updated", value)
 
     @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
+
+    @property
     @pulumi.getter
     def versioning(self) -> Optional[pulumi.Input['BucketVersioningArgs']]:
         """
@@ -514,14 +574,19 @@ class Bucket(pulumi.CustomResource):
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketOwnerArgs']]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
                  zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -603,14 +668,19 @@ class Bucket(pulumi.CustomResource):
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['BucketOwnerArgs']]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 predefined_default_object_acl: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_policy: Optional[pulumi.Input[pulumi.InputType['BucketRetentionPolicyArgs']]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  storage_class: Optional[pulumi.Input[str]] = None,
                  time_created: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  versioning: Optional[pulumi.Input[pulumi.InputType['BucketVersioningArgs']]] = None,
                  website: Optional[pulumi.Input[pulumi.InputType['BucketWebsiteArgs']]] = None,
                  zone_affinity: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -647,16 +717,21 @@ class Bucket(pulumi.CustomResource):
             __props__.__dict__["metageneration"] = metageneration
             __props__.__dict__["name"] = name
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["predefined_acl"] = predefined_acl
+            __props__.__dict__["predefined_default_object_acl"] = predefined_default_object_acl
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["project_number"] = project_number
+            __props__.__dict__["projection"] = projection
+            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["retention_policy"] = retention_policy
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["storage_class"] = storage_class
             __props__.__dict__["time_created"] = time_created
             __props__.__dict__["updated"] = updated
+            __props__.__dict__["user_project"] = user_project
             __props__.__dict__["versioning"] = versioning
             __props__.__dict__["website"] = website
             __props__.__dict__["zone_affinity"] = zone_affinity

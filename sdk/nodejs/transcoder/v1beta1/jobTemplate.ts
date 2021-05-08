@@ -55,6 +55,9 @@ export class JobTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.jobTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobTemplateId'");
+            }
             if ((!args || args.jobTemplatesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobTemplatesId'");
             }
@@ -65,6 +68,7 @@ export class JobTemplate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["config"] = args ? args.config : undefined;
+            inputs["jobTemplateId"] = args ? args.jobTemplateId : undefined;
             inputs["jobTemplatesId"] = args ? args.jobTemplatesId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -88,6 +92,7 @@ export interface JobTemplateArgs {
      * The configuration for this template.
      */
     readonly config?: pulumi.Input<inputs.transcoder.v1beta1.JobConfigArgs>;
+    readonly jobTemplateId: pulumi.Input<string>;
     readonly jobTemplatesId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class KeyRingImportJobArgs : Pulumi.ResourceArgs
     {
+        [Input("importJobId", required: true)]
+        public Input<string> ImportJobId { get; set; } = null!;
+
         [Input("importJobsId", required: true)]
         public Input<string> ImportJobsId { get; set; } = null!;
 

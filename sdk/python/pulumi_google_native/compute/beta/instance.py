@@ -46,6 +46,7 @@ class InstanceArgs:
                  network_performance_config: Optional[pulumi.Input['NetworkPerformanceConfigArgs']] = None,
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -56,6 +57,7 @@ class InstanceArgs:
                  shielded_instance_integrity_policy: Optional[pulumi.Input['ShieldedInstanceIntegrityPolicyArgs']] = None,
                  shielded_vm_config: Optional[pulumi.Input['ShieldedVmConfigArgs']] = None,
                  shielded_vm_integrity_policy: Optional[pulumi.Input['ShieldedVmIntegrityPolicyArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
@@ -181,6 +183,8 @@ class InstanceArgs:
             pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
         if resource_policies is not None:
@@ -201,6 +205,8 @@ class InstanceArgs:
             pulumi.set(__self__, "shielded_vm_config", shielded_vm_config)
         if shielded_vm_integrity_policy is not None:
             pulumi.set(__self__, "shielded_vm_integrity_policy", shielded_vm_integrity_policy)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
         if source_machine_image is not None:
             pulumi.set(__self__, "source_machine_image", source_machine_image)
         if source_machine_image_encryption_key is not None:
@@ -589,6 +595,15 @@ class InstanceArgs:
         pulumi.set(self, "private_ipv6_google_access", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="reservationAffinity")
     def reservation_affinity(self) -> Optional[pulumi.Input['ReservationAffinityArgs']]:
         """
@@ -705,6 +720,15 @@ class InstanceArgs:
         pulumi.set(self, "shielded_vm_integrity_policy", value)
 
     @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_template", value)
+
+    @property
     @pulumi.getter(name="sourceMachineImage")
     def source_machine_image(self) -> Optional[pulumi.Input[str]]:
         """
@@ -812,6 +836,7 @@ class Instance(pulumi.CustomResource):
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -822,6 +847,7 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
                  shielded_vm_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']]] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
@@ -947,6 +973,7 @@ class Instance(pulumi.CustomResource):
                  post_key_revocation_action_type: Optional[pulumi.Input[str]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
@@ -957,6 +984,7 @@ class Instance(pulumi.CustomResource):
                  shielded_instance_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceIntegrityPolicyArgs']]] = None,
                  shielded_vm_config: Optional[pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']]] = None,
                  shielded_vm_integrity_policy: Optional[pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']]] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  source_machine_image: Optional[pulumi.Input[str]] = None,
                  source_machine_image_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  start_restricted: Optional[pulumi.Input[bool]] = None,
@@ -1010,6 +1038,7 @@ class Instance(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
@@ -1020,6 +1049,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["shielded_instance_integrity_policy"] = shielded_instance_integrity_policy
             __props__.__dict__["shielded_vm_config"] = shielded_vm_config
             __props__.__dict__["shielded_vm_integrity_policy"] = shielded_vm_integrity_policy
+            __props__.__dict__["source_instance_template"] = source_instance_template
             __props__.__dict__["source_machine_image"] = source_machine_image
             __props__.__dict__["source_machine_image_encryption_key"] = source_machine_image_encryption_key
             __props__.__dict__["start_restricted"] = start_restricted

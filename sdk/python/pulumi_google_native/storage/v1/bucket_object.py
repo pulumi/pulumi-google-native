@@ -31,6 +31,10 @@ class BucketObjectArgs:
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 if_generation_match: Optional[pulumi.Input[str]] = None,
+                 if_generation_not_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_not_match: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
@@ -39,6 +43,9 @@ class BucketObjectArgs:
                  metageneration: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input['ObjectOwnerArgs']] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -48,7 +55,8 @@ class BucketObjectArgs:
                  time_created: Optional[pulumi.Input[str]] = None,
                  time_deleted: Optional[pulumi.Input[str]] = None,
                  time_storage_class_updated: Optional[pulumi.Input[str]] = None,
-                 updated: Optional[pulumi.Input[str]] = None):
+                 updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BucketObject resource.
         :param pulumi.Input[str] bucket: The name of the bucket containing this object.
@@ -114,6 +122,14 @@ class BucketObjectArgs:
             pulumi.set(__self__, "generation", generation)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if if_generation_match is not None:
+            pulumi.set(__self__, "if_generation_match", if_generation_match)
+        if if_generation_not_match is not None:
+            pulumi.set(__self__, "if_generation_not_match", if_generation_not_match)
+        if if_metageneration_match is not None:
+            pulumi.set(__self__, "if_metageneration_match", if_metageneration_match)
+        if if_metageneration_not_match is not None:
+            pulumi.set(__self__, "if_metageneration_not_match", if_metageneration_not_match)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if kms_key_name is not None:
@@ -130,6 +146,12 @@ class BucketObjectArgs:
             pulumi.set(__self__, "name", name)
         if owner is not None:
             pulumi.set(__self__, "owner", owner)
+        if predefined_acl is not None:
+            pulumi.set(__self__, "predefined_acl", predefined_acl)
+        if projection is not None:
+            pulumi.set(__self__, "projection", projection)
+        if provisional_user_project is not None:
+            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if retention_expiration_time is not None:
             pulumi.set(__self__, "retention_expiration_time", retention_expiration_time)
         if self_link is not None:
@@ -150,6 +172,8 @@ class BucketObjectArgs:
             pulumi.set(__self__, "time_storage_class_updated", time_storage_class_updated)
         if updated is not None:
             pulumi.set(__self__, "updated", updated)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
 
     @property
     @pulumi.getter
@@ -341,6 +365,42 @@ class BucketObjectArgs:
         pulumi.set(self, "id", value)
 
     @property
+    @pulumi.getter(name="ifGenerationMatch")
+    def if_generation_match(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "if_generation_match")
+
+    @if_generation_match.setter
+    def if_generation_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "if_generation_match", value)
+
+    @property
+    @pulumi.getter(name="ifGenerationNotMatch")
+    def if_generation_not_match(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "if_generation_not_match")
+
+    @if_generation_not_match.setter
+    def if_generation_not_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "if_generation_not_match", value)
+
+    @property
+    @pulumi.getter(name="ifMetagenerationMatch")
+    def if_metageneration_match(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "if_metageneration_match")
+
+    @if_metageneration_match.setter
+    def if_metageneration_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "if_metageneration_match", value)
+
+    @property
+    @pulumi.getter(name="ifMetagenerationNotMatch")
+    def if_metageneration_not_match(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "if_metageneration_not_match")
+
+    @if_metageneration_not_match.setter
+    def if_metageneration_not_match(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "if_metageneration_not_match", value)
+
+    @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
@@ -435,6 +495,33 @@ class BucketObjectArgs:
     @owner.setter
     def owner(self, value: Optional[pulumi.Input['ObjectOwnerArgs']]):
         pulumi.set(self, "owner", value)
+
+    @property
+    @pulumi.getter(name="predefinedAcl")
+    def predefined_acl(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "predefined_acl")
+
+    @predefined_acl.setter
+    def predefined_acl(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predefined_acl", value)
+
+    @property
+    @pulumi.getter
+    def projection(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "projection")
+
+    @projection.setter
+    def projection(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "projection", value)
+
+    @property
+    @pulumi.getter(name="provisionalUserProject")
+    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisional_user_project")
+
+    @provisional_user_project.setter
+    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisional_user_project", value)
 
     @property
     @pulumi.getter(name="retentionExpirationTime")
@@ -553,6 +640,15 @@ class BucketObjectArgs:
     def updated(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "updated", value)
 
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
+
 
 class BucketObject(pulumi.CustomResource):
     @overload
@@ -574,6 +670,10 @@ class BucketObject(pulumi.CustomResource):
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 if_generation_match: Optional[pulumi.Input[str]] = None,
+                 if_generation_not_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_not_match: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
@@ -583,6 +683,9 @@ class BucketObject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -593,6 +696,7 @@ class BucketObject(pulumi.CustomResource):
                  time_deleted: Optional[pulumi.Input[str]] = None,
                  time_storage_class_updated: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Stores a new object and metadata.
@@ -671,6 +775,10 @@ class BucketObject(pulumi.CustomResource):
                  event_based_hold: Optional[pulumi.Input[bool]] = None,
                  generation: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
+                 if_generation_match: Optional[pulumi.Input[str]] = None,
+                 if_generation_not_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_match: Optional[pulumi.Input[str]] = None,
+                 if_metageneration_not_match: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  md5_hash: Optional[pulumi.Input[str]] = None,
@@ -680,6 +788,9 @@ class BucketObject(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
                  owner: Optional[pulumi.Input[pulumi.InputType['ObjectOwnerArgs']]] = None,
+                 predefined_acl: Optional[pulumi.Input[str]] = None,
+                 projection: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  retention_expiration_time: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
@@ -690,6 +801,7 @@ class BucketObject(pulumi.CustomResource):
                  time_deleted: Optional[pulumi.Input[str]] = None,
                  time_storage_class_updated: Optional[pulumi.Input[str]] = None,
                  updated: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -719,6 +831,10 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["event_based_hold"] = event_based_hold
             __props__.__dict__["generation"] = generation
             __props__.__dict__["id"] = id
+            __props__.__dict__["if_generation_match"] = if_generation_match
+            __props__.__dict__["if_generation_not_match"] = if_generation_not_match
+            __props__.__dict__["if_metageneration_match"] = if_metageneration_match
+            __props__.__dict__["if_metageneration_not_match"] = if_metageneration_not_match
             __props__.__dict__["kind"] = kind
             __props__.__dict__["kms_key_name"] = kms_key_name
             __props__.__dict__["md5_hash"] = md5_hash
@@ -730,6 +846,9 @@ class BucketObject(pulumi.CustomResource):
                 raise TypeError("Missing required property 'object'")
             __props__.__dict__["object"] = object
             __props__.__dict__["owner"] = owner
+            __props__.__dict__["predefined_acl"] = predefined_acl
+            __props__.__dict__["projection"] = projection
+            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["retention_expiration_time"] = retention_expiration_time
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["size"] = size
@@ -740,6 +859,7 @@ class BucketObject(pulumi.CustomResource):
             __props__.__dict__["time_deleted"] = time_deleted
             __props__.__dict__["time_storage_class_updated"] = time_storage_class_updated
             __props__.__dict__["updated"] = updated
+            __props__.__dict__["user_project"] = user_project
         super(BucketObject, __self__).__init__(
             'google-native:storage/v1:BucketObject',
             resource_name,

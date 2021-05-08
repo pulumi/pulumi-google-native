@@ -242,6 +242,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
+        [Input("parentId")]
+        public Input<string>? ParentId { get; set; }
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>

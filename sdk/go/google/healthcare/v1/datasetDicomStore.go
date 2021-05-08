@@ -86,8 +86,9 @@ func (DatasetDicomStoreState) ElementType() reflect.Type {
 }
 
 type datasetDicomStoreArgs struct {
-	DatasetsId    string `pulumi:"datasetsId"`
-	DicomStoresId string `pulumi:"dicomStoresId"`
+	DatasetsId    string  `pulumi:"datasetsId"`
+	DicomStoreId  *string `pulumi:"dicomStoreId"`
+	DicomStoresId string  `pulumi:"dicomStoresId"`
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
@@ -101,6 +102,7 @@ type datasetDicomStoreArgs struct {
 // The set of arguments for constructing a DatasetDicomStore resource.
 type DatasetDicomStoreArgs struct {
 	DatasetsId    pulumi.StringInput
+	DicomStoreId  pulumi.StringPtrInput
 	DicomStoresId pulumi.StringInput
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
 	Labels      pulumi.StringMapInput

@@ -75,6 +75,9 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.gameServerClusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gameServerClusterId'");
+            }
             if ((!args || args.gameServerClustersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gameServerClustersId'");
             }
@@ -90,6 +93,7 @@ export class RealmGameServerCluster extends pulumi.CustomResource {
             inputs["connectionInfo"] = args ? args.connectionInfo : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["gameServerClusterId"] = args ? args.gameServerClusterId : undefined;
             inputs["gameServerClustersId"] = args ? args.gameServerClustersId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -130,6 +134,7 @@ export interface RealmGameServerClusterArgs {
      * ETag of the resource.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly gameServerClusterId: pulumi.Input<string>;
     readonly gameServerClustersId: pulumi.Input<string>;
     /**
      * The labels associated with this game server cluster. Each label is a key-value pair.

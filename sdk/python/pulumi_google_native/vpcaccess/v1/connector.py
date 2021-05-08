@@ -15,6 +15,7 @@ __all__ = ['ConnectorArgs', 'Connector']
 @pulumi.input_type
 class ConnectorArgs:
     def __init__(__self__, *,
+                 connector_id: pulumi.Input[str],
                  connectors_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -39,6 +40,7 @@ class ConnectorArgs:
         :param pulumi.Input[str] network: Name of a VPC network.
         :param pulumi.Input['SubnetArgs'] subnet: The subnet in which to house the VPC Access Connector.
         """
+        pulumi.set(__self__, "connector_id", connector_id)
         pulumi.set(__self__, "connectors_id", connectors_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -60,6 +62,15 @@ class ConnectorArgs:
             pulumi.set(__self__, "network", network)
         if subnet is not None:
             pulumi.set(__self__, "subnet", subnet)
+
+    @property
+    @pulumi.getter(name="connectorId")
+    def connector_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connector_id")
+
+    @connector_id.setter
+    def connector_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connector_id", value)
 
     @property
     @pulumi.getter(name="connectorsId")
@@ -202,6 +213,7 @@ class Connector(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connector_id: Optional[pulumi.Input[str]] = None,
                  connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -254,6 +266,7 @@ class Connector(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 connector_id: Optional[pulumi.Input[str]] = None,
                  connectors_id: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -278,6 +291,9 @@ class Connector(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectorArgs.__new__(ConnectorArgs)
 
+            if connector_id is None and not opts.urn:
+                raise TypeError("Missing required property 'connector_id'")
+            __props__.__dict__["connector_id"] = connector_id
             if connectors_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connectors_id'")
             __props__.__dict__["connectors_id"] = connectors_id

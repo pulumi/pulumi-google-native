@@ -277,7 +277,11 @@ type bucketObjectArgs struct {
 	// The content generation of this object. Used for object versioning.
 	Generation *string `pulumi:"generation"`
 	// The ID of the object, including the bucket name, object name, and generation number.
-	Id *string `pulumi:"id"`
+	Id                       *string `pulumi:"id"`
+	IfGenerationMatch        *string `pulumi:"ifGenerationMatch"`
+	IfGenerationNotMatch     *string `pulumi:"ifGenerationNotMatch"`
+	IfMetagenerationMatch    *string `pulumi:"ifMetagenerationMatch"`
+	IfMetagenerationNotMatch *string `pulumi:"ifMetagenerationNotMatch"`
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind *string `pulumi:"kind"`
 	// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
@@ -294,7 +298,10 @@ type bucketObjectArgs struct {
 	Name   *string `pulumi:"name"`
 	Object string  `pulumi:"object"`
 	// The owner of the object. This will always be the uploader of the object.
-	Owner *ObjectOwner `pulumi:"owner"`
+	Owner                  *ObjectOwner `pulumi:"owner"`
+	PredefinedAcl          *string      `pulumi:"predefinedAcl"`
+	Projection             *string      `pulumi:"projection"`
+	ProvisionalUserProject *string      `pulumi:"provisionalUserProject"`
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime *string `pulumi:"retentionExpirationTime"`
 	// The link to this object.
@@ -313,7 +320,8 @@ type bucketObjectArgs struct {
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated *string `pulumi:"timeStorageClassUpdated"`
 	// The modification time of the object metadata in RFC 3339 format.
-	Updated *string `pulumi:"updated"`
+	Updated     *string `pulumi:"updated"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a BucketObject resource.
@@ -347,7 +355,11 @@ type BucketObjectArgs struct {
 	// The content generation of this object. Used for object versioning.
 	Generation pulumi.StringPtrInput
 	// The ID of the object, including the bucket name, object name, and generation number.
-	Id pulumi.StringPtrInput
+	Id                       pulumi.StringPtrInput
+	IfGenerationMatch        pulumi.StringPtrInput
+	IfGenerationNotMatch     pulumi.StringPtrInput
+	IfMetagenerationMatch    pulumi.StringPtrInput
+	IfMetagenerationNotMatch pulumi.StringPtrInput
 	// The kind of item this is. For objects, this is always storage#object.
 	Kind pulumi.StringPtrInput
 	// Not currently supported. Specifying the parameter causes the request to fail with status code 400 - Bad Request.
@@ -364,7 +376,10 @@ type BucketObjectArgs struct {
 	Name   pulumi.StringPtrInput
 	Object pulumi.StringInput
 	// The owner of the object. This will always be the uploader of the object.
-	Owner ObjectOwnerPtrInput
+	Owner                  ObjectOwnerPtrInput
+	PredefinedAcl          pulumi.StringPtrInput
+	Projection             pulumi.StringPtrInput
+	ProvisionalUserProject pulumi.StringPtrInput
 	// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
 	RetentionExpirationTime pulumi.StringPtrInput
 	// The link to this object.
@@ -383,7 +398,8 @@ type BucketObjectArgs struct {
 	// The time at which the object's storage class was last changed. When the object is initially created, it will be set to timeCreated.
 	TimeStorageClassUpdated pulumi.StringPtrInput
 	// The modification time of the object metadata in RFC 3339 format.
-	Updated pulumi.StringPtrInput
+	Updated     pulumi.StringPtrInput
+	UserProject pulumi.StringPtrInput
 }
 
 func (BucketObjectArgs) ElementType() reflect.Type {

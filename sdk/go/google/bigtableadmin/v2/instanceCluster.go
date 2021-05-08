@@ -36,6 +36,9 @@ func NewInstanceCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterId'")
+	}
 	if args.ClustersId == nil {
 		return nil, errors.New("invalid value for required argument 'ClustersId'")
 	}
@@ -101,6 +104,7 @@ func (InstanceClusterState) ElementType() reflect.Type {
 }
 
 type instanceClusterArgs struct {
+	ClusterId  string `pulumi:"clusterId"`
 	ClustersId string `pulumi:"clustersId"`
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType *string `pulumi:"defaultStorageType"`
@@ -118,6 +122,7 @@ type instanceClusterArgs struct {
 
 // The set of arguments for constructing a InstanceCluster resource.
 type InstanceClusterArgs struct {
+	ClusterId  pulumi.StringInput
 	ClustersId pulumi.StringInput
 	// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
 	DefaultStorageType pulumi.StringPtrInput

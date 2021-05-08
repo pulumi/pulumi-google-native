@@ -238,6 +238,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Reserved for future use.
         /// </summary>

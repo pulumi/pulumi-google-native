@@ -4,23 +4,7 @@ package gen
 
 import (
 	"strings"
-	"unicode"
 )
-
-// MakeLegalIdentifier removes characters that are not allowed in identifiers.
-func MakeLegalIdentifier(s string) string {
-	replacer := strings.NewReplacer("-", "", "[", "", "]", "")
-	return replacer.Replace(s)
-}
-
-// firstToLower returns a string with the first character lowercased (`HelloWorld` => `helloWorld`).
-func firstToLower(s string) string {
-	if s == "" {
-		return ""
-	}
-	runes := []rune(s)
-	return string(append([]rune{unicode.ToLower(runes[0])}, runes[1:]...))
-}
 
 // ToLowerCamel converts a string to lowerCamelCase.
 // The code is adopted from https://github.com/iancoleman/strcase but changed in several ways to handle

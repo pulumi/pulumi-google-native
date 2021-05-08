@@ -246,6 +246,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>

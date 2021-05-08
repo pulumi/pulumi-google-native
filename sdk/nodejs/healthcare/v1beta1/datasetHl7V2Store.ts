@@ -84,6 +84,7 @@ export class DatasetHl7V2Store extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["hl7V2StoreId"] = args ? args.hl7V2StoreId : undefined;
             inputs["hl7V2StoresId"] = args ? args.hl7V2StoresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -113,6 +114,7 @@ export class DatasetHl7V2Store extends pulumi.CustomResource {
  */
 export interface DatasetHl7V2StoreArgs {
     readonly datasetsId: pulumi.Input<string>;
+    readonly hl7V2StoreId?: pulumi.Input<string>;
     readonly hl7V2StoresId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.

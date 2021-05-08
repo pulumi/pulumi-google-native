@@ -42,6 +42,9 @@ func NewSiteChannel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ChannelId == nil {
+		return nil, errors.New("invalid value for required argument 'ChannelId'")
+	}
 	if args.ChannelsId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelsId'")
 	}
@@ -116,6 +119,7 @@ func (SiteChannelState) ElementType() reflect.Type {
 }
 
 type siteChannelArgs struct {
+	ChannelId  string `pulumi:"channelId"`
 	ChannelsId string `pulumi:"channelsId"`
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime *string `pulumi:"expireTime"`
@@ -132,6 +136,7 @@ type siteChannelArgs struct {
 
 // The set of arguments for constructing a SiteChannel resource.
 type SiteChannelArgs struct {
+	ChannelId  pulumi.StringInput
 	ChannelsId pulumi.StringInput
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime pulumi.StringPtrInput

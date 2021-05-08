@@ -216,6 +216,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce.
         /// </summary>

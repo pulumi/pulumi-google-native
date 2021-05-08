@@ -342,6 +342,18 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        [Input("ifGenerationMatch")]
+        public Input<string>? IfGenerationMatch { get; set; }
+
+        [Input("ifGenerationNotMatch")]
+        public Input<string>? IfGenerationNotMatch { get; set; }
+
+        [Input("ifMetagenerationMatch")]
+        public Input<string>? IfMetagenerationMatch { get; set; }
+
+        [Input("ifMetagenerationNotMatch")]
+        public Input<string>? IfMetagenerationNotMatch { get; set; }
+
         /// <summary>
         /// The kind of item this is. For objects, this is always storage#object.
         /// </summary>
@@ -399,6 +411,15 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("owner")]
         public Input<Inputs.ObjectOwnerArgs>? Owner { get; set; }
 
+        [Input("predefinedAcl")]
+        public Input<string>? PredefinedAcl { get; set; }
+
+        [Input("projection")]
+        public Input<string>? Projection { get; set; }
+
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
@@ -455,6 +476,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("updated")]
         public Input<string>? Updated { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
 
         public BucketObjectArgs()
         {

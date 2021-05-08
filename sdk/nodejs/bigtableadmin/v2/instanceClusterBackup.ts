@@ -79,6 +79,9 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.backupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupId'");
+            }
             if ((!args || args.backupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupsId'");
             }
@@ -91,6 +94,7 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["backupId"] = args ? args.backupId : undefined;
             inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["clustersId"] = args ? args.clustersId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
@@ -124,6 +128,7 @@ export class InstanceClusterBackup extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceClusterBackup resource.
  */
 export interface InstanceClusterBackupArgs {
+    readonly backupId: pulumi.Input<string>;
     readonly backupsId: pulumi.Input<string>;
     readonly clustersId: pulumi.Input<string>;
     /**

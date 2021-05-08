@@ -72,6 +72,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class KeyRingArgs : Pulumi.ResourceArgs
     {
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
+
         [Input("keyRingsId", required: true)]
         public Input<string> KeyRingsId { get; set; } = null!;
 

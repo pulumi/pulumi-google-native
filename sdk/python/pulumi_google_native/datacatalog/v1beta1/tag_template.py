@@ -15,6 +15,7 @@ class TagTemplateArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 tag_template_id: pulumi.Input[str],
                  tag_templates_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,6 +28,7 @@ class TagTemplateArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "tag_template_id", tag_template_id)
         pulumi.set(__self__, "tag_templates_id", tag_templates_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -52,6 +54,15 @@ class TagTemplateArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="tagTemplateId")
+    def tag_template_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tag_template_id")
+
+    @tag_template_id.setter
+    def tag_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tag_template_id", value)
 
     @property
     @pulumi.getter(name="tagTemplatesId")
@@ -109,6 +120,7 @@ class TagTemplate(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 tag_template_id: Optional[pulumi.Input[str]] = None,
                  tag_templates_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -149,6 +161,7 @@ class TagTemplate(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 tag_template_id: Optional[pulumi.Input[str]] = None,
                  tag_templates_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -171,6 +184,9 @@ class TagTemplate(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if tag_template_id is None and not opts.urn:
+                raise TypeError("Missing required property 'tag_template_id'")
+            __props__.__dict__["tag_template_id"] = tag_template_id
             if tag_templates_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tag_templates_id'")
             __props__.__dict__["tag_templates_id"] = tag_templates_id

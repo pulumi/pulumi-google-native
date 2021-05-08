@@ -19,6 +19,7 @@ class AppDomainMappingArgs:
                  domain_mappings_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_strategy: Optional[pulumi.Input[str]] = None,
                  resource_records: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]] = None,
                  ssl_settings: Optional[pulumi.Input['SslSettingsArgs']] = None):
         """
@@ -34,6 +35,8 @@ class AppDomainMappingArgs:
             pulumi.set(__self__, "id", id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if override_strategy is not None:
+            pulumi.set(__self__, "override_strategy", override_strategy)
         if resource_records is not None:
             pulumi.set(__self__, "resource_records", resource_records)
         if ssl_settings is not None:
@@ -82,6 +85,15 @@ class AppDomainMappingArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="overrideStrategy")
+    def override_strategy(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "override_strategy")
+
+    @override_strategy.setter
+    def override_strategy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "override_strategy", value)
+
+    @property
     @pulumi.getter(name="resourceRecords")
     def resource_records(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordArgs']]]]:
         """
@@ -115,6 +127,7 @@ class AppDomainMapping(pulumi.CustomResource):
                  domain_mappings_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_strategy: Optional[pulumi.Input[str]] = None,
                  resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordArgs']]]]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
@@ -156,6 +169,7 @@ class AppDomainMapping(pulumi.CustomResource):
                  domain_mappings_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 override_strategy: Optional[pulumi.Input[str]] = None,
                  resource_records: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordArgs']]]]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
@@ -178,6 +192,7 @@ class AppDomainMapping(pulumi.CustomResource):
             __props__.__dict__["domain_mappings_id"] = domain_mappings_id
             __props__.__dict__["id"] = id
             __props__.__dict__["name"] = name
+            __props__.__dict__["override_strategy"] = override_strategy
             __props__.__dict__["resource_records"] = resource_records
             __props__.__dict__["ssl_settings"] = ssl_settings
         super(AppDomainMapping, __self__).__init__(

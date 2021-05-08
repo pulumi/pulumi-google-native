@@ -250,7 +250,8 @@ type regionInstanceGroupManagerArgs struct {
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
 	Project    string      `pulumi:"project"`
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.
@@ -308,7 +309,8 @@ type RegionInstanceGroupManagerArgs struct {
 	NamedPorts NamedPortArrayInput
 	Project    pulumi.StringInput
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// The service account to be used as credentials for all operations performed by the managed instance group on instances. The service accounts needs all permissions required to create and delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.

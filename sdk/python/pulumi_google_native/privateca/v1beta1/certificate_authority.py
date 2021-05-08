@@ -16,6 +16,7 @@ __all__ = ['CertificateAuthorityArgs', 'CertificateAuthority']
 class CertificateAuthorityArgs:
     def __init__(__self__, *,
                  certificate_authorities_id: pulumi.Input[str],
+                 certificate_authority_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  certificate_policy: Optional[pulumi.Input['CertificateAuthorityPolicyArgs']] = None,
@@ -25,6 +26,7 @@ class CertificateAuthorityArgs:
                  key_spec: Optional[pulumi.Input['KeyVersionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  lifetime: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input['SubordinateConfigArgs']] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -42,6 +44,7 @@ class CertificateAuthorityArgs:
         :param pulumi.Input[str] type: Required. Immutable. The Type of this CertificateAuthority.
         """
         pulumi.set(__self__, "certificate_authorities_id", certificate_authorities_id)
+        pulumi.set(__self__, "certificate_authority_id", certificate_authority_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if certificate_policy is not None:
@@ -58,6 +61,8 @@ class CertificateAuthorityArgs:
             pulumi.set(__self__, "labels", labels)
         if lifetime is not None:
             pulumi.set(__self__, "lifetime", lifetime)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if subordinate_config is not None:
             pulumi.set(__self__, "subordinate_config", subordinate_config)
         if tier is not None:
@@ -73,6 +78,15 @@ class CertificateAuthorityArgs:
     @certificate_authorities_id.setter
     def certificate_authorities_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "certificate_authorities_id", value)
+
+    @property
+    @pulumi.getter(name="certificateAuthorityId")
+    def certificate_authority_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "certificate_authority_id")
+
+    @certificate_authority_id.setter
+    def certificate_authority_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "certificate_authority_id", value)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -177,6 +191,15 @@ class CertificateAuthorityArgs:
         pulumi.set(self, "lifetime", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="subordinateConfig")
     def subordinate_config(self) -> Optional[pulumi.Input['SubordinateConfigArgs']]:
         """
@@ -219,6 +242,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
@@ -228,6 +252,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  lifetime: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -273,6 +298,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  certificate_authorities_id: Optional[pulumi.Input[str]] = None,
+                 certificate_authority_id: Optional[pulumi.Input[str]] = None,
                  certificate_policy: Optional[pulumi.Input[pulumi.InputType['CertificateAuthorityPolicyArgs']]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['CertificateConfigArgs']]] = None,
                  gcs_bucket: Optional[pulumi.Input[str]] = None,
@@ -282,6 +308,7 @@ class CertificateAuthority(pulumi.CustomResource):
                  lifetime: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  subordinate_config: Optional[pulumi.Input[pulumi.InputType['SubordinateConfigArgs']]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
@@ -300,6 +327,9 @@ class CertificateAuthority(pulumi.CustomResource):
             if certificate_authorities_id is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_authorities_id'")
             __props__.__dict__["certificate_authorities_id"] = certificate_authorities_id
+            if certificate_authority_id is None and not opts.urn:
+                raise TypeError("Missing required property 'certificate_authority_id'")
+            __props__.__dict__["certificate_authority_id"] = certificate_authority_id
             __props__.__dict__["certificate_policy"] = certificate_policy
             __props__.__dict__["config"] = config
             __props__.__dict__["gcs_bucket"] = gcs_bucket
@@ -313,6 +343,7 @@ class CertificateAuthority(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["subordinate_config"] = subordinate_config
             __props__.__dict__["tier"] = tier
             __props__.__dict__["type"] = type

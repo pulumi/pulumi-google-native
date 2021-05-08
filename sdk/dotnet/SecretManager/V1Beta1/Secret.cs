@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         [Input("replication")]
         public Input<Inputs.ReplicationArgs>? Replication { get; set; }
 
+        [Input("secretId", required: true)]
+        public Input<string> SecretId { get; set; } = null!;
+
         [Input("secretsId", required: true)]
         public Input<string> SecretsId { get; set; } = null!;
 

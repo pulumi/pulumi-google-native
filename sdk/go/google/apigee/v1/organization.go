@@ -68,6 +68,9 @@ func NewOrganization(ctx *pulumi.Context,
 	if args.OrganizationsId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
 	}
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	var resource Organization
 	err := ctx.RegisterResource("google-native:apigee/v1:Organization", name, args, &resource, opts...)
 	if err != nil {
@@ -198,6 +201,7 @@ type organizationArgs struct {
 	Description     *string `pulumi:"description"`
 	DisplayName     *string `pulumi:"displayName"`
 	OrganizationsId string  `pulumi:"organizationsId"`
+	Parent          string  `pulumi:"parent"`
 	// Properties defined in the Apigee organization profile.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
@@ -226,6 +230,7 @@ type OrganizationArgs struct {
 	Description     pulumi.StringPtrInput
 	DisplayName     pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
+	Parent          pulumi.StringInput
 	// Properties defined in the Apigee organization profile.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.

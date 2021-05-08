@@ -135,6 +135,9 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         [Input("guestPoliciesId", required: true)]
         public Input<string> GuestPoliciesId { get; set; } = null!;
 
+        [Input("guestPolicyId", required: true)]
+        public Input<string> GuestPolicyId { get; set; } = null!;
+
         /// <summary>
         /// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         /// </summary>

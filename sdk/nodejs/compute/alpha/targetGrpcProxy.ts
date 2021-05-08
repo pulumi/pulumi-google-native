@@ -95,6 +95,7 @@ export class TargetGrpcProxy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["targetGrpcProxy"] = args ? args.targetGrpcProxy : undefined;
@@ -147,6 +148,7 @@ export interface TargetGrpcProxyArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -111,8 +111,9 @@ type agentEntityTypeArgs struct {
 	Entities      []GoogleCloudDialogflowV2beta1EntityTypeEntity `pulumi:"entities"`
 	EntityTypesId string                                         `pulumi:"entityTypesId"`
 	// Required. Indicates the kind of entity type.
-	Kind        *string `pulumi:"kind"`
-	LocationsId string  `pulumi:"locationsId"`
+	Kind         *string `pulumi:"kind"`
+	LanguageCode *string `pulumi:"languageCode"`
+	LocationsId  string  `pulumi:"locationsId"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -130,8 +131,9 @@ type AgentEntityTypeArgs struct {
 	Entities      GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
 	EntityTypesId pulumi.StringInput
 	// Required. Indicates the kind of entity type.
-	Kind        pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Kind         pulumi.StringPtrInput
+	LanguageCode pulumi.StringPtrInput
+	LocationsId  pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

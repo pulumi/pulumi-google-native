@@ -15,6 +15,7 @@ class WorkflowArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 workflow_id: pulumi.Input[str],
                  workflows_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -31,6 +32,7 @@ class WorkflowArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "workflow_id", workflow_id)
         pulumi.set(__self__, "workflows_id", workflows_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -60,6 +62,15 @@ class WorkflowArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="workflowId")
+    def workflow_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workflow_id")
+
+    @workflow_id.setter
+    def workflow_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workflow_id", value)
 
     @property
     @pulumi.getter(name="workflowsId")
@@ -143,6 +154,7 @@ class Workflow(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 workflow_id: Optional[pulumi.Input[str]] = None,
                  workflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -187,6 +199,7 @@ class Workflow(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source_contents: Optional[pulumi.Input[str]] = None,
+                 workflow_id: Optional[pulumi.Input[str]] = None,
                  workflows_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -211,6 +224,9 @@ class Workflow(pulumi.CustomResource):
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source_contents"] = source_contents
+            if workflow_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflow_id'")
+            __props__.__dict__["workflow_id"] = workflow_id
             if workflows_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workflows_id'")
             __props__.__dict__["workflows_id"] = workflows_id

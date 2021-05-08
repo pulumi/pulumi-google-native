@@ -69,6 +69,7 @@ export class AppDomainMapping extends pulumi.CustomResource {
             inputs["domainMappingsId"] = args ? args.domainMappingsId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["overrideStrategy"] = args ? args.overrideStrategy : undefined;
             inputs["resourceRecords"] = args ? args.resourceRecords : undefined;
             inputs["sslSettings"] = args ? args.sslSettings : undefined;
         } else {
@@ -97,6 +98,7 @@ export interface AppDomainMappingArgs {
      * Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
      */
     readonly name?: pulumi.Input<string>;
+    readonly overrideStrategy?: pulumi.Input<string>;
     /**
      * The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
      */

@@ -201,6 +201,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output only] Server-defined URL for the resource.
         /// </summary>

@@ -56,6 +56,9 @@ func NewEntryGroupEntry(ctx *pulumi.Context,
 	if args.EntryGroupsId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryGroupsId'")
 	}
+	if args.EntryId == nil {
+		return nil, errors.New("invalid value for required argument 'EntryId'")
+	}
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
@@ -156,6 +159,7 @@ type entryGroupEntryArgs struct {
 	DisplayName   *string `pulumi:"displayName"`
 	EntriesId     string  `pulumi:"entriesId"`
 	EntryGroupsId string  `pulumi:"entryGroupsId"`
+	EntryId       string  `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec *GoogleCloudDatacatalogV1beta1GcsFilesetSpec `pulumi:"gcsFilesetSpec"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
@@ -184,6 +188,7 @@ type EntryGroupEntryArgs struct {
 	DisplayName   pulumi.StringPtrInput
 	EntriesId     pulumi.StringInput
 	EntryGroupsId pulumi.StringInput
+	EntryId       pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrInput
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.

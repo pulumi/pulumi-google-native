@@ -24,6 +24,7 @@ class RegionNotificationEndpointArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionNotificationEndpoint resource.
@@ -51,6 +52,8 @@ class RegionNotificationEndpointArgs:
             pulumi.set(__self__, "kind", kind)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
 
@@ -157,6 +160,15 @@ class RegionNotificationEndpointArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -183,6 +195,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  notification_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -232,6 +245,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
                  notification_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -260,6 +274,7 @@ class RegionNotificationEndpoint(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
         super(RegionNotificationEndpoint, __self__).__init__(
             'google-native:compute/alpha:RegionNotificationEndpoint',

@@ -325,7 +325,8 @@ type imageArgs struct {
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-	Family *string `pulumi:"family"`
+	Family      *string `pulumi:"family"`
+	ForceCreate *string `pulumi:"forceCreate"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -355,7 +356,8 @@ type imageArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The parameters of the raw disk image.
-	RawDisk *ImageRawDisk `pulumi:"rawDisk"`
+	RawDisk   *ImageRawDisk `pulumi:"rawDisk"`
+	RequestId *string       `pulumi:"requestId"`
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// [Output Only] Server-defined URL for the resource.
@@ -417,7 +419,8 @@ type ImageArgs struct {
 	// Size of the image when restored onto a persistent disk (in GB).
 	DiskSizeGb pulumi.StringPtrInput
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-	Family pulumi.StringPtrInput
+	Family      pulumi.StringPtrInput
+	ForceCreate pulumi.StringPtrInput
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures GuestOsFeatureArrayInput
 	// [Output Only] The unique identifier for the resource. This identifier is defined by the server.
@@ -447,7 +450,8 @@ type ImageArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The parameters of the raw disk image.
-	RawDisk ImageRawDiskPtrInput
+	RawDisk   ImageRawDiskPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
 	// [Output Only] Server-defined URL for the resource.

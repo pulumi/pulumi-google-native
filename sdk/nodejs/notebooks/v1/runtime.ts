@@ -89,12 +89,16 @@ export class Runtime extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.runtimeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'runtimeId'");
+            }
             if ((!args || args.runtimesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'runtimesId'");
             }
             inputs["accessConfig"] = args ? args.accessConfig : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["runtimeId"] = args ? args.runtimeId : undefined;
             inputs["runtimesId"] = args ? args.runtimesId : undefined;
             inputs["softwareConfig"] = args ? args.softwareConfig : undefined;
             inputs["virtualMachine"] = args ? args.virtualMachine : undefined;
@@ -132,6 +136,7 @@ export interface RuntimeArgs {
     readonly accessConfig?: pulumi.Input<inputs.notebooks.v1.RuntimeAccessConfigArgs>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly runtimeId: pulumi.Input<string>;
     readonly runtimesId: pulumi.Input<string>;
     /**
      * The config settings for software inside the runtime.

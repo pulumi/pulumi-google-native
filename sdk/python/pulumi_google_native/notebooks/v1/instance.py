@@ -15,6 +15,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
                  instances_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -75,6 +76,7 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UpgradeHistoryEntryArgs']]] upgrade_history: The upgrade history of this instance.
         :param pulumi.Input['VmImageArgs'] vm_image: Use a Compute Engine VM image to start the notebook instance.
         """
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instances_id", instances_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -132,6 +134,15 @@ class InstanceArgs:
             pulumi.set(__self__, "upgrade_history", upgrade_history)
         if vm_image is not None:
             pulumi.set(__self__, "vm_image", vm_image)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="instancesId")
@@ -499,6 +510,7 @@ class Instance(pulumi.CustomResource):
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -587,6 +599,7 @@ class Instance(pulumi.CustomResource):
                  data_disk_type: Optional[pulumi.Input[str]] = None,
                  disk_encryption: Optional[pulumi.Input[str]] = None,
                  install_gpu_driver: Optional[pulumi.Input[bool]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
@@ -629,6 +642,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["data_disk_type"] = data_disk_type
             __props__.__dict__["disk_encryption"] = disk_encryption
             __props__.__dict__["install_gpu_driver"] = install_gpu_driver
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["instance_owners"] = instance_owners
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")

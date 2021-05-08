@@ -103,6 +103,7 @@ export class ResourcePolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourcePolicy"] = args ? args.resourcePolicy : undefined;
             inputs["resourceStatus"] = args ? args.resourceStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -159,6 +160,7 @@ export interface ResourcePolicyArgs {
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     readonly resourcePolicy: pulumi.Input<string>;
     /**
      * [Output Only] The system status of the resource policy.

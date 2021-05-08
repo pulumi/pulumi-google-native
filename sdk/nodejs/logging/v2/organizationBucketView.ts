@@ -75,6 +75,9 @@ export class OrganizationBucketView extends pulumi.CustomResource {
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            if ((!args || args.viewId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'viewId'");
+            }
             if ((!args || args.viewsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'viewsId'");
             }
@@ -84,6 +87,7 @@ export class OrganizationBucketView extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["viewId"] = args ? args.viewId : undefined;
             inputs["viewsId"] = args ? args.viewsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -120,5 +124,6 @@ export interface OrganizationBucketViewArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
+    readonly viewId: pulumi.Input<string>;
     readonly viewsId: pulumi.Input<string>;
 }

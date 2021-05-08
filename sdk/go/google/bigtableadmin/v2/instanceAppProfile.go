@@ -34,6 +34,9 @@ func NewInstanceAppProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AppProfileId == nil {
+		return nil, errors.New("invalid value for required argument 'AppProfileId'")
+	}
 	if args.AppProfilesId == nil {
 		return nil, errors.New("invalid value for required argument 'AppProfilesId'")
 	}
@@ -95,12 +98,14 @@ func (InstanceAppProfileState) ElementType() reflect.Type {
 }
 
 type instanceAppProfileArgs struct {
+	AppProfileId  string `pulumi:"appProfileId"`
 	AppProfilesId string `pulumi:"appProfilesId"`
 	// Long form description of the use case for this AppProfile.
 	Description *string `pulumi:"description"`
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-	Etag        *string `pulumi:"etag"`
-	InstancesId string  `pulumi:"instancesId"`
+	Etag           *string `pulumi:"etag"`
+	IgnoreWarnings *string `pulumi:"ignoreWarnings"`
+	InstancesId    string  `pulumi:"instancesId"`
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny *MultiClusterRoutingUseAny `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
@@ -112,12 +117,14 @@ type instanceAppProfileArgs struct {
 
 // The set of arguments for constructing a InstanceAppProfile resource.
 type InstanceAppProfileArgs struct {
+	AppProfileId  pulumi.StringInput
 	AppProfilesId pulumi.StringInput
 	// Long form description of the use case for this AppProfile.
 	Description pulumi.StringPtrInput
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-	Etag        pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
+	Etag           pulumi.StringPtrInput
+	IgnoreWarnings pulumi.StringPtrInput
+	InstancesId    pulumi.StringInput
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyPtrInput
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.

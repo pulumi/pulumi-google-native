@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.File.V1Beta1
             set => _fileShares = value;
         }
 
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 

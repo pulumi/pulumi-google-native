@@ -88,7 +88,9 @@ export class CapacityCommitment extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["capacityCommitmentId"] = args ? args.capacityCommitmentId : undefined;
             inputs["capacityCommitmentsId"] = args ? args.capacityCommitmentsId : undefined;
+            inputs["enforceSingleAdminProjectPerOrg"] = args ? args.enforceSingleAdminProjectPerOrg : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["plan"] = args ? args.plan : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
@@ -120,7 +122,9 @@ export class CapacityCommitment extends pulumi.CustomResource {
  * The set of arguments for constructing a CapacityCommitment resource.
  */
 export interface CapacityCommitmentArgs {
+    readonly capacityCommitmentId?: pulumi.Input<string>;
     readonly capacityCommitmentsId: pulumi.Input<string>;
+    readonly enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * Capacity commitment commitment plan.

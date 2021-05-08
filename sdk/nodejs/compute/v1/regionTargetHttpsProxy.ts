@@ -139,6 +139,7 @@ export class RegionTargetHttpsProxy extends pulumi.CustomResource {
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["quicOverride"] = args ? args.quicOverride : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serverTlsPolicy"] = args ? args.serverTlsPolicy : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
@@ -224,6 +225,7 @@ export interface RegionTargetHttpsProxyArgs {
      * [Output Only] URL of the region where the regional TargetHttpsProxy resides. This field is not applicable to global TargetHttpsProxies.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

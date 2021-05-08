@@ -15,6 +15,7 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
+                 instance_id: pulumi.Input[str],
                  instances_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -41,6 +42,7 @@ class InstanceArgs:
         :param pulumi.Input['MemcacheParametersArgs'] parameters: Optional: User defined parameters to apply to the memcached process on each node.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] zones: Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
         """
+        pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instances_id", instances_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -64,6 +66,15 @@ class InstanceArgs:
             pulumi.set(__self__, "parameters", parameters)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
+
+    @property
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
+
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
     @pulumi.getter(name="instancesId")
@@ -220,6 +231,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -274,6 +286,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_network: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  instance_messages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceMessageArgs']]]]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -299,6 +312,9 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["authorized_network"] = authorized_network
             __props__.__dict__["display_name"] = display_name
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["instance_messages"] = instance_messages
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")

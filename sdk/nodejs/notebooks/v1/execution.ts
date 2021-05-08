@@ -79,6 +79,9 @@ export class Execution extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.executionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'executionId'");
+            }
             if ((!args || args.executionsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'executionsId'");
             }
@@ -89,6 +92,7 @@ export class Execution extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["description"] = args ? args.description : undefined;
+            inputs["executionId"] = args ? args.executionId : undefined;
             inputs["executionTemplate"] = args ? args.executionTemplate : undefined;
             inputs["executionsId"] = args ? args.executionsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -124,6 +128,7 @@ export interface ExecutionArgs {
      * A brief description of this execution.
      */
     readonly description?: pulumi.Input<string>;
+    readonly executionId: pulumi.Input<string>;
     /**
      * execute metadata including name, hardware spec, region, labels, etc.
      */

@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
 
     public sealed class AttestorArgs : Pulumi.ResourceArgs
     {
+        [Input("attestorId", required: true)]
+        public Input<string> AttestorId { get; set; } = null!;
+
         [Input("attestorsId", required: true)]
         public Input<string> AttestorsId { get; set; } = null!;
 

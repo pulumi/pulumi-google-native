@@ -234,6 +234,9 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
 
+        [Input("customer")]
+        public Input<string>? Customer { get; set; }
+
         [Input("devicesId", required: true)]
         public Input<string> DevicesId { get; set; } = null!;
 

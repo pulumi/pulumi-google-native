@@ -32,6 +32,7 @@ class RegionNetworkEndpointGroupArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']] = None,
@@ -95,6 +96,8 @@ class RegionNetworkEndpointGroupArgs:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if psc_target_service is not None:
             pulumi.set(__self__, "psc_target_service", psc_target_service)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if self_link_with_id is not None:
@@ -309,6 +312,15 @@ class RegionNetworkEndpointGroupArgs:
         pulumi.set(self, "psc_target_service", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -415,6 +427,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']]] = None,
@@ -492,6 +505,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupServerlessDeploymentArgs']]] = None,
@@ -534,6 +548,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id
             __props__.__dict__["serverless_deployment"] = serverless_deployment

@@ -251,6 +251,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
         /// </summary>
@@ -289,6 +292,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
+
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
 
         public SecurityPolicyArgs()
         {

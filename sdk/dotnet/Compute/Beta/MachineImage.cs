@@ -206,6 +206,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Reserved for future use.
         /// </summary>
@@ -235,8 +238,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
         /// - projects/project/zones/zone/instances/instance
         /// </summary>
-        [Input("sourceInstance")]
-        public Input<string>? SourceInstance { get; set; }
+        [Input("sourceInstance", required: true)]
+        public Input<string> SourceInstance { get; set; } = null!;
 
         /// <summary>
         /// [Output Only] Properties of source instance.

@@ -67,12 +67,16 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.configId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configId'");
+            }
             if ((!args || args.notificationConfigsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'notificationConfigsId'");
             }
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["configId"] = args ? args.configId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfigsId"] = args ? args.notificationConfigsId : undefined;
@@ -98,6 +102,7 @@ export class OrganizationNotificationConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationNotificationConfig resource.
  */
 export interface OrganizationNotificationConfigArgs {
+    readonly configId: pulumi.Input<string>;
     /**
      * The description of the notification config (max of 1024 characters).
      */

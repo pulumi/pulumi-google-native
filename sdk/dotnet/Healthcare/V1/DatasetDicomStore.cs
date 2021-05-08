@@ -81,6 +81,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
 
+        [Input("dicomStoreId")]
+        public Input<string>? DicomStoreId { get; set; }
+
         [Input("dicomStoresId", required: true)]
         public Input<string> DicomStoresId { get; set; } = null!;
 

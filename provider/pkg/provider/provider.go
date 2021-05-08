@@ -26,6 +26,7 @@ import (
 	"google.golang.org/grpc/status"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 	"time"
@@ -220,7 +221,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		}
 	}
 
-	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces}, nil
+	return &rpc.DiffResponse{Changes: rpc.DiffResponse_DIFF_UNKNOWN, Replaces: replaces, DeleteBeforeReplace: true}, nil
 }
 
 // Create allocates a new instance of the provided resource and returns its unique ID afterwards.
@@ -250,7 +251,6 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		id = strings.Replace(id, fmt.Sprintf("{%s}", param), value, 1)
 	}
 
-	var uri string
 	var resp map[string]interface{}
 	switch resourceKey {
 	case "google-native:storage/v1:BucketObject":
@@ -290,13 +290,10 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			"selfLink":  obj.SelfLink,
 		}
 	default:
-		path := res.CreatePath
-		for _, param := range res.CreateParams {
-			key := resource.PropertyKey(param)
-			value := inputs[key].StringValue()
-			path = strings.Replace(path, fmt.Sprintf("{%s}", param), value, 1)
+		uri, err := p.buildCreateUrl(res, inputs)
+		if err != nil {
+			return nil, err
 		}
-		uri = res.RelativePath(path)
 
 		inputsMap := inputs.Mappable()
 		body := map[string]interface{}{}
@@ -334,6 +331,43 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		Id:         id,
 		Properties: checkpoint,
 	}, nil
+}
+
+// buildCreateUrl composes the URL to invoke to create a resource with given inputs.
+func (p *googleCloudProvider) buildCreateUrl(res resources.CloudAPIResource, inputs resource.PropertyMap) (string, error) {
+	path := res.CreatePath
+	queryMap := map[string]string{}
+	for _, param := range res.CreateParams {
+		sdkName := param.Name
+		if param.SdkName != "" {
+			sdkName = param.SdkName
+		}
+		key := resource.PropertyKey(sdkName)
+		if !inputs[key].HasValue() {
+			continue
+		}
+
+		value := inputs[key].StringValue()
+		switch param.Location {
+		case "path":
+			path = strings.Replace(path, fmt.Sprintf("{%s}", param.Name), url.PathEscape(value), 1)
+		case "query":
+			queryMap[param.Name] = value
+		default:
+			return "", errors.Errorf("unknown param location %q", param.Location)
+		}
+	}
+	baseUriString := res.RelativePath(path)
+	uri, err := url.Parse(baseUriString)
+	if err != nil {
+		return "", errors.Wrapf(err, "parsing resource URL %q", baseUriString)
+	}
+	query := uri.Query()
+	for key, value := range queryMap {
+		query.Add(key, value)
+	}
+	uri.RawQuery = query.Encode()
+	return uri.String(), nil
 }
 
 func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp map[string]interface{}) (map[string]interface{}, error) {

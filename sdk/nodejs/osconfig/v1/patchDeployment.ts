@@ -91,6 +91,9 @@ export class PatchDeployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'patchDeploymentId'");
+            }
             if ((!args || args.patchDeploymentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentsId'");
             }
@@ -103,6 +106,7 @@ export class PatchDeployment extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oneTimeSchedule"] = args ? args.oneTimeSchedule : undefined;
             inputs["patchConfig"] = args ? args.patchConfig : undefined;
+            inputs["patchDeploymentId"] = args ? args.patchDeploymentId : undefined;
             inputs["patchDeploymentsId"] = args ? args.patchDeploymentsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["recurringSchedule"] = args ? args.recurringSchedule : undefined;
@@ -158,6 +162,7 @@ export interface PatchDeploymentArgs {
      * Optional. Patch configuration that is applied.
      */
     readonly patchConfig?: pulumi.Input<inputs.osconfig.v1.PatchConfigArgs>;
+    readonly patchDeploymentId: pulumi.Input<string>;
     readonly patchDeploymentsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**

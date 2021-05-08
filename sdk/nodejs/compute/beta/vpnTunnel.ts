@@ -181,6 +181,7 @@ export class VpnTunnel extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["remoteTrafficSelector"] = args ? args.remoteTrafficSelector : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["router"] = args ? args.router : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sharedSecret"] = args ? args.sharedSecret : undefined;
@@ -293,6 +294,7 @@ export interface VpnTunnelArgs {
      * Remote traffic selectors to use when establishing the VPN tunnel with the peer VPN gateway. The value should be a CIDR formatted string, for example: 192.168.0.0/16. The ranges should be disjoint. Only IPv4 is supported.
      */
     readonly remoteTrafficSelector?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * URL of the router resource to be used for dynamic routing.
      */

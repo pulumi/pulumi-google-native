@@ -16,6 +16,7 @@ class BucketViewArgs:
                  buckets_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 view_id: pulumi.Input[str],
                  views_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -29,6 +30,7 @@ class BucketViewArgs:
         pulumi.set(__self__, "buckets_id", buckets_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "view_id", view_id)
         pulumi.set(__self__, "views_id", views_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -63,6 +65,15 @@ class BucketViewArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="viewId")
+    def view_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "view_id")
+
+    @view_id.setter
+    def view_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "view_id", value)
 
     @property
     @pulumi.getter(name="viewsId")
@@ -121,6 +132,7 @@ class BucketView(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 view_id: Optional[pulumi.Input[str]] = None,
                  views_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -162,6 +174,7 @@ class BucketView(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 view_id: Optional[pulumi.Input[str]] = None,
                  views_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -187,6 +200,9 @@ class BucketView(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if view_id is None and not opts.urn:
+                raise TypeError("Missing required property 'view_id'")
+            __props__.__dict__["view_id"] = view_id
             if views_id is None and not opts.urn:
                 raise TypeError("Missing required property 'views_id'")
             __props__.__dict__["views_id"] = views_id

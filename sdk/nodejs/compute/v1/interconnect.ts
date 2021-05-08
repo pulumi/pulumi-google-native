@@ -168,6 +168,7 @@ export class Interconnect extends pulumi.CustomResource {
             inputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["provisionedLinkCount"] = args ? args.provisionedLinkCount : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["requestedLinkCount"] = args ? args.requestedLinkCount : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -290,6 +291,7 @@ export interface InterconnectArgs {
      * [Output Only] Number of links actually provisioned in this interconnect.
      */
     readonly provisionedLinkCount?: pulumi.Input<number>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Target number of physical links in the link bundle, as requested by the customer.
      */

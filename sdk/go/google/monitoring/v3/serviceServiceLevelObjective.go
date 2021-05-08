@@ -116,6 +116,7 @@ type serviceServiceLevelObjectiveArgs struct {
 	RollingPeriod *string `pulumi:"rollingPeriod"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator    *ServiceLevelIndicator `pulumi:"serviceLevelIndicator"`
+	ServiceLevelObjectiveId  *string                `pulumi:"serviceLevelObjectiveId"`
 	ServiceLevelObjectivesId string                 `pulumi:"serviceLevelObjectivesId"`
 	ServicesId               string                 `pulumi:"servicesId"`
 	V3Id                     string                 `pulumi:"v3Id"`
@@ -136,6 +137,7 @@ type ServiceServiceLevelObjectiveArgs struct {
 	RollingPeriod pulumi.StringPtrInput
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
 	ServiceLevelIndicator    ServiceLevelIndicatorPtrInput
+	ServiceLevelObjectiveId  pulumi.StringPtrInput
 	ServiceLevelObjectivesId pulumi.StringInput
 	ServicesId               pulumi.StringInput
 	V3Id                     pulumi.StringInput

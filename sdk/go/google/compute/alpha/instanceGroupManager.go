@@ -288,7 +288,8 @@ type instanceGroupManagerArgs struct {
 	NamedPorts []NamedPort `pulumi:"namedPorts"`
 	Project    string      `pulumi:"project"`
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -358,7 +359,8 @@ type InstanceGroupManagerArgs struct {
 	NamedPorts NamedPortArrayInput
 	Project    pulumi.StringInput
 	// [Output Only] The URL of the region where the managed instance group resides (for regional resources).
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] The URL for this managed instance group. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

@@ -218,6 +218,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -381,6 +382,7 @@ export interface SubnetworkArgs {
      * URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The role of subnetwork. Currently, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining. This field can be updated with a patch request.
      */

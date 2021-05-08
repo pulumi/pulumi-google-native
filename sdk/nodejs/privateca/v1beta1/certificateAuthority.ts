@@ -122,6 +122,9 @@ export class CertificateAuthority extends pulumi.CustomResource {
             if ((!args || args.certificateAuthoritiesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthoritiesId'");
             }
+            if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'certificateAuthorityId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -129,6 +132,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
+            inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["gcsBucket"] = args ? args.gcsBucket : undefined;
@@ -138,6 +142,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
             inputs["lifetime"] = args ? args.lifetime : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["type"] = args ? args.type : undefined;
@@ -181,6 +186,7 @@ export class CertificateAuthority extends pulumi.CustomResource {
  */
 export interface CertificateAuthorityArgs {
     readonly certificateAuthoritiesId: pulumi.Input<string>;
+    readonly certificateAuthorityId: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
      */
@@ -211,6 +217,7 @@ export interface CertificateAuthorityArgs {
     readonly lifetime?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
      */

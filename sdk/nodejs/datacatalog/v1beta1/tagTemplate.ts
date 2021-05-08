@@ -64,6 +64,9 @@ export class TagTemplate extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tagTemplateId'");
+            }
             if ((!args || args.tagTemplatesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplatesId'");
             }
@@ -72,6 +75,7 @@ export class TagTemplate extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
             inputs["tagTemplatesId"] = args ? args.tagTemplatesId : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
@@ -103,5 +107,6 @@ export interface TagTemplateArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly tagTemplateId: pulumi.Input<string>;
     readonly tagTemplatesId: pulumi.Input<string>;
 }

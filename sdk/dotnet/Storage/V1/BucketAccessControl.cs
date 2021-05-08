@@ -196,6 +196,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("projectTeam")]
         public Input<Inputs.BucketAccessControlProjectTeamArgs>? ProjectTeam { get; set; }
 
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
         /// <summary>
         /// The access permission for the entity.
         /// </summary>
@@ -207,6 +210,9 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// </summary>
         [Input("selfLink")]
         public Input<string>? SelfLink { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
 
         public BucketAccessControlArgs()
         {

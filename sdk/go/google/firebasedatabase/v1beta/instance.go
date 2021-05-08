@@ -95,6 +95,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
+	DatabaseId *string `pulumi:"databaseId"`
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl *string `pulumi:"databaseUrl"`
 	InstancesId string  `pulumi:"instancesId"`
@@ -107,11 +108,13 @@ type instanceArgs struct {
 	// The database's lifecycle state. Read-only.
 	State *string `pulumi:"state"`
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type *string `pulumi:"type"`
+	Type         *string `pulumi:"type"`
+	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
+	DatabaseId pulumi.StringPtrInput
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl pulumi.StringPtrInput
 	InstancesId pulumi.StringInput
@@ -124,7 +127,8 @@ type InstanceArgs struct {
 	// The database's lifecycle state. Read-only.
 	State pulumi.StringPtrInput
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type pulumi.StringPtrInput
+	Type         pulumi.StringPtrInput
+	ValidateOnly pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

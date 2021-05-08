@@ -102,6 +102,9 @@ export class Membership extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.membershipId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'membershipId'");
+            }
             if ((!args || args.membershipsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'membershipsId'");
             }
@@ -114,6 +117,7 @@ export class Membership extends pulumi.CustomResource {
             inputs["infrastructureType"] = args ? args.infrastructureType : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["membershipId"] = args ? args.membershipId : undefined;
             inputs["membershipsId"] = args ? args.membershipsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -171,6 +175,7 @@ export interface MembershipArgs {
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     readonly locationsId: pulumi.Input<string>;
+    readonly membershipId: pulumi.Input<string>;
     readonly membershipsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

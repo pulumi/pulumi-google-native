@@ -38,6 +38,9 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
+	}
 	if args.EnvironmentsId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
 	}
@@ -113,6 +116,7 @@ type environmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Display name of this environment for the UI.
 	DisplayName    *string `pulumi:"displayName"`
+	EnvironmentId  string  `pulumi:"environmentId"`
 	EnvironmentsId string  `pulumi:"environmentsId"`
 	LocationsId    string  `pulumi:"locationsId"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
@@ -130,6 +134,7 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Display name of this environment for the UI.
 	DisplayName    pulumi.StringPtrInput
+	EnvironmentId  pulumi.StringInput
 	EnvironmentsId pulumi.StringInput
 	LocationsId    pulumi.StringInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`

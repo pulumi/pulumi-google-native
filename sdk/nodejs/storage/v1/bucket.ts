@@ -180,14 +180,19 @@ export class Bucket extends pulumi.CustomResource {
             inputs["metageneration"] = args ? args.metageneration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owner"] = args ? args.owner : undefined;
+            inputs["predefinedAcl"] = args ? args.predefinedAcl : undefined;
+            inputs["predefinedDefaultObjectAcl"] = args ? args.predefinedDefaultObjectAcl : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["projectNumber"] = args ? args.projectNumber : undefined;
+            inputs["projection"] = args ? args.projection : undefined;
+            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
             inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["storageClass"] = args ? args.storageClass : undefined;
             inputs["timeCreated"] = args ? args.timeCreated : undefined;
             inputs["updated"] = args ? args.updated : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
             inputs["versioning"] = args ? args.versioning : undefined;
             inputs["website"] = args ? args.website : undefined;
             inputs["zoneAffinity"] = args ? args.zoneAffinity : undefined;
@@ -304,11 +309,15 @@ export interface BucketArgs {
      * The owner of the bucket. This is always the project team's owner group.
      */
     readonly owner?: pulumi.Input<inputs.storage.v1.BucketOwnerArgs>;
+    readonly predefinedAcl?: pulumi.Input<string>;
+    readonly predefinedDefaultObjectAcl?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * The project number of the project the bucket belongs to.
      */
     readonly projectNumber?: pulumi.Input<string>;
+    readonly projection?: pulumi.Input<string>;
+    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
      */
@@ -333,6 +342,7 @@ export interface BucketArgs {
      * The modification time of the bucket in RFC 3339 format.
      */
     readonly updated?: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
     /**
      * The bucket's versioning configuration.
      */

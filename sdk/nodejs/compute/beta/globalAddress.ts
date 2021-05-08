@@ -149,6 +149,7 @@ export class GlobalAddress extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["subnetwork"] = args ? args.subnetwork : undefined;
@@ -254,6 +255,7 @@ export interface GlobalAddressArgs {
      * [Output Only] The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

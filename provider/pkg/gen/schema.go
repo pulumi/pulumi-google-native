@@ -279,22 +279,42 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		createPath = createMethod.Path
 	}
 
-	for name, param := range createMethod.Parameters {
-		if param.Location == "path" && strings.HasPrefix(param.Description, "Deprecated.") {
-			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
-			return nil
-		}
-		if param.Location != "query" || !param.Required {
-			continue
-		}
-		createPath += fmt.Sprintf("?%s={%[1]s}", name)
-	}
-
 	resourceMeta := resources.CloudAPIResource{
 		BaseUrl:    g.rest.BaseUrl,
 		CreatePath: createPath,
 		CreateVerb: createMethod.HttpMethod,
 		NoDelete:   deleteMethod == nil,
+	}
+
+	for _, name := range codegen.SortedKeys(createMethod.Parameters) {
+		param := createMethod.Parameters[name]
+		deprecated := strings.HasPrefix(param.Description, "Deprecated.")
+		required := param.Required || strings.HasPrefix(param.Description, "Required.")
+		if param.Location == "path" && deprecated {
+			// If a path parameter is deprecated, the URL is effectively deprecated, so skip this resource.
+			return nil
+		}
+
+		if param.Location != "query" || deprecated {
+			continue
+		}
+
+		p := resources.CloudAPIResourceParam{
+			Name:     name,
+			Location: "query",
+		}
+		sdkName := ToLowerCamel(name)
+		if sdkName != name {
+			p.SdkName = sdkName
+		}
+		resourceMeta.CreateParams = append(resourceMeta.CreateParams, p)
+
+		inputProperties[sdkName] = schema.PropertySpec{
+			TypeSpec: schema.TypeSpec{Type: "string"},
+		}
+		if required {
+			requiredInputProperties.Add(sdkName)
+		}
 	}
 
 	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
@@ -303,7 +323,10 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		inputProperties[name] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		resourceMeta.CreateParams = append(resourceMeta.CreateParams, name)
+		resourceMeta.CreateParams = append(resourceMeta.CreateParams, resources.CloudAPIResourceParam{
+			Name:     name,
+			Location: "path",
+		})
 		requiredInputProperties.Add(name)
 	}
 

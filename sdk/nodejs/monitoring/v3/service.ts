@@ -100,6 +100,7 @@ export class Service extends pulumi.CustomResource {
             inputs["istioCanonicalService"] = args ? args.istioCanonicalService : undefined;
             inputs["meshIstio"] = args ? args.meshIstio : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["telemetry"] = args ? args.telemetry : undefined;
             inputs["v3Id"] = args ? args.v3Id : undefined;
@@ -158,6 +159,7 @@ export interface ServiceArgs {
      * Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
      */
     readonly name?: pulumi.Input<string>;
+    readonly serviceId?: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.

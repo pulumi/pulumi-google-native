@@ -270,6 +270,9 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [Input("enableStackdriverMonitoring")]
         public Input<bool>? EnableStackdriverMonitoring { get; set; }
 
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
+
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 

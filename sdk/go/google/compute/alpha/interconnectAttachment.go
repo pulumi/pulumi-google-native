@@ -415,7 +415,8 @@ type interconnectAttachmentArgs struct {
 	PrivateInterconnectInfo *InterconnectAttachmentPrivateInfo `pulumi:"privateInterconnectInfo"`
 	Project                 string                             `pulumi:"project"`
 	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router *string `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
@@ -434,7 +435,8 @@ type interconnectAttachmentArgs struct {
 	// - DEDICATED: an attachment to a Dedicated Interconnect.
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
 	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-	Type *string `pulumi:"type"`
+	Type         *string `pulumi:"type"`
+	ValidateOnly *string `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q *int `pulumi:"vlanTag8021q"`
 }
@@ -515,7 +517,8 @@ type InterconnectAttachmentArgs struct {
 	PrivateInterconnectInfo InterconnectAttachmentPrivateInfoPtrInput
 	Project                 pulumi.StringInput
 	// [Output Only] URL of the region where the regional interconnect attachment resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
@@ -534,7 +537,8 @@ type InterconnectAttachmentArgs struct {
 	// - DEDICATED: an attachment to a Dedicated Interconnect.
 	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
 	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
-	Type pulumi.StringPtrInput
+	Type         pulumi.StringPtrInput
+	ValidateOnly pulumi.StringPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput
 }

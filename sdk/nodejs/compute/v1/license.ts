@@ -90,6 +90,7 @@ export class License extends pulumi.CustomResource {
             inputs["licenseCode"] = args ? args.licenseCode : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["resourceRequirements"] = args ? args.resourceRequirements : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["transferable"] = args ? args.transferable : undefined;
@@ -140,6 +141,7 @@ export interface LicenseArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     readonly resourceRequirements?: pulumi.Input<inputs.compute.v1.LicenseResourceRequirementsArgs>;
     /**
      * [Output Only] Server-defined URL for the resource.

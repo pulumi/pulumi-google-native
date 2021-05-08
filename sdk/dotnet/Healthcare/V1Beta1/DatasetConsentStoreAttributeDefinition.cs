@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _allowedValues = value;
         }
 
+        [Input("attributeDefinitionId", required: true)]
+        public Input<string> AttributeDefinitionId { get; set; } = null!;
+
         [Input("attributeDefinitionsId", required: true)]
         public Input<string> AttributeDefinitionsId { get; set; } = null!;
 

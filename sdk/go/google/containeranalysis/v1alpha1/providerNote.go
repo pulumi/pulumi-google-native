@@ -178,9 +178,11 @@ type providerNoteArgs struct {
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
 	Name    *string `pulumi:"name"`
+	NoteId  *string `pulumi:"noteId"`
 	NotesId string  `pulumi:"notesId"`
 	// A note describing a package hosted by various package managers.
 	Package     *Package `pulumi:"package"`
+	Parent      *string  `pulumi:"parent"`
 	ProvidersId string   `pulumi:"providersId"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
@@ -216,9 +218,11 @@ type ProviderNoteArgs struct {
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
 	Name    pulumi.StringPtrInput
+	NoteId  pulumi.StringPtrInput
 	NotesId pulumi.StringInput
 	// A note describing a package hosted by various package managers.
 	Package     PackagePtrInput
+	Parent      pulumi.StringPtrInput
 	ProvidersId pulumi.StringInput
 	// URLs associated with this note
 	RelatedUrl RelatedUrlArrayInput

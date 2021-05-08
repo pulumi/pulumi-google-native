@@ -144,6 +144,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("environments")]
+        public Input<string>? Environments { get; set; }
+
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 

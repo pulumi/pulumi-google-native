@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
 
     public sealed class TransferConfigArgs : Pulumi.ResourceArgs
     {
+        [Input("authorizationCode")]
+        public Input<string>? AuthorizationCode { get; set; }
+
         /// <summary>
         /// The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
         /// </summary>
@@ -225,8 +228,14 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         [Input("scheduleOptions")]
         public Input<Inputs.ScheduleOptionsArgs>? ScheduleOptions { get; set; }
 
+        [Input("serviceAccountName")]
+        public Input<string>? ServiceAccountName { get; set; }
+
         [Input("transferConfigsId", required: true)]
         public Input<string> TransferConfigsId { get; set; } = null!;
+
+        [Input("versionInfo")]
+        public Input<string>? VersionInfo { get; set; }
 
         public TransferConfigArgs()
         {

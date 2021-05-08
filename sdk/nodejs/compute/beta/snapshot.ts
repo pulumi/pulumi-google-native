@@ -173,6 +173,7 @@ export class Snapshot extends pulumi.CustomResource {
             inputs["locationHint"] = args ? args.locationHint : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["snapshot"] = args ? args.snapshot : undefined;
@@ -284,6 +285,7 @@ export interface SnapshotArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */

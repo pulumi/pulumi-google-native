@@ -174,6 +174,9 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
         [Input("instanceMessages")]
         private InputList<Inputs.InstanceMessageArgs>? _instanceMessages;
 

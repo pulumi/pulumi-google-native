@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
 
     public sealed class DeploymentArgs : Pulumi.ResourceArgs
     {
+        [Input("createPolicy")]
+        public Input<string>? CreatePolicy { get; set; }
+
         [Input("deployment", required: true)]
         public Input<string> Deployment { get; set; } = null!;
 
@@ -179,6 +182,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         /// </summary>
         [Input("operation")]
         public Input<Inputs.OperationArgs>? Operation { get; set; }
+
+        [Input("preview")]
+        public Input<string>? Preview { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

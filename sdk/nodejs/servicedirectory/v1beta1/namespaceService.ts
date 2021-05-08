@@ -68,6 +68,9 @@ export class NamespaceService extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
+            }
             if ((!args || args.servicesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicesId'");
             }
@@ -76,6 +79,7 @@ export class NamespaceService extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["namespacesId"] = args ? args.namespacesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["endpoints"] = undefined /*out*/;
         } else {
@@ -105,5 +109,6 @@ export interface NamespaceServiceArgs {
     readonly name?: pulumi.Input<string>;
     readonly namespacesId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     readonly servicesId: pulumi.Input<string>;
 }

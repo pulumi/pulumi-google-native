@@ -17,6 +17,7 @@ class WorkerPoolArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 worker_pool_id: pulumi.Input[str],
                  worker_pools_id: pulumi.Input[str],
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
@@ -27,6 +28,7 @@ class WorkerPoolArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         pulumi.set(__self__, "worker_pools_id", worker_pools_id)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
@@ -50,6 +52,15 @@ class WorkerPoolArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="workerPoolId")
+    def worker_pool_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "worker_pool_id")
+
+    @worker_pool_id.setter
+    def worker_pool_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "worker_pool_id", value)
 
     @property
     @pulumi.getter(name="workerPoolsId")
@@ -94,6 +105,7 @@ class WorkerPool(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_pool_id: Optional[pulumi.Input[str]] = None,
                  worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -132,6 +144,7 @@ class WorkerPool(pulumi.CustomResource):
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
+                 worker_pool_id: Optional[pulumi.Input[str]] = None,
                  worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -153,6 +166,9 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["worker_config"] = worker_config
+            if worker_pool_id is None and not opts.urn:
+                raise TypeError("Missing required property 'worker_pool_id'")
+            __props__.__dict__["worker_pool_id"] = worker_pool_id
             if worker_pools_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pools_id'")
             __props__.__dict__["worker_pools_id"] = worker_pools_id

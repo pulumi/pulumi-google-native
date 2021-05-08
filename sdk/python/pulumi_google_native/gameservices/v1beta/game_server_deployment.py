@@ -13,6 +13,7 @@ __all__ = ['GameServerDeploymentArgs', 'GameServerDeployment']
 @pulumi.input_type
 class GameServerDeploymentArgs:
     def __init__(__self__, *,
+                 deployment_id: pulumi.Input[str],
                  game_server_deployments_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -27,6 +28,7 @@ class GameServerDeploymentArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server deployment. Each label is a key-value pair.
         :param pulumi.Input[str] name: The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
         """
+        pulumi.set(__self__, "deployment_id", deployment_id)
         pulumi.set(__self__, "game_server_deployments_id", game_server_deployments_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -38,6 +40,15 @@ class GameServerDeploymentArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="deploymentId")
+    def deployment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "deployment_id")
+
+    @deployment_id.setter
+    def deployment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "deployment_id", value)
 
     @property
     @pulumi.getter(name="gameServerDeploymentsId")
@@ -120,6 +131,7 @@ class GameServerDeployment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_deployments_id: Optional[pulumi.Input[str]] = None,
@@ -162,6 +174,7 @@ class GameServerDeployment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deployment_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  game_server_deployments_id: Optional[pulumi.Input[str]] = None,
@@ -181,6 +194,9 @@ class GameServerDeployment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GameServerDeploymentArgs.__new__(GameServerDeploymentArgs)
 
+            if deployment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'deployment_id'")
+            __props__.__dict__["deployment_id"] = deployment_id
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             if game_server_deployments_id is None and not opts.urn:

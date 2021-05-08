@@ -19,7 +19,8 @@ class RegionClusterArgs:
                  project_id: pulumi.Input[str],
                  region: pulumi.Input[str],
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a RegionCluster resource.
         :param pulumi.Input[str] cluster_name: Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
@@ -34,6 +35,8 @@ class RegionClusterArgs:
             pulumi.set(__self__, "config", config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
 
     @property
     @pulumi.getter(name="clusterName")
@@ -92,6 +95,15 @@ class RegionClusterArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
 
 class RegionCluster(pulumi.CustomResource):
     @overload
@@ -103,6 +115,7 @@ class RegionCluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
@@ -143,6 +156,7 @@ class RegionCluster(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -166,6 +180,7 @@ class RegionCluster(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["cluster_uuid"] = None
             __props__.__dict__["metrics"] = None
             __props__.__dict__["status"] = None

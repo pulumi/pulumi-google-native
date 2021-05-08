@@ -204,6 +204,12 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
+        [Input("spokeId")]
+        public Input<string>? SpokeId { get; set; }
+
         [Input("spokesId", required: true)]
         public Input<string> SpokesId { get; set; } = null!;
 

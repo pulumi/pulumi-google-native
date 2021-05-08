@@ -24,7 +24,8 @@ class ServiceServiceLevelObjectiveArgs:
                  goal: Optional[pulumi.Input[float]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  rolling_period: Optional[pulumi.Input[str]] = None,
-                 service_level_indicator: Optional[pulumi.Input['ServiceLevelIndicatorArgs']] = None):
+                 service_level_indicator: Optional[pulumi.Input['ServiceLevelIndicatorArgs']] = None,
+                 service_level_objective_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceServiceLevelObjective resource.
         :param pulumi.Input[str] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
@@ -50,6 +51,8 @@ class ServiceServiceLevelObjectiveArgs:
             pulumi.set(__self__, "rolling_period", rolling_period)
         if service_level_indicator is not None:
             pulumi.set(__self__, "service_level_indicator", service_level_indicator)
+        if service_level_objective_id is not None:
+            pulumi.set(__self__, "service_level_objective_id", service_level_objective_id)
 
     @property
     @pulumi.getter(name="serviceLevelObjectivesId")
@@ -159,6 +162,15 @@ class ServiceServiceLevelObjectiveArgs:
     def service_level_indicator(self, value: Optional[pulumi.Input['ServiceLevelIndicatorArgs']]):
         pulumi.set(self, "service_level_indicator", value)
 
+    @property
+    @pulumi.getter(name="serviceLevelObjectiveId")
+    def service_level_objective_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "service_level_objective_id")
+
+    @service_level_objective_id.setter
+    def service_level_objective_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_level_objective_id", value)
+
 
 class ServiceServiceLevelObjective(pulumi.CustomResource):
     @overload
@@ -171,6 +183,7 @@ class ServiceServiceLevelObjective(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rolling_period: Optional[pulumi.Input[str]] = None,
                  service_level_indicator: Optional[pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']]] = None,
+                 service_level_objective_id: Optional[pulumi.Input[str]] = None,
                  service_level_objectives_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
@@ -218,6 +231,7 @@ class ServiceServiceLevelObjective(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  rolling_period: Optional[pulumi.Input[str]] = None,
                  service_level_indicator: Optional[pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']]] = None,
+                 service_level_objective_id: Optional[pulumi.Input[str]] = None,
                  service_level_objectives_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
@@ -240,6 +254,7 @@ class ServiceServiceLevelObjective(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["rolling_period"] = rolling_period
             __props__.__dict__["service_level_indicator"] = service_level_indicator
+            __props__.__dict__["service_level_objective_id"] = service_level_objective_id
             if service_level_objectives_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_level_objectives_id'")
             __props__.__dict__["service_level_objectives_id"] = service_level_objectives_id

@@ -176,7 +176,8 @@ type regionCommitmentArgs struct {
 	Plan    *string `pulumi:"plan"`
 	Project string  `pulumi:"project"`
 	// [Output Only] URL of the region where this commitment may be used.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// List of reservations in this commitment.
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
@@ -214,7 +215,8 @@ type RegionCommitmentArgs struct {
 	Plan    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where this commitment may be used.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// List of reservations in this commitment.
 	Reservations ReservationTypeArrayInput
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.

@@ -99,6 +99,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("productSetId")]
+        public Input<string>? ProductSetId { get; set; }
+
         [Input("productSetsId", required: true)]
         public Input<string> ProductSetsId { get; set; } = null!;
 

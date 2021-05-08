@@ -84,6 +84,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationSharedflowArgs : Pulumi.ResourceArgs
     {
+        [Input("action", required: true)]
+        public Input<string> Action { get; set; } = null!;
+
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
         /// </summary>
@@ -107,6 +110,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
             get => _extensions ?? (_extensions = new InputList<ImmutableDictionary<string, string>>());
             set => _extensions = value;
         }
+
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;

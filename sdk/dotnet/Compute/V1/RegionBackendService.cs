@@ -554,6 +554,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] The resource URL for the security policy associated with this backend service.
         /// </summary>

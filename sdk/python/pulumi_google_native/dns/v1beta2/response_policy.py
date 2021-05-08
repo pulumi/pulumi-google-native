@@ -17,6 +17,7 @@ class ResponsePolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  response_policy: pulumi.Input[str],
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['ResponsePolicyGKEClusterArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -33,6 +34,8 @@ class ResponsePolicyArgs:
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "response_policy", response_policy)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if gke_clusters is not None:
@@ -63,6 +66,15 @@ class ResponsePolicyArgs:
     @response_policy.setter
     def response_policy(self, value: pulumi.Input[str]):
         pulumi.set(self, "response_policy", value)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
 
     @property
     @pulumi.getter
@@ -139,6 +151,7 @@ class ResponsePolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -183,6 +196,7 @@ class ResponsePolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResponsePolicyGKEClusterArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -203,6 +217,7 @@ class ResponsePolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ResponsePolicyArgs.__new__(ResponsePolicyArgs)
 
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["description"] = description
             __props__.__dict__["gke_clusters"] = gke_clusters
             __props__.__dict__["id"] = id

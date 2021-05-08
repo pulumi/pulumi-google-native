@@ -141,6 +141,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         public RegionClusterArgs()
         {
         }

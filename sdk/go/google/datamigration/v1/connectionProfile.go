@@ -46,6 +46,9 @@ func NewConnectionProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConnectionProfileId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectionProfileId'")
+	}
 	if args.ConnectionProfilesId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectionProfilesId'")
 	}
@@ -133,6 +136,7 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 type connectionProfileArgs struct {
 	// A CloudSQL database connection profile.
 	Cloudsql             *CloudSqlConnectionProfile `pulumi:"cloudsql"`
+	ConnectionProfileId  string                     `pulumi:"connectionProfileId"`
 	ConnectionProfilesId string                     `pulumi:"connectionProfilesId"`
 	// The connection profile display name.
 	DisplayName *string `pulumi:"displayName"`
@@ -147,7 +151,8 @@ type connectionProfileArgs struct {
 	Postgresql *PostgreSqlConnectionProfile `pulumi:"postgresql"`
 	ProjectsId string                       `pulumi:"projectsId"`
 	// The database provider.
-	Provider *string `pulumi:"provider"`
+	Provider  *string `pulumi:"provider"`
+	RequestId *string `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State *string `pulumi:"state"`
 }
@@ -156,6 +161,7 @@ type connectionProfileArgs struct {
 type ConnectionProfileArgs struct {
 	// A CloudSQL database connection profile.
 	Cloudsql             CloudSqlConnectionProfilePtrInput
+	ConnectionProfileId  pulumi.StringInput
 	ConnectionProfilesId pulumi.StringInput
 	// The connection profile display name.
 	DisplayName pulumi.StringPtrInput
@@ -170,7 +176,8 @@ type ConnectionProfileArgs struct {
 	Postgresql PostgreSqlConnectionProfilePtrInput
 	ProjectsId pulumi.StringInput
 	// The database provider.
-	Provider pulumi.StringPtrInput
+	Provider  pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
 	State pulumi.StringPtrInput
 }

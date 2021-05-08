@@ -209,9 +209,10 @@ type routeArgs struct {
 	// The URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
-	Priority *int   `pulumi:"priority"`
-	Project  string `pulumi:"project"`
-	Route    string `pulumi:"route"`
+	Priority  *int    `pulumi:"priority"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
+	Route     string  `pulumi:"route"`
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// A list of instance tags to which this route applies.
@@ -255,9 +256,10 @@ type RouteArgs struct {
 	// The URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrInput
 	// The priority of this route. Priority is used to break ties in cases where there is more than one matching route of equal prefix length. In cases where multiple routes have equal prefix length, the one with the lowest-numbered priority value wins. The default value is `1000`. The priority value must be from `0` to `65535`, inclusive.
-	Priority pulumi.IntPtrInput
-	Project  pulumi.StringInput
-	Route    pulumi.StringInput
+	Priority  pulumi.IntPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
+	Route     pulumi.StringInput
 	// [Output Only] Server-defined fully-qualified URL for this resource.
 	SelfLink pulumi.StringPtrInput
 	// A list of instance tags to which this route applies.

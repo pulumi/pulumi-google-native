@@ -34,6 +34,9 @@ func NewOrganizationNotificationConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
+	}
 	if args.NotificationConfigsId == nil {
 		return nil, errors.New("invalid value for required argument 'NotificationConfigsId'")
 	}
@@ -92,6 +95,7 @@ func (OrganizationNotificationConfigState) ElementType() reflect.Type {
 }
 
 type organizationNotificationConfigArgs struct {
+	ConfigId string `pulumi:"configId"`
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
@@ -106,6 +110,7 @@ type organizationNotificationConfigArgs struct {
 
 // The set of arguments for constructing a OrganizationNotificationConfig resource.
 type OrganizationNotificationConfigArgs struct {
+	ConfigId pulumi.StringInput
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".

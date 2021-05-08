@@ -13,6 +13,7 @@ __all__ = ['BackupArgs', 'Backup']
 @pulumi.input_type
 class BackupArgs:
     def __init__(__self__, *,
+                 backup_id: pulumi.Input[str],
                  backups_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -27,6 +28,7 @@ class BackupArgs:
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{project_number}/locations/{location_id}/instances/{instance_id}, used to create this backup.
         """
+        pulumi.set(__self__, "backup_id", backup_id)
         pulumi.set(__self__, "backups_id", backups_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -38,6 +40,15 @@ class BackupArgs:
             pulumi.set(__self__, "source_file_share", source_file_share)
         if source_instance is not None:
             pulumi.set(__self__, "source_instance", source_instance)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "backup_id")
+
+    @backup_id.setter
+    def backup_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "backup_id", value)
 
     @property
     @pulumi.getter(name="backupsId")
@@ -120,6 +131,7 @@ class Backup(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -162,6 +174,7 @@ class Backup(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 backup_id: Optional[pulumi.Input[str]] = None,
                  backups_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -181,6 +194,9 @@ class Backup(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupArgs.__new__(BackupArgs)
 
+            if backup_id is None and not opts.urn:
+                raise TypeError("Missing required property 'backup_id'")
+            __props__.__dict__["backup_id"] = backup_id
             if backups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backups_id'")
             __props__.__dict__["backups_id"] = backups_id

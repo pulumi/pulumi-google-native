@@ -17,6 +17,7 @@ class BuildArgs:
     def __init__(__self__, *,
                  builds_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
+                 project_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
                  available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
@@ -49,6 +50,7 @@ class BuildArgs:
         """
         pulumi.set(__self__, "builds_id", builds_id)
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
@@ -94,6 +96,15 @@ class BuildArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="projectsId")
@@ -273,6 +284,7 @@ class Build(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
@@ -333,6 +345,7 @@ class Build(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
@@ -365,6 +378,9 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["logs_bucket"] = logs_bucket
             __props__.__dict__["options"] = options
+            if project_id is None and not opts.urn:
+                raise TypeError("Missing required property 'project_id'")
+            __props__.__dict__["project_id"] = project_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
@@ -381,7 +397,6 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["finish_time"] = None
             __props__.__dict__["log_url"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["project_id"] = None
             __props__.__dict__["results"] = None
             __props__.__dict__["source_provenance"] = None
             __props__.__dict__["start_time"] = None

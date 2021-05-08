@@ -93,6 +93,7 @@ type productReferenceImageArgs struct {
 	Name              *string `pulumi:"name"`
 	ProductsId        string  `pulumi:"productsId"`
 	ProjectsId        string  `pulumi:"projectsId"`
+	ReferenceImageId  *string `pulumi:"referenceImageId"`
 	ReferenceImagesId string  `pulumi:"referenceImagesId"`
 	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri *string `pulumi:"uri"`
@@ -107,6 +108,7 @@ type ProductReferenceImageArgs struct {
 	Name              pulumi.StringPtrInput
 	ProductsId        pulumi.StringInput
 	ProjectsId        pulumi.StringInput
+	ReferenceImageId  pulumi.StringPtrInput
 	ReferenceImagesId pulumi.StringInput
 	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringPtrInput

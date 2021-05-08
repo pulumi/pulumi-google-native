@@ -40,6 +40,7 @@ class ForwardingRuleArgs:
                  port_range: Optional[pulumi.Input[str]] = None,
                  ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input['ForwardingRuleServiceDirectoryRegistrationArgs']]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
@@ -209,6 +210,8 @@ class ForwardingRuleArgs:
             pulumi.set(__self__, "ports", ports)
         if psc_connection_id is not None:
             pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if service_directory_registrations is not None:
@@ -590,6 +593,15 @@ class ForwardingRuleArgs:
         pulumi.set(self, "psc_connection_id", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -701,6 +713,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
@@ -876,6 +889,7 @@ class ForwardingRule(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_connection_id: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_directory_registrations: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ForwardingRuleServiceDirectoryRegistrationArgs']]]]] = None,
                  service_label: Optional[pulumi.Input[str]] = None,
@@ -925,6 +939,7 @@ class ForwardingRule(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["service_label"] = service_label

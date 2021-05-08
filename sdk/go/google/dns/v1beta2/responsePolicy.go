@@ -89,6 +89,7 @@ func (ResponsePolicyState) ElementType() reflect.Type {
 }
 
 type responsePolicyArgs struct {
+	ClientOperationId *string `pulumi:"clientOperationId"`
 	// User-provided description for this Response Policy.
 	Description *string `pulumi:"description"`
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
@@ -106,6 +107,7 @@ type responsePolicyArgs struct {
 
 // The set of arguments for constructing a ResponsePolicy resource.
 type ResponsePolicyArgs struct {
+	ClientOperationId pulumi.StringPtrInput
 	// User-provided description for this Response Policy.
 	Description pulumi.StringPtrInput
 	// The list of Google Kubernetes Engine clusters to which this response policy is applied.

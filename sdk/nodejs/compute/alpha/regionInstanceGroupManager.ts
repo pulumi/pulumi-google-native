@@ -192,6 +192,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             inputs["namedPorts"] = args ? args.namedPorts : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -312,6 +313,7 @@ export interface RegionInstanceGroupManagerArgs {
      * [Output Only] The URL of the region where the managed instance group resides (for regional resources).
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this managed instance group. The server defines this URL.
      */

@@ -85,6 +85,7 @@ export class Connection extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["cloudSql"] = args ? args.cloudSql : undefined;
+            inputs["connectionId"] = args ? args.connectionId : undefined;
             inputs["connectionsId"] = args ? args.connectionsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["friendlyName"] = args ? args.friendlyName : undefined;
@@ -118,6 +119,7 @@ export interface ConnectionArgs {
      * Cloud SQL properties.
      */
     readonly cloudSql?: pulumi.Input<inputs.bigqueryconnection.v1beta1.CloudSqlPropertiesArgs>;
+    readonly connectionId?: pulumi.Input<string>;
     readonly connectionsId: pulumi.Input<string>;
     /**
      * User provided description.

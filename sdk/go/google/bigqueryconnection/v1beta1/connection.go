@@ -109,6 +109,7 @@ func (ConnectionState) ElementType() reflect.Type {
 type connectionArgs struct {
 	// Cloud SQL properties.
 	CloudSql      *CloudSqlProperties `pulumi:"cloudSql"`
+	ConnectionId  *string             `pulumi:"connectionId"`
 	ConnectionsId string              `pulumi:"connectionsId"`
 	// User provided description.
 	Description *string `pulumi:"description"`
@@ -124,6 +125,7 @@ type connectionArgs struct {
 type ConnectionArgs struct {
 	// Cloud SQL properties.
 	CloudSql      CloudSqlPropertiesPtrInput
+	ConnectionId  pulumi.StringPtrInput
 	ConnectionsId pulumi.StringInput
 	// User provided description.
 	Description pulumi.StringPtrInput

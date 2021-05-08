@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.Logging.V2
 
     public sealed class OrganizationBucketArgs : Pulumi.ResourceArgs
     {
+        [Input("bucketId", required: true)]
+        public Input<string> BucketId { get; set; } = null!;
+
         [Input("bucketsId", required: true)]
         public Input<string> BucketsId { get; set; } = null!;
 

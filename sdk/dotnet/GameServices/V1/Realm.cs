@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("realmId", required: true)]
+        public Input<string> RealmId { get; set; } = null!;
+
         [Input("realmsId", required: true)]
         public Input<string> RealmsId { get; set; } = null!;
 

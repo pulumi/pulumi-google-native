@@ -24,7 +24,8 @@ class BillingAccountSinkArgs:
                  exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['LogExclusionArgs']]]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  include_children: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingAccountSink resource.
         :param pulumi.Input['BigQueryOptionsArgs'] bigquery_options: Optional. Options that affect sinks exporting data to BigQuery.
@@ -54,6 +55,8 @@ class BillingAccountSinkArgs:
             pulumi.set(__self__, "include_children", include_children)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if unique_writer_identity is not None:
+            pulumi.set(__self__, "unique_writer_identity", unique_writer_identity)
 
     @property
     @pulumi.getter(name="billingAccountsId")
@@ -169,6 +172,15 @@ class BillingAccountSinkArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="uniqueWriterIdentity")
+    def unique_writer_identity(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "unique_writer_identity")
+
+    @unique_writer_identity.setter
+    def unique_writer_identity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "unique_writer_identity", value)
+
 
 class BillingAccountSink(pulumi.CustomResource):
     @overload
@@ -185,6 +197,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
@@ -234,6 +247,7 @@ class BillingAccountSink(pulumi.CustomResource):
                  include_children: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  sinks_id: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -260,6 +274,7 @@ class BillingAccountSink(pulumi.CustomResource):
             if sinks_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sinks_id'")
             __props__.__dict__["sinks_id"] = sinks_id
+            __props__.__dict__["unique_writer_identity"] = unique_writer_identity
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["writer_identity"] = None

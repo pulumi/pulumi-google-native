@@ -43,6 +43,9 @@ func NewOrganizationBucketView(ctx *pulumi.Context,
 	if args.OrganizationsId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
 	}
+	if args.ViewId == nil {
+		return nil, errors.New("invalid value for required argument 'ViewId'")
+	}
 	if args.ViewsId == nil {
 		return nil, errors.New("invalid value for required argument 'ViewsId'")
 	}
@@ -107,6 +110,7 @@ type organizationBucketViewArgs struct {
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name            *string `pulumi:"name"`
 	OrganizationsId string  `pulumi:"organizationsId"`
+	ViewId          string  `pulumi:"viewId"`
 	ViewsId         string  `pulumi:"viewsId"`
 }
 
@@ -121,6 +125,7 @@ type OrganizationBucketViewArgs struct {
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
 	Name            pulumi.StringPtrInput
 	OrganizationsId pulumi.StringInput
+	ViewId          pulumi.StringInput
 	ViewsId         pulumi.StringInput
 }
 

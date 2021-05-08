@@ -17,6 +17,7 @@ class ConversationArgs:
                  conversations_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None):
         """
@@ -27,6 +28,8 @@ class ConversationArgs:
         pulumi.set(__self__, "conversations_id", conversations_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if conversation_id is not None:
+            pulumi.set(__self__, "conversation_id", conversation_id)
         if conversation_profile is not None:
             pulumi.set(__self__, "conversation_profile", conversation_profile)
         if conversation_stage is not None:
@@ -60,6 +63,15 @@ class ConversationArgs:
         pulumi.set(self, "projects_id", value)
 
     @property
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "conversation_id")
+
+    @conversation_id.setter
+    def conversation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "conversation_id", value)
+
+    @property
     @pulumi.getter(name="conversationProfile")
     def conversation_profile(self) -> Optional[pulumi.Input[str]]:
         """
@@ -89,6 +101,7 @@ class Conversation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
                  conversations_id: Optional[pulumi.Input[str]] = None,
@@ -127,6 +140,7 @@ class Conversation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
                  conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input[str]] = None,
                  conversations_id: Optional[pulumi.Input[str]] = None,
@@ -144,6 +158,7 @@ class Conversation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConversationArgs.__new__(ConversationArgs)
 
+            __props__.__dict__["conversation_id"] = conversation_id
             __props__.__dict__["conversation_profile"] = conversation_profile
             __props__.__dict__["conversation_stage"] = conversation_stage
             if conversations_id is None and not opts.urn:

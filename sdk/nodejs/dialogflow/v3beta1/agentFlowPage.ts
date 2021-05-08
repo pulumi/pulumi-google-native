@@ -96,6 +96,7 @@ export class AgentFlowPage extends pulumi.CustomResource {
             inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
             inputs["flowsId"] = args ? args.flowsId : undefined;
             inputs["form"] = args ? args.form : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["pagesId"] = args ? args.pagesId : undefined;
@@ -140,6 +141,7 @@ export interface AgentFlowPageArgs {
      * The form associated with the page, used for collecting parameters relevant to the page.
      */
     readonly form?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormArgs>;
+    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.

@@ -461,6 +461,7 @@ type regionDiskArgs struct {
 	Region string `pulumi:"region"`
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones []string `pulumi:"replicaZones"`
+	RequestId    *string  `pulumi:"requestId"`
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// [Output Only] Reserved for future use.
@@ -583,6 +584,7 @@ type RegionDiskArgs struct {
 	Region pulumi.StringInput
 	// URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
 	ReplicaZones pulumi.StringArrayInput
+	RequestId    pulumi.StringPtrInput
 	// Resource policies applied to this disk for automatic snapshot creations.
 	ResourcePolicies pulumi.StringArrayInput
 	// [Output Only] Reserved for future use.

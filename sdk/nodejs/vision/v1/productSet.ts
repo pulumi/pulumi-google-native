@@ -75,6 +75,7 @@ export class ProductSet extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["productSetId"] = args ? args.productSetId : undefined;
             inputs["productSetsId"] = args ? args.productSetsId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["indexError"] = undefined /*out*/;
@@ -105,6 +106,7 @@ export interface ProductSetArgs {
      * The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
      */
     readonly name?: pulumi.Input<string>;
+    readonly productSetId?: pulumi.Input<string>;
     readonly productSetsId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
 }

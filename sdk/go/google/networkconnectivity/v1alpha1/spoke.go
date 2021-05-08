@@ -149,6 +149,8 @@ type spokeArgs struct {
 	// Immutable. The name of a Spoke resource.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
+	SpokeId    *string `pulumi:"spokeId"`
 	SpokesId   string  `pulumi:"spokesId"`
 	// The time when the Spoke was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -174,6 +176,8 @@ type SpokeArgs struct {
 	// Immutable. The name of a Spoke resource.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
+	SpokeId    pulumi.StringPtrInput
 	SpokesId   pulumi.StringInput
 	// The time when the Spoke was updated.
 	UpdateTime pulumi.StringPtrInput

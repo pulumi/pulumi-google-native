@@ -68,6 +68,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
 	if args.InstancesId == nil {
 		return nil, errors.New("invalid value for required argument 'InstancesId'")
 	}
@@ -207,6 +210,7 @@ type instanceArgs struct {
 	ConnectMode *string `pulumi:"connectMode"`
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName *string `pulumi:"displayName"`
+	InstanceId  string  `pulumi:"instanceId"`
 	InstancesId string  `pulumi:"instancesId"`
 	// Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
@@ -242,6 +246,7 @@ type InstanceArgs struct {
 	ConnectMode pulumi.StringPtrInput
 	// An arbitrary and optional user-provided name for the instance.
 	DisplayName pulumi.StringPtrInput
+	InstanceId  pulumi.StringInput
 	InstancesId pulumi.StringInput
 	// Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput

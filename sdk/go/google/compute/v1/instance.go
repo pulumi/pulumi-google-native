@@ -391,6 +391,7 @@ type instanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
 	Project                 string  `pulumi:"project"`
+	RequestId               *string `pulumi:"requestId"`
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity *ReservationAffinity `pulumi:"reservationAffinity"`
 	// Resource policies applied to this instance.
@@ -407,6 +408,7 @@ type instanceArgs struct {
 	ServiceAccounts                 []ServiceAccount                 `pulumi:"serviceAccounts"`
 	ShieldedInstanceConfig          *ShieldedInstanceConfig          `pulumi:"shieldedInstanceConfig"`
 	ShieldedInstanceIntegrityPolicy *ShieldedInstanceIntegrityPolicy `pulumi:"shieldedInstanceIntegrityPolicy"`
+	SourceInstanceTemplate          *string                          `pulumi:"sourceInstanceTemplate"`
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted *bool `pulumi:"startRestricted"`
 	// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
@@ -486,6 +488,7 @@ type InstanceArgs struct {
 	// The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
 	PrivateIpv6GoogleAccess pulumi.StringPtrInput
 	Project                 pulumi.StringInput
+	RequestId               pulumi.StringPtrInput
 	// Specifies the reservations that this instance can consume from.
 	ReservationAffinity ReservationAffinityPtrInput
 	// Resource policies applied to this instance.
@@ -502,6 +505,7 @@ type InstanceArgs struct {
 	ServiceAccounts                 ServiceAccountArrayInput
 	ShieldedInstanceConfig          ShieldedInstanceConfigPtrInput
 	ShieldedInstanceIntegrityPolicy ShieldedInstanceIntegrityPolicyPtrInput
+	SourceInstanceTemplate          pulumi.StringPtrInput
 	// [Output Only] Whether a VM has been restricted for start because Compute Engine has detected suspicious activity.
 	StartRestricted pulumi.BoolPtrInput
 	// [Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.

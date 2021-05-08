@@ -46,6 +46,9 @@ func NewBackup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupId'")
+	}
 	if args.BackupsId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupsId'")
 	}
@@ -131,6 +134,7 @@ func (BackupState) ElementType() reflect.Type {
 }
 
 type backupArgs struct {
+	BackupId  string `pulumi:"backupId"`
 	BackupsId string `pulumi:"backupsId"`
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
@@ -146,6 +150,7 @@ type backupArgs struct {
 
 // The set of arguments for constructing a Backup resource.
 type BackupArgs struct {
+	BackupId  pulumi.StringInput
 	BackupsId pulumi.StringInput
 	// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput

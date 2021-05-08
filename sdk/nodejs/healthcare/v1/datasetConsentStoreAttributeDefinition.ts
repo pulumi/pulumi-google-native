@@ -70,6 +70,9 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.attributeDefinitionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'attributeDefinitionId'");
+            }
             if ((!args || args.attributeDefinitionsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attributeDefinitionsId'");
             }
@@ -86,6 +89,7 @@ export class DatasetConsentStoreAttributeDefinition extends pulumi.CustomResourc
                 throw new Error("Missing required property 'projectsId'");
             }
             inputs["allowedValues"] = args ? args.allowedValues : undefined;
+            inputs["attributeDefinitionId"] = args ? args.attributeDefinitionId : undefined;
             inputs["attributeDefinitionsId"] = args ? args.attributeDefinitionsId : undefined;
             inputs["category"] = args ? args.category : undefined;
             inputs["consentDefaultValues"] = args ? args.consentDefaultValues : undefined;
@@ -119,6 +123,7 @@ export interface DatasetConsentStoreAttributeDefinitionArgs {
      * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
      */
     readonly allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly attributeDefinitionId: pulumi.Input<string>;
     readonly attributeDefinitionsId: pulumi.Input<string>;
     /**
      * Required. The category of the attribute. The value of this field cannot be changed after creation.

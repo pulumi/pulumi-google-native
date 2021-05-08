@@ -147,6 +147,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
     public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
     {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         /// <summary>
         /// The time that this resource was created on the server. This is in RFC3339 text format. Output only.
         /// </summary>

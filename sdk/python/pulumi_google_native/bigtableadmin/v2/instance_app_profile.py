@@ -15,11 +15,13 @@ __all__ = ['InstanceAppProfileArgs', 'InstanceAppProfile']
 @pulumi.input_type
 class InstanceAppProfileArgs:
     def __init__(__self__, *,
+                 app_profile_id: pulumi.Input[str],
                  app_profiles_id: pulumi.Input[str],
                  instances_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input['MultiClusterRoutingUseAnyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  single_cluster_routing: Optional[pulumi.Input['SingleClusterRoutingArgs']] = None):
@@ -31,6 +33,7 @@ class InstanceAppProfileArgs:
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         :param pulumi.Input['SingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
         """
+        pulumi.set(__self__, "app_profile_id", app_profile_id)
         pulumi.set(__self__, "app_profiles_id", app_profiles_id)
         pulumi.set(__self__, "instances_id", instances_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -38,12 +41,23 @@ class InstanceAppProfileArgs:
             pulumi.set(__self__, "description", description)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if ignore_warnings is not None:
+            pulumi.set(__self__, "ignore_warnings", ignore_warnings)
         if multi_cluster_routing_use_any is not None:
             pulumi.set(__self__, "multi_cluster_routing_use_any", multi_cluster_routing_use_any)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if single_cluster_routing is not None:
             pulumi.set(__self__, "single_cluster_routing", single_cluster_routing)
+
+    @property
+    @pulumi.getter(name="appProfileId")
+    def app_profile_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "app_profile_id")
+
+    @app_profile_id.setter
+    def app_profile_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_profile_id", value)
 
     @property
     @pulumi.getter(name="appProfilesId")
@@ -97,6 +111,15 @@ class InstanceAppProfileArgs:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="ignoreWarnings")
+    def ignore_warnings(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ignore_warnings")
+
+    @ignore_warnings.setter
+    def ignore_warnings(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_warnings", value)
+
+    @property
     @pulumi.getter(name="multiClusterRoutingUseAny")
     def multi_cluster_routing_use_any(self) -> Optional[pulumi.Input['MultiClusterRoutingUseAnyArgs']]:
         """
@@ -138,9 +161,11 @@ class InstanceAppProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_profile_id: Optional[pulumi.Input[str]] = None,
                  app_profiles_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -182,9 +207,11 @@ class InstanceAppProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 app_profile_id: Optional[pulumi.Input[str]] = None,
                  app_profiles_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[str]] = None,
                  instances_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -202,11 +229,15 @@ class InstanceAppProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceAppProfileArgs.__new__(InstanceAppProfileArgs)
 
+            if app_profile_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_profile_id'")
+            __props__.__dict__["app_profile_id"] = app_profile_id
             if app_profiles_id is None and not opts.urn:
                 raise TypeError("Missing required property 'app_profiles_id'")
             __props__.__dict__["app_profiles_id"] = app_profiles_id
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["ignore_warnings"] = ignore_warnings
             if instances_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instances_id'")
             __props__.__dict__["instances_id"] = instances_id

@@ -46,6 +46,9 @@ func NewConnector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConnectorId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectorId'")
+	}
 	if args.ConnectorsId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorsId'")
 	}
@@ -131,6 +134,7 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
+	ConnectorId  string `pulumi:"connectorId"`
 	ConnectorsId string `pulumi:"connectorsId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
@@ -156,6 +160,7 @@ type connectorArgs struct {
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
+	ConnectorId  pulumi.StringInput
 	ConnectorsId pulumi.StringInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput

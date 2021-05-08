@@ -21,6 +21,7 @@ class AgentKnowledgeBaseDocumentArgs:
                  content_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
+                 import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mime_type: Optional[pulumi.Input[str]] = None,
@@ -49,6 +50,8 @@ class AgentKnowledgeBaseDocumentArgs:
             pulumi.set(__self__, "display_name", display_name)
         if enable_auto_reload is not None:
             pulumi.set(__self__, "enable_auto_reload", enable_auto_reload)
+        if import_gcs_custom_metadata is not None:
+            pulumi.set(__self__, "import_gcs_custom_metadata", import_gcs_custom_metadata)
         if knowledge_types is not None:
             pulumi.set(__self__, "knowledge_types", knowledge_types)
         if metadata is not None:
@@ -136,6 +139,15 @@ class AgentKnowledgeBaseDocumentArgs:
         pulumi.set(self, "enable_auto_reload", value)
 
     @property
+    @pulumi.getter(name="importGcsCustomMetadata")
+    def import_gcs_custom_metadata(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "import_gcs_custom_metadata")
+
+    @import_gcs_custom_metadata.setter
+    def import_gcs_custom_metadata(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "import_gcs_custom_metadata", value)
+
+    @property
     @pulumi.getter(name="knowledgeTypes")
     def knowledge_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -206,6 +218,7 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  documents_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
+                 import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_bases_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -258,6 +271,7 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  documents_id: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
+                 import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
                  knowledge_bases_id: Optional[pulumi.Input[str]] = None,
                  knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -284,6 +298,7 @@ class AgentKnowledgeBaseDocument(pulumi.CustomResource):
                 raise TypeError("Missing required property 'documents_id'")
             __props__.__dict__["documents_id"] = documents_id
             __props__.__dict__["enable_auto_reload"] = enable_auto_reload
+            __props__.__dict__["import_gcs_custom_metadata"] = import_gcs_custom_metadata
             if knowledge_bases_id is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_bases_id'")
             __props__.__dict__["knowledge_bases_id"] = knowledge_bases_id

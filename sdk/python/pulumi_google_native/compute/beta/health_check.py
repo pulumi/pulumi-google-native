@@ -30,6 +30,7 @@ class HealthCheckArgs:
                  log_config: Optional[pulumi.Input['HealthCheckLogConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input['SSLHealthCheckArgs']] = None,
                  tcp_health_check: Optional[pulumi.Input['TCPHealthCheckArgs']] = None,
@@ -80,6 +81,8 @@ class HealthCheckArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if ssl_health_check is not None:
@@ -256,6 +259,15 @@ class HealthCheckArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -342,6 +354,7 @@ class HealthCheck(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
@@ -407,6 +420,7 @@ class HealthCheck(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  ssl_health_check: Optional[pulumi.Input[pulumi.InputType['SSLHealthCheckArgs']]] = None,
                  tcp_health_check: Optional[pulumi.Input[pulumi.InputType['TCPHealthCheckArgs']]] = None,
@@ -444,6 +458,7 @@ class HealthCheck(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["ssl_health_check"] = ssl_health_check
             __props__.__dict__["tcp_health_check"] = tcp_health_check

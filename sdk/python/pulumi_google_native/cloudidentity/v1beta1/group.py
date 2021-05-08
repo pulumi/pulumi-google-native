@@ -16,6 +16,7 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  groups_id: pulumi.Input[str],
+                 initial_group_config: pulumi.Input[str],
                  additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class GroupArgs:
         :param pulumi.Input[str] parent: Required. Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups.
         """
         pulumi.set(__self__, "groups_id", groups_id)
+        pulumi.set(__self__, "initial_group_config", initial_group_config)
         if additional_group_keys is not None:
             pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         if description is not None:
@@ -57,6 +59,15 @@ class GroupArgs:
     @groups_id.setter
     def groups_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "groups_id", value)
+
+    @property
+    @pulumi.getter(name="initialGroupConfig")
+    def initial_group_config(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "initial_group_config")
+
+    @initial_group_config.setter
+    def initial_group_config(self, value: pulumi.Input[str]):
+        pulumi.set(self, "initial_group_config", value)
 
     @property
     @pulumi.getter(name="additionalGroupKeys")
@@ -154,6 +165,7 @@ class Group(pulumi.CustomResource):
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  groups_id: Optional[pulumi.Input[str]] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -200,6 +212,7 @@ class Group(pulumi.CustomResource):
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
                  group_key: Optional[pulumi.Input[pulumi.InputType['EntityKeyArgs']]] = None,
                  groups_id: Optional[pulumi.Input[str]] = None,
+                 initial_group_config: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -222,6 +235,9 @@ class Group(pulumi.CustomResource):
             if groups_id is None and not opts.urn:
                 raise TypeError("Missing required property 'groups_id'")
             __props__.__dict__["groups_id"] = groups_id
+            if initial_group_config is None and not opts.urn:
+                raise TypeError("Missing required property 'initial_group_config'")
+            __props__.__dict__["initial_group_config"] = initial_group_config
             __props__.__dict__["labels"] = labels
             __props__.__dict__["parent"] = parent
             __props__.__dict__["create_time"] = None

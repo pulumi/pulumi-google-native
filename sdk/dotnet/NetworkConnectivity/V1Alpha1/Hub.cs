@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("hubId")]
+        public Input<string>? HubId { get; set; }
+
         [Input("hubsId", required: true)]
         public Input<string> HubsId { get; set; } = null!;
 
@@ -143,6 +146,9 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// Time when the Hub was updated.

@@ -180,7 +180,8 @@ type regionAutoscalerArgs struct {
 	// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 	RecommendedSize *int `pulumi:"recommendedSize"`
 	// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Status information of existing scaling schedules.
 	ScalingScheduleStatus map[string]string `pulumi:"scalingScheduleStatus"`
 	// [Output Only] Server-defined URL for the resource.
@@ -220,7 +221,8 @@ type RegionAutoscalerArgs struct {
 	// [Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates the recommended MIG size even when the autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to an existing managed instance group or autoscaler did not generate its prediction.
 	RecommendedSize pulumi.IntPtrInput
 	// [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Status information of existing scaling schedules.
 	ScalingScheduleStatus pulumi.StringMapInput
 	// [Output Only] Server-defined URL for the resource.

@@ -140,6 +140,7 @@ func (DeploymentState) ElementType() reflect.Type {
 }
 
 type deploymentArgs struct {
+	CreatePolicy *string `pulumi:"createPolicy"`
 	// User provided default credential for the deployment.
 	Credential *Credential `pulumi:"credential"`
 	Deployment string      `pulumi:"deployment"`
@@ -160,6 +161,7 @@ type deploymentArgs struct {
 	Operation *Operation `pulumi:"operation"`
 	// List of outputs from the last manifest that deployed successfully.
 	Outputs []DeploymentOutputEntry `pulumi:"outputs"`
+	Preview *string                 `pulumi:"preview"`
 	Project string                  `pulumi:"project"`
 	// Server defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -173,6 +175,7 @@ type deploymentArgs struct {
 
 // The set of arguments for constructing a Deployment resource.
 type DeploymentArgs struct {
+	CreatePolicy pulumi.StringPtrInput
 	// User provided default credential for the deployment.
 	Credential CredentialPtrInput
 	Deployment pulumi.StringInput
@@ -193,6 +196,7 @@ type DeploymentArgs struct {
 	Operation OperationPtrInput
 	// List of outputs from the last manifest that deployed successfully.
 	Outputs DeploymentOutputEntryArrayInput
+	Preview pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Server defined URL for the resource.
 	SelfLink pulumi.StringPtrInput

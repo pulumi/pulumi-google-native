@@ -23,6 +23,7 @@ class LicenseArgs:
                  kind: Optional[pulumi.Input[str]] = None,
                  license_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input['LicenseResourceRequirementsArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None):
@@ -51,6 +52,8 @@ class LicenseArgs:
             pulumi.set(__self__, "license_code", license_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if resource_requirements is not None:
             pulumi.set(__self__, "resource_requirements", resource_requirements)
         if self_link is not None:
@@ -149,6 +152,15 @@ class LicenseArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="resourceRequirements")
     def resource_requirements(self) -> Optional[pulumi.Input['LicenseResourceRequirementsArgs']]:
         return pulumi.get(self, "resource_requirements")
@@ -195,6 +207,7 @@ class License(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None,
@@ -245,6 +258,7 @@ class License(pulumi.CustomResource):
                  license_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_requirements: Optional[pulumi.Input[pulumi.InputType['LicenseResourceRequirementsArgs']]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  transferable: Optional[pulumi.Input[bool]] = None,
@@ -272,6 +286,7 @@ class License(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["resource_requirements"] = resource_requirements
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["transferable"] = transferable

@@ -93,6 +93,7 @@ export class RegionNotificationEndpoint extends pulumi.CustomResource {
             inputs["notificationEndpoint"] = args ? args.notificationEndpoint : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
             inputs["creationTimestamp"] = undefined /*out*/;
@@ -144,6 +145,7 @@ export interface RegionNotificationEndpointArgs {
      * [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

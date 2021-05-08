@@ -171,6 +171,9 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("providersId", required: true)]
         public Input<string> ProvidersId { get; set; } = null!;
 
+        [Input("workloadIdentityPoolProviderId", required: true)]
+        public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
+
         [Input("workloadIdentityPoolsId", required: true)]
         public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;
 

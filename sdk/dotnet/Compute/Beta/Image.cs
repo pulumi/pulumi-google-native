@@ -300,6 +300,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("family")]
         public Input<string>? Family { get; set; }
 
+        [Input("forceCreate")]
+        public Input<string>? ForceCreate { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 
@@ -397,6 +400,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("rawDisk")]
         public Input<Inputs.ImageRawDiskArgs>? RawDisk { get; set; }
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// [Output Only] Reserved for future use.

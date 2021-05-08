@@ -153,6 +153,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("proxyHeader")]
         public Input<string>? ProxyHeader { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] Server-defined URL for the resource.
         /// </summary>

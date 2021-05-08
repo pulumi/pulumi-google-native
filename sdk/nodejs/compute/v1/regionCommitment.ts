@@ -128,6 +128,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             inputs["plan"] = args ? args.plan : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reservations"] = args ? args.reservations : undefined;
             inputs["resources"] = args ? args.resources : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -204,6 +205,7 @@ export interface RegionCommitmentArgs {
      * [Output Only] URL of the region where this commitment may be used.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * List of reservations in this commitment.
      */

@@ -16,11 +16,16 @@ class OrganizationEnvironmentKeystoreAliasArgs:
     def __init__(__self__, *,
                  aliases_id: pulumi.Input[str],
                  environments_id: pulumi.Input[str],
+                 format: pulumi.Input[str],
                  keystores_id: pulumi.Input[str],
                  organizations_id: pulumi.Input[str],
+                 alias: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
@@ -29,14 +34,23 @@ class OrganizationEnvironmentKeystoreAliasArgs:
         """
         pulumi.set(__self__, "aliases_id", aliases_id)
         pulumi.set(__self__, "environments_id", environments_id)
+        pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "keystores_id", keystores_id)
         pulumi.set(__self__, "organizations_id", organizations_id)
+        if alias is not None:
+            pulumi.set(__self__, "alias", alias)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if ignore_expiry_validation is not None:
+            pulumi.set(__self__, "ignore_expiry_validation", ignore_expiry_validation)
+        if ignore_newline_validation is not None:
+            pulumi.set(__self__, "ignore_newline_validation", ignore_newline_validation)
+        if password is not None:
+            pulumi.set(__self__, "password", password)
 
     @property
     @pulumi.getter(name="aliasesId")
@@ -57,6 +71,15 @@ class OrganizationEnvironmentKeystoreAliasArgs:
         pulumi.set(self, "environments_id", value)
 
     @property
+    @pulumi.getter
+    def format(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "format")
+
+    @format.setter
+    def format(self, value: pulumi.Input[str]):
+        pulumi.set(self, "format", value)
+
+    @property
     @pulumi.getter(name="keystoresId")
     def keystores_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "keystores_id")
@@ -73,6 +96,15 @@ class OrganizationEnvironmentKeystoreAliasArgs:
     @organizations_id.setter
     def organizations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def alias(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "alias")
+
+    @alias.setter
+    def alias(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "alias", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -110,19 +142,51 @@ class OrganizationEnvironmentKeystoreAliasArgs:
     def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "extensions", value)
 
+    @property
+    @pulumi.getter(name="ignoreExpiryValidation")
+    def ignore_expiry_validation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ignore_expiry_validation")
+
+    @ignore_expiry_validation.setter
+    def ignore_expiry_validation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_expiry_validation", value)
+
+    @property
+    @pulumi.getter(name="ignoreNewlineValidation")
+    def ignore_newline_validation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "ignore_newline_validation")
+
+    @ignore_newline_validation.setter
+    def ignore_newline_validation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ignore_newline_validation", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
 
 class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alias: Optional[pulumi.Input[str]] = None,
                  aliases_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
                  keystores_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
@@ -157,13 +221,18 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alias: Optional[pulumi.Input[str]] = None,
                  aliases_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  environments_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 format: Optional[pulumi.Input[str]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
                  keystores_id: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -176,6 +245,7 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvironmentKeystoreAliasArgs.__new__(OrganizationEnvironmentKeystoreAliasArgs)
 
+            __props__.__dict__["alias"] = alias
             if aliases_id is None and not opts.urn:
                 raise TypeError("Missing required property 'aliases_id'")
             __props__.__dict__["aliases_id"] = aliases_id
@@ -185,13 +255,18 @@ class OrganizationEnvironmentKeystoreAlias(pulumi.CustomResource):
                 raise TypeError("Missing required property 'environments_id'")
             __props__.__dict__["environments_id"] = environments_id
             __props__.__dict__["extensions"] = extensions
+            if format is None and not opts.urn:
+                raise TypeError("Missing required property 'format'")
+            __props__.__dict__["format"] = format
+            __props__.__dict__["ignore_expiry_validation"] = ignore_expiry_validation
+            __props__.__dict__["ignore_newline_validation"] = ignore_newline_validation
             if keystores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'keystores_id'")
             __props__.__dict__["keystores_id"] = keystores_id
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__.__dict__["organizations_id"] = organizations_id
-            __props__.__dict__["alias"] = None
+            __props__.__dict__["password"] = password
             __props__.__dict__["certs_info"] = None
             __props__.__dict__["type"] = None
         super(OrganizationEnvironmentKeystoreAlias, __self__).__init__(

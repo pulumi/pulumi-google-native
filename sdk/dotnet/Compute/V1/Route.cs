@@ -263,6 +263,9 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         [Input("route", required: true)]
         public Input<string> Route { get; set; } = null!;
 

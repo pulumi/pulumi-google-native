@@ -72,6 +72,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetArgs : Pulumi.ResourceArgs
     {
+        [Input("datasetId")]
+        public Input<string>? DatasetId { get; set; }
+
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
 

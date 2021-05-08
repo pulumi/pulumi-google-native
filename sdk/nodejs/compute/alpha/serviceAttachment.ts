@@ -141,6 +141,7 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pscServiceAttachmentId"] = args ? args.pscServiceAttachmentId : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
             inputs["targetService"] = args ? args.targetService : undefined;
@@ -239,6 +240,7 @@ export interface ServiceAttachmentArgs {
      * [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

@@ -94,6 +94,7 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["accessId"] = args ? args.accessId : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -125,4 +126,5 @@ export interface HmacKeyArgs {
     readonly accessId: pulumi.Input<string>;
     readonly projectId: pulumi.Input<string>;
     readonly serviceAccountEmail: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
 }

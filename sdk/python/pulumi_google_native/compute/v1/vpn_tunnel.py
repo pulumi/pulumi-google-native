@@ -29,6 +29,7 @@ class VpnTunnelArgs:
                  peer_gcp_gateway: Optional[pulumi.Input[str]] = None,
                  peer_ip: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
@@ -106,6 +107,8 @@ class VpnTunnelArgs:
             pulumi.set(__self__, "peer_ip", peer_ip)
         if remote_traffic_selector is not None:
             pulumi.set(__self__, "remote_traffic_selector", remote_traffic_selector)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if self_link is not None:
@@ -310,6 +313,15 @@ class VpnTunnelArgs:
         pulumi.set(self, "remote_traffic_selector", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def router(self) -> Optional[pulumi.Input[str]]:
         """
@@ -441,6 +453,7 @@ class VpnTunnel(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
@@ -533,6 +546,7 @@ class VpnTunnel(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  remote_traffic_selector: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None,
@@ -573,6 +587,7 @@ class VpnTunnel(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["remote_traffic_selector"] = remote_traffic_selector
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["router"] = router
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["shared_secret"] = shared_secret

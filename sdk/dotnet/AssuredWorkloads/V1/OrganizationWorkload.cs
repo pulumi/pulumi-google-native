@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
+        [Input("externalId")]
+        public Input<string>? ExternalId { get; set; }
+
         /// <summary>
         /// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
         /// </summary>

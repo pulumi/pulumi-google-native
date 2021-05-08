@@ -77,8 +77,9 @@ func (DatasetState) ElementType() reflect.Type {
 }
 
 type datasetArgs struct {
-	DatasetsId  string `pulumi:"datasetsId"`
-	LocationsId string `pulumi:"locationsId"`
+	DatasetId   *string `pulumi:"datasetId"`
+	DatasetsId  string  `pulumi:"datasetsId"`
+	LocationsId string  `pulumi:"locationsId"`
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -88,6 +89,7 @@ type datasetArgs struct {
 
 // The set of arguments for constructing a Dataset resource.
 type DatasetArgs struct {
+	DatasetId   pulumi.StringPtrInput
 	DatasetsId  pulumi.StringInput
 	LocationsId pulumi.StringInput
 	// Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`.

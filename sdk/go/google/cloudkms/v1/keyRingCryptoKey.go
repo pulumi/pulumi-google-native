@@ -40,6 +40,9 @@ func NewKeyRingCryptoKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.CryptoKeyId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
+	}
 	if args.CryptoKeysId == nil {
 		return nil, errors.New("invalid value for required argument 'CryptoKeysId'")
 	}
@@ -116,6 +119,7 @@ func (KeyRingCryptoKeyState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyArgs struct {
+	CryptoKeyId  string `pulumi:"cryptoKeyId"`
 	CryptoKeysId string `pulumi:"cryptoKeysId"`
 	KeyRingsId   string `pulumi:"keyRingsId"`
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
@@ -127,13 +131,15 @@ type keyRingCryptoKeyArgs struct {
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose *string `pulumi:"purpose"`
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-	RotationPeriod *string `pulumi:"rotationPeriod"`
+	RotationPeriod             *string `pulumi:"rotationPeriod"`
+	SkipInitialVersionCreation *string `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
 }
 
 // The set of arguments for constructing a KeyRingCryptoKey resource.
 type KeyRingCryptoKeyArgs struct {
+	CryptoKeyId  pulumi.StringInput
 	CryptoKeysId pulumi.StringInput
 	KeyRingsId   pulumi.StringInput
 	// Labels with user-defined metadata. For more information, see [Labeling Keys](https://cloud.google.com/kms/docs/labeling-keys).
@@ -145,7 +151,8 @@ type KeyRingCryptoKeyArgs struct {
 	// Immutable. The immutable purpose of this CryptoKey.
 	Purpose pulumi.StringPtrInput
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-	RotationPeriod pulumi.StringPtrInput
+	RotationPeriod             pulumi.StringPtrInput
+	SkipInitialVersionCreation pulumi.StringPtrInput
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
 }

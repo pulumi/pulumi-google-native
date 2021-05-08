@@ -46,6 +46,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
 	if args.InstancesId == nil {
 		return nil, errors.New("invalid value for required argument 'InstancesId'")
 	}
@@ -137,6 +140,7 @@ type instanceArgs struct {
 	Etag *string `pulumi:"etag"`
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares  []FileShareConfig `pulumi:"fileShares"`
+	InstanceId  string            `pulumi:"instanceId"`
 	InstancesId string            `pulumi:"instancesId"`
 	// Resource labels to represent user provided metadata.
 	Labels      map[string]string `pulumi:"labels"`
@@ -156,6 +160,7 @@ type InstanceArgs struct {
 	Etag pulumi.StringPtrInput
 	// File system shares on the instance. For this version, only a single file share is supported.
 	FileShares  FileShareConfigArrayInput
+	InstanceId  pulumi.StringInput
 	InstancesId pulumi.StringInput
 	// Resource labels to represent user provided metadata.
 	Labels      pulumi.StringMapInput

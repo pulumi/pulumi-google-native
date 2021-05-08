@@ -91,6 +91,9 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
+            }
             if ((!args || args.instancesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instancesId'");
             }
@@ -103,6 +106,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -150,6 +154,7 @@ export interface InstanceArgs {
      * File system shares on the instance. For this version, only a single file share is supported.
      */
     readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1beta1.FileShareConfigArgs>[]>;
+    readonly instanceId: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.

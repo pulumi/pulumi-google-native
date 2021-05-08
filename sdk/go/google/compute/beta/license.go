@@ -121,6 +121,7 @@ type licenseArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 	Name                 *string                      `pulumi:"name"`
 	Project              string                       `pulumi:"project"`
+	RequestId            *string                      `pulumi:"requestId"`
 	ResourceRequirements *LicenseResourceRequirements `pulumi:"resourceRequirements"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -144,6 +145,7 @@ type LicenseArgs struct {
 	// Name of the resource. The name must be 1-63 characters long and comply with RFC1035.
 	Name                 pulumi.StringPtrInput
 	Project              pulumi.StringInput
+	RequestId            pulumi.StringPtrInput
 	ResourceRequirements LicenseResourceRequirementsPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput

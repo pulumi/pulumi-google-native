@@ -38,6 +38,9 @@ func NewAgentEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
+	}
 	if args.EnvironmentsId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
 	}
@@ -111,6 +114,7 @@ type agentEnvironmentArgs struct {
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description    *string `pulumi:"description"`
+	EnvironmentId  string  `pulumi:"environmentId"`
 	EnvironmentsId string  `pulumi:"environmentsId"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment *GoogleCloudDialogflowV2Fulfillment `pulumi:"fulfillment"`
@@ -126,6 +130,7 @@ type AgentEnvironmentArgs struct {
 	AgentVersion pulumi.StringPtrInput
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description    pulumi.StringPtrInput
+	EnvironmentId  pulumi.StringInput
 	EnvironmentsId pulumi.StringInput
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentPtrInput

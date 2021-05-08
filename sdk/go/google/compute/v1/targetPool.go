@@ -192,7 +192,8 @@ type targetPoolArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// [Output Only] URL of the region where the target pool resides.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Session affinity option, must be one of the following values:
@@ -233,7 +234,8 @@ type TargetPoolArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the target pool resides.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Session affinity option, must be one of the following values:

@@ -24,6 +24,7 @@ class AgentFlowPageArgs:
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3EventHandlerArgs']]]] = None,
                  form: Optional[pulumi.Input['GoogleCloudDialogflowCxV3FormArgs']] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] = None):
@@ -50,6 +51,8 @@ class AgentFlowPageArgs:
             pulumi.set(__self__, "event_handlers", event_handlers)
         if form is not None:
             pulumi.set(__self__, "form", form)
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if transition_route_groups is not None:
@@ -151,6 +154,15 @@ class AgentFlowPageArgs:
         pulumi.set(self, "form", value)
 
     @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -198,6 +210,7 @@ class AgentFlowPage(pulumi.CustomResource):
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
                  flows_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FormArgs']]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pages_id: Optional[pulumi.Input[str]] = None,
@@ -248,6 +261,7 @@ class AgentFlowPage(pulumi.CustomResource):
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3EventHandlerArgs']]]]] = None,
                  flows_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3FormArgs']]] = None,
+                 language_code: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pages_id: Optional[pulumi.Input[str]] = None,
@@ -276,6 +290,7 @@ class AgentFlowPage(pulumi.CustomResource):
                 raise TypeError("Missing required property 'flows_id'")
             __props__.__dict__["flows_id"] = flows_id
             __props__.__dict__["form"] = form
+            __props__.__dict__["language_code"] = language_code
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id

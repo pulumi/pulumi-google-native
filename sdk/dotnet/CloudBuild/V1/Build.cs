@@ -252,6 +252,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("options")]
         public Input<Inputs.BuildOptionsArgs>? Options { get; set; }
 
+        [Input("projectId", required: true)]
+        public Input<string> ProjectId { get; set; } = null!;
+
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 

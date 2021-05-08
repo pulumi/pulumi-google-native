@@ -95,6 +95,7 @@ export class HistoryExecution extends pulumi.CustomResource {
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["outcome"] = args ? args.outcome : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["specification"] = args ? args.specification : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["testExecutionMatrixId"] = args ? args.testExecutionMatrixId : undefined;
@@ -141,6 +142,7 @@ export interface HistoryExecutionArgs {
      */
     readonly outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
     readonly projectId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
      */

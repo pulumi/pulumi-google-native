@@ -17,8 +17,10 @@ class FeatureArgs:
     def __init__(__self__, *,
                  features_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['CommonFeatureSpecArgs']] = None):
         """
         The set of arguments for constructing a Feature resource.
@@ -28,10 +30,14 @@ class FeatureArgs:
         """
         pulumi.set(__self__, "features_id", features_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if feature_id is not None:
+            pulumi.set(__self__, "feature_id", feature_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if membership_specs is not None:
             pulumi.set(__self__, "membership_specs", membership_specs)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
 
@@ -52,6 +58,15 @@ class FeatureArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="featureId")
+    def feature_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "feature_id")
+
+    @feature_id.setter
+    def feature_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "feature_id", value)
 
     @property
     @pulumi.getter
@@ -78,6 +93,15 @@ class FeatureArgs:
         pulumi.set(self, "membership_specs", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['CommonFeatureSpecArgs']]:
         """
@@ -95,10 +119,12 @@ class Feature(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 feature_id: Optional[pulumi.Input[str]] = None,
                  features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
         """
@@ -134,10 +160,12 @@ class Feature(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 feature_id: Optional[pulumi.Input[str]] = None,
                  features_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['CommonFeatureSpecArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -151,6 +179,7 @@ class Feature(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FeatureArgs.__new__(FeatureArgs)
 
+            __props__.__dict__["feature_id"] = feature_id
             if features_id is None and not opts.urn:
                 raise TypeError("Missing required property 'features_id'")
             __props__.__dict__["features_id"] = features_id
@@ -159,6 +188,7 @@ class Feature(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None

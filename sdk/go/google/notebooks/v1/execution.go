@@ -40,6 +40,9 @@ func NewExecution(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ExecutionId == nil {
+		return nil, errors.New("invalid value for required argument 'ExecutionId'")
+	}
 	if args.ExecutionsId == nil {
 		return nil, errors.New("invalid value for required argument 'ExecutionsId'")
 	}
@@ -115,6 +118,7 @@ func (ExecutionState) ElementType() reflect.Type {
 type executionArgs struct {
 	// A brief description of this execution.
 	Description *string `pulumi:"description"`
+	ExecutionId string  `pulumi:"executionId"`
 	// execute metadata including name, hardware spec, region, labels, etc.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
 	ExecutionsId      string             `pulumi:"executionsId"`
@@ -128,6 +132,7 @@ type executionArgs struct {
 type ExecutionArgs struct {
 	// A brief description of this execution.
 	Description pulumi.StringPtrInput
+	ExecutionId pulumi.StringInput
 	// execute metadata including name, hardware spec, region, labels, etc.
 	ExecutionTemplate ExecutionTemplatePtrInput
 	ExecutionsId      pulumi.StringInput

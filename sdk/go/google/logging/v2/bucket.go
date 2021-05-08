@@ -40,6 +40,9 @@ func NewBucket(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
+	}
 	if args.BucketsId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketsId'")
 	}
@@ -113,6 +116,7 @@ func (BucketState) ElementType() reflect.Type {
 }
 
 type bucketArgs struct {
+	BucketId  string `pulumi:"bucketId"`
 	BucketsId string `pulumi:"bucketsId"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
@@ -128,6 +132,7 @@ type bucketArgs struct {
 
 // The set of arguments for constructing a Bucket resource.
 type BucketArgs struct {
+	BucketId  pulumi.StringInput
 	BucketsId pulumi.StringInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput

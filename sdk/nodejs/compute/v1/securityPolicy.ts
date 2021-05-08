@@ -90,6 +90,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -140,6 +141,7 @@ export interface SecurityPolicyArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
      */

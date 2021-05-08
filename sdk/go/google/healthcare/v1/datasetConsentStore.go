@@ -32,6 +32,9 @@ func NewDatasetConsentStore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
+	}
 	if args.ConsentStoresId == nil {
 		return nil, errors.New("invalid value for required argument 'ConsentStoresId'")
 	}
@@ -92,6 +95,7 @@ func (DatasetConsentStoreState) ElementType() reflect.Type {
 }
 
 type datasetConsentStoreArgs struct {
+	ConsentStoreId  string `pulumi:"consentStoreId"`
 	ConsentStoresId string `pulumi:"consentStoresId"`
 	DatasetsId      string `pulumi:"datasetsId"`
 	// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.
@@ -108,6 +112,7 @@ type datasetConsentStoreArgs struct {
 
 // The set of arguments for constructing a DatasetConsentStore resource.
 type DatasetConsentStoreArgs struct {
+	ConsentStoreId  pulumi.StringInput
 	ConsentStoresId pulumi.StringInput
 	DatasetsId      pulumi.StringInput
 	// Optional. Default time to live for Consents created in this store. Must be at least 24 hours. Updating this field will not affect the expiration time of existing consents.

@@ -158,8 +158,9 @@ type httpsHealthCheckArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port    *int   `pulumi:"port"`
-	Project string `pulumi:"project"`
+	Port      *int    `pulumi:"port"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath *string `pulumi:"requestPath"`
 	// [Output Only] Server-defined URL for the resource.
@@ -192,8 +193,9 @@ type HttpsHealthCheckArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The TCP port number for the HTTPS health check request. The default value is 443.
-	Port    pulumi.IntPtrInput
-	Project pulumi.StringInput
+	Port      pulumi.IntPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// The request path of the HTTPS health check request. The default value is "/".
 	RequestPath pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.

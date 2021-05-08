@@ -225,6 +225,9 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        [Input("nodeId")]
+        public Input<string>? NodeId { get; set; }
+
         [Input("nodesId", required: true)]
         public Input<string> NodesId { get; set; } = null!;
 

@@ -15,13 +15,16 @@ class HmacKeyArgs:
     def __init__(__self__, *,
                  access_id: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 service_account_email: pulumi.Input[str]):
+                 service_account_email: pulumi.Input[str],
+                 user_project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a HmacKey resource.
         """
         pulumi.set(__self__, "access_id", access_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "service_account_email", service_account_email)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
 
     @property
     @pulumi.getter(name="accessId")
@@ -50,6 +53,15 @@ class HmacKeyArgs:
     def service_account_email(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_account_email", value)
 
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
+
 
 class HmacKey(pulumi.CustomResource):
     @overload
@@ -59,6 +71,7 @@ class HmacKey(pulumi.CustomResource):
                  access_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new HMAC key for the specified service account.
@@ -93,6 +106,7 @@ class HmacKey(pulumi.CustomResource):
                  access_id: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  service_account_email: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -114,6 +128,7 @@ class HmacKey(pulumi.CustomResource):
             if service_account_email is None and not opts.urn:
                 raise TypeError("Missing required property 'service_account_email'")
             __props__.__dict__["service_account_email"] = service_account_email
+            __props__.__dict__["user_project"] = user_project
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None

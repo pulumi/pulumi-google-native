@@ -136,6 +136,7 @@ type instanceTemplateArgs struct {
 	Project string  `pulumi:"project"`
 	// The instance properties for this instance template.
 	Properties *InstanceProperties `pulumi:"properties"`
+	RequestId  *string             `pulumi:"requestId"`
 	// [Output Only] The URL for this instance template. The server defines this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -164,6 +165,7 @@ type InstanceTemplateArgs struct {
 	Project pulumi.StringInput
 	// The instance properties for this instance template.
 	Properties InstancePropertiesPtrInput
+	RequestId  pulumi.StringPtrInput
 	// [Output Only] The URL for this instance template. The server defines this URL.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

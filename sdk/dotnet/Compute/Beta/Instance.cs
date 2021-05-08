@@ -534,6 +534,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// Specifies the reservations that this instance can consume from.
         /// </summary>
@@ -601,6 +604,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("shieldedVmIntegrityPolicy")]
         public Input<Inputs.ShieldedVmIntegrityPolicyArgs>? ShieldedVmIntegrityPolicy { get; set; }
+
+        [Input("sourceInstanceTemplate")]
+        public Input<string>? SourceInstanceTemplate { get; set; }
 
         /// <summary>
         /// Source machine image

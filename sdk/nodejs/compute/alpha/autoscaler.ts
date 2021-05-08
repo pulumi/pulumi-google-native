@@ -128,6 +128,7 @@ export class Autoscaler extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["recommendedSize"] = args ? args.recommendedSize : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["scalingScheduleStatus"] = args ? args.scalingScheduleStatus : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -198,6 +199,7 @@ export interface AutoscalerArgs {
      * [Output Only] URL of the region where the instance group resides (for autoscalers living in regional scope).
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Status information of existing scaling schedules.
      */

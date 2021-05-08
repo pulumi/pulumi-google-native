@@ -36,6 +36,9 @@ func NewAdminTopic(ctx *pulumi.Context,
 	if args.ProjectsId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectsId'")
 	}
+	if args.TopicId == nil {
+		return nil, errors.New("invalid value for required argument 'TopicId'")
+	}
 	if args.TopicsId == nil {
 		return nil, errors.New("invalid value for required argument 'TopicsId'")
 	}
@@ -91,6 +94,7 @@ type adminTopicArgs struct {
 	ProjectsId      string           `pulumi:"projectsId"`
 	// The settings for this topic's message retention.
 	RetentionConfig *RetentionConfig `pulumi:"retentionConfig"`
+	TopicId         string           `pulumi:"topicId"`
 	TopicsId        string           `pulumi:"topicsId"`
 }
 
@@ -104,6 +108,7 @@ type AdminTopicArgs struct {
 	ProjectsId      pulumi.StringInput
 	// The settings for this topic's message retention.
 	RetentionConfig RetentionConfigPtrInput
+	TopicId         pulumi.StringInput
 	TopicsId        pulumi.StringInput
 }
 

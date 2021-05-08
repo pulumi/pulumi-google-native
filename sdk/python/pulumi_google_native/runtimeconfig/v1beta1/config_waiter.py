@@ -23,6 +23,7 @@ class ConfigWaiterArgs:
                  error: Optional[pulumi.Input['StatusArgs']] = None,
                  failure: Optional[pulumi.Input['EndConditionArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input['EndConditionArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
@@ -48,6 +49,8 @@ class ConfigWaiterArgs:
             pulumi.set(__self__, "failure", failure)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if success is not None:
             pulumi.set(__self__, "success", success)
         if timeout is not None:
@@ -141,6 +144,15 @@ class ConfigWaiterArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def success(self) -> Optional[pulumi.Input['EndConditionArgs']]:
         """
@@ -177,6 +189,7 @@ class ConfigWaiter(pulumi.CustomResource):
                  failure: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  waiters_id: Optional[pulumi.Input[str]] = None,
@@ -225,6 +238,7 @@ class ConfigWaiter(pulumi.CustomResource):
                  failure: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  waiters_id: Optional[pulumi.Input[str]] = None,
@@ -251,6 +265,7 @@ class ConfigWaiter(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["success"] = success
             __props__.__dict__["timeout"] = timeout
             if waiters_id is None and not opts.urn:

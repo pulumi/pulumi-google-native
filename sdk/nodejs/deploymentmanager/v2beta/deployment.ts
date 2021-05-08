@@ -97,6 +97,7 @@ export class Deployment extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["createPolicy"] = args ? args.createPolicy : undefined;
             inputs["deployment"] = args ? args.deployment : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["fingerprint"] = args ? args.fingerprint : undefined;
@@ -106,6 +107,7 @@ export class Deployment extends pulumi.CustomResource {
             inputs["manifest"] = args ? args.manifest : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["operation"] = args ? args.operation : undefined;
+            inputs["preview"] = args ? args.preview : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["target"] = args ? args.target : undefined;
@@ -135,6 +137,7 @@ export class Deployment extends pulumi.CustomResource {
  * The set of arguments for constructing a Deployment resource.
  */
 export interface DeploymentArgs {
+    readonly createPolicy?: pulumi.Input<string>;
     readonly deployment: pulumi.Input<string>;
     /**
      * An optional user-provided description of the deployment.
@@ -165,6 +168,7 @@ export interface DeploymentArgs {
      * The Operation that most recently ran, or is currently running, on this deployment.
      */
     readonly operation?: pulumi.Input<inputs.deploymentmanager.v2beta.OperationArgs>;
+    readonly preview?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
     /**
      * Server defined URL for the resource.

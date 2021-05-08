@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }
 
+        [Input("useLegacyStack")]
+        public Input<string>? UseLegacyStack { get; set; }
+
         public ProjectArgs()
         {
         }

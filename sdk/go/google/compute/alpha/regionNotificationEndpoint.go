@@ -122,7 +122,8 @@ type regionNotificationEndpointArgs struct {
 	NotificationEndpoint string  `pulumi:"notificationEndpoint"`
 	Project              string  `pulumi:"project"`
 	// [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -144,7 +145,8 @@ type RegionNotificationEndpointArgs struct {
 	NotificationEndpoint pulumi.StringInput
 	Project              pulumi.StringInput
 	// [Output Only] URL of the region where the notification endpoint resides. This field applies only to the regional resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 }

@@ -96,6 +96,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class InstanceClusterArgs : Pulumi.ResourceArgs
     {
+        [Input("clusterId", required: true)]
+        public Input<string> ClusterId { get; set; } = null!;
+
         [Input("clustersId", required: true)]
         public Input<string> ClustersId { get; set; } = null!;
 

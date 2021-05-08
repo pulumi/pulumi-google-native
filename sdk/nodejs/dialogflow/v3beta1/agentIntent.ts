@@ -97,6 +97,7 @@ export class AgentIntent extends pulumi.CustomResource {
             inputs["intentsId"] = args ? args.intentsId : undefined;
             inputs["isFallback"] = args ? args.isFallback : undefined;
             inputs["labels"] = args ? args.labels : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
@@ -142,6 +143,7 @@ export interface AgentIntentArgs {
      * The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.

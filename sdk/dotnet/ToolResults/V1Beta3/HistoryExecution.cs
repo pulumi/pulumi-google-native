@@ -150,6 +150,9 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional
         /// </summary>

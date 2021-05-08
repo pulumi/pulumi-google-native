@@ -171,6 +171,9 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Input("certificateAuthoritiesId", required: true)]
         public Input<string> CertificateAuthoritiesId { get; set; } = null!;
 
+        [Input("certificateAuthorityId", required: true)]
+        public Input<string> CertificateAuthorityId { get; set; } = null!;
+
         /// <summary>
         /// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
         /// </summary>
@@ -224,6 +227,9 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.

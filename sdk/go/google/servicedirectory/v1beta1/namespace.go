@@ -31,6 +31,9 @@ func NewNamespace(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.NamespaceId == nil {
+		return nil, errors.New("invalid value for required argument 'NamespaceId'")
+	}
 	if args.NamespacesId == nil {
 		return nil, errors.New("invalid value for required argument 'NamespacesId'")
 	}
@@ -82,6 +85,7 @@ type namespaceArgs struct {
 	LocationsId string            `pulumi:"locationsId"`
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name         *string `pulumi:"name"`
+	NamespaceId  string  `pulumi:"namespaceId"`
 	NamespacesId string  `pulumi:"namespacesId"`
 	ProjectsId   string  `pulumi:"projectsId"`
 }
@@ -93,6 +97,7 @@ type NamespaceArgs struct {
 	LocationsId pulumi.StringInput
 	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
 	Name         pulumi.StringPtrInput
+	NamespaceId  pulumi.StringInput
 	NamespacesId pulumi.StringInput
 	ProjectsId   pulumi.StringInput
 }

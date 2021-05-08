@@ -164,6 +164,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["enableRbac"] = args ? args.enableRbac : undefined;
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -254,6 +255,7 @@ export interface InstanceArgs {
      * Option to enable Stackdriver Monitoring.
      */
     readonly enableStackdriverMonitoring?: pulumi.Input<boolean>;
+    readonly instanceId?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.

@@ -17,6 +17,7 @@ class RuntimeArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 runtime_id: pulumi.Input[str],
                  runtimes_id: pulumi.Input[str],
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
@@ -29,6 +30,7 @@ class RuntimeArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "runtime_id", runtime_id)
         pulumi.set(__self__, "runtimes_id", runtimes_id)
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
@@ -54,6 +56,15 @@ class RuntimeArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="runtimeId")
+    def runtime_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "runtime_id")
+
+    @runtime_id.setter
+    def runtime_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "runtime_id", value)
 
     @property
     @pulumi.getter(name="runtimesId")
@@ -109,6 +120,7 @@ class Runtime(pulumi.CustomResource):
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 runtime_id: Optional[pulumi.Input[str]] = None,
                  runtimes_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
@@ -149,6 +161,7 @@ class Runtime(pulumi.CustomResource):
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 runtime_id: Optional[pulumi.Input[str]] = None,
                  runtimes_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
@@ -171,6 +184,9 @@ class Runtime(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            if runtime_id is None and not opts.urn:
+                raise TypeError("Missing required property 'runtime_id'")
+            __props__.__dict__["runtime_id"] = runtime_id
             if runtimes_id is None and not opts.urn:
                 raise TypeError("Missing required property 'runtimes_id'")
             __props__.__dict__["runtimes_id"] = runtimes_id

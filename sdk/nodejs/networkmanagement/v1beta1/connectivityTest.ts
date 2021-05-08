@@ -101,6 +101,9 @@ export class ConnectivityTest extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.testId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'testId'");
+            }
             inputs["connectivityTestsId"] = args ? args.connectivityTestsId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["destination"] = args ? args.destination : undefined;
@@ -110,6 +113,7 @@ export class ConnectivityTest extends pulumi.CustomResource {
             inputs["protocol"] = args ? args.protocol : undefined;
             inputs["relatedProjects"] = args ? args.relatedProjects : undefined;
             inputs["source"] = args ? args.source : undefined;
+            inputs["testId"] = args ? args.testId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["probingDetails"] = undefined /*out*/;
@@ -170,4 +174,5 @@ export interface ConnectivityTestArgs {
      * Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
      */
     readonly source?: pulumi.Input<inputs.networkmanagement.v1beta1.EndpointArgs>;
+    readonly testId: pulumi.Input<string>;
 }

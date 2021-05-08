@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         [Input("changeId", required: true)]
         public Input<string> ChangeId { get; set; } = null!;
 
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         [Input("deletions")]
         private InputList<Inputs.ResourceRecordSetArgs>? _deletions;
 

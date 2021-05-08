@@ -56,6 +56,9 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
 	if args.InstancesId == nil {
 		return nil, errors.New("invalid value for required argument 'InstancesId'")
 	}
@@ -165,6 +168,7 @@ type instanceArgs struct {
 	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName *string `pulumi:"displayName"`
+	InstanceId  string  `pulumi:"instanceId"`
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages []InstanceMessage `pulumi:"instanceMessages"`
 	InstancesId      string            `pulumi:"instancesId"`
@@ -192,6 +196,7 @@ type InstanceArgs struct {
 	AuthorizedNetwork pulumi.StringPtrInput
 	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
 	DisplayName pulumi.StringPtrInput
+	InstanceId  pulumi.StringInput
 	// List of messages that describe the current state of the Memcached instance.
 	InstanceMessages InstanceMessageArrayInput
 	InstancesId      pulumi.StringInput

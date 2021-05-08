@@ -138,6 +138,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
 
     public sealed class DeploymentArgs : Pulumi.ResourceArgs
     {
+        [Input("createPolicy")]
+        public Input<string>? CreatePolicy { get; set; }
+
         /// <summary>
         /// User provided default credential for the deployment.
         /// </summary>
@@ -209,6 +212,9 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
             get => _outputs ?? (_outputs = new InputList<Inputs.DeploymentOutputEntryArgs>());
             set => _outputs = value;
         }
+
+        [Input("preview")]
+        public Input<string>? Preview { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

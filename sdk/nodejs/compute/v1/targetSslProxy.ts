@@ -95,6 +95,7 @@ export class TargetSslProxy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["sslCertificates"] = args ? args.sslCertificates : undefined;
@@ -147,6 +148,7 @@ export interface TargetSslProxyArgs {
      * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
      */
     readonly proxyHeader?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

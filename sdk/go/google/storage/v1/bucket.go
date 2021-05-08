@@ -260,10 +260,14 @@ type bucketArgs struct {
 	// The name of the bucket.
 	Name *string `pulumi:"name"`
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner   *BucketOwner `pulumi:"owner"`
-	Project string       `pulumi:"project"`
+	Owner                      *BucketOwner `pulumi:"owner"`
+	PredefinedAcl              *string      `pulumi:"predefinedAcl"`
+	PredefinedDefaultObjectAcl *string      `pulumi:"predefinedDefaultObjectAcl"`
+	Project                    string       `pulumi:"project"`
 	// The project number of the project the bucket belongs to.
-	ProjectNumber *string `pulumi:"projectNumber"`
+	ProjectNumber          *string `pulumi:"projectNumber"`
+	Projection             *string `pulumi:"projection"`
+	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy *BucketRetentionPolicy `pulumi:"retentionPolicy"`
 	// Reserved for future use.
@@ -275,7 +279,8 @@ type bucketArgs struct {
 	// The creation time of the bucket in RFC 3339 format.
 	TimeCreated *string `pulumi:"timeCreated"`
 	// The modification time of the bucket in RFC 3339 format.
-	Updated *string `pulumi:"updated"`
+	Updated     *string `pulumi:"updated"`
+	UserProject *string `pulumi:"userProject"`
 	// The bucket's versioning configuration.
 	Versioning *BucketVersioning `pulumi:"versioning"`
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
@@ -322,10 +327,14 @@ type BucketArgs struct {
 	// The name of the bucket.
 	Name pulumi.StringPtrInput
 	// The owner of the bucket. This is always the project team's owner group.
-	Owner   BucketOwnerPtrInput
-	Project pulumi.StringInput
+	Owner                      BucketOwnerPtrInput
+	PredefinedAcl              pulumi.StringPtrInput
+	PredefinedDefaultObjectAcl pulumi.StringPtrInput
+	Project                    pulumi.StringInput
 	// The project number of the project the bucket belongs to.
-	ProjectNumber pulumi.StringPtrInput
+	ProjectNumber          pulumi.StringPtrInput
+	Projection             pulumi.StringPtrInput
+	ProvisionalUserProject pulumi.StringPtrInput
 	// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
 	RetentionPolicy BucketRetentionPolicyPtrInput
 	// Reserved for future use.
@@ -337,7 +346,8 @@ type BucketArgs struct {
 	// The creation time of the bucket in RFC 3339 format.
 	TimeCreated pulumi.StringPtrInput
 	// The modification time of the bucket in RFC 3339 format.
-	Updated pulumi.StringPtrInput
+	Updated     pulumi.StringPtrInput
+	UserProject pulumi.StringPtrInput
 	// The bucket's versioning configuration.
 	Versioning BucketVersioningPtrInput
 	// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.

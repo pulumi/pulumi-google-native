@@ -13,6 +13,7 @@ __all__ = ['ApiArgs', 'Api']
 @pulumi.input_type
 class ApiArgs:
     def __init__(__self__, *,
+                 api_id: pulumi.Input[str],
                  apis_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -25,6 +26,7 @@ class ApiArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[str] managed_service: Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
         """
+        pulumi.set(__self__, "api_id", api_id)
         pulumi.set(__self__, "apis_id", apis_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -34,6 +36,15 @@ class ApiArgs:
             pulumi.set(__self__, "labels", labels)
         if managed_service is not None:
             pulumi.set(__self__, "managed_service", managed_service)
+
+    @property
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_id")
+
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
 
     @property
     @pulumi.getter(name="apisId")
@@ -104,6 +115,7 @@ class Api(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -144,6 +156,7 @@ class Api(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -162,6 +175,9 @@ class Api(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ApiArgs.__new__(ApiArgs)
 
+            if api_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_id'")
+            __props__.__dict__["api_id"] = api_id
             if apis_id is None and not opts.urn:
                 raise TypeError("Missing required property 'apis_id'")
             __props__.__dict__["apis_id"] = apis_id

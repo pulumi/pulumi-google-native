@@ -172,7 +172,8 @@ type instanceGroupArgs struct {
 	Network *string `pulumi:"network"`
 	Project string  `pulumi:"project"`
 	// [Output Only] The URL of the region where the instance group is located (for regional resources).
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] The URL for this instance group. The server generates this URL.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] The total number of instances in the instance group.
@@ -208,7 +209,8 @@ type InstanceGroupArgs struct {
 	Network pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] The URL of the region where the instance group is located (for regional resources).
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] The URL for this instance group. The server generates this URL.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] The total number of instances in the instance group.

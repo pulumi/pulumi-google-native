@@ -33,6 +33,7 @@ class ServiceAttachmentArgs:
                  nat_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  producer_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  psc_service_attachment_id: Optional[pulumi.Input['Uint128Args']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None):
         """
@@ -89,6 +90,8 @@ class ServiceAttachmentArgs:
             pulumi.set(__self__, "producer_forwarding_rule", producer_forwarding_rule)
         if psc_service_attachment_id is not None:
             pulumi.set(__self__, "psc_service_attachment_id", psc_service_attachment_id)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if target_service is not None:
@@ -305,6 +308,15 @@ class ServiceAttachmentArgs:
         pulumi.set(self, "psc_service_attachment_id", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -351,6 +363,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_service_attachment_id: Optional[pulumi.Input[pulumi.InputType['Uint128Args']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_attachment: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
@@ -420,6 +433,7 @@ class ServiceAttachment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  psc_service_attachment_id: Optional[pulumi.Input[pulumi.InputType['Uint128Args']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service_attachment: Optional[pulumi.Input[str]] = None,
                  target_service: Optional[pulumi.Input[str]] = None,
@@ -456,6 +470,7 @@ class ServiceAttachment(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             if service_attachment is None and not opts.urn:
                 raise TypeError("Missing required property 'service_attachment'")

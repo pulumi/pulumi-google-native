@@ -39,6 +39,7 @@ class RegionDiskArgs:
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -203,6 +204,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
         if replica_zones is not None:
             pulumi.set(__self__, "replica_zones", replica_zones)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if satisfies_pzs is not None:
@@ -541,6 +544,15 @@ class RegionDiskArgs:
     @replica_zones.setter
     def replica_zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "replica_zones", value)
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -898,6 +910,7 @@ class RegionDisk(pulumi.CustomResource):
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -1069,6 +1082,7 @@ class RegionDisk(pulumi.CustomResource):
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -1135,6 +1149,7 @@ class RegionDisk(pulumi.CustomResource):
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_zones"] = replica_zones
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link

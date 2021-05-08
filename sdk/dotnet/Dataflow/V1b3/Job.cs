@@ -375,6 +375,9 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("view")]
+        public Input<string>? View { get; set; }
+
         public JobArgs()
         {
         }

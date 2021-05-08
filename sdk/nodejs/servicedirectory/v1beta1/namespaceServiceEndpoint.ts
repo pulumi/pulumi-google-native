@@ -62,6 +62,9 @@ export class NamespaceServiceEndpoint extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.endpointId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'endpointId'");
+            }
             if ((!args || args.endpointsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'endpointsId'");
             }
@@ -78,6 +81,7 @@ export class NamespaceServiceEndpoint extends pulumi.CustomResource {
                 throw new Error("Missing required property 'servicesId'");
             }
             inputs["address"] = args ? args.address : undefined;
+            inputs["endpointId"] = args ? args.endpointId : undefined;
             inputs["endpointsId"] = args ? args.endpointsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
@@ -107,6 +111,7 @@ export interface NamespaceServiceEndpointArgs {
      * Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
      */
     readonly address?: pulumi.Input<string>;
+    readonly endpointId: pulumi.Input<string>;
     readonly endpointsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

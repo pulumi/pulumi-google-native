@@ -15,6 +15,7 @@ __all__ = ['KeyRingCryptoKeyArgs', 'KeyRingCryptoKey']
 @pulumi.input_type
 class KeyRingCryptoKeyArgs:
     def __init__(__self__, *,
+                 crypto_key_id: pulumi.Input[str],
                  crypto_keys_id: pulumi.Input[str],
                  key_rings_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
@@ -23,6 +24,7 @@ class KeyRingCryptoKeyArgs:
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         The set of arguments for constructing a KeyRingCryptoKey resource.
@@ -32,6 +34,7 @@ class KeyRingCryptoKeyArgs:
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
+        pulumi.set(__self__, "crypto_key_id", crypto_key_id)
         pulumi.set(__self__, "crypto_keys_id", crypto_keys_id)
         pulumi.set(__self__, "key_rings_id", key_rings_id)
         pulumi.set(__self__, "locations_id", locations_id)
@@ -44,8 +47,19 @@ class KeyRingCryptoKeyArgs:
             pulumi.set(__self__, "purpose", purpose)
         if rotation_period is not None:
             pulumi.set(__self__, "rotation_period", rotation_period)
+        if skip_initial_version_creation is not None:
+            pulumi.set(__self__, "skip_initial_version_creation", skip_initial_version_creation)
         if version_template is not None:
             pulumi.set(__self__, "version_template", version_template)
+
+    @property
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_key_id")
+
+    @crypto_key_id.setter
+    def crypto_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_id", value)
 
     @property
     @pulumi.getter(name="cryptoKeysId")
@@ -132,6 +146,15 @@ class KeyRingCryptoKeyArgs:
         pulumi.set(self, "rotation_period", value)
 
     @property
+    @pulumi.getter(name="skipInitialVersionCreation")
+    def skip_initial_version_creation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "skip_initial_version_creation")
+
+    @skip_initial_version_creation.setter
+    def skip_initial_version_creation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "skip_initial_version_creation", value)
+
+    @property
     @pulumi.getter(name="versionTemplate")
     def version_template(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']]:
         """
@@ -149,6 +172,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
                  crypto_keys_id: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -157,6 +181,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None):
         """
@@ -194,6 +219,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
                  crypto_keys_id: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -202,6 +228,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                  projects_id: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -215,6 +242,9 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingCryptoKeyArgs.__new__(KeyRingCryptoKeyArgs)
 
+            if crypto_key_id is None and not opts.urn:
+                raise TypeError("Missing required property 'crypto_key_id'")
+            __props__.__dict__["crypto_key_id"] = crypto_key_id
             if crypto_keys_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_keys_id'")
             __props__.__dict__["crypto_keys_id"] = crypto_keys_id
@@ -231,6 +261,7 @@ class KeyRingCryptoKey(pulumi.CustomResource):
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["rotation_period"] = rotation_period
+            __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
             __props__.__dict__["version_template"] = version_template
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

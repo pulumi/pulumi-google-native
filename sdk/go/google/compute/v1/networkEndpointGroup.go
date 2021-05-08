@@ -188,7 +188,8 @@ type networkEndpointGroupArgs struct {
 	NetworkEndpointType *string `pulumi:"networkEndpointType"`
 	Project             string  `pulumi:"project"`
 	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output only] Number of network endpoints in the network endpoint group.
@@ -228,7 +229,8 @@ type NetworkEndpointGroupArgs struct {
 	NetworkEndpointType pulumi.StringPtrInput
 	Project             pulumi.StringInput
 	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output only] Number of network endpoints in the network endpoint group.

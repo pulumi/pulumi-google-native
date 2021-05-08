@@ -19,8 +19,11 @@ class ObjectIamPolicyArgs:
                  object: pulumi.Input[str],
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIamPolicyBindingsItemArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ObjectIamPolicy resource.
@@ -36,10 +39,16 @@ class ObjectIamPolicyArgs:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if generation is not None:
+            pulumi.set(__self__, "generation", generation)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
+        if provisional_user_project is not None:
+            pulumi.set(__self__, "provisional_user_project", provisional_user_project)
         if resource_id is not None:
             pulumi.set(__self__, "resource_id", resource_id)
+        if user_project is not None:
+            pulumi.set(__self__, "user_project", user_project)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -87,6 +96,15 @@ class ObjectIamPolicyArgs:
 
     @property
     @pulumi.getter
+    def generation(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "generation")
+
+    @generation.setter
+    def generation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "generation", value)
+
+    @property
+    @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
         The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
@@ -96,6 +114,15 @@ class ObjectIamPolicyArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="provisionalUserProject")
+    def provisional_user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "provisional_user_project")
+
+    @provisional_user_project.setter
+    def provisional_user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "provisional_user_project", value)
 
     @property
     @pulumi.getter(name="resourceId")
@@ -108,6 +135,15 @@ class ObjectIamPolicyArgs:
     @resource_id.setter
     def resource_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "resource_id", value)
+
+    @property
+    @pulumi.getter(name="userProject")
+    def user_project(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "user_project")
+
+    @user_project.setter
+    def user_project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_project", value)
 
     @property
     @pulumi.getter
@@ -130,9 +166,12 @@ class ObjectIamPolicy(pulumi.CustomResource):
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectIamPolicyBindingsItemArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -173,9 +212,12 @@ class ObjectIamPolicy(pulumi.CustomResource):
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ObjectIamPolicyBindingsItemArgs']]]]] = None,
                  bucket: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 generation: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None,
+                 provisional_user_project: Optional[pulumi.Input[str]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
+                 user_project: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -194,11 +236,14 @@ class ObjectIamPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'bucket'")
             __props__.__dict__["bucket"] = bucket
             __props__.__dict__["etag"] = etag
+            __props__.__dict__["generation"] = generation
             __props__.__dict__["kind"] = kind
             if object is None and not opts.urn:
                 raise TypeError("Missing required property 'object'")
             __props__.__dict__["object"] = object
+            __props__.__dict__["provisional_user_project"] = provisional_user_project
             __props__.__dict__["resource_id"] = resource_id
+            __props__.__dict__["user_project"] = user_project
             __props__.__dict__["version"] = version
         super(ObjectIamPolicy, __self__).__init__(
             'google-native:storage/v1:ObjectIamPolicy',

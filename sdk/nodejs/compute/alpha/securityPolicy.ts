@@ -133,12 +133,14 @@ export class SecurityPolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["type"] = args ? args.type : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             inputs["adaptiveProtectionConfig"] = undefined /*out*/;
             inputs["associations"] = undefined /*out*/;
@@ -220,6 +222,7 @@ export interface SecurityPolicyArgs {
      */
     readonly parent?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */
@@ -241,4 +244,5 @@ export interface SecurityPolicyArgs {
      * The type indicates the intended use of the security policy. CLOUD_ARMOR policies apply to backend services. FIREWALL policies apply to organizations.
      */
     readonly type?: pulumi.Input<string>;
+    readonly validateOnly?: pulumi.Input<string>;
 }

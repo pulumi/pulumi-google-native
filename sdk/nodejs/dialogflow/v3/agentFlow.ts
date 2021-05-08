@@ -92,6 +92,7 @@ export class AgentFlow extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
             inputs["flowsId"] = args ? args.flowsId : undefined;
+            inputs["languageCode"] = args ? args.languageCode : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["nluSettings"] = args ? args.nluSettings : undefined;
@@ -132,6 +133,7 @@ export interface AgentFlowArgs {
      */
     readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
     readonly flowsId: pulumi.Input<string>;
+    readonly languageCode?: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**
      * The unique identifier of the flow. Format: `projects//locations//agents//flows/`.

@@ -75,6 +75,9 @@ export class AgentEnvironment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
+            }
             if ((!args || args.environmentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentsId'");
             }
@@ -86,6 +89,7 @@ export class AgentEnvironment extends pulumi.CustomResource {
             }
             inputs["agentVersion"] = args ? args.agentVersion : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["fulfillment"] = args ? args.fulfillment : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -122,6 +126,7 @@ export interface AgentEnvironmentArgs {
      * Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
     readonly description?: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     readonly environmentsId: pulumi.Input<string>;
     /**
      * Optional. The fulfillment settings to use for this environment.

@@ -151,7 +151,8 @@ type vpnGatewayArgs struct {
 	Network *string `pulumi:"network"`
 	Project string  `pulumi:"project"`
 	// [Output Only] URL of the region where the VPN gateway resides.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink   *string `pulumi:"selfLink"`
 	VpnGateway string  `pulumi:"vpnGateway"`
@@ -181,7 +182,8 @@ type VpnGatewayArgs struct {
 	Network pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URL of the region where the VPN gateway resides.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink   pulumi.StringPtrInput
 	VpnGateway pulumi.StringInput

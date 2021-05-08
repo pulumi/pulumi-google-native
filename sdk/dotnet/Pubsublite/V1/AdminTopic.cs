@@ -102,6 +102,9 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("retentionConfig")]
         public Input<Inputs.RetentionConfigArgs>? RetentionConfig { get; set; }
 
+        [Input("topicId", required: true)]
+        public Input<string> TopicId { get; set; } = null!;
+
         [Input("topicsId", required: true)]
         public Input<string> TopicsId { get; set; } = null!;
 

@@ -17,6 +17,7 @@ class ManagedZoneArgs:
     def __init__(__self__, *,
                  managed_zone: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -53,6 +54,8 @@ class ManagedZoneArgs:
         """
         pulumi.set(__self__, "managed_zone", managed_zone)
         pulumi.set(__self__, "project", project)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
         if description is not None:
@@ -103,6 +106,15 @@ class ManagedZoneArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
 
     @property
     @pulumi.getter(name="creationTime")
@@ -299,6 +311,7 @@ class ManagedZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -363,6 +376,7 @@ class ManagedZone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dns_name: Optional[pulumi.Input[str]] = None,
@@ -393,6 +407,7 @@ class ManagedZone(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedZoneArgs.__new__(ManagedZoneArgs)
 
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["creation_time"] = creation_time
             __props__.__dict__["description"] = description
             __props__.__dict__["dns_name"] = dns_name

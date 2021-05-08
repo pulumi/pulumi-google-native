@@ -117,6 +117,9 @@ namespace Pulumi.GoogleNative.Vision.V1
         [Input("productCategory")]
         public Input<string>? ProductCategory { get; set; }
 
+        [Input("productId")]
+        public Input<string>? ProductId { get; set; }
+
         [Input("productLabels")]
         private InputList<Inputs.KeyValueArgs>? _productLabels;
 

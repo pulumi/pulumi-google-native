@@ -72,6 +72,7 @@ export class History extends pulumi.CustomResource {
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["testPlatform"] = args ? args.testPlatform : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
@@ -103,6 +104,7 @@ export interface HistoryArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
      */

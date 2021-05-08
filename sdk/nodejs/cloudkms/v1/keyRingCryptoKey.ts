@@ -79,6 +79,9 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cryptoKeyId'");
+            }
             if ((!args || args.cryptoKeysId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'cryptoKeysId'");
             }
@@ -91,6 +94,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
             inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -99,6 +103,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["purpose"] = args ? args.purpose : undefined;
             inputs["rotationPeriod"] = args ? args.rotationPeriod : undefined;
+            inputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             inputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -124,6 +129,7 @@ export class KeyRingCryptoKey extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingCryptoKey resource.
  */
 export interface KeyRingCryptoKeyArgs {
+    readonly cryptoKeyId: pulumi.Input<string>;
     readonly cryptoKeysId: pulumi.Input<string>;
     readonly keyRingsId: pulumi.Input<string>;
     /**
@@ -144,6 +150,7 @@ export interface KeyRingCryptoKeyArgs {
      * next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
      */
     readonly rotationPeriod?: pulumi.Input<string>;
+    readonly skipInitialVersionCreation?: pulumi.Input<string>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */

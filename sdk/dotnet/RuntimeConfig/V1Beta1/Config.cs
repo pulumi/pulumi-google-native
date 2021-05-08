@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         public ConfigArgs()
         {
         }

@@ -36,6 +36,9 @@ func NewDatasetConsentStoreAttributeDefinition(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AttributeDefinitionId == nil {
+		return nil, errors.New("invalid value for required argument 'AttributeDefinitionId'")
+	}
 	if args.AttributeDefinitionsId == nil {
 		return nil, errors.New("invalid value for required argument 'AttributeDefinitionsId'")
 	}
@@ -109,6 +112,7 @@ func (DatasetConsentStoreAttributeDefinitionState) ElementType() reflect.Type {
 type datasetConsentStoreAttributeDefinitionArgs struct {
 	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues          []string `pulumi:"allowedValues"`
+	AttributeDefinitionId  string   `pulumi:"attributeDefinitionId"`
 	AttributeDefinitionsId string   `pulumi:"attributeDefinitionsId"`
 	// Required. The category of the attribute. The value of this field cannot be changed after creation.
 	Category *string `pulumi:"category"`
@@ -130,6 +134,7 @@ type datasetConsentStoreAttributeDefinitionArgs struct {
 type DatasetConsentStoreAttributeDefinitionArgs struct {
 	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues          pulumi.StringArrayInput
+	AttributeDefinitionId  pulumi.StringInput
 	AttributeDefinitionsId pulumi.StringInput
 	// Required. The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringPtrInput

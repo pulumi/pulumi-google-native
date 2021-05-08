@@ -198,6 +198,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// The request path of the HTTPS health check request. The default value is "/".
         /// </summary>

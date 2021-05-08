@@ -18,7 +18,8 @@ class ProductSetArgs:
                  product_sets_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 product_set_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ProductSet resource.
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
@@ -31,6 +32,8 @@ class ProductSetArgs:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if product_set_id is not None:
+            pulumi.set(__self__, "product_set_id", product_set_id)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -83,6 +86,15 @@ class ProductSetArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="productSetId")
+    def product_set_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "product_set_id")
+
+    @product_set_id.setter
+    def product_set_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_set_id", value)
+
 
 class ProductSet(pulumi.CustomResource):
     @overload
@@ -92,6 +104,7 @@ class ProductSet(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 product_set_id: Optional[pulumi.Input[str]] = None,
                  product_sets_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -130,6 +143,7 @@ class ProductSet(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 product_set_id: Optional[pulumi.Input[str]] = None,
                  product_sets_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -149,6 +163,7 @@ class ProductSet(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["product_set_id"] = product_set_id
             if product_sets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'product_sets_id'")
             __props__.__dict__["product_sets_id"] = product_sets_id

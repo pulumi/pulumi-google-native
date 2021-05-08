@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.File.V1
 
     public sealed class BackupArgs : Pulumi.ResourceArgs
     {
+        [Input("backupId", required: true)]
+        public Input<string> BackupId { get; set; } = null!;
+
         [Input("backupsId", required: true)]
         public Input<string> BackupsId { get; set; } = null!;
 

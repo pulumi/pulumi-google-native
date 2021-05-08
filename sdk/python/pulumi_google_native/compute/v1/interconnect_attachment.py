@@ -40,10 +40,12 @@ class InterconnectAttachmentArgs:
                  partner_asn: Optional[pulumi.Input[str]] = None,
                  partner_metadata: Optional[pulumi.Input['InterconnectAttachmentPartnerMetadataArgs']] = None,
                  private_interconnect_info: Optional[pulumi.Input['InterconnectAttachmentPrivateInfoArgs']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
@@ -153,6 +155,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "partner_metadata", partner_metadata)
         if private_interconnect_info is not None:
             pulumi.set(__self__, "private_interconnect_info", private_interconnect_info)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
         if self_link is not None:
@@ -161,6 +165,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "state", state)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if validate_only is not None:
+            pulumi.set(__self__, "validate_only", validate_only)
         if vlan_tag8021q is not None:
             pulumi.set(__self__, "vlan_tag8021q", vlan_tag8021q)
 
@@ -480,6 +486,15 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "private_interconnect_info", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def router(self) -> Optional[pulumi.Input[str]]:
         """
@@ -537,6 +552,15 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="validateOnly")
+    def validate_only(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate_only")
+
+    @validate_only.setter
+    def validate_only(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate_only", value)
+
+    @property
     @pulumi.getter(name="vlanTag8021q")
     def vlan_tag8021q(self) -> Optional[pulumi.Input[int]]:
         """
@@ -579,10 +603,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                  private_interconnect_info: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInfoArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -698,10 +724,12 @@ class InterconnectAttachment(pulumi.CustomResource):
                  private_interconnect_info: Optional[pulumi.Input[pulumi.InputType['InterconnectAttachmentPrivateInfoArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -746,10 +774,12 @@ class InterconnectAttachment(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["router"] = router
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["state"] = state
             __props__.__dict__["type"] = type
+            __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
         super(InterconnectAttachment, __self__).__init__(
             'google-native:compute/v1:InterconnectAttachment',

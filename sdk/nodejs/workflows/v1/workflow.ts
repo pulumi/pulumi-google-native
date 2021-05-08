@@ -92,6 +92,9 @@ export class Workflow extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.workflowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowId'");
+            }
             if ((!args || args.workflowsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workflowsId'");
             }
@@ -102,6 +105,7 @@ export class Workflow extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["sourceContents"] = args ? args.sourceContents : undefined;
+            inputs["workflowId"] = args ? args.workflowId : undefined;
             inputs["workflowsId"] = args ? args.workflowsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["revisionCreateTime"] = undefined /*out*/;
@@ -153,5 +157,6 @@ export interface WorkflowArgs {
      * Workflow code to be executed. The size limit is 128KB.
      */
     readonly sourceContents?: pulumi.Input<string>;
+    readonly workflowId: pulumi.Input<string>;
     readonly workflowsId: pulumi.Input<string>;
 }

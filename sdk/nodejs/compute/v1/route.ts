@@ -141,6 +141,7 @@ export class Route extends pulumi.CustomResource {
             inputs["nextHopVpnTunnel"] = args ? args.nextHopVpnTunnel : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["route"] = args ? args.route : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -240,6 +241,7 @@ export interface RouteArgs {
      */
     readonly priority?: pulumi.Input<number>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     readonly route: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined fully-qualified URL for this resource.

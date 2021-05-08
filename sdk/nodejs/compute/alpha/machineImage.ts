@@ -121,6 +121,9 @@ export class MachineImage extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            if ((!args || args.sourceInstance === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceInstance'");
+            }
             inputs["creationTimestamp"] = args ? args.creationTimestamp : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["guestFlush"] = args ? args.guestFlush : undefined;
@@ -130,6 +133,7 @@ export class MachineImage extends pulumi.CustomResource {
             inputs["machineImageEncryptionKey"] = args ? args.machineImageEncryptionKey : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["satisfiesPzs"] = args ? args.satisfiesPzs : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
@@ -203,6 +207,7 @@ export interface MachineImageArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Reserved for future use.
      */
@@ -224,7 +229,7 @@ export interface MachineImageArgs {
      * - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance 
      * - projects/project/zones/zone/instances/instance
      */
-    readonly sourceInstance?: pulumi.Input<string>;
+    readonly sourceInstance: pulumi.Input<string>;
     /**
      * [Output Only] Properties of source instance.
      */

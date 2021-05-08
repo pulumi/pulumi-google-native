@@ -91,6 +91,9 @@ export class ApiConfig extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.apiConfigId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiConfigId'");
+            }
             if ((!args || args.apisId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apisId'");
             }
@@ -103,6 +106,7 @@ export class ApiConfig extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
             inputs["apisId"] = args ? args.apisId : undefined;
             inputs["configsId"] = args ? args.configsId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -142,6 +146,7 @@ export class ApiConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a ApiConfig resource.
  */
 export interface ApiConfigArgs {
+    readonly apiConfigId: pulumi.Input<string>;
     readonly apisId: pulumi.Input<string>;
     readonly configsId: pulumi.Input<string>;
     /**

@@ -13,6 +13,7 @@ __all__ = ['NamespaceServiceEndpointArgs', 'NamespaceServiceEndpoint']
 @pulumi.input_type
 class NamespaceServiceEndpointArgs:
     def __init__(__self__, *,
+                 endpoint_id: pulumi.Input[str],
                  endpoints_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  namespaces_id: pulumi.Input[str],
@@ -29,6 +30,7 @@ class NamespaceServiceEndpointArgs:
         :param pulumi.Input[str] name: Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
         :param pulumi.Input[int] port: Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
+        pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "endpoints_id", endpoints_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "namespaces_id", namespaces_id)
@@ -42,6 +44,15 @@ class NamespaceServiceEndpointArgs:
             pulumi.set(__self__, "name", name)
         if port is not None:
             pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="endpointId")
+    def endpoint_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "endpoint_id")
+
+    @endpoint_id.setter
+    def endpoint_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "endpoint_id", value)
 
     @property
     @pulumi.getter(name="endpointsId")
@@ -144,6 +155,7 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 endpoint_id: Optional[pulumi.Input[str]] = None,
                  endpoints_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -188,6 +200,7 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  address: Optional[pulumi.Input[str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 endpoint_id: Optional[pulumi.Input[str]] = None,
                  endpoints_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -209,6 +222,9 @@ class NamespaceServiceEndpoint(pulumi.CustomResource):
 
             __props__.__dict__["address"] = address
             __props__.__dict__["annotations"] = annotations
+            if endpoint_id is None and not opts.urn:
+                raise TypeError("Missing required property 'endpoint_id'")
+            __props__.__dict__["endpoint_id"] = endpoint_id
             if endpoints_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoints_id'")
             __props__.__dict__["endpoints_id"] = endpoints_id

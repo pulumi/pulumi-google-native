@@ -17,6 +17,7 @@ class ServiceArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
                  services_id: pulumi.Input[str],
                  hive_metastore_config: Optional[pulumi.Input['HiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -26,6 +27,7 @@ class ServiceArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Service resource.
@@ -41,6 +43,7 @@ class ServiceArgs:
         """
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "services_id", services_id)
         if hive_metastore_config is not None:
             pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
@@ -58,6 +61,8 @@ class ServiceArgs:
             pulumi.set(__self__, "port", port)
         if release_channel is not None:
             pulumi.set(__self__, "release_channel", release_channel)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
 
@@ -78,6 +83,15 @@ class ServiceArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
+
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="servicesId")
@@ -185,6 +199,15 @@ class ServiceArgs:
         pulumi.set(self, "release_channel", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
@@ -212,6 +235,8 @@ class Service(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -264,6 +289,8 @@ class Service(pulumi.CustomResource):
                  port: Optional[pulumi.Input[int]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  services_id: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -292,6 +319,10 @@ class Service(pulumi.CustomResource):
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["release_channel"] = release_channel
+            __props__.__dict__["request_id"] = request_id
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
             if services_id is None and not opts.urn:
                 raise TypeError("Missing required property 'services_id'")
             __props__.__dict__["services_id"] = services_id

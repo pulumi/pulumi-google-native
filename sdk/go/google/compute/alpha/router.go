@@ -171,8 +171,9 @@ type routerArgs struct {
 	Network *string `pulumi:"network"`
 	Project string  `pulumi:"project"`
 	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
-	Router string `pulumi:"router"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
+	Router    string  `pulumi:"router"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -206,8 +207,9 @@ type RouterArgs struct {
 	Network pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// [Output Only] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
-	Router pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
+	Router    pulumi.StringInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

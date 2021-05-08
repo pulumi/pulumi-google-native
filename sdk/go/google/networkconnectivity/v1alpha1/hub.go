@@ -114,12 +114,14 @@ type hubArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Short description of the hub resource.
 	Description *string `pulumi:"description"`
+	HubId       *string `pulumi:"hubId"`
 	HubsId      string  `pulumi:"hubsId"`
 	// User-defined labels.
 	Labels map[string]string `pulumi:"labels"`
 	// Immutable. The name of a Hub resource.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
 	// Time when the Hub was updated.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -130,12 +132,14 @@ type HubArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// Short description of the hub resource.
 	Description pulumi.StringPtrInput
+	HubId       pulumi.StringPtrInput
 	HubsId      pulumi.StringInput
 	// User-defined labels.
 	Labels pulumi.StringMapInput
 	// Immutable. The name of a Hub resource.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 	// Time when the Hub was updated.
 	UpdateTime pulumi.StringPtrInput
 }

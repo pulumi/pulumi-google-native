@@ -105,6 +105,9 @@ namespace Pulumi.GoogleNative.DNS.V1
         [Input("alternativeNameServerConfig")]
         public Input<Inputs.PolicyAlternativeNameServerConfigArgs>? AlternativeNameServerConfig { get; set; }
 
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         /// <summary>
         /// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
         /// </summary>

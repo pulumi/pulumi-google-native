@@ -194,6 +194,7 @@ type nodeArgs struct {
 	LocationsId string            `pulumi:"locationsId"`
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
+	NodeId  *string `pulumi:"nodeId"`
 	NodesId string  `pulumi:"nodesId"`
 	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
 	Port       *string `pulumi:"port"`
@@ -223,6 +224,7 @@ type NodeArgs struct {
 	LocationsId pulumi.StringInput
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput
+	NodeId  pulumi.StringPtrInput
 	NodesId pulumi.StringInput
 	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
 	Port       pulumi.StringPtrInput

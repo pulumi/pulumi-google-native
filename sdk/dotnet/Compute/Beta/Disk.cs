@@ -509,6 +509,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
             set => _replicaZones = value;
         }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 

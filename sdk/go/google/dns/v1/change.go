@@ -99,8 +99,9 @@ func (ChangeState) ElementType() reflect.Type {
 
 type changeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions []ResourceRecordSet `pulumi:"additions"`
-	ChangeId  string              `pulumi:"changeId"`
+	Additions         []ResourceRecordSet `pulumi:"additions"`
+	ChangeId          string              `pulumi:"changeId"`
+	ClientOperationId *string             `pulumi:"clientOperationId"`
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions []ResourceRecordSet `pulumi:"deletions"`
 	// Unique identifier for the resource; defined by the server (output only).
@@ -119,8 +120,9 @@ type changeArgs struct {
 // The set of arguments for constructing a Change resource.
 type ChangeArgs struct {
 	// Which ResourceRecordSets to add?
-	Additions ResourceRecordSetArrayInput
-	ChangeId  pulumi.StringInput
+	Additions         ResourceRecordSetArrayInput
+	ChangeId          pulumi.StringInput
+	ClientOperationId pulumi.StringPtrInput
 	// Which ResourceRecordSets to remove? Must match existing data exactly.
 	Deletions ResourceRecordSetArrayInput
 	// Unique identifier for the resource; defined by the server (output only).

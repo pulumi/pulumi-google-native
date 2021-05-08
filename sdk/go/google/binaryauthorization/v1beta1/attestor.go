@@ -32,6 +32,9 @@ func NewAttestor(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AttestorId == nil {
+		return nil, errors.New("invalid value for required argument 'AttestorId'")
+	}
 	if args.AttestorsId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorsId'")
 	}
@@ -86,6 +89,7 @@ func (AttestorState) ElementType() reflect.Type {
 }
 
 type attestorArgs struct {
+	AttestorId  string `pulumi:"attestorId"`
 	AttestorsId string `pulumi:"attestorsId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
@@ -98,6 +102,7 @@ type attestorArgs struct {
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
+	AttestorId  pulumi.StringInput
 	AttestorsId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput

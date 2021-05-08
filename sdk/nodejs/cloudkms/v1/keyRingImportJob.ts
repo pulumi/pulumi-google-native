@@ -87,6 +87,9 @@ export class KeyRingImportJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.importJobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'importJobId'");
+            }
             if ((!args || args.importJobsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importJobsId'");
             }
@@ -99,6 +102,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["importJobId"] = args ? args.importJobId : undefined;
             inputs["importJobsId"] = args ? args.importJobsId : undefined;
             inputs["importMethod"] = args ? args.importMethod : undefined;
             inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
@@ -136,6 +140,7 @@ export class KeyRingImportJob extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingImportJob resource.
  */
 export interface KeyRingImportJobArgs {
+    readonly importJobId: pulumi.Input<string>;
     readonly importJobsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The wrapping method to be used for incoming key material.

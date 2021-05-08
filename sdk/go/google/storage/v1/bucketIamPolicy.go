@@ -95,9 +95,11 @@ type bucketIamPolicyArgs struct {
 	// HTTP 1.1  Entity tag for the policy.
 	Etag *string `pulumi:"etag"`
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-	Kind *string `pulumi:"kind"`
+	Kind                   *string `pulumi:"kind"`
+	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
-	ResourceId *string `pulumi:"resourceId"`
+	ResourceId  *string `pulumi:"resourceId"`
+	UserProject *string `pulumi:"userProject"`
 	// The IAM policy format version.
 	Version *int `pulumi:"version"`
 }
@@ -110,9 +112,11 @@ type BucketIamPolicyArgs struct {
 	// HTTP 1.1  Entity tag for the policy.
 	Etag pulumi.StringPtrInput
 	// The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
-	Kind pulumi.StringPtrInput
+	Kind                   pulumi.StringPtrInput
+	ProvisionalUserProject pulumi.StringPtrInput
 	// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
-	ResourceId pulumi.StringPtrInput
+	ResourceId  pulumi.StringPtrInput
+	UserProject pulumi.StringPtrInput
 	// The IAM policy format version.
 	Version pulumi.IntPtrInput
 }

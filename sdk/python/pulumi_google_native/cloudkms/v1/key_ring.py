@@ -13,15 +13,26 @@ __all__ = ['KeyRingArgs', 'KeyRing']
 @pulumi.input_type
 class KeyRingArgs:
     def __init__(__self__, *,
+                 key_ring_id: pulumi.Input[str],
                  key_rings_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a KeyRing resource.
         """
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
         pulumi.set(__self__, "key_rings_id", key_rings_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+
+    @property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_ring_id")
+
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring_id", value)
 
     @property
     @pulumi.getter(name="keyRingsId")
@@ -56,6 +67,7 @@ class KeyRing(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -90,6 +102,7 @@ class KeyRing(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
                  key_rings_id: Optional[pulumi.Input[str]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -105,6 +118,9 @@ class KeyRing(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingArgs.__new__(KeyRingArgs)
 
+            if key_ring_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_ring_id'")
+            __props__.__dict__["key_ring_id"] = key_ring_id
             if key_rings_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_rings_id'")
             __props__.__dict__["key_rings_id"] = key_rings_id

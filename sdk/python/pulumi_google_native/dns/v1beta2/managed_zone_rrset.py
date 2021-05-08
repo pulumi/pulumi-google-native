@@ -17,6 +17,7 @@ class ManagedZoneRrsetArgs:
                  name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  type: pulumi.Input[str],
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  signature_rrdatas: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,6 +34,8 @@ class ManagedZoneRrsetArgs:
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "type", type)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
         if rrdatas is not None:
@@ -85,6 +88,15 @@ class ManagedZoneRrsetArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
+
+    @property
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "kind")
@@ -135,6 +147,7 @@ class ManagedZoneRrset(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -179,6 +192,7 @@ class ManagedZoneRrset(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
                  managed_zone: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -199,6 +213,7 @@ class ManagedZoneRrset(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ManagedZoneRrsetArgs.__new__(ManagedZoneRrsetArgs)
 
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["kind"] = kind
             if managed_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'managed_zone'")

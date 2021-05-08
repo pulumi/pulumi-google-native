@@ -33,6 +33,7 @@ class RouteArgs:
                  next_hop_peering: Optional[pulumi.Input[str]] = None,
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  warnings: Optional[pulumi.Input[Sequence[pulumi.Input['RouteWarningsItemArgs']]]] = None):
@@ -96,6 +97,8 @@ class RouteArgs:
             pulumi.set(__self__, "next_hop_vpn_tunnel", next_hop_vpn_tunnel)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if tags is not None:
@@ -318,6 +321,15 @@ class RouteArgs:
         pulumi.set(self, "priority", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -376,6 +388,7 @@ class Route(pulumi.CustomResource):
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  route: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -451,6 +464,7 @@ class Route(pulumi.CustomResource):
                  next_hop_vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  route: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -486,6 +500,7 @@ class Route(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["request_id"] = request_id
             if route is None and not opts.urn:
                 raise TypeError("Missing required property 'route'")
             __props__.__dict__["route"] = route

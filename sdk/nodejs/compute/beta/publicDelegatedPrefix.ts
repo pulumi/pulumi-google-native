@@ -119,6 +119,7 @@ export class PublicDelegatedPrefix extends pulumi.CustomResource {
             inputs["publicDelegatedPrefix"] = args ? args.publicDelegatedPrefix : undefined;
             inputs["publicDelegatedSubPrefixs"] = args ? args.publicDelegatedSubPrefixs : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -194,6 +195,7 @@ export interface PublicDelegatedPrefixArgs {
      * [Output Only] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

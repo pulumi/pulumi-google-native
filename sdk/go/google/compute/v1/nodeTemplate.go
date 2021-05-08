@@ -192,7 +192,8 @@ type nodeTemplateArgs struct {
 	NodeTypeFlexibility *NodeTemplateNodeTypeFlexibility `pulumi:"nodeTypeFlexibility"`
 	Project             string                           `pulumi:"project"`
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// Sets the binding properties for the physical server. Valid values include:
@@ -234,7 +235,8 @@ type NodeTemplateArgs struct {
 	NodeTypeFlexibility NodeTemplateNodeTypeFlexibilityPtrInput
 	Project             pulumi.StringInput
 	// [Output Only] The name of the region where the node template resides, such as us-central1.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// Sets the binding properties for the physical server. Valid values include:

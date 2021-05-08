@@ -108,6 +108,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class KeyRingCryptoKeyArgs : Pulumi.ResourceArgs
     {
+        [Input("cryptoKeyId", required: true)]
+        public Input<string> CryptoKeyId { get; set; } = null!;
+
         [Input("cryptoKeysId", required: true)]
         public Input<string> CryptoKeysId { get; set; } = null!;
 
@@ -149,6 +152,9 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         [Input("rotationPeriod")]
         public Input<string>? RotationPeriod { get; set; }
+
+        [Input("skipInitialVersionCreation")]
+        public Input<string>? SkipInitialVersionCreation { get; set; }
 
         /// <summary>
         /// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

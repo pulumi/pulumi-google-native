@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class InstanceAppProfileArgs : Pulumi.ResourceArgs
     {
+        [Input("appProfileId", required: true)]
+        public Input<string> AppProfileId { get; set; } = null!;
+
         [Input("appProfilesId", required: true)]
         public Input<string> AppProfilesId { get; set; } = null!;
 
@@ -104,6 +107,9 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        [Input("ignoreWarnings")]
+        public Input<string>? IgnoreWarnings { get; set; }
 
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;

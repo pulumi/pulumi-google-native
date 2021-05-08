@@ -62,6 +62,9 @@ export class DatasetConsentStore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentStoreId'");
+            }
             if ((!args || args.consentStoresId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoresId'");
             }
@@ -74,6 +77,7 @@ export class DatasetConsentStore extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["consentStoresId"] = args ? args.consentStoresId : undefined;
             inputs["datasetsId"] = args ? args.datasetsId : undefined;
             inputs["defaultConsentTtl"] = args ? args.defaultConsentTtl : undefined;
@@ -99,6 +103,7 @@ export class DatasetConsentStore extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetConsentStore resource.
  */
 export interface DatasetConsentStoreArgs {
+    readonly consentStoreId: pulumi.Input<string>;
     readonly consentStoresId: pulumi.Input<string>;
     readonly datasetsId: pulumi.Input<string>;
     /**

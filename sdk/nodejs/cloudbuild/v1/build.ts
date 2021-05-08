@@ -78,7 +78,7 @@ export class Build extends pulumi.CustomResource {
     /**
      * ID of the project.
      */
-    public /*out*/ readonly projectId!: pulumi.Output<string>;
+    public readonly projectId!: pulumi.Output<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
      */
@@ -153,6 +153,9 @@ export class Build extends pulumi.CustomResource {
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
+            if ((!args || args.projectId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'projectId'");
+            }
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
@@ -163,6 +166,7 @@ export class Build extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["logsBucket"] = args ? args.logsBucket : undefined;
             inputs["options"] = args ? args.options : undefined;
+            inputs["projectId"] = args ? args.projectId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["queueTtl"] = args ? args.queueTtl : undefined;
             inputs["secrets"] = args ? args.secrets : undefined;
@@ -177,7 +181,6 @@ export class Build extends pulumi.CustomResource {
             inputs["finishTime"] = undefined /*out*/;
             inputs["logUrl"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
             inputs["results"] = undefined /*out*/;
             inputs["sourceProvenance"] = undefined /*out*/;
             inputs["startTime"] = undefined /*out*/;
@@ -244,6 +247,7 @@ export interface BuildArgs {
      * Special options for this build.
      */
     readonly options?: pulumi.Input<inputs.cloudbuild.v1.BuildOptionsArgs>;
+    readonly projectId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     /**
      * TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

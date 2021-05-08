@@ -79,6 +79,7 @@ export class Reservation extends pulumi.CustomResource {
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["reservationId"] = args ? args.reservationId : undefined;
             inputs["reservationsId"] = args ? args.reservationsId : undefined;
             inputs["slotCapacity"] = args ? args.slotCapacity : undefined;
             inputs["creationTime"] = undefined /*out*/;
@@ -111,6 +112,7 @@ export interface ReservationArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly reservationId?: pulumi.Input<string>;
     readonly reservationsId: pulumi.Input<string>;
     /**
      * Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.

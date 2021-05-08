@@ -22,6 +22,7 @@ class ProductArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_category: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
                  product_labels: Optional[pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]]] = None):
         """
         The set of arguments for constructing a Product resource.
@@ -42,6 +43,8 @@ class ProductArgs:
             pulumi.set(__self__, "name", name)
         if product_category is not None:
             pulumi.set(__self__, "product_category", product_category)
+        if product_id is not None:
+            pulumi.set(__self__, "product_id", product_id)
         if product_labels is not None:
             pulumi.set(__self__, "product_labels", product_labels)
 
@@ -121,6 +124,15 @@ class ProductArgs:
         pulumi.set(self, "product_category", value)
 
     @property
+    @pulumi.getter(name="productId")
+    def product_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "product_id")
+
+    @product_id.setter
+    def product_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "product_id", value)
+
+    @property
     @pulumi.getter(name="productLabels")
     def product_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyValueArgs']]]]:
         """
@@ -143,6 +155,7 @@ class Product(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_category: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
                  product_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyValueArgs']]]]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -187,6 +200,7 @@ class Product(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_category: Optional[pulumi.Input[str]] = None,
+                 product_id: Optional[pulumi.Input[str]] = None,
                  product_labels: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KeyValueArgs']]]]] = None,
                  products_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
@@ -209,6 +223,7 @@ class Product(pulumi.CustomResource):
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["name"] = name
             __props__.__dict__["product_category"] = product_category
+            __props__.__dict__["product_id"] = product_id
             __props__.__dict__["product_labels"] = product_labels
             if products_id is None and not opts.urn:
                 raise TypeError("Missing required property 'products_id'")

@@ -103,6 +103,7 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig *PolicyAlternativeNameServerConfig `pulumi:"alternativeNameServerConfig"`
+	ClientOperationId           *string                            `pulumi:"clientOperationId"`
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description *string `pulumi:"description"`
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.
@@ -124,6 +125,7 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
 	AlternativeNameServerConfig PolicyAlternativeNameServerConfigPtrInput
+	ClientOperationId           pulumi.StringPtrInput
 	// A mutable string of at most 1024 characters associated with this resource for the user's convenience. Has no effect on the policy's function.
 	Description pulumi.StringPtrInput
 	// Allows networks bound to this policy to receive DNS queries sent by VMs or applications over VPN connections. When enabled, a virtual IP address is allocated from each of the subnetworks that are bound to this policy.

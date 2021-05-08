@@ -63,6 +63,9 @@ export class EntryGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.entryGroupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entryGroupId'");
+            }
             if ((!args || args.entryGroupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroupsId'");
             }
@@ -74,6 +77,7 @@ export class EntryGroup extends pulumi.CustomResource {
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["entryGroupId"] = args ? args.entryGroupId : undefined;
             inputs["entryGroupsId"] = args ? args.entryGroupsId : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -104,6 +108,7 @@ export interface EntryGroupArgs {
      * A short name to identify the entry group, for example, "analytics data - jan 2011". Default value is an empty string.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly entryGroupId: pulumi.Input<string>;
     readonly entryGroupsId: pulumi.Input<string>;
     readonly locationsId: pulumi.Input<string>;
     /**

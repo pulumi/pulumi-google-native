@@ -115,6 +115,9 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
+            }
             if ((!args || args.instancesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instancesId'");
             }
@@ -126,6 +129,7 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["authorizedNetwork"] = args ? args.authorizedNetwork : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["instanceMessages"] = args ? args.instanceMessages : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -182,6 +186,7 @@ export interface InstanceArgs {
      * User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * List of messages that describe the current state of the Memcached instance.
      */

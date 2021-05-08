@@ -129,8 +129,9 @@ type agentEntityTypeArgs struct {
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases []GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase `pulumi:"excludedPhrases"`
 	// Required. Indicates the kind of entity type.
-	Kind        *string `pulumi:"kind"`
-	LocationsId string  `pulumi:"locationsId"`
+	Kind         *string `pulumi:"kind"`
+	LanguageCode *string `pulumi:"languageCode"`
+	LocationsId  string  `pulumi:"locationsId"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
@@ -153,8 +154,9 @@ type AgentEntityTypeArgs struct {
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput
 	// Required. Indicates the kind of entity type.
-	Kind        pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Kind         pulumi.StringPtrInput
+	LanguageCode pulumi.StringPtrInput
+	LocationsId  pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput

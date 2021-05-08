@@ -536,7 +536,8 @@ type backendServiceArgs struct {
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol *string `pulumi:"protocol"`
 	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] The resource URL for the security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:
@@ -667,7 +668,8 @@ type BackendServiceArgs struct {
 	// Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 	Protocol pulumi.StringPtrInput
 	// [Output Only] URL of the region where the regional backend service resides. This field is not applicable to global backend services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] The resource URL for the security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
 	// This field specifies the security policy that applies to this backend service. This field is applicable to either:

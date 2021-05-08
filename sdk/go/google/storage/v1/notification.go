@@ -125,11 +125,13 @@ type notificationArgs struct {
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix *string `pulumi:"object_name_prefix"`
 	// The desired content of the Payload.
-	Payload_format *string `pulumi:"payload_format"`
+	Payload_format         *string `pulumi:"payload_format"`
+	ProvisionalUserProject *string `pulumi:"provisionalUserProject"`
 	// The canonical URL of this notification.
 	SelfLink *string `pulumi:"selfLink"`
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic *string `pulumi:"topic"`
+	Topic       *string `pulumi:"topic"`
+	UserProject *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a Notification resource.
@@ -149,11 +151,13 @@ type NotificationArgs struct {
 	// If present, only apply this notification configuration to object names that begin with this prefix.
 	Object_name_prefix pulumi.StringPtrInput
 	// The desired content of the Payload.
-	Payload_format pulumi.StringPtrInput
+	Payload_format         pulumi.StringPtrInput
+	ProvisionalUserProject pulumi.StringPtrInput
 	// The canonical URL of this notification.
 	SelfLink pulumi.StringPtrInput
 	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic pulumi.StringPtrInput
+	Topic       pulumi.StringPtrInput
+	UserProject pulumi.StringPtrInput
 }
 
 func (NotificationArgs) ElementType() reflect.Type {

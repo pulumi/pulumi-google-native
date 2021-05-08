@@ -16,9 +16,12 @@ class OrganizationApiArgs:
     def __init__(__self__, *,
                  apis_id: pulumi.Input[str],
                  organizations_id: pulumi.Input[str],
+                 action: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 validate: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationApi resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
@@ -27,12 +30,18 @@ class OrganizationApiArgs:
         """
         pulumi.set(__self__, "apis_id", apis_id)
         pulumi.set(__self__, "organizations_id", organizations_id)
+        if action is not None:
+            pulumi.set(__self__, "action", action)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if data is not None:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if validate is not None:
+            pulumi.set(__self__, "validate", validate)
 
     @property
     @pulumi.getter(name="apisId")
@@ -51,6 +60,15 @@ class OrganizationApiArgs:
     @organizations_id.setter
     def organizations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organizations_id", value)
+
+    @property
+    @pulumi.getter
+    def action(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "action", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -88,17 +106,38 @@ class OrganizationApiArgs:
     def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "extensions", value)
 
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def validate(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "validate")
+
+    @validate.setter
+    def validate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "validate", value)
+
 
 class OrganizationApi(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 validate: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
@@ -133,11 +172,14 @@ class OrganizationApi(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 action: Optional[pulumi.Input[str]] = None,
                  apis_id: Optional[pulumi.Input[str]] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  organizations_id: Optional[pulumi.Input[str]] = None,
+                 validate: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -150,18 +192,20 @@ class OrganizationApi(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationApiArgs.__new__(OrganizationApiArgs)
 
+            __props__.__dict__["action"] = action
             if apis_id is None and not opts.urn:
                 raise TypeError("Missing required property 'apis_id'")
             __props__.__dict__["apis_id"] = apis_id
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions
+            __props__.__dict__["name"] = name
             if organizations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organizations_id'")
             __props__.__dict__["organizations_id"] = organizations_id
+            __props__.__dict__["validate"] = validate
             __props__.__dict__["latest_revision_id"] = None
             __props__.__dict__["meta_data"] = None
-            __props__.__dict__["name"] = None
             __props__.__dict__["revision"] = None
         super(OrganizationApi, __self__).__init__(
             'google-native:apigee/v1:OrganizationApi',

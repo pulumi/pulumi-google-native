@@ -114,7 +114,8 @@ type projectArgs struct {
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
 	ProjectId string `pulumi:"projectId"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
-	ProjectNumber *string `pulumi:"projectNumber"`
+	ProjectNumber  *string `pulumi:"projectNumber"`
+	UseLegacyStack *string `pulumi:"useLegacyStack"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -132,7 +133,8 @@ type ProjectArgs struct {
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
 	ProjectId pulumi.StringInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
-	ProjectNumber pulumi.StringPtrInput
+	ProjectNumber  pulumi.StringPtrInput
+	UseLegacyStack pulumi.StringPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {

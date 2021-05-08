@@ -99,6 +99,9 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("datasetsId", required: true)]
         public Input<string> DatasetsId { get; set; } = null!;
 
+        [Input("hl7V2StoreId")]
+        public Input<string>? Hl7V2StoreId { get; set; }
+
         [Input("hl7V2StoresId", required: true)]
         public Input<string> Hl7V2StoresId { get; set; } = null!;
 

@@ -91,6 +91,7 @@ export class ConfigWaiter extends pulumi.CustomResource {
             inputs["failure"] = args ? args.failure : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["success"] = args ? args.success : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["waitersId"] = args ? args.waitersId : undefined;
@@ -136,6 +137,7 @@ export interface ConfigWaiterArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
      */

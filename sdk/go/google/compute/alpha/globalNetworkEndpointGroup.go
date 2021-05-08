@@ -219,7 +219,8 @@ type globalNetworkEndpointGroupArgs struct {
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region *string `pulumi:"region"`
+	Region    *string `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -269,7 +270,8 @@ type GlobalNetworkEndpointGroupArgs struct {
 	// The target service url used to set up private service connection to a Google API. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
 	// [Output Only] The URL of the region where the network endpoint group is located.
-	Region pulumi.StringPtrInput
+	Region    pulumi.StringPtrInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

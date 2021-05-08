@@ -121,6 +121,7 @@ func (KeyState) ElementType() reflect.Type {
 type keyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
+	KeyId       *string `pulumi:"keyId"`
 	KeysId      string  `pulumi:"keysId"`
 	LocationsId string  `pulumi:"locationsId"`
 	ProjectsId  string  `pulumi:"projectsId"`
@@ -132,6 +133,7 @@ type keyArgs struct {
 type KeyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
+	KeyId       pulumi.StringPtrInput
 	KeysId      pulumi.StringInput
 	LocationsId pulumi.StringInput
 	ProjectsId  pulumi.StringInput

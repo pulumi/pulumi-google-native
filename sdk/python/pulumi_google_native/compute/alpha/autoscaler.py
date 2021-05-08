@@ -26,6 +26,7 @@ class AutoscalerArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  recommended_size: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -75,6 +76,8 @@ class AutoscalerArgs:
             pulumi.set(__self__, "recommended_size", recommended_size)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if scaling_schedule_status is not None:
             pulumi.set(__self__, "scaling_schedule_status", scaling_schedule_status)
         if self_link is not None:
@@ -217,6 +220,15 @@ class AutoscalerArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="scalingScheduleStatus")
     def scaling_schedule_status(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -308,6 +320,7 @@ class Autoscaler(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  recommended_size: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -377,6 +390,7 @@ class Autoscaler(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  recommended_size: Optional[pulumi.Input[int]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  scaling_schedule_status: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  self_link_with_id: Optional[pulumi.Input[str]] = None,
@@ -410,6 +424,7 @@ class Autoscaler(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["recommended_size"] = recommended_size
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["scaling_schedule_status"] = scaling_schedule_status
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["self_link_with_id"] = self_link_with_id

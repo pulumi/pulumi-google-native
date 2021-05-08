@@ -58,6 +58,9 @@ func NewNote(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.NoteId == nil {
+		return nil, errors.New("invalid value for required argument 'NoteId'")
+	}
 	if args.NotesId == nil {
 		return nil, errors.New("invalid value for required argument 'NotesId'")
 	}
@@ -186,6 +189,7 @@ type noteArgs struct {
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
 	Name    *string `pulumi:"name"`
+	NoteId  string  `pulumi:"noteId"`
 	NotesId string  `pulumi:"notesId"`
 	// A note describing a package hosted by various package managers.
 	Package    *Package `pulumi:"package"`
@@ -226,6 +230,7 @@ type NoteArgs struct {
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
 	Name    pulumi.StringPtrInput
+	NoteId  pulumi.StringInput
 	NotesId pulumi.StringInput
 	// A note describing a package hosted by various package managers.
 	Package    PackagePtrInput

@@ -22,6 +22,7 @@ class RepositoryArgs:
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Repository resource.
@@ -48,6 +49,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if repository_id is not None:
+            pulumi.set(__self__, "repository_id", repository_id)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -151,6 +154,15 @@ class RepositoryArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="repositoryId")
+    def repository_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "repository_id")
+
+    @repository_id.setter
+    def repository_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "repository_id", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -177,6 +189,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  repositories_id: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -225,6 +238,7 @@ class Repository(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  repositories_id: Optional[pulumi.Input[str]] = None,
+                 repository_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -253,6 +267,7 @@ class Repository(pulumi.CustomResource):
             if repositories_id is None and not opts.urn:
                 raise TypeError("Missing required property 'repositories_id'")
             __props__.__dict__["repositories_id"] = repositories_id
+            __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["update_time"] = update_time
         super(Repository, __self__).__init__(
             'google-native:artifactregistry/v1beta2:Repository',

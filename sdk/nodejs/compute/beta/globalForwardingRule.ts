@@ -272,6 +272,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["pscConnectionId"] = args ? args.pscConnectionId : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["serviceDirectoryRegistrations"] = args ? args.serviceDirectoryRegistrations : undefined;
             inputs["serviceLabel"] = args ? args.serviceLabel : undefined;
@@ -486,6 +487,7 @@ export interface GlobalForwardingRuleArgs {
      * [Output Only] URL of the region where the regional forwarding rule resides. This field is not applicable to global forwarding rules. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

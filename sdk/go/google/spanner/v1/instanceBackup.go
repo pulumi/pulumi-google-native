@@ -42,8 +42,14 @@ func NewInstanceBackup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BackupId == nil {
+		return nil, errors.New("invalid value for required argument 'BackupId'")
+	}
 	if args.BackupsId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupsId'")
+	}
+	if args.EncryptionConfigEncryptionType == nil {
+		return nil, errors.New("invalid value for required argument 'EncryptionConfigEncryptionType'")
 	}
 	if args.InstancesId == nil {
 		return nil, errors.New("invalid value for required argument 'InstancesId'")
@@ -119,9 +125,12 @@ func (InstanceBackupState) ElementType() reflect.Type {
 }
 
 type instanceBackupArgs struct {
+	BackupId  string `pulumi:"backupId"`
 	BackupsId string `pulumi:"backupsId"`
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
-	Database *string `pulumi:"database"`
+	Database                       *string `pulumi:"database"`
+	EncryptionConfigEncryptionType string  `pulumi:"encryptionConfigEncryptionType"`
+	EncryptionConfigKmsKeyName     *string `pulumi:"encryptionConfigKmsKeyName"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime  *string `pulumi:"expireTime"`
 	InstancesId string  `pulumi:"instancesId"`
@@ -134,9 +143,12 @@ type instanceBackupArgs struct {
 
 // The set of arguments for constructing a InstanceBackup resource.
 type InstanceBackupArgs struct {
+	BackupId  pulumi.StringInput
 	BackupsId pulumi.StringInput
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
-	Database pulumi.StringPtrInput
+	Database                       pulumi.StringPtrInput
+	EncryptionConfigEncryptionType pulumi.StringInput
+	EncryptionConfigKmsKeyName     pulumi.StringPtrInput
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime  pulumi.StringPtrInput
 	InstancesId pulumi.StringInput

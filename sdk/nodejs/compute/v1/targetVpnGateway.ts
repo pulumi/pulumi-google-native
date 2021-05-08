@@ -104,6 +104,7 @@ export class TargetVpnGateway extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["targetVpnGateway"] = args ? args.targetVpnGateway : undefined;
@@ -164,6 +165,7 @@ export interface TargetVpnGatewayArgs {
      * [Output Only] URL of the region where the target VPN gateway resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

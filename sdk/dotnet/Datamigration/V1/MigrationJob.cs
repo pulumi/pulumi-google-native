@@ -213,6 +213,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 
+        [Input("migrationJobId", required: true)]
+        public Input<string> MigrationJobId { get; set; } = null!;
+
         [Input("migrationJobsId", required: true)]
         public Input<string> MigrationJobsId { get; set; } = null!;
 
@@ -224,6 +227,9 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
+
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
 
         /// <summary>
         /// The details needed to communicate to the source over Reverse SSH tunnel connectivity.

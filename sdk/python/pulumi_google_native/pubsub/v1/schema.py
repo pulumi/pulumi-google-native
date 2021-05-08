@@ -17,6 +17,7 @@ class SchemaArgs:
                  schemas_id: pulumi.Input[str],
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 schema_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Schema resource.
@@ -30,6 +31,8 @@ class SchemaArgs:
             pulumi.set(__self__, "definition", definition)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if schema_id is not None:
+            pulumi.set(__self__, "schema_id", schema_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -76,6 +79,15 @@ class SchemaArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="schemaId")
+    def schema_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "schema_id")
+
+    @schema_id.setter
+    def schema_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema_id", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -96,6 +108,7 @@ class Schema(pulumi.CustomResource):
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 schema_id: Optional[pulumi.Input[str]] = None,
                  schemas_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -135,6 +148,7 @@ class Schema(pulumi.CustomResource):
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 schema_id: Optional[pulumi.Input[str]] = None,
                  schemas_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -154,6 +168,7 @@ class Schema(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["schema_id"] = schema_id
             if schemas_id is None and not opts.urn:
                 raise TypeError("Missing required property 'schemas_id'")
             __props__.__dict__["schemas_id"] = schemas_id

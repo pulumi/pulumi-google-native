@@ -93,8 +93,10 @@ export class Notification extends pulumi.CustomResource {
             inputs["notification"] = args ? args.notification : undefined;
             inputs["object_name_prefix"] = args ? args.object_name_prefix : undefined;
             inputs["payload_format"] = args ? args.payload_format : undefined;
+            inputs["provisionalUserProject"] = args ? args.provisionalUserProject : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["topic"] = args ? args.topic : undefined;
+            inputs["userProject"] = args ? args.userProject : undefined;
         } else {
             inputs["custom_attributes"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
@@ -146,6 +148,7 @@ export interface NotificationArgs {
      * The desired content of the Payload.
      */
     readonly payload_format?: pulumi.Input<string>;
+    readonly provisionalUserProject?: pulumi.Input<string>;
     /**
      * The canonical URL of this notification.
      */
@@ -154,4 +157,5 @@ export interface NotificationArgs {
      * The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
      */
     readonly topic?: pulumi.Input<string>;
+    readonly userProject?: pulumi.Input<string>;
 }

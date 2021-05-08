@@ -96,6 +96,9 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
+        [Input("dryRun")]
+        public Input<string>? DryRun { get; set; }
+
         /// <summary>
         /// The kind of resource, in this case "Service".
         /// </summary>

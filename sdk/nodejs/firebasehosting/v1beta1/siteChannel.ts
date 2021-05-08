@@ -83,12 +83,16 @@ export class SiteChannel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.channelId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'channelId'");
+            }
             if ((!args || args.channelsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'channelsId'");
             }
             if ((!args || args.sitesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sitesId'");
             }
+            inputs["channelId"] = args ? args.channelId : undefined;
             inputs["channelsId"] = args ? args.channelsId : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -122,6 +126,7 @@ export class SiteChannel extends pulumi.CustomResource {
  * The set of arguments for constructing a SiteChannel resource.
  */
 export interface SiteChannelArgs {
+    readonly channelId: pulumi.Input<string>;
     readonly channelsId: pulumi.Input<string>;
     /**
      * The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.

@@ -91,6 +91,9 @@ export class Connector extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.connectorId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'connectorId'");
+            }
             if ((!args || args.connectorsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorsId'");
             }
@@ -100,6 +103,7 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["connectorId"] = args ? args.connectorId : undefined;
             inputs["connectorsId"] = args ? args.connectorsId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -138,6 +142,7 @@ export class Connector extends pulumi.CustomResource {
  * The set of arguments for constructing a Connector resource.
  */
 export interface ConnectorArgs {
+    readonly connectorId: pulumi.Input<string>;
     readonly connectorsId: pulumi.Input<string>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.

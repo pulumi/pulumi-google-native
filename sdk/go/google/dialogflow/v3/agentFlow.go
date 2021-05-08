@@ -118,6 +118,7 @@ type agentFlowArgs struct {
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
 	FlowsId       string                                  `pulumi:"flowsId"`
+	LanguageCode  *string                                 `pulumi:"languageCode"`
 	LocationsId   string                                  `pulumi:"locationsId"`
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name *string `pulumi:"name"`
@@ -140,6 +141,7 @@ type AgentFlowArgs struct {
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
 	FlowsId       pulumi.StringInput
+	LanguageCode  pulumi.StringPtrInput
 	LocationsId   pulumi.StringInput
 	// The unique identifier of the flow. Format: `projects//locations//agents//flows/`.
 	Name pulumi.StringPtrInput

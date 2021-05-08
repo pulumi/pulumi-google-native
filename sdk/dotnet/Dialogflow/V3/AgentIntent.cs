@@ -144,6 +144,9 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             set => _labels = value;
         }
 
+        [Input("languageCode")]
+        public Input<string>? LanguageCode { get; set; }
+
         [Input("locationsId", required: true)]
         public Input<string> LocationsId { get; set; } = null!;
 

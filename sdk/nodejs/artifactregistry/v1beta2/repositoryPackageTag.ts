@@ -74,6 +74,7 @@ export class RepositoryPackageTag extends pulumi.CustomResource {
             inputs["packagesId"] = args ? args.packagesId : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["repositoriesId"] = args ? args.repositoriesId : undefined;
+            inputs["tagId"] = args ? args.tagId : undefined;
             inputs["tagsId"] = args ? args.tagsId : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
@@ -99,6 +100,7 @@ export interface RepositoryPackageTagArgs {
     readonly packagesId: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
     readonly repositoriesId: pulumi.Input<string>;
+    readonly tagId?: pulumi.Input<string>;
     readonly tagsId: pulumi.Input<string>;
     /**
      * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"

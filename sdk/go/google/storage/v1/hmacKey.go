@@ -119,9 +119,10 @@ func (HmacKeyState) ElementType() reflect.Type {
 }
 
 type hmacKeyArgs struct {
-	AccessId            string `pulumi:"accessId"`
-	ProjectId           string `pulumi:"projectId"`
-	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+	AccessId            string  `pulumi:"accessId"`
+	ProjectId           string  `pulumi:"projectId"`
+	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
+	UserProject         *string `pulumi:"userProject"`
 }
 
 // The set of arguments for constructing a HmacKey resource.
@@ -129,6 +130,7 @@ type HmacKeyArgs struct {
 	AccessId            pulumi.StringInput
 	ProjectId           pulumi.StringInput
 	ServiceAccountEmail pulumi.StringInput
+	UserProject         pulumi.StringPtrInput
 }
 
 func (HmacKeyArgs) ElementType() reflect.Type {

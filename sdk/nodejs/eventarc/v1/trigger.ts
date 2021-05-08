@@ -93,8 +93,14 @@ export class Trigger extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            if ((!args || args.triggerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'triggerId'");
+            }
             if ((!args || args.triggersId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'triggersId'");
+            }
+            if ((!args || args.validateOnly === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'validateOnly'");
             }
             inputs["destination"] = args ? args.destination : undefined;
             inputs["eventFilters"] = args ? args.eventFilters : undefined;
@@ -104,7 +110,9 @@ export class Trigger extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             inputs["transport"] = args ? args.transport : undefined;
+            inputs["triggerId"] = args ? args.triggerId : undefined;
             inputs["triggersId"] = args ? args.triggersId : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["uid"] = undefined /*out*/;
@@ -158,5 +166,7 @@ export interface TriggerArgs {
      * Optional. In order to deliver messages, Eventarc may use other GCP products as transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
      */
     readonly transport?: pulumi.Input<inputs.eventarc.v1.TransportArgs>;
+    readonly triggerId: pulumi.Input<string>;
     readonly triggersId: pulumi.Input<string>;
+    readonly validateOnly: pulumi.Input<string>;
 }

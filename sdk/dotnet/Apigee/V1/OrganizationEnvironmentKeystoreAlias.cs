@@ -78,6 +78,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationEnvironmentKeystoreAliasArgs : Pulumi.ResourceArgs
     {
+        [Input("alias")]
+        public Input<string>? Alias { get; set; }
+
         [Input("aliasesId", required: true)]
         public Input<string> AliasesId { get; set; } = null!;
 
@@ -108,11 +111,23 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _extensions = value;
         }
 
+        [Input("format", required: true)]
+        public Input<string> Format { get; set; } = null!;
+
+        [Input("ignoreExpiryValidation")]
+        public Input<string>? IgnoreExpiryValidation { get; set; }
+
+        [Input("ignoreNewlineValidation")]
+        public Input<string>? IgnoreNewlineValidation { get; set; }
+
         [Input("keystoresId", required: true)]
         public Input<string> KeystoresId { get; set; } = null!;
 
         [Input("organizationsId", required: true)]
         public Input<string> OrganizationsId { get; set; } = null!;
+
+        [Input("password")]
+        public Input<string>? Password { get; set; }
 
         public OrganizationEnvironmentKeystoreAliasArgs()
         {

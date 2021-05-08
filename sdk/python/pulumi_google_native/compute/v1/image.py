@@ -23,6 +23,7 @@ class ImageArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  family: Optional[pulumi.Input[str]] = None,
+                 force_create: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -33,6 +34,7 @@ class ImageArgs:
                  licenses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input['ImageRawDiskArgs']] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input['InitialStateConfigArgs']] = None,
@@ -120,6 +122,8 @@ class ImageArgs:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if family is not None:
             pulumi.set(__self__, "family", family)
+        if force_create is not None:
+            pulumi.set(__self__, "force_create", force_create)
         if guest_os_features is not None:
             pulumi.set(__self__, "guest_os_features", guest_os_features)
         if id is not None:
@@ -140,6 +144,8 @@ class ImageArgs:
             pulumi.set(__self__, "name", name)
         if raw_disk is not None:
             pulumi.set(__self__, "raw_disk", raw_disk)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if satisfies_pzs is not None:
             pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if self_link is not None:
@@ -260,6 +266,15 @@ class ImageArgs:
     @family.setter
     def family(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "family", value)
+
+    @property
+    @pulumi.getter(name="forceCreate")
+    def force_create(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "force_create")
+
+    @force_create.setter
+    def force_create(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "force_create", value)
 
     @property
     @pulumi.getter(name="guestOsFeatures")
@@ -388,6 +403,15 @@ class ImageArgs:
     @raw_disk.setter
     def raw_disk(self, value: Optional[pulumi.Input['ImageRawDiskArgs']]):
         pulumi.set(self, "raw_disk", value)
+
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -597,6 +621,7 @@ class Image(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  family: Optional[pulumi.Input[str]] = None,
+                 force_create: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -609,6 +634,7 @@ class Image(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
@@ -716,6 +742,7 @@ class Image(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[str]] = None,
                  family: Optional[pulumi.Input[str]] = None,
+                 force_create: Optional[pulumi.Input[str]] = None,
                  guest_os_features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  image: Optional[pulumi.Input[str]] = None,
@@ -728,6 +755,7 @@ class Image(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  raw_disk: Optional[pulumi.Input[pulumi.InputType['ImageRawDiskArgs']]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shielded_instance_initial_state: Optional[pulumi.Input[pulumi.InputType['InitialStateConfigArgs']]] = None,
@@ -761,6 +789,7 @@ class Image(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["disk_size_gb"] = disk_size_gb
             __props__.__dict__["family"] = family
+            __props__.__dict__["force_create"] = force_create
             __props__.__dict__["guest_os_features"] = guest_os_features
             __props__.__dict__["id"] = id
             if image is None and not opts.urn:
@@ -777,6 +806,7 @@ class Image(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["raw_disk"] = raw_disk
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["shielded_instance_initial_state"] = shielded_instance_initial_state

@@ -87,6 +87,9 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 
     public sealed class ResponsePolicyArgs : Pulumi.ResourceArgs
     {
+        [Input("clientOperationId")]
+        public Input<string>? ClientOperationId { get; set; }
+
         /// <summary>
         /// User-provided description for this Response Policy.
         /// </summary>

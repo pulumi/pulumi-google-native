@@ -78,6 +78,9 @@ export class Gateway extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.gatewayId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gatewayId'");
+            }
             if ((!args || args.gatewaysId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewaysId'");
             }
@@ -89,6 +92,7 @@ export class Gateway extends pulumi.CustomResource {
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["gatewayId"] = args ? args.gatewayId : undefined;
             inputs["gatewaysId"] = args ? args.gatewaysId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -127,6 +131,7 @@ export interface GatewayArgs {
      * Optional. Display name.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly gatewayId: pulumi.Input<string>;
     readonly gatewaysId: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources

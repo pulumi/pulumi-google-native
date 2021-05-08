@@ -99,6 +99,7 @@ export class OrganizationInstance extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["environments"] = args ? args.environments : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -145,6 +146,7 @@ export interface OrganizationInstanceArgs {
      * Optional. Display name for the instance.
      */
     readonly displayName?: pulumi.Input<string>;
+    readonly environments?: pulumi.Input<string>;
     readonly instancesId: pulumi.Input<string>;
     /**
      * Required. Compute Engine location where the instance resides.

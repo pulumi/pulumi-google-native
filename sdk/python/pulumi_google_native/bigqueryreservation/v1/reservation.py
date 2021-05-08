@@ -18,6 +18,7 @@ class ReservationArgs:
                  reservations_id: pulumi.Input[str],
                  ignore_idle_slots: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Reservation resource.
@@ -32,6 +33,8 @@ class ReservationArgs:
             pulumi.set(__self__, "ignore_idle_slots", ignore_idle_slots)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if reservation_id is not None:
+            pulumi.set(__self__, "reservation_id", reservation_id)
         if slot_capacity is not None:
             pulumi.set(__self__, "slot_capacity", slot_capacity)
 
@@ -87,6 +90,15 @@ class ReservationArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "reservation_id")
+
+    @reservation_id.setter
+    def reservation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reservation_id", value)
+
+    @property
     @pulumi.getter(name="slotCapacity")
     def slot_capacity(self) -> Optional[pulumi.Input[str]]:
         """
@@ -108,6 +120,7 @@ class Reservation(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -148,6 +161,7 @@ class Reservation(pulumi.CustomResource):
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 reservation_id: Optional[pulumi.Input[str]] = None,
                  reservations_id: Optional[pulumi.Input[str]] = None,
                  slot_capacity: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -170,6 +184,7 @@ class Reservation(pulumi.CustomResource):
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["reservation_id"] = reservation_id
             if reservations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'reservations_id'")
             __props__.__dict__["reservations_id"] = reservations_id

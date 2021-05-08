@@ -105,6 +105,9 @@ export class EntryGroupEntry extends pulumi.CustomResource {
             if ((!args || args.entryGroupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroupsId'");
             }
+            if ((!args || args.entryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entryId'");
+            }
             if ((!args || args.locationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'locationsId'");
             }
@@ -117,6 +120,7 @@ export class EntryGroupEntry extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entriesId"] = args ? args.entriesId : undefined;
             inputs["entryGroupsId"] = args ? args.entryGroupsId : undefined;
+            inputs["entryId"] = args ? args.entryId : undefined;
             inputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
             inputs["linkedResource"] = args ? args.linkedResource : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -172,6 +176,7 @@ export interface EntryGroupEntryArgs {
     readonly displayName?: pulumi.Input<string>;
     readonly entriesId: pulumi.Input<string>;
     readonly entryGroupsId: pulumi.Input<string>;
+    readonly entryId: pulumi.Input<string>;
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
      */

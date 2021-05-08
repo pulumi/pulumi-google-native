@@ -99,6 +99,7 @@ export class InstanceTemplate extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["properties"] = args ? args.properties : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["sourceInstance"] = args ? args.sourceInstance : undefined;
@@ -151,6 +152,7 @@ export interface InstanceTemplateArgs {
      * The instance properties for this instance template.
      */
     readonly properties?: pulumi.Input<inputs.compute.alpha.InstancePropertiesArgs>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] The URL for this instance template. The server defines this URL.
      */

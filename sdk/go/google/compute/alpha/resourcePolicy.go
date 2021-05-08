@@ -152,6 +152,7 @@ type resourcePolicyArgs struct {
 	Name           *string `pulumi:"name"`
 	Project        string  `pulumi:"project"`
 	Region         string  `pulumi:"region"`
+	RequestId      *string `pulumi:"requestId"`
 	ResourcePolicy string  `pulumi:"resourcePolicy"`
 	// [Output Only] The system status of the resource policy.
 	ResourceStatus *ResourcePolicyResourceStatus `pulumi:"resourceStatus"`
@@ -184,6 +185,7 @@ type ResourcePolicyArgs struct {
 	Name           pulumi.StringPtrInput
 	Project        pulumi.StringInput
 	Region         pulumi.StringInput
+	RequestId      pulumi.StringPtrInput
 	ResourcePolicy pulumi.StringInput
 	// [Output Only] The system status of the resource policy.
 	ResourceStatus ResourcePolicyResourceStatusPtrInput

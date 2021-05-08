@@ -229,6 +229,7 @@ func (DeviceState) ElementType() reflect.Type {
 type deviceArgs struct {
 	// Asset tag of the device.
 	AssetTag  *string `pulumi:"assetTag"`
+	Customer  *string `pulumi:"customer"`
 	DevicesId string  `pulumi:"devicesId"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
@@ -242,6 +243,7 @@ type deviceArgs struct {
 type DeviceArgs struct {
 	// Asset tag of the device.
 	AssetTag  pulumi.StringPtrInput
+	Customer  pulumi.StringPtrInput
 	DevicesId pulumi.StringInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput

@@ -230,8 +230,9 @@ type instanceArgs struct {
 	// Option to enable Stackdriver Logging.
 	EnableStackdriverLogging *bool `pulumi:"enableStackdriverLogging"`
 	// Option to enable Stackdriver Monitoring.
-	EnableStackdriverMonitoring *bool  `pulumi:"enableStackdriverMonitoring"`
-	InstancesId                 string `pulumi:"instancesId"`
+	EnableStackdriverMonitoring *bool   `pulumi:"enableStackdriverMonitoring"`
+	InstanceId                  *string `pulumi:"instanceId"`
+	InstancesId                 string  `pulumi:"instancesId"`
 	// The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.
 	Labels      map[string]string `pulumi:"labels"`
 	LocationsId string            `pulumi:"locationsId"`
@@ -268,6 +269,7 @@ type InstanceArgs struct {
 	EnableStackdriverLogging pulumi.BoolPtrInput
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrInput
+	InstanceId                  pulumi.StringPtrInput
 	InstancesId                 pulumi.StringInput
 	// The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.
 	Labels      pulumi.StringMapInput

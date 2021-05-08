@@ -25,3 +25,30 @@ const sub = new google.pubsub.v1.Subscription("sub", {
     topic: topic.name,
     subscriptionsId: randomString.result,
 });
+
+const schemaId = randomString.result;
+const schema = new google.pubsub.v1.Schema("schema", {
+    projectsId: project,
+    schemasId: schemaId,
+    schemaId: schemaId,
+    definition: JSON.stringify({
+        type: "record",
+        name: "State",
+        namespace: "utilities",
+        doc: "A list of states in the United States of America.",
+        fields: [
+            {
+                name: "name",
+                type: "string",
+                doc: "The common name of the state",
+            },
+            {
+                name: "post_abbr",
+                type: "string",
+                doc: "The postal code abbreviation of the state.",
+            },
+        ],
+    }),
+    name: "my-schema",
+    type: "avro",
+});

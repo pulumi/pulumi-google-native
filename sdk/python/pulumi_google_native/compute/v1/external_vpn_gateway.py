@@ -26,6 +26,7 @@ class ExternalVpnGatewayArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ExternalVpnGateway resource.
@@ -62,6 +63,8 @@ class ExternalVpnGatewayArgs:
             pulumi.set(__self__, "name", name)
         if redundancy_type is not None:
             pulumi.set(__self__, "redundancy_type", redundancy_type)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
 
@@ -194,6 +197,15 @@ class ExternalVpnGatewayArgs:
         pulumi.set(self, "redundancy_type", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -222,6 +234,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -277,6 +290,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redundancy_type: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -305,6 +319,7 @@ class ExternalVpnGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["redundancy_type"] = redundancy_type
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
         super(ExternalVpnGateway, __self__).__init__(
             'google-native:compute/v1:ExternalVpnGateway',

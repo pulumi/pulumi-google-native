@@ -222,6 +222,9 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
+
         [Input("instancesId", required: true)]
         public Input<string> InstancesId { get; set; } = null!;
 

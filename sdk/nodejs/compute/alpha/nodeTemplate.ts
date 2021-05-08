@@ -134,6 +134,7 @@ export class NodeTemplate extends pulumi.CustomResource {
             inputs["nodeTypeFlexibility"] = args ? args.nodeTypeFlexibility : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["serverBinding"] = args ? args.serverBinding : undefined;
@@ -214,6 +215,7 @@ export interface NodeTemplateArgs {
      * [Output Only] The name of the region where the node template resides, such as us-central1.
      */
     readonly region: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

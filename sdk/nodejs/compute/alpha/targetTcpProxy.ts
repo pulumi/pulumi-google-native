@@ -96,6 +96,7 @@ export class TargetTcpProxy extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["proxyBind"] = args ? args.proxyBind : undefined;
             inputs["proxyHeader"] = args ? args.proxyHeader : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["service"] = args ? args.service : undefined;
             inputs["targetTcpProxy"] = args ? args.targetTcpProxy : undefined;
@@ -153,6 +154,7 @@ export interface TargetTcpProxyArgs {
      * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
      */
     readonly proxyHeader?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

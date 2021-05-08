@@ -199,7 +199,8 @@ type serviceAttachmentArgs struct {
 	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId *Uint128 `pulumi:"pscServiceAttachmentId"`
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink          *string `pulumi:"selfLink"`
 	ServiceAttachment string  `pulumi:"serviceAttachment"`
@@ -241,7 +242,8 @@ type ServiceAttachmentArgs struct {
 	// [Output Only] An 128-bit global unique ID of the PSC service attachment.
 	PscServiceAttachmentId Uint128PtrInput
 	// [Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink          pulumi.StringPtrInput
 	ServiceAttachment pulumi.StringInput

@@ -117,11 +117,17 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("provisionalUserProject")]
+        public Input<string>? ProvisionalUserProject { get; set; }
+
         /// <summary>
         /// The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
+
+        [Input("userProject")]
+        public Input<string>? UserProject { get; set; }
 
         /// <summary>
         /// The IAM policy format version.

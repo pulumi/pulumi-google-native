@@ -227,6 +227,9 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         [Input("router", required: true)]
         public Input<string> Router { get; set; } = null!;
 

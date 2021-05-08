@@ -70,6 +70,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
             if ((!args || args.responsePolicy === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'responsePolicy'");
             }
+            inputs["clientOperationId"] = args ? args.clientOperationId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["gkeClusters"] = args ? args.gkeClusters : undefined;
             inputs["id"] = args ? args.id : undefined;
@@ -96,6 +97,7 @@ export class ResponsePolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a ResponsePolicy resource.
  */
 export interface ResponsePolicyArgs {
+    readonly clientOperationId?: pulumi.Input<string>;
     /**
      * User-provided description for this Response Policy.
      */

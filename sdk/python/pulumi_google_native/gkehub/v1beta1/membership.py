@@ -16,6 +16,7 @@ __all__ = ['MembershipArgs', 'Membership']
 class MembershipArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
+                 membership_id: pulumi.Input[str],
                  memberships_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  authority: Optional[pulumi.Input['AuthorityArgs']] = None,
@@ -23,7 +24,8 @@ class MembershipArgs:
                  endpoint: Optional[pulumi.Input['MembershipEndpointArgs']] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Membership resource.
         :param pulumi.Input['AuthorityArgs'] authority: Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
@@ -34,6 +36,7 @@ class MembershipArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. GCP labels for this membership.
         """
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "membership_id", membership_id)
         pulumi.set(__self__, "memberships_id", memberships_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if authority is not None:
@@ -48,6 +51,8 @@ class MembershipArgs:
             pulumi.set(__self__, "infrastructure_type", infrastructure_type)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
 
     @property
     @pulumi.getter(name="locationsId")
@@ -57,6 +62,15 @@ class MembershipArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="membershipId")
+    def membership_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "membership_id")
+
+    @membership_id.setter
+    def membership_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "membership_id", value)
 
     @property
     @pulumi.getter(name="membershipsId")
@@ -148,6 +162,15 @@ class MembershipArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
 
+    @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
 
 class Membership(pulumi.CustomResource):
     @overload
@@ -161,8 +184,10 @@ class Membership(pulumi.CustomResource):
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Adds a new Membership.
@@ -207,8 +232,10 @@ class Membership(pulumi.CustomResource):
                  infrastructure_type: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
+                 membership_id: Optional[pulumi.Input[str]] = None,
                  memberships_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -230,12 +257,16 @@ class Membership(pulumi.CustomResource):
             if locations_id is None and not opts.urn:
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
+            if membership_id is None and not opts.urn:
+                raise TypeError("Missing required property 'membership_id'")
+            __props__.__dict__["membership_id"] = membership_id
             if memberships_id is None and not opts.urn:
                 raise TypeError("Missing required property 'memberships_id'")
             __props__.__dict__["memberships_id"] = memberships_id
             if projects_id is None and not opts.urn:
                 raise TypeError("Missing required property 'projects_id'")
             __props__.__dict__["projects_id"] = projects_id
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["last_connection_time"] = None

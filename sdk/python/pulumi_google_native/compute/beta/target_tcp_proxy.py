@@ -22,6 +22,7 @@ class TargetTcpProxyArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
@@ -56,6 +57,8 @@ class TargetTcpProxyArgs:
             pulumi.set(__self__, "proxy_bind", proxy_bind)
         if proxy_header is not None:
             pulumi.set(__self__, "proxy_header", proxy_header)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
         if service is not None:
@@ -168,6 +171,15 @@ class TargetTcpProxyArgs:
         pulumi.set(self, "proxy_header", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> Optional[pulumi.Input[str]]:
         """
@@ -205,6 +217,7 @@ class TargetTcpProxy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  target_tcp_proxy: Optional[pulumi.Input[str]] = None,
@@ -260,6 +273,7 @@ class TargetTcpProxy(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  proxy_bind: Optional[pulumi.Input[bool]] = None,
                  proxy_header: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  service: Optional[pulumi.Input[str]] = None,
                  target_tcp_proxy: Optional[pulumi.Input[str]] = None,
@@ -285,6 +299,7 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["proxy_bind"] = proxy_bind
             __props__.__dict__["proxy_header"] = proxy_header
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["service"] = service
             if target_tcp_proxy is None and not opts.urn:

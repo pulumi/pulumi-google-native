@@ -38,7 +38,7 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
     /**
      * Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`.
      */
-    public /*out*/ readonly alias!: pulumi.Output<string>;
+    public readonly alias!: pulumi.Output<string>;
     /**
      * Chain of certificates under this alias.
      */
@@ -65,20 +65,27 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
             if ((!args || args.environmentsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentsId'");
             }
+            if ((!args || args.format === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'format'");
+            }
             if ((!args || args.keystoresId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'keystoresId'");
             }
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
+            inputs["alias"] = args ? args.alias : undefined;
             inputs["aliasesId"] = args ? args.aliasesId : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["environmentsId"] = args ? args.environmentsId : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
+            inputs["format"] = args ? args.format : undefined;
+            inputs["ignoreExpiryValidation"] = args ? args.ignoreExpiryValidation : undefined;
+            inputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
             inputs["keystoresId"] = args ? args.keystoresId : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["alias"] = undefined /*out*/;
+            inputs["password"] = args ? args.password : undefined;
             inputs["certsInfo"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
         } else {
@@ -97,6 +104,7 @@ export class OrganizationEnvironmentKeystoreAlias extends pulumi.CustomResource 
  * The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
  */
 export interface OrganizationEnvironmentKeystoreAliasArgs {
+    readonly alias?: pulumi.Input<string>;
     readonly aliasesId: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
@@ -111,6 +119,10 @@ export interface OrganizationEnvironmentKeystoreAliasArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly format: pulumi.Input<string>;
+    readonly ignoreExpiryValidation?: pulumi.Input<string>;
+    readonly ignoreNewlineValidation?: pulumi.Input<string>;
     readonly keystoresId: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
+    readonly password?: pulumi.Input<string>;
 }

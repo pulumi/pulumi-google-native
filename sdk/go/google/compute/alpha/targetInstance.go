@@ -152,8 +152,9 @@ type targetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy *string `pulumi:"natPolicy"`
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
-	Network *string `pulumi:"network"`
-	Project string  `pulumi:"project"`
+	Network   *string `pulumi:"network"`
+	Project   string  `pulumi:"project"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output Only] Server-defined URL for this resource with the resource id.
@@ -183,8 +184,9 @@ type TargetInstanceArgs struct {
 	// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
 	NatPolicy pulumi.StringPtrInput
 	// The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
-	Network pulumi.StringPtrInput
-	Project pulumi.StringInput
+	Network   pulumi.StringPtrInput
+	Project   pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for this resource with the resource id.

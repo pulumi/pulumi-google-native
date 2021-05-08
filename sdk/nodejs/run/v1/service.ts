@@ -77,6 +77,7 @@ export class Service extends pulumi.CustomResource {
                 throw new Error("Missing required property 'servicesId'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
+            inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
@@ -106,6 +107,7 @@ export interface ServiceArgs {
      * The API version for this call such as "serving.knative.dev/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
+    readonly dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "Service".
      */

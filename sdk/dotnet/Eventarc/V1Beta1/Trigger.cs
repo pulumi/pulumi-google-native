@@ -162,8 +162,14 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         [Input("serviceAccount")]
         public Input<string>? ServiceAccount { get; set; }
 
+        [Input("triggerId", required: true)]
+        public Input<string> TriggerId { get; set; } = null!;
+
         [Input("triggersId", required: true)]
         public Input<string> TriggersId { get; set; } = null!;
+
+        [Input("validateOnly", required: true)]
+        public Input<string> ValidateOnly { get; set; } = null!;
 
         public TriggerArgs()
         {

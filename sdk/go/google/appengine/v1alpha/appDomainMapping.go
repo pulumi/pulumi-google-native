@@ -85,7 +85,9 @@ type appDomainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	Id *string `pulumi:"id"`
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name *string `pulumi:"name"`
+	Name                 *string `pulumi:"name"`
+	NoManagedCertificate *string `pulumi:"noManagedCertificate"`
+	OverrideStrategy     *string `pulumi:"overrideStrategy"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
 	ResourceRecords []ResourceRecord `pulumi:"resourceRecords"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -99,7 +101,9 @@ type AppDomainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	Id pulumi.StringPtrInput
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly
-	Name pulumi.StringPtrInput
+	Name                 pulumi.StringPtrInput
+	NoManagedCertificate pulumi.StringPtrInput
+	OverrideStrategy     pulumi.StringPtrInput
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.@OutputOnly
 	ResourceRecords ResourceRecordArrayInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.

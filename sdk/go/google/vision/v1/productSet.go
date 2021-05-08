@@ -94,6 +94,7 @@ type productSetArgs struct {
 	LocationsId string  `pulumi:"locationsId"`
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name          *string `pulumi:"name"`
+	ProductSetId  *string `pulumi:"productSetId"`
 	ProductSetsId string  `pulumi:"productSetsId"`
 	ProjectsId    string  `pulumi:"projectsId"`
 }
@@ -105,6 +106,7 @@ type ProductSetArgs struct {
 	LocationsId pulumi.StringInput
 	// The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
 	Name          pulumi.StringPtrInput
+	ProductSetId  pulumi.StringPtrInput
 	ProductSetsId pulumi.StringInput
 	ProjectsId    pulumi.StringInput
 }

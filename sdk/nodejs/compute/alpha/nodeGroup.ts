@@ -124,6 +124,7 @@ export class NodeGroup extends pulumi.CustomResource {
             inputs["nodeGroup"] = args ? args.nodeGroup : undefined;
             inputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["selfLinkWithId"] = args ? args.selfLinkWithId : undefined;
             inputs["size"] = args ? args.size : undefined;
@@ -198,6 +199,7 @@ export interface NodeGroupArgs {
      */
     readonly nodeTemplate?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

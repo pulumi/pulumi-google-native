@@ -19,6 +19,7 @@ class ChangeArgs:
                  managed_zone: pulumi.Input[str],
                  project: pulumi.Input[str],
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
@@ -39,6 +40,8 @@ class ChangeArgs:
         pulumi.set(__self__, "project", project)
         if additions is not None:
             pulumi.set(__self__, "additions", additions)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if deletions is not None:
             pulumi.set(__self__, "deletions", deletions)
         if id is not None:
@@ -90,6 +93,15 @@ class ChangeArgs:
     @additions.setter
     def additions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ResourceRecordSetArgs']]]]):
         pulumi.set(self, "additions", value)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
 
     @property
     @pulumi.getter
@@ -168,6 +180,7 @@ class Change(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  change_id: Optional[pulumi.Input[str]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
@@ -215,6 +228,7 @@ class Change(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  additions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  change_id: Optional[pulumi.Input[str]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  deletions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ResourceRecordSetArgs']]]]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  is_serving: Optional[pulumi.Input[bool]] = None,
@@ -239,6 +253,7 @@ class Change(pulumi.CustomResource):
             if change_id is None and not opts.urn:
                 raise TypeError("Missing required property 'change_id'")
             __props__.__dict__["change_id"] = change_id
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["deletions"] = deletions
             __props__.__dict__["id"] = id
             __props__.__dict__["is_serving"] = is_serving

@@ -104,6 +104,7 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["complianceRegime"] = args ? args.complianceRegime : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
+            inputs["externalId"] = args ? args.externalId : undefined;
             inputs["kmsSettings"] = args ? args.kmsSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locationsId"] = args ? args.locationsId : undefined;
@@ -154,6 +155,7 @@ export interface OrganizationWorkloadArgs {
      * Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
      */
     readonly etag?: pulumi.Input<string>;
+    readonly externalId?: pulumi.Input<string>;
     /**
      * Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
      */

@@ -34,6 +34,7 @@ class SubnetworkArgs:
                  private_ip_google_access: Optional[pulumi.Input[bool]] = None,
                  private_ipv6_google_access: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -107,6 +108,8 @@ class SubnetworkArgs:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if purpose is not None:
             pulumi.set(__self__, "purpose", purpose)
+        if request_id is not None:
+            pulumi.set(__self__, "request_id", request_id)
         if role is not None:
             pulumi.set(__self__, "role", role)
         if secondary_ip_ranges is not None:
@@ -349,6 +352,15 @@ class SubnetworkArgs:
         pulumi.set(self, "purpose", value)
 
     @property
+    @pulumi.getter(name="requestId")
+    def request_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "request_id")
+
+    @request_id.setter
+    def request_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "request_id", value)
+
+    @property
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[str]]:
         """
@@ -420,6 +432,7 @@ class Subnetwork(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -505,6 +518,7 @@ class Subnetwork(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 request_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SubnetworkSecondaryRangeArgs']]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -544,6 +558,7 @@ class Subnetwork(pulumi.CustomResource):
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
+            __props__.__dict__["request_id"] = request_id
             __props__.__dict__["role"] = role
             __props__.__dict__["secondary_ip_ranges"] = secondary_ip_ranges
             __props__.__dict__["self_link"] = self_link

@@ -15,6 +15,7 @@ __all__ = ['RealmGameServerClusterArgs', 'RealmGameServerCluster']
 @pulumi.input_type
 class RealmGameServerClusterArgs:
     def __init__(__self__, *,
+                 game_server_cluster_id: pulumi.Input[str],
                  game_server_clusters_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -34,6 +35,7 @@ class RealmGameServerClusterArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this game server cluster. Each label is a key-value pair.
         :param pulumi.Input[str] name: Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         """
+        pulumi.set(__self__, "game_server_cluster_id", game_server_cluster_id)
         pulumi.set(__self__, "game_server_clusters_id", game_server_clusters_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -50,6 +52,15 @@ class RealmGameServerClusterArgs:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="gameServerClusterId")
+    def game_server_cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "game_server_cluster_id")
+
+    @game_server_cluster_id.setter
+    def game_server_cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "game_server_cluster_id", value)
 
     @property
     @pulumi.getter(name="gameServerClustersId")
@@ -169,6 +180,7 @@ class RealmGameServerCluster(pulumi.CustomResource):
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 game_server_cluster_id: Optional[pulumi.Input[str]] = None,
                  game_server_clusters_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -216,6 +228,7 @@ class RealmGameServerCluster(pulumi.CustomResource):
                  connection_info: Optional[pulumi.Input[pulumi.InputType['GameServerClusterConnectionInfoArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 game_server_cluster_id: Optional[pulumi.Input[str]] = None,
                  game_server_clusters_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -238,6 +251,9 @@ class RealmGameServerCluster(pulumi.CustomResource):
             __props__.__dict__["connection_info"] = connection_info
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
+            if game_server_cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'game_server_cluster_id'")
+            __props__.__dict__["game_server_cluster_id"] = game_server_cluster_id
             if game_server_clusters_id is None and not opts.urn:
                 raise TypeError("Missing required property 'game_server_clusters_id'")
             __props__.__dict__["game_server_clusters_id"] = game_server_clusters_id

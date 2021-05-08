@@ -120,6 +120,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         [Input("workerConfig")]
         public Input<Inputs.WorkerConfigArgs>? WorkerConfig { get; set; }
 
+        [Input("workerPoolId", required: true)]
+        public Input<string> WorkerPoolId { get; set; } = null!;
+
         [Input("workerPoolsId", required: true)]
         public Input<string> WorkerPoolsId { get; set; } = null!;
 

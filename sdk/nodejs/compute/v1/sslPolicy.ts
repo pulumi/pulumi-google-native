@@ -111,6 +111,7 @@ export class SslPolicy extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["profile"] = args ? args.profile : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sslPolicy"] = args ? args.sslPolicy : undefined;
             inputs["warnings"] = args ? args.warnings : undefined;
@@ -182,6 +183,7 @@ export interface SslPolicyArgs {
      */
     readonly profile?: pulumi.Input<string>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

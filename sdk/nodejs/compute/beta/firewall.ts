@@ -150,6 +150,7 @@ export class Firewall extends pulumi.CustomResource {
             inputs["network"] = args ? args.network : undefined;
             inputs["priority"] = args ? args.priority : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["sourceRanges"] = args ? args.sourceRanges : undefined;
             inputs["sourceServiceAccounts"] = args ? args.sourceServiceAccounts : undefined;
@@ -251,6 +252,7 @@ export interface FirewallArgs {
      */
     readonly priority?: pulumi.Input<number>;
     readonly project: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Server-defined URL for the resource.
      */

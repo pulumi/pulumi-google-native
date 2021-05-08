@@ -138,7 +138,8 @@ type organizationWorkloadArgs struct {
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
-	Etag *string `pulumi:"etag"`
+	Etag       *string `pulumi:"etag"`
+	ExternalId *string `pulumi:"externalId"`
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
@@ -163,7 +164,8 @@ type OrganizationWorkloadArgs struct {
 	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
-	Etag pulumi.StringPtrInput
+	Etag       pulumi.StringPtrInput
+	ExternalId pulumi.StringPtrInput
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput
 	// Optional. Labels applied to the workload.

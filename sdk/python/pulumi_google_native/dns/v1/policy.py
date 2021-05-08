@@ -18,6 +18,7 @@ class PolicyArgs:
                  policy: pulumi.Input[str],
                  project: pulumi.Input[str],
                  alternative_name_server_config: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -39,6 +40,8 @@ class PolicyArgs:
         pulumi.set(__self__, "project", project)
         if alternative_name_server_config is not None:
             pulumi.set(__self__, "alternative_name_server_config", alternative_name_server_config)
+        if client_operation_id is not None:
+            pulumi.set(__self__, "client_operation_id", client_operation_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_inbound_forwarding is not None:
@@ -83,6 +86,15 @@ class PolicyArgs:
     @alternative_name_server_config.setter
     def alternative_name_server_config(self, value: Optional[pulumi.Input['PolicyAlternativeNameServerConfigArgs']]):
         pulumi.set(self, "alternative_name_server_config", value)
+
+    @property
+    @pulumi.getter(name="clientOperationId")
+    def client_operation_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "client_operation_id")
+
+    @client_operation_id.setter
+    def client_operation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_operation_id", value)
 
     @property
     @pulumi.getter
@@ -172,6 +184,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -220,6 +233,7 @@ class Policy(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alternative_name_server_config: Optional[pulumi.Input[pulumi.InputType['PolicyAlternativeNameServerConfigArgs']]] = None,
+                 client_operation_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_inbound_forwarding: Optional[pulumi.Input[bool]] = None,
                  enable_logging: Optional[pulumi.Input[bool]] = None,
@@ -242,6 +256,7 @@ class Policy(pulumi.CustomResource):
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
             __props__.__dict__["alternative_name_server_config"] = alternative_name_server_config
+            __props__.__dict__["client_operation_id"] = client_operation_id
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_inbound_forwarding"] = enable_inbound_forwarding
             __props__.__dict__["enable_logging"] = enable_logging

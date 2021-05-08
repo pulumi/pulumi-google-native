@@ -17,6 +17,7 @@ class ConnectivityTestArgs:
     def __init__(__self__, *,
                  connectivity_tests_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 test_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['EndpointArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -36,6 +37,7 @@ class ConnectivityTestArgs:
         """
         pulumi.set(__self__, "connectivity_tests_id", connectivity_tests_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "test_id", test_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if destination is not None:
@@ -68,6 +70,15 @@ class ConnectivityTestArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="testId")
+    def test_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "test_id")
+
+    @test_id.setter
+    def test_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "test_id", value)
 
     @property
     @pulumi.getter
@@ -168,6 +179,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
+                 test_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Connectivity Test. After you create a test, the reachability analysis is performed as part of the long running operation, which completes when the analysis completes. If the endpoint specifications in `ConnectivityTest` are invalid (for example, containing non-existent resources in the network, or you don't have read permissions to the network configurations of listed projects), then the reachability result returns a value of `UNKNOWN`. If the endpoint specifications in `ConnectivityTest` are incomplete, the reachability result returns a value of AMBIGUOUS. For more information, see the Connectivity Test documentation.
@@ -215,6 +227,7 @@ class ConnectivityTest(pulumi.CustomResource):
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
+                 test_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -240,6 +253,9 @@ class ConnectivityTest(pulumi.CustomResource):
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["related_projects"] = related_projects
             __props__.__dict__["source"] = source
+            if test_id is None and not opts.urn:
+                raise TypeError("Missing required property 'test_id'")
+            __props__.__dict__["test_id"] = test_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["display_name"] = None
             __props__.__dict__["probing_details"] = None

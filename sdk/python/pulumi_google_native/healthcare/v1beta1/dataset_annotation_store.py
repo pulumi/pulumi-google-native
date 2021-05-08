@@ -17,6 +17,7 @@ class DatasetAnnotationStoreArgs:
                  datasets_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
@@ -28,6 +29,8 @@ class DatasetAnnotationStoreArgs:
         pulumi.set(__self__, "datasets_id", datasets_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if annotation_store_id is not None:
+            pulumi.set(__self__, "annotation_store_id", annotation_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -70,6 +73,15 @@ class DatasetAnnotationStoreArgs:
         pulumi.set(self, "projects_id", value)
 
     @property
+    @pulumi.getter(name="annotationStoreId")
+    def annotation_store_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "annotation_store_id")
+
+    @annotation_store_id.setter
+    def annotation_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "annotation_store_id", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -99,6 +111,7 @@ class DatasetAnnotationStore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  annotation_stores_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -138,6 +151,7 @@ class DatasetAnnotationStore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 annotation_store_id: Optional[pulumi.Input[str]] = None,
                  annotation_stores_id: Optional[pulumi.Input[str]] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -156,6 +170,7 @@ class DatasetAnnotationStore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetAnnotationStoreArgs.__new__(DatasetAnnotationStoreArgs)
 
+            __props__.__dict__["annotation_store_id"] = annotation_store_id
             if annotation_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'annotation_stores_id'")
             __props__.__dict__["annotation_stores_id"] = annotation_stores_id

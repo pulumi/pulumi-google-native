@@ -65,6 +65,9 @@ func NewMigrationJob(ctx *pulumi.Context,
 	if args.LocationsId == nil {
 		return nil, errors.New("invalid value for required argument 'LocationsId'")
 	}
+	if args.MigrationJobId == nil {
+		return nil, errors.New("invalid value for required argument 'MigrationJobId'")
+	}
 	if args.MigrationJobsId == nil {
 		return nil, errors.New("invalid value for required argument 'MigrationJobsId'")
 	}
@@ -190,10 +193,12 @@ type migrationJobArgs struct {
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels          map[string]string `pulumi:"labels"`
 	LocationsId     string            `pulumi:"locationsId"`
+	MigrationJobId  string            `pulumi:"migrationJobId"`
 	MigrationJobsId string            `pulumi:"migrationJobsId"`
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name       *string `pulumi:"name"`
 	ProjectsId string  `pulumi:"projectsId"`
+	RequestId  *string `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
 	// Required. The resource name (URI) of the source connection profile.
@@ -223,10 +228,12 @@ type MigrationJobArgs struct {
 	// The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 	Labels          pulumi.StringMapInput
 	LocationsId     pulumi.StringInput
+	MigrationJobId  pulumi.StringInput
 	MigrationJobsId pulumi.StringInput
 	// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
 	Name       pulumi.StringPtrInput
 	ProjectsId pulumi.StringInput
+	RequestId  pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
 	// Required. The resource name (URI) of the source connection profile.

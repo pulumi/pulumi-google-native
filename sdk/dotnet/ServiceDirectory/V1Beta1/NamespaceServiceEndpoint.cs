@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         [Input("address")]
         public Input<string>? Address { get; set; }
 
+        [Input("endpointId", required: true)]
+        public Input<string> EndpointId { get; set; } = null!;
+
         [Input("endpointsId", required: true)]
         public Input<string> EndpointsId { get; set; } = null!;
 

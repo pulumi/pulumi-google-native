@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("projectsId", required: true)]
         public Input<string> ProjectsId { get; set; } = null!;
 
+        [Input("runtimeId", required: true)]
+        public Input<string> RuntimeId { get; set; } = null!;
+
         [Input("runtimesId", required: true)]
         public Input<string> RuntimesId { get; set; } = null!;
 

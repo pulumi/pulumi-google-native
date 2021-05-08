@@ -113,6 +113,7 @@ export class TransferConfig extends pulumi.CustomResource {
             if ((!args || args.transferConfigsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'transferConfigsId'");
             }
+            inputs["authorizationCode"] = args ? args.authorizationCode : undefined;
             inputs["dataRefreshWindowDays"] = args ? args.dataRefreshWindowDays : undefined;
             inputs["dataSourceId"] = args ? args.dataSourceId : undefined;
             inputs["destinationDatasetId"] = args ? args.destinationDatasetId : undefined;
@@ -125,7 +126,9 @@ export class TransferConfig extends pulumi.CustomResource {
             inputs["projectsId"] = args ? args.projectsId : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["scheduleOptions"] = args ? args.scheduleOptions : undefined;
+            inputs["serviceAccountName"] = args ? args.serviceAccountName : undefined;
             inputs["transferConfigsId"] = args ? args.transferConfigsId : undefined;
+            inputs["versionInfo"] = args ? args.versionInfo : undefined;
             inputs["datasetRegion"] = undefined /*out*/;
             inputs["nextRunTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -158,6 +161,7 @@ export class TransferConfig extends pulumi.CustomResource {
  * The set of arguments for constructing a TransferConfig resource.
  */
 export interface TransferConfigArgs {
+    readonly authorizationCode?: pulumi.Input<string>;
     /**
      * The number of days to look back to automatically refresh the data. For example, if `data_refresh_window_days = 10`, then every day BigQuery reingests data for [today-10, today-1], rather than ingesting data for just [today-1]. Only valid if the data source supports the feature. Set the value to 0 to use the default value.
      */
@@ -203,5 +207,7 @@ export interface TransferConfigArgs {
      * Options customizing the data transfer schedule.
      */
     readonly scheduleOptions?: pulumi.Input<inputs.bigquerydatatransfer.v1.ScheduleOptionsArgs>;
+    readonly serviceAccountName?: pulumi.Input<string>;
     readonly transferConfigsId: pulumi.Input<string>;
+    readonly versionInfo?: pulumi.Input<string>;
 }

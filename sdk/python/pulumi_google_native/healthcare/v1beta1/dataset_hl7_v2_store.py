@@ -19,6 +19,7 @@ class DatasetHl7V2StoreArgs:
                  hl7_v2_stores_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
+                 hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
@@ -38,6 +39,8 @@ class DatasetHl7V2StoreArgs:
         pulumi.set(__self__, "hl7_v2_stores_id", hl7_v2_stores_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
+        if hl7_v2_store_id is not None:
+            pulumi.set(__self__, "hl7_v2_store_id", hl7_v2_store_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -86,6 +89,15 @@ class DatasetHl7V2StoreArgs:
     @projects_id.setter
     def projects_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "projects_id", value)
+
+    @property
+    @pulumi.getter(name="hl7V2StoreId")
+    def hl7_v2_store_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "hl7_v2_store_id")
+
+    @hl7_v2_store_id.setter
+    def hl7_v2_store_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hl7_v2_store_id", value)
 
     @property
     @pulumi.getter
@@ -166,6 +178,7 @@ class DatasetHl7V2Store(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
+                 hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  hl7_v2_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -213,6 +226,7 @@ class DatasetHl7V2Store(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  datasets_id: Optional[pulumi.Input[str]] = None,
+                 hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
                  hl7_v2_stores_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -237,6 +251,7 @@ class DatasetHl7V2Store(pulumi.CustomResource):
             if datasets_id is None and not opts.urn:
                 raise TypeError("Missing required property 'datasets_id'")
             __props__.__dict__["datasets_id"] = datasets_id
+            __props__.__dict__["hl7_v2_store_id"] = hl7_v2_store_id
             if hl7_v2_stores_id is None and not opts.urn:
                 raise TypeError("Missing required property 'hl7_v2_stores_id'")
             __props__.__dict__["hl7_v2_stores_id"] = hl7_v2_stores_id

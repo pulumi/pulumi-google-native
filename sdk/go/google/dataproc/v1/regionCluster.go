@@ -120,8 +120,9 @@ type regionClusterArgs struct {
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
-	ProjectId string `pulumi:"projectId"`
-	Region    string `pulumi:"region"`
+	ProjectId string  `pulumi:"projectId"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 }
 
 // The set of arguments for constructing a RegionCluster resource.
@@ -135,6 +136,7 @@ type RegionClusterArgs struct {
 	// Required. The Google Cloud Platform project ID that the cluster belongs to.
 	ProjectId pulumi.StringInput
 	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 }
 
 func (RegionClusterArgs) ElementType() reflect.Type {

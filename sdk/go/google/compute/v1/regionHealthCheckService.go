@@ -162,7 +162,8 @@ type regionHealthCheckServiceArgs struct {
 	NotificationEndpoints []string `pulumi:"notificationEndpoints"`
 	Project               string   `pulumi:"project"`
 	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region string `pulumi:"region"`
+	Region    string  `pulumi:"region"`
+	RequestId *string `pulumi:"requestId"`
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
 }
@@ -194,7 +195,8 @@ type RegionHealthCheckServiceArgs struct {
 	NotificationEndpoints pulumi.StringArrayInput
 	Project               pulumi.StringInput
 	// [Output Only] URL of the region where the health check service resides. This field is not applicable to global health check services. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-	Region pulumi.StringInput
+	Region    pulumi.StringInput
+	RequestId pulumi.StringPtrInput
 	// [Output Only] Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
 }

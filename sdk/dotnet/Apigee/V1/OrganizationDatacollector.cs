@@ -90,6 +90,9 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationDatacollectorArgs : Pulumi.ResourceArgs
     {
+        [Input("dataCollectorId")]
+        public Input<string>? DataCollectorId { get; set; }
+
         [Input("datacollectorsId", required: true)]
         public Input<string> DatacollectorsId { get; set; } = null!;
 

@@ -74,6 +74,9 @@ export class Api extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.apiId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiId'");
+            }
             if ((!args || args.apisId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apisId'");
             }
@@ -83,6 +86,7 @@ export class Api extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["apiId"] = args ? args.apiId : undefined;
             inputs["apisId"] = args ? args.apisId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
@@ -113,6 +117,7 @@ export class Api extends pulumi.CustomResource {
  * The set of arguments for constructing a Api resource.
  */
 export interface ApiArgs {
+    readonly apiId: pulumi.Input<string>;
     readonly apisId: pulumi.Input<string>;
     /**
      * Optional. Display name.

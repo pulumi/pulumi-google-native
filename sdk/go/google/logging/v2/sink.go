@@ -146,10 +146,11 @@ type sinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name    *string `pulumi:"name"`
-	SinksId string  `pulumi:"sinksId"`
-	V2Id    string  `pulumi:"v2Id"`
-	V2Id1   string  `pulumi:"v2Id1"`
+	Name                 *string `pulumi:"name"`
+	SinksId              string  `pulumi:"sinksId"`
+	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
+	V2Id                 string  `pulumi:"v2Id"`
+	V2Id1                string  `pulumi:"v2Id1"`
 }
 
 // The set of arguments for constructing a Sink resource.
@@ -169,10 +170,11 @@ type SinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name    pulumi.StringPtrInput
-	SinksId pulumi.StringInput
-	V2Id    pulumi.StringInput
-	V2Id1   pulumi.StringInput
+	Name                 pulumi.StringPtrInput
+	SinksId              pulumi.StringInput
+	UniqueWriterIdentity pulumi.StringPtrInput
+	V2Id                 pulumi.StringInput
+	V2Id1                pulumi.StringInput
 }
 
 func (SinkArgs) ElementType() reflect.Type {

@@ -141,6 +141,9 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("tagValuesId", required: true)]
         public Input<string> TagValuesId { get; set; } = null!;
 
+        [Input("validateOnly")]
+        public Input<string>? ValidateOnly { get; set; }
+
         public TagValueArgs()
         {
         }

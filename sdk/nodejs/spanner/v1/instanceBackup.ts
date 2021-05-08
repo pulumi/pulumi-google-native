@@ -83,8 +83,14 @@ export class InstanceBackup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.backupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'backupId'");
+            }
             if ((!args || args.backupsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'backupsId'");
+            }
+            if ((!args || args.encryptionConfigEncryptionType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'encryptionConfigEncryptionType'");
             }
             if ((!args || args.instancesId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instancesId'");
@@ -92,8 +98,11 @@ export class InstanceBackup extends pulumi.CustomResource {
             if ((!args || args.projectsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'projectsId'");
             }
+            inputs["backupId"] = args ? args.backupId : undefined;
             inputs["backupsId"] = args ? args.backupsId : undefined;
             inputs["database"] = args ? args.database : undefined;
+            inputs["encryptionConfigEncryptionType"] = args ? args.encryptionConfigEncryptionType : undefined;
+            inputs["encryptionConfigKmsKeyName"] = args ? args.encryptionConfigKmsKeyName : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -126,11 +135,14 @@ export class InstanceBackup extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceBackup resource.
  */
 export interface InstanceBackupArgs {
+    readonly backupId: pulumi.Input<string>;
     readonly backupsId: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
      */
     readonly database?: pulumi.Input<string>;
+    readonly encryptionConfigEncryptionType: pulumi.Input<string>;
+    readonly encryptionConfigKmsKeyName?: pulumi.Input<string>;
     /**
      * Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
      */

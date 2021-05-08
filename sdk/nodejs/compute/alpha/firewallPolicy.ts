@@ -118,7 +118,9 @@ export class FirewallPolicy extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["parentId"] = args ? args.parentId : undefined;
             inputs["region"] = args ? args.region : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
@@ -190,10 +192,12 @@ export interface FirewallPolicyArgs {
      * [Output Only] The parent of the firewall policy.
      */
     readonly parent?: pulumi.Input<string>;
+    readonly parentId?: pulumi.Input<string>;
     /**
      * [Output Only] URL of the region where the regional firewall policy resides. This field is not applicable to global firewall policies. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
      */

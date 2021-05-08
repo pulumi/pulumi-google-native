@@ -158,6 +158,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Input("properties")]
         public Input<Inputs.InstancePropertiesArgs>? Properties { get; set; }
 
+        [Input("requestId")]
+        public Input<string>? RequestId { get; set; }
+
         /// <summary>
         /// [Output Only] The URL for this instance template. The server defines this URL.
         /// </summary>

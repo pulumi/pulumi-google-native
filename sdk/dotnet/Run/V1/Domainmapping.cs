@@ -99,6 +99,9 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("domainmappingsId", required: true)]
         public Input<string> DomainmappingsId { get; set; } = null!;
 
+        [Input("dryRun")]
+        public Input<string>? DryRun { get; set; }
+
         /// <summary>
         /// The kind of resource, in this case "DomainMapping".
         /// </summary>

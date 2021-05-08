@@ -127,6 +127,8 @@ export class OrganizationSecurityPolicy extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
+            inputs["parentId"] = args ? args.parentId : undefined;
+            inputs["requestId"] = args ? args.requestId : undefined;
             inputs["ruleTupleCount"] = args ? args.ruleTupleCount : undefined;
             inputs["rules"] = args ? args.rules : undefined;
             inputs["securityPolicy"] = args ? args.securityPolicy : undefined;
@@ -211,6 +213,8 @@ export interface OrganizationSecurityPolicyArgs {
      * [Output Only] The parent of the security policy.
      */
     readonly parent?: pulumi.Input<string>;
+    readonly parentId?: pulumi.Input<string>;
+    readonly requestId?: pulumi.Input<string>;
     /**
      * [Output Only] Total count of all security policy rule tuples. A security policy can not exceed a set number of tuples.
      */

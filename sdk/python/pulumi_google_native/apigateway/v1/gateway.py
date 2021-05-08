@@ -13,6 +13,7 @@ __all__ = ['GatewayArgs', 'Gateway']
 @pulumi.input_type
 class GatewayArgs:
     def __init__(__self__, *,
+                 gateway_id: pulumi.Input[str],
                  gateways_id: pulumi.Input[str],
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
@@ -25,6 +26,7 @@ class GatewayArgs:
         :param pulumi.Input[str] display_name: Optional. Display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         """
+        pulumi.set(__self__, "gateway_id", gateway_id)
         pulumi.set(__self__, "gateways_id", gateways_id)
         pulumi.set(__self__, "locations_id", locations_id)
         pulumi.set(__self__, "projects_id", projects_id)
@@ -34,6 +36,15 @@ class GatewayArgs:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter(name="gatewayId")
+    def gateway_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gateway_id")
+
+    @gateway_id.setter
+    def gateway_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gateway_id", value)
 
     @property
     @pulumi.getter(name="gatewaysId")
@@ -106,6 +117,7 @@ class Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 gateway_id: Optional[pulumi.Input[str]] = None,
                  gateways_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -146,6 +158,7 @@ class Gateway(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 gateway_id: Optional[pulumi.Input[str]] = None,
                  gateways_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
@@ -164,6 +177,9 @@ class Gateway(pulumi.CustomResource):
 
             __props__.__dict__["api_config"] = api_config
             __props__.__dict__["display_name"] = display_name
+            if gateway_id is None and not opts.urn:
+                raise TypeError("Missing required property 'gateway_id'")
+            __props__.__dict__["gateway_id"] = gateway_id
             if gateways_id is None and not opts.urn:
                 raise TypeError("Missing required property 'gateways_id'")
             __props__.__dict__["gateways_id"] = gateways_id

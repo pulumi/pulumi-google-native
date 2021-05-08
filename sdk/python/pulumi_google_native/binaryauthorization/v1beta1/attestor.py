@@ -15,6 +15,7 @@ __all__ = ['AttestorArgs', 'Attestor']
 @pulumi.input_type
 class AttestorArgs:
     def __init__(__self__, *,
+                 attestor_id: pulumi.Input[str],
                  attestors_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
@@ -26,6 +27,7 @@ class AttestorArgs:
         :param pulumi.Input[str] name: Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         :param pulumi.Input['UserOwnedDrydockNoteArgs'] user_owned_drydock_note: A Drydock ATTESTATION_AUTHORITY Note, created by the user.
         """
+        pulumi.set(__self__, "attestor_id", attestor_id)
         pulumi.set(__self__, "attestors_id", attestors_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if description is not None:
@@ -34,6 +36,15 @@ class AttestorArgs:
             pulumi.set(__self__, "name", name)
         if user_owned_drydock_note is not None:
             pulumi.set(__self__, "user_owned_drydock_note", user_owned_drydock_note)
+
+    @property
+    @pulumi.getter(name="attestorId")
+    def attestor_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attestor_id")
+
+    @attestor_id.setter
+    def attestor_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attestor_id", value)
 
     @property
     @pulumi.getter(name="attestorsId")
@@ -95,6 +106,7 @@ class Attestor(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attestor_id: Optional[pulumi.Input[str]] = None,
                  attestors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -134,6 +146,7 @@ class Attestor(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 attestor_id: Optional[pulumi.Input[str]] = None,
                  attestors_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -151,6 +164,9 @@ class Attestor(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttestorArgs.__new__(AttestorArgs)
 
+            if attestor_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attestor_id'")
+            __props__.__dict__["attestor_id"] = attestor_id
             if attestors_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attestors_id'")
             __props__.__dict__["attestors_id"] = attestors_id

@@ -38,6 +38,9 @@ func NewRealmGameServerCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GameServerClusterId == nil {
+		return nil, errors.New("invalid value for required argument 'GameServerClusterId'")
+	}
 	if args.GameServerClustersId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerClustersId'")
 	}
@@ -116,6 +119,7 @@ type realmGameServerClusterArgs struct {
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
 	Etag                 *string `pulumi:"etag"`
+	GameServerClusterId  string  `pulumi:"gameServerClusterId"`
 	GameServerClustersId string  `pulumi:"gameServerClustersId"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels      map[string]string `pulumi:"labels"`
@@ -134,6 +138,7 @@ type RealmGameServerClusterArgs struct {
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
 	Etag                 pulumi.StringPtrInput
+	GameServerClusterId  pulumi.StringInput
 	GameServerClustersId pulumi.StringInput
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels      pulumi.StringMapInput

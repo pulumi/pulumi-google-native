@@ -87,6 +87,7 @@ export class TagValue extends pulumi.CustomResource {
             inputs["parent"] = args ? args.parent : undefined;
             inputs["shortName"] = args ? args.shortName : undefined;
             inputs["tagValuesId"] = args ? args.tagValuesId : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["namespacedName"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -132,4 +133,5 @@ export interface TagValueArgs {
      */
     readonly shortName?: pulumi.Input<string>;
     readonly tagValuesId: pulumi.Input<string>;
+    readonly validateOnly?: pulumi.Input<string>;
 }

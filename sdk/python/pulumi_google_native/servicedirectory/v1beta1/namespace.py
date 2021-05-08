@@ -14,6 +14,7 @@ __all__ = ['NamespaceArgs', 'Namespace']
 class NamespaceArgs:
     def __init__(__self__, *,
                  locations_id: pulumi.Input[str],
+                 namespace_id: pulumi.Input[str],
                  namespaces_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -24,6 +25,7 @@ class NamespaceArgs:
         :param pulumi.Input[str] name: Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         """
         pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "namespace_id", namespace_id)
         pulumi.set(__self__, "namespaces_id", namespaces_id)
         pulumi.set(__self__, "projects_id", projects_id)
         if labels is not None:
@@ -39,6 +41,15 @@ class NamespaceArgs:
     @locations_id.setter
     def locations_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "locations_id", value)
+
+    @property
+    @pulumi.getter(name="namespaceId")
+    def namespace_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "namespace_id")
+
+    @namespace_id.setter
+    def namespace_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "namespace_id", value)
 
     @property
     @pulumi.getter(name="namespacesId")
@@ -91,6 +102,7 @@ class Namespace(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  namespaces_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -129,6 +141,7 @@ class Namespace(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 namespace_id: Optional[pulumi.Input[str]] = None,
                  namespaces_id: Optional[pulumi.Input[str]] = None,
                  projects_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -148,6 +161,9 @@ class Namespace(pulumi.CustomResource):
                 raise TypeError("Missing required property 'locations_id'")
             __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["name"] = name
+            if namespace_id is None and not opts.urn:
+                raise TypeError("Missing required property 'namespace_id'")
+            __props__.__dict__["namespace_id"] = namespace_id
             if namespaces_id is None and not opts.urn:
                 raise TypeError("Missing required property 'namespaces_id'")
             __props__.__dict__["namespaces_id"] = namespaces_id

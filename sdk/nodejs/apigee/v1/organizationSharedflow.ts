@@ -46,7 +46,7 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
     /**
      * The ID of the shared flow.
      */
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    public readonly name!: pulumi.Output<string>;
     /**
      * A list of revisions of this shared flow.
      */
@@ -63,20 +63,27 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.action === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'action'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationsId'");
             }
             if ((!args || args.sharedflowsId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'sharedflowsId'");
             }
+            inputs["action"] = args ? args.action : undefined;
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
+            inputs["name"] = args ? args.name : undefined;
             inputs["organizationsId"] = args ? args.organizationsId : undefined;
             inputs["sharedflowsId"] = args ? args.sharedflowsId : undefined;
             inputs["latestRevisionId"] = undefined /*out*/;
             inputs["metaData"] = undefined /*out*/;
-            inputs["name"] = undefined /*out*/;
             inputs["revision"] = undefined /*out*/;
         } else {
             inputs["latestRevisionId"] = undefined /*out*/;
@@ -95,6 +102,7 @@ export class OrganizationSharedflow extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationSharedflow resource.
  */
 export interface OrganizationSharedflowArgs {
+    readonly action: pulumi.Input<string>;
     /**
      * The HTTP Content-Type header value specifying the content type of the body.
      */
@@ -107,6 +115,7 @@ export interface OrganizationSharedflowArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    readonly name: pulumi.Input<string>;
     readonly organizationsId: pulumi.Input<string>;
     readonly sharedflowsId: pulumi.Input<string>;
 }

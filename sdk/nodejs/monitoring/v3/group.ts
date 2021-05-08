@@ -79,6 +79,7 @@ export class Group extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["parentName"] = args ? args.parentName : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
             inputs["filter"] = undefined /*out*/;
@@ -119,4 +120,5 @@ export interface GroupArgs {
      */
     readonly parentName?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly validateOnly?: pulumi.Input<string>;
 }

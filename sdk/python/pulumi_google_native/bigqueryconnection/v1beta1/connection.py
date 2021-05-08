@@ -19,6 +19,7 @@ class ConnectionArgs:
                  locations_id: pulumi.Input[str],
                  projects_id: pulumi.Input[str],
                  cloud_sql: Optional[pulumi.Input['CloudSqlPropertiesArgs']] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -34,6 +35,8 @@ class ConnectionArgs:
         pulumi.set(__self__, "projects_id", projects_id)
         if cloud_sql is not None:
             pulumi.set(__self__, "cloud_sql", cloud_sql)
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if friendly_name is not None:
@@ -81,6 +84,15 @@ class ConnectionArgs:
         pulumi.set(self, "cloud_sql", value)
 
     @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "connection_id")
+
+    @connection_id.setter
+    def connection_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_id", value)
+
+    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -123,6 +135,7 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  connections_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -165,6 +178,7 @@ class Connection(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_sql: Optional[pulumi.Input[pulumi.InputType['CloudSqlPropertiesArgs']]] = None,
+                 connection_id: Optional[pulumi.Input[str]] = None,
                  connections_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
@@ -184,6 +198,7 @@ class Connection(pulumi.CustomResource):
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
             __props__.__dict__["cloud_sql"] = cloud_sql
+            __props__.__dict__["connection_id"] = connection_id
             if connections_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connections_id'")
             __props__.__dict__["connections_id"] = connections_id

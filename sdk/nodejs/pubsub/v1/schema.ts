@@ -67,6 +67,7 @@ export class Schema extends pulumi.CustomResource {
             inputs["definition"] = args ? args.definition : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["schemaId"] = args ? args.schemaId : undefined;
             inputs["schemasId"] = args ? args.schemasId : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
@@ -94,6 +95,7 @@ export interface SchemaArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly projectsId: pulumi.Input<string>;
+    readonly schemaId?: pulumi.Input<string>;
     readonly schemasId: pulumi.Input<string>;
     /**
      * The type of the schema definition.
