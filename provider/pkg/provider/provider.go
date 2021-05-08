@@ -246,7 +246,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	id := res.IdPath
 	idParams := res.IdParams
 	for _, param := range idParams {
-		value := evalParam(inputs, param)
+		value := inputs[resource.PropertyKey(param)].StringValue()
 		id = strings.Replace(id, fmt.Sprintf("{%s}", param), value, 1)
 	}
 
@@ -256,6 +256,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	case "google-native:storage/v1:BucketObject":
 		// This is a very sketchy implementation based on the Go SDK client that exposes media upload.
 		// TODO: We may be able to do that based purely on Discovery API.
+		// https://github.com/pulumi/pulumi-google-native/issues/74
 		opts := []option.ClientOption{option.WithScopes(defaultClientScopes...)}
 		opts = append(opts, internaloption.WithDefaultEndpoint(res.BaseUrl))
 		clientStorage, err := storage.NewService(ctx, option.WithHTTPClient(p.client.http))
@@ -267,7 +268,6 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		object := &storage.Object{Bucket: bucket}
 		insertCall := objectsService.Insert(bucket, object)
 		insertCall.Name(inputs["name"].StringValue())
-		// TODO: use other properties
 		var content []byte
 		source := inputs["source"]
 		if source.IsAsset() {
@@ -390,22 +390,6 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(baseUrl string, resp m
 
 		resp = op
 	}
-}
-
-func evalParam(inputs resource.PropertyMap, param string) string {
-	// TODO: make it more robust if this function proves useful
-	current := inputs
-	parts := strings.Split(param, ".")
-	for _, part := range parts {
-		value := current[resource.PropertyKey(part)]
-		switch {
-		case value.IsString():
-			return value.StringValue()
-		case value.IsObject():
-			current = value.ObjectValue()
-		}
-	}
-	panic(fmt.Sprintf("%q not found", param))
 }
 
 // Read the current live state associated with a resource.
@@ -617,7 +601,6 @@ func (p *googleCloudProvider) GetPluginInfo(context.Context, *empty.Empty) (*rpc
 // to the host to decide how long to wait after Cancel is called before (e.g.)
 // hard-closing any gRPC connection.
 func (p *googleCloudProvider) Cancel(context.Context, *empty.Empty) (*empty.Empty, error) {
-	// TODO
 	return &empty.Empty{}, nil
 }
 

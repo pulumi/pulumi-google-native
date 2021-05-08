@@ -88,19 +88,18 @@ func emitDiscoveryFiles(outDir string) error {
 	}
 
 	// TODO: this one item is not found in the directory list - figure out why.
+	// https://github.com/pulumi/pulumi-google-native/issues/69
 	list.Items = append(list.Items, &discovery.DirectoryListItems{
 		DiscoveryRestUrl: "https://vpcaccess.googleapis.com/$discovery/rest?version=v1",
 		Title:            "Cloud VPC Access",
 		Id:               "vpcaccess:v1",
 	})
 
-	// TODO: getting access denied from https://essentialcontacts.googleapis.com/$discovery/rest?version=v1beta1
-	// but the TF provider uses that API. it's not in the list either.
-
 	private := regexp.MustCompile("v[0-9]+p[0-9]+[a-z0-9]+")
 
 	for _, item := range list.Items {
 		// TODO: this is arbitrary - find a better way?
+		// https://github.com/pulumi/pulumi-google-native/issues/69
 		if !strings.HasPrefix(item.DocumentationLink, "https://cloud.google.com") &&
 			!strings.HasPrefix(item.Title, "Cloud") &&
 			!strings.HasPrefix(item.Title, "Firebase") &&
