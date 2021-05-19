@@ -3,7 +3,9 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Normalize parameter names to singular names similar to properties
+  [#96](https://github.com/pulumi/pulumi-google-native/pull/96),
+  [#65](https://github.com/pulumi/pulumi-google-native/issues/89)
 
 ---
 
