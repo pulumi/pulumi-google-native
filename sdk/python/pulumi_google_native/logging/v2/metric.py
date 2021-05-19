@@ -15,8 +15,8 @@ __all__ = ['MetricArgs', 'Metric']
 @pulumi.input_type
 class MetricArgs:
     def __init__(__self__, *,
-                 metrics_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 metric_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  bucket_options: Optional[pulumi.Input['BucketOptionsArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -34,8 +34,8 @@ class MetricArgs:
         :param pulumi.Input[str] name: Required. The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and the special characters _-.,+!*',()%/. The forward-slash character (/) denotes a hierarchy of name pieces, and it cannot be the first character of the name.The metric identifier in this field must not be URL-encoded (https://en.wikipedia.org/wiki/Percent-encoding). However, when the metric identifier appears as the [METRIC_ID] part of a metric_name API parameter, then the metric identifier must be URL-encoded. Example: "projects/my-project/metrics/nginx%2Frequests".
         :param pulumi.Input[str] value_extractor: Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or REGEXP_EXTRACT(field, regex). The argument are: 1. field: The name of the log entry field from which the value is to be extracted. 2. regex: A regular expression using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax) with a single capture group to extract data from the specified log entry field. The value of the field is converted to a string before applying the regex. It is an error to specify a regex that does not include exactly one capture group.The result of the extraction must be convertible to a double type, as the distribution always records double values. If either the extraction or the conversion to double fails, then those values are not recorded in the distribution.Example: REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")
         """
-        pulumi.set(__self__, "metrics_id", metrics_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "metric_id", metric_id)
+        pulumi.set(__self__, "project", project)
         if bucket_options is not None:
             pulumi.set(__self__, "bucket_options", bucket_options)
         if description is not None:
@@ -52,22 +52,22 @@ class MetricArgs:
             pulumi.set(__self__, "value_extractor", value_extractor)
 
     @property
-    @pulumi.getter(name="metricsId")
-    def metrics_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "metrics_id")
+    @pulumi.getter(name="metricId")
+    def metric_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "metric_id")
 
-    @metrics_id.setter
-    def metrics_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "metrics_id", value)
+    @metric_id.setter
+    def metric_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "metric_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="bucketOptions")
@@ -164,9 +164,9 @@ class Metric(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]] = None,
-                 metrics_id: Optional[pulumi.Input[str]] = None,
+                 metric_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -211,9 +211,9 @@ class Metric(pulumi.CustomResource):
                  filter: Optional[pulumi.Input[str]] = None,
                  label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metric_descriptor: Optional[pulumi.Input[pulumi.InputType['MetricDescriptorArgs']]] = None,
-                 metrics_id: Optional[pulumi.Input[str]] = None,
+                 metric_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  value_extractor: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -232,13 +232,13 @@ class Metric(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["label_extractors"] = label_extractors
             __props__.__dict__["metric_descriptor"] = metric_descriptor
-            if metrics_id is None and not opts.urn:
-                raise TypeError("Missing required property 'metrics_id'")
-            __props__.__dict__["metrics_id"] = metrics_id
+            if metric_id is None and not opts.urn:
+                raise TypeError("Missing required property 'metric_id'")
+            __props__.__dict__["metric_id"] = metric_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["value_extractor"] = value_extractor
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

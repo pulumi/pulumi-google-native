@@ -15,8 +15,8 @@ __all__ = ['ConnectivityTestArgs', 'ConnectivityTest']
 @pulumi.input_type
 class ConnectivityTestArgs:
     def __init__(__self__, *,
-                 connectivity_tests_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 connectivity_test_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  test_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input['EndpointArgs']] = None,
@@ -35,8 +35,8 @@ class ConnectivityTestArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] related_projects: Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
         :param pulumi.Input['EndpointArgs'] source: Required. Source specification of the Connectivity Test. You can use a combination of source IP address, virtual machine (VM) instance, or Compute Engine network to uniquely identify the source location. Examples: If the source IP address is an internal IP address within a Google Cloud Virtual Private Cloud (VPC) network, then you must also specify the VPC network. Otherwise, specify the VM instance, which already contains its internal IP address and VPC network information. If the source of the test is within an on-premises network, then you must provide the destination VPC network. If the source endpoint is a Compute Engine VM instance with multiple network interfaces, the instance itself is not sufficient to identify the endpoint. So, you must also specify the source IP address or VPC network. A reachability analysis proceeds even if the source location is ambiguous. However, the test result may include endpoints that you don't intend to test.
         """
-        pulumi.set(__self__, "connectivity_tests_id", connectivity_tests_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "connectivity_test_id", connectivity_test_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "test_id", test_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -54,22 +54,22 @@ class ConnectivityTestArgs:
             pulumi.set(__self__, "source", source)
 
     @property
-    @pulumi.getter(name="connectivityTestsId")
-    def connectivity_tests_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "connectivity_tests_id")
+    @pulumi.getter(name="connectivityTestId")
+    def connectivity_test_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "connectivity_test_id")
 
-    @connectivity_tests_id.setter
-    def connectivity_tests_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "connectivity_tests_id", value)
+    @connectivity_test_id.setter
+    def connectivity_test_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connectivity_test_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="testId")
@@ -170,12 +170,12 @@ class ConnectivityTest(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectivity_tests_id: Optional[pulumi.Input[str]] = None,
+                 connectivity_test_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
@@ -218,12 +218,12 @@ class ConnectivityTest(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 connectivity_tests_id: Optional[pulumi.Input[str]] = None,
+                 connectivity_test_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  related_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source: Optional[pulumi.Input[pulumi.InputType['EndpointArgs']]] = None,
@@ -240,16 +240,16 @@ class ConnectivityTest(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectivityTestArgs.__new__(ConnectivityTestArgs)
 
-            if connectivity_tests_id is None and not opts.urn:
-                raise TypeError("Missing required property 'connectivity_tests_id'")
-            __props__.__dict__["connectivity_tests_id"] = connectivity_tests_id
+            if connectivity_test_id is None and not opts.urn:
+                raise TypeError("Missing required property 'connectivity_test_id'")
+            __props__.__dict__["connectivity_test_id"] = connectivity_test_id
             __props__.__dict__["description"] = description
             __props__.__dict__["destination"] = destination
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             __props__.__dict__["related_projects"] = related_projects
             __props__.__dict__["source"] = source

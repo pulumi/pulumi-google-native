@@ -15,9 +15,8 @@ __all__ = ['GuestPolicyArgs', 'GuestPolicy']
 @pulumi.input_type
 class GuestPolicyArgs:
     def __init__(__self__, *,
-                 guest_policies_id: pulumi.Input[str],
                  guest_policy_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  assignment: Optional[pulumi.Input['AssignmentArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -35,9 +34,8 @@ class GuestPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['PackageArgs']]] packages: The software packages to be managed by this policy.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
         """
-        pulumi.set(__self__, "guest_policies_id", guest_policies_id)
         pulumi.set(__self__, "guest_policy_id", guest_policy_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if assignment is not None:
             pulumi.set(__self__, "assignment", assignment)
         if description is not None:
@@ -54,15 +52,6 @@ class GuestPolicyArgs:
             pulumi.set(__self__, "recipes", recipes)
 
     @property
-    @pulumi.getter(name="guestPoliciesId")
-    def guest_policies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "guest_policies_id")
-
-    @guest_policies_id.setter
-    def guest_policies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "guest_policies_id", value)
-
-    @property
     @pulumi.getter(name="guestPolicyId")
     def guest_policy_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "guest_policy_id")
@@ -72,13 +61,13 @@ class GuestPolicyArgs:
         pulumi.set(self, "guest_policy_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -173,12 +162,11 @@ class GuestPolicy(pulumi.CustomResource):
                  assignment: Optional[pulumi.Input[pulumi.InputType['AssignmentArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 guest_policies_id: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
                  __props__=None):
         """
@@ -221,12 +209,11 @@ class GuestPolicy(pulumi.CustomResource):
                  assignment: Optional[pulumi.Input[pulumi.InputType['AssignmentArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 guest_policies_id: Optional[pulumi.Input[str]] = None,
                  guest_policy_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]]] = None,
                  __props__=None):
         if opts is None:
@@ -243,18 +230,15 @@ class GuestPolicy(pulumi.CustomResource):
             __props__.__dict__["assignment"] = assignment
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
-            if guest_policies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'guest_policies_id'")
-            __props__.__dict__["guest_policies_id"] = guest_policies_id
             if guest_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'guest_policy_id'")
             __props__.__dict__["guest_policy_id"] = guest_policy_id
             __props__.__dict__["name"] = name
             __props__.__dict__["package_repositories"] = package_repositories
             __props__.__dict__["packages"] = packages
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["recipes"] = recipes
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

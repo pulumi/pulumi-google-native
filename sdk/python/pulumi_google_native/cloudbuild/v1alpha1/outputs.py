@@ -19,35 +19,18 @@ class NetworkResponse(dict):
     """
     Network describes the GCP network used to create workers in.
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in NetworkResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        NetworkResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        NetworkResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  network: str,
-                 project_id: str,
+                 project: str,
                  subnetwork: str):
         """
         Network describes the GCP network used to create workers in.
         :param str network: Network on which the workers are created. "default" network is used if empty.
-        :param str project_id: Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
+        :param str project: Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
         :param str subnetwork: Subnetwork on which the workers are created. "default" subnetwork is used if empty.
         """
         pulumi.set(__self__, "network", network)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "subnetwork", subnetwork)
 
     @property
@@ -59,12 +42,12 @@ class NetworkResponse(dict):
         return pulumi.get(self, "network")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

@@ -15,8 +15,8 @@ __all__ = ['UptimeCheckConfigArgs', 'UptimeCheckConfig']
 @pulumi.input_type
 class UptimeCheckConfigArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 uptime_check_configs_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 uptime_check_config_id: pulumi.Input[str],
                  content_matchers: Optional[pulumi.Input[Sequence[pulumi.Input['ContentMatcherArgs']]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  http_check: Optional[pulumi.Input['HttpCheckArgs']] = None,
@@ -44,8 +44,8 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "uptime_check_configs_id", uptime_check_configs_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "uptime_check_config_id", uptime_check_config_id)
         if content_matchers is not None:
             pulumi.set(__self__, "content_matchers", content_matchers)
         if display_name is not None:
@@ -72,22 +72,22 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "timeout", timeout)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="uptimeCheckConfigsId")
-    def uptime_check_configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "uptime_check_configs_id")
+    @pulumi.getter(name="uptimeCheckConfigId")
+    def uptime_check_config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "uptime_check_config_id")
 
-    @uptime_check_configs_id.setter
-    def uptime_check_configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "uptime_check_configs_id", value)
+    @uptime_check_config_id.setter
+    def uptime_check_config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uptime_check_config_id", value)
 
     @property
     @pulumi.getter(name="contentMatchers")
@@ -247,12 +247,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  monitored_resource: Optional[pulumi.Input[pulumi.InputType['MonitoredResourceArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 uptime_check_configs_id: Optional[pulumi.Input[str]] = None,
+                 uptime_check_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new Uptime check configuration.
@@ -304,12 +304,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  monitored_resource: Optional[pulumi.Input[pulumi.InputType['MonitoredResourceArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  resource_group: Optional[pulumi.Input[pulumi.InputType['ResourceGroupArgs']]] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 uptime_check_configs_id: Optional[pulumi.Input[str]] = None,
+                 uptime_check_config_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -330,16 +330,16 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__.__dict__["monitored_resource"] = monitored_resource
             __props__.__dict__["name"] = name
             __props__.__dict__["period"] = period
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["resource_group"] = resource_group
             __props__.__dict__["selected_regions"] = selected_regions
             __props__.__dict__["tcp_check"] = tcp_check
             __props__.__dict__["timeout"] = timeout
-            if uptime_check_configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'uptime_check_configs_id'")
-            __props__.__dict__["uptime_check_configs_id"] = uptime_check_configs_id
+            if uptime_check_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'uptime_check_config_id'")
+            __props__.__dict__["uptime_check_config_id"] = uptime_check_config_id
         super(UptimeCheckConfig, __self__).__init__(
             'google-native:monitoring/v3:UptimeCheckConfig',
             resource_name,

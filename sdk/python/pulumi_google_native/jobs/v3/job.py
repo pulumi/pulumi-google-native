@@ -15,8 +15,8 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
-                 jobs_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 job_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_info: Optional[pulumi.Input['ApplicationInfoArgs']] = None,
                  company_display_name: Optional[pulumi.Input[str]] = None,
@@ -78,8 +78,8 @@ class JobArgs:
         :param pulumi.Input[str] responsibilities: Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[str] title: Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
-        pulumi.set(__self__, "jobs_id", jobs_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "job_id", job_id)
+        pulumi.set(__self__, "project", project)
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
         if application_info is not None:
@@ -140,22 +140,22 @@ class JobArgs:
             pulumi.set(__self__, "title", title)
 
     @property
-    @pulumi.getter(name="jobsId")
-    def jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "jobs_id")
+    @pulumi.getter(name="jobId")
+    def job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "job_id")
 
-    @jobs_id.setter
-    def jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "jobs_id", value)
+    @job_id.setter
+    def job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -525,9 +525,9 @@ class Job(pulumi.CustomResource):
                  incentives: Optional[pulumi.Input[str]] = None,
                  job_benefits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  job_end_time: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_level: Optional[pulumi.Input[str]] = None,
                  job_start_time: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  posting_create_time: Optional[pulumi.Input[str]] = None,
@@ -536,7 +536,7 @@ class Job(pulumi.CustomResource):
                  posting_region: Optional[pulumi.Input[str]] = None,
                  posting_update_time: Optional[pulumi.Input[str]] = None,
                  processing_options: Optional[pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
                  requisition_id: Optional[pulumi.Input[str]] = None,
@@ -616,9 +616,9 @@ class Job(pulumi.CustomResource):
                  incentives: Optional[pulumi.Input[str]] = None,
                  job_benefits: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  job_end_time: Optional[pulumi.Input[str]] = None,
+                 job_id: Optional[pulumi.Input[str]] = None,
                  job_level: Optional[pulumi.Input[str]] = None,
                  job_start_time: Optional[pulumi.Input[str]] = None,
-                 jobs_id: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  posting_create_time: Optional[pulumi.Input[str]] = None,
@@ -627,7 +627,7 @@ class Job(pulumi.CustomResource):
                  posting_region: Optional[pulumi.Input[str]] = None,
                  posting_update_time: Optional[pulumi.Input[str]] = None,
                  processing_options: Optional[pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
                  requisition_id: Optional[pulumi.Input[str]] = None,
@@ -659,11 +659,11 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["incentives"] = incentives
             __props__.__dict__["job_benefits"] = job_benefits
             __props__.__dict__["job_end_time"] = job_end_time
+            if job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'job_id'")
+            __props__.__dict__["job_id"] = job_id
             __props__.__dict__["job_level"] = job_level
             __props__.__dict__["job_start_time"] = job_start_time
-            if jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'jobs_id'")
-            __props__.__dict__["jobs_id"] = jobs_id
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["name"] = name
             __props__.__dict__["posting_create_time"] = posting_create_time
@@ -672,9 +672,9 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["posting_region"] = posting_region
             __props__.__dict__["posting_update_time"] = posting_update_time
             __props__.__dict__["processing_options"] = processing_options
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["promotion_value"] = promotion_value
             __props__.__dict__["qualifications"] = qualifications
             __props__.__dict__["requisition_id"] = requisition_id

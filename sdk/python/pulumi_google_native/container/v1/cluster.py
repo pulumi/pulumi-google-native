@@ -15,9 +15,9 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 clusters_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 cluster_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['AddonsConfigArgs']] = None,
                  authenticator_groups_config: Optional[pulumi.Input['AuthenticatorGroupsConfigArgs']] = None,
                  autopilot: Optional[pulumi.Input['AutopilotArgs']] = None,
@@ -41,7 +41,6 @@ class ClusterArgs:
                  ip_allocation_policy: Optional[pulumi.Input['IPAllocationPolicyArgs']] = None,
                  label_fingerprint: Optional[pulumi.Input[str]] = None,
                  legacy_abac: Optional[pulumi.Input['LegacyAbacArgs']] = None,
-                 location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input['MaintenancePolicyArgs']] = None,
@@ -72,6 +71,7 @@ class ClusterArgs:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[str] location: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
         :param pulumi.Input['AddonsConfigArgs'] addons_config: Configurations for the various addons available to run in the cluster.
         :param pulumi.Input['AuthenticatorGroupsConfigArgs'] authenticator_groups_config: Configuration controlling RBAC group membership information.
         :param pulumi.Input['AutopilotArgs'] autopilot: Autopilot configuration for the cluster.
@@ -95,7 +95,6 @@ class ClusterArgs:
         :param pulumi.Input['IPAllocationPolicyArgs'] ip_allocation_policy: Configuration for cluster IP allocation.
         :param pulumi.Input[str] label_fingerprint: The fingerprint of the set of labels for this cluster.
         :param pulumi.Input['LegacyAbacArgs'] legacy_abac: Configuration for the legacy ABAC authorization mode.
-        :param pulumi.Input[str] location: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] locations: The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the cluster's nodes should be located. This field provides a default value if [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) are not specified during node pool creation. Warning: changing cluster locations will update the [NodePool.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters.nodePools#NodePool.FIELDS.locations) of all node pools and will result in nodes being added and/or removed.
         :param pulumi.Input[str] logging_service: The logging service the cluster should use to write logs. Currently available options: * `logging.googleapis.com/kubernetes` - The Cloud Logging service with a Kubernetes-native resource model * `logging.googleapis.com` - The legacy Cloud Logging service (no longer available as of GKE 1.15). * `none` - no logs will be exported from the cluster. If left as an empty string,`logging.googleapis.com/kubernetes` will be used for GKE 1.14+ or `logging.googleapis.com` for earlier versions.
         :param pulumi.Input['MaintenancePolicyArgs'] maintenance_policy: Configure the maintenance policy for this cluster.
@@ -125,9 +124,9 @@ class ClusterArgs:
         :param pulumi.Input['WorkloadIdentityConfigArgs'] workload_identity_config: Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
         :param pulumi.Input[str] zone: [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
         """
-        pulumi.set(__self__, "clusters_id", clusters_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
         if authenticator_groups_config is not None:
@@ -174,8 +173,6 @@ class ClusterArgs:
             pulumi.set(__self__, "label_fingerprint", label_fingerprint)
         if legacy_abac is not None:
             pulumi.set(__self__, "legacy_abac", legacy_abac)
-        if location is not None:
-            pulumi.set(__self__, "location", location)
         if locations is not None:
             pulumi.set(__self__, "locations", locations)
         if logging_service is not None:
@@ -234,31 +231,34 @@ class ClusterArgs:
             pulumi.set(__self__, "zone", zone)
 
     @property
-    @pulumi.getter(name="clustersId")
-    def clusters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "clusters_id")
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cluster_id")
 
-    @clusters_id.setter
-    def clusters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "clusters_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
+        """
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="addonsConfig")
@@ -535,18 +535,6 @@ class ClusterArgs:
     @legacy_abac.setter
     def legacy_abac(self, value: Optional[pulumi.Input['LegacyAbacArgs']]):
         pulumi.set(self, "legacy_abac", value)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) or [region](https://cloud.google.com/compute/docs/regions-zones/regions-zones#available) in which the cluster resides.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -895,8 +883,8 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -916,7 +904,6 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
@@ -932,7 +919,7 @@ class Cluster(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1033,8 +1020,8 @@ class Cluster(pulumi.CustomResource):
                  autopilot: Optional[pulumi.Input[pulumi.InputType['AutopilotArgs']]] = None,
                  autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterAutoscalingArgs']]] = None,
                  binary_authorization: Optional[pulumi.Input[pulumi.InputType['BinaryAuthorizationArgs']]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StatusConditionArgs']]]]] = None,
                  confidential_nodes: Optional[pulumi.Input[pulumi.InputType['ConfidentialNodesArgs']]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
@@ -1054,7 +1041,6 @@ class Cluster(pulumi.CustomResource):
                  legacy_abac: Optional[pulumi.Input[pulumi.InputType['LegacyAbacArgs']]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
                  logging_service: Optional[pulumi.Input[str]] = None,
                  maintenance_policy: Optional[pulumi.Input[pulumi.InputType['MaintenancePolicyArgs']]] = None,
                  master_auth: Optional[pulumi.Input[pulumi.InputType['MasterAuthArgs']]] = None,
@@ -1070,7 +1056,7 @@ class Cluster(pulumi.CustomResource):
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  private_cluster_config: Optional[pulumi.Input[pulumi.InputType['PrivateClusterConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  release_channel: Optional[pulumi.Input[pulumi.InputType['ReleaseChannelArgs']]] = None,
                  resource_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_usage_export_config: Optional[pulumi.Input[pulumi.InputType['ResourceUsageExportConfigArgs']]] = None,
@@ -1100,10 +1086,10 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["autopilot"] = autopilot
             __props__.__dict__["autoscaling"] = autoscaling
             __props__.__dict__["binary_authorization"] = binary_authorization
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
-            if clusters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'clusters_id'")
-            __props__.__dict__["clusters_id"] = clusters_id
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["confidential_nodes"] = confidential_nodes
             __props__.__dict__["create_time"] = create_time
@@ -1121,11 +1107,10 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["ip_allocation_policy"] = ip_allocation_policy
             __props__.__dict__["label_fingerprint"] = label_fingerprint
             __props__.__dict__["legacy_abac"] = legacy_abac
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["locations"] = locations
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
             __props__.__dict__["logging_service"] = logging_service
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["master_auth"] = master_auth
@@ -1141,9 +1126,9 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["parent"] = parent
             __props__.__dict__["private_cluster_config"] = private_cluster_config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["release_channel"] = release_channel
             __props__.__dict__["resource_labels"] = resource_labels
             __props__.__dict__["resource_usage_export_config"] = resource_usage_export_config

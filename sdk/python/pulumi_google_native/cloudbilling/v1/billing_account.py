@@ -13,7 +13,7 @@ __all__ = ['BillingAccountArgs', 'BillingAccount']
 @pulumi.input_type
 class BillingAccountArgs:
     def __init__(__self__, *,
-                 billing_accounts_id: pulumi.Input[str],
+                 billing_account_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None):
         """
@@ -21,20 +21,20 @@ class BillingAccountArgs:
         :param pulumi.Input[str] display_name: The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
         :param pulumi.Input[str] master_billing_account: If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will be the resource name of the parent billing account that it is being resold through. Otherwise this will be empty.
         """
-        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
+        pulumi.set(__self__, "billing_account_id", billing_account_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if master_billing_account is not None:
             pulumi.set(__self__, "master_billing_account", master_billing_account)
 
     @property
-    @pulumi.getter(name="billingAccountsId")
-    def billing_accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "billing_accounts_id")
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_account_id")
 
-    @billing_accounts_id.setter
-    def billing_accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "billing_accounts_id", value)
+    @billing_account_id.setter
+    def billing_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_account_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -66,7 +66,7 @@ class BillingAccount(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -102,7 +102,7 @@ class BillingAccount(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  master_billing_account: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -117,9 +117,9 @@ class BillingAccount(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingAccountArgs.__new__(BillingAccountArgs)
 
-            if billing_accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            if billing_account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_account_id'")
+            __props__.__dict__["billing_account_id"] = billing_account_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["master_billing_account"] = master_billing_account
             __props__.__dict__["name"] = None

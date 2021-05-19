@@ -15,10 +15,9 @@ __all__ = ['RuntimeArgs', 'Runtime']
 @pulumi.input_type
 class RuntimeArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  runtime_id: pulumi.Input[str],
-                 runtimes_id: pulumi.Input[str],
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
                  virtual_machine: Optional[pulumi.Input['VirtualMachineArgs']] = None):
@@ -28,10 +27,9 @@ class RuntimeArgs:
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
         :param pulumi.Input['VirtualMachineArgs'] virtual_machine: Use a Compute Engine VM image to start the managed notebook instance.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "runtime_id", runtime_id)
-        pulumi.set(__self__, "runtimes_id", runtimes_id)
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
         if software_config is not None:
@@ -40,22 +38,22 @@ class RuntimeArgs:
             pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="runtimeId")
@@ -65,15 +63,6 @@ class RuntimeArgs:
     @runtime_id.setter
     def runtime_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "runtime_id", value)
-
-    @property
-    @pulumi.getter(name="runtimesId")
-    def runtimes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "runtimes_id")
-
-    @runtimes_id.setter
-    def runtimes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "runtimes_id", value)
 
     @property
     @pulumi.getter(name="accessConfig")
@@ -118,10 +107,9 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
-                 runtimes_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
                  __props__=None):
@@ -159,10 +147,9 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  runtime_id: Optional[pulumi.Input[str]] = None,
-                 runtimes_id: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
                  virtual_machine: Optional[pulumi.Input[pulumi.InputType['VirtualMachineArgs']]] = None,
                  __props__=None):
@@ -178,18 +165,15 @@ class Runtime(pulumi.CustomResource):
             __props__ = RuntimeArgs.__new__(RuntimeArgs)
 
             __props__.__dict__["access_config"] = access_config
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if runtime_id is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime_id'")
             __props__.__dict__["runtime_id"] = runtime_id
-            if runtimes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'runtimes_id'")
-            __props__.__dict__["runtimes_id"] = runtimes_id
             __props__.__dict__["software_config"] = software_config
             __props__.__dict__["virtual_machine"] = virtual_machine
             __props__.__dict__["create_time"] = None

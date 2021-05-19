@@ -13,11 +13,11 @@ __all__ = ['OrganizationEnvironmentApiRevisionDebugsessionArgs', 'OrganizationEn
 @pulumi.input_type
 class OrganizationEnvironmentApiRevisionDebugsessionArgs:
     def __init__(__self__, *,
-                 apis_id: pulumi.Input[str],
-                 debugsessions_id: pulumi.Input[str],
-                 environments_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
-                 revisions_id: pulumi.Input[str],
+                 api_id: pulumi.Input[str],
+                 debugsession_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 revision_id: pulumi.Input[str],
                  count: Optional[pulumi.Input[int]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -33,11 +33,11 @@ class OrganizationEnvironmentApiRevisionDebugsessionArgs:
         :param pulumi.Input[int] tracesize: Optional. The maximum number of bytes captured from the response payload. Min = 0, Max = 5120, Default = 5120.
         :param pulumi.Input[int] validity: Optional. The length of time, in seconds, that this debug session is valid, starting from when it's received in the control plane. Min = 1, Max = 15, Default = 10.
         """
-        pulumi.set(__self__, "apis_id", apis_id)
-        pulumi.set(__self__, "debugsessions_id", debugsessions_id)
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "revisions_id", revisions_id)
+        pulumi.set(__self__, "api_id", api_id)
+        pulumi.set(__self__, "debugsession_id", debugsession_id)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "revision_id", revision_id)
         if count is not None:
             pulumi.set(__self__, "count", count)
         if filter is not None:
@@ -52,49 +52,49 @@ class OrganizationEnvironmentApiRevisionDebugsessionArgs:
             pulumi.set(__self__, "validity", validity)
 
     @property
-    @pulumi.getter(name="apisId")
-    def apis_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apis_id")
+    @pulumi.getter(name="apiId")
+    def api_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "api_id")
 
-    @apis_id.setter
-    def apis_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apis_id", value)
-
-    @property
-    @pulumi.getter(name="debugsessionsId")
-    def debugsessions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "debugsessions_id")
-
-    @debugsessions_id.setter
-    def debugsessions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "debugsessions_id", value)
+    @api_id.setter
+    def api_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "api_id", value)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter(name="debugsessionId")
+    def debugsession_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "debugsession_id")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
-
-    @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
-
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @debugsession_id.setter
+    def debugsession_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "debugsession_id", value)
 
     @property
-    @pulumi.getter(name="revisionsId")
-    def revisions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "revisions_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @revisions_id.setter
-    def revisions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "revisions_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter(name="revisionId")
+    def revision_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "revision_id")
+
+    @revision_id.setter
+    def revision_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "revision_id", value)
 
     @property
     @pulumi.getter
@@ -174,14 +174,14 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
-                 debugsessions_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 debugsession_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 revisions_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  tracesize: Optional[pulumi.Input[int]] = None,
                  validity: Optional[pulumi.Input[int]] = None,
@@ -222,14 +222,14 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apis_id: Optional[pulumi.Input[str]] = None,
+                 api_id: Optional[pulumi.Input[str]] = None,
                  count: Optional[pulumi.Input[int]] = None,
-                 debugsessions_id: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 debugsession_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 revisions_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 revision_id: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  tracesize: Optional[pulumi.Input[int]] = None,
                  validity: Optional[pulumi.Input[int]] = None,
@@ -245,24 +245,24 @@ class OrganizationEnvironmentApiRevisionDebugsession(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvironmentApiRevisionDebugsessionArgs.__new__(OrganizationEnvironmentApiRevisionDebugsessionArgs)
 
-            if apis_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apis_id'")
-            __props__.__dict__["apis_id"] = apis_id
+            if api_id is None and not opts.urn:
+                raise TypeError("Missing required property 'api_id'")
+            __props__.__dict__["api_id"] = api_id
             __props__.__dict__["count"] = count
-            if debugsessions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'debugsessions_id'")
-            __props__.__dict__["debugsessions_id"] = debugsessions_id
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
+            if debugsession_id is None and not opts.urn:
+                raise TypeError("Missing required property 'debugsession_id'")
+            __props__.__dict__["debugsession_id"] = debugsession_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["filter"] = filter
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
-            if revisions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'revisions_id'")
-            __props__.__dict__["revisions_id"] = revisions_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if revision_id is None and not opts.urn:
+                raise TypeError("Missing required property 'revision_id'")
+            __props__.__dict__["revision_id"] = revision_id
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["tracesize"] = tracesize
             __props__.__dict__["validity"] = validity

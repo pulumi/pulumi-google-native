@@ -15,10 +15,10 @@ __all__ = ['BuildArgs', 'Build']
 @pulumi.input_type
 class BuildArgs:
     def __init__(__self__, *,
-                 builds_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
+                 build_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  project_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
                  artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
                  available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -48,10 +48,10 @@ class BuildArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
         """
-        pulumi.set(__self__, "builds_id", builds_id)
-        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "build_id", build_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "projects_id", projects_id)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
         if available_secrets is not None:
@@ -80,22 +80,31 @@ class BuildArgs:
             pulumi.set(__self__, "timeout", timeout)
 
     @property
-    @pulumi.getter(name="buildsId")
-    def builds_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "builds_id")
+    @pulumi.getter(name="buildId")
+    def build_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "build_id")
 
-    @builds_id.setter
-    def builds_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "builds_id", value)
+    @build_id.setter
+    def build_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "build_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="projectId")
@@ -105,15 +114,6 @@ class BuildArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
 
     @property
     @pulumi.getter
@@ -279,13 +279,13 @@ class Build(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
                  available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
-                 builds_id: Optional[pulumi.Input[str]] = None,
+                 build_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -340,13 +340,13 @@ class Build(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  artifacts: Optional[pulumi.Input[pulumi.InputType['ArtifactsArgs']]] = None,
                  available_secrets: Optional[pulumi.Input[pulumi.InputType['SecretsArgs']]] = None,
-                 builds_id: Optional[pulumi.Input[str]] = None,
+                 build_id: Optional[pulumi.Input[str]] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  logs_bucket: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[pulumi.InputType['BuildOptionsArgs']]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
                  queue_ttl: Optional[pulumi.Input[str]] = None,
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
@@ -369,21 +369,21 @@ class Build(pulumi.CustomResource):
 
             __props__.__dict__["artifacts"] = artifacts
             __props__.__dict__["available_secrets"] = available_secrets
-            if builds_id is None and not opts.urn:
-                raise TypeError("Missing required property 'builds_id'")
-            __props__.__dict__["builds_id"] = builds_id
+            if build_id is None and not opts.urn:
+                raise TypeError("Missing required property 'build_id'")
+            __props__.__dict__["build_id"] = build_id
             __props__.__dict__["images"] = images
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["logs_bucket"] = logs_bucket
             __props__.__dict__["options"] = options
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
             __props__.__dict__["queue_ttl"] = queue_ttl
             __props__.__dict__["secrets"] = secrets
             __props__.__dict__["service_account"] = service_account
@@ -435,7 +435,7 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["logs_bucket"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["options"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["queue_ttl"] = None
         __props__.__dict__["results"] = None
         __props__.__dict__["secrets"] = None
@@ -533,12 +533,12 @@ class Build(pulumi.CustomResource):
         return pulumi.get(self, "options")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         ID of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="queueTtl")

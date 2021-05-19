@@ -13,10 +13,10 @@ __all__ = ['ConversationParticipantArgs', 'ConversationParticipant']
 @pulumi.input_type
 class ConversationParticipantArgs:
     def __init__(__self__, *,
-                 conversations_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 participants_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 conversation_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 participant_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None):
@@ -26,10 +26,10 @@ class ConversationParticipantArgs:
         :param pulumi.Input[str] obfuscated_external_user_id: Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
         :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         """
-        pulumi.set(__self__, "conversations_id", conversations_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "participants_id", participants_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "conversation_id", conversation_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "participant_id", participant_id)
+        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if obfuscated_external_user_id is not None:
@@ -38,40 +38,40 @@ class ConversationParticipantArgs:
             pulumi.set(__self__, "role", role)
 
     @property
-    @pulumi.getter(name="conversationsId")
-    def conversations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "conversations_id")
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "conversation_id")
 
-    @conversations_id.setter
-    def conversations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "conversations_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @conversation_id.setter
+    def conversation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "conversation_id", value)
 
     @property
-    @pulumi.getter(name="participantsId")
-    def participants_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "participants_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @participants_id.setter
-    def participants_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "participants_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="participantId")
+    def participant_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "participant_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @participant_id.setter
+    def participant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "participant_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -115,12 +115,12 @@ class ConversationParticipant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
-                 participants_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 participant_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -156,12 +156,12 @@ class ConversationParticipant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  obfuscated_external_user_id: Optional[pulumi.Input[str]] = None,
-                 participants_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 participant_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -175,20 +175,20 @@ class ConversationParticipant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConversationParticipantArgs.__new__(ConversationParticipantArgs)
 
-            if conversations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'conversations_id'")
-            __props__.__dict__["conversations_id"] = conversations_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if conversation_id is None and not opts.urn:
+                raise TypeError("Missing required property 'conversation_id'")
+            __props__.__dict__["conversation_id"] = conversation_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["obfuscated_external_user_id"] = obfuscated_external_user_id
-            if participants_id is None and not opts.urn:
-                raise TypeError("Missing required property 'participants_id'")
-            __props__.__dict__["participants_id"] = participants_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if participant_id is None and not opts.urn:
+                raise TypeError("Missing required property 'participant_id'")
+            __props__.__dict__["participant_id"] = participant_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
         super(ConversationParticipant, __self__).__init__(
             'google-native:dialogflow/v2beta1:ConversationParticipant',

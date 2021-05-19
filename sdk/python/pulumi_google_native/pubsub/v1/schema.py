@@ -13,8 +13,7 @@ __all__ = ['SchemaArgs', 'Schema']
 @pulumi.input_type
 class SchemaArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 schemas_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
@@ -25,8 +24,7 @@ class SchemaArgs:
         :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         :param pulumi.Input[str] type: The type of the schema definition.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "schemas_id", schemas_id)
+        pulumi.set(__self__, "project", project)
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
         if name is not None:
@@ -37,22 +35,13 @@ class SchemaArgs:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
-
-    @property
-    @pulumi.getter(name="schemasId")
-    def schemas_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "schemas_id")
-
-    @schemas_id.setter
-    def schemas_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "schemas_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -107,9 +96,8 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 schemas_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -147,9 +135,8 @@ class Schema(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  definition: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
-                 schemas_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -165,13 +152,10 @@ class Schema(pulumi.CustomResource):
 
             __props__.__dict__["definition"] = definition
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["schema_id"] = schema_id
-            if schemas_id is None and not opts.urn:
-                raise TypeError("Missing required property 'schemas_id'")
-            __props__.__dict__["schemas_id"] = schemas_id
             __props__.__dict__["type"] = type
         super(Schema, __self__).__init__(
             'google-native:pubsub/v1:Schema',

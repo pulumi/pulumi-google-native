@@ -13,12 +13,12 @@ __all__ = ['DatasetFhirStoreFhirArgs', 'DatasetFhirStoreFhir']
 @pulumi.input_type
 class DatasetFhirStoreFhirArgs:
     def __init__(__self__, *,
-                 datasets_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
                  fhir_id: pulumi.Input[str],
                  fhir_id1: pulumi.Input[str],
-                 fhir_stores_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 fhir_store_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
@@ -28,12 +28,12 @@ class DatasetFhirStoreFhirArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
-        pulumi.set(__self__, "datasets_id", datasets_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "fhir_id", fhir_id)
         pulumi.set(__self__, "fhir_id1", fhir_id1)
-        pulumi.set(__self__, "fhir_stores_id", fhir_stores_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "fhir_store_id", fhir_store_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
         if data is not None:
@@ -42,13 +42,13 @@ class DatasetFhirStoreFhirArgs:
             pulumi.set(__self__, "extensions", extensions)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
 
     @property
     @pulumi.getter(name="fhirId")
@@ -69,31 +69,31 @@ class DatasetFhirStoreFhirArgs:
         pulumi.set(self, "fhir_id1", value)
 
     @property
-    @pulumi.getter(name="fhirStoresId")
-    def fhir_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "fhir_stores_id")
+    @pulumi.getter(name="fhirStoreId")
+    def fhir_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "fhir_store_id")
 
-    @fhir_stores_id.setter
-    def fhir_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "fhir_stores_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @fhir_store_id.setter
+    def fhir_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "fhir_store_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="contentType")
@@ -139,13 +139,13 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  fhir_id: Optional[pulumi.Input[str]] = None,
                  fhir_id1: Optional[pulumi.Input[str]] = None,
-                 fhir_stores_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a FHIR resource. Implements the FHIR standard create interaction ([DSTU2](http://hl7.org/implement/standards/fhir/DSTU2/http.html#create), [STU3](http://hl7.org/implement/standards/fhir/STU3/http.html#create), [R4](http://hl7.org/implement/standards/fhir/R4/http.html#create)), which creates a new resource with a server-assigned resource ID. The request body must contain a JSON-encoded FHIR resource, and the request headers must contain `Content-Type: application/fhir+json`. On success, the response body contains a JSON-encoded representation of the resource as it was created on the server, including the server-assigned resource ID and version ID. Errors generated by the FHIR store contain a JSON-encoded `OperationOutcome` resource describing the reason for the error. If the request cannot be mapped to a valid API method on a FHIR store, a generic GCP error might be returned instead. For samples that show how to call `create`, see [Creating a FHIR resource](/healthcare/docs/how-tos/fhir-resources#creating_a_fhir_resource).
@@ -182,13 +182,13 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  fhir_id: Optional[pulumi.Input[str]] = None,
                  fhir_id1: Optional[pulumi.Input[str]] = None,
-                 fhir_stores_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 fhir_store_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -203,9 +203,9 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
 
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["extensions"] = extensions
             if fhir_id is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_id'")
@@ -213,15 +213,15 @@ class DatasetFhirStoreFhir(pulumi.CustomResource):
             if fhir_id1 is None and not opts.urn:
                 raise TypeError("Missing required property 'fhir_id1'")
             __props__.__dict__["fhir_id1"] = fhir_id1
-            if fhir_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'fhir_stores_id'")
-            __props__.__dict__["fhir_stores_id"] = fhir_stores_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if fhir_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'fhir_store_id'")
+            __props__.__dict__["fhir_store_id"] = fhir_store_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
         super(DatasetFhirStoreFhir, __self__).__init__(
             'google-native:healthcare/v1:DatasetFhirStoreFhir',
             resource_name,

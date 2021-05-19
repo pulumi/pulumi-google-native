@@ -15,10 +15,9 @@ __all__ = ['AdminSubscriptionArgs', 'AdminSubscription']
 @pulumi.input_type
 class AdminSubscriptionArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  subscription_id: pulumi.Input[str],
-                 subscriptions_id: pulumi.Input[str],
                  delivery_config: Optional[pulumi.Input['DeliveryConfigArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  skip_backlog: Optional[pulumi.Input[str]] = None,
@@ -29,10 +28,9 @@ class AdminSubscriptionArgs:
         :param pulumi.Input[str] name: The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
         :param pulumi.Input[str] topic: The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "subscription_id", subscription_id)
-        pulumi.set(__self__, "subscriptions_id", subscriptions_id)
         if delivery_config is not None:
             pulumi.set(__self__, "delivery_config", delivery_config)
         if name is not None:
@@ -43,22 +41,22 @@ class AdminSubscriptionArgs:
             pulumi.set(__self__, "topic", topic)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="subscriptionId")
@@ -68,15 +66,6 @@ class AdminSubscriptionArgs:
     @subscription_id.setter
     def subscription_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "subscription_id", value)
-
-    @property
-    @pulumi.getter(name="subscriptionsId")
-    def subscriptions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "subscriptions_id")
-
-    @subscriptions_id.setter
-    def subscriptions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "subscriptions_id", value)
 
     @property
     @pulumi.getter(name="deliveryConfig")
@@ -130,12 +119,11 @@ class AdminSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  skip_backlog: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
-                 subscriptions_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -172,12 +160,11 @@ class AdminSubscription(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  delivery_config: Optional[pulumi.Input[pulumi.InputType['DeliveryConfigArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  skip_backlog: Optional[pulumi.Input[str]] = None,
                  subscription_id: Optional[pulumi.Input[str]] = None,
-                 subscriptions_id: Optional[pulumi.Input[str]] = None,
                  topic: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -192,20 +179,17 @@ class AdminSubscription(pulumi.CustomResource):
             __props__ = AdminSubscriptionArgs.__new__(AdminSubscriptionArgs)
 
             __props__.__dict__["delivery_config"] = delivery_config
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["skip_backlog"] = skip_backlog
             if subscription_id is None and not opts.urn:
                 raise TypeError("Missing required property 'subscription_id'")
             __props__.__dict__["subscription_id"] = subscription_id
-            if subscriptions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'subscriptions_id'")
-            __props__.__dict__["subscriptions_id"] = subscriptions_id
             __props__.__dict__["topic"] = topic
         super(AdminSubscription, __self__).__init__(
             'google-native:pubsublite/v1:AdminSubscription',

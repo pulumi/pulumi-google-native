@@ -14,9 +14,8 @@ __all__ = ['ProductSetArgs', 'ProductSet']
 @pulumi.input_type
 class ProductSetArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 product_sets_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_set_id: Optional[pulumi.Input[str]] = None):
@@ -25,9 +24,8 @@ class ProductSetArgs:
         :param pulumi.Input[str] display_name: The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
         :param pulumi.Input[str] name: The resource name of the ProductSet. Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`. This field is ignored when creating a ProductSet.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "product_sets_id", product_sets_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
@@ -36,31 +34,22 @@ class ProductSetArgs:
             pulumi.set(__self__, "product_set_id", product_set_id)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="productSetsId")
-    def product_sets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "product_sets_id")
-
-    @product_sets_id.setter
-    def product_sets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "product_sets_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -102,11 +91,10 @@ class ProductSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_set_id: Optional[pulumi.Input[str]] = None,
-                 product_sets_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
@@ -141,11 +129,10 @@ class ProductSet(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  product_set_id: Optional[pulumi.Input[str]] = None,
-                 product_sets_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -159,17 +146,14 @@ class ProductSet(pulumi.CustomResource):
             __props__ = ProductSetArgs.__new__(ProductSetArgs)
 
             __props__.__dict__["display_name"] = display_name
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["product_set_id"] = product_set_id
-            if product_sets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'product_sets_id'")
-            __props__.__dict__["product_sets_id"] = product_sets_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["index_error"] = None
             __props__.__dict__["index_time"] = None
         super(ProductSet, __self__).__init__(

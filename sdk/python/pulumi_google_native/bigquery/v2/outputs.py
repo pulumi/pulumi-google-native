@@ -1047,8 +1047,6 @@ class DatasetReferenceResponse(dict):
         suggest = None
         if key == "datasetId":
             suggest = "dataset_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DatasetReferenceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1063,13 +1061,13 @@ class DatasetReferenceResponse(dict):
 
     def __init__(__self__, *,
                  dataset_id: str,
-                 project_id: str):
+                 project: str):
         """
         :param str dataset_id: [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param str project_id: [Optional] The ID of the project containing this dataset.
+        :param str project: [Optional] The ID of the project containing this dataset.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -1080,12 +1078,12 @@ class DatasetReferenceResponse(dict):
         return pulumi.get(self, "dataset_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Optional] The ID of the project containing this dataset.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -3250,8 +3248,6 @@ class JobReferenceResponse(dict):
         suggest = None
         if key == "jobId":
             suggest = "job_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in JobReferenceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3267,15 +3263,15 @@ class JobReferenceResponse(dict):
     def __init__(__self__, *,
                  job_id: str,
                  location: str,
-                 project_id: str):
+                 project: str):
         """
         :param str job_id: [Required] The ID of the job. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum length is 1,024 characters.
         :param str location: The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
-        :param str project_id: [Required] The ID of the project containing this job.
+        :param str project: [Required] The ID of the project containing this job.
         """
         pulumi.set(__self__, "job_id", job_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="jobId")
@@ -3294,12 +3290,12 @@ class JobReferenceResponse(dict):
         return pulumi.get(self, "location")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Required] The ID of the project containing this job.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -4313,8 +4309,6 @@ class ModelReferenceResponse(dict):
             suggest = "dataset_id"
         elif key == "modelId":
             suggest = "model_id"
-        elif key == "projectId":
-            suggest = "project_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ModelReferenceResponse. Access the value via the '{suggest}' property getter instead.")
@@ -4330,15 +4324,15 @@ class ModelReferenceResponse(dict):
     def __init__(__self__, *,
                  dataset_id: str,
                  model_id: str,
-                 project_id: str):
+                 project: str):
         """
         :param str dataset_id: [Required] The ID of the dataset containing this model.
         :param str model_id: [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-        :param str project_id: [Required] The ID of the project containing this model.
+        :param str project: [Required] The ID of the project containing this model.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "model_id", model_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -4357,12 +4351,12 @@ class ModelReferenceResponse(dict):
         return pulumi.get(self, "model_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Required] The ID of the project containing this model.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 
 @pulumi.output_type
@@ -4713,8 +4707,6 @@ class RoutineReferenceResponse(dict):
         suggest = None
         if key == "datasetId":
             suggest = "dataset_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "routineId":
             suggest = "routine_id"
 
@@ -4731,15 +4723,15 @@ class RoutineReferenceResponse(dict):
 
     def __init__(__self__, *,
                  dataset_id: str,
-                 project_id: str,
+                 project: str,
                  routine_id: str):
         """
         :param str dataset_id: [Required] The ID of the dataset containing this routine.
-        :param str project_id: [Required] The ID of the project containing this routine.
+        :param str project: [Required] The ID of the project containing this routine.
         :param str routine_id: [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "routine_id", routine_id)
 
     @property
@@ -4751,12 +4743,12 @@ class RoutineReferenceResponse(dict):
         return pulumi.get(self, "dataset_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Required] The ID of the project containing this routine.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="routineId")
@@ -4776,8 +4768,6 @@ class RowAccessPolicyReferenceResponse(dict):
             suggest = "dataset_id"
         elif key == "policyId":
             suggest = "policy_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "tableId":
             suggest = "table_id"
 
@@ -4795,17 +4785,17 @@ class RowAccessPolicyReferenceResponse(dict):
     def __init__(__self__, *,
                  dataset_id: str,
                  policy_id: str,
-                 project_id: str,
+                 project: str,
                  table_id: str):
         """
         :param str dataset_id: [Required] The ID of the dataset containing this row access policy.
         :param str policy_id: [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
-        :param str project_id: [Required] The ID of the project containing this row access policy.
+        :param str project: [Required] The ID of the project containing this row access policy.
         :param str table_id: [Required] The ID of the table containing this row access policy.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "policy_id", policy_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
 
     @property
@@ -4825,12 +4815,12 @@ class RowAccessPolicyReferenceResponse(dict):
         return pulumi.get(self, "policy_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Required] The ID of the project containing this row access policy.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tableId")
@@ -5488,8 +5478,6 @@ class TableReferenceResponse(dict):
         suggest = None
         if key == "datasetId":
             suggest = "dataset_id"
-        elif key == "projectId":
-            suggest = "project_id"
         elif key == "tableId":
             suggest = "table_id"
 
@@ -5506,15 +5494,15 @@ class TableReferenceResponse(dict):
 
     def __init__(__self__, *,
                  dataset_id: str,
-                 project_id: str,
+                 project: str,
                  table_id: str):
         """
         :param str dataset_id: [Required] The ID of the dataset containing this table.
-        :param str project_id: [Required] The ID of the project containing this table.
+        :param str project: [Required] The ID of the project containing this table.
         :param str table_id: [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
 
     @property
@@ -5526,12 +5514,12 @@ class TableReferenceResponse(dict):
         return pulumi.get(self, "dataset_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         [Required] The ID of the project containing this table.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="tableId")

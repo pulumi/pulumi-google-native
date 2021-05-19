@@ -14,9 +14,9 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
+                 domain_id: pulumi.Input[str],
                  domain_name: pulumi.Input[str],
-                 domains_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -32,9 +32,9 @@ class DomainArgs:
         :param pulumi.Input[str] name: Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         :param pulumi.Input[str] reserved_ip_range: Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         """
+        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "domains_id", domains_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "project", project)
         if admin is not None:
             pulumi.set(__self__, "admin", admin)
         if authorized_networks is not None:
@@ -49,6 +49,15 @@ class DomainArgs:
             pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
 
     @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_id", value)
+
+    @property
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Input[str]:
         return pulumi.get(self, "domain_name")
@@ -58,22 +67,13 @@ class DomainArgs:
         pulumi.set(self, "domain_name", value)
 
     @property
-    @pulumi.getter(name="domainsId")
-    def domains_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domains_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @domains_id.setter
-    def domains_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domains_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -155,12 +155,12 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domains_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -201,12 +201,12 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin: Optional[pulumi.Input[str]] = None,
                  authorized_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
                  domain_name: Optional[pulumi.Input[str]] = None,
-                 domains_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -222,18 +222,18 @@ class Domain(pulumi.CustomResource):
 
             __props__.__dict__["admin"] = admin
             __props__.__dict__["authorized_networks"] = authorized_networks
+            if domain_id is None and not opts.urn:
+                raise TypeError("Missing required property 'domain_id'")
+            __props__.__dict__["domain_id"] = domain_id
             if domain_name is None and not opts.urn:
                 raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
-            if domains_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domains_id'")
-            __props__.__dict__["domains_id"] = domains_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["locations"] = locations
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["reserved_ip_range"] = reserved_ip_range
             __props__.__dict__["create_time"] = None
             __props__.__dict__["fqdn"] = None

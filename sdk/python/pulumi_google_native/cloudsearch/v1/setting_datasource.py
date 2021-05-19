@@ -15,7 +15,7 @@ __all__ = ['SettingDatasourceArgs', 'SettingDatasource']
 @pulumi.input_type
 class SettingDatasourceArgs:
     def __init__(__self__, *,
-                 datasources_id: pulumi.Input[str],
+                 datasource_id: pulumi.Input[str],
                  disable_modifications: Optional[pulumi.Input[bool]] = None,
                  disable_serving: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -35,7 +35,7 @@ class SettingDatasourceArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] operation_ids: IDs of the Long Running Operations (LROs) currently running for this schema.
         :param pulumi.Input[str] short_name: A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *<value>* then queries like *source:<value>* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
         """
-        pulumi.set(__self__, "datasources_id", datasources_id)
+        pulumi.set(__self__, "datasource_id", datasource_id)
         if disable_modifications is not None:
             pulumi.set(__self__, "disable_modifications", disable_modifications)
         if disable_serving is not None:
@@ -54,13 +54,13 @@ class SettingDatasourceArgs:
             pulumi.set(__self__, "short_name", short_name)
 
     @property
-    @pulumi.getter(name="datasourcesId")
-    def datasources_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasources_id")
+    @pulumi.getter(name="datasourceId")
+    def datasource_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datasource_id")
 
-    @datasources_id.setter
-    def datasources_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasources_id", value)
+    @datasource_id.setter
+    def datasource_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datasource_id", value)
 
     @property
     @pulumi.getter(name="disableModifications")
@@ -164,7 +164,7 @@ class SettingDatasource(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datasources_id: Optional[pulumi.Input[str]] = None,
+                 datasource_id: Optional[pulumi.Input[str]] = None,
                  disable_modifications: Optional[pulumi.Input[bool]] = None,
                  disable_serving: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -212,7 +212,7 @@ class SettingDatasource(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 datasources_id: Optional[pulumi.Input[str]] = None,
+                 datasource_id: Optional[pulumi.Input[str]] = None,
                  disable_modifications: Optional[pulumi.Input[bool]] = None,
                  disable_serving: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -233,9 +233,9 @@ class SettingDatasource(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SettingDatasourceArgs.__new__(SettingDatasourceArgs)
 
-            if datasources_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasources_id'")
-            __props__.__dict__["datasources_id"] = datasources_id
+            if datasource_id is None and not opts.urn:
+                raise TypeError("Missing required property 'datasource_id'")
+            __props__.__dict__["datasource_id"] = datasource_id
             __props__.__dict__["disable_modifications"] = disable_modifications
             __props__.__dict__["disable_serving"] = disable_serving
             __props__.__dict__["display_name"] = display_name

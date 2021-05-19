@@ -15,8 +15,7 @@ __all__ = ['SiteChannelArgs', 'SiteChannel']
 class SiteChannelArgs:
     def __init__(__self__, *,
                  channel_id: pulumi.Input[str],
-                 channels_id: pulumi.Input[str],
-                 sites_id: pulumi.Input[str],
+                 site_id: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -31,8 +30,7 @@ class SiteChannelArgs:
         :param pulumi.Input[str] ttl: Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
         """
         pulumi.set(__self__, "channel_id", channel_id)
-        pulumi.set(__self__, "channels_id", channels_id)
-        pulumi.set(__self__, "sites_id", sites_id)
+        pulumi.set(__self__, "site_id", site_id)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if labels is not None:
@@ -54,22 +52,13 @@ class SiteChannelArgs:
         pulumi.set(self, "channel_id", value)
 
     @property
-    @pulumi.getter(name="channelsId")
-    def channels_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "channels_id")
+    @pulumi.getter(name="siteId")
+    def site_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "site_id")
 
-    @channels_id.setter
-    def channels_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "channels_id", value)
-
-    @property
-    @pulumi.getter(name="sitesId")
-    def sites_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sites_id")
-
-    @sites_id.setter
-    def sites_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sites_id", value)
+    @site_id.setter
+    def site_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "site_id", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -138,12 +127,11 @@ class SiteChannel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
-                 channels_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
-                 sites_id: Optional[pulumi.Input[str]] = None,
+                 site_id: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -182,12 +170,11 @@ class SiteChannel(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  channel_id: Optional[pulumi.Input[str]] = None,
-                 channels_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  retained_release_count: Optional[pulumi.Input[int]] = None,
-                 sites_id: Optional[pulumi.Input[str]] = None,
+                 site_id: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -204,16 +191,13 @@ class SiteChannel(pulumi.CustomResource):
             if channel_id is None and not opts.urn:
                 raise TypeError("Missing required property 'channel_id'")
             __props__.__dict__["channel_id"] = channel_id
-            if channels_id is None and not opts.urn:
-                raise TypeError("Missing required property 'channels_id'")
-            __props__.__dict__["channels_id"] = channels_id
             __props__.__dict__["expire_time"] = expire_time
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["retained_release_count"] = retained_release_count
-            if sites_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sites_id'")
-            __props__.__dict__["sites_id"] = sites_id
+            if site_id is None and not opts.urn:
+                raise TypeError("Missing required property 'site_id'")
+            __props__.__dict__["site_id"] = site_id
             __props__.__dict__["ttl"] = ttl
             __props__.__dict__["create_time"] = None
             __props__.__dict__["release"] = None

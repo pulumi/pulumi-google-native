@@ -13,46 +13,46 @@ __all__ = ['OrganizationInstanceAttachmentArgs', 'OrganizationInstanceAttachment
 @pulumi.input_type
 class OrganizationInstanceAttachmentArgs:
     def __init__(__self__, *,
-                 attachments_id: pulumi.Input[str],
-                 instances_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 attachment_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  environment: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationInstanceAttachment resource.
         :param pulumi.Input[str] environment: ID of the attached environment.
         """
-        pulumi.set(__self__, "attachments_id", attachments_id)
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "attachment_id", attachment_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
 
     @property
-    @pulumi.getter(name="attachmentsId")
-    def attachments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "attachments_id")
+    @pulumi.getter(name="attachmentId")
+    def attachment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "attachment_id")
 
-    @attachments_id.setter
-    def attachments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "attachments_id", value)
-
-    @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
-
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
+    @attachment_id.setter
+    def attachment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "attachment_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -72,10 +72,10 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments_id: Optional[pulumi.Input[str]] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
@@ -108,10 +108,10 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 attachments_id: Optional[pulumi.Input[str]] = None,
+                 attachment_id: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -124,16 +124,16 @@ class OrganizationInstanceAttachment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationInstanceAttachmentArgs.__new__(OrganizationInstanceAttachmentArgs)
 
-            if attachments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'attachments_id'")
-            __props__.__dict__["attachments_id"] = attachments_id
+            if attachment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'attachment_id'")
+            __props__.__dict__["attachment_id"] = attachment_id
             __props__.__dict__["environment"] = environment
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["created_at"] = None
             __props__.__dict__["name"] = None
         super(OrganizationInstanceAttachment, __self__).__init__(

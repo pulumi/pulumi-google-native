@@ -15,9 +15,9 @@ __all__ = ['AppServiceVersionArgs', 'AppServiceVersion']
 @pulumi.input_type
 class AppServiceVersionArgs:
     def __init__(__self__, *,
-                 apps_id: pulumi.Input[str],
-                 services_id: pulumi.Input[str],
-                 versions_id: pulumi.Input[str],
+                 app_id: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
+                 version_id: pulumi.Input[str],
                  api_config: Optional[pulumi.Input['ApiConfigHandlerArgs']] = None,
                  app_engine_apis: Optional[pulumi.Input[bool]] = None,
                  automatic_scaling: Optional[pulumi.Input['AutomaticScalingArgs']] = None,
@@ -99,9 +99,9 @@ class AppServiceVersionArgs:
         :param pulumi.Input[bool] vm: Whether to deploy this version in a container on a virtual machine.
         :param pulumi.Input['VpcAccessConnectorArgs'] vpc_access_connector: Enables VPC connectivity for standard apps.
         """
-        pulumi.set(__self__, "apps_id", apps_id)
-        pulumi.set(__self__, "services_id", services_id)
-        pulumi.set(__self__, "versions_id", versions_id)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "service_id", service_id)
+        pulumi.set(__self__, "version_id", version_id)
         if api_config is not None:
             pulumi.set(__self__, "api_config", api_config)
         if app_engine_apis is not None:
@@ -182,31 +182,31 @@ class AppServiceVersionArgs:
             pulumi.set(__self__, "vpc_access_connector", vpc_access_connector)
 
     @property
-    @pulumi.getter(name="appsId")
-    def apps_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apps_id")
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "app_id")
 
-    @apps_id.setter
-    def apps_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apps_id", value)
-
-    @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
-
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
 
     @property
-    @pulumi.getter(name="versionsId")
-    def versions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "versions_id")
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
 
-    @versions_id.setter
-    def versions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "versions_id", value)
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version_id", value)
 
     @property
     @pulumi.getter(name="apiConfig")
@@ -684,7 +684,7 @@ class AppServiceVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
                  app_engine_apis: Optional[pulumi.Input[bool]] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -717,11 +717,11 @@ class AppServiceVersion(pulumi.CustomResource):
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  version_url: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  __props__=None):
@@ -796,7 +796,7 @@ class AppServiceVersion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_config: Optional[pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']]] = None,
                  app_engine_apis: Optional[pulumi.Input[bool]] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
                  automatic_scaling: Optional[pulumi.Input[pulumi.InputType['AutomaticScalingArgs']]] = None,
                  basic_scaling: Optional[pulumi.Input[pulumi.InputType['BasicScalingArgs']]] = None,
                  beta_settings: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -829,11 +829,11 @@ class AppServiceVersion(pulumi.CustomResource):
                  runtime_channel: Optional[pulumi.Input[str]] = None,
                  runtime_main_executable_path: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  serving_status: Optional[pulumi.Input[str]] = None,
                  threadsafe: Optional[pulumi.Input[bool]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  version_url: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
                  vm: Optional[pulumi.Input[bool]] = None,
                  vpc_access_connector: Optional[pulumi.Input[pulumi.InputType['VpcAccessConnectorArgs']]] = None,
                  __props__=None):
@@ -850,9 +850,9 @@ class AppServiceVersion(pulumi.CustomResource):
 
             __props__.__dict__["api_config"] = api_config
             __props__.__dict__["app_engine_apis"] = app_engine_apis
-            if apps_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apps_id'")
-            __props__.__dict__["apps_id"] = apps_id
+            if app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_id'")
+            __props__.__dict__["app_id"] = app_id
             __props__.__dict__["automatic_scaling"] = automatic_scaling
             __props__.__dict__["basic_scaling"] = basic_scaling
             __props__.__dict__["beta_settings"] = beta_settings
@@ -885,15 +885,15 @@ class AppServiceVersion(pulumi.CustomResource):
             __props__.__dict__["runtime_channel"] = runtime_channel
             __props__.__dict__["runtime_main_executable_path"] = runtime_main_executable_path
             __props__.__dict__["service_account"] = service_account
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
             __props__.__dict__["serving_status"] = serving_status
             __props__.__dict__["threadsafe"] = threadsafe
+            if version_id is None and not opts.urn:
+                raise TypeError("Missing required property 'version_id'")
+            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["version_url"] = version_url
-            if versions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'versions_id'")
-            __props__.__dict__["versions_id"] = versions_id
             __props__.__dict__["vm"] = vm
             __props__.__dict__["vpc_access_connector"] = vpc_access_connector
         super(AppServiceVersion, __self__).__init__(

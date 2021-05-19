@@ -16,10 +16,9 @@ __all__ = ['KeyRingCryptoKeyArgs', 'KeyRingCryptoKey']
 class KeyRingCryptoKeyArgs:
     def __init__(__self__, *,
                  crypto_key_id: pulumi.Input[str],
-                 crypto_keys_id: pulumi.Input[str],
-                 key_rings_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 key_ring_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
@@ -35,10 +34,9 @@ class KeyRingCryptoKeyArgs:
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
-        pulumi.set(__self__, "crypto_keys_id", crypto_keys_id)
-        pulumi.set(__self__, "key_rings_id", key_rings_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if next_rotation_time is not None:
@@ -62,40 +60,31 @@ class KeyRingCryptoKeyArgs:
         pulumi.set(self, "crypto_key_id", value)
 
     @property
-    @pulumi.getter(name="cryptoKeysId")
-    def crypto_keys_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_keys_id")
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_ring_id")
 
-    @crypto_keys_id.setter
-    def crypto_keys_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_keys_id", value)
-
-    @property
-    @pulumi.getter(name="keyRingsId")
-    def key_rings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key_rings_id")
-
-    @key_rings_id.setter
-    def key_rings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_rings_id", value)
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -173,12 +162,11 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
@@ -220,12 +208,11 @@ class KeyRingCryptoKey(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  crypto_key_id: Optional[pulumi.Input[str]] = None,
-                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  next_rotation_time: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
                  skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
@@ -245,20 +232,17 @@ class KeyRingCryptoKey(pulumi.CustomResource):
             if crypto_key_id is None and not opts.urn:
                 raise TypeError("Missing required property 'crypto_key_id'")
             __props__.__dict__["crypto_key_id"] = crypto_key_id
-            if crypto_keys_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_keys_id'")
-            __props__.__dict__["crypto_keys_id"] = crypto_keys_id
-            if key_rings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_rings_id'")
-            __props__.__dict__["key_rings_id"] = key_rings_id
+            if key_ring_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_ring_id'")
+            __props__.__dict__["key_ring_id"] = key_ring_id
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["next_rotation_time"] = next_rotation_time
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["purpose"] = purpose
             __props__.__dict__["rotation_period"] = rotation_period
             __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation

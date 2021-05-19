@@ -14,9 +14,9 @@ __all__ = ['TenantCompanyArgs', 'TenantCompany']
 @pulumi.input_type
 class TenantCompanyArgs:
     def __init__(__self__, *,
-                 companies_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 tenants_id: pulumi.Input[str],
+                 company_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 tenant_id: pulumi.Input[str],
                  career_site_uri: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
@@ -42,9 +42,9 @@ class TenantCompanyArgs:
         :param pulumi.Input[str] size: The employer's company size.
         :param pulumi.Input[str] website_uri: The URI representing the company's primary web site or home page, for example, "https://www.google.com". The maximum number of allowed characters is 255.
         """
-        pulumi.set(__self__, "companies_id", companies_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "tenants_id", tenants_id)
+        pulumi.set(__self__, "company_id", company_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "tenant_id", tenant_id)
         if career_site_uri is not None:
             pulumi.set(__self__, "career_site_uri", career_site_uri)
         if display_name is not None:
@@ -69,31 +69,31 @@ class TenantCompanyArgs:
             pulumi.set(__self__, "website_uri", website_uri)
 
     @property
-    @pulumi.getter(name="companiesId")
-    def companies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "companies_id")
+    @pulumi.getter(name="companyId")
+    def company_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "company_id")
 
-    @companies_id.setter
-    def companies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "companies_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @company_id.setter
+    def company_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "company_id", value)
 
     @property
-    @pulumi.getter(name="tenantsId")
-    def tenants_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tenants_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @tenants_id.setter
-    def tenants_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tenants_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "tenant_id", value)
 
     @property
     @pulumi.getter(name="careerSiteUri")
@@ -234,7 +234,7 @@ class TenantCompany(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  career_site_uri: Optional[pulumi.Input[str]] = None,
-                 companies_id: Optional[pulumi.Input[str]] = None,
+                 company_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -243,9 +243,9 @@ class TenantCompany(pulumi.CustomResource):
                  image_uri: Optional[pulumi.Input[str]] = None,
                  keyword_searchable_job_custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
-                 tenants_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  website_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -290,7 +290,7 @@ class TenantCompany(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  career_site_uri: Optional[pulumi.Input[str]] = None,
-                 companies_id: Optional[pulumi.Input[str]] = None,
+                 company_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  eeo_text: Optional[pulumi.Input[str]] = None,
                  external_id: Optional[pulumi.Input[str]] = None,
@@ -299,9 +299,9 @@ class TenantCompany(pulumi.CustomResource):
                  image_uri: Optional[pulumi.Input[str]] = None,
                  keyword_searchable_job_custom_attributes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[str]] = None,
-                 tenants_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None,
                  website_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -316,9 +316,9 @@ class TenantCompany(pulumi.CustomResource):
             __props__ = TenantCompanyArgs.__new__(TenantCompanyArgs)
 
             __props__.__dict__["career_site_uri"] = career_site_uri
-            if companies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'companies_id'")
-            __props__.__dict__["companies_id"] = companies_id
+            if company_id is None and not opts.urn:
+                raise TypeError("Missing required property 'company_id'")
+            __props__.__dict__["company_id"] = company_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["eeo_text"] = eeo_text
             __props__.__dict__["external_id"] = external_id
@@ -327,13 +327,13 @@ class TenantCompany(pulumi.CustomResource):
             __props__.__dict__["image_uri"] = image_uri
             __props__.__dict__["keyword_searchable_job_custom_attributes"] = keyword_searchable_job_custom_attributes
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["size"] = size
-            if tenants_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tenants_id'")
-            __props__.__dict__["tenants_id"] = tenants_id
+            if tenant_id is None and not opts.urn:
+                raise TypeError("Missing required property 'tenant_id'")
+            __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["website_uri"] = website_uri
             __props__.__dict__["derived_info"] = None
             __props__.__dict__["suspended"] = None

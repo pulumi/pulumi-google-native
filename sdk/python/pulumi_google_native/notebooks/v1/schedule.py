@@ -15,10 +15,9 @@ __all__ = ['ScheduleArgs', 'Schedule']
 @pulumi.input_type
 class ScheduleArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  schedule_id: pulumi.Input[str],
-                 schedules_id: pulumi.Input[str],
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input['ExecutionTemplateArgs']] = None,
@@ -31,10 +30,9 @@ class ScheduleArgs:
         :param pulumi.Input['ExecutionTemplateArgs'] execution_template: Notebook Execution Template corresponding to this schedule.
         :param pulumi.Input[str] time_zone: Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "schedule_id", schedule_id)
-        pulumi.set(__self__, "schedules_id", schedules_id)
         if cron_schedule is not None:
             pulumi.set(__self__, "cron_schedule", cron_schedule)
         if description is not None:
@@ -47,22 +45,22 @@ class ScheduleArgs:
             pulumi.set(__self__, "time_zone", time_zone)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="scheduleId")
@@ -72,15 +70,6 @@ class ScheduleArgs:
     @schedule_id.setter
     def schedule_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "schedule_id", value)
-
-    @property
-    @pulumi.getter(name="schedulesId")
-    def schedules_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "schedules_id")
-
-    @schedules_id.setter
-    def schedules_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "schedules_id", value)
 
     @property
     @pulumi.getter(name="cronSchedule")
@@ -148,10 +137,9 @@ class Schedule(pulumi.CustomResource):
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule_id: Optional[pulumi.Input[str]] = None,
-                 schedules_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -192,10 +180,9 @@ class Schedule(pulumi.CustomResource):
                  cron_schedule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  execution_template: Optional[pulumi.Input[pulumi.InputType['ExecutionTemplateArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule_id: Optional[pulumi.Input[str]] = None,
-                 schedules_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -213,18 +200,15 @@ class Schedule(pulumi.CustomResource):
             __props__.__dict__["cron_schedule"] = cron_schedule
             __props__.__dict__["description"] = description
             __props__.__dict__["execution_template"] = execution_template
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if schedule_id is None and not opts.urn:
                 raise TypeError("Missing required property 'schedule_id'")
             __props__.__dict__["schedule_id"] = schedule_id
-            if schedules_id is None and not opts.urn:
-                raise TypeError("Missing required property 'schedules_id'")
-            __props__.__dict__["schedules_id"] = schedules_id
             __props__.__dict__["state"] = state
             __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["create_time"] = None

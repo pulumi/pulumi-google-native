@@ -15,9 +15,9 @@ __all__ = ['AccountChannelPartnerLinkCustomerArgs', 'AccountChannelPartnerLinkCu
 @pulumi.input_type
 class AccountChannelPartnerLinkCustomerArgs:
     def __init__(__self__, *,
-                 accounts_id: pulumi.Input[str],
-                 channel_partner_links_id: pulumi.Input[str],
-                 customers_id: pulumi.Input[str],
+                 account_id: pulumi.Input[str],
+                 channel_partner_link_id: pulumi.Input[str],
+                 customer_id: pulumi.Input[str],
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
@@ -35,9 +35,9 @@ class AccountChannelPartnerLinkCustomerArgs:
         :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         :param pulumi.Input['GoogleCloudChannelV1ContactInfoArgs'] primary_contact_info: Primary contact info.
         """
-        pulumi.set(__self__, "accounts_id", accounts_id)
-        pulumi.set(__self__, "channel_partner_links_id", channel_partner_links_id)
-        pulumi.set(__self__, "customers_id", customers_id)
+        pulumi.set(__self__, "account_id", account_id)
+        pulumi.set(__self__, "channel_partner_link_id", channel_partner_link_id)
+        pulumi.set(__self__, "customer_id", customer_id)
         if alternate_email is not None:
             pulumi.set(__self__, "alternate_email", alternate_email)
         if channel_partner_id is not None:
@@ -54,31 +54,31 @@ class AccountChannelPartnerLinkCustomerArgs:
             pulumi.set(__self__, "primary_contact_info", primary_contact_info)
 
     @property
-    @pulumi.getter(name="accountsId")
-    def accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "accounts_id")
+    @pulumi.getter(name="accountId")
+    def account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "account_id")
 
-    @accounts_id.setter
-    def accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "accounts_id", value)
-
-    @property
-    @pulumi.getter(name="channelPartnerLinksId")
-    def channel_partner_links_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "channel_partner_links_id")
-
-    @channel_partner_links_id.setter
-    def channel_partner_links_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "channel_partner_links_id", value)
+    @account_id.setter
+    def account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "account_id", value)
 
     @property
-    @pulumi.getter(name="customersId")
-    def customers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "customers_id")
+    @pulumi.getter(name="channelPartnerLinkId")
+    def channel_partner_link_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "channel_partner_link_id")
 
-    @customers_id.setter
-    def customers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "customers_id", value)
+    @channel_partner_link_id.setter
+    def channel_partner_link_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "channel_partner_link_id", value)
+
+    @property
+    @pulumi.getter(name="customerId")
+    def customer_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "customer_id")
+
+    @customer_id.setter
+    def customer_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "customer_id", value)
 
     @property
     @pulumi.getter(name="alternateEmail")
@@ -170,11 +170,11 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
-                 customers_id: Optional[pulumi.Input[str]] = None,
+                 channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -218,11 +218,11 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 accounts_id: Optional[pulumi.Input[str]] = None,
+                 account_id: Optional[pulumi.Input[str]] = None,
                  alternate_email: Optional[pulumi.Input[str]] = None,
                  channel_partner_id: Optional[pulumi.Input[str]] = None,
-                 channel_partner_links_id: Optional[pulumi.Input[str]] = None,
-                 customers_id: Optional[pulumi.Input[str]] = None,
+                 channel_partner_link_id: Optional[pulumi.Input[str]] = None,
+                 customer_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  org_display_name: Optional[pulumi.Input[str]] = None,
@@ -240,17 +240,17 @@ class AccountChannelPartnerLinkCustomer(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccountChannelPartnerLinkCustomerArgs.__new__(AccountChannelPartnerLinkCustomerArgs)
 
-            if accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'accounts_id'")
-            __props__.__dict__["accounts_id"] = accounts_id
+            if account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'account_id'")
+            __props__.__dict__["account_id"] = account_id
             __props__.__dict__["alternate_email"] = alternate_email
             __props__.__dict__["channel_partner_id"] = channel_partner_id
-            if channel_partner_links_id is None and not opts.urn:
-                raise TypeError("Missing required property 'channel_partner_links_id'")
-            __props__.__dict__["channel_partner_links_id"] = channel_partner_links_id
-            if customers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'customers_id'")
-            __props__.__dict__["customers_id"] = customers_id
+            if channel_partner_link_id is None and not opts.urn:
+                raise TypeError("Missing required property 'channel_partner_link_id'")
+            __props__.__dict__["channel_partner_link_id"] = channel_partner_link_id
+            if customer_id is None and not opts.urn:
+                raise TypeError("Missing required property 'customer_id'")
+            __props__.__dict__["customer_id"] = customer_id
             __props__.__dict__["domain"] = domain
             __props__.__dict__["language_code"] = language_code
             __props__.__dict__["org_display_name"] = org_display_name

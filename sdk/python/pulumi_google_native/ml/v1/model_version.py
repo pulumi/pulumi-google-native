@@ -15,9 +15,9 @@ __all__ = ['ModelVersionArgs', 'ModelVersion']
 @pulumi.input_type
 class ModelVersionArgs:
     def __init__(__self__, *,
-                 models_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 versions_id: pulumi.Input[str],
+                 model_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 version_id: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs']] = None,
                  auto_scaling: Optional[pulumi.Input['GoogleCloudMlV1__AutoScalingArgs']] = None,
                  container: Optional[pulumi.Input['GoogleCloudMlV1__ContainerSpecArgs']] = None,
@@ -69,9 +69,9 @@ class ModelVersionArgs:
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
         :param pulumi.Input[str] state: The state of a version.
         """
-        pulumi.set(__self__, "models_id", models_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "versions_id", versions_id)
+        pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "version_id", version_id)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if auto_scaling is not None:
@@ -122,31 +122,31 @@ class ModelVersionArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="modelsId")
-    def models_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "models_id")
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "model_id")
 
-    @models_id.setter
-    def models_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "models_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @model_id.setter
+    def model_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "model_id", value)
 
     @property
-    @pulumi.getter(name="versionsId")
-    def versions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "versions_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @versions_id.setter
-    def versions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "versions_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "version_id")
+
+    @version_id.setter
+    def version_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "version_id", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -457,18 +457,18 @@ class ModelVersion(pulumi.CustomResource):
                  last_use_time: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ManualScalingArgs']]] = None,
-                 models_id: Optional[pulumi.Input[str]] = None,
+                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prediction_class: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  python_version: Optional[pulumi.Input[str]] = None,
                  request_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RequestLoggingConfigArgs']]] = None,
                  routes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RouteMapArgs']]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.
@@ -539,18 +539,18 @@ class ModelVersion(pulumi.CustomResource):
                  last_use_time: Optional[pulumi.Input[str]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  manual_scaling: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ManualScalingArgs']]] = None,
-                 models_id: Optional[pulumi.Input[str]] = None,
+                 model_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prediction_class: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  python_version: Optional[pulumi.Input[str]] = None,
                  request_logging_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RequestLoggingConfigArgs']]] = None,
                  routes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RouteMapArgs']]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 versions_id: Optional[pulumi.Input[str]] = None,
+                 version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -578,24 +578,24 @@ class ModelVersion(pulumi.CustomResource):
             __props__.__dict__["last_use_time"] = last_use_time
             __props__.__dict__["machine_type"] = machine_type
             __props__.__dict__["manual_scaling"] = manual_scaling
-            if models_id is None and not opts.urn:
-                raise TypeError("Missing required property 'models_id'")
-            __props__.__dict__["models_id"] = models_id
+            if model_id is None and not opts.urn:
+                raise TypeError("Missing required property 'model_id'")
+            __props__.__dict__["model_id"] = model_id
             __props__.__dict__["name"] = name
             __props__.__dict__["package_uris"] = package_uris
             __props__.__dict__["prediction_class"] = prediction_class
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["python_version"] = python_version
             __props__.__dict__["request_logging_config"] = request_logging_config
             __props__.__dict__["routes"] = routes
             __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["state"] = state
-            if versions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'versions_id'")
-            __props__.__dict__["versions_id"] = versions_id
+            if version_id is None and not opts.urn:
+                raise TypeError("Missing required property 'version_id'")
+            __props__.__dict__["version_id"] = version_id
             __props__.__dict__["last_migration_model_id"] = None
             __props__.__dict__["last_migration_time"] = None
         super(ModelVersion, __self__).__init__(

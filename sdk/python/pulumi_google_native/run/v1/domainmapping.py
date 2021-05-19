@@ -15,9 +15,9 @@ __all__ = ['DomainmappingArgs', 'Domainmapping']
 @pulumi.input_type
 class DomainmappingArgs:
     def __init__(__self__, *,
-                 domainmappings_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 domainmapping_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  api_version: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
@@ -32,9 +32,9 @@ class DomainmappingArgs:
         :param pulumi.Input['DomainMappingSpecArgs'] spec: The spec for this DomainMapping.
         :param pulumi.Input['DomainMappingStatusArgs'] status: The current status of the DomainMapping.
         """
-        pulumi.set(__self__, "domainmappings_id", domainmappings_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "domainmapping_id", domainmapping_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
         if dry_run is not None:
@@ -49,31 +49,31 @@ class DomainmappingArgs:
             pulumi.set(__self__, "status", status)
 
     @property
-    @pulumi.getter(name="domainmappingsId")
-    def domainmappings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domainmappings_id")
+    @pulumi.getter(name="domainmappingId")
+    def domainmapping_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "domainmapping_id")
 
-    @domainmappings_id.setter
-    def domainmappings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domainmappings_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @domainmapping_id.setter
+    def domainmapping_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domainmapping_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="apiVersion")
@@ -151,12 +151,12 @@ class Domainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmappings_id: Optional[pulumi.Input[str]] = None,
+                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
@@ -196,12 +196,12 @@ class Domainmapping(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api_version: Optional[pulumi.Input[str]] = None,
-                 domainmappings_id: Optional[pulumi.Input[str]] = None,
+                 domainmapping_id: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[str]] = None,
                  kind: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[pulumi.InputType['ObjectMetaArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['DomainMappingSpecArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['DomainMappingStatusArgs']]] = None,
                  __props__=None):
@@ -217,18 +217,18 @@ class Domainmapping(pulumi.CustomResource):
             __props__ = DomainmappingArgs.__new__(DomainmappingArgs)
 
             __props__.__dict__["api_version"] = api_version
-            if domainmappings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'domainmappings_id'")
-            __props__.__dict__["domainmappings_id"] = domainmappings_id
+            if domainmapping_id is None and not opts.urn:
+                raise TypeError("Missing required property 'domainmapping_id'")
+            __props__.__dict__["domainmapping_id"] = domainmapping_id
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["kind"] = kind
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
         super(Domainmapping, __self__).__init__(

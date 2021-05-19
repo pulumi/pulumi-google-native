@@ -13,23 +13,22 @@ __all__ = ['WebAppArgs', 'WebApp']
 @pulumi.input_type
 class WebAppArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 web_apps_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 web_app_id: pulumi.Input[str],
                  app_id: Optional[pulumi.Input[str]] = None,
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None):
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WebApp resource.
+        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         :param pulumi.Input[str] app_id: Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `WebApp`.
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-        :param pulumi.Input[str] project_id: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "web_apps_id", web_apps_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "web_app_id", web_app_id)
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
         if app_urls is not None:
@@ -38,26 +37,27 @@ class WebAppArgs:
             pulumi.set(__self__, "display_name", display_name)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
+        """
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="webAppsId")
-    def web_apps_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "web_apps_id")
+    @pulumi.getter(name="webAppId")
+    def web_app_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "web_app_id")
 
-    @web_apps_id.setter
-    def web_apps_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "web_apps_id", value)
+    @web_app_id.setter
+    def web_app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "web_app_id", value)
 
     @property
     @pulumi.getter(name="appId")
@@ -107,18 +107,6 @@ class WebAppArgs:
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
 
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
-
 
 class WebApp(pulumi.CustomResource):
     @overload
@@ -129,9 +117,8 @@ class WebApp(pulumi.CustomResource):
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 web_apps_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 web_app_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Requests the creation of a new WebApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
@@ -142,7 +129,7 @@ class WebApp(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] app_urls: The URLs where the `WebApp` is hosted.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `WebApp`.
         :param pulumi.Input[str] name: The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-        :param pulumi.Input[str] project_id: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
+        :param pulumi.Input[str] project: Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         """
         ...
     @overload
@@ -172,9 +159,8 @@ class WebApp(pulumi.CustomResource):
                  app_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 web_apps_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 web_app_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -191,13 +177,12 @@ class WebApp(pulumi.CustomResource):
             __props__.__dict__["app_urls"] = app_urls
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
-            __props__.__dict__["project_id"] = project_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if web_apps_id is None and not opts.urn:
-                raise TypeError("Missing required property 'web_apps_id'")
-            __props__.__dict__["web_apps_id"] = web_apps_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if web_app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'web_app_id'")
+            __props__.__dict__["web_app_id"] = web_app_id
             __props__.__dict__["web_id"] = None
         super(WebApp, __self__).__init__(
             'google-native:firebase/v1beta1:WebApp',
@@ -225,7 +210,7 @@ class WebApp(pulumi.CustomResource):
         __props__.__dict__["app_urls"] = None
         __props__.__dict__["display_name"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["web_id"] = None
         return WebApp(resource_name, opts=opts, __props__=__props__)
 
@@ -262,12 +247,12 @@ class WebApp(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="webId")

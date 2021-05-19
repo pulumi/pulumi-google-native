@@ -15,9 +15,9 @@ __all__ = ['ConfigWaiterArgs', 'ConfigWaiter']
 @pulumi.input_type
 class ConfigWaiterArgs:
     def __init__(__self__, *,
-                 configs_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 waiters_id: pulumi.Input[str],
+                 config_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 waiter_id: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  done: Optional[pulumi.Input[bool]] = None,
                  error: Optional[pulumi.Input['StatusArgs']] = None,
@@ -36,9 +36,9 @@ class ConfigWaiterArgs:
         :param pulumi.Input['EndConditionArgs'] success: [Required] The success condition. If this condition is met, `done` will be set to `true` and the `error` value will remain unset. The failure condition takes precedence over the success condition. If both conditions are met, a failure will be indicated.
         :param pulumi.Input[str] timeout: [Required] Specifies the timeout of the waiter in seconds, beginning from the instant that `waiters().create` method is called. If this time elapses before the success or failure conditions are met, the waiter fails and sets the `error` code to `DEADLINE_EXCEEDED`.
         """
-        pulumi.set(__self__, "configs_id", configs_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "waiters_id", waiters_id)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "waiter_id", waiter_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if done is not None:
@@ -57,31 +57,31 @@ class ConfigWaiterArgs:
             pulumi.set(__self__, "timeout", timeout)
 
     @property
-    @pulumi.getter(name="configsId")
-    def configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "configs_id")
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "config_id")
 
-    @configs_id.setter
-    def configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "configs_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="waitersId")
-    def waiters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "waiters_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @waiters_id.setter
-    def waiters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "waiters_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="waiterId")
+    def waiter_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "waiter_id")
+
+    @waiter_id.setter
+    def waiter_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "waiter_id", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -182,17 +182,17 @@ class ConfigWaiter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  done: Optional[pulumi.Input[bool]] = None,
                  error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  failure: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 waiters_id: Optional[pulumi.Input[str]] = None,
+                 waiter_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
@@ -231,17 +231,17 @@ class ConfigWaiter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  done: Optional[pulumi.Input[bool]] = None,
                  error: Optional[pulumi.Input[pulumi.InputType['StatusArgs']]] = None,
                  failure: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  success: Optional[pulumi.Input[pulumi.InputType['EndConditionArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
-                 waiters_id: Optional[pulumi.Input[str]] = None,
+                 waiter_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -254,23 +254,23 @@ class ConfigWaiter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigWaiterArgs.__new__(ConfigWaiterArgs)
 
-            if configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'configs_id'")
-            __props__.__dict__["configs_id"] = configs_id
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["done"] = done
             __props__.__dict__["error"] = error
             __props__.__dict__["failure"] = failure
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["success"] = success
             __props__.__dict__["timeout"] = timeout
-            if waiters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'waiters_id'")
-            __props__.__dict__["waiters_id"] = waiters_id
+            if waiter_id is None and not opts.urn:
+                raise TypeError("Missing required property 'waiter_id'")
+            __props__.__dict__["waiter_id"] = waiter_id
         super(ConfigWaiter, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:ConfigWaiter',
             resource_name,

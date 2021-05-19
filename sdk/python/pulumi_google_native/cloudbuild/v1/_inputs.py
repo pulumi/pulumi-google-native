@@ -996,7 +996,7 @@ class RepoSourceArgs:
                  commit_sha: Optional[pulumi.Input[str]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  invert_regex: Optional[pulumi.Input[bool]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tag_name: Optional[pulumi.Input[str]] = None):
@@ -1006,7 +1006,7 @@ class RepoSourceArgs:
         :param pulumi.Input[str] commit_sha: Explicit commit SHA to build.
         :param pulumi.Input[str] dir: Directory, relative to the source root, in which to run the build. This must be a relative path. If a step's `dir` is specified and is an absolute path, this value is ignored for that step's execution.
         :param pulumi.Input[bool] invert_regex: Only trigger a build if the revision regex does NOT match the revision regex.
-        :param pulumi.Input[str] project_id: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
+        :param pulumi.Input[str] project: ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         :param pulumi.Input[str] repo_name: Name of the Cloud Source Repository.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions to use in a triggered build. Should only be used with RunBuildTrigger
         :param pulumi.Input[str] tag_name: Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -1019,8 +1019,8 @@ class RepoSourceArgs:
             pulumi.set(__self__, "dir", dir)
         if invert_regex is not None:
             pulumi.set(__self__, "invert_regex", invert_regex)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if repo_name is not None:
             pulumi.set(__self__, "repo_name", repo_name)
         if substitutions is not None:
@@ -1077,16 +1077,16 @@ class RepoSourceArgs:
         pulumi.set(self, "invert_regex", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="repoName")

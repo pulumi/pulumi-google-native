@@ -13,8 +13,8 @@ __all__ = ['BillingAccountExclusionArgs', 'BillingAccountExclusion']
 @pulumi.input_type
 class BillingAccountExclusionArgs:
     def __init__(__self__, *,
-                 billing_accounts_id: pulumi.Input[str],
-                 exclusions_id: pulumi.Input[str],
+                 billing_account_id: pulumi.Input[str],
+                 exclusion_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
@@ -26,8 +26,8 @@ class BillingAccountExclusionArgs:
         :param pulumi.Input[str] filter: Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
         :param pulumi.Input[str] name: Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
-        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
-        pulumi.set(__self__, "exclusions_id", exclusions_id)
+        pulumi.set(__self__, "billing_account_id", billing_account_id)
+        pulumi.set(__self__, "exclusion_id", exclusion_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -38,22 +38,22 @@ class BillingAccountExclusionArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="billingAccountsId")
-    def billing_accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "billing_accounts_id")
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_account_id")
 
-    @billing_accounts_id.setter
-    def billing_accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "billing_accounts_id", value)
+    @billing_account_id.setter
+    def billing_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_account_id", value)
 
     @property
-    @pulumi.getter(name="exclusionsId")
-    def exclusions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "exclusions_id")
+    @pulumi.getter(name="exclusionId")
+    def exclusion_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "exclusion_id")
 
-    @exclusions_id.setter
-    def exclusions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "exclusions_id", value)
+    @exclusion_id.setter
+    def exclusion_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "exclusion_id", value)
 
     @property
     @pulumi.getter
@@ -109,10 +109,10 @@ class BillingAccountExclusion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions_id: Optional[pulumi.Input[str]] = None,
+                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -150,10 +150,10 @@ class BillingAccountExclusion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 exclusions_id: Optional[pulumi.Input[str]] = None,
+                 exclusion_id: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -168,14 +168,14 @@ class BillingAccountExclusion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BillingAccountExclusionArgs.__new__(BillingAccountExclusionArgs)
 
-            if billing_accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            if billing_account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_account_id'")
+            __props__.__dict__["billing_account_id"] = billing_account_id
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
-            if exclusions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'exclusions_id'")
-            __props__.__dict__["exclusions_id"] = exclusions_id
+            if exclusion_id is None and not opts.urn:
+                raise TypeError("Missing required property 'exclusion_id'")
+            __props__.__dict__["exclusion_id"] = exclusion_id
             __props__.__dict__["filter"] = filter
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None

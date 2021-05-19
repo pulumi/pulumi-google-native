@@ -15,7 +15,7 @@ __all__ = ['TemplateArgs', 'Template']
 @pulumi.input_type
 class TemplateArgs:
     def __init__(__self__, *,
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  environment: Optional[pulumi.Input['RuntimeEnvironmentArgs']] = None,
                  gcs_path: Optional[pulumi.Input[str]] = None,
                  job_name: Optional[pulumi.Input[str]] = None,
@@ -29,7 +29,7 @@ class TemplateArgs:
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if gcs_path is not None:
@@ -42,13 +42,13 @@ class TemplateArgs:
             pulumi.set(__self__, "parameters", parameters)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -121,7 +121,7 @@ class Template(pulumi.CustomResource):
                  job_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a Cloud Dataflow job from a template.
@@ -163,7 +163,7 @@ class Template(pulumi.CustomResource):
                  job_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -181,9 +181,9 @@ class Template(pulumi.CustomResource):
             __props__.__dict__["job_name"] = job_name
             __props__.__dict__["location"] = location
             __props__.__dict__["parameters"] = parameters
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["metadata"] = None
             __props__.__dict__["runtime_metadata"] = None
             __props__.__dict__["status"] = None

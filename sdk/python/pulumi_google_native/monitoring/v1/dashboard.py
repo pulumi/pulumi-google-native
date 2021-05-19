@@ -15,8 +15,8 @@ __all__ = ['DashboardArgs', 'Dashboard']
 @pulumi.input_type
 class DashboardArgs:
     def __init__(__self__, *,
-                 dashboards_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 dashboard_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  column_layout: Optional[pulumi.Input['ColumnLayoutArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -34,8 +34,8 @@ class DashboardArgs:
         :param pulumi.Input[str] name: Immutable. The resource name of the dashboard.
         :param pulumi.Input['RowLayoutArgs'] row_layout: The content is divided into equally spaced rows and the widgets are arranged horizontally.
         """
-        pulumi.set(__self__, "dashboards_id", dashboards_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "dashboard_id", dashboard_id)
+        pulumi.set(__self__, "project", project)
         if column_layout is not None:
             pulumi.set(__self__, "column_layout", column_layout)
         if display_name is not None:
@@ -52,22 +52,22 @@ class DashboardArgs:
             pulumi.set(__self__, "row_layout", row_layout)
 
     @property
-    @pulumi.getter(name="dashboardsId")
-    def dashboards_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dashboards_id")
+    @pulumi.getter(name="dashboardId")
+    def dashboard_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dashboard_id")
 
-    @dashboards_id.setter
-    def dashboards_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dashboards_id", value)
+    @dashboard_id.setter
+    def dashboard_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dashboard_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="columnLayout")
@@ -160,13 +160,13 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboards_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
                  mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
                  __props__=None):
         """
@@ -207,13 +207,13 @@ class Dashboard(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  column_layout: Optional[pulumi.Input[pulumi.InputType['ColumnLayoutArgs']]] = None,
-                 dashboards_id: Optional[pulumi.Input[str]] = None,
+                 dashboard_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  grid_layout: Optional[pulumi.Input[pulumi.InputType['GridLayoutArgs']]] = None,
                  mosaic_layout: Optional[pulumi.Input[pulumi.InputType['MosaicLayoutArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  row_layout: Optional[pulumi.Input[pulumi.InputType['RowLayoutArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -228,17 +228,17 @@ class Dashboard(pulumi.CustomResource):
             __props__ = DashboardArgs.__new__(DashboardArgs)
 
             __props__.__dict__["column_layout"] = column_layout
-            if dashboards_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dashboards_id'")
-            __props__.__dict__["dashboards_id"] = dashboards_id
+            if dashboard_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dashboard_id'")
+            __props__.__dict__["dashboard_id"] = dashboard_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["grid_layout"] = grid_layout
             __props__.__dict__["mosaic_layout"] = mosaic_layout
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["row_layout"] = row_layout
         super(Dashboard, __self__).__init__(
             'google-native:monitoring/v1:Dashboard',

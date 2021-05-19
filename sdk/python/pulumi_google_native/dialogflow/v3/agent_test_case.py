@@ -15,10 +15,10 @@ __all__ = ['AgentTestCaseArgs', 'AgentTestCase']
 @pulumi.input_type
 class AgentTestCaseArgs:
     def __init__(__self__, *,
-                 agents_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 test_cases_id: pulumi.Input[str],
+                 agent_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 test_case_id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  last_test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3TestCaseResultArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -36,10 +36,10 @@ class AgentTestCaseArgs:
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3ConversationTurnArgs']]] test_case_conversation_turns: The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
         :param pulumi.Input['GoogleCloudDialogflowCxV3TestConfigArgs'] test_config: Config for the test case.
         """
-        pulumi.set(__self__, "agents_id", agents_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "test_cases_id", test_cases_id)
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "test_case_id", test_case_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if last_test_result is not None:
@@ -56,40 +56,40 @@ class AgentTestCaseArgs:
             pulumi.set(__self__, "test_config", test_config)
 
     @property
-    @pulumi.getter(name="agentsId")
-    def agents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "agents_id")
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "agent_id")
 
-    @agents_id.setter
-    def agents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "agents_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="testCasesId")
-    def test_cases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "test_cases_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @test_cases_id.setter
-    def test_cases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "test_cases_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="testCaseId")
+    def test_case_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "test_case_id")
+
+    @test_case_id.setter
+    def test_case_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "test_case_id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -181,16 +181,16 @@ class AgentTestCase(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  last_test_result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TestCaseResultArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ConversationTurnArgs']]]]] = None,
-                 test_cases_id: Optional[pulumi.Input[str]] = None,
+                 test_case_id: Optional[pulumi.Input[str]] = None,
                  test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TestConfigArgs']]] = None,
                  __props__=None):
         """
@@ -230,16 +230,16 @@ class AgentTestCase(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  last_test_result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TestCaseResultArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  test_case_conversation_turns: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ConversationTurnArgs']]]]] = None,
-                 test_cases_id: Optional[pulumi.Input[str]] = None,
+                 test_case_id: Optional[pulumi.Input[str]] = None,
                  test_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TestConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -253,24 +253,24 @@ class AgentTestCase(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentTestCaseArgs.__new__(AgentTestCaseArgs)
 
-            if agents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'agents_id'")
-            __props__.__dict__["agents_id"] = agents_id
+            if agent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'agent_id'")
+            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["last_test_result"] = last_test_result
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["notes"] = notes
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["test_case_conversation_turns"] = test_case_conversation_turns
-            if test_cases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'test_cases_id'")
-            __props__.__dict__["test_cases_id"] = test_cases_id
+            if test_case_id is None and not opts.urn:
+                raise TypeError("Missing required property 'test_case_id'")
+            __props__.__dict__["test_case_id"] = test_case_id
             __props__.__dict__["test_config"] = test_config
             __props__.__dict__["creation_time"] = None
         super(AgentTestCase, __self__).__init__(

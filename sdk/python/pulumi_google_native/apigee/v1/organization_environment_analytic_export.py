@@ -14,9 +14,9 @@ __all__ = ['OrganizationEnvironmentAnalyticExportArgs', 'OrganizationEnvironment
 @pulumi.input_type
 class OrganizationEnvironmentAnalyticExportArgs:
     def __init__(__self__, *,
-                 environments_id: pulumi.Input[str],
-                 exports_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
+                 export_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  datastore_name: Optional[pulumi.Input[str]] = None,
                  date_range: Optional[pulumi.Input['GoogleCloudApigeeV1DateRangeArgs']] = None,
@@ -32,9 +32,9 @@ class OrganizationEnvironmentAnalyticExportArgs:
         :param pulumi.Input[str] name: Required. Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "exports_id", exports_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "export_id", export_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
         if datastore_name is not None:
@@ -49,31 +49,31 @@ class OrganizationEnvironmentAnalyticExportArgs:
             pulumi.set(__self__, "output_format", output_format)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
-
-    @property
-    @pulumi.getter(name="exportsId")
-    def exports_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "exports_id")
-
-    @exports_id.setter
-    def exports_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "exports_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="exportId")
+    def export_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "export_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @export_id.setter
+    def export_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "export_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="csvDelimiter")
@@ -157,10 +157,10 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                  datastore_name: Optional[pulumi.Input[str]] = None,
                  date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 exports_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 export_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -203,10 +203,10 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
                  datastore_name: Optional[pulumi.Input[str]] = None,
                  date_range: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DateRangeArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 exports_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 export_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -224,16 +224,16 @@ class OrganizationEnvironmentAnalyticExport(pulumi.CustomResource):
             __props__.__dict__["datastore_name"] = datastore_name
             __props__.__dict__["date_range"] = date_range
             __props__.__dict__["description"] = description
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
-            if exports_id is None and not opts.urn:
-                raise TypeError("Missing required property 'exports_id'")
-            __props__.__dict__["exports_id"] = exports_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
+            if export_id is None and not opts.urn:
+                raise TypeError("Missing required property 'export_id'")
+            __props__.__dict__["export_id"] = export_id
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["output_format"] = output_format
             __props__.__dict__["created"] = None
             __props__.__dict__["error"] = None

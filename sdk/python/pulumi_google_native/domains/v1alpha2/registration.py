@@ -15,9 +15,9 @@ __all__ = ['RegistrationArgs', 'Registration']
 @pulumi.input_type
 class RegistrationArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 registrations_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 registration_id: pulumi.Input[str],
                  contact_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  contact_settings: Optional[pulumi.Input['ContactSettingsArgs']] = None,
                  dns_settings: Optional[pulumi.Input['DnsSettingsArgs']] = None,
@@ -39,9 +39,9 @@ class RegistrationArgs:
         :param pulumi.Input[bool] validate_only: When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
         :param pulumi.Input['MoneyArgs'] yearly_price: Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "registrations_id", registrations_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "registration_id", registration_id)
         if contact_notices is not None:
             pulumi.set(__self__, "contact_notices", contact_notices)
         if contact_settings is not None:
@@ -62,31 +62,31 @@ class RegistrationArgs:
             pulumi.set(__self__, "yearly_price", yearly_price)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="registrationsId")
-    def registrations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "registrations_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @registrations_id.setter
-    def registrations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registrations_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="registrationId")
+    def registration_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "registration_id")
+
+    @registration_id.setter
+    def registration_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registration_id", value)
 
     @property
     @pulumi.getter(name="contactNotices")
@@ -208,10 +208,10 @@ class Registration(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registrations_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registration_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
                  __props__=None):
@@ -260,10 +260,10 @@ class Registration(pulumi.CustomResource):
                  domain_name: Optional[pulumi.Input[str]] = None,
                  domain_notices: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  management_settings: Optional[pulumi.Input[pulumi.InputType['ManagementSettingsArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registrations_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registration_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  yearly_price: Optional[pulumi.Input[pulumi.InputType['MoneyArgs']]] = None,
                  __props__=None):
@@ -284,16 +284,16 @@ class Registration(pulumi.CustomResource):
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_notices"] = domain_notices
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["management_settings"] = management_settings
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if registrations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'registrations_id'")
-            __props__.__dict__["registrations_id"] = registrations_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if registration_id is None and not opts.urn:
+                raise TypeError("Missing required property 'registration_id'")
+            __props__.__dict__["registration_id"] = registration_id
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["yearly_price"] = yearly_price
             __props__.__dict__["create_time"] = None

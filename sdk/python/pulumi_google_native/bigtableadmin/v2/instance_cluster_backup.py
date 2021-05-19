@@ -15,10 +15,9 @@ __all__ = ['InstanceClusterBackupArgs', 'InstanceClusterBackup']
 class InstanceClusterBackupArgs:
     def __init__(__self__, *,
                  backup_id: pulumi.Input[str],
-                 backups_id: pulumi.Input[str],
-                 clusters_id: pulumi.Input[str],
-                 instances_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 cluster_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  expire_time: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  source_table: Optional[pulumi.Input[str]] = None):
@@ -29,10 +28,9 @@ class InstanceClusterBackupArgs:
         :param pulumi.Input[str] source_table: Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
         """
         pulumi.set(__self__, "backup_id", backup_id)
-        pulumi.set(__self__, "backups_id", backups_id)
-        pulumi.set(__self__, "clusters_id", clusters_id)
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "project", project)
         if expire_time is not None:
             pulumi.set(__self__, "expire_time", expire_time)
         if name is not None:
@@ -50,40 +48,31 @@ class InstanceClusterBackupArgs:
         pulumi.set(self, "backup_id", value)
 
     @property
-    @pulumi.getter(name="backupsId")
-    def backups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "backups_id")
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "cluster_id")
 
-    @backups_id.setter
-    def backups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "backups_id", value)
-
-    @property
-    @pulumi.getter(name="clustersId")
-    def clusters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "clusters_id")
-
-    @clusters_id.setter
-    def clusters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "clusters_id", value)
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
 
     @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="expireTime")
@@ -128,12 +117,11 @@ class InstanceClusterBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
-                 backups_id: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  source_table: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -170,12 +158,11 @@ class InstanceClusterBackup(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  backup_id: Optional[pulumi.Input[str]] = None,
-                 backups_id: Optional[pulumi.Input[str]] = None,
-                 clusters_id: Optional[pulumi.Input[str]] = None,
+                 cluster_id: Optional[pulumi.Input[str]] = None,
                  expire_time: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  source_table: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -192,20 +179,17 @@ class InstanceClusterBackup(pulumi.CustomResource):
             if backup_id is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_id'")
             __props__.__dict__["backup_id"] = backup_id
-            if backups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'backups_id'")
-            __props__.__dict__["backups_id"] = backups_id
-            if clusters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'clusters_id'")
-            __props__.__dict__["clusters_id"] = clusters_id
+            if cluster_id is None and not opts.urn:
+                raise TypeError("Missing required property 'cluster_id'")
+            __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["expire_time"] = expire_time
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["source_table"] = source_table
             __props__.__dict__["encryption_info"] = None
             __props__.__dict__["end_time"] = None

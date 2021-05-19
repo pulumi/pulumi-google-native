@@ -16,7 +16,7 @@ __all__ = ['RegionClusterArgs', 'RegionCluster']
 class RegionClusterArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -24,12 +24,12 @@ class RegionClusterArgs:
         """
         The set of arguments for constructing a RegionCluster resource.
         :param pulumi.Input[str] cluster_name: Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-        :param pulumi.Input[str] project_id: Required. The Google Cloud Platform project ID that the cluster belongs to.
+        :param pulumi.Input[str] project: Required. The Google Cloud Platform project ID that the cluster belongs to.
         :param pulumi.Input['ClusterConfigArgs'] config: Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         """
         pulumi.set(__self__, "cluster_name", cluster_name)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -51,16 +51,16 @@ class RegionClusterArgs:
         pulumi.set(self, "cluster_name", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
         """
         Required. The Google Cloud Platform project ID that the cluster belongs to.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -113,7 +113,7 @@ class RegionCluster(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -125,7 +125,7 @@ class RegionCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_name: Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
         :param pulumi.Input[pulumi.InputType['ClusterConfigArgs']] config: Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
-        :param pulumi.Input[str] project_id: Required. The Google Cloud Platform project ID that the cluster belongs to.
+        :param pulumi.Input[str] project: Required. The Google Cloud Platform project ID that the cluster belongs to.
         """
         ...
     @overload
@@ -154,7 +154,7 @@ class RegionCluster(pulumi.CustomResource):
                  cluster_name: Optional[pulumi.Input[str]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['ClusterConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -174,9 +174,9 @@ class RegionCluster(pulumi.CustomResource):
             __props__.__dict__["cluster_name"] = cluster_name
             __props__.__dict__["config"] = config
             __props__.__dict__["labels"] = labels
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -212,7 +212,7 @@ class RegionCluster(pulumi.CustomResource):
         __props__.__dict__["config"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["metrics"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_history"] = None
         return RegionCluster(resource_name, opts=opts, __props__=__props__)
@@ -258,12 +258,12 @@ class RegionCluster(pulumi.CustomResource):
         return pulumi.get(self, "metrics")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         Required. The Google Cloud Platform project ID that the cluster belongs to.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

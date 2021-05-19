@@ -417,7 +417,7 @@ class BuildProvenanceArgs:
                  end_time: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  logs_uri: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  source_provenance: Optional[pulumi.Input['SourceArgs']] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None):
@@ -432,7 +432,7 @@ class BuildProvenanceArgs:
         :param pulumi.Input[str] end_time: Time at which execution of the build was finished.
         :param pulumi.Input[str] id: Required. Unique identifier of the build.
         :param pulumi.Input[str] logs_uri: URI where any logs for this provenance were written.
-        :param pulumi.Input[str] project_id: ID of the project.
+        :param pulumi.Input[str] project: ID of the project.
         :param pulumi.Input['SourceArgs'] source_provenance: Details of the Source input to the build.
         :param pulumi.Input[str] start_time: Time at which execution of the build was started.
         :param pulumi.Input[str] trigger_id: Trigger identifier if the build was triggered automatically; empty if not.
@@ -455,8 +455,8 @@ class BuildProvenanceArgs:
             pulumi.set(__self__, "id", id)
         if logs_uri is not None:
             pulumi.set(__self__, "logs_uri", logs_uri)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if source_provenance is not None:
             pulumi.set(__self__, "source_provenance", source_provenance)
         if start_time is not None:
@@ -573,16 +573,16 @@ class BuildProvenanceArgs:
         pulumi.set(self, "logs_uri", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         ID of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="sourceProvenance")
@@ -2924,29 +2924,29 @@ class PgpSignedAttestationArgs:
 @pulumi.input_type
 class ProjectRepoIdArgs:
     def __init__(__self__, *,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  repo_name: Optional[pulumi.Input[str]] = None):
         """
         Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
-        :param pulumi.Input[str] project_id: The ID of the project.
+        :param pulumi.Input[str] project: The ID of the project.
         :param pulumi.Input[str] repo_name: The name of the repo. Leave empty for the default repo.
         """
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if repo_name is not None:
             pulumi.set(__self__, "repo_name", repo_name)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the project.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="repoName")

@@ -15,8 +15,8 @@ __all__ = ['AccessPolicyServicePerimeterArgs', 'AccessPolicyServicePerimeter']
 @pulumi.input_type
 class AccessPolicyServicePerimeterArgs:
     def __init__(__self__, *,
-                 access_policies_id: pulumi.Input[str],
-                 service_perimeters_id: pulumi.Input[str],
+                 access_policy_id: pulumi.Input[str],
+                 service_perimeter_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
@@ -34,8 +34,8 @@ class AccessPolicyServicePerimeterArgs:
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         :param pulumi.Input[bool] use_explicit_dry_run_spec: Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists for all Service Perimeters, and that spec is identical to the status for those Service Perimeters. When this flag is set, it inhibits the generation of the implicit spec, thereby allowing the user to explicitly provide a configuration ("spec") to use in a dry-run version of the Service Perimeter. This allows the user to test changes to the enforced config ("status") without actually enforcing them. This testing is done through analyzing the differences between currently enforced and suggested restrictions. use_explicit_dry_run_spec must bet set to True if any of the fields in the spec are set to non-default values.
         """
-        pulumi.set(__self__, "access_policies_id", access_policies_id)
-        pulumi.set(__self__, "service_perimeters_id", service_perimeters_id)
+        pulumi.set(__self__, "access_policy_id", access_policy_id)
+        pulumi.set(__self__, "service_perimeter_id", service_perimeter_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -52,22 +52,22 @@ class AccessPolicyServicePerimeterArgs:
             pulumi.set(__self__, "use_explicit_dry_run_spec", use_explicit_dry_run_spec)
 
     @property
-    @pulumi.getter(name="accessPoliciesId")
-    def access_policies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "access_policies_id")
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "access_policy_id")
 
-    @access_policies_id.setter
-    def access_policies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "access_policies_id", value)
+    @access_policy_id.setter
+    def access_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
-    @pulumi.getter(name="servicePerimetersId")
-    def service_perimeters_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "service_perimeters_id")
+    @pulumi.getter(name="servicePerimeterId")
+    def service_perimeter_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_perimeter_id")
 
-    @service_perimeters_id.setter
-    def service_perimeters_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "service_perimeters_id", value)
+    @service_perimeter_id.setter
+    def service_perimeter_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_perimeter_id", value)
 
     @property
     @pulumi.getter
@@ -159,11 +159,11 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policies_id: Optional[pulumi.Input[str]] = None,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 service_perimeters_id: Optional[pulumi.Input[str]] = None,
+                 service_perimeter_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -206,11 +206,11 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 access_policies_id: Optional[pulumi.Input[str]] = None,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
-                 service_perimeters_id: Optional[pulumi.Input[str]] = None,
+                 service_perimeter_id: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  status: Optional[pulumi.Input[pulumi.InputType['ServicePerimeterConfigArgs']]] = None,
                  title: Optional[pulumi.Input[str]] = None,
@@ -227,15 +227,15 @@ class AccessPolicyServicePerimeter(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AccessPolicyServicePerimeterArgs.__new__(AccessPolicyServicePerimeterArgs)
 
-            if access_policies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'access_policies_id'")
-            __props__.__dict__["access_policies_id"] = access_policies_id
+            if access_policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'access_policy_id'")
+            __props__.__dict__["access_policy_id"] = access_policy_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["perimeter_type"] = perimeter_type
-            if service_perimeters_id is None and not opts.urn:
-                raise TypeError("Missing required property 'service_perimeters_id'")
-            __props__.__dict__["service_perimeters_id"] = service_perimeters_id
+            if service_perimeter_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_perimeter_id'")
+            __props__.__dict__["service_perimeter_id"] = service_perimeter_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["status"] = status
             __props__.__dict__["title"] = title

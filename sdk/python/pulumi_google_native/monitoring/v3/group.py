@@ -13,8 +13,8 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
-                 groups_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 group_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
@@ -29,8 +29,8 @@ class GroupArgs:
         :param pulumi.Input[str] name: The name of this group. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] When creating a group, this field is ignored and a new name is created consisting of the project specified in the call to CreateGroup and a unique [GROUP_ID] that is generated automatically.
         :param pulumi.Input[str] parent_name: The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
         """
-        pulumi.set(__self__, "groups_id", groups_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if filter is not None:
@@ -45,22 +45,22 @@ class GroupArgs:
             pulumi.set(__self__, "validate_only", validate_only)
 
     @property
-    @pulumi.getter(name="groupsId")
-    def groups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "groups_id")
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "group_id")
 
-    @groups_id.setter
-    def groups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "groups_id", value)
+    @group_id.setter
+    def group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -139,11 +139,11 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 groups_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -183,11 +183,11 @@ class Group(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 groups_id: Optional[pulumi.Input[str]] = None,
+                 group_id: Optional[pulumi.Input[str]] = None,
                  is_cluster: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent_name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -203,15 +203,15 @@ class Group(pulumi.CustomResource):
 
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["filter"] = filter
-            if groups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'groups_id'")
-            __props__.__dict__["groups_id"] = groups_id
+            if group_id is None and not opts.urn:
+                raise TypeError("Missing required property 'group_id'")
+            __props__.__dict__["group_id"] = group_id
             __props__.__dict__["is_cluster"] = is_cluster
             __props__.__dict__["name"] = name
             __props__.__dict__["parent_name"] = parent_name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["validate_only"] = validate_only
         super(Group, __self__).__init__(
             'google-native:monitoring/v3:Group',

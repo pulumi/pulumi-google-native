@@ -15,8 +15,8 @@ __all__ = ['TopicArgs', 'Topic']
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 topics_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 topic_id: pulumi.Input[str],
                  kms_key_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input['MessageStoragePolicyArgs']] = None,
@@ -32,8 +32,8 @@ class TopicArgs:
         :param pulumi.Input[bool] satisfies_pzs: Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
         :param pulumi.Input['SchemaSettingsArgs'] schema_settings: Settings for validating messages published against a schema.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "topics_id", topics_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "topic_id", topic_id)
         if kms_key_name is not None:
             pulumi.set(__self__, "kms_key_name", kms_key_name)
         if labels is not None:
@@ -48,22 +48,22 @@ class TopicArgs:
             pulumi.set(__self__, "schema_settings", schema_settings)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="topicsId")
-    def topics_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "topics_id")
+    @pulumi.getter(name="topicId")
+    def topic_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "topic_id")
 
-    @topics_id.setter
-    def topics_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "topics_id", value)
+    @topic_id.setter
+    def topic_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic_id", value)
 
     @property
     @pulumi.getter(name="kmsKeyName")
@@ -147,10 +147,10 @@ class Topic(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
-                 topics_id: Optional[pulumi.Input[str]] = None,
+                 topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates the given topic with the given name. See the [resource name rules] (https://cloud.google.com/pubsub/docs/admin#resource_names).
@@ -192,10 +192,10 @@ class Topic(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_storage_policy: Optional[pulumi.Input[pulumi.InputType['MessageStoragePolicyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  satisfies_pzs: Optional[pulumi.Input[bool]] = None,
                  schema_settings: Optional[pulumi.Input[pulumi.InputType['SchemaSettingsArgs']]] = None,
-                 topics_id: Optional[pulumi.Input[str]] = None,
+                 topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -212,14 +212,14 @@ class Topic(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_storage_policy"] = message_storage_policy
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["satisfies_pzs"] = satisfies_pzs
             __props__.__dict__["schema_settings"] = schema_settings
-            if topics_id is None and not opts.urn:
-                raise TypeError("Missing required property 'topics_id'")
-            __props__.__dict__["topics_id"] = topics_id
+            if topic_id is None and not opts.urn:
+                raise TypeError("Missing required property 'topic_id'")
+            __props__.__dict__["topic_id"] = topic_id
         super(Topic, __self__).__init__(
             'google-native:pubsub/v1:Topic',
             resource_name,

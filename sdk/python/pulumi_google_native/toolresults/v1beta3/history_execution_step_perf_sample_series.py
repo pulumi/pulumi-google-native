@@ -17,7 +17,7 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
     def __init__(__self__, *,
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  sample_series_id: pulumi.Input[str],
                  step_id: pulumi.Input[str],
                  basic_perf_sample_series: Optional[pulumi.Input['BasicPerfSampleSeriesArgs']] = None):
@@ -25,14 +25,14 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
         The set of arguments for constructing a HistoryExecutionStepPerfSampleSeries resource.
         :param pulumi.Input[str] execution_id: A tool results execution ID. @OutputOnly
         :param pulumi.Input[str] history_id: A tool results history ID. @OutputOnly
-        :param pulumi.Input[str] project_id: The cloud project @OutputOnly
+        :param pulumi.Input[str] project: The cloud project @OutputOnly
         :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
         :param pulumi.Input[str] step_id: A tool results step ID. @OutputOnly
         :param pulumi.Input['BasicPerfSampleSeriesArgs'] basic_perf_sample_series: Basic series represented by a line chart
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "sample_series_id", sample_series_id)
         pulumi.set(__self__, "step_id", step_id)
         if basic_perf_sample_series is not None:
@@ -63,16 +63,16 @@ class HistoryExecutionStepPerfSampleSeriesArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
         """
         The cloud project @OutputOnly
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="sampleSeriesId")
@@ -119,7 +119,7 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
                  basic_perf_sample_series: Optional[pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  sample_series_id: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -131,7 +131,7 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']] basic_perf_sample_series: Basic series represented by a line chart
         :param pulumi.Input[str] execution_id: A tool results execution ID. @OutputOnly
         :param pulumi.Input[str] history_id: A tool results history ID. @OutputOnly
-        :param pulumi.Input[str] project_id: The cloud project @OutputOnly
+        :param pulumi.Input[str] project: The cloud project @OutputOnly
         :param pulumi.Input[str] sample_series_id: A sample series id @OutputOnly
         :param pulumi.Input[str] step_id: A tool results step ID. @OutputOnly
         """
@@ -162,7 +162,7 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
                  basic_perf_sample_series: Optional[pulumi.Input[pulumi.InputType['BasicPerfSampleSeriesArgs']]] = None,
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  sample_series_id: Optional[pulumi.Input[str]] = None,
                  step_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -184,9 +184,9 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
             if history_id is None and not opts.urn:
                 raise TypeError("Missing required property 'history_id'")
             __props__.__dict__["history_id"] = history_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if sample_series_id is None and not opts.urn:
                 raise TypeError("Missing required property 'sample_series_id'")
             __props__.__dict__["sample_series_id"] = sample_series_id
@@ -218,7 +218,7 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         __props__.__dict__["basic_perf_sample_series"] = None
         __props__.__dict__["execution_id"] = None
         __props__.__dict__["history_id"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["sample_series_id"] = None
         __props__.__dict__["step_id"] = None
         return HistoryExecutionStepPerfSampleSeries(resource_name, opts=opts, __props__=__props__)
@@ -248,12 +248,12 @@ class HistoryExecutionStepPerfSampleSeries(pulumi.CustomResource):
         return pulumi.get(self, "history_id")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         The cloud project @OutputOnly
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="sampleSeriesId")

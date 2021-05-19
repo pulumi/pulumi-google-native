@@ -15,11 +15,10 @@ __all__ = ['ServiceMetadataImportArgs', 'ServiceMetadataImport']
 @pulumi.input_type
 class ServiceMetadataImportArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
                  metadata_import_id: pulumi.Input[str],
-                 metadata_imports_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 services_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 service_id: pulumi.Input[str],
                  database_dump: Optional[pulumi.Input['DatabaseDumpArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -30,11 +29,10 @@ class ServiceMetadataImportArgs:
         :param pulumi.Input[str] description: The description of the metadata import.
         :param pulumi.Input[str] name: Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "metadata_import_id", metadata_import_id)
-        pulumi.set(__self__, "metadata_imports_id", metadata_imports_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "services_id", services_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "service_id", service_id)
         if database_dump is not None:
             pulumi.set(__self__, "database_dump", database_dump)
         if description is not None:
@@ -45,13 +43,13 @@ class ServiceMetadataImportArgs:
             pulumi.set(__self__, "request_id", request_id)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter(name="metadataImportId")
@@ -63,31 +61,22 @@ class ServiceMetadataImportArgs:
         pulumi.set(self, "metadata_import_id", value)
 
     @property
-    @pulumi.getter(name="metadataImportsId")
-    def metadata_imports_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "metadata_imports_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @metadata_imports_id.setter
-    def metadata_imports_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "metadata_imports_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="servicesId")
-    def services_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "services_id")
+    @pulumi.getter(name="serviceId")
+    def service_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "service_id")
 
-    @services_id.setter
-    def services_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "services_id", value)
+    @service_id.setter
+    def service_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_id", value)
 
     @property
     @pulumi.getter(name="databaseDump")
@@ -142,13 +131,12 @@ class ServiceMetadataImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata_import_id: Optional[pulumi.Input[str]] = None,
-                 metadata_imports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new MetadataImport in a given project and location.
@@ -185,13 +173,12 @@ class ServiceMetadataImport(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  database_dump: Optional[pulumi.Input[pulumi.InputType['DatabaseDumpArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata_import_id: Optional[pulumi.Input[str]] = None,
-                 metadata_imports_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 services_id: Optional[pulumi.Input[str]] = None,
+                 service_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -206,23 +193,20 @@ class ServiceMetadataImport(pulumi.CustomResource):
 
             __props__.__dict__["database_dump"] = database_dump
             __props__.__dict__["description"] = description
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             if metadata_import_id is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata_import_id'")
             __props__.__dict__["metadata_import_id"] = metadata_import_id
-            if metadata_imports_id is None and not opts.urn:
-                raise TypeError("Missing required property 'metadata_imports_id'")
-            __props__.__dict__["metadata_imports_id"] = metadata_imports_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
-            if services_id is None and not opts.urn:
-                raise TypeError("Missing required property 'services_id'")
-            __props__.__dict__["services_id"] = services_id
+            if service_id is None and not opts.urn:
+                raise TypeError("Missing required property 'service_id'")
+            __props__.__dict__["service_id"] = service_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["update_time"] = None

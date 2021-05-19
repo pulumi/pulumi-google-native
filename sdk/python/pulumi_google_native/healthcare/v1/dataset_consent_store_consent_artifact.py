@@ -15,11 +15,11 @@ __all__ = ['DatasetConsentStoreConsentArtifactArgs', 'DatasetConsentStoreConsent
 @pulumi.input_type
 class DatasetConsentStoreConsentArtifactArgs:
     def __init__(__self__, *,
-                 consent_artifacts_id: pulumi.Input[str],
-                 consent_stores_id: pulumi.Input[str],
-                 datasets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 consent_artifact_id: pulumi.Input[str],
+                 consent_store_id: pulumi.Input[str],
+                 dataset_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input['ImageArgs']]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input['SignatureArgs']] = None,
@@ -39,11 +39,11 @@ class DatasetConsentStoreConsentArtifactArgs:
         :param pulumi.Input['SignatureArgs'] user_signature: Optional. User's signature.
         :param pulumi.Input['SignatureArgs'] witness_signature: Optional. A signature from a witness.
         """
-        pulumi.set(__self__, "consent_artifacts_id", consent_artifacts_id)
-        pulumi.set(__self__, "consent_stores_id", consent_stores_id)
-        pulumi.set(__self__, "datasets_id", datasets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "consent_artifact_id", consent_artifact_id)
+        pulumi.set(__self__, "consent_store_id", consent_store_id)
+        pulumi.set(__self__, "dataset_id", dataset_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if consent_content_screenshots is not None:
             pulumi.set(__self__, "consent_content_screenshots", consent_content_screenshots)
         if consent_content_version is not None:
@@ -62,49 +62,49 @@ class DatasetConsentStoreConsentArtifactArgs:
             pulumi.set(__self__, "witness_signature", witness_signature)
 
     @property
-    @pulumi.getter(name="consentArtifactsId")
-    def consent_artifacts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_artifacts_id")
+    @pulumi.getter(name="consentArtifactId")
+    def consent_artifact_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_artifact_id")
 
-    @consent_artifacts_id.setter
-    def consent_artifacts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_artifacts_id", value)
-
-    @property
-    @pulumi.getter(name="consentStoresId")
-    def consent_stores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "consent_stores_id")
-
-    @consent_stores_id.setter
-    def consent_stores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "consent_stores_id", value)
+    @consent_artifact_id.setter
+    def consent_artifact_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_artifact_id", value)
 
     @property
-    @pulumi.getter(name="datasetsId")
-    def datasets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datasets_id")
+    @pulumi.getter(name="consentStoreId")
+    def consent_store_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "consent_store_id")
 
-    @datasets_id.setter
-    def datasets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datasets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @consent_store_id.setter
+    def consent_store_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consent_store_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dataset_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @dataset_id.setter
+    def dataset_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dataset_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="consentContentScreenshots")
@@ -208,16 +208,16 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_artifacts_id: Optional[pulumi.Input[str]] = None,
+                 consent_artifact_id: Optional[pulumi.Input[str]] = None,
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
                  witness_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
@@ -260,16 +260,16 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 consent_artifacts_id: Optional[pulumi.Input[str]] = None,
+                 consent_artifact_id: Optional[pulumi.Input[str]] = None,
                  consent_content_screenshots: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ImageArgs']]]]] = None,
                  consent_content_version: Optional[pulumi.Input[str]] = None,
-                 consent_stores_id: Optional[pulumi.Input[str]] = None,
-                 datasets_id: Optional[pulumi.Input[str]] = None,
+                 consent_store_id: Optional[pulumi.Input[str]] = None,
+                 dataset_id: Optional[pulumi.Input[str]] = None,
                  guardian_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  user_id: Optional[pulumi.Input[str]] = None,
                  user_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
                  witness_signature: Optional[pulumi.Input[pulumi.InputType['SignatureArgs']]] = None,
@@ -285,26 +285,26 @@ class DatasetConsentStoreConsentArtifact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatasetConsentStoreConsentArtifactArgs.__new__(DatasetConsentStoreConsentArtifactArgs)
 
-            if consent_artifacts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_artifacts_id'")
-            __props__.__dict__["consent_artifacts_id"] = consent_artifacts_id
+            if consent_artifact_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_artifact_id'")
+            __props__.__dict__["consent_artifact_id"] = consent_artifact_id
             __props__.__dict__["consent_content_screenshots"] = consent_content_screenshots
             __props__.__dict__["consent_content_version"] = consent_content_version
-            if consent_stores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'consent_stores_id'")
-            __props__.__dict__["consent_stores_id"] = consent_stores_id
-            if datasets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datasets_id'")
-            __props__.__dict__["datasets_id"] = datasets_id
+            if consent_store_id is None and not opts.urn:
+                raise TypeError("Missing required property 'consent_store_id'")
+            __props__.__dict__["consent_store_id"] = consent_store_id
+            if dataset_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dataset_id'")
+            __props__.__dict__["dataset_id"] = dataset_id
             __props__.__dict__["guardian_signature"] = guardian_signature
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["user_signature"] = user_signature
             __props__.__dict__["witness_signature"] = witness_signature

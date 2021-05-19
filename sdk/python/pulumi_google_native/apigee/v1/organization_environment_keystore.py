@@ -13,46 +13,46 @@ __all__ = ['OrganizationEnvironmentKeystoreArgs', 'OrganizationEnvironmentKeysto
 @pulumi.input_type
 class OrganizationEnvironmentKeystoreArgs:
     def __init__(__self__, *,
-                 environments_id: pulumi.Input[str],
-                 keystores_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
+                 keystore_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationEnvironmentKeystore resource.
         :param pulumi.Input[str] name: Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         """
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "keystores_id", keystores_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "keystore_id", keystore_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
-
-    @property
-    @pulumi.getter(name="keystoresId")
-    def keystores_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "keystores_id")
-
-    @keystores_id.setter
-    def keystores_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "keystores_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="keystoreId")
+    def keystore_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "keystore_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @keystore_id.setter
+    def keystore_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "keystore_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -72,10 +72,10 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 keystores_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 keystore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
@@ -108,10 +108,10 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
-                 keystores_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 keystore_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -124,16 +124,16 @@ class OrganizationEnvironmentKeystore(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationEnvironmentKeystoreArgs.__new__(OrganizationEnvironmentKeystoreArgs)
 
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
-            if keystores_id is None and not opts.urn:
-                raise TypeError("Missing required property 'keystores_id'")
-            __props__.__dict__["keystores_id"] = keystores_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
+            if keystore_id is None and not opts.urn:
+                raise TypeError("Missing required property 'keystore_id'")
+            __props__.__dict__["keystore_id"] = keystore_id
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["aliases"] = None
         super(OrganizationEnvironmentKeystore, __self__).__init__(
             'google-native:apigee/v1:OrganizationEnvironmentKeystore',

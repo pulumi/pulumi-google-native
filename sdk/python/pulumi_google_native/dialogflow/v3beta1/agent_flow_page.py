@@ -15,11 +15,11 @@ __all__ = ['AgentFlowPageArgs', 'AgentFlowPage']
 @pulumi.input_type
 class AgentFlowPageArgs:
     def __init__(__self__, *,
-                 agents_id: pulumi.Input[str],
-                 flows_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 pages_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 agent_id: pulumi.Input[str],
+                 flow_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 page_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]] = None,
@@ -38,11 +38,11 @@ class AgentFlowPageArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] transition_route_groups: Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]] transition_routes: A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
         """
-        pulumi.set(__self__, "agents_id", agents_id)
-        pulumi.set(__self__, "flows_id", flows_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "pages_id", pages_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "flow_id", flow_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "page_id", page_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if entry_fulfillment is not None:
@@ -61,49 +61,49 @@ class AgentFlowPageArgs:
             pulumi.set(__self__, "transition_routes", transition_routes)
 
     @property
-    @pulumi.getter(name="agentsId")
-    def agents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "agents_id")
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "agent_id")
 
-    @agents_id.setter
-    def agents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "agents_id", value)
-
-    @property
-    @pulumi.getter(name="flowsId")
-    def flows_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "flows_id")
-
-    @flows_id.setter
-    def flows_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "flows_id", value)
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter(name="flowId")
+    def flow_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "flow_id")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="pagesId")
-    def pages_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "pages_id")
-
-    @pages_id.setter
-    def pages_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "pages_id", value)
+    @flow_id.setter
+    def flow_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "flow_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="pageId")
+    def page_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "page_id")
+
+    @page_id.setter
+    def page_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "page_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -204,17 +204,17 @@ class AgentFlowPage(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
-                 flows_id: Optional[pulumi.Input[str]] = None,
+                 flow_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FormArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pages_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 page_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]] = None,
                  __props__=None):
@@ -255,17 +255,17 @@ class AgentFlowPage(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  entry_fulfillment: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FulfillmentArgs']]] = None,
                  event_handlers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1EventHandlerArgs']]]]] = None,
-                 flows_id: Optional[pulumi.Input[str]] = None,
+                 flow_id: Optional[pulumi.Input[str]] = None,
                  form: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1FormArgs']]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 pages_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 page_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  transition_route_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TransitionRouteArgs']]]]] = None,
                  __props__=None):
@@ -280,27 +280,27 @@ class AgentFlowPage(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentFlowPageArgs.__new__(AgentFlowPageArgs)
 
-            if agents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'agents_id'")
-            __props__.__dict__["agents_id"] = agents_id
+            if agent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'agent_id'")
+            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["entry_fulfillment"] = entry_fulfillment
             __props__.__dict__["event_handlers"] = event_handlers
-            if flows_id is None and not opts.urn:
-                raise TypeError("Missing required property 'flows_id'")
-            __props__.__dict__["flows_id"] = flows_id
+            if flow_id is None and not opts.urn:
+                raise TypeError("Missing required property 'flow_id'")
+            __props__.__dict__["flow_id"] = flow_id
             __props__.__dict__["form"] = form
             __props__.__dict__["language_code"] = language_code
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if pages_id is None and not opts.urn:
-                raise TypeError("Missing required property 'pages_id'")
-            __props__.__dict__["pages_id"] = pages_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if page_id is None and not opts.urn:
+                raise TypeError("Missing required property 'page_id'")
+            __props__.__dict__["page_id"] = page_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["transition_route_groups"] = transition_route_groups
             __props__.__dict__["transition_routes"] = transition_routes
         super(AgentFlowPage, __self__).__init__(

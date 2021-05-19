@@ -15,12 +15,12 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 @pulumi.input_type
 class TransferJobArgs:
     def __init__(__self__, *,
-                 transfer_jobs_id: pulumi.Input[str],
+                 transfer_job_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input['ScheduleArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input['TransferSpecArgs']] = None):
@@ -30,12 +30,12 @@ class TransferJobArgs:
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. This name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration.
-        :param pulumi.Input[str] project_id: The ID of the Google Cloud Platform Project that owns the job.
+        :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
         :param pulumi.Input['ScheduleArgs'] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         :param pulumi.Input[str] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input['TransferSpecArgs'] transfer_spec: Transfer specification.
         """
-        pulumi.set(__self__, "transfer_jobs_id", transfer_jobs_id)
+        pulumi.set(__self__, "transfer_job_id", transfer_job_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if latest_operation_name is not None:
@@ -44,8 +44,8 @@ class TransferJobArgs:
             pulumi.set(__self__, "name", name)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
-        if project_id is not None:
-            pulumi.set(__self__, "project_id", project_id)
+        if project is not None:
+            pulumi.set(__self__, "project", project)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if status is not None:
@@ -54,13 +54,13 @@ class TransferJobArgs:
             pulumi.set(__self__, "transfer_spec", transfer_spec)
 
     @property
-    @pulumi.getter(name="transferJobsId")
-    def transfer_jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "transfer_jobs_id")
+    @pulumi.getter(name="transferJobId")
+    def transfer_job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "transfer_job_id")
 
-    @transfer_jobs_id.setter
-    def transfer_jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "transfer_jobs_id", value)
+    @transfer_job_id.setter
+    def transfer_job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "transfer_job_id", value)
 
     @property
     @pulumi.getter
@@ -111,16 +111,16 @@ class TransferJobArgs:
         pulumi.set(self, "notification_config", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter
+    def project(self) -> Optional[pulumi.Input[str]]:
         """
         The ID of the Google Cloud Platform Project that owns the job.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -168,10 +168,10 @@ class TransferJob(pulumi.CustomResource):
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_jobs_id: Optional[pulumi.Input[str]] = None,
+                 transfer_job_id: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         """
@@ -183,7 +183,7 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[str] latest_operation_name: The name of the most recently started TransferOperation of this JobConfig. Present if and only if at least one TransferOperation has been created for this JobConfig.
         :param pulumi.Input[str] name: A unique name (within the transfer project) assigned when the job is created. If this field is empty in a CreateTransferJobRequest, Storage Transfer Service will assign a unique name. Otherwise, the specified name is used as the unique name for this job. If the specified name is in use by a job, the creation request fails with an ALREADY_EXISTS error. This name must start with `"transferJobs/"` prefix and end with a letter or a number, and should be no more than 128 characters. This name must not start with 'transferJobs/OPI'. 'transferJobs/OPI' is a reserved prefix. Example: `"transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$"` Invalid job names will fail with an INVALID_ARGUMENT error.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration.
-        :param pulumi.Input[str] project_id: The ID of the Google Cloud Platform Project that owns the job.
+        :param pulumi.Input[str] project: The ID of the Google Cloud Platform Project that owns the job.
         :param pulumi.Input[pulumi.InputType['ScheduleArgs']] schedule: Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job will never execute a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
         :param pulumi.Input[str] status: Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
         :param pulumi.Input[pulumi.InputType['TransferSpecArgs']] transfer_spec: Transfer specification.
@@ -216,10 +216,10 @@ class TransferJob(pulumi.CustomResource):
                  latest_operation_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
-                 transfer_jobs_id: Optional[pulumi.Input[str]] = None,
+                 transfer_job_id: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[pulumi.InputType['TransferSpecArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -237,12 +237,12 @@ class TransferJob(pulumi.CustomResource):
             __props__.__dict__["latest_operation_name"] = latest_operation_name
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
-            __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["project"] = project
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
-            if transfer_jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_jobs_id'")
-            __props__.__dict__["transfer_jobs_id"] = transfer_jobs_id
+            if transfer_job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'transfer_job_id'")
+            __props__.__dict__["transfer_job_id"] = transfer_job_id
             __props__.__dict__["transfer_spec"] = transfer_spec
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["deletion_time"] = None
@@ -276,7 +276,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["latest_operation_name"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["schedule"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["transfer_spec"] = None
@@ -339,12 +339,12 @@ class TransferJob(pulumi.CustomResource):
         return pulumi.get(self, "notification_config")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         The ID of the Google Cloud Platform Project that owns the job.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

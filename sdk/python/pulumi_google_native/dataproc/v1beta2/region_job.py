@@ -16,7 +16,7 @@ __all__ = ['RegionJobArgs', 'RegionJob']
 class RegionJobArgs:
     def __init__(__self__, *,
                  job_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
@@ -48,7 +48,7 @@ class RegionJobArgs:
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
         """
         pulumi.set(__self__, "job_id", job_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
@@ -87,13 +87,13 @@ class RegionJobArgs:
         pulumi.set(self, "job_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -273,7 +273,7 @@ class RegionJob(pulumi.CustomResource):
                  pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
                  presto_job: Optional[pulumi.Input[pulumi.InputType['PrestoJobArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pyspark_job: Optional[pulumi.Input[pulumi.InputType['PySparkJobArgs']]] = None,
                  reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -333,7 +333,7 @@ class RegionJob(pulumi.CustomResource):
                  pig_job: Optional[pulumi.Input[pulumi.InputType['PigJobArgs']]] = None,
                  placement: Optional[pulumi.Input[pulumi.InputType['JobPlacementArgs']]] = None,
                  presto_job: Optional[pulumi.Input[pulumi.InputType['PrestoJobArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  pyspark_job: Optional[pulumi.Input[pulumi.InputType['PySparkJobArgs']]] = None,
                  reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -363,9 +363,9 @@ class RegionJob(pulumi.CustomResource):
             __props__.__dict__["pig_job"] = pig_job
             __props__.__dict__["placement"] = placement
             __props__.__dict__["presto_job"] = presto_job
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["pyspark_job"] = pyspark_job
             __props__.__dict__["reference"] = reference
             if region is None and not opts.urn:

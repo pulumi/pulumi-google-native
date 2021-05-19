@@ -15,10 +15,10 @@ __all__ = ['QueueTaskArgs', 'QueueTask']
 @pulumi.input_type
 class QueueTaskArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 queues_id: pulumi.Input[str],
-                 tasks_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 queue_id: pulumi.Input[str],
+                 task_id: pulumi.Input[str],
                  app_engine_http_request: Optional[pulumi.Input['AppEngineHttpRequestArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  dispatch_count: Optional[pulumi.Input[int]] = None,
@@ -46,10 +46,10 @@ class QueueTaskArgs:
         :param pulumi.Input[str] schedule_time: The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the nearest microsecond.
         :param pulumi.Input[str] view: The view specifies which subset of the Task has been returned.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "queues_id", queues_id)
-        pulumi.set(__self__, "tasks_id", tasks_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "queue_id", queue_id)
+        pulumi.set(__self__, "task_id", task_id)
         if app_engine_http_request is not None:
             pulumi.set(__self__, "app_engine_http_request", app_engine_http_request)
         if create_time is not None:
@@ -76,40 +76,40 @@ class QueueTaskArgs:
             pulumi.set(__self__, "view", view)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="queuesId")
-    def queues_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "queues_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @queues_id.setter
-    def queues_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "queues_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="tasksId")
-    def tasks_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "tasks_id")
+    @pulumi.getter(name="queueId")
+    def queue_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "queue_id")
 
-    @tasks_id.setter
-    def tasks_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "tasks_id", value)
+    @queue_id.setter
+    def queue_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "queue_id", value)
+
+    @property
+    @pulumi.getter(name="taskId")
+    def task_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "task_id")
+
+    @task_id.setter
+    def task_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "task_id", value)
 
     @property
     @pulumi.getter(name="appEngineHttpRequest")
@@ -268,14 +268,14 @@ class QueueTask(pulumi.CustomResource):
                  first_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
                  http_request: Optional[pulumi.Input[pulumi.InputType['HttpRequestArgs']]] = None,
                  last_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  response_count: Optional[pulumi.Input[int]] = None,
                  response_view: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 tasks_id: Optional[pulumi.Input[str]] = None,
+                 task_id: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -327,14 +327,14 @@ class QueueTask(pulumi.CustomResource):
                  first_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
                  http_request: Optional[pulumi.Input[pulumi.InputType['HttpRequestArgs']]] = None,
                  last_attempt: Optional[pulumi.Input[pulumi.InputType['AttemptArgs']]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 queues_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 queue_id: Optional[pulumi.Input[str]] = None,
                  response_count: Optional[pulumi.Input[int]] = None,
                  response_view: Optional[pulumi.Input[str]] = None,
                  schedule_time: Optional[pulumi.Input[str]] = None,
-                 tasks_id: Optional[pulumi.Input[str]] = None,
+                 task_id: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -355,22 +355,22 @@ class QueueTask(pulumi.CustomResource):
             __props__.__dict__["first_attempt"] = first_attempt
             __props__.__dict__["http_request"] = http_request
             __props__.__dict__["last_attempt"] = last_attempt
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if queues_id is None and not opts.urn:
-                raise TypeError("Missing required property 'queues_id'")
-            __props__.__dict__["queues_id"] = queues_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if queue_id is None and not opts.urn:
+                raise TypeError("Missing required property 'queue_id'")
+            __props__.__dict__["queue_id"] = queue_id
             __props__.__dict__["response_count"] = response_count
             __props__.__dict__["response_view"] = response_view
             __props__.__dict__["schedule_time"] = schedule_time
-            if tasks_id is None and not opts.urn:
-                raise TypeError("Missing required property 'tasks_id'")
-            __props__.__dict__["tasks_id"] = tasks_id
+            if task_id is None and not opts.urn:
+                raise TypeError("Missing required property 'task_id'")
+            __props__.__dict__["task_id"] = task_id
             __props__.__dict__["view"] = view
         super(QueueTask, __self__).__init__(
             'google-native:cloudtasks/v2:QueueTask',

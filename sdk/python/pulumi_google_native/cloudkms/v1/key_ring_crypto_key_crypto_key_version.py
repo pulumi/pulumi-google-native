@@ -15,11 +15,11 @@ __all__ = ['KeyRingCryptoKeyCryptoKeyVersionArgs', 'KeyRingCryptoKeyCryptoKeyVer
 @pulumi.input_type
 class KeyRingCryptoKeyCryptoKeyVersionArgs:
     def __init__(__self__, *,
-                 crypto_key_versions_id: pulumi.Input[str],
-                 crypto_keys_id: pulumi.Input[str],
-                 key_rings_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 crypto_key_id: pulumi.Input[str],
+                 crypto_key_version_id: pulumi.Input[str],
+                 key_ring_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  external_protection_level_options: Optional[pulumi.Input['ExternalProtectionLevelOptionsArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
@@ -27,60 +27,60 @@ class KeyRingCryptoKeyCryptoKeyVersionArgs:
         :param pulumi.Input['ExternalProtectionLevelOptionsArgs'] external_protection_level_options: ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
         :param pulumi.Input[str] state: The current state of the CryptoKeyVersion.
         """
-        pulumi.set(__self__, "crypto_key_versions_id", crypto_key_versions_id)
-        pulumi.set(__self__, "crypto_keys_id", crypto_keys_id)
-        pulumi.set(__self__, "key_rings_id", key_rings_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "crypto_key_id", crypto_key_id)
+        pulumi.set(__self__, "crypto_key_version_id", crypto_key_version_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if external_protection_level_options is not None:
             pulumi.set(__self__, "external_protection_level_options", external_protection_level_options)
         if state is not None:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="cryptoKeyVersionsId")
-    def crypto_key_versions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_key_versions_id")
+    @pulumi.getter(name="cryptoKeyId")
+    def crypto_key_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_key_id")
 
-    @crypto_key_versions_id.setter
-    def crypto_key_versions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_key_versions_id", value)
-
-    @property
-    @pulumi.getter(name="cryptoKeysId")
-    def crypto_keys_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "crypto_keys_id")
-
-    @crypto_keys_id.setter
-    def crypto_keys_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "crypto_keys_id", value)
+    @crypto_key_id.setter
+    def crypto_key_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_id", value)
 
     @property
-    @pulumi.getter(name="keyRingsId")
-    def key_rings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key_rings_id")
+    @pulumi.getter(name="cryptoKeyVersionId")
+    def crypto_key_version_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "crypto_key_version_id")
 
-    @key_rings_id.setter
-    def key_rings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_rings_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @crypto_key_version_id.setter
+    def crypto_key_version_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "crypto_key_version_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key_ring_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_ring_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="externalProtectionLevelOptions")
@@ -112,12 +112,12 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key_versions_id: Optional[pulumi.Input[str]] = None,
-                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_version_id: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -152,12 +152,12 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 crypto_key_versions_id: Optional[pulumi.Input[str]] = None,
-                 crypto_keys_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_version_id: Optional[pulumi.Input[str]] = None,
                  external_protection_level_options: Optional[pulumi.Input[pulumi.InputType['ExternalProtectionLevelOptionsArgs']]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 key_ring_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -171,22 +171,22 @@ class KeyRingCryptoKeyCryptoKeyVersion(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KeyRingCryptoKeyCryptoKeyVersionArgs.__new__(KeyRingCryptoKeyCryptoKeyVersionArgs)
 
-            if crypto_key_versions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_key_versions_id'")
-            __props__.__dict__["crypto_key_versions_id"] = crypto_key_versions_id
-            if crypto_keys_id is None and not opts.urn:
-                raise TypeError("Missing required property 'crypto_keys_id'")
-            __props__.__dict__["crypto_keys_id"] = crypto_keys_id
+            if crypto_key_id is None and not opts.urn:
+                raise TypeError("Missing required property 'crypto_key_id'")
+            __props__.__dict__["crypto_key_id"] = crypto_key_id
+            if crypto_key_version_id is None and not opts.urn:
+                raise TypeError("Missing required property 'crypto_key_version_id'")
+            __props__.__dict__["crypto_key_version_id"] = crypto_key_version_id
             __props__.__dict__["external_protection_level_options"] = external_protection_level_options
-            if key_rings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_rings_id'")
-            __props__.__dict__["key_rings_id"] = key_rings_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if key_ring_id is None and not opts.urn:
+                raise TypeError("Missing required property 'key_ring_id'")
+            __props__.__dict__["key_ring_id"] = key_ring_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["state"] = state
             __props__.__dict__["algorithm"] = None
             __props__.__dict__["attestation"] = None

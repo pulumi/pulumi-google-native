@@ -15,7 +15,7 @@ __all__ = ['TestMatrixArgs', 'TestMatrix']
 @pulumi.input_type
 class TestMatrixArgs:
     def __init__(__self__, *,
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  test_matrix_id: pulumi.Input[str],
                  client_info: Optional[pulumi.Input['ClientInfoArgs']] = None,
                  environment_matrix: Optional[pulumi.Input['EnvironmentMatrixArgs']] = None,
@@ -31,7 +31,7 @@ class TestMatrixArgs:
                  timestamp: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TestMatrix resource.
-        :param pulumi.Input[str] project_id: The cloud project that owns the test matrix.
+        :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input[str] test_matrix_id: Unique id set by the service.
         :param pulumi.Input['ClientInfoArgs'] client_info: Information about the client which invoked the test.
         :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: Required. The devices the tests are being executed on.
@@ -45,7 +45,7 @@ class TestMatrixArgs:
         :param pulumi.Input['TestSpecificationArgs'] test_specification: Required. How to run the test.
         :param pulumi.Input[str] timestamp: The time this test matrix was initially created.
         """
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "test_matrix_id", test_matrix_id)
         if client_info is not None:
             pulumi.set(__self__, "client_info", client_info)
@@ -73,16 +73,16 @@ class TestMatrixArgs:
             pulumi.set(__self__, "timestamp", timestamp)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
         """
         The cloud project that owns the test matrix.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="testMatrixId")
@@ -249,7 +249,7 @@ class TestMatrix(pulumi.CustomResource):
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -269,7 +269,7 @@ class TestMatrix(pulumi.CustomResource):
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
         :param pulumi.Input[str] invalid_matrix_details: Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
         :param pulumi.Input[str] outcome_summary: Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-        :param pulumi.Input[str] project_id: The cloud project that owns the test matrix.
+        :param pulumi.Input[str] project: The cloud project that owns the test matrix.
         :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
         :param pulumi.Input[str] state: Indicates the current progress of the test matrix.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['TestExecutionArgs']]]] test_executions: The list of test executions that the service creates for this matrix.
@@ -307,7 +307,7 @@ class TestMatrix(pulumi.CustomResource):
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
                  invalid_matrix_details: Optional[pulumi.Input[str]] = None,
                  outcome_summary: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  result_storage: Optional[pulumi.Input[pulumi.InputType['ResultStorageArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -333,9 +333,9 @@ class TestMatrix(pulumi.CustomResource):
             __props__.__dict__["flaky_test_attempts"] = flaky_test_attempts
             __props__.__dict__["invalid_matrix_details"] = invalid_matrix_details
             __props__.__dict__["outcome_summary"] = outcome_summary
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["result_storage"] = result_storage
             __props__.__dict__["state"] = state
@@ -373,7 +373,7 @@ class TestMatrix(pulumi.CustomResource):
         __props__.__dict__["flaky_test_attempts"] = None
         __props__.__dict__["invalid_matrix_details"] = None
         __props__.__dict__["outcome_summary"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["result_storage"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["test_executions"] = None
@@ -431,12 +431,12 @@ class TestMatrix(pulumi.CustomResource):
         return pulumi.get(self, "outcome_summary")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         The cloud project that owns the test matrix.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="resultStorage")

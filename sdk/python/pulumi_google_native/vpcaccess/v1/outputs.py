@@ -17,33 +17,16 @@ class SubnetResponse(dict):
     """
     The subnet in which to house the connector
     """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "projectId":
-            suggest = "project_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in SubnetResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        SubnetResponse.__key_warning(key)
-        return super().get(key, default)
-
     def __init__(__self__, *,
                  name: str,
-                 project_id: str):
+                 project: str):
         """
         The subnet in which to house the connector
         :param str name: Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
-        :param str project_id: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
+        :param str project: Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
         pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter
@@ -54,11 +37,11 @@ class SubnetResponse(dict):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> str:
+    @pulumi.getter
+    def project(self) -> str:
         """
         Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
 

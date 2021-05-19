@@ -15,8 +15,8 @@ __all__ = ['BillingAccountBudgetArgs', 'BillingAccountBudget']
 @pulumi.input_type
 class BillingAccountBudgetArgs:
     def __init__(__self__, *,
-                 billing_accounts_id: pulumi.Input[str],
-                 budgets_id: pulumi.Input[str],
+                 billing_account_id: pulumi.Input[str],
+                 budget_id: pulumi.Input[str],
                  all_updates_rule: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']] = None,
                  amount: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']] = None,
                  budget_filter: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1beta1FilterArgs']] = None,
@@ -32,8 +32,8 @@ class BillingAccountBudgetArgs:
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
         """
-        pulumi.set(__self__, "billing_accounts_id", billing_accounts_id)
-        pulumi.set(__self__, "budgets_id", budgets_id)
+        pulumi.set(__self__, "billing_account_id", billing_account_id)
+        pulumi.set(__self__, "budget_id", budget_id)
         if all_updates_rule is not None:
             pulumi.set(__self__, "all_updates_rule", all_updates_rule)
         if amount is not None:
@@ -48,22 +48,22 @@ class BillingAccountBudgetArgs:
             pulumi.set(__self__, "threshold_rules", threshold_rules)
 
     @property
-    @pulumi.getter(name="billingAccountsId")
-    def billing_accounts_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "billing_accounts_id")
+    @pulumi.getter(name="billingAccountId")
+    def billing_account_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "billing_account_id")
 
-    @billing_accounts_id.setter
-    def billing_accounts_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "billing_accounts_id", value)
+    @billing_account_id.setter
+    def billing_account_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "billing_account_id", value)
 
     @property
-    @pulumi.getter(name="budgetsId")
-    def budgets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "budgets_id")
+    @pulumi.getter(name="budgetId")
+    def budget_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "budget_id")
 
-    @budgets_id.setter
-    def budgets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "budgets_id", value)
+    @budget_id.setter
+    def budget_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "budget_id", value)
 
     @property
     @pulumi.getter(name="allUpdatesRule")
@@ -145,9 +145,9 @@ class BillingAccountBudget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_updates_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']]] = None,
                  amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']]] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']]] = None,
-                 budgets_id: Optional[pulumi.Input[str]] = None,
+                 budget_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]] = None,
@@ -190,9 +190,9 @@ class BillingAccountBudget(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  all_updates_rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleArgs']]] = None,
                  amount: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1BudgetAmountArgs']]] = None,
-                 billing_accounts_id: Optional[pulumi.Input[str]] = None,
+                 billing_account_id: Optional[pulumi.Input[str]] = None,
                  budget_filter: Optional[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1FilterArgs']]] = None,
-                 budgets_id: Optional[pulumi.Input[str]] = None,
+                 budget_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  threshold_rules: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs']]]]] = None,
@@ -210,13 +210,13 @@ class BillingAccountBudget(pulumi.CustomResource):
 
             __props__.__dict__["all_updates_rule"] = all_updates_rule
             __props__.__dict__["amount"] = amount
-            if billing_accounts_id is None and not opts.urn:
-                raise TypeError("Missing required property 'billing_accounts_id'")
-            __props__.__dict__["billing_accounts_id"] = billing_accounts_id
+            if billing_account_id is None and not opts.urn:
+                raise TypeError("Missing required property 'billing_account_id'")
+            __props__.__dict__["billing_account_id"] = billing_account_id
             __props__.__dict__["budget_filter"] = budget_filter
-            if budgets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'budgets_id'")
-            __props__.__dict__["budgets_id"] = budgets_id
+            if budget_id is None and not opts.urn:
+                raise TypeError("Missing required property 'budget_id'")
+            __props__.__dict__["budget_id"] = budget_id
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["etag"] = etag
             __props__.__dict__["threshold_rules"] = threshold_rules

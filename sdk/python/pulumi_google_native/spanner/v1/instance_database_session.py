@@ -13,57 +13,57 @@ __all__ = ['InstanceDatabaseSessionArgs', 'InstanceDatabaseSession']
 @pulumi.input_type
 class InstanceDatabaseSessionArgs:
     def __init__(__self__, *,
-                 databases_id: pulumi.Input[str],
-                 instances_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 sessions_id: pulumi.Input[str],
+                 database_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 session_id: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a InstanceDatabaseSession resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
         """
-        pulumi.set(__self__, "databases_id", databases_id)
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "sessions_id", sessions_id)
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "session_id", session_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
     @property
-    @pulumi.getter(name="databasesId")
-    def databases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "databases_id")
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "database_id")
 
-    @databases_id.setter
-    def databases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "databases_id", value)
-
-    @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
-
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
+    @database_id.setter
+    def database_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
 
     @property
-    @pulumi.getter(name="sessionsId")
-    def sessions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sessions_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @sessions_id.setter
-    def sessions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sessions_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="sessionId")
+    def session_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "session_id")
+
+    @session_id.setter
+    def session_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "session_id", value)
 
     @property
     @pulumi.getter
@@ -83,11 +83,11 @@ class InstanceDatabaseSession(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 sessions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new session. A session can be used to perform transactions that read and/or modify data in a Cloud Spanner database. Sessions are meant to be reused for many consecutive transactions. Sessions can only execute one transaction at a time. To execute multiple concurrent read-write/write-only transactions, create multiple sessions. Note that standalone reads and queries use a transaction internally, and count toward the one transaction limit. Active sessions use additional server resources, so it is a good idea to delete idle and unneeded sessions. Aside from explicit deletes, Cloud Spanner may delete sessions for which no operations are sent for more than an hour. If a session is deleted, requests to it return `NOT_FOUND`. Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT 1"`.
@@ -120,11 +120,11 @@ class InstanceDatabaseSession(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 sessions_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 session_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -137,19 +137,19 @@ class InstanceDatabaseSession(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstanceDatabaseSessionArgs.__new__(InstanceDatabaseSessionArgs)
 
-            if databases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'databases_id'")
-            __props__.__dict__["databases_id"] = databases_id
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
+            if database_id is None and not opts.urn:
+                raise TypeError("Missing required property 'database_id'")
+            __props__.__dict__["database_id"] = database_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if sessions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sessions_id'")
-            __props__.__dict__["sessions_id"] = sessions_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if session_id is None and not opts.urn:
+                raise TypeError("Missing required property 'session_id'")
+            __props__.__dict__["session_id"] = session_id
             __props__.__dict__["approximate_last_use_time"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

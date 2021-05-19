@@ -15,9 +15,9 @@ __all__ = ['DlpJobArgs', 'DlpJob']
 @pulumi.input_type
 class DlpJobArgs:
     def __init__(__self__, *,
-                 dlp_jobs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 dlp_job_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  inspect_job: Optional[pulumi.Input['GooglePrivacyDlpV2InspectJobConfigArgs']] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']] = None):
@@ -27,9 +27,9 @@ class DlpJobArgs:
         :param pulumi.Input[str] job_id: The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         :param pulumi.Input['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs'] risk_job: A risk analysis job calculates re-identification risk metrics for a BigQuery table.
         """
-        pulumi.set(__self__, "dlp_jobs_id", dlp_jobs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "dlp_job_id", dlp_job_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if inspect_job is not None:
             pulumi.set(__self__, "inspect_job", inspect_job)
         if job_id is not None:
@@ -38,31 +38,31 @@ class DlpJobArgs:
             pulumi.set(__self__, "risk_job", risk_job)
 
     @property
-    @pulumi.getter(name="dlpJobsId")
-    def dlp_jobs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "dlp_jobs_id")
+    @pulumi.getter(name="dlpJobId")
+    def dlp_job_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "dlp_job_id")
 
-    @dlp_jobs_id.setter
-    def dlp_jobs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "dlp_jobs_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @dlp_job_id.setter
+    def dlp_job_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "dlp_job_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="inspectJob")
@@ -106,11 +106,11 @@ class DlpJob(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlp_jobs_id: Optional[pulumi.Input[str]] = None,
+                 dlp_job_id: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
                  __props__=None):
         """
@@ -146,11 +146,11 @@ class DlpJob(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 dlp_jobs_id: Optional[pulumi.Input[str]] = None,
+                 dlp_job_id: Optional[pulumi.Input[str]] = None,
                  inspect_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectJobConfigArgs']]] = None,
                  job_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_job: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2RiskAnalysisJobConfigArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -164,17 +164,17 @@ class DlpJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DlpJobArgs.__new__(DlpJobArgs)
 
-            if dlp_jobs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'dlp_jobs_id'")
-            __props__.__dict__["dlp_jobs_id"] = dlp_jobs_id
+            if dlp_job_id is None and not opts.urn:
+                raise TypeError("Missing required property 'dlp_job_id'")
+            __props__.__dict__["dlp_job_id"] = dlp_job_id
             __props__.__dict__["inspect_job"] = inspect_job
             __props__.__dict__["job_id"] = job_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["risk_job"] = risk_job
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None

@@ -15,9 +15,9 @@ __all__ = ['OrganizationInstanceCanaryevaluationArgs', 'OrganizationInstanceCana
 @pulumi.input_type
 class OrganizationInstanceCanaryevaluationArgs:
     def __init__(__self__, *,
-                 canaryevaluations_id: pulumi.Input[str],
-                 instances_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 canaryevaluation_id: pulumi.Input[str],
+                 instance_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
                  metric_labels: Optional[pulumi.Input['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']] = None,
@@ -31,9 +31,9 @@ class OrganizationInstanceCanaryevaluationArgs:
         :param pulumi.Input[str] start_time: Required. Start time for the canary evaluation's analysis.
         :param pulumi.Input[str] treatment: Required. The newer version that is serving requests.
         """
-        pulumi.set(__self__, "canaryevaluations_id", canaryevaluations_id)
-        pulumi.set(__self__, "instances_id", instances_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "canaryevaluation_id", canaryevaluation_id)
+        pulumi.set(__self__, "instance_id", instance_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if control is not None:
             pulumi.set(__self__, "control", control)
         if end_time is not None:
@@ -46,31 +46,31 @@ class OrganizationInstanceCanaryevaluationArgs:
             pulumi.set(__self__, "treatment", treatment)
 
     @property
-    @pulumi.getter(name="canaryevaluationsId")
-    def canaryevaluations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "canaryevaluations_id")
+    @pulumi.getter(name="canaryevaluationId")
+    def canaryevaluation_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "canaryevaluation_id")
 
-    @canaryevaluations_id.setter
-    def canaryevaluations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "canaryevaluations_id", value)
-
-    @property
-    @pulumi.getter(name="instancesId")
-    def instances_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "instances_id")
-
-    @instances_id.setter
-    def instances_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "instances_id", value)
+    @canaryevaluation_id.setter
+    def canaryevaluation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "canaryevaluation_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="instanceId")
+    def instance_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "instance_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @instance_id.setter
+    def instance_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
+
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -138,12 +138,12 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canaryevaluations_id: Optional[pulumi.Input[str]] = None,
+                 canaryevaluation_id: Optional[pulumi.Input[str]] = None,
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  treatment: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -182,12 +182,12 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 canaryevaluations_id: Optional[pulumi.Input[str]] = None,
+                 canaryevaluation_id: Optional[pulumi.Input[str]] = None,
                  control: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 instances_id: Optional[pulumi.Input[str]] = None,
+                 instance_id: Optional[pulumi.Input[str]] = None,
                  metric_labels: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs']]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  treatment: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -202,18 +202,18 @@ class OrganizationInstanceCanaryevaluation(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationInstanceCanaryevaluationArgs.__new__(OrganizationInstanceCanaryevaluationArgs)
 
-            if canaryevaluations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'canaryevaluations_id'")
-            __props__.__dict__["canaryevaluations_id"] = canaryevaluations_id
+            if canaryevaluation_id is None and not opts.urn:
+                raise TypeError("Missing required property 'canaryevaluation_id'")
+            __props__.__dict__["canaryevaluation_id"] = canaryevaluation_id
             __props__.__dict__["control"] = control
             __props__.__dict__["end_time"] = end_time
-            if instances_id is None and not opts.urn:
-                raise TypeError("Missing required property 'instances_id'")
-            __props__.__dict__["instances_id"] = instances_id
+            if instance_id is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_id'")
+            __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["metric_labels"] = metric_labels
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["treatment"] = treatment
             __props__.__dict__["create_time"] = None

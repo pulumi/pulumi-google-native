@@ -15,10 +15,9 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 @pulumi.input_type
 class WorkerPoolArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
-                 worker_pools_id: pulumi.Input[str],
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
         """
@@ -26,32 +25,31 @@ class WorkerPoolArgs:
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
-        pulumi.set(__self__, "worker_pools_id", worker_pools_id)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -61,15 +59,6 @@ class WorkerPoolArgs:
     @worker_pool_id.setter
     def worker_pool_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "worker_pool_id", value)
-
-    @property
-    @pulumi.getter(name="workerPoolsId")
-    def worker_pools_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "worker_pools_id")
-
-    @worker_pools_id.setter
-    def worker_pools_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "worker_pools_id", value)
 
     @property
     @pulumi.getter(name="networkConfig")
@@ -101,12 +90,11 @@ class WorkerPool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
-                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a `WorkerPool` to run the builds, and returns the new worker pool. NOTE: As of now, this method returns an `Operation` that is always complete.
@@ -140,12 +128,11 @@ class WorkerPool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['WorkerConfigArgs']]] = None,
                  worker_pool_id: Optional[pulumi.Input[str]] = None,
-                 worker_pools_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -158,20 +145,17 @@ class WorkerPool(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = WorkerPoolArgs.__new__(WorkerPoolArgs)
 
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["network_config"] = network_config
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["worker_config"] = worker_config
             if worker_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'worker_pool_id'")
             __props__.__dict__["worker_pool_id"] = worker_pool_id
-            if worker_pools_id is None and not opts.urn:
-                raise TypeError("Missing required property 'worker_pools_id'")
-            __props__.__dict__["worker_pools_id"] = worker_pools_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["delete_time"] = None
             __props__.__dict__["name"] = None

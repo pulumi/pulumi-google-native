@@ -13,9 +13,9 @@ __all__ = ['ConfigVariableArgs', 'ConfigVariable']
 @pulumi.input_type
 class ConfigVariableArgs:
     def __init__(__self__, *,
-                 configs_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 variables_id: pulumi.Input[str],
+                 config_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 variable_id: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -30,9 +30,9 @@ class ConfigVariableArgs:
         :param pulumi.Input[str] update_time: The time of the last variable update. Timestamp will be UTC timestamp.
         :param pulumi.Input[str] value: The binary value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. The value must be base64 encoded, and must comply with IETF RFC4648 (https://www.ietf.org/rfc/rfc4648.txt). Only one of `value` or `text` can be set.
         """
-        pulumi.set(__self__, "configs_id", configs_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "variables_id", variables_id)
+        pulumi.set(__self__, "config_id", config_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "variable_id", variable_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if request_id is not None:
@@ -47,31 +47,31 @@ class ConfigVariableArgs:
             pulumi.set(__self__, "value", value)
 
     @property
-    @pulumi.getter(name="configsId")
-    def configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "configs_id")
+    @pulumi.getter(name="configId")
+    def config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "config_id")
 
-    @configs_id.setter
-    def configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "configs_id", value)
-
-    @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
-
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @config_id.setter
+    def config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "config_id", value)
 
     @property
-    @pulumi.getter(name="variablesId")
-    def variables_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "variables_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @variables_id.setter
-    def variables_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "variables_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="variableId")
+    def variable_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "variable_id")
+
+    @variable_id.setter
+    def variable_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "variable_id", value)
 
     @property
     @pulumi.getter
@@ -148,15 +148,15 @@ class ConfigVariable(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  text: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 variables_id: Optional[pulumi.Input[str]] = None,
+                 variable_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
@@ -193,15 +193,15 @@ class ConfigVariable(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 configs_id: Optional[pulumi.Input[str]] = None,
+                 config_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  text: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 variables_id: Optional[pulumi.Input[str]] = None,
+                 variable_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -214,21 +214,21 @@ class ConfigVariable(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConfigVariableArgs.__new__(ConfigVariableArgs)
 
-            if configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'configs_id'")
-            __props__.__dict__["configs_id"] = configs_id
+            if config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'config_id'")
+            __props__.__dict__["config_id"] = config_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["state"] = state
             __props__.__dict__["text"] = text
             __props__.__dict__["update_time"] = update_time
             __props__.__dict__["value"] = value
-            if variables_id is None and not opts.urn:
-                raise TypeError("Missing required property 'variables_id'")
-            __props__.__dict__["variables_id"] = variables_id
+            if variable_id is None and not opts.urn:
+                raise TypeError("Missing required property 'variable_id'")
+            __props__.__dict__["variable_id"] = variable_id
         super(ConfigVariable, __self__).__init__(
             'google-native:runtimeconfig/v1beta1:ConfigVariable',
             resource_name,

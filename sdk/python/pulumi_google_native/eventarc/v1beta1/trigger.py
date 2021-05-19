@@ -15,10 +15,9 @@ __all__ = ['TriggerArgs', 'Trigger']
 @pulumi.input_type
 class TriggerArgs:
     def __init__(__self__, *,
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
-                 triggers_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
                  destination: Optional[pulumi.Input['DestinationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -33,10 +32,9 @@ class TriggerArgs:
         :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         """
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "trigger_id", trigger_id)
-        pulumi.set(__self__, "triggers_id", triggers_id)
         pulumi.set(__self__, "validate_only", validate_only)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
@@ -50,22 +48,22 @@ class TriggerArgs:
             pulumi.set(__self__, "service_account", service_account)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="triggerId")
@@ -75,15 +73,6 @@ class TriggerArgs:
     @trigger_id.setter
     def trigger_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "trigger_id", value)
-
-    @property
-    @pulumi.getter(name="triggersId")
-    def triggers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "triggers_id")
-
-    @triggers_id.setter
-    def triggers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "triggers_id", value)
 
     @property
     @pulumi.getter(name="validateOnly")
@@ -162,13 +151,12 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 triggers_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -208,13 +196,12 @@ class Trigger(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  destination: Optional[pulumi.Input[pulumi.InputType['DestinationArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 triggers_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -230,21 +217,18 @@ class Trigger(pulumi.CustomResource):
 
             __props__.__dict__["destination"] = destination
             __props__.__dict__["labels"] = labels
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["matching_criteria"] = matching_criteria
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             if trigger_id is None and not opts.urn:
                 raise TypeError("Missing required property 'trigger_id'")
             __props__.__dict__["trigger_id"] = trigger_id
-            if triggers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'triggers_id'")
-            __props__.__dict__["triggers_id"] = triggers_id
             if validate_only is None and not opts.urn:
                 raise TypeError("Missing required property 'validate_only'")
             __props__.__dict__["validate_only"] = validate_only

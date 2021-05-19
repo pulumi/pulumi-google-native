@@ -15,9 +15,9 @@ __all__ = ['AutoscalingPolicyArgs', 'AutoscalingPolicy']
 @pulumi.input_type
 class AutoscalingPolicyArgs:
     def __init__(__self__, *,
-                 autoscaling_policies_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 autoscaling_policy_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  basic_algorithm: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None,
@@ -28,9 +28,9 @@ class AutoscalingPolicyArgs:
         :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
         :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] worker_config: Required. Describes how the autoscaler will operate for primary workers.
         """
-        pulumi.set(__self__, "autoscaling_policies_id", autoscaling_policies_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "autoscaling_policy_id", autoscaling_policy_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if basic_algorithm is not None:
             pulumi.set(__self__, "basic_algorithm", basic_algorithm)
         if id is not None:
@@ -41,31 +41,31 @@ class AutoscalingPolicyArgs:
             pulumi.set(__self__, "worker_config", worker_config)
 
     @property
-    @pulumi.getter(name="autoscalingPoliciesId")
-    def autoscaling_policies_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "autoscaling_policies_id")
+    @pulumi.getter(name="autoscalingPolicyId")
+    def autoscaling_policy_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "autoscaling_policy_id")
 
-    @autoscaling_policies_id.setter
-    def autoscaling_policies_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "autoscaling_policies_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @autoscaling_policy_id.setter
+    def autoscaling_policy_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "autoscaling_policy_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="basicAlgorithm")
@@ -118,11 +118,11 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policies_id: Optional[pulumi.Input[str]] = None,
+                 autoscaling_policy_id: Optional[pulumi.Input[str]] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
                  __props__=None):
@@ -159,11 +159,11 @@ class AutoscalingPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 autoscaling_policies_id: Optional[pulumi.Input[str]] = None,
+                 autoscaling_policy_id: Optional[pulumi.Input[str]] = None,
                  basic_algorithm: Optional[pulumi.Input[pulumi.InputType['BasicAutoscalingAlgorithmArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  secondary_worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
                  worker_config: Optional[pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']]] = None,
                  __props__=None):
@@ -178,17 +178,17 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
-            if autoscaling_policies_id is None and not opts.urn:
-                raise TypeError("Missing required property 'autoscaling_policies_id'")
-            __props__.__dict__["autoscaling_policies_id"] = autoscaling_policies_id
+            if autoscaling_policy_id is None and not opts.urn:
+                raise TypeError("Missing required property 'autoscaling_policy_id'")
+            __props__.__dict__["autoscaling_policy_id"] = autoscaling_policy_id
             __props__.__dict__["basic_algorithm"] = basic_algorithm
             __props__.__dict__["id"] = id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["secondary_worker_config"] = secondary_worker_config
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["name"] = None

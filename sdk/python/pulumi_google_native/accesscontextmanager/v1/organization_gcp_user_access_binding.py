@@ -13,8 +13,8 @@ __all__ = ['OrganizationGcpUserAccessBindingArgs', 'OrganizationGcpUserAccessBin
 @pulumi.input_type
 class OrganizationGcpUserAccessBindingArgs:
     def __init__(__self__, *,
-                 gcp_user_access_bindings_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 gcp_user_access_binding_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  group_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -24,8 +24,8 @@ class OrganizationGcpUserAccessBindingArgs:
         :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
-        pulumi.set(__self__, "gcp_user_access_bindings_id", gcp_user_access_bindings_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "gcp_user_access_binding_id", gcp_user_access_binding_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if access_levels is not None:
             pulumi.set(__self__, "access_levels", access_levels)
         if group_key is not None:
@@ -34,22 +34,22 @@ class OrganizationGcpUserAccessBindingArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="gcpUserAccessBindingsId")
-    def gcp_user_access_bindings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "gcp_user_access_bindings_id")
+    @pulumi.getter(name="gcpUserAccessBindingId")
+    def gcp_user_access_binding_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "gcp_user_access_binding_id")
 
-    @gcp_user_access_bindings_id.setter
-    def gcp_user_access_bindings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "gcp_user_access_bindings_id", value)
+    @gcp_user_access_binding_id.setter
+    def gcp_user_access_binding_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcp_user_access_binding_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="accessLevels")
@@ -94,10 +94,10 @@ class OrganizationGcpUserAccessBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 gcp_user_access_bindings_id: Optional[pulumi.Input[str]] = None,
+                 gcp_user_access_binding_id: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a GcpUserAccessBinding. If the client specifies a name, the server will ignore it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
@@ -133,10 +133,10 @@ class OrganizationGcpUserAccessBinding(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 gcp_user_access_bindings_id: Optional[pulumi.Input[str]] = None,
+                 gcp_user_access_binding_id: Optional[pulumi.Input[str]] = None,
                  group_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -150,14 +150,14 @@ class OrganizationGcpUserAccessBinding(pulumi.CustomResource):
             __props__ = OrganizationGcpUserAccessBindingArgs.__new__(OrganizationGcpUserAccessBindingArgs)
 
             __props__.__dict__["access_levels"] = access_levels
-            if gcp_user_access_bindings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'gcp_user_access_bindings_id'")
-            __props__.__dict__["gcp_user_access_bindings_id"] = gcp_user_access_bindings_id
+            if gcp_user_access_binding_id is None and not opts.urn:
+                raise TypeError("Missing required property 'gcp_user_access_binding_id'")
+            __props__.__dict__["gcp_user_access_binding_id"] = gcp_user_access_binding_id
             __props__.__dict__["group_key"] = group_key
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
         super(OrganizationGcpUserAccessBinding, __self__).__init__(
             'google-native:accesscontextmanager/v1:OrganizationGcpUserAccessBinding',
             resource_name,

@@ -15,8 +15,8 @@ __all__ = ['ProviderNoteIamPolicyArgs', 'ProviderNoteIamPolicy']
 @pulumi.input_type
 class ProviderNoteIamPolicyArgs:
     def __init__(__self__, *,
-                 notes_id: pulumi.Input[str],
-                 providers_id: pulumi.Input[str],
+                 note_id: pulumi.Input[str],
+                 provider_id: pulumi.Input[str],
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None):
@@ -26,8 +26,8 @@ class ProviderNoteIamPolicyArgs:
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "notes_id", notes_id)
-        pulumi.set(__self__, "providers_id", providers_id)
+        pulumi.set(__self__, "note_id", note_id)
+        pulumi.set(__self__, "provider_id", provider_id)
         if bindings is not None:
             pulumi.set(__self__, "bindings", bindings)
         if etag is not None:
@@ -36,22 +36,22 @@ class ProviderNoteIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="notesId")
-    def notes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "notes_id")
+    @pulumi.getter(name="noteId")
+    def note_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "note_id")
 
-    @notes_id.setter
-    def notes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "notes_id", value)
+    @note_id.setter
+    def note_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "note_id", value)
 
     @property
-    @pulumi.getter(name="providersId")
-    def providers_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "providers_id")
+    @pulumi.getter(name="providerId")
+    def provider_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "provider_id")
 
-    @providers_id.setter
-    def providers_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "providers_id", value)
+    @provider_id.setter
+    def provider_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "provider_id", value)
 
     @property
     @pulumi.getter
@@ -97,8 +97,8 @@ class ProviderNoteIamPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 notes_id: Optional[pulumi.Input[str]] = None,
-                 providers_id: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
+                 provider_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -136,8 +136,8 @@ class ProviderNoteIamPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 notes_id: Optional[pulumi.Input[str]] = None,
-                 providers_id: Optional[pulumi.Input[str]] = None,
+                 note_id: Optional[pulumi.Input[str]] = None,
+                 provider_id: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         if opts is None:
@@ -153,12 +153,12 @@ class ProviderNoteIamPolicy(pulumi.CustomResource):
 
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            if notes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'notes_id'")
-            __props__.__dict__["notes_id"] = notes_id
-            if providers_id is None and not opts.urn:
-                raise TypeError("Missing required property 'providers_id'")
-            __props__.__dict__["providers_id"] = providers_id
+            if note_id is None and not opts.urn:
+                raise TypeError("Missing required property 'note_id'")
+            __props__.__dict__["note_id"] = note_id
+            if provider_id is None and not opts.urn:
+                raise TypeError("Missing required property 'provider_id'")
+            __props__.__dict__["provider_id"] = provider_id
             __props__.__dict__["version"] = version
         super(ProviderNoteIamPolicy, __self__).__init__(
             'google-native:containeranalysis/v1alpha1:ProviderNoteIamPolicy',

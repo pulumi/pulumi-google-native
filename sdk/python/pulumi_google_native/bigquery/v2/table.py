@@ -16,7 +16,7 @@ __all__ = ['TableArgs', 'Table']
 class TableArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  table_id: pulumi.Input[str],
                  clustering: Optional[pulumi.Input['ClusteringArgs']] = None,
                  creation_time: Optional[pulumi.Input[str]] = None,
@@ -80,7 +80,7 @@ class TableArgs:
         :param pulumi.Input['ViewDefinitionArgs'] view: [Optional] The view definition.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "table_id", table_id)
         if clustering is not None:
             pulumi.set(__self__, "clustering", clustering)
@@ -151,13 +151,13 @@ class TableArgs:
         pulumi.set(self, "dataset_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="tableId")
@@ -542,7 +542,7 @@ class Table(pulumi.CustomResource):
                  num_long_term_bytes: Optional[pulumi.Input[str]] = None,
                  num_physical_bytes: Optional[pulumi.Input[str]] = None,
                  num_rows: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
@@ -634,7 +634,7 @@ class Table(pulumi.CustomResource):
                  num_long_term_bytes: Optional[pulumi.Input[str]] = None,
                  num_physical_bytes: Optional[pulumi.Input[str]] = None,
                  num_rows: Optional[pulumi.Input[str]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input[pulumi.InputType['RangePartitioningArgs']]] = None,
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[pulumi.InputType['TableSchemaArgs']]] = None,
@@ -680,9 +680,9 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["num_long_term_bytes"] = num_long_term_bytes
             __props__.__dict__["num_physical_bytes"] = num_physical_bytes
             __props__.__dict__["num_rows"] = num_rows
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["range_partitioning"] = range_partitioning
             __props__.__dict__["require_partition_filter"] = require_partition_filter
             __props__.__dict__["schema"] = schema

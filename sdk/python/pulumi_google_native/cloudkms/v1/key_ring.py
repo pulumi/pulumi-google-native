@@ -14,16 +14,14 @@ __all__ = ['KeyRingArgs', 'KeyRing']
 class KeyRingArgs:
     def __init__(__self__, *,
                  key_ring_id: pulumi.Input[str],
-                 key_rings_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str]):
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str]):
         """
         The set of arguments for constructing a KeyRing resource.
         """
         pulumi.set(__self__, "key_ring_id", key_ring_id)
-        pulumi.set(__self__, "key_rings_id", key_rings_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
 
     @property
     @pulumi.getter(name="keyRingId")
@@ -35,31 +33,22 @@ class KeyRingArgs:
         pulumi.set(self, "key_ring_id", value)
 
     @property
-    @pulumi.getter(name="keyRingsId")
-    def key_rings_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "key_rings_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @key_rings_id.setter
-    def key_rings_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key_rings_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
 
 class KeyRing(pulumi.CustomResource):
@@ -68,9 +57,8 @@ class KeyRing(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Create a new KeyRing in a given Project and Location.
@@ -103,9 +91,8 @@ class KeyRing(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  key_ring_id: Optional[pulumi.Input[str]] = None,
-                 key_rings_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -121,15 +108,12 @@ class KeyRing(pulumi.CustomResource):
             if key_ring_id is None and not opts.urn:
                 raise TypeError("Missing required property 'key_ring_id'")
             __props__.__dict__["key_ring_id"] = key_ring_id
-            if key_rings_id is None and not opts.urn:
-                raise TypeError("Missing required property 'key_rings_id'")
-            __props__.__dict__["key_rings_id"] = key_rings_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None
         super(KeyRing, __self__).__init__(

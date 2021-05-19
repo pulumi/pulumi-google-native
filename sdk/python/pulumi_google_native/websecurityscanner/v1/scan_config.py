@@ -15,8 +15,8 @@ __all__ = ['ScanConfigArgs', 'ScanConfig']
 @pulumi.input_type
 class ScanConfigArgs:
     def __init__(__self__, *,
-                 projects_id: pulumi.Input[str],
-                 scan_configs_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 scan_config_id: pulumi.Input[str],
                  authentication: Optional[pulumi.Input['AuthenticationArgs']] = None,
                  blacklist_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -46,8 +46,8 @@ class ScanConfigArgs:
         :param pulumi.Input[bool] static_ip_scan: Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
         :param pulumi.Input[str] user_agent: The user agent used during scanning.
         """
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "scan_configs_id", scan_configs_id)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "scan_config_id", scan_config_id)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
         if blacklist_patterns is not None:
@@ -76,22 +76,22 @@ class ScanConfigArgs:
             pulumi.set(__self__, "user_agent", user_agent)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
-    @pulumi.getter(name="scanConfigsId")
-    def scan_configs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "scan_configs_id")
+    @pulumi.getter(name="scanConfigId")
+    def scan_config_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "scan_config_id")
 
-    @scan_configs_id.setter
-    def scan_configs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "scan_configs_id", value)
+    @scan_config_id.setter
+    def scan_config_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "scan_config_id", value)
 
     @property
     @pulumi.getter
@@ -263,9 +263,9 @@ class ScanConfig(pulumi.CustomResource):
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[str]] = None,
-                 scan_configs_id: Optional[pulumi.Input[str]] = None,
+                 scan_config_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  static_ip_scan: Optional[pulumi.Input[bool]] = None,
@@ -322,9 +322,9 @@ class ScanConfig(pulumi.CustomResource):
                  managed_scan: Optional[pulumi.Input[bool]] = None,
                  max_qps: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  risk_level: Optional[pulumi.Input[str]] = None,
-                 scan_configs_id: Optional[pulumi.Input[str]] = None,
+                 scan_config_id: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[pulumi.InputType['ScheduleArgs']]] = None,
                  starting_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  static_ip_scan: Optional[pulumi.Input[bool]] = None,
@@ -349,13 +349,13 @@ class ScanConfig(pulumi.CustomResource):
             __props__.__dict__["managed_scan"] = managed_scan
             __props__.__dict__["max_qps"] = max_qps
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["risk_level"] = risk_level
-            if scan_configs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'scan_configs_id'")
-            __props__.__dict__["scan_configs_id"] = scan_configs_id
+            if scan_config_id is None and not opts.urn:
+                raise TypeError("Missing required property 'scan_config_id'")
+            __props__.__dict__["scan_config_id"] = scan_config_id
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["starting_urls"] = starting_urls
             __props__.__dict__["static_ip_scan"] = static_ip_scan

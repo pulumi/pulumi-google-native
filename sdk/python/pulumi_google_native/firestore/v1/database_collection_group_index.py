@@ -15,10 +15,10 @@ __all__ = ['DatabaseCollectionGroupIndexArgs', 'DatabaseCollectionGroupIndex']
 @pulumi.input_type
 class DatabaseCollectionGroupIndexArgs:
     def __init__(__self__, *,
-                 collection_groups_id: pulumi.Input[str],
-                 databases_id: pulumi.Input[str],
-                 indexes_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 collection_group_id: pulumi.Input[str],
+                 database_id: pulumi.Input[str],
+                 index_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleFirestoreAdminV1IndexFieldArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
@@ -30,10 +30,10 @@ class DatabaseCollectionGroupIndexArgs:
         :param pulumi.Input[str] query_scope: Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
         :param pulumi.Input[str] state: The serving state of the index.
         """
-        pulumi.set(__self__, "collection_groups_id", collection_groups_id)
-        pulumi.set(__self__, "databases_id", databases_id)
-        pulumi.set(__self__, "indexes_id", indexes_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "collection_group_id", collection_group_id)
+        pulumi.set(__self__, "database_id", database_id)
+        pulumi.set(__self__, "index_id", index_id)
+        pulumi.set(__self__, "project", project)
         if fields is not None:
             pulumi.set(__self__, "fields", fields)
         if name is not None:
@@ -44,40 +44,40 @@ class DatabaseCollectionGroupIndexArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="collectionGroupsId")
-    def collection_groups_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "collection_groups_id")
+    @pulumi.getter(name="collectionGroupId")
+    def collection_group_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "collection_group_id")
 
-    @collection_groups_id.setter
-    def collection_groups_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "collection_groups_id", value)
-
-    @property
-    @pulumi.getter(name="databasesId")
-    def databases_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "databases_id")
-
-    @databases_id.setter
-    def databases_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "databases_id", value)
+    @collection_group_id.setter
+    def collection_group_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "collection_group_id", value)
 
     @property
-    @pulumi.getter(name="indexesId")
-    def indexes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "indexes_id")
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "database_id")
 
-    @indexes_id.setter
-    def indexes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "indexes_id", value)
+    @database_id.setter
+    def database_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="indexId")
+    def index_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "index_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @index_id.setter
+    def index_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "index_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -133,12 +133,12 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_groups_id: Optional[pulumi.Input[str]] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
+                 collection_group_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
-                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -176,12 +176,12 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 collection_groups_id: Optional[pulumi.Input[str]] = None,
-                 databases_id: Optional[pulumi.Input[str]] = None,
+                 collection_group_id: Optional[pulumi.Input[str]] = None,
+                 database_id: Optional[pulumi.Input[str]] = None,
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleFirestoreAdminV1IndexFieldArgs']]]]] = None,
-                 indexes_id: Optional[pulumi.Input[str]] = None,
+                 index_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  query_scope: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -196,20 +196,20 @@ class DatabaseCollectionGroupIndex(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseCollectionGroupIndexArgs.__new__(DatabaseCollectionGroupIndexArgs)
 
-            if collection_groups_id is None and not opts.urn:
-                raise TypeError("Missing required property 'collection_groups_id'")
-            __props__.__dict__["collection_groups_id"] = collection_groups_id
-            if databases_id is None and not opts.urn:
-                raise TypeError("Missing required property 'databases_id'")
-            __props__.__dict__["databases_id"] = databases_id
+            if collection_group_id is None and not opts.urn:
+                raise TypeError("Missing required property 'collection_group_id'")
+            __props__.__dict__["collection_group_id"] = collection_group_id
+            if database_id is None and not opts.urn:
+                raise TypeError("Missing required property 'database_id'")
+            __props__.__dict__["database_id"] = database_id
             __props__.__dict__["fields"] = fields
-            if indexes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'indexes_id'")
-            __props__.__dict__["indexes_id"] = indexes_id
+            if index_id is None and not opts.urn:
+                raise TypeError("Missing required property 'index_id'")
+            __props__.__dict__["index_id"] = index_id
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["query_scope"] = query_scope
             __props__.__dict__["state"] = state
         super(DatabaseCollectionGroupIndex, __self__).__init__(

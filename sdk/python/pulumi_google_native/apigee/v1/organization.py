@@ -15,7 +15,7 @@ __all__ = ['OrganizationArgs', 'Organization']
 @pulumi.input_type
 class OrganizationArgs:
     def __init__(__self__, *,
-                 organizations_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  parent: pulumi.Input[str],
                  addons_config: Optional[pulumi.Input['GoogleCloudApigeeV1AddonsConfigArgs']] = None,
                  analytics_region: Optional[pulumi.Input[str]] = None,
@@ -43,7 +43,7 @@ class OrganizationArgs:
         :param pulumi.Input[str] runtime_type: Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
         :param pulumi.Input[str] type: Not used by Apigee.
         """
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "parent", parent)
         if addons_config is not None:
             pulumi.set(__self__, "addons_config", addons_config)
@@ -71,13 +71,13 @@ class OrganizationArgs:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter
@@ -243,7 +243,7 @@ class Organization(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -299,7 +299,7 @@ class Organization(pulumi.CustomResource):
                  customer_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  runtime_database_encryption_key_name: Optional[pulumi.Input[str]] = None,
@@ -325,9 +325,9 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["customer_name"] = customer_name
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
             __props__.__dict__["parent"] = parent
@@ -341,7 +341,7 @@ class Organization(pulumi.CustomResource):
             __props__.__dict__["expires_at"] = None
             __props__.__dict__["last_modified_at"] = None
             __props__.__dict__["name"] = None
-            __props__.__dict__["project_id"] = None
+            __props__.__dict__["project"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["subscription_type"] = None
         super(Organization, __self__).__init__(
@@ -380,7 +380,7 @@ class Organization(pulumi.CustomResource):
         __props__.__dict__["expires_at"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
-        __props__.__dict__["project_id"] = None
+        __props__.__dict__["project"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["runtime_database_encryption_key_name"] = None
         __props__.__dict__["runtime_type"] = None
@@ -499,12 +499,12 @@ class Organization(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Output[str]:
+    @pulumi.getter
+    def project(self) -> pulumi.Output[str]:
         """
         Project ID associated with the Apigee organization.
         """
-        return pulumi.get(self, "project_id")
+        return pulumi.get(self, "project")
 
     @property
     @pulumi.getter

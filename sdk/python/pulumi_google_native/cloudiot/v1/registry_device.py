@@ -15,10 +15,10 @@ __all__ = ['RegistryDeviceArgs', 'RegistryDevice']
 @pulumi.input_type
 class RegistryDeviceArgs:
     def __init__(__self__, *,
-                 devices_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 registries_id: pulumi.Input[str],
+                 device_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 registry_id: pulumi.Input[str],
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input['DeviceConfigArgs']] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['DeviceCredentialArgs']]]] = None,
@@ -56,10 +56,10 @@ class RegistryDeviceArgs:
         :param pulumi.Input[str] num_id: [Output only] A server-defined unique numeric ID for the device. This is a more compact way to identify devices, and it is globally unique.
         :param pulumi.Input['DeviceStateArgs'] state: [Output only] The state most recently received from the device. If no state has been reported, this field is not present.
         """
-        pulumi.set(__self__, "devices_id", devices_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "registries_id", registries_id)
+        pulumi.set(__self__, "device_id", device_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "registry_id", registry_id)
         if blocked is not None:
             pulumi.set(__self__, "blocked", blocked)
         if config is not None:
@@ -96,40 +96,40 @@ class RegistryDeviceArgs:
             pulumi.set(__self__, "state", state)
 
     @property
-    @pulumi.getter(name="devicesId")
-    def devices_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "devices_id")
+    @pulumi.getter(name="deviceId")
+    def device_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "device_id")
 
-    @devices_id.setter
-    def devices_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "devices_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @device_id.setter
+    def device_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "device_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="registriesId")
-    def registries_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "registries_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @registries_id.setter
-    def registries_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "registries_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="registryId")
+    def registry_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "registry_id")
+
+    @registry_id.setter
+    def registry_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "registry_id", value)
 
     @property
     @pulumi.getter
@@ -344,7 +344,7 @@ class RegistryDevice(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 devices_id: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  last_config_ack_time: Optional[pulumi.Input[str]] = None,
@@ -354,13 +354,13 @@ class RegistryDevice(pulumi.CustomResource):
                  last_event_time: Optional[pulumi.Input[str]] = None,
                  last_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  last_state_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registries_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registry_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None,
                  __props__=None):
         """
@@ -413,7 +413,7 @@ class RegistryDevice(pulumi.CustomResource):
                  blocked: Optional[pulumi.Input[bool]] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['DeviceConfigArgs']]] = None,
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DeviceCredentialArgs']]]]] = None,
-                 devices_id: Optional[pulumi.Input[str]] = None,
+                 device_id: Optional[pulumi.Input[str]] = None,
                  gateway_config: Optional[pulumi.Input[pulumi.InputType['GatewayConfigArgs']]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  last_config_ack_time: Optional[pulumi.Input[str]] = None,
@@ -423,13 +423,13 @@ class RegistryDevice(pulumi.CustomResource):
                  last_event_time: Optional[pulumi.Input[str]] = None,
                  last_heartbeat_time: Optional[pulumi.Input[str]] = None,
                  last_state_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  log_level: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  num_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 registries_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 registry_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[pulumi.InputType['DeviceStateArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -446,9 +446,9 @@ class RegistryDevice(pulumi.CustomResource):
             __props__.__dict__["blocked"] = blocked
             __props__.__dict__["config"] = config
             __props__.__dict__["credentials"] = credentials
-            if devices_id is None and not opts.urn:
-                raise TypeError("Missing required property 'devices_id'")
-            __props__.__dict__["devices_id"] = devices_id
+            if device_id is None and not opts.urn:
+                raise TypeError("Missing required property 'device_id'")
+            __props__.__dict__["device_id"] = device_id
             __props__.__dict__["gateway_config"] = gateway_config
             __props__.__dict__["id"] = id
             __props__.__dict__["last_config_ack_time"] = last_config_ack_time
@@ -458,19 +458,19 @@ class RegistryDevice(pulumi.CustomResource):
             __props__.__dict__["last_event_time"] = last_event_time
             __props__.__dict__["last_heartbeat_time"] = last_heartbeat_time
             __props__.__dict__["last_state_time"] = last_state_time
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["log_level"] = log_level
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["num_id"] = num_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if registries_id is None and not opts.urn:
-                raise TypeError("Missing required property 'registries_id'")
-            __props__.__dict__["registries_id"] = registries_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if registry_id is None and not opts.urn:
+                raise TypeError("Missing required property 'registry_id'")
+            __props__.__dict__["registry_id"] = registry_id
             __props__.__dict__["state"] = state
         super(RegistryDevice, __self__).__init__(
             'google-native:cloudiot/v1:RegistryDevice',

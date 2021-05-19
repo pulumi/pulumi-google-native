@@ -15,9 +15,9 @@ __all__ = ['InspectTemplateArgs', 'InspectTemplate']
 @pulumi.input_type
 class InspectTemplateArgs:
     def __init__(__self__, *,
-                 inspect_templates_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 inspect_template_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs']] = None,
@@ -29,9 +29,9 @@ class InspectTemplateArgs:
         :param pulumi.Input['GooglePrivacyDlpV2InspectConfigArgs'] inspect_config: The core content of the template. Configuration of the scanning process.
         :param pulumi.Input[str] template_id: The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
-        pulumi.set(__self__, "inspect_templates_id", inspect_templates_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "inspect_template_id", inspect_template_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -42,31 +42,31 @@ class InspectTemplateArgs:
             pulumi.set(__self__, "template_id", template_id)
 
     @property
-    @pulumi.getter(name="inspectTemplatesId")
-    def inspect_templates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "inspect_templates_id")
+    @pulumi.getter(name="inspectTemplateId")
+    def inspect_template_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "inspect_template_id")
 
-    @inspect_templates_id.setter
-    def inspect_templates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "inspect_templates_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @inspect_template_id.setter
+    def inspect_template_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "inspect_template_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -125,9 +125,9 @@ class InspectTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']]] = None,
-                 inspect_templates_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 inspect_template_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -167,9 +167,9 @@ class InspectTemplate(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  inspect_config: Optional[pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2InspectConfigArgs']]] = None,
-                 inspect_templates_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 inspect_template_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -186,15 +186,15 @@ class InspectTemplate(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["inspect_config"] = inspect_config
-            if inspect_templates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'inspect_templates_id'")
-            __props__.__dict__["inspect_templates_id"] = inspect_templates_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if inspect_template_id is None and not opts.urn:
+                raise TypeError("Missing required property 'inspect_template_id'")
+            __props__.__dict__["inspect_template_id"] = inspect_template_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["name"] = None

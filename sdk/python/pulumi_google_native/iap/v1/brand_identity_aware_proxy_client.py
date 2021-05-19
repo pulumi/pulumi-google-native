@@ -13,46 +13,46 @@ __all__ = ['BrandIdentityAwareProxyClientArgs', 'BrandIdentityAwareProxyClient']
 @pulumi.input_type
 class BrandIdentityAwareProxyClientArgs:
     def __init__(__self__, *,
-                 brands_id: pulumi.Input[str],
-                 identity_aware_proxy_clients_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 brand_id: pulumi.Input[str],
+                 identity_aware_proxy_client_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BrandIdentityAwareProxyClient resource.
         :param pulumi.Input[str] display_name: Human-friendly name given to the OAuth client.
         """
-        pulumi.set(__self__, "brands_id", brands_id)
-        pulumi.set(__self__, "identity_aware_proxy_clients_id", identity_aware_proxy_clients_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "brand_id", brand_id)
+        pulumi.set(__self__, "identity_aware_proxy_client_id", identity_aware_proxy_client_id)
+        pulumi.set(__self__, "project", project)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
 
     @property
-    @pulumi.getter(name="brandsId")
-    def brands_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "brands_id")
+    @pulumi.getter(name="brandId")
+    def brand_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "brand_id")
 
-    @brands_id.setter
-    def brands_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "brands_id", value)
-
-    @property
-    @pulumi.getter(name="identityAwareProxyClientsId")
-    def identity_aware_proxy_clients_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "identity_aware_proxy_clients_id")
-
-    @identity_aware_proxy_clients_id.setter
-    def identity_aware_proxy_clients_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "identity_aware_proxy_clients_id", value)
+    @brand_id.setter
+    def brand_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "brand_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="identityAwareProxyClientId")
+    def identity_aware_proxy_client_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "identity_aware_proxy_client_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @identity_aware_proxy_client_id.setter
+    def identity_aware_proxy_client_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "identity_aware_proxy_client_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -72,10 +72,10 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 brands_id: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 identity_aware_proxy_clients_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 identity_aware_proxy_client_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
@@ -108,10 +108,10 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 brands_id: Optional[pulumi.Input[str]] = None,
+                 brand_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 identity_aware_proxy_clients_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 identity_aware_proxy_client_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -124,16 +124,16 @@ class BrandIdentityAwareProxyClient(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BrandIdentityAwareProxyClientArgs.__new__(BrandIdentityAwareProxyClientArgs)
 
-            if brands_id is None and not opts.urn:
-                raise TypeError("Missing required property 'brands_id'")
-            __props__.__dict__["brands_id"] = brands_id
+            if brand_id is None and not opts.urn:
+                raise TypeError("Missing required property 'brand_id'")
+            __props__.__dict__["brand_id"] = brand_id
             __props__.__dict__["display_name"] = display_name
-            if identity_aware_proxy_clients_id is None and not opts.urn:
-                raise TypeError("Missing required property 'identity_aware_proxy_clients_id'")
-            __props__.__dict__["identity_aware_proxy_clients_id"] = identity_aware_proxy_clients_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if identity_aware_proxy_client_id is None and not opts.urn:
+                raise TypeError("Missing required property 'identity_aware_proxy_client_id'")
+            __props__.__dict__["identity_aware_proxy_client_id"] = identity_aware_proxy_client_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["name"] = None
             __props__.__dict__["secret"] = None
         super(BrandIdentityAwareProxyClient, __self__).__init__(

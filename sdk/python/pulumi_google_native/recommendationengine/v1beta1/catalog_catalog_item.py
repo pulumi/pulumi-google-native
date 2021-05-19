@@ -15,10 +15,10 @@ __all__ = ['CatalogCatalogItemArgs', 'CatalogCatalogItem']
 @pulumi.input_type
 class CatalogCatalogItemArgs:
     def __init__(__self__, *,
-                 catalog_items_id: pulumi.Input[str],
-                 catalogs_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 catalog_id: pulumi.Input[str],
+                 catalog_item_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
@@ -38,10 +38,10 @@ class CatalogCatalogItemArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
         :param pulumi.Input[str] title: Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         """
-        pulumi.set(__self__, "catalog_items_id", catalog_items_id)
-        pulumi.set(__self__, "catalogs_id", catalogs_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "catalog_id", catalog_id)
+        pulumi.set(__self__, "catalog_item_id", catalog_item_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if category_hierarchies is not None:
             pulumi.set(__self__, "category_hierarchies", category_hierarchies)
         if description is not None:
@@ -60,40 +60,40 @@ class CatalogCatalogItemArgs:
             pulumi.set(__self__, "title", title)
 
     @property
-    @pulumi.getter(name="catalogItemsId")
-    def catalog_items_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "catalog_items_id")
+    @pulumi.getter(name="catalogId")
+    def catalog_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "catalog_id")
 
-    @catalog_items_id.setter
-    def catalog_items_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "catalog_items_id", value)
-
-    @property
-    @pulumi.getter(name="catalogsId")
-    def catalogs_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "catalogs_id")
-
-    @catalogs_id.setter
-    def catalogs_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "catalogs_id", value)
+    @catalog_id.setter
+    def catalog_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "catalog_id", value)
 
     @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
+    @pulumi.getter(name="catalogItemId")
+    def catalog_item_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "catalog_item_id")
 
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @catalog_item_id.setter
+    def catalog_item_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "catalog_item_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="categoryHierarchies")
@@ -197,16 +197,16 @@ class CatalogCatalogItem(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_items_id: Optional[pulumi.Input[str]] = None,
-                 catalogs_id: Optional[pulumi.Input[str]] = None,
+                 catalog_id: Optional[pulumi.Input[str]] = None,
+                 catalog_item_id: Optional[pulumi.Input[str]] = None,
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']]] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -248,16 +248,16 @@ class CatalogCatalogItem(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 catalog_items_id: Optional[pulumi.Input[str]] = None,
-                 catalogs_id: Optional[pulumi.Input[str]] = None,
+                 catalog_id: Optional[pulumi.Input[str]] = None,
+                 catalog_item_id: Optional[pulumi.Input[str]] = None,
                  category_hierarchies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
                  item_attributes: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1FeatureMapArgs']]] = None,
                  item_group_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  product_metadata: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs']]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  title: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -272,24 +272,24 @@ class CatalogCatalogItem(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = CatalogCatalogItemArgs.__new__(CatalogCatalogItemArgs)
 
-            if catalog_items_id is None and not opts.urn:
-                raise TypeError("Missing required property 'catalog_items_id'")
-            __props__.__dict__["catalog_items_id"] = catalog_items_id
-            if catalogs_id is None and not opts.urn:
-                raise TypeError("Missing required property 'catalogs_id'")
-            __props__.__dict__["catalogs_id"] = catalogs_id
+            if catalog_id is None and not opts.urn:
+                raise TypeError("Missing required property 'catalog_id'")
+            __props__.__dict__["catalog_id"] = catalog_id
+            if catalog_item_id is None and not opts.urn:
+                raise TypeError("Missing required property 'catalog_item_id'")
+            __props__.__dict__["catalog_item_id"] = catalog_item_id
             __props__.__dict__["category_hierarchies"] = category_hierarchies
             __props__.__dict__["description"] = description
             __props__.__dict__["id"] = id
             __props__.__dict__["item_attributes"] = item_attributes
             __props__.__dict__["item_group_id"] = item_group_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["product_metadata"] = product_metadata
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
             __props__.__dict__["title"] = title
         super(CatalogCatalogItem, __self__).__init__(

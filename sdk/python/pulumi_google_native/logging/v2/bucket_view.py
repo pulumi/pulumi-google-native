@@ -13,11 +13,10 @@ __all__ = ['BucketViewArgs', 'BucketView']
 @pulumi.input_type
 class BucketViewArgs:
     def __init__(__self__, *,
-                 buckets_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 bucket_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  view_id: pulumi.Input[str],
-                 views_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
@@ -27,11 +26,10 @@ class BucketViewArgs:
         :param pulumi.Input[str] filter: Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
         :param pulumi.Input[str] name: The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
         """
-        pulumi.set(__self__, "buckets_id", buckets_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "bucket_id", bucket_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "view_id", view_id)
-        pulumi.set(__self__, "views_id", views_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if filter is not None:
@@ -40,31 +38,31 @@ class BucketViewArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="bucketsId")
-    def buckets_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "buckets_id")
+    @pulumi.getter(name="bucketId")
+    def bucket_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "bucket_id")
 
-    @buckets_id.setter
-    def buckets_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "buckets_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @bucket_id.setter
+    def bucket_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="viewId")
@@ -74,15 +72,6 @@ class BucketViewArgs:
     @view_id.setter
     def view_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "view_id", value)
-
-    @property
-    @pulumi.getter(name="viewsId")
-    def views_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "views_id")
-
-    @views_id.setter
-    def views_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "views_id", value)
 
     @property
     @pulumi.getter
@@ -126,14 +115,13 @@ class BucketView(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 buckets_id: Optional[pulumi.Input[str]] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  view_id: Optional[pulumi.Input[str]] = None,
-                 views_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a view over logs in a bucket. A bucket may contain a maximum of 50 views.
@@ -168,14 +156,13 @@ class BucketView(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 buckets_id: Optional[pulumi.Input[str]] = None,
+                 bucket_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  filter: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  view_id: Optional[pulumi.Input[str]] = None,
-                 views_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -188,24 +175,21 @@ class BucketView(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BucketViewArgs.__new__(BucketViewArgs)
 
-            if buckets_id is None and not opts.urn:
-                raise TypeError("Missing required property 'buckets_id'")
-            __props__.__dict__["buckets_id"] = buckets_id
+            if bucket_id is None and not opts.urn:
+                raise TypeError("Missing required property 'bucket_id'")
+            __props__.__dict__["bucket_id"] = bucket_id
             __props__.__dict__["description"] = description
             __props__.__dict__["filter"] = filter
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             if view_id is None and not opts.urn:
                 raise TypeError("Missing required property 'view_id'")
             __props__.__dict__["view_id"] = view_id
-            if views_id is None and not opts.urn:
-                raise TypeError("Missing required property 'views_id'")
-            __props__.__dict__["views_id"] = views_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         super(BucketView, __self__).__init__(

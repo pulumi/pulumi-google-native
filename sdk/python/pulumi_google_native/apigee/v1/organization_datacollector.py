@@ -13,8 +13,8 @@ __all__ = ['OrganizationDatacollectorArgs', 'OrganizationDatacollector']
 @pulumi.input_type
 class OrganizationDatacollectorArgs:
     def __init__(__self__, *,
-                 datacollectors_id: pulumi.Input[str],
-                 organizations_id: pulumi.Input[str],
+                 datacollector_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
                  data_collector_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -25,8 +25,8 @@ class OrganizationDatacollectorArgs:
         :param pulumi.Input[str] name: ID of the data collector. Must begin with `dc_`.
         :param pulumi.Input[str] type: Immutable. The type of data this data collector will collect.
         """
-        pulumi.set(__self__, "datacollectors_id", datacollectors_id)
-        pulumi.set(__self__, "organizations_id", organizations_id)
+        pulumi.set(__self__, "datacollector_id", datacollector_id)
+        pulumi.set(__self__, "organization_id", organization_id)
         if data_collector_id is not None:
             pulumi.set(__self__, "data_collector_id", data_collector_id)
         if description is not None:
@@ -37,22 +37,22 @@ class OrganizationDatacollectorArgs:
             pulumi.set(__self__, "type", type)
 
     @property
-    @pulumi.getter(name="datacollectorsId")
-    def datacollectors_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "datacollectors_id")
+    @pulumi.getter(name="datacollectorId")
+    def datacollector_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "datacollector_id")
 
-    @datacollectors_id.setter
-    def datacollectors_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "datacollectors_id", value)
+    @datacollector_id.setter
+    def datacollector_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "datacollector_id", value)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
     @pulumi.getter(name="dataCollectorId")
@@ -106,10 +106,10 @@ class OrganizationDatacollector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_collector_id: Optional[pulumi.Input[str]] = None,
-                 datacollectors_id: Optional[pulumi.Input[str]] = None,
+                 datacollector_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -146,10 +146,10 @@ class OrganizationDatacollector(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  data_collector_id: Optional[pulumi.Input[str]] = None,
-                 datacollectors_id: Optional[pulumi.Input[str]] = None,
+                 datacollector_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -164,14 +164,14 @@ class OrganizationDatacollector(pulumi.CustomResource):
             __props__ = OrganizationDatacollectorArgs.__new__(OrganizationDatacollectorArgs)
 
             __props__.__dict__["data_collector_id"] = data_collector_id
-            if datacollectors_id is None and not opts.urn:
-                raise TypeError("Missing required property 'datacollectors_id'")
-            __props__.__dict__["datacollectors_id"] = datacollectors_id
+            if datacollector_id is None and not opts.urn:
+                raise TypeError("Missing required property 'datacollector_id'")
+            __props__.__dict__["datacollector_id"] = datacollector_id
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["type"] = type
             __props__.__dict__["created_at"] = None
             __props__.__dict__["last_modified_at"] = None

@@ -17,7 +17,7 @@ class HistoryExecutionArgs:
     def __init__(__self__, *,
                  execution_id: pulumi.Input[str],
                  history_id: pulumi.Input[str],
-                 project_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  completion_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  creation_time: Optional[pulumi.Input['TimestampArgs']] = None,
                  dimension_definitions: Optional[pulumi.Input[Sequence[pulumi.Input['MatrixDimensionDefinitionArgs']]]] = None,
@@ -39,7 +39,7 @@ class HistoryExecutionArgs:
         """
         pulumi.set(__self__, "execution_id", execution_id)
         pulumi.set(__self__, "history_id", history_id)
-        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "project", project)
         if completion_time is not None:
             pulumi.set(__self__, "completion_time", completion_time)
         if creation_time is not None:
@@ -79,13 +79,13 @@ class HistoryExecutionArgs:
         pulumi.set(self, "history_id", value)
 
     @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "project_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="completionTime")
@@ -192,7 +192,7 @@ class HistoryExecution(pulumi.CustomResource):
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -242,7 +242,7 @@ class HistoryExecution(pulumi.CustomResource):
                  execution_id: Optional[pulumi.Input[str]] = None,
                  history_id: Optional[pulumi.Input[str]] = None,
                  outcome: Optional[pulumi.Input[pulumi.InputType['OutcomeArgs']]] = None,
-                 project_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  specification: Optional[pulumi.Input[pulumi.InputType['SpecificationArgs']]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -269,9 +269,9 @@ class HistoryExecution(pulumi.CustomResource):
                 raise TypeError("Missing required property 'history_id'")
             __props__.__dict__["history_id"] = history_id
             __props__.__dict__["outcome"] = outcome
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
-            __props__.__dict__["project_id"] = project_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["specification"] = specification
             __props__.__dict__["state"] = state

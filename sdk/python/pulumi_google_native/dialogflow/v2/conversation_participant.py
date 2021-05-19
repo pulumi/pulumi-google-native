@@ -13,10 +13,10 @@ __all__ = ['ConversationParticipantArgs', 'ConversationParticipant']
 @pulumi.input_type
 class ConversationParticipantArgs:
     def __init__(__self__, *,
-                 conversations_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 participants_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 conversation_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 participant_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  name: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None):
@@ -26,10 +26,10 @@ class ConversationParticipantArgs:
         :param pulumi.Input[str] role: Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
         :param pulumi.Input[str] sip_recording_media_label: Optional. Label applied to streams representing this participant in SIPREC XML metadata and SDP. This is used to assign transcriptions from that media stream to this participant. This field can be updated.
         """
-        pulumi.set(__self__, "conversations_id", conversations_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "participants_id", participants_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "conversation_id", conversation_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "participant_id", participant_id)
+        pulumi.set(__self__, "project", project)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if role is not None:
@@ -38,40 +38,40 @@ class ConversationParticipantArgs:
             pulumi.set(__self__, "sip_recording_media_label", sip_recording_media_label)
 
     @property
-    @pulumi.getter(name="conversationsId")
-    def conversations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "conversations_id")
+    @pulumi.getter(name="conversationId")
+    def conversation_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "conversation_id")
 
-    @conversations_id.setter
-    def conversations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "conversations_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @conversation_id.setter
+    def conversation_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "conversation_id", value)
 
     @property
-    @pulumi.getter(name="participantsId")
-    def participants_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "participants_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @participants_id.setter
-    def participants_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "participants_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="participantId")
+    def participant_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "participant_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @participant_id.setter
+    def participant_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "participant_id", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter
@@ -115,11 +115,11 @@ class ConversationParticipant(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 participants_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 participant_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -156,11 +156,11 @@ class ConversationParticipant(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 conversations_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 conversation_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 participants_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 participant_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  role: Optional[pulumi.Input[str]] = None,
                  sip_recording_media_label: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -175,19 +175,19 @@ class ConversationParticipant(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConversationParticipantArgs.__new__(ConversationParticipantArgs)
 
-            if conversations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'conversations_id'")
-            __props__.__dict__["conversations_id"] = conversations_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if conversation_id is None and not opts.urn:
+                raise TypeError("Missing required property 'conversation_id'")
+            __props__.__dict__["conversation_id"] = conversation_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if participants_id is None and not opts.urn:
-                raise TypeError("Missing required property 'participants_id'")
-            __props__.__dict__["participants_id"] = participants_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if participant_id is None and not opts.urn:
+                raise TypeError("Missing required property 'participant_id'")
+            __props__.__dict__["participant_id"] = participant_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["role"] = role
             __props__.__dict__["sip_recording_media_label"] = sip_recording_media_label
         super(ConversationParticipant, __self__).__init__(

@@ -15,46 +15,46 @@ __all__ = ['FolderReplayArgs', 'FolderReplay']
 @pulumi.input_type
 class FolderReplayArgs:
     def __init__(__self__, *,
-                 folders_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 replays_id: pulumi.Input[str],
+                 folder_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 replay_id: pulumi.Input[str],
                  config: Optional[pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']] = None):
         """
         The set of arguments for constructing a FolderReplay resource.
         :param pulumi.Input['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs'] config: Required. The configuration used for the `Replay`.
         """
-        pulumi.set(__self__, "folders_id", folders_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "replays_id", replays_id)
+        pulumi.set(__self__, "folder_id", folder_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "replay_id", replay_id)
         if config is not None:
             pulumi.set(__self__, "config", config)
 
     @property
-    @pulumi.getter(name="foldersId")
-    def folders_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "folders_id")
+    @pulumi.getter(name="folderId")
+    def folder_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "folder_id")
 
-    @folders_id.setter
-    def folders_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "folders_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @folder_id.setter
+    def folder_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "folder_id", value)
 
     @property
-    @pulumi.getter(name="replaysId")
-    def replays_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "replays_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @replays_id.setter
-    def replays_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "replays_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="replayId")
+    def replay_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "replay_id")
+
+    @replay_id.setter
+    def replay_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replay_id", value)
 
     @property
     @pulumi.getter
@@ -75,9 +75,9 @@ class FolderReplay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']]] = None,
-                 folders_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 replays_id: Optional[pulumi.Input[str]] = None,
+                 folder_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates and starts a Replay using the given ReplayConfig.
@@ -111,9 +111,9 @@ class FolderReplay(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs']]] = None,
-                 folders_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 replays_id: Optional[pulumi.Input[str]] = None,
+                 folder_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 replay_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -127,15 +127,15 @@ class FolderReplay(pulumi.CustomResource):
             __props__ = FolderReplayArgs.__new__(FolderReplayArgs)
 
             __props__.__dict__["config"] = config
-            if folders_id is None and not opts.urn:
-                raise TypeError("Missing required property 'folders_id'")
-            __props__.__dict__["folders_id"] = folders_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if replays_id is None and not opts.urn:
-                raise TypeError("Missing required property 'replays_id'")
-            __props__.__dict__["replays_id"] = replays_id
+            if folder_id is None and not opts.urn:
+                raise TypeError("Missing required property 'folder_id'")
+            __props__.__dict__["folder_id"] = folder_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if replay_id is None and not opts.urn:
+                raise TypeError("Missing required property 'replay_id'")
+            __props__.__dict__["replay_id"] = replay_id
             __props__.__dict__["name"] = None
             __props__.__dict__["results_summary"] = None
             __props__.__dict__["state"] = None

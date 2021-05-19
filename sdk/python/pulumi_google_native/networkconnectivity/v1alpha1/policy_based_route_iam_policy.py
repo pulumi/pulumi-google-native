@@ -15,8 +15,8 @@ __all__ = ['PolicyBasedRouteIamPolicyArgs', 'PolicyBasedRouteIamPolicy']
 @pulumi.input_type
 class PolicyBasedRouteIamPolicyArgs:
     def __init__(__self__, *,
-                 policy_based_routes_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 policy_based_route_id: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input['AuditConfigArgs']]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input['BindingArgs']]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -30,8 +30,8 @@ class PolicyBasedRouteIamPolicyArgs:
         :param pulumi.Input[str] update_mask: OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
         :param pulumi.Input[int] version: Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
         """
-        pulumi.set(__self__, "policy_based_routes_id", policy_based_routes_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "policy_based_route_id", policy_based_route_id)
+        pulumi.set(__self__, "project", project)
         if audit_configs is not None:
             pulumi.set(__self__, "audit_configs", audit_configs)
         if bindings is not None:
@@ -44,22 +44,22 @@ class PolicyBasedRouteIamPolicyArgs:
             pulumi.set(__self__, "version", version)
 
     @property
-    @pulumi.getter(name="policyBasedRoutesId")
-    def policy_based_routes_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "policy_based_routes_id")
+    @pulumi.getter(name="policyBasedRouteId")
+    def policy_based_route_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "policy_based_route_id")
 
-    @policy_based_routes_id.setter
-    def policy_based_routes_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "policy_based_routes_id", value)
+    @policy_based_route_id.setter
+    def policy_based_route_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "policy_based_route_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="auditConfigs")
@@ -130,8 +130,8 @@ class PolicyBasedRouteIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 policy_based_routes_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 policy_based_route_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -173,8 +173,8 @@ class PolicyBasedRouteIamPolicy(pulumi.CustomResource):
                  audit_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AuditConfigArgs']]]]] = None,
                  bindings: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BindingArgs']]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 policy_based_routes_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 policy_based_route_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  update_mask: Optional[pulumi.Input[str]] = None,
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
@@ -192,12 +192,12 @@ class PolicyBasedRouteIamPolicy(pulumi.CustomResource):
             __props__.__dict__["audit_configs"] = audit_configs
             __props__.__dict__["bindings"] = bindings
             __props__.__dict__["etag"] = etag
-            if policy_based_routes_id is None and not opts.urn:
-                raise TypeError("Missing required property 'policy_based_routes_id'")
-            __props__.__dict__["policy_based_routes_id"] = policy_based_routes_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if policy_based_route_id is None and not opts.urn:
+                raise TypeError("Missing required property 'policy_based_route_id'")
+            __props__.__dict__["policy_based_route_id"] = policy_based_route_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["update_mask"] = update_mask
             __props__.__dict__["version"] = version
         super(PolicyBasedRouteIamPolicy, __self__).__init__(

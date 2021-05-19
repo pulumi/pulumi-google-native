@@ -14,57 +14,57 @@ __all__ = ['WorkflowExecutionArgs', 'WorkflowExecution']
 @pulumi.input_type
 class WorkflowExecutionArgs:
     def __init__(__self__, *,
-                 executions_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
-                 workflows_id: pulumi.Input[str],
+                 execution_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
+                 workflow_id: pulumi.Input[str],
                  argument: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a WorkflowExecution resource.
         :param pulumi.Input[str] argument: Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
         """
-        pulumi.set(__self__, "executions_id", executions_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
-        pulumi.set(__self__, "workflows_id", workflows_id)
+        pulumi.set(__self__, "execution_id", execution_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "workflow_id", workflow_id)
         if argument is not None:
             pulumi.set(__self__, "argument", argument)
 
     @property
-    @pulumi.getter(name="executionsId")
-    def executions_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "executions_id")
+    @pulumi.getter(name="executionId")
+    def execution_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "execution_id")
 
-    @executions_id.setter
-    def executions_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "executions_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @execution_id.setter
+    def execution_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "execution_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="workflowsId")
-    def workflows_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "workflows_id")
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
 
-    @workflows_id.setter
-    def workflows_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "workflows_id", value)
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="workflowId")
+    def workflow_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "workflow_id")
+
+    @workflow_id.setter
+    def workflow_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "workflow_id", value)
 
     @property
     @pulumi.getter
@@ -85,10 +85,10 @@ class WorkflowExecution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
-                 executions_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 workflows_id: Optional[pulumi.Input[str]] = None,
+                 execution_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a new execution using the latest revision of the given workflow.
@@ -122,10 +122,10 @@ class WorkflowExecution(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  argument: Optional[pulumi.Input[str]] = None,
-                 executions_id: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
-                 workflows_id: Optional[pulumi.Input[str]] = None,
+                 execution_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
+                 workflow_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -139,18 +139,18 @@ class WorkflowExecution(pulumi.CustomResource):
             __props__ = WorkflowExecutionArgs.__new__(WorkflowExecutionArgs)
 
             __props__.__dict__["argument"] = argument
-            if executions_id is None and not opts.urn:
-                raise TypeError("Missing required property 'executions_id'")
-            __props__.__dict__["executions_id"] = executions_id
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
-            if workflows_id is None and not opts.urn:
-                raise TypeError("Missing required property 'workflows_id'")
-            __props__.__dict__["workflows_id"] = workflows_id
+            if execution_id is None and not opts.urn:
+                raise TypeError("Missing required property 'execution_id'")
+            __props__.__dict__["execution_id"] = execution_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
+            if workflow_id is None and not opts.urn:
+                raise TypeError("Missing required property 'workflow_id'")
+            __props__.__dict__["workflow_id"] = workflow_id
             __props__.__dict__["end_time"] = None
             __props__.__dict__["error"] = None
             __props__.__dict__["name"] = None

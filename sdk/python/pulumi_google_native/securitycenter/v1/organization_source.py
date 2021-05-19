@@ -13,8 +13,8 @@ __all__ = ['OrganizationSourceArgs', 'OrganizationSource']
 @pulumi.input_type
 class OrganizationSourceArgs:
     def __init__(__self__, *,
-                 organizations_id: pulumi.Input[str],
-                 sources_id: pulumi.Input[str],
+                 organization_id: pulumi.Input[str],
+                 source_id: pulumi.Input[str],
                  canonical_name: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -26,8 +26,8 @@ class OrganizationSourceArgs:
         :param pulumi.Input[str] display_name: The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
         :param pulumi.Input[str] name: The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
         """
-        pulumi.set(__self__, "organizations_id", organizations_id)
-        pulumi.set(__self__, "sources_id", sources_id)
+        pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "source_id", source_id)
         if canonical_name is not None:
             pulumi.set(__self__, "canonical_name", canonical_name)
         if description is not None:
@@ -38,22 +38,22 @@ class OrganizationSourceArgs:
             pulumi.set(__self__, "name", name)
 
     @property
-    @pulumi.getter(name="organizationsId")
-    def organizations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "organizations_id")
+    @pulumi.getter(name="organizationId")
+    def organization_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "organization_id")
 
-    @organizations_id.setter
-    def organizations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "organizations_id", value)
+    @organization_id.setter
+    def organization_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "organization_id", value)
 
     @property
-    @pulumi.getter(name="sourcesId")
-    def sources_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "sources_id")
+    @pulumi.getter(name="sourceId")
+    def source_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "source_id")
 
-    @sources_id.setter
-    def sources_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "sources_id", value)
+    @source_id.setter
+    def source_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source_id", value)
 
     @property
     @pulumi.getter(name="canonicalName")
@@ -113,8 +113,8 @@ class OrganizationSource(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 sources_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 source_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Creates a source.
@@ -154,8 +154,8 @@ class OrganizationSource(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 organizations_id: Optional[pulumi.Input[str]] = None,
-                 sources_id: Optional[pulumi.Input[str]] = None,
+                 organization_id: Optional[pulumi.Input[str]] = None,
+                 source_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -172,12 +172,12 @@ class OrganizationSource(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["name"] = name
-            if organizations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'organizations_id'")
-            __props__.__dict__["organizations_id"] = organizations_id
-            if sources_id is None and not opts.urn:
-                raise TypeError("Missing required property 'sources_id'")
-            __props__.__dict__["sources_id"] = sources_id
+            if organization_id is None and not opts.urn:
+                raise TypeError("Missing required property 'organization_id'")
+            __props__.__dict__["organization_id"] = organization_id
+            if source_id is None and not opts.urn:
+                raise TypeError("Missing required property 'source_id'")
+            __props__.__dict__["source_id"] = source_id
         super(OrganizationSource, __self__).__init__(
             'google-native:securitycenter/v1:OrganizationSource',
             resource_name,

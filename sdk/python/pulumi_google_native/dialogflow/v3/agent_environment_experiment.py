@@ -15,11 +15,11 @@ __all__ = ['AgentEnvironmentExperimentArgs', 'AgentEnvironmentExperiment']
 @pulumi.input_type
 class AgentEnvironmentExperimentArgs:
     def __init__(__self__, *,
-                 agents_id: pulumi.Input[str],
-                 environments_id: pulumi.Input[str],
-                 experiments_id: pulumi.Input[str],
-                 locations_id: pulumi.Input[str],
-                 projects_id: pulumi.Input[str],
+                 agent_id: pulumi.Input[str],
+                 environment_id: pulumi.Input[str],
+                 experiment_id: pulumi.Input[str],
+                 location: pulumi.Input[str],
+                 project: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  definition: Optional[pulumi.Input['GoogleCloudDialogflowCxV3ExperimentDefinitionArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -47,11 +47,11 @@ class AgentEnvironmentExperimentArgs:
         :param pulumi.Input[str] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3VariantsHistoryArgs']]] variants_history: The history of updates to the experiment variants.
         """
-        pulumi.set(__self__, "agents_id", agents_id)
-        pulumi.set(__self__, "environments_id", environments_id)
-        pulumi.set(__self__, "experiments_id", experiments_id)
-        pulumi.set(__self__, "locations_id", locations_id)
-        pulumi.set(__self__, "projects_id", projects_id)
+        pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "experiment_id", experiment_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "project", project)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if definition is not None:
@@ -78,49 +78,49 @@ class AgentEnvironmentExperimentArgs:
             pulumi.set(__self__, "variants_history", variants_history)
 
     @property
-    @pulumi.getter(name="agentsId")
-    def agents_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "agents_id")
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "agent_id")
 
-    @agents_id.setter
-    def agents_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "agents_id", value)
-
-    @property
-    @pulumi.getter(name="environmentsId")
-    def environments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "environments_id")
-
-    @environments_id.setter
-    def environments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "environments_id", value)
+    @agent_id.setter
+    def agent_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "agent_id", value)
 
     @property
-    @pulumi.getter(name="experimentsId")
-    def experiments_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "experiments_id")
+    @pulumi.getter(name="environmentId")
+    def environment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "environment_id")
 
-    @experiments_id.setter
-    def experiments_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "experiments_id", value)
-
-    @property
-    @pulumi.getter(name="locationsId")
-    def locations_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "locations_id")
-
-    @locations_id.setter
-    def locations_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "locations_id", value)
+    @environment_id.setter
+    def environment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter(name="projectsId")
-    def projects_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "projects_id")
+    @pulumi.getter(name="experimentId")
+    def experiment_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "experiment_id")
 
-    @projects_id.setter
-    def projects_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "projects_id", value)
+    @experiment_id.setter
+    def experiment_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "experiment_id", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -272,19 +272,19 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  definition: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ExperimentDefinitionArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 experiment_id: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
-                 experiments_id: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ExperimentResultArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -332,19 +332,19 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agents_id: Optional[pulumi.Input[str]] = None,
+                 agent_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  definition: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ExperimentDefinitionArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_time: Optional[pulumi.Input[str]] = None,
-                 environments_id: Optional[pulumi.Input[str]] = None,
+                 environment_id: Optional[pulumi.Input[str]] = None,
+                 experiment_id: Optional[pulumi.Input[str]] = None,
                  experiment_length: Optional[pulumi.Input[str]] = None,
-                 experiments_id: Optional[pulumi.Input[str]] = None,
                  last_update_time: Optional[pulumi.Input[str]] = None,
-                 locations_id: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 projects_id: Optional[pulumi.Input[str]] = None,
+                 project: Optional[pulumi.Input[str]] = None,
                  result: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3ExperimentResultArgs']]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -361,29 +361,29 @@ class AgentEnvironmentExperiment(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AgentEnvironmentExperimentArgs.__new__(AgentEnvironmentExperimentArgs)
 
-            if agents_id is None and not opts.urn:
-                raise TypeError("Missing required property 'agents_id'")
-            __props__.__dict__["agents_id"] = agents_id
+            if agent_id is None and not opts.urn:
+                raise TypeError("Missing required property 'agent_id'")
+            __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["create_time"] = create_time
             __props__.__dict__["definition"] = definition
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_time"] = end_time
-            if environments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'environments_id'")
-            __props__.__dict__["environments_id"] = environments_id
+            if environment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_id'")
+            __props__.__dict__["environment_id"] = environment_id
+            if experiment_id is None and not opts.urn:
+                raise TypeError("Missing required property 'experiment_id'")
+            __props__.__dict__["experiment_id"] = experiment_id
             __props__.__dict__["experiment_length"] = experiment_length
-            if experiments_id is None and not opts.urn:
-                raise TypeError("Missing required property 'experiments_id'")
-            __props__.__dict__["experiments_id"] = experiments_id
             __props__.__dict__["last_update_time"] = last_update_time
-            if locations_id is None and not opts.urn:
-                raise TypeError("Missing required property 'locations_id'")
-            __props__.__dict__["locations_id"] = locations_id
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
-            if projects_id is None and not opts.urn:
-                raise TypeError("Missing required property 'projects_id'")
-            __props__.__dict__["projects_id"] = projects_id
+            if project is None and not opts.urn:
+                raise TypeError("Missing required property 'project'")
+            __props__.__dict__["project"] = project
             __props__.__dict__["result"] = result
             __props__.__dict__["start_time"] = start_time
             __props__.__dict__["state"] = state

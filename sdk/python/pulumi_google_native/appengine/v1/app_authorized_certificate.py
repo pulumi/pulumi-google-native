@@ -15,8 +15,8 @@ __all__ = ['AppAuthorizedCertificateArgs', 'AppAuthorizedCertificate']
 @pulumi.input_type
 class AppAuthorizedCertificateArgs:
     def __init__(__self__, *,
-                 apps_id: pulumi.Input[str],
-                 authorized_certificates_id: pulumi.Input[str],
+                 app_id: pulumi.Input[str],
+                 authorized_certificate_id: pulumi.Input[str],
                  certificate_raw_data: Optional[pulumi.Input['CertificateRawDataArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  domain_mappings_count: Optional[pulumi.Input[int]] = None,
@@ -38,8 +38,8 @@ class AppAuthorizedCertificateArgs:
         :param pulumi.Input[str] name: Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.@OutputOnly
         :param pulumi.Input[Sequence[pulumi.Input[str]]] visible_domain_mappings: The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.@OutputOnly
         """
-        pulumi.set(__self__, "apps_id", apps_id)
-        pulumi.set(__self__, "authorized_certificates_id", authorized_certificates_id)
+        pulumi.set(__self__, "app_id", app_id)
+        pulumi.set(__self__, "authorized_certificate_id", authorized_certificate_id)
         if certificate_raw_data is not None:
             pulumi.set(__self__, "certificate_raw_data", certificate_raw_data)
         if display_name is not None:
@@ -60,22 +60,22 @@ class AppAuthorizedCertificateArgs:
             pulumi.set(__self__, "visible_domain_mappings", visible_domain_mappings)
 
     @property
-    @pulumi.getter(name="appsId")
-    def apps_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "apps_id")
+    @pulumi.getter(name="appId")
+    def app_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "app_id")
 
-    @apps_id.setter
-    def apps_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "apps_id", value)
+    @app_id.setter
+    def app_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "app_id", value)
 
     @property
-    @pulumi.getter(name="authorizedCertificatesId")
-    def authorized_certificates_id(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "authorized_certificates_id")
+    @pulumi.getter(name="authorizedCertificateId")
+    def authorized_certificate_id(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "authorized_certificate_id")
 
-    @authorized_certificates_id.setter
-    def authorized_certificates_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "authorized_certificates_id", value)
+    @authorized_certificate_id.setter
+    def authorized_certificate_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "authorized_certificate_id", value)
 
     @property
     @pulumi.getter(name="certificateRawData")
@@ -191,8 +191,8 @@ class AppAuthorizedCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
-                 authorized_certificates_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_certificate_id: Optional[pulumi.Input[str]] = None,
                  certificate_raw_data: Optional[pulumi.Input[pulumi.InputType['CertificateRawDataArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  domain_mappings_count: Optional[pulumi.Input[int]] = None,
@@ -242,8 +242,8 @@ class AppAuthorizedCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 apps_id: Optional[pulumi.Input[str]] = None,
-                 authorized_certificates_id: Optional[pulumi.Input[str]] = None,
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 authorized_certificate_id: Optional[pulumi.Input[str]] = None,
                  certificate_raw_data: Optional[pulumi.Input[pulumi.InputType['CertificateRawDataArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  domain_mappings_count: Optional[pulumi.Input[int]] = None,
@@ -265,12 +265,12 @@ class AppAuthorizedCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AppAuthorizedCertificateArgs.__new__(AppAuthorizedCertificateArgs)
 
-            if apps_id is None and not opts.urn:
-                raise TypeError("Missing required property 'apps_id'")
-            __props__.__dict__["apps_id"] = apps_id
-            if authorized_certificates_id is None and not opts.urn:
-                raise TypeError("Missing required property 'authorized_certificates_id'")
-            __props__.__dict__["authorized_certificates_id"] = authorized_certificates_id
+            if app_id is None and not opts.urn:
+                raise TypeError("Missing required property 'app_id'")
+            __props__.__dict__["app_id"] = app_id
+            if authorized_certificate_id is None and not opts.urn:
+                raise TypeError("Missing required property 'authorized_certificate_id'")
+            __props__.__dict__["authorized_certificate_id"] = authorized_certificate_id
             __props__.__dict__["certificate_raw_data"] = certificate_raw_data
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["domain_mappings_count"] = domain_mappings_count
