@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("environments")]
         public Input<string>? Environments { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// Required. Compute Engine location where the instance resides.
@@ -162,8 +162,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.

@@ -108,17 +108,14 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("workloadIdentityPoolId", required: true)]
         public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
-
-        [Input("workloadIdentityPoolsId", required: true)]
-        public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;
 
         public WorkloadIdentityPoolArgs()
         {

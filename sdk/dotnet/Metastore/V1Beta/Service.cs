@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -213,8 +213,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
@@ -227,9 +227,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
 
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
-
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
 
         /// <summary>
         /// The tier of the service.

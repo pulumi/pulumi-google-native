@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
             set => _parameters = value;
         }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public TemplateArgs()
         {

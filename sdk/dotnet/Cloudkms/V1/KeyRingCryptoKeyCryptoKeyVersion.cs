@@ -138,11 +138,11 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 
     public sealed class KeyRingCryptoKeyCryptoKeyVersionArgs : Pulumi.ResourceArgs
     {
-        [Input("cryptoKeyVersionsId", required: true)]
-        public Input<string> CryptoKeyVersionsId { get; set; } = null!;
+        [Input("cryptoKeyId", required: true)]
+        public Input<string> CryptoKeyId { get; set; } = null!;
 
-        [Input("cryptoKeysId", required: true)]
-        public Input<string> CryptoKeysId { get; set; } = null!;
+        [Input("cryptoKeyVersionId", required: true)]
+        public Input<string> CryptoKeyVersionId { get; set; } = null!;
 
         /// <summary>
         /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
@@ -150,14 +150,14 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("externalProtectionLevelOptions")]
         public Input<Inputs.ExternalProtectionLevelOptionsArgs>? ExternalProtectionLevelOptions { get; set; }
 
-        [Input("keyRingsId", required: true)]
-        public Input<string> KeyRingsId { get; set; } = null!;
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The current state of the CryptoKeyVersion.

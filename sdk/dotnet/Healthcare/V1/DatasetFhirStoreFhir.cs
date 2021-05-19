@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("data")]
         public Input<string>? Data { get; set; }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         [Input("extensions")]
         private InputList<ImmutableDictionary<string, string>>? _extensions;
@@ -111,14 +111,14 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("fhirId1", required: true)]
         public Input<string> FhirId1 { get; set; } = null!;
 
-        [Input("fhirStoresId", required: true)]
-        public Input<string> FhirStoresId { get; set; } = null!;
+        [Input("fhirStoreId", required: true)]
+        public Input<string> FhirStoreId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public DatasetFhirStoreFhirArgs()
         {

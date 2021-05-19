@@ -20,7 +20,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Required] The ID of the project containing this routine.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         /// </summary>
@@ -30,12 +30,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         private RoutineReferenceResponse(
             string datasetId,
 
-            string projectId,
+            string project,
 
             string routineId)
         {
             DatasetId = datasetId;
-            ProjectId = projectId;
+            Project = project;
             RoutineId = routineId;
         }
     }

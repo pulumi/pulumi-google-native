@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// Project ID owning the service account to which the key authenticates.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The link to this resource.
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("accessId", required: true)]
         public Input<string> AccessId { get; set; } = null!;
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("serviceAccountEmail", required: true)]
         public Input<string> ServiceAccountEmail { get; set; } = null!;

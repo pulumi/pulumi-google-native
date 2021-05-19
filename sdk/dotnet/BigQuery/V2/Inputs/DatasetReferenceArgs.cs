@@ -21,8 +21,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// [Optional] The ID of the project containing this dataset.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         public DatasetReferenceArgs()
         {

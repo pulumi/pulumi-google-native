@@ -120,17 +120,14 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("accessConfig")]
         public Input<Inputs.RuntimeAccessConfigArgs>? AccessConfig { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("runtimeId", required: true)]
         public Input<string> RuntimeId { get; set; } = null!;
-
-        [Input("runtimesId", required: true)]
-        public Input<string> RuntimesId { get; set; } = null!;
 
         /// <summary>
         /// The config settings for software inside the runtime.

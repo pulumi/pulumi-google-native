@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
@@ -99,11 +99,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("referencesId", required: true)]
-        public Input<string> ReferencesId { get; set; } = null!;
+        [Input("referenceId", required: true)]
+        public Input<string> ReferenceId { get; set; } = null!;
 
         /// <summary>
         /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.

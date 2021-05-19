@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// <summary>
         /// The cloud project @OutputOnly
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// A sample series id @OutputOnly
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// <summary>
         /// The cloud project @OutputOnly
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A sample series id @OutputOnly

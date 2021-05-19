@@ -93,8 +93,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("dataCollectorId")]
         public Input<string>? DataCollectorId { get; set; }
 
-        [Input("datacollectorsId", required: true)]
-        public Input<string> DatacollectorsId { get; set; } = null!;
+        [Input("datacollectorId", required: true)]
+        public Input<string> DatacollectorId { get; set; } = null!;
 
         /// <summary>
         /// A description of the data collector.
@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The type of data this data collector will collect.

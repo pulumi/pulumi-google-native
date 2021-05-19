@@ -210,14 +210,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("migrationJobId", required: true)]
         public Input<string> MigrationJobId { get; set; } = null!;
-
-        [Input("migrationJobsId", required: true)]
-        public Input<string> MigrationJobsId { get; set; } = null!;
 
         /// <summary>
         /// The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
@@ -225,8 +222,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

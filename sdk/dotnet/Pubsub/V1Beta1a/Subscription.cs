@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         [Input("pushConfig")]
         public Input<Inputs.PushConfigArgs>? PushConfig { get; set; }
 
-        [Input("subscriptionsId", required: true)]
-        public Input<string> SubscriptionsId { get; set; } = null!;
+        [Input("subscriptionId", required: true)]
+        public Input<string> SubscriptionId { get; set; } = null!;
 
         /// <summary>
         /// The name of the topic from which this subscription is receiving messages.

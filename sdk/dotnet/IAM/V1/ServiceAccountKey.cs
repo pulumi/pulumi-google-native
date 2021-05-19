@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("keyAlgorithm")]
         public Input<string>? KeyAlgorithm { get; set; }
 
-        [Input("keysId", required: true)]
-        public Input<string> KeysId { get; set; } = null!;
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
 
         /// <summary>
         /// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
@@ -129,11 +129,11 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("privateKeyType")]
         public Input<string>? PrivateKeyType { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("serviceAccountsId", required: true)]
-        public Input<string> ServiceAccountsId { get; set; } = null!;
+        [Input("serviceAccountId", required: true)]
+        public Input<string> ServiceAccountId { get; set; } = null!;
 
         public ServiceAccountKeyArgs()
         {

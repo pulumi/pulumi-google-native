@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
 
     public sealed class FolderContactArgs : Pulumi.ResourceArgs
     {
-        [Input("contactsId", required: true)]
-        public Input<string> ContactsId { get; set; } = null!;
+        [Input("contactId", required: true)]
+        public Input<string> ContactId { get; set; } = null!;
 
         /// <summary>
         /// Required. The email address to send notifications to. This does not need to be a Google account.
@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         [Input("email")]
         public Input<string>? Email { get; set; }
 
-        [Input("foldersId", required: true)]
-        public Input<string> FoldersId { get; set; } = null!;
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
 
         /// <summary>
         /// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.

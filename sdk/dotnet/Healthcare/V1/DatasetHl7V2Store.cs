@@ -90,14 +90,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 
     public sealed class DatasetHl7V2StoreArgs : Pulumi.ResourceArgs
     {
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         [Input("hl7V2StoreId")]
         public Input<string>? Hl7V2StoreId { get; set; }
-
-        [Input("hl7V2StoresId", required: true)]
-        public Input<string> Hl7V2StoresId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -111,8 +108,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the HL7v2 store, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`.
@@ -138,8 +135,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         [Input("parserConfig")]
         public Input<Inputs.ParserConfigArgs>? ParserConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Determines whether to reject duplicate messages. A duplicate message is a message with the same raw bytes as a message that has already been ingested/created in this HL7v2 store. The default value is false, meaning that the store accepts the duplicate messages and it also returns the same ACK message in the IngestMessageResponse as has been returned previously. Note that only one resource is created in the store. When this field is set to true, CreateMessage/IngestMessage requests with a duplicate message will be rejected by the store, and IngestMessageErrorDetail returns a NACK message upon rejection.

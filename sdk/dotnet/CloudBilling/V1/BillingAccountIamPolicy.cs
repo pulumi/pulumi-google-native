@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
             set => _auditConfigs = value;
         }
 
-        [Input("billingAccountsId", required: true)]
-        public Input<string> BillingAccountsId { get; set; } = null!;
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
 
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;

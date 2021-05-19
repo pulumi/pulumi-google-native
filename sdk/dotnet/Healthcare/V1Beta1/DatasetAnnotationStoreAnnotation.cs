@@ -96,17 +96,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
 
     public sealed class DatasetAnnotationStoreAnnotationArgs : Pulumi.ResourceArgs
     {
+        [Input("annotationId", required: true)]
+        public Input<string> AnnotationId { get; set; } = null!;
+
         /// <summary>
         /// Details of the source.
         /// </summary>
         [Input("annotationSource")]
         public Input<Inputs.AnnotationSourceArgs>? AnnotationSource { get; set; }
 
-        [Input("annotationStoresId", required: true)]
-        public Input<string> AnnotationStoresId { get; set; } = null!;
-
-        [Input("annotationsId", required: true)]
-        public Input<string> AnnotationsId { get; set; } = null!;
+        [Input("annotationStoreId", required: true)]
+        public Input<string> AnnotationStoreId { get; set; } = null!;
 
         [Input("customData")]
         private InputMap<string>? _customData;
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _customData = value;
         }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
         /// Annotations for images. For example, bounding polygons.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("imageAnnotation")]
         public Input<Inputs.ImageAnnotationArgs>? ImageAnnotation { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Annotations for resource. For example, classification tags.

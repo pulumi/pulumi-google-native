@@ -114,14 +114,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
         /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used:paths: "bindings, etag"

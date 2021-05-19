@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// An OpenId Connect 1.0 identity provider.
@@ -165,17 +165,17 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("oidc")]
         public Input<Inputs.OidcArgs>? Oidc { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("providersId", required: true)]
-        public Input<string> ProvidersId { get; set; } = null!;
+        [Input("providerId", required: true)]
+        public Input<string> ProviderId { get; set; } = null!;
+
+        [Input("workloadIdentityPoolId", required: true)]
+        public Input<string> WorkloadIdentityPoolId { get; set; } = null!;
 
         [Input("workloadIdentityPoolProviderId", required: true)]
         public Input<string> WorkloadIdentityPoolProviderId { get; set; } = null!;
-
-        [Input("workloadIdentityPoolsId", required: true)]
-        public Input<string> WorkloadIdentityPoolsId { get; set; } = null!;
 
         public WorkloadIdentityPoolProviderArgs()
         {

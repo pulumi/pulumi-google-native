@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("groupByTimeUnit")]
         public Input<string>? GroupByTimeUnit { get; set; }
 
-        [Input("hostQueriesId", required: true)]
-        public Input<string> HostQueriesId { get; set; } = null!;
+        [Input("hostQueryId", required: true)]
+        public Input<string> HostQueryId { get; set; } = null!;
 
         /// <summary>
         /// Maximum number of rows that can be returned in the result.
@@ -201,8 +201,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.

@@ -111,17 +111,14 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
 
-        [Input("bucketsId", required: true)]
-        public Input<string> BucketsId { get; set; } = null!;
-
         /// <summary>
         /// Describes this bucket.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
@@ -129,8 +126,8 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("locked")]
         public Input<bool>? Locked { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("restrictedFields")]
         private InputList<string>? _restrictedFields;

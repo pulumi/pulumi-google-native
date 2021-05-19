@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("sSLInfo")]
         public Input<Inputs.GoogleCloudApigeeV1TlsInfoArgs>? SSLInfo { get; set; }
 
-        [Input("targetserversId", required: true)]
-        public Input<string> TargetserversId { get; set; } = null!;
+        [Input("targetserverId", required: true)]
+        public Input<string> TargetserverId { get; set; } = null!;
 
         public OrganizationEnvironmentTargetserverArgs()
         {

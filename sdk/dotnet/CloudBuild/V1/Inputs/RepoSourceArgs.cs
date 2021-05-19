@@ -42,8 +42,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         /// <summary>
         /// ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Name of the Cloud Source Repository.

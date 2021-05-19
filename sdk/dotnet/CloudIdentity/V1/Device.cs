@@ -237,8 +237,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         [Input("customer")]
         public Input<string>? Customer { get; set; }
 
-        [Input("devicesId", required: true)]
-        public Input<string> DevicesId { get; set; } = null!;
+        [Input("deviceId", required: true)]
+        public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
         /// Most recent time when device synced with this service.

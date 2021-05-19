@@ -138,11 +138,11 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("inspectJob")]
         public Input<Inputs.GooglePrivacyDlpV2InspectJobConfigArgs>? InspectJob { get; set; }
 
-        [Input("jobTriggersId", required: true)]
-        public Input<string> JobTriggersId { get; set; } = null!;
+        [Input("jobTriggerId", required: true)]
+        public Input<string> JobTriggerId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. A status for this trigger.

@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         [Input("collectionId")]
         public Input<string>? CollectionId { get; set; }
 
-        [Input("databasesId", required: true)]
-        public Input<string> DatabasesId { get; set; } = null!;
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
 
         [Input("fields")]
         private InputList<Inputs.GoogleFirestoreAdminV1beta1IndexFieldArgs>? _fields;
@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
             set => _fields = value;
         }
 
-        [Input("indexesId", required: true)]
-        public Input<string> IndexesId { get; set; } = null!;
+        [Input("indexId", required: true)]
+        public Input<string> IndexId { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the index. Output only.
@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The state of the index. Output only.

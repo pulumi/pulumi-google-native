@@ -246,8 +246,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         [Input("podIpv4CidrSize")]
         public Input<int>? PodIpv4CidrSize { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [Output only] Server-defined URL for the resource.

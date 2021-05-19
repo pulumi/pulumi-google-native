@@ -123,14 +123,11 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
-        [Input("keysId", required: true)]
-        public Input<string> KeysId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Key restrictions.

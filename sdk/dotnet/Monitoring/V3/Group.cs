@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        [Input("groupsId", required: true)]
-        public Input<string> GroupsId { get; set; } = null!;
+        [Input("groupId", required: true)]
+        public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
         /// If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("parentName")]
         public Input<string>? ParentName { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

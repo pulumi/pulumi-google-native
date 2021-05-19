@@ -54,8 +54,8 @@ namespace Pulumi.GoogleNative.IAM.V1
         /// <summary>
         /// The ID of the project that owns the service account.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
@@ -132,11 +132,11 @@ namespace Pulumi.GoogleNative.IAM.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("serviceAccountsId", required: true)]
-        public Input<string> ServiceAccountsId { get; set; } = null!;
+        [Input("serviceAccountId", required: true)]
+        public Input<string> ServiceAccountId { get; set; } = null!;
 
         public ServiceAccountArgs()
         {

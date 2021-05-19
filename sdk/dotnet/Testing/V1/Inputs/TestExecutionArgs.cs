@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         /// <summary>
         /// The cloud project that owns the test execution.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details about the shard.

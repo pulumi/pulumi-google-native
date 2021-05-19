@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// The ID of the project.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// The name of the repo. Leave empty for the default repo.
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdResponse(
-            string projectId,
+            string project,
 
             string repoName)
         {
-            ProjectId = projectId;
+            Project = project;
             RepoName = repoName;
         }
     }

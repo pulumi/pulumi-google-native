@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
     public sealed class AppAuthorizedCertificateArgs : Pulumi.ResourceArgs
     {
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
-        [Input("authorizedCertificatesId", required: true)]
-        public Input<string> AuthorizedCertificatesId { get; set; } = null!;
+        [Input("authorizedCertificateId", required: true)]
+        public Input<string> AuthorizedCertificateId { get; set; } = null!;
 
         /// <summary>
         /// The SSL certificate serving the AuthorizedCertificate resource. This must be obtained independently from a certificate authority.

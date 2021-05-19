@@ -138,11 +138,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("exportsId", required: true)]
-        public Input<string> ExportsId { get; set; } = null!;
+        [Input("exportId", required: true)]
+        public Input<string> ExportId { get; set; } = null!;
 
         /// <summary>
         /// Required. Display name of the export job.
@@ -150,8 +150,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.

@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationInstanceCanaryevaluationArgs : Pulumi.ResourceArgs
     {
-        [Input("canaryevaluationsId", required: true)]
-        public Input<string> CanaryevaluationsId { get; set; } = null!;
+        [Input("canaryevaluationId", required: true)]
+        public Input<string> CanaryevaluationId { get; set; } = null!;
 
         /// <summary>
         /// Required. The stable version that is serving requests.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// Required. Labels used to filter the metrics used for a canary evaluation.
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("metricLabels")]
         public Input<Inputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>? MetricLabels { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Required. Start time for the canary evaluation's analysis.

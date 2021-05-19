@@ -108,14 +108,11 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("metadataImportId", required: true)]
         public Input<string> MetadataImportId { get; set; } = null!;
-
-        [Input("metadataImportsId", required: true)]
-        public Input<string> MetadataImportsId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
@@ -123,14 +120,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         public ServiceMetadataImportArgs()
         {

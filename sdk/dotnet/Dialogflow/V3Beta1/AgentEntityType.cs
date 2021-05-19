@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentEntityTypeArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether the entity type can be automatically expanded.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
             set => _entities = value;
         }
 
-        [Input("entityTypesId", required: true)]
-        public Input<string> EntityTypesId { get; set; } = null!;
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
 
         [Input("excludedPhrases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs>? _excludedPhrases;
@@ -165,8 +165,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether parameters of the entity type should be redacted in log. If redaction is enabled, page parameters and intent parameters referring to the entity type will be replaced by parameter name during logging.

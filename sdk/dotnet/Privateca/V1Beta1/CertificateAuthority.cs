@@ -168,9 +168,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
 
     public sealed class CertificateAuthorityArgs : Pulumi.ResourceArgs
     {
-        [Input("certificateAuthoritiesId", required: true)]
-        public Input<string> CertificateAuthoritiesId { get; set; } = null!;
-
         [Input("certificateAuthorityId", required: true)]
         public Input<string> CertificateAuthorityId { get; set; } = null!;
 
@@ -222,11 +219,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

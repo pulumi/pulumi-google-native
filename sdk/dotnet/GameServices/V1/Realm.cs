@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
@@ -135,14 +135,11 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("realmId", required: true)]
         public Input<string> RealmId { get; set; } = null!;
-
-        [Input("realmsId", required: true)]
-        public Input<string> RealmsId { get; set; } = null!;
 
         /// <summary>
         /// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.

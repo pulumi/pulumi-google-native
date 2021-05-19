@@ -84,11 +84,11 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
     public sealed class InstanceDatabaseSessionArgs : Pulumi.ResourceArgs
     {
-        [Input("databasesId", required: true)]
-        public Input<string> DatabasesId { get; set; } = null!;
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -102,11 +102,11 @@ namespace Pulumi.GoogleNative.Spanner.V1
             set => _labels = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("sessionsId", required: true)]
-        public Input<string> SessionsId { get; set; } = null!;
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
 
         public InstanceDatabaseSessionArgs()
         {

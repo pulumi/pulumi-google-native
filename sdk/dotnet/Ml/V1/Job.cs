@@ -159,11 +159,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// <summary>
         /// Required. The user-specified id of the job.
         /// </summary>
-        [Input("jobId")]
-        public Input<string>? JobId { get; set; }
-
-        [Input("jobsId", required: true)]
-        public Input<string> JobsId { get; set; } = null!;
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -189,8 +186,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("predictionOutput")]
         public Input<Inputs.GoogleCloudMlV1__PredictionOutputArgs>? PredictionOutput { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// When the job processing was started.

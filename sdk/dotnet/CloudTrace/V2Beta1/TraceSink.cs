@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         [Input("outputConfig")]
         public Input<Inputs.OutputConfigArgs>? OutputConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("traceSinksId", required: true)]
-        public Input<string> TraceSinksId { get; set; } = null!;
+        [Input("traceSinkId", required: true)]
+        public Input<string> TraceSinkId { get; set; } = null!;
 
         public TraceSinkArgs()
         {

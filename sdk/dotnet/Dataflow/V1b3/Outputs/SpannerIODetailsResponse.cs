@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// ProjectId accessed in the connection.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private SpannerIODetailsResponse(
@@ -32,11 +32,11 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             string instanceId,
 
-            string projectId)
+            string project)
         {
             DatabaseId = databaseId;
             InstanceId = instanceId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

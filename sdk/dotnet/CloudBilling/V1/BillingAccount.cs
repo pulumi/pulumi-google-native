@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
 
     public sealed class BillingAccountArgs : Pulumi.ResourceArgs
     {
-        [Input("billingAccountsId", required: true)]
-        public Input<string> BillingAccountsId { get; set; } = null!;
+        [Input("billingAccountId", required: true)]
+        public Input<string> BillingAccountId { get; set; } = null!;
 
         /// <summary>
         /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.

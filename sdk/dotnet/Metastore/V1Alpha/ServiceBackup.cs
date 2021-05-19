@@ -99,17 +99,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 
-        [Input("backupsId", required: true)]
-        public Input<string> BackupsId { get; set; } = null!;
-
         /// <summary>
         /// The description of the backup.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
@@ -117,14 +114,14 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         public ServiceBackupArgs()
         {

@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
 
     public sealed class SettingDatasourceArgs : Pulumi.ResourceArgs
     {
-        [Input("datasourcesId", required: true)]
-        public Input<string> DatasourcesId { get; set; } = null!;
+        [Input("datasourceId", required: true)]
+        public Input<string> DatasourceId { get; set; } = null!;
 
         /// <summary>
         /// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.

@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("tagKeysId", required: true)]
-        public Input<string> TagKeysId { get; set; } = null!;
+        [Input("tagKeyId", required: true)]
+        public Input<string> TagKeyId { get; set; } = null!;
 
         /// <summary>
         /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

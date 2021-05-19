@@ -114,11 +114,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("sharedflowsId", required: true)]
-        public Input<string> SharedflowsId { get; set; } = null!;
+        [Input("sharedflowId", required: true)]
+        public Input<string> SharedflowId { get; set; } = null!;
 
         public OrganizationSharedflowArgs()
         {

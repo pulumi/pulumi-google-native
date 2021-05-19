@@ -102,11 +102,11 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 
     public sealed class CatalogCatalogItemArgs : Pulumi.ResourceArgs
     {
-        [Input("catalogItemsId", required: true)]
-        public Input<string> CatalogItemsId { get; set; } = null!;
+        [Input("catalogId", required: true)]
+        public Input<string> CatalogId { get; set; } = null!;
 
-        [Input("catalogsId", required: true)]
-        public Input<string> CatalogsId { get; set; } = null!;
+        [Input("catalogItemId", required: true)]
+        public Input<string> CatalogItemId { get; set; } = null!;
 
         [Input("categoryHierarchies")]
         private InputList<Inputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>? _categoryHierarchies;
@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("itemGroupId")]
         public Input<string>? ItemGroupId { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Optional. Metadata specific to retail products.
@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("productMetadata")]
         public Input<Inputs.GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs>? ProductMetadata { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("tags")]
         private InputList<string>? _tags;

@@ -246,11 +246,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             set => _inputContextNames = value;
         }
 
+        [Input("intentId", required: true)]
+        public Input<string> IntentId { get; set; } = null!;
+
         [Input("intentView")]
         public Input<string>? IntentView { get; set; }
-
-        [Input("intentsId", required: true)]
-        public Input<string> IntentsId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Indicates whether this is a fallback intent.
@@ -267,8 +267,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("liveAgentHandoff")]
         public Input<bool>? LiveAgentHandoff { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("messages")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageArgs>? _messages;
@@ -330,8 +330,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.

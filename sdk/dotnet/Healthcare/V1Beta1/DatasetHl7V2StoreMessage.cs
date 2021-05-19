@@ -126,11 +126,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("data")]
         public Input<string>? Data { get; set; }
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
-        [Input("hl7V2StoresId", required: true)]
-        public Input<string> Hl7V2StoresId { get; set; } = null!;
+        [Input("hl7V2StoreId", required: true)]
+        public Input<string> Hl7V2StoreId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -144,17 +144,17 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
+
+        [Input("messageId", required: true)]
+        public Input<string> MessageId { get; set; } = null!;
 
         /// <summary>
         /// The message type for this message. MSH-9.1.
         /// </summary>
         [Input("messageType")]
         public Input<string>? MessageType { get; set; }
-
-        [Input("messagesId", required: true)]
-        public Input<string> MessagesId { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _patientIds = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The parsed version of the raw message data schematized according to this store's schemas and type definitions.

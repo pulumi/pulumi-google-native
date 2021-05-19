@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("pubsubConfigs")]
         private InputMap<string>? _pubsubConfigs;
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
             set => _pubsubConfigs = value;
         }
 
-        [Input("reposId", required: true)]
-        public Input<string> ReposId { get; set; } = null!;
+        [Input("repoId", required: true)]
+        public Input<string> RepoId { get; set; } = null!;
 
         /// <summary>
         /// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.

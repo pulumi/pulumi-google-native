@@ -72,8 +72,8 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
 
     public sealed class RepositoryPackageTagArgs : Pulumi.ResourceArgs
     {
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
@@ -81,20 +81,17 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("packagesId", required: true)]
-        public Input<string> PackagesId { get; set; } = null!;
+        [Input("packageId", required: true)]
+        public Input<string> PackageId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("repositoriesId", required: true)]
-        public Input<string> RepositoriesId { get; set; } = null!;
+        [Input("repositoryId", required: true)]
+        public Input<string> RepositoryId { get; set; } = null!;
 
         [Input("tagId")]
         public Input<string>? TagId { get; set; }
-
-        [Input("tagsId", required: true)]
-        public Input<string> TagsId { get; set; } = null!;
 
         /// <summary>
         /// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"

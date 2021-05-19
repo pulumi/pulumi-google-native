@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         /// <summary>
         /// ID of the project.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Details of the Source input to the build.

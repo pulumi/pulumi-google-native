@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
 
     public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
     {
-        [Input("accessPoliciesId", required: true)]
-        public Input<string> AccessPoliciesId { get; set; } = null!;
+        [Input("accessPolicyId", required: true)]
+        public Input<string> AccessPolicyId { get; set; } = null!;
 
         /// <summary>
         /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`

@@ -126,14 +126,14 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("consentArtifact")]
         public Input<string>? ConsentArtifact { get; set; }
 
-        [Input("consentStoresId", required: true)]
-        public Input<string> ConsentStoresId { get; set; } = null!;
+        [Input("consentId", required: true)]
+        public Input<string> ConsentId { get; set; } = null!;
 
-        [Input("consentsId", required: true)]
-        public Input<string> ConsentsId { get; set; } = null!;
+        [Input("consentStoreId", required: true)]
+        public Input<string> ConsentStoreId { get; set; } = null!;
 
-        [Input("datasetsId", required: true)]
-        public Input<string> DatasetsId { get; set; } = null!;
+        [Input("datasetId", required: true)]
+        public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
         /// Timestamp in UTC of when this Consent is considered expired.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("metadata")]
         private InputMap<string>? _metadata;
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
             set => _policies = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Indicates the current state of this Consent.

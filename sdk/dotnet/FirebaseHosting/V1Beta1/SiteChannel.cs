@@ -117,9 +117,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("channelId", required: true)]
         public Input<string> ChannelId { get; set; } = null!;
 
-        [Input("channelsId", required: true)]
-        public Input<string> ChannelsId { get; set; } = null!;
-
         /// <summary>
         /// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
         /// </summary>
@@ -150,8 +147,8 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         [Input("retainedReleaseCount")]
         public Input<int>? RetainedReleaseCount { get; set; }
 
-        [Input("sitesId", required: true)]
-        public Input<string> SitesId { get; set; } = null!;
+        [Input("siteId", required: true)]
+        public Input<string> SiteId { get; set; } = null!;
 
         /// <summary>
         /// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.

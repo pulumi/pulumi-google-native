@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// [Output-only] A URL that can be used to access this resource again.

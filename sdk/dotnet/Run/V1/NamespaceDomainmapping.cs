@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        [Input("domainmappingsId", required: true)]
-        public Input<string> DomainmappingsId { get; set; } = null!;
+        [Input("domainmappingId", required: true)]
+        public Input<string> DomainmappingId { get; set; } = null!;
 
         [Input("dryRun")]
         public Input<string>? DryRun { get; set; }
@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        [Input("namespacesId", required: true)]
-        public Input<string> NamespacesId { get; set; } = null!;
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
 
         /// <summary>
         /// The spec for this DomainMapping.

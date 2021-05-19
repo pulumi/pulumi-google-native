@@ -165,9 +165,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
-
         /// <summary>
         /// Configuration for how to query telemetry on a Service.
         /// </summary>

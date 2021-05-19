@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentIntentArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("intentsId", required: true)]
-        public Input<string> IntentsId { get; set; } = null!;
+        [Input("intentId", required: true)]
+        public Input<string> IntentId { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the intent. Required for the Intents.UpdateIntent method. Intents.CreateIntent populates the name automatically. Format: `projects//locations//agents//intents/`.
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("trainingPhrases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs>? _trainingPhrases;

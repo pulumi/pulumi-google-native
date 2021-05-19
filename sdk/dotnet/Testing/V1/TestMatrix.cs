@@ -54,8 +54,8 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// <summary>
         /// The cloud project that owns the test matrix.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Required. Where the results for the matrix are written.
@@ -177,8 +177,8 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// <summary>
         /// The cloud project that owns the test matrix.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

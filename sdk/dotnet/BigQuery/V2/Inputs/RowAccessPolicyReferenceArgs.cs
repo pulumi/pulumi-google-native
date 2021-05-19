@@ -27,8 +27,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         /// <summary>
         /// [Required] The ID of the project containing this row access policy.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// [Required] The ID of the table containing this row access policy.

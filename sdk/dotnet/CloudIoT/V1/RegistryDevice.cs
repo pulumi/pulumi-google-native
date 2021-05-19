@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
             set => _credentials = value;
         }
 
-        [Input("devicesId", required: true)]
-        public Input<string> DevicesId { get; set; } = null!;
+        [Input("deviceId", required: true)]
+        public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
         /// Gateway-related configuration and state.
@@ -237,8 +237,8 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("lastStateTime")]
         public Input<string>? LastStateTime { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
@@ -270,11 +270,11 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         [Input("numId")]
         public Input<string>? NumId { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("registriesId", required: true)]
-        public Input<string> RegistriesId { get; set; } = null!;
+        [Input("registryId", required: true)]
+        public Input<string> RegistryId { get; set; } = null!;
 
         /// <summary>
         /// [Output only] The state most recently received from the device. If no state has been reported, this field is not present.

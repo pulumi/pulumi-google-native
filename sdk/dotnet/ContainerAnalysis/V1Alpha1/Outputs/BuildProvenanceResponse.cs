@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// ID of the project.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Details of the Source input to the build.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string logsBucket,
 
-            string projectId,
+            string project,
 
             Outputs.SourceResponse sourceProvenance,
 
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
             Creator = creator;
             FinishTime = finishTime;
             LogsBucket = logsBucket;
-            ProjectId = projectId;
+            Project = project;
             SourceProvenance = sourceProvenance;
             StartTime = startTime;
             TriggerId = triggerId;

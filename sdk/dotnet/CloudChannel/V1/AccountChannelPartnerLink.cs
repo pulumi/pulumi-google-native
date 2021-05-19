@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
 
     public sealed class AccountChannelPartnerLinkArgs : Pulumi.ResourceArgs
     {
-        [Input("accountsId", required: true)]
-        public Input<string> AccountsId { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
-        [Input("channelPartnerLinksId", required: true)]
-        public Input<string> ChannelPartnerLinksId { get; set; } = null!;
+        [Input("channelPartnerLinkId", required: true)]
+        public Input<string> ChannelPartnerLinkId { get; set; } = null!;
 
         /// <summary>
         /// Required. State of the channel partner link.

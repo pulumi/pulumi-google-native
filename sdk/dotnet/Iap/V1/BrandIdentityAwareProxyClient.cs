@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Iap.V1
 
     public sealed class BrandIdentityAwareProxyClientArgs : Pulumi.ResourceArgs
     {
-        [Input("brandsId", required: true)]
-        public Input<string> BrandsId { get; set; } = null!;
+        [Input("brandId", required: true)]
+        public Input<string> BrandId { get; set; } = null!;
 
         /// <summary>
         /// Human-friendly name given to the OAuth client.
@@ -87,11 +87,11 @@ namespace Pulumi.GoogleNative.Iap.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("identityAwareProxyClientsId", required: true)]
-        public Input<string> IdentityAwareProxyClientsId { get; set; } = null!;
+        [Input("identityAwareProxyClientId", required: true)]
+        public Input<string> IdentityAwareProxyClientId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public BrandIdentityAwareProxyClientArgs()
         {

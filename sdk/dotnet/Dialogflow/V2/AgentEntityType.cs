@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
             set => _entities = value;
         }
 
-        [Input("entityTypesId", required: true)]
-        public Input<string> EntityTypesId { get; set; } = null!;
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
 
         /// <summary>
         /// Required. Indicates the kind of entity type.
@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public AgentEntityTypeArgs()
         {

@@ -162,11 +162,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("inputUri")]
         public Input<string>? InputUri { get; set; }
 
-        [Input("jobsId", required: true)]
-        public Input<string> JobsId { get; set; } = null!;
+        [Input("jobId", required: true)]
+        public Input<string> JobId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the job. Format: `projects/{project}/locations/{location}/jobs/{job}`
@@ -186,8 +186,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Input only. Specify the `template_id` to use for populating `Job.config`. The default is `preset/web-hd`. Preset Transcoder templates: - `preset/{preset_id}` - User defined JobTemplate: `{job_template_id}`

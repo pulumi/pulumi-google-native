@@ -273,9 +273,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -288,8 +285,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Network configuration options. These are required when a private Data Fusion instance is to be created.
@@ -315,8 +312,8 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         [Input("privateInstance")]
         public Input<bool>? PrivateInstance { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Instance type.

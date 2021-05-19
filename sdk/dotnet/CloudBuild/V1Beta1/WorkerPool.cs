@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
     public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
     {
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Network configuration for the `WorkerPool`.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
         [Input("networkConfig")]
         public Input<Inputs.NetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Worker configuration for the `WorkerPool`.
@@ -122,9 +122,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 
         [Input("workerPoolId", required: true)]
         public Input<string> WorkerPoolId { get; set; } = null!;
-
-        [Input("workerPoolsId", required: true)]
-        public Input<string> WorkerPoolsId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

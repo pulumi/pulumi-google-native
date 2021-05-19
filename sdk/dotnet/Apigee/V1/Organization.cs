@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Project ID associated with the Apigee organization.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Properties defined in the Apigee organization profile.
@@ -234,8 +234,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("parent", required: true)]
         public Input<string> Parent { get; set; } = null!;

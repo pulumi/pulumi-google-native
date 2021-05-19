@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationEnvgroupAttachmentArgs : Pulumi.ResourceArgs
     {
-        [Input("attachmentsId", required: true)]
-        public Input<string> AttachmentsId { get; set; } = null!;
+        [Input("attachmentId", required: true)]
+        public Input<string> AttachmentId { get; set; } = null!;
 
-        [Input("envgroupsId", required: true)]
-        public Input<string> EnvgroupsId { get; set; } = null!;
+        [Input("envgroupId", required: true)]
+        public Input<string> EnvgroupId { get; set; } = null!;
 
         /// <summary>
         /// Required. ID of the attached environment.
@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         public OrganizationEnvgroupAttachmentArgs()
         {

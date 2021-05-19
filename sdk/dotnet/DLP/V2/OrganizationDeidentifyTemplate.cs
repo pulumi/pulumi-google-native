@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("deidentifyConfig")]
         public Input<Inputs.GooglePrivacyDlpV2DeidentifyConfigArgs>? DeidentifyConfig { get; set; }
 
-        [Input("deidentifyTemplatesId", required: true)]
-        public Input<string> DeidentifyTemplatesId { get; set; } = null!;
+        [Input("deidentifyTemplateId", required: true)]
+        public Input<string> DeidentifyTemplateId { get; set; } = null!;
 
         /// <summary>
         /// Short description (max 256 chars).
@@ -117,11 +117,11 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
 
     public sealed class AdminTopicArgs : Pulumi.ResourceArgs
     {
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -93,8 +93,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("partitionConfig")]
         public Input<Inputs.PartitionConfigArgs>? PartitionConfig { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The settings for this topic's message retention.
@@ -104,9 +104,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
 
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;
-
-        [Input("topicsId", required: true)]
-        public Input<string> TopicsId { get; set; } = null!;
 
         public AdminTopicArgs()
         {

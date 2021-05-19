@@ -189,9 +189,6 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
             set => _instanceMessages = value;
         }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -204,8 +201,8 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
@@ -237,8 +234,8 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2
         [Input("parameters")]
         public Input<Inputs.MemcacheParametersArgs>? Parameters { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("zones")]
         private InputList<string>? _zones;

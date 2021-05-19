@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.VPCAccess.V1.Outputs
         /// <summary>
         /// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private SubnetResponse(
             string name,
 
-            string projectId)
+            string project)
         {
             Name = name;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("inspectTemplate")]
         public Input<string>? InspectTemplate { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("purgeDataTypes")]
         private InputList<string>? _purgeDataTypes;
@@ -156,8 +156,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("retentionWindowDays")]
         public Input<int>? RetentionWindowDays { get; set; }
 
-        [Input("securitySettingsId", required: true)]
-        public Input<string> SecuritySettingsId { get; set; } = null!;
+        [Input("securitySettingId", required: true)]
+        public Input<string> SecuritySettingId { get; set; } = null!;
 
         public SecuritySettingArgs()
         {

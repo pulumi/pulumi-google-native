@@ -126,6 +126,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("rollingPeriod")]
         public Input<string>? RollingPeriod { get; set; }
 
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
+
         /// <summary>
         /// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
         /// </summary>
@@ -134,12 +137,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
         [Input("serviceLevelObjectiveId")]
         public Input<string>? ServiceLevelObjectiveId { get; set; }
-
-        [Input("serviceLevelObjectivesId", required: true)]
-        public Input<string> ServiceLevelObjectivesId { get; set; } = null!;
-
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
 
         [Input("v3Id", required: true)]
         public Input<string> V3Id { get; set; } = null!;

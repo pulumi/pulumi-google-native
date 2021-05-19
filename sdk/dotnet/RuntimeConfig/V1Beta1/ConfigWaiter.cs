@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 
     public sealed class ConfigWaiterArgs : Pulumi.ResourceArgs
     {
-        [Input("configsId", required: true)]
-        public Input<string> ConfigsId { get; set; } = null!;
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
 
         /// <summary>
         /// The instant at which this Waiter resource was created. Adding the value of `timeout` to this instant yields the timeout deadline for the waiter.
@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("waitersId", required: true)]
-        public Input<string> WaitersId { get; set; } = null!;
+        [Input("waiterId", required: true)]
+        public Input<string> WaiterId { get; set; } = null!;
 
         public ConfigWaiterArgs()
         {

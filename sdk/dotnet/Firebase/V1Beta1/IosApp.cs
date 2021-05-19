@@ -48,8 +48,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
 
         /// <summary>
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("iosAppsId", required: true)]
-        public Input<string> IosAppsId { get; set; } = null!;
+        [Input("iosAppId", required: true)]
+        public Input<string> IosAppId { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the IosApp, in the format: projects/PROJECT_IDENTIFIER /iosApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.iosApps#IosApp.FIELDS.app_id)).
@@ -132,11 +132,8 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// <summary>
         /// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `IosApp`.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public IosAppArgs()
         {

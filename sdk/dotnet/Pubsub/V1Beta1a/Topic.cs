@@ -72,8 +72,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("topicsId", required: true)]
-        public Input<string> TopicsId { get; set; } = null!;
+        [Input("topicId", required: true)]
+        public Input<string> TopicId { get; set; } = null!;
 
         public TopicArgs()
         {

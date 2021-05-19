@@ -78,11 +78,11 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 
     public sealed class AppDomainMappingArgs : Pulumi.ResourceArgs
     {
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
-        [Input("domainMappingsId", required: true)]
-        public Input<string> DomainMappingsId { get; set; } = null!;
+        [Input("domainMappingId", required: true)]
+        public Input<string> DomainMappingId { get; set; } = null!;
 
         /// <summary>
         /// Relative name of the domain serving the application. Example: example.com.

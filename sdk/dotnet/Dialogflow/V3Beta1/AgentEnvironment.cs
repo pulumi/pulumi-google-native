@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentEnvironmentArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the environment. Format: `projects//locations//agents//environments/`.
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("versionConfigs")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs>? _versionConfigs;

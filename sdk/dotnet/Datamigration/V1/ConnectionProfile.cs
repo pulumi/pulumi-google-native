@@ -135,9 +135,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
 
-        [Input("connectionProfilesId", required: true)]
-        public Input<string> ConnectionProfilesId { get; set; } = null!;
-
         /// <summary>
         /// The connection profile display name.
         /// </summary>
@@ -156,8 +153,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// A MySQL database connection profile.
@@ -177,8 +174,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         [Input("postgresql")]
         public Input<Inputs.PostgreSqlConnectionProfileArgs>? Postgresql { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The database provider.

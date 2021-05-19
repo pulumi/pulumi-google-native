@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.DLP.V2
 
     public sealed class DlpJobArgs : Pulumi.ResourceArgs
     {
-        [Input("dlpJobsId", required: true)]
-        public Input<string> DlpJobsId { get; set; } = null!;
+        [Input("dlpJobId", required: true)]
+        public Input<string> DlpJobId { get; set; } = null!;
 
         /// <summary>
         /// An inspection job scans a storage repository for InfoTypes.
@@ -135,11 +135,11 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("jobId")]
         public Input<string>? JobId { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// A risk analysis job calculates re-identification risk metrics for a BigQuery table.

@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentFlowTransitionRouteGroupArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
@@ -87,14 +87,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("flowsId", required: true)]
-        public Input<string> FlowsId { get; set; } = null!;
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
 
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
@@ -102,11 +102,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("transitionRouteGroupsId", required: true)]
-        public Input<string> TransitionRouteGroupsId { get; set; } = null!;
+        [Input("transitionRouteGroupId", required: true)]
+        public Input<string> TransitionRouteGroupId { get; set; } = null!;
 
         [Input("transitionRoutes")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3TransitionRouteArgs>? _transitionRoutes;

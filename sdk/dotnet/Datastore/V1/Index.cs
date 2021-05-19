@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.Datastore.V1
         /// <summary>
         /// Project ID.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Required. An ordered sequence of property names and their index attributes.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Datastore.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("properties")]
         private InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs>? _properties;

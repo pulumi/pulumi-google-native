@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("sourcesId", required: true)]
-        public Input<string> SourcesId { get; set; } = null!;
+        [Input("sourceId", required: true)]
+        public Input<string> SourceId { get; set; } = null!;
 
         public OrganizationSourceArgs()
         {

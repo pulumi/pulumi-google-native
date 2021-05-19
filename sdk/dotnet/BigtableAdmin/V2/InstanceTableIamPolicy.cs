@@ -114,14 +114,14 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("tablesId", required: true)]
-        public Input<string> TablesId { get; set; } = null!;
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
 
         /// <summary>
         /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

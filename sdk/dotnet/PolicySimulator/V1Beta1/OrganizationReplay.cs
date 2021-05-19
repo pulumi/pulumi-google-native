@@ -90,14 +90,14 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         [Input("config")]
         public Input<Inputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>? Config { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("replaysId", required: true)]
-        public Input<string> ReplaysId { get; set; } = null!;
+        [Input("replayId", required: true)]
+        public Input<string> ReplayId { get; set; } = null!;
 
         public OrganizationReplayArgs()
         {

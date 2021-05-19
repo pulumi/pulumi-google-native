@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("apiProxy")]
         public Input<string>? ApiProxy { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// ID of the trace configuration override specified as a system-generated UUID.
@@ -93,11 +93,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("overridesId", required: true)]
-        public Input<string> OverridesId { get; set; } = null!;
+        [Input("overrideId", required: true)]
+        public Input<string> OverrideId { get; set; } = null!;
 
         /// <summary>
         /// Trace configuration to override.

@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentWebhookArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Indicates whether the webhook is disabled.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("genericWebService")]
         public Input<Inputs.GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs>? GenericWebService { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("webhooksId", required: true)]
-        public Input<string> WebhooksId { get; set; } = null!;
+        [Input("webhookId", required: true)]
+        public Input<string> WebhookId { get; set; } = null!;
 
         public AgentWebhookArgs()
         {

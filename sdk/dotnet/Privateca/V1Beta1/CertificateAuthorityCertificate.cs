@@ -126,14 +126,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
 
     public sealed class CertificateAuthorityCertificateArgs : Pulumi.ResourceArgs
     {
-        [Input("certificateAuthoritiesId", required: true)]
-        public Input<string> CertificateAuthoritiesId { get; set; } = null!;
+        [Input("certificateAuthorityId", required: true)]
+        public Input<string> CertificateAuthorityId { get; set; } = null!;
 
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }
-
-        [Input("certificatesId", required: true)]
-        public Input<string> CertificatesId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
@@ -159,8 +156,8 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Input("lifetime")]
         public Input<string>? Lifetime { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Immutable. A pem-encoded X.509 certificate signing request (CSR).
@@ -168,8 +165,8 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         [Input("pemCsr")]
         public Input<string>? PemCsr { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

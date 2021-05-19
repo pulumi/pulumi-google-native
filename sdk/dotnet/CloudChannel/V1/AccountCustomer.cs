@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
 
     public sealed class AccountCustomerArgs : Pulumi.ResourceArgs
     {
-        [Input("accountsId", required: true)]
-        public Input<string> AccountsId { get; set; } = null!;
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
@@ -147,8 +147,8 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         [Input("channelPartnerId")]
         public Input<string>? ChannelPartnerId { get; set; }
 
-        [Input("customersId", required: true)]
-        public Input<string> CustomersId { get; set; } = null!;
+        [Input("customerId", required: true)]
+        public Input<string> CustomerId { get; set; } = null!;
 
         /// <summary>
         /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.

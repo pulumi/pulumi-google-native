@@ -48,8 +48,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// <summary>
         /// Required. The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Cluster status.
@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// <summary>
         /// Required. The Google Cloud Platform project ID that the cluster belongs to.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

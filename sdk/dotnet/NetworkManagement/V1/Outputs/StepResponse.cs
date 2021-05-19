@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// <summary>
         /// Project ID that contains the configuration this step is validating.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Display info of a Compute Engine route.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             Outputs.NetworkInfoResponse network,
 
-            string projectId,
+            string project,
 
             Outputs.RouteInfoResponse route,
 
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Instance = instance;
             LoadBalancer = loadBalancer;
             Network = network;
-            ProjectId = projectId;
+            Project = project;
             Route = route;
             State = state;
             VpnGateway = vpnGateway;

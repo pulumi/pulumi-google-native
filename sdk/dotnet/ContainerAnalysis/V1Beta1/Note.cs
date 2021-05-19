@@ -231,17 +231,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         [Input("noteId", required: true)]
         public Input<string> NoteId { get; set; } = null!;
 
-        [Input("notesId", required: true)]
-        public Input<string> NotesId { get; set; } = null!;
-
         /// <summary>
         /// A note describing a package hosted by various package managers.
         /// </summary>
         [Input("package")]
         public Input<Inputs.PackageArgs>? Package { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("relatedNoteNames")]
         private InputList<string>? _relatedNoteNames;

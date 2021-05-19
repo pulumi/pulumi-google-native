@@ -132,8 +132,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentEnvironmentExperimentArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Creation time of this experiment.
@@ -165,8 +165,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
+
+        [Input("experimentId", required: true)]
+        public Input<string> ExperimentId { get; set; } = null!;
 
         /// <summary>
         /// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
@@ -174,17 +177,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("experimentLength")]
         public Input<string>? ExperimentLength { get; set; }
 
-        [Input("experimentsId", required: true)]
-        public Input<string> ExperimentsId { get; set; } = null!;
-
         /// <summary>
         /// Last update time of this experiment.
         /// </summary>
         [Input("lastUpdateTime")]
         public Input<string>? LastUpdateTime { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Inference result of the experiment.

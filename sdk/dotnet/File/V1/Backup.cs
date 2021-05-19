@@ -129,9 +129,6 @@ namespace Pulumi.GoogleNative.File.V1
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
 
-        [Input("backupsId", required: true)]
-        public Input<string> BackupsId { get; set; } = null!;
-
         /// <summary>
         /// A description of the backup with 2048 characters or less. Requests with longer descriptions will be rejected.
         /// </summary>
@@ -150,11 +147,11 @@ namespace Pulumi.GoogleNative.File.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Name of the file share in the source Cloud Filestore instance that the backup is created from.

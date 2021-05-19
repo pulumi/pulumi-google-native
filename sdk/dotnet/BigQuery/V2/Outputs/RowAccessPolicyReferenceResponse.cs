@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// <summary>
         /// [Required] The ID of the project containing this row access policy.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// [Required] The ID of the table containing this row access policy.
         /// </summary>
@@ -36,13 +36,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string policyId,
 
-            string projectId,
+            string project,
 
             string tableId)
         {
             DatasetId = datasetId;
             PolicyId = policyId;
-            ProjectId = projectId;
+            Project = project;
             TableId = tableId;
         }
     }

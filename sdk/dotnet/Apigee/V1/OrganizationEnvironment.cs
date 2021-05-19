@@ -114,8 +114,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
@@ -123,8 +123,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Key-value pairs that may be used for customizing the environment.

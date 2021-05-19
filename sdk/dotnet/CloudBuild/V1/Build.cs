@@ -78,8 +78,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// <summary>
         /// ID of the project.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.
@@ -222,8 +222,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("availableSecrets")]
         public Input<Inputs.SecretsArgs>? AvailableSecrets { get; set; }
 
-        [Input("buildsId", required: true)]
-        public Input<string> BuildsId { get; set; } = null!;
+        [Input("buildId", required: true)]
+        public Input<string> BuildId { get; set; } = null!;
 
         [Input("images")]
         private InputList<string>? _images;
@@ -237,8 +237,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
             set => _images = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Google Cloud Storage bucket where logs should be written (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of the format `${logs_bucket}/log-${build_id}.txt`.
@@ -252,11 +252,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Input("options")]
         public Input<Inputs.BuildOptionsArgs>? Options { get; set; }
 
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
+
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
 
         /// <summary>
         /// TTL in queue for this build. If provided and the build is enqueued longer than this value, the build will expire and the build status will be `EXPIRED`. The TTL starts ticking from create_time.

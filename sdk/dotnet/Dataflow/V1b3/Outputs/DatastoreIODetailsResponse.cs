@@ -20,16 +20,16 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// <summary>
         /// ProjectId accessed in the connection.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private DatastoreIODetailsResponse(
             string @namespace,
 
-            string projectId)
+            string project)
         {
             Namespace = @namespace;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

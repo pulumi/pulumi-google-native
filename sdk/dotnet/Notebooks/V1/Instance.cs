@@ -327,9 +327,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             set => _instanceOwners = value;
         }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
-
         /// <summary>
         /// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
         /// </summary>
@@ -348,8 +345,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
@@ -405,8 +402,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         [Input("postStartupScript")]
         public Input<string>? PostStartupScript { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.

@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Logging.V2
 
     public sealed class FolderBucketViewArgs : Pulumi.ResourceArgs
     {
-        [Input("bucketsId", required: true)]
-        public Input<string> BucketsId { get; set; } = null!;
+        [Input("bucketId", required: true)]
+        public Input<string> BucketId { get; set; } = null!;
 
         /// <summary>
         /// Describes this view.
@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Logging.V2
         [Input("filter")]
         public Input<string>? Filter { get; set; }
 
-        [Input("foldersId", required: true)]
-        public Input<string> FoldersId { get; set; } = null!;
+        [Input("folderId", required: true)]
+        public Input<string> FolderId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
@@ -119,9 +119,6 @@ namespace Pulumi.GoogleNative.Logging.V2
 
         [Input("viewId", required: true)]
         public Input<string> ViewId { get; set; } = null!;
-
-        [Input("viewsId", required: true)]
-        public Input<string> ViewsId { get; set; } = null!;
 
         public FolderBucketViewArgs()
         {

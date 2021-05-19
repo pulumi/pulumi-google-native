@@ -99,9 +99,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
 
-        [Input("clustersId", required: true)]
-        public Input<string> ClustersId { get; set; } = null!;
-
         /// <summary>
         /// Immutable. The type of storage used by this cluster to serve its parent instance's tables, unless explicitly overridden.
         /// </summary>
@@ -114,8 +111,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("encryptionConfig")]
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The location where this cluster's nodes and storage reside. For best performance, clients should be located as close as possible to this cluster. Currently only zones are supported, so values should be of the form `projects/{project}/locations/{zone}`.
@@ -129,8 +126,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.

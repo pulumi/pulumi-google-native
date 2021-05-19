@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.Ml.V1
             set => _labels = value;
         }
 
-        [Input("modelsId", required: true)]
-        public Input<string> ModelsId { get; set; } = null!;
+        [Input("modelId", required: true)]
+        public Input<string> ModelId { get; set; } = null!;
 
         /// <summary>
         /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
@@ -159,8 +159,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         [Input("onlinePredictionLogging")]
         public Input<bool>? OnlinePredictionLogging { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("regions")]
         private InputList<string>? _regions;

@@ -99,11 +99,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         /// <summary>
         /// ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
         /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
-
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// The location is a GCP region. Currently only `us-central1` is supported.
@@ -129,8 +126,8 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         [Input("parent")]
         public Input<string>? Parent { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// State of the instance.

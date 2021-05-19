@@ -228,8 +228,8 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         [Input("outcome")]
         public Input<Inputs.OutcomeArgs>? Outcome { get; set; }
 
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

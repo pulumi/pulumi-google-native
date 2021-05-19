@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         /// <summary>
         /// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
+        [Input("project")]
+        public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Name of the table.

@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// <summary>
         /// The cloud project that owns the test execution.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Details about the shard.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             string matrixId,
 
-            string projectId,
+            string project,
 
             Outputs.ShardResponse shard,
 
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         {
             Environment = environment;
             MatrixId = matrixId;
-            ProjectId = projectId;
+            Project = project;
             Shard = shard;
             State = state;
             TestDetails = testDetails;

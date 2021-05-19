@@ -96,14 +96,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("entityOverrideMode")]
         public Input<string>? EntityOverrideMode { get; set; }
 
-        [Input("entityTypesId", required: true)]
-        public Input<string> EntityTypesId { get; set; } = null!;
+        [Input("entityTypeId", required: true)]
+        public Input<string> EntityTypeId { get; set; } = null!;
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
@@ -111,14 +111,14 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("sessionsId", required: true)]
-        public Input<string> SessionsId { get; set; } = null!;
+        [Input("sessionId", required: true)]
+        public Input<string> SessionId { get; set; } = null!;
 
-        [Input("usersId", required: true)]
-        public Input<string> UsersId { get; set; } = null!;
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
 
         public AgentEnvironmentUserSessionEntityTypeArgs()
         {

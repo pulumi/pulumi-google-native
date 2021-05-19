@@ -84,11 +84,11 @@ namespace Pulumi.GoogleNative.Firestore.V1
 
     public sealed class DatabaseCollectionGroupIndexArgs : Pulumi.ResourceArgs
     {
-        [Input("collectionGroupsId", required: true)]
-        public Input<string> CollectionGroupsId { get; set; } = null!;
+        [Input("collectionGroupId", required: true)]
+        public Input<string> CollectionGroupId { get; set; } = null!;
 
-        [Input("databasesId", required: true)]
-        public Input<string> DatabasesId { get; set; } = null!;
+        [Input("databaseId", required: true)]
+        public Input<string> DatabaseId { get; set; } = null!;
 
         [Input("fields")]
         private InputList<Inputs.GoogleFirestoreAdminV1IndexFieldArgs>? _fields;
@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Firestore.V1
             set => _fields = value;
         }
 
-        [Input("indexesId", required: true)]
-        public Input<string> IndexesId { get; set; } = null!;
+        [Input("indexId", required: true)]
+        public Input<string> IndexId { get; set; } = null!;
 
         /// <summary>
         /// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Firestore.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.

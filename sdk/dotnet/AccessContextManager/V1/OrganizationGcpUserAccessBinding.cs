@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
             set => _accessLevels = value;
         }
 
-        [Input("gcpUserAccessBindingsId", required: true)]
-        public Input<string> GcpUserAccessBindingsId { get; set; } = null!;
+        [Input("gcpUserAccessBindingId", required: true)]
+        public Input<string> GcpUserAccessBindingId { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
@@ -105,8 +105,8 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         public OrganizationGcpUserAccessBindingArgs()
         {

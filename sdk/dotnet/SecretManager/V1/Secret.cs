@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.SecretManager.V1
             set => _labels = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
@@ -143,9 +143,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
         [Input("secretId", required: true)]
         public Input<string> SecretId { get; set; } = null!;
-
-        [Input("secretsId", required: true)]
-        public Input<string> SecretsId { get; set; } = null!;
 
         [Input("topics")]
         private InputList<Inputs.TopicArgs>? _topics;

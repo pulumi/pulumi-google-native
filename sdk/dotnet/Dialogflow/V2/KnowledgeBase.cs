@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("knowledgeBasesId", required: true)]
-        public Input<string> KnowledgeBasesId { get; set; } = null!;
+        [Input("knowledgeBaseId", required: true)]
+        public Input<string> KnowledgeBaseId { get; set; } = null!;
 
         /// <summary>
         /// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
@@ -93,8 +93,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public KnowledgeBaseArgs()
         {

@@ -72,8 +72,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
 
     public sealed class ConfigArgs : Pulumi.ResourceArgs
     {
-        [Input("configsId", required: true)]
-        public Input<string> ConfigsId { get; set; } = null!;
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
 
         /// <summary>
         /// An optional description of the RuntimeConfig object.
@@ -87,8 +87,8 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }

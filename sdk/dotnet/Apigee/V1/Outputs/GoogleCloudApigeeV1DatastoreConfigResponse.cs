@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// <summary>
         /// Required. GCP project in which the datastore exists
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Prefix of BigQuery table Required for `bigquery` target_type.
         /// </summary>
@@ -42,14 +42,14 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
 
             string path,
 
-            string projectId,
+            string project,
 
             string tablePrefix)
         {
             BucketName = bucketName;
             DatasetName = datasetName;
             Path = path;
-            ProjectId = projectId;
+            Project = project;
             TablePrefix = tablePrefix;
         }
     }

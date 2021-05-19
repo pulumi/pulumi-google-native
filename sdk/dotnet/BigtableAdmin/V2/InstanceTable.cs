@@ -120,8 +120,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
             set => _initialSplits = value;
         }
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
         /// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
@@ -129,17 +129,14 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
         /// </summary>
-        [Input("tableId")]
-        public Input<string>? TableId { get; set; }
-
-        [Input("tablesId", required: true)]
-        public Input<string> TablesId { get; set; } = null!;
+        [Input("tableId", required: true)]
+        public Input<string> TableId { get; set; } = null!;
 
         public InstanceTableArgs()
         {

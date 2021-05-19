@@ -168,8 +168,8 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         [Input("scoringConfig")]
         public Input<Inputs.ScoringConfigArgs>? ScoringConfig { get; set; }
 
-        [Input("searchapplicationsId", required: true)]
-        public Input<string> SearchapplicationsId { get; set; } = null!;
+        [Input("searchapplicationId", required: true)]
+        public Input<string> SearchapplicationId { get; set; } = null!;
 
         [Input("sourceConfig")]
         private InputList<Inputs.SourceConfigArgs>? _sourceConfig;

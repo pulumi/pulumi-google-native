@@ -36,8 +36,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         /// <summary>
         /// The project ID of the GCP project for which the `WorkerPool` is created.
         /// </summary>
-        [Output("projectId")]
-        public Output<string> ProjectId { get; private set; } = null!;
+        [Output("project")]
+        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
@@ -141,11 +141,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         /// <summary>
         /// The project ID of the GCP project for which the `WorkerPool` is created.
         /// </summary>
-        [Input("projectId")]
-        public Input<string>? ProjectId { get; set; }
-
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("regions")]
         private InputList<string>? _regions;
@@ -189,8 +186,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         [Input("workerCount")]
         public Input<string>? WorkerCount { get; set; }
 
-        [Input("workerPoolsId", required: true)]
-        public Input<string> WorkerPoolsId { get; set; } = null!;
+        [Input("workerPoolId", required: true)]
+        public Input<string> WorkerPoolId { get; set; } = null!;
 
         public WorkerPoolArgs()
         {

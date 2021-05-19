@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("action")]
         public Input<string>? Action { get; set; }
 
-        [Input("appsId", required: true)]
-        public Input<string> AppsId { get; set; } = null!;
+        [Input("appId", required: true)]
+        public Input<string> AppId { get; set; } = null!;
 
         /// <summary>
         /// An optional string description of this rule. This field has a maximum length of 100 characters.
@@ -99,8 +99,8 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        [Input("ingressRulesId", required: true)]
-        public Input<string> IngressRulesId { get; set; } = null!;
+        [Input("ingressRuleId", required: true)]
+        public Input<string> IngressRuleId { get; set; } = null!;
 
         /// <summary>
         /// A positive integer between 1, Int32.MaxValue-1 that defines the order of rule evaluation. Rules with the lowest priority are evaluated first.A default rule at priority Int32.MaxValue matches all IPv4 and IPv6 traffic when no previous rule matches. Only the action of this rule can be modified by the user.

@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
-        [Input("domainmappingsId", required: true)]
-        public Input<string> DomainmappingsId { get; set; } = null!;
+        [Input("domainmappingId", required: true)]
+        public Input<string> DomainmappingId { get; set; } = null!;
 
         [Input("dryRun")]
         public Input<string>? DryRun { get; set; }
@@ -108,8 +108,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Metadata associated with this BuildTemplate.
@@ -117,8 +117,8 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The spec for this DomainMapping.

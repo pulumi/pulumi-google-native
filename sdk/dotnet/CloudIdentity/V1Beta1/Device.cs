@@ -234,8 +234,8 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         [Input("assetTag")]
         public Input<string>? AssetTag { get; set; }
 
-        [Input("devicesId", required: true)]
-        public Input<string> DevicesId { get; set; } = null!;
+        [Input("deviceId", required: true)]
+        public Input<string> DeviceId { get; set; } = null!;
 
         /// <summary>
         /// Most recent time when device synced with this service.

@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("gameServerDeploymentsId", required: true)]
-        public Input<string> GameServerDeploymentsId { get; set; } = null!;
+        [Input("gameServerDeploymentId", required: true)]
+        public Input<string> GameServerDeploymentId { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public GameServerDeploymentArgs()
         {

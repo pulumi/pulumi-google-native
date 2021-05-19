@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// <summary>
         /// The cloud project that owns the tool results execution.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
 
         [OutputConstructor]
         private ToolResultsExecutionResponse(
@@ -32,11 +32,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
 
             string historyId,
 
-            string projectId)
+            string project)
         {
             ExecutionId = executionId;
             HistoryId = historyId;
-            ProjectId = projectId;
+            Project = project;
         }
     }
 }

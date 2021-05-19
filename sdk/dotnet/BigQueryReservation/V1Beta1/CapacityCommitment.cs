@@ -111,14 +111,11 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         [Input("capacityCommitmentId")]
         public Input<string>? CapacityCommitmentId { get; set; }
 
-        [Input("capacityCommitmentsId", required: true)]
-        public Input<string> CapacityCommitmentsId { get; set; } = null!;
-
         [Input("enforceSingleAdminProjectPerOrg")]
         public Input<string>? EnforceSingleAdminProjectPerOrg { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// Capacity commitment commitment plan.
@@ -126,8 +123,8 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         [Input("plan")]
         public Input<string>? Plan { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.

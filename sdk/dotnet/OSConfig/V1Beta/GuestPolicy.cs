@@ -132,9 +132,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("guestPoliciesId", required: true)]
-        public Input<string> GuestPoliciesId { get; set; } = null!;
-
         [Input("guestPolicyId", required: true)]
         public Input<string> GuestPolicyId { get; set; } = null!;
 
@@ -168,8 +165,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
             set => _packages = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("recipes")]
         private InputList<Inputs.SoftwareRecipeArgs>? _recipes;

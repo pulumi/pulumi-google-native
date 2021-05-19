@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("deliveryConfig")]
         public Input<Inputs.DeliveryConfigArgs>? DeliveryConfig { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
@@ -93,17 +93,14 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("skipBacklog")]
         public Input<string>? SkipBacklog { get; set; }
 
         [Input("subscriptionId", required: true)]
         public Input<string> SubscriptionId { get; set; } = null!;
-
-        [Input("subscriptionsId", required: true)]
-        public Input<string> SubscriptionsId { get; set; } = null!;
 
         /// <summary>
         /// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}

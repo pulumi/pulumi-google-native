@@ -72,11 +72,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationEnvironmentKeystoreArgs : Pulumi.ResourceArgs
     {
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
-        [Input("keystoresId", required: true)]
-        public Input<string> KeystoresId { get; set; } = null!;
+        [Input("keystoreId", required: true)]
+        public Input<string> KeystoreId { get; set; } = null!;
 
         /// <summary>
         /// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
@@ -84,8 +84,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         public OrganizationEnvironmentKeystoreArgs()
         {

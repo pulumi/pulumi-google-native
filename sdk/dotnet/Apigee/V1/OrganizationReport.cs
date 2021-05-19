@@ -270,8 +270,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("offset")]
         public Input<string>? Offset { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         [Input("properties")]
         private InputList<Inputs.GoogleCloudApigeeV1ReportPropertyArgs>? _properties;
@@ -285,8 +285,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
             set => _properties = value;
         }
 
-        [Input("reportsId", required: true)]
-        public Input<string> ReportsId { get; set; } = null!;
+        [Input("reportId", required: true)]
+        public Input<string> ReportId { get; set; } = null!;
 
         [Input("sortByCols")]
         private InputList<string>? _sortByCols;

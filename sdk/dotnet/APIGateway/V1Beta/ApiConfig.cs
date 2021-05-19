@@ -135,11 +135,11 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         [Input("apiConfigId", required: true)]
         public Input<string> ApiConfigId { get; set; } = null!;
 
-        [Input("apisId", required: true)]
-        public Input<string> ApisId { get; set; } = null!;
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
 
-        [Input("configsId", required: true)]
-        public Input<string> ConfigsId { get; set; } = null!;
+        [Input("configId", required: true)]
+        public Input<string> ConfigId { get; set; } = null!;
 
         /// <summary>
         /// Optional. Display name.
@@ -183,8 +183,8 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("managedServiceConfigs")]
         private InputList<Inputs.ApigatewayApiConfigFileArgs>? _managedServiceConfigs;
@@ -210,8 +210,8 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
             set => _openapiDocuments = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         public ApiConfigArgs()
         {

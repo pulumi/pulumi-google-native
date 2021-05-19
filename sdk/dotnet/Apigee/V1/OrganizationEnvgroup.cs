@@ -90,8 +90,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationEnvgroupArgs : Pulumi.ResourceArgs
     {
-        [Input("envgroupsId", required: true)]
-        public Input<string> EnvgroupsId { get; set; } = null!;
+        [Input("envgroupId", required: true)]
+        public Input<string> EnvgroupId { get; set; } = null!;
 
         [Input("hostnames")]
         private InputList<string>? _hostnames;
@@ -111,8 +111,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         public OrganizationEnvgroupArgs()
         {

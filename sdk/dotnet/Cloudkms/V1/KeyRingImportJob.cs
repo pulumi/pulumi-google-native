@@ -123,23 +123,20 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         [Input("importJobId", required: true)]
         public Input<string> ImportJobId { get; set; } = null!;
 
-        [Input("importJobsId", required: true)]
-        public Input<string> ImportJobsId { get; set; } = null!;
-
         /// <summary>
         /// Required. Immutable. The wrapping method to be used for incoming key material.
         /// </summary>
         [Input("importMethod")]
         public Input<string>? ImportMethod { get; set; }
 
-        [Input("keyRingsId", required: true)]
-        public Input<string> KeyRingsId { get; set; } = null!;
+        [Input("keyRingId", required: true)]
+        public Input<string> KeyRingId { get; set; } = null!;
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.

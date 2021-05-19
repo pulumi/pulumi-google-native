@@ -192,8 +192,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("period")]
         public Input<string>? Period { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The group resource associated with the configuration.
@@ -225,8 +225,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
-        [Input("uptimeCheckConfigsId", required: true)]
-        public Input<string> UptimeCheckConfigsId { get; set; } = null!;
+        [Input("uptimeCheckConfigId", required: true)]
+        public Input<string> UptimeCheckConfigId { get; set; } = null!;
 
         public UptimeCheckConfigArgs()
         {

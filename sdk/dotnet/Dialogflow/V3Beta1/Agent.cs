@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
 
     public sealed class AgentArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
@@ -165,8 +165,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("enableStackdriverLogging")]
         public Input<bool>? EnableStackdriverLogging { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
@@ -174,8 +174,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.

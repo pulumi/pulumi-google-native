@@ -84,17 +84,14 @@ namespace Pulumi.GoogleNative.DLP.V2
         [Input("config")]
         public Input<Inputs.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>? Config { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         /// </summary>
-        [Input("storedInfoTypeId")]
-        public Input<string>? StoredInfoTypeId { get; set; }
-
-        [Input("storedInfoTypesId", required: true)]
-        public Input<string> StoredInfoTypesId { get; set; } = null!;
+        [Input("storedInfoTypeId", required: true)]
+        public Input<string> StoredInfoTypeId { get; set; } = null!;
 
         public StoredInfoTypeArgs()
         {

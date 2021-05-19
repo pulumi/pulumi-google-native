@@ -102,8 +102,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
     public sealed class AgentFlowPageArgs : Pulumi.ResourceArgs
     {
-        [Input("agentsId", required: true)]
-        public Input<string> AgentsId { get; set; } = null!;
+        [Input("agentId", required: true)]
+        public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
         /// Required. The human-readable name of the page, unique within the agent.
@@ -129,8 +129,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
             set => _eventHandlers = value;
         }
 
-        [Input("flowsId", required: true)]
-        public Input<string> FlowsId { get; set; } = null!;
+        [Input("flowId", required: true)]
+        public Input<string> FlowId { get; set; } = null!;
 
         /// <summary>
         /// The form associated with the page, used for collecting parameters relevant to the page.
@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
@@ -150,11 +150,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("pagesId", required: true)]
-        public Input<string> PagesId { get; set; } = null!;
+        [Input("pageId", required: true)]
+        public Input<string> PageId { get; set; } = null!;
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         [Input("transitionRouteGroups")]
         private InputList<string>? _transitionRouteGroups;

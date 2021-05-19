@@ -111,11 +111,11 @@ namespace Pulumi.GoogleNative.Run.V1
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
 
-        [Input("namespacesId", required: true)]
-        public Input<string> NamespacesId { get; set; } = null!;
+        [Input("namespaceId", required: true)]
+        public Input<string> NamespaceId { get; set; } = null!;
 
-        [Input("servicesId", required: true)]
-        public Input<string> ServicesId { get; set; } = null!;
+        [Input("serviceId", required: true)]
+        public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
         /// Spec holds the desired state of the Service (from the client).

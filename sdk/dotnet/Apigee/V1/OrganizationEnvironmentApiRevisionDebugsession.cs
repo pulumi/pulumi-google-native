@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
     public sealed class OrganizationEnvironmentApiRevisionDebugsessionArgs : Pulumi.ResourceArgs
     {
-        [Input("apisId", required: true)]
-        public Input<string> ApisId { get; set; } = null!;
+        [Input("apiId", required: true)]
+        public Input<string> ApiId { get; set; } = null!;
 
         /// <summary>
         /// Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("count")]
         public Input<int>? Count { get; set; }
 
-        [Input("debugsessionsId", required: true)]
-        public Input<string> DebugsessionsId { get; set; } = null!;
+        [Input("debugsessionId", required: true)]
+        public Input<string> DebugsessionId { get; set; } = null!;
 
-        [Input("environmentsId", required: true)]
-        public Input<string> EnvironmentsId { get; set; } = null!;
+        [Input("environmentId", required: true)]
+        public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
@@ -123,11 +123,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("organizationsId", required: true)]
-        public Input<string> OrganizationsId { get; set; } = null!;
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
-        [Input("revisionsId", required: true)]
-        public Input<string> RevisionsId { get; set; } = null!;
+        [Input("revisionId", required: true)]
+        public Input<string> RevisionId { get; set; } = null!;
 
         /// <summary>
         /// Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.

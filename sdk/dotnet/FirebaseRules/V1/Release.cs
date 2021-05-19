@@ -96,11 +96,11 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
-        [Input("releasesId", required: true)]
-        public Input<string> ReleasesId { get; set; } = null!;
+        [Input("releaseId", required: true)]
+        public Input<string> ReleaseId { get; set; } = null!;
 
         /// <summary>
         /// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.

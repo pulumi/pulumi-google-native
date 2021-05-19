@@ -153,9 +153,6 @@ namespace Pulumi.GoogleNative.File.V1
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("instancesId", required: true)]
-        public Input<string> InstancesId { get; set; } = null!;
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -168,8 +165,8 @@ namespace Pulumi.GoogleNative.File.V1
             set => _labels = value;
         }
 
-        [Input("locationsId", required: true)]
-        public Input<string> LocationsId { get; set; } = null!;
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("networks")]
         private InputList<Inputs.NetworkConfigArgs>? _networks;
@@ -183,8 +180,8 @@ namespace Pulumi.GoogleNative.File.V1
             set => _networks = value;
         }
 
-        [Input("projectsId", required: true)]
-        public Input<string> ProjectsId { get; set; } = null!;
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
         /// The service tier of the instance.

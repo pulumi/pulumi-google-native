@@ -24,7 +24,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         /// <summary>
         /// ID of the project that owns the repo.
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string Project;
         /// <summary>
         /// Name of the repo.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             string commitSha,
 
-            string projectId,
+            string project,
 
             string repoName,
 
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
         {
             BranchName = branchName;
             CommitSha = commitSha;
-            ProjectId = projectId;
+            Project = project;
             RepoName = repoName;
             TagName = tagName;
         }
