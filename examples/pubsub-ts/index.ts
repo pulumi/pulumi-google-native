@@ -16,21 +16,19 @@ const randomString = new random.RandomString("name", {
 });
 
 const topic = new google.pubsub.v1.Topic("topic", {
-    projectsId: project,
-    topicsId: randomString.result,
+    project,
+    topicId: randomString.result,
 });
 
 const sub = new google.pubsub.v1.Subscription("sub", {
-    projectsId: project,
+    project,
     topic: topic.name,
-    subscriptionsId: randomString.result,
+    subscriptionId: randomString.result,
 });
 
-const schemaId = randomString.result;
 const schema = new google.pubsub.v1.Schema("schema", {
-    projectsId: project,
-    schemasId: schemaId,
-    schemaId: schemaId,
+    project,
+    schemaId: randomString.result,
     definition: JSON.stringify({
         type: "record",
         name: "State",
