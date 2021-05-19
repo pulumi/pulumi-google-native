@@ -34,20 +34,17 @@ func NewOrganizationBucketView(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BucketsId == nil {
-		return nil, errors.New("invalid value for required argument 'BucketsId'")
+	if args.BucketId == nil {
+		return nil, errors.New("invalid value for required argument 'BucketId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	if args.ViewId == nil {
 		return nil, errors.New("invalid value for required argument 'ViewId'")
-	}
-	if args.ViewsId == nil {
-		return nil, errors.New("invalid value for required argument 'ViewsId'")
 	}
 	var resource OrganizationBucketView
 	err := ctx.RegisterResource("google-native:logging/v2:OrganizationBucketView", name, args, &resource, opts...)
@@ -101,32 +98,30 @@ func (OrganizationBucketViewState) ElementType() reflect.Type {
 }
 
 type organizationBucketViewArgs struct {
-	BucketsId string `pulumi:"bucketsId"`
+	BucketId string `pulumi:"bucketId"`
 	// Describes this view.
 	Description *string `pulumi:"description"`
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-	Filter      *string `pulumi:"filter"`
-	LocationsId string  `pulumi:"locationsId"`
+	Filter   *string `pulumi:"filter"`
+	Location string  `pulumi:"location"`
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
-	ViewId          string  `pulumi:"viewId"`
-	ViewsId         string  `pulumi:"viewsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
+	ViewId         string  `pulumi:"viewId"`
 }
 
 // The set of arguments for constructing a OrganizationBucketView resource.
 type OrganizationBucketViewArgs struct {
-	BucketsId pulumi.StringInput
+	BucketId pulumi.StringInput
 	// Describes this view.
 	Description pulumi.StringPtrInput
 	// Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
-	Filter      pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Filter   pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	ViewId          pulumi.StringInput
-	ViewsId         pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	ViewId         pulumi.StringInput
 }
 
 func (OrganizationBucketViewArgs) ElementType() reflect.Type {

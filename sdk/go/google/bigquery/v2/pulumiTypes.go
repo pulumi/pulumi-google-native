@@ -4104,7 +4104,7 @@ type DatasetReference struct {
 	// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId *string `pulumi:"datasetId"`
 	// [Optional] The ID of the project containing this dataset.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // DatasetReferenceInput is an input type that accepts DatasetReferenceArgs and DatasetReferenceOutput values.
@@ -4122,7 +4122,7 @@ type DatasetReferenceArgs struct {
 	// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// [Optional] The ID of the project containing this dataset.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (DatasetReferenceArgs) ElementType() reflect.Type {
@@ -4208,8 +4208,8 @@ func (o DatasetReferenceOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Optional] The ID of the project containing this dataset.
-func (o DatasetReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o DatasetReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type DatasetReferencePtrOutput struct{ *pulumi.OutputState }
@@ -4241,12 +4241,12 @@ func (o DatasetReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Optional] The ID of the project containing this dataset.
-func (o DatasetReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o DatasetReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4254,7 +4254,7 @@ type DatasetReferenceResponse struct {
 	// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId string `pulumi:"datasetId"`
 	// [Optional] The ID of the project containing this dataset.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // DatasetReferenceResponseInput is an input type that accepts DatasetReferenceResponseArgs and DatasetReferenceResponseOutput values.
@@ -4272,7 +4272,7 @@ type DatasetReferenceResponseArgs struct {
 	// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// [Optional] The ID of the project containing this dataset.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (DatasetReferenceResponseArgs) ElementType() reflect.Type {
@@ -4358,8 +4358,8 @@ func (o DatasetReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 }
 
 // [Optional] The ID of the project containing this dataset.
-func (o DatasetReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v DatasetReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o DatasetReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type DatasetReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -4391,12 +4391,12 @@ func (o DatasetReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Optional] The ID of the project containing this dataset.
-func (o DatasetReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o DatasetReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatasetReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13066,7 +13066,7 @@ type JobReference struct {
 	// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
 	Location *string `pulumi:"location"`
 	// [Required] The ID of the project containing this job.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // JobReferenceInput is an input type that accepts JobReferenceArgs and JobReferenceOutput values.
@@ -13086,7 +13086,7 @@ type JobReferenceArgs struct {
 	// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 	// [Required] The ID of the project containing this job.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (JobReferenceArgs) ElementType() reflect.Type {
@@ -13177,8 +13177,8 @@ func (o JobReferenceOutput) Location() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this job.
-func (o JobReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o JobReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type JobReferencePtrOutput struct{ *pulumi.OutputState }
@@ -13220,12 +13220,12 @@ func (o JobReferencePtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this job.
-func (o JobReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o JobReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13235,7 +13235,7 @@ type JobReferenceResponse struct {
 	// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
 	Location string `pulumi:"location"`
 	// [Required] The ID of the project containing this job.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // JobReferenceResponseInput is an input type that accepts JobReferenceResponseArgs and JobReferenceResponseOutput values.
@@ -13255,7 +13255,7 @@ type JobReferenceResponseArgs struct {
 	// The geographic location of the job. See details at https://cloud.google.com/bigquery/docs/locations#specifying_your_location.
 	Location pulumi.StringInput `pulumi:"location"`
 	// [Required] The ID of the project containing this job.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (JobReferenceResponseArgs) ElementType() reflect.Type {
@@ -13346,8 +13346,8 @@ func (o JobReferenceResponseOutput) Location() pulumi.StringOutput {
 }
 
 // [Required] The ID of the project containing this job.
-func (o JobReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v JobReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type JobReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -13389,12 +13389,12 @@ func (o JobReferenceResponsePtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this job.
-func (o JobReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17694,7 +17694,7 @@ type ModelReference struct {
 	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	ModelId *string `pulumi:"modelId"`
 	// [Required] The ID of the project containing this model.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // ModelReferenceInput is an input type that accepts ModelReferenceArgs and ModelReferenceOutput values.
@@ -17714,7 +17714,7 @@ type ModelReferenceArgs struct {
 	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	ModelId pulumi.StringPtrInput `pulumi:"modelId"`
 	// [Required] The ID of the project containing this model.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (ModelReferenceArgs) ElementType() reflect.Type {
@@ -17805,8 +17805,8 @@ func (o ModelReferenceOutput) ModelId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this model.
-func (o ModelReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ModelReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ModelReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ModelReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type ModelReferencePtrOutput struct{ *pulumi.OutputState }
@@ -17848,12 +17848,12 @@ func (o ModelReferencePtrOutput) ModelId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this model.
-func (o ModelReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ModelReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17863,7 +17863,7 @@ type ModelReferenceResponse struct {
 	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	ModelId string `pulumi:"modelId"`
 	// [Required] The ID of the project containing this model.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // ModelReferenceResponseInput is an input type that accepts ModelReferenceResponseArgs and ModelReferenceResponseOutput values.
@@ -17883,7 +17883,7 @@ type ModelReferenceResponseArgs struct {
 	// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	ModelId pulumi.StringInput `pulumi:"modelId"`
 	// [Required] The ID of the project containing this model.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (ModelReferenceResponseArgs) ElementType() reflect.Type {
@@ -17974,8 +17974,8 @@ func (o ModelReferenceResponseOutput) ModelId() pulumi.StringOutput {
 }
 
 // [Required] The ID of the project containing this model.
-func (o ModelReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ModelReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o ModelReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ModelReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ModelReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -18017,12 +18017,12 @@ func (o ModelReferenceResponsePtrOutput) ModelId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this model.
-func (o ModelReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ModelReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ModelReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19694,7 +19694,7 @@ type RoutineReference struct {
 	// [Required] The ID of the dataset containing this routine.
 	DatasetId *string `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this routine.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId *string `pulumi:"routineId"`
 }
@@ -19714,7 +19714,7 @@ type RoutineReferenceArgs struct {
 	// [Required] The ID of the dataset containing this routine.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this routine.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringPtrInput `pulumi:"routineId"`
 }
@@ -19827,8 +19827,8 @@ func (o RoutineReferenceOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this routine.
-func (o RoutineReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoutineReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o RoutineReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
@@ -19865,12 +19865,12 @@ func (o RoutineReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this routine.
-func (o RoutineReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RoutineReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutineReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19908,7 +19908,7 @@ type RoutineReferenceResponse struct {
 	// [Required] The ID of the dataset containing this routine.
 	DatasetId string `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this routine.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId string `pulumi:"routineId"`
 }
@@ -19928,7 +19928,7 @@ type RoutineReferenceResponseArgs struct {
 	// [Required] The ID of the dataset containing this routine.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this routine.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	RoutineId pulumi.StringInput `pulumi:"routineId"`
 }
@@ -20041,8 +20041,8 @@ func (o RoutineReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 }
 
 // [Required] The ID of the project containing this routine.
-func (o RoutineReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o RoutineReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RoutineReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
@@ -20079,12 +20079,12 @@ func (o RoutineReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this routine.
-func (o RoutineReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RoutineReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutineReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20124,7 +20124,7 @@ type RowAccessPolicyReference struct {
 	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	PolicyId *string `pulumi:"policyId"`
 	// [Required] The ID of the project containing this row access policy.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// [Required] The ID of the table containing this row access policy.
 	TableId *string `pulumi:"tableId"`
 }
@@ -20146,7 +20146,7 @@ type RowAccessPolicyReferenceArgs struct {
 	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	PolicyId pulumi.StringPtrInput `pulumi:"policyId"`
 	// [Required] The ID of the project containing this row access policy.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// [Required] The ID of the table containing this row access policy.
 	TableId pulumi.StringPtrInput `pulumi:"tableId"`
 }
@@ -20239,8 +20239,8 @@ func (o RowAccessPolicyReferenceOutput) PolicyId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o RowAccessPolicyReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RowAccessPolicyReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // [Required] The ID of the table containing this row access policy.
@@ -20287,12 +20287,12 @@ func (o RowAccessPolicyReferencePtrOutput) PolicyId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RowAccessPolicyReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RowAccessPolicyReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -20312,7 +20312,7 @@ type RowAccessPolicyReferenceResponse struct {
 	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	PolicyId string `pulumi:"policyId"`
 	// [Required] The ID of the project containing this row access policy.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// [Required] The ID of the table containing this row access policy.
 	TableId string `pulumi:"tableId"`
 }
@@ -20334,7 +20334,7 @@ type RowAccessPolicyReferenceResponseArgs struct {
 	// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
 	PolicyId pulumi.StringInput `pulumi:"policyId"`
 	// [Required] The ID of the project containing this row access policy.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// [Required] The ID of the table containing this row access policy.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
@@ -20427,8 +20427,8 @@ func (o RowAccessPolicyReferenceResponseOutput) PolicyId() pulumi.StringOutput {
 }
 
 // [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o RowAccessPolicyReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RowAccessPolicyReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // [Required] The ID of the table containing this row access policy.
@@ -20475,12 +20475,12 @@ func (o RowAccessPolicyReferenceResponsePtrOutput) PolicyId() pulumi.StringPtrOu
 }
 
 // [Required] The ID of the project containing this row access policy.
-func (o RowAccessPolicyReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o RowAccessPolicyReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RowAccessPolicyReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -23994,7 +23994,7 @@ type TableReference struct {
 	// [Required] The ID of the dataset containing this table.
 	DatasetId *string `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this table.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	TableId *string `pulumi:"tableId"`
 }
@@ -24014,7 +24014,7 @@ type TableReferenceArgs struct {
 	// [Required] The ID of the dataset containing this table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this table.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	TableId pulumi.StringPtrInput `pulumi:"tableId"`
 }
@@ -24127,8 +24127,8 @@ func (o TableReferenceOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this table.
-func (o TableReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TableReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o TableReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -24165,12 +24165,12 @@ func (o TableReferencePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this table.
-func (o TableReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o TableReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -24208,7 +24208,7 @@ type TableReferenceResponse struct {
 	// [Required] The ID of the dataset containing this table.
 	DatasetId string `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this table.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	TableId string `pulumi:"tableId"`
 }
@@ -24228,7 +24228,7 @@ type TableReferenceResponseArgs struct {
 	// [Required] The ID of the dataset containing this table.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// [Required] The ID of the project containing this table.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
@@ -24341,8 +24341,8 @@ func (o TableReferenceResponseOutput) DatasetId() pulumi.StringOutput {
 }
 
 // [Required] The ID of the project containing this table.
-func (o TableReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v TableReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o TableReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v TableReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -24379,12 +24379,12 @@ func (o TableReferenceResponsePtrOutput) DatasetId() pulumi.StringPtrOutput {
 }
 
 // [Required] The ID of the project containing this table.
-func (o TableReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o TableReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TableReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

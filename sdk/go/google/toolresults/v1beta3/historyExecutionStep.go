@@ -60,8 +60,8 @@ func NewHistoryExecutionStep(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.StepId == nil {
 		return nil, errors.New("invalid value for required argument 'StepId'")
@@ -180,7 +180,7 @@ type historyExecutionStepArgs struct {
 	Name *string `pulumi:"name"`
 	// Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   *Outcome `pulumi:"outcome"`
-	ProjectId string   `pulumi:"projectId"`
+	Project   string   `pulumi:"project"`
 	RequestId *string  `pulumi:"requestId"`
 	// How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
 	RunDuration *Duration `pulumi:"runDuration"`
@@ -218,7 +218,7 @@ type HistoryExecutionStepArgs struct {
 	Name pulumi.StringPtrInput
 	// Classification of the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
 	Outcome   OutcomePtrInput
-	ProjectId pulumi.StringInput
+	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// How long it took for this step to run. If unset, this is set to the difference between creation_time and completion_time when the step is set to the COMPLETE state. In some cases, it is appropriate to set this value separately: For instance, if a step is created, but the operation it represents is queued for a few minutes before it executes, it would be appropriate not to include the time spent queued in its run_duration. PRECONDITION_FAILED will be returned if one attempts to set a run_duration on a step which already has this field set. - In response: present if previously set; always present on COMPLETE step - In create request: optional - In update request: optional
 	RunDuration DurationPtrInput

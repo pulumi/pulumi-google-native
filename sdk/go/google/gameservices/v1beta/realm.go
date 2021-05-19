@@ -38,17 +38,14 @@ func NewRealm(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.RealmId == nil {
 		return nil, errors.New("invalid value for required argument 'RealmId'")
-	}
-	if args.RealmsId == nil {
-		return nil, errors.New("invalid value for required argument 'RealmsId'")
 	}
 	var resource Realm
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:Realm", name, args, &resource, opts...)
@@ -115,13 +112,12 @@ type realmArgs struct {
 	// ETag of the resource.
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this realm. Each label is a key-value pair.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RealmId    string  `pulumi:"realmId"`
-	RealmsId   string  `pulumi:"realmsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
+	RealmId string  `pulumi:"realmId"`
 	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone *string `pulumi:"timeZone"`
 }
@@ -133,13 +129,12 @@ type RealmArgs struct {
 	// ETag of the resource.
 	Etag pulumi.StringPtrInput
 	// The labels associated with this realm. Each label is a key-value pair.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RealmId    pulumi.StringInput
-	RealmsId   pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
+	RealmId pulumi.StringInput
 	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone pulumi.StringPtrInput
 }

@@ -42,14 +42,14 @@ func NewRegionWorkflowTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RegionsId == nil {
-		return nil, errors.New("invalid value for required argument 'RegionsId'")
+	if args.RegionId == nil {
+		return nil, errors.New("invalid value for required argument 'RegionId'")
 	}
-	if args.WorkflowTemplatesId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkflowTemplatesId'")
+	if args.WorkflowTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkflowTemplateId'")
 	}
 	var resource RegionWorkflowTemplate
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:RegionWorkflowTemplate", name, args, &resource, opts...)
@@ -130,12 +130,12 @@ type regionWorkflowTemplateArgs struct {
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []TemplateParameter `pulumi:"parameters"`
 	// Required. WorkflowTemplate scheduling information.
-	Placement  *WorkflowTemplatePlacement `pulumi:"placement"`
-	ProjectsId string                     `pulumi:"projectsId"`
-	RegionsId  string                     `pulumi:"regionsId"`
+	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
+	Project   string                     `pulumi:"project"`
+	RegionId  string                     `pulumi:"regionId"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version             *int   `pulumi:"version"`
-	WorkflowTemplatesId string `pulumi:"workflowTemplatesId"`
+	Version            *int   `pulumi:"version"`
+	WorkflowTemplateId string `pulumi:"workflowTemplateId"`
 }
 
 // The set of arguments for constructing a RegionWorkflowTemplate resource.
@@ -151,12 +151,12 @@ type RegionWorkflowTemplateArgs struct {
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterArrayInput
 	// Required. WorkflowTemplate scheduling information.
-	Placement  WorkflowTemplatePlacementPtrInput
-	ProjectsId pulumi.StringInput
-	RegionsId  pulumi.StringInput
+	Placement WorkflowTemplatePlacementPtrInput
+	Project   pulumi.StringInput
+	RegionId  pulumi.StringInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version             pulumi.IntPtrInput
-	WorkflowTemplatesId pulumi.StringInput
+	Version            pulumi.IntPtrInput
+	WorkflowTemplateId pulumi.StringInput
 }
 
 func (RegionWorkflowTemplateArgs) ElementType() reflect.Type {

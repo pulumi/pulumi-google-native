@@ -44,14 +44,14 @@ func NewJobTrigger(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.JobTriggersId == nil {
-		return nil, errors.New("invalid value for required argument 'JobTriggersId'")
+	if args.JobTriggerId == nil {
+		return nil, errors.New("invalid value for required argument 'JobTriggerId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource JobTrigger
 	err := ctx.RegisterResource("google-native:dlp/v2:JobTrigger", name, args, &resource, opts...)
@@ -130,12 +130,12 @@ type jobTriggerArgs struct {
 	// Display name (max 100 chars)
 	DisplayName *string `pulumi:"displayName"`
 	// For inspect jobs, a snapshot of the configuration.
-	InspectJob    *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
-	JobTriggersId string                              `pulumi:"jobTriggersId"`
-	LocationsId   string                              `pulumi:"locationsId"`
+	InspectJob   *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
+	JobTriggerId string                              `pulumi:"jobTriggerId"`
+	Location     string                              `pulumi:"location"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. A status for this trigger.
 	Status *string `pulumi:"status"`
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
@@ -151,12 +151,12 @@ type JobTriggerArgs struct {
 	// Display name (max 100 chars)
 	DisplayName pulumi.StringPtrInput
 	// For inspect jobs, a snapshot of the configuration.
-	InspectJob    GooglePrivacyDlpV2InspectJobConfigPtrInput
-	JobTriggersId pulumi.StringInput
-	LocationsId   pulumi.StringInput
+	InspectJob   GooglePrivacyDlpV2InspectJobConfigPtrInput
+	JobTriggerId pulumi.StringInput
+	Location     pulumi.StringInput
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. A status for this trigger.
 	Status pulumi.StringPtrInput
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.

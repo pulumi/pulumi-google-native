@@ -36,11 +36,11 @@ func NewSiteDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainsId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainsId'")
+	if args.DomainId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainId'")
 	}
-	if args.SitesId == nil {
-		return nil, errors.New("invalid value for required argument 'SitesId'")
+	if args.SiteId == nil {
+		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
 	var resource SiteDomain
 	err := ctx.RegisterResource("google-native:firebasehosting/v1beta1:SiteDomain", name, args, &resource, opts...)
@@ -98,16 +98,16 @@ func (SiteDomainState) ElementType() reflect.Type {
 }
 
 type siteDomainArgs struct {
+	DomainId string `pulumi:"domainId"`
 	// Required. The domain name of the association.
 	DomainName *string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirect `pulumi:"domainRedirect"`
-	DomainsId      string          `pulumi:"domainsId"`
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning *DomainProvisioning `pulumi:"provisioning"`
 	// Required. The site name of the association.
-	Site    *string `pulumi:"site"`
-	SitesId string  `pulumi:"sitesId"`
+	Site   *string `pulumi:"site"`
+	SiteId string  `pulumi:"siteId"`
 	// Additional status of the domain association.
 	Status *string `pulumi:"status"`
 	// The time at which the domain was last updated.
@@ -116,16 +116,16 @@ type siteDomainArgs struct {
 
 // The set of arguments for constructing a SiteDomain resource.
 type SiteDomainArgs struct {
+	DomainId pulumi.StringInput
 	// Required. The domain name of the association.
 	DomainName pulumi.StringPtrInput
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectPtrInput
-	DomainsId      pulumi.StringInput
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningPtrInput
 	// Required. The site name of the association.
-	Site    pulumi.StringPtrInput
-	SitesId pulumi.StringInput
+	Site   pulumi.StringPtrInput
+	SiteId pulumi.StringInput
 	// Additional status of the domain association.
 	Status pulumi.StringPtrInput
 	// The time at which the domain was last updated.

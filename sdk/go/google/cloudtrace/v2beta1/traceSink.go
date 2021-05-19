@@ -30,11 +30,11 @@ func NewTraceSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TraceSinksId == nil {
-		return nil, errors.New("invalid value for required argument 'TraceSinksId'")
+	if args.TraceSinkId == nil {
+		return nil, errors.New("invalid value for required argument 'TraceSinkId'")
 	}
 	var resource TraceSink
 	err := ctx.RegisterResource("google-native:cloudtrace/v2beta1:TraceSink", name, args, &resource, opts...)
@@ -84,8 +84,8 @@ type traceSinkArgs struct {
 	Name *string `pulumi:"name"`
 	// Required. The export destination.
 	OutputConfig *OutputConfig `pulumi:"outputConfig"`
-	ProjectsId   string        `pulumi:"projectsId"`
-	TraceSinksId string        `pulumi:"traceSinksId"`
+	Project      string        `pulumi:"project"`
+	TraceSinkId  string        `pulumi:"traceSinkId"`
 }
 
 // The set of arguments for constructing a TraceSink resource.
@@ -94,8 +94,8 @@ type TraceSinkArgs struct {
 	Name pulumi.StringPtrInput
 	// Required. The export destination.
 	OutputConfig OutputConfigPtrInput
-	ProjectsId   pulumi.StringInput
-	TraceSinksId pulumi.StringInput
+	Project      pulumi.StringInput
+	TraceSinkId  pulumi.StringInput
 }
 
 func (TraceSinkArgs) ElementType() reflect.Type {

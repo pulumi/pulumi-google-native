@@ -34,11 +34,11 @@ func NewRepo(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ReposId == nil {
-		return nil, errors.New("invalid value for required argument 'ReposId'")
+	if args.RepoId == nil {
+		return nil, errors.New("invalid value for required argument 'RepoId'")
 	}
 	var resource Repo
 	err := ctx.RegisterResource("google-native:sourcerepo/v1:Repo", name, args, &resource, opts...)
@@ -95,11 +95,11 @@ type repoArgs struct {
 	// How this repository mirrors a repository managed by another service. Read-only field.
 	MirrorConfig *MirrorConfig `pulumi:"mirrorConfig"`
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
-	ReposId       string            `pulumi:"reposId"`
+	RepoId        string            `pulumi:"repoId"`
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size *string `pulumi:"size"`
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
@@ -111,11 +111,11 @@ type RepoArgs struct {
 	// How this repository mirrors a repository managed by another service. Read-only field.
 	MirrorConfig MirrorConfigPtrInput
 	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
 	PubsubConfigs pulumi.StringMapInput
-	ReposId       pulumi.StringInput
+	RepoId        pulumi.StringInput
 	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
 	Size pulumi.StringPtrInput
 	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.

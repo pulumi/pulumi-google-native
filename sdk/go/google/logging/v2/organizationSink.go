@@ -46,11 +46,11 @@ func NewOrganizationSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.SinksId == nil {
-		return nil, errors.New("invalid value for required argument 'SinksId'")
+	if args.SinkId == nil {
+		return nil, errors.New("invalid value for required argument 'SinkId'")
 	}
 	var resource OrganizationSink
 	err := ctx.RegisterResource("google-native:logging/v2:OrganizationSink", name, args, &resource, opts...)
@@ -144,8 +144,8 @@ type organizationSinkArgs struct {
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 *string `pulumi:"name"`
-	OrganizationsId      string  `pulumi:"organizationsId"`
-	SinksId              string  `pulumi:"sinksId"`
+	OrganizationId       string  `pulumi:"organizationId"`
+	SinkId               string  `pulumi:"sinkId"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
 
@@ -167,8 +167,8 @@ type OrganizationSinkArgs struct {
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 pulumi.StringPtrInput
-	OrganizationsId      pulumi.StringInput
-	SinksId              pulumi.StringInput
+	OrganizationId       pulumi.StringInput
+	SinkId               pulumi.StringInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 }
 

@@ -30,17 +30,14 @@ func NewAdminSubscription(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.SubscriptionId == nil {
 		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
-	}
-	if args.SubscriptionsId == nil {
-		return nil, errors.New("invalid value for required argument 'SubscriptionsId'")
 	}
 	var resource AdminSubscription
 	err := ctx.RegisterResource("google-native:pubsublite/v1:AdminSubscription", name, args, &resource, opts...)
@@ -88,13 +85,12 @@ func (AdminSubscriptionState) ElementType() reflect.Type {
 type adminSubscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig *DeliveryConfig `pulumi:"deliveryConfig"`
-	LocationsId    string          `pulumi:"locationsId"`
+	Location       string          `pulumi:"location"`
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name            *string `pulumi:"name"`
-	ProjectsId      string  `pulumi:"projectsId"`
-	SkipBacklog     *string `pulumi:"skipBacklog"`
-	SubscriptionId  string  `pulumi:"subscriptionId"`
-	SubscriptionsId string  `pulumi:"subscriptionsId"`
+	Name           *string `pulumi:"name"`
+	Project        string  `pulumi:"project"`
+	SkipBacklog    *string `pulumi:"skipBacklog"`
+	SubscriptionId string  `pulumi:"subscriptionId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic *string `pulumi:"topic"`
 }
@@ -103,13 +99,12 @@ type adminSubscriptionArgs struct {
 type AdminSubscriptionArgs struct {
 	// The settings for this subscription's message delivery.
 	DeliveryConfig DeliveryConfigPtrInput
-	LocationsId    pulumi.StringInput
+	Location       pulumi.StringInput
 	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name            pulumi.StringPtrInput
-	ProjectsId      pulumi.StringInput
-	SkipBacklog     pulumi.StringPtrInput
-	SubscriptionId  pulumi.StringInput
-	SubscriptionsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	Project        pulumi.StringInput
+	SkipBacklog    pulumi.StringPtrInput
+	SubscriptionId pulumi.StringInput
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
 	Topic pulumi.StringPtrInput
 }

@@ -28,11 +28,11 @@ func NewPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.PoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'PoliciesId'")
+	if args.PolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Policy
 	err := ctx.RegisterResource("google-native:orgpolicy/v2:Policy", name, args, &resource, opts...)
@@ -75,9 +75,9 @@ func (PolicyState) ElementType() reflect.Type {
 
 type policyArgs struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name       *string `pulumi:"name"`
-	PoliciesId string  `pulumi:"policiesId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name     *string `pulumi:"name"`
+	PolicyId string  `pulumi:"policyId"`
+	Project  string  `pulumi:"project"`
 	// Basic information about the Organization Policy.
 	Spec *GoogleCloudOrgpolicyV2PolicySpec `pulumi:"spec"`
 }
@@ -85,9 +85,9 @@ type policyArgs struct {
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name       pulumi.StringPtrInput
-	PoliciesId pulumi.StringInput
-	ProjectsId pulumi.StringInput
+	Name     pulumi.StringPtrInput
+	PolicyId pulumi.StringInput
+	Project  pulumi.StringInput
 	// Basic information about the Organization Policy.
 	Spec GoogleCloudOrgpolicyV2PolicySpecPtrInput
 }

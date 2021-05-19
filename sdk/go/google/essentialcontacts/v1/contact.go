@@ -36,11 +36,11 @@ func NewContact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ContactsId == nil {
-		return nil, errors.New("invalid value for required argument 'ContactsId'")
+	if args.ContactId == nil {
+		return nil, errors.New("invalid value for required argument 'ContactId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Contact
 	err := ctx.RegisterResource("google-native:essentialcontacts/v1:Contact", name, args, &resource, opts...)
@@ -98,7 +98,7 @@ func (ContactState) ElementType() reflect.Type {
 }
 
 type contactArgs struct {
-	ContactsId string `pulumi:"contactsId"`
+	ContactId string `pulumi:"contactId"`
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email *string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
@@ -107,7 +107,7 @@ type contactArgs struct {
 	Name *string `pulumi:"name"`
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
-	ProjectsId                        string   `pulumi:"projectsId"`
+	Project                           string   `pulumi:"project"`
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime *string `pulumi:"validateTime"`
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
@@ -116,7 +116,7 @@ type contactArgs struct {
 
 // The set of arguments for constructing a Contact resource.
 type ContactArgs struct {
-	ContactsId pulumi.StringInput
+	ContactId pulumi.StringInput
 	// Required. The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringPtrInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
@@ -125,7 +125,7 @@ type ContactArgs struct {
 	Name pulumi.StringPtrInput
 	// The categories of notifications that the contact will receive communications for.
 	NotificationCategorySubscriptions pulumi.StringArrayInput
-	ProjectsId                        pulumi.StringInput
+	Project                           pulumi.StringInput
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime pulumi.StringPtrInput
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.

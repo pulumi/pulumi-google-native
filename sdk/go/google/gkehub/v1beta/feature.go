@@ -44,11 +44,8 @@ func NewFeature(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FeaturesId == nil {
-		return nil, errors.New("invalid value for required argument 'FeaturesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Feature
 	err := ctx.RegisterResource("google-native:gkehub/v1beta:Feature", name, args, &resource, opts...)
@@ -122,13 +119,12 @@ func (FeatureState) ElementType() reflect.Type {
 }
 
 type featureArgs struct {
-	FeatureId  *string `pulumi:"featureId"`
-	FeaturesId string  `pulumi:"featuresId"`
+	FeatureId *string `pulumi:"featureId"`
 	// GCP labels for this Feature.
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
 	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
-	ProjectsId      string            `pulumi:"projectsId"`
+	Project         string            `pulumi:"project"`
 	RequestId       *string           `pulumi:"requestId"`
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec *CommonFeatureSpec `pulumi:"spec"`
@@ -136,13 +132,12 @@ type featureArgs struct {
 
 // The set of arguments for constructing a Feature resource.
 type FeatureArgs struct {
-	FeatureId  pulumi.StringPtrInput
-	FeaturesId pulumi.StringInput
+	FeatureId pulumi.StringPtrInput
 	// GCP labels for this Feature.
 	Labels pulumi.StringMapInput
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
 	MembershipSpecs pulumi.StringMapInput
-	ProjectsId      pulumi.StringInput
+	Project         pulumi.StringInput
 	RequestId       pulumi.StringPtrInput
 	// Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
 	Spec CommonFeatureSpecPtrInput

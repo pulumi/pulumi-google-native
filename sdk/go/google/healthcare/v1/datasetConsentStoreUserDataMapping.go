@@ -36,20 +36,20 @@ func NewDatasetConsentStoreUserDataMapping(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConsentStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentStoresId'")
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.UserDataMappingsId == nil {
-		return nil, errors.New("invalid value for required argument 'UserDataMappingsId'")
+	if args.UserDataMappingId == nil {
+		return nil, errors.New("invalid value for required argument 'UserDataMappingId'")
 	}
 	var resource DatasetConsentStoreUserDataMapping
 	err := ctx.RegisterResource("google-native:healthcare/v1:DatasetConsentStoreUserDataMapping", name, args, &resource, opts...)
@@ -107,34 +107,34 @@ func (DatasetConsentStoreUserDataMappingState) ElementType() reflect.Type {
 }
 
 type datasetConsentStoreUserDataMappingArgs struct {
-	ConsentStoresId string `pulumi:"consentStoresId"`
+	ConsentStoreId string `pulumi:"consentStoreId"`
 	// Required. A unique identifier for the mapped resource.
-	DataId      *string `pulumi:"dataId"`
-	DatasetsId  string  `pulumi:"datasetsId"`
-	LocationsId string  `pulumi:"locationsId"`
+	DataId    *string `pulumi:"dataId"`
+	DatasetId string  `pulumi:"datasetId"`
+	Location  string  `pulumi:"location"`
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
-	UserDataMappingsId string      `pulumi:"userDataMappingsId"`
+	UserDataMappingId  string      `pulumi:"userDataMappingId"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a DatasetConsentStoreUserDataMapping resource.
 type DatasetConsentStoreUserDataMappingArgs struct {
-	ConsentStoresId pulumi.StringInput
+	ConsentStoreId pulumi.StringInput
 	// Required. A unique identifier for the mapped resource.
-	DataId      pulumi.StringPtrInput
-	DatasetsId  pulumi.StringInput
-	LocationsId pulumi.StringInput
+	DataId    pulumi.StringPtrInput
+	DatasetId pulumi.StringInput
+	Location  pulumi.StringInput
 	// Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Attributes of the resource. Only explicitly set attributes are displayed here. Attribute definitions with defaults set implicitly apply to these User data mappings. Attributes listed here must be single valued, that is, exactly one value is specified for the field "values" in each Attribute.
 	ResourceAttributes AttributeArrayInput
-	UserDataMappingsId pulumi.StringInput
+	UserDataMappingId  pulumi.StringInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
 }

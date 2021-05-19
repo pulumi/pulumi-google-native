@@ -83,8 +83,8 @@ func NewTable(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TableId == nil {
 		return nil, errors.New("invalid value for required argument 'TableId'")
@@ -271,8 +271,8 @@ type tableArgs struct {
 	// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes *string `pulumi:"numPhysicalBytes"`
 	// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-	NumRows   *string `pulumi:"numRows"`
-	ProjectId string  `pulumi:"projectId"`
+	NumRows *string `pulumi:"numRows"`
+	Project string  `pulumi:"project"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
@@ -336,8 +336,8 @@ type TableArgs struct {
 	// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming buffer. This includes compression and storage used for time travel.
 	NumPhysicalBytes pulumi.StringPtrInput
 	// [Output-only] The number of rows of data in this table, excluding any data in the streaming buffer.
-	NumRows   pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	NumRows pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningPtrInput
 	// [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.

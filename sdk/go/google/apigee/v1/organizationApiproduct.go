@@ -55,11 +55,11 @@ func NewOrganizationApiproduct(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ApiproductsId == nil {
-		return nil, errors.New("invalid value for required argument 'ApiproductsId'")
+	if args.ApiproductId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiproductId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationApiproduct
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationApiproduct", name, args, &resource, opts...)
@@ -155,8 +155,8 @@ func (OrganizationApiproductState) ElementType() reflect.Type {
 }
 
 type organizationApiproductArgs struct {
-	ApiResources  []string `pulumi:"apiResources"`
-	ApiproductsId string   `pulumi:"apiproductsId"`
+	ApiResources []string `pulumi:"apiResources"`
+	ApiproductId string   `pulumi:"apiproductId"`
 	// Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
 	ApprovalType *string `pulumi:"approvalType"`
 	// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
@@ -176,8 +176,8 @@ type organizationApiproductArgs struct {
 	// Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
 	Name *string `pulumi:"name"`
 	// Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
-	OperationGroup  *GoogleCloudApigeeV1OperationGroup `pulumi:"operationGroup"`
-	OrganizationsId string                             `pulumi:"organizationsId"`
+	OperationGroup *GoogleCloudApigeeV1OperationGroup `pulumi:"operationGroup"`
+	OrganizationId string                             `pulumi:"organizationId"`
 	// Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
 	Proxies []string `pulumi:"proxies"`
 	// Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
@@ -192,8 +192,8 @@ type organizationApiproductArgs struct {
 
 // The set of arguments for constructing a OrganizationApiproduct resource.
 type OrganizationApiproductArgs struct {
-	ApiResources  pulumi.StringArrayInput
-	ApiproductsId pulumi.StringInput
+	ApiResources pulumi.StringArrayInput
+	ApiproductId pulumi.StringInput
 	// Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
 	ApprovalType pulumi.StringPtrInput
 	// Array of attributes that may be used to extend the default API product profile with customer-specific metadata. You can specify a maximum of 18 attributes. Use this property to specify the access level of the API product as either `public`, `private`, or `internal`. Only products marked `public` are available to developers in the Apigee developer portal. For example, you can set a product to `internal` while it is in development and then change access to `public` when it is ready to release on the portal. API products marked as `private` do not appear on the portal, but can be accessed by external developers.
@@ -213,8 +213,8 @@ type OrganizationApiproductArgs struct {
 	// Internal name of the API product. Characters you can use in the name are restricted to: `A-Z0-9._\-$ %`. **Note:** The internal name cannot be edited when updating the API product.
 	Name pulumi.StringPtrInput
 	// Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
-	OperationGroup  GoogleCloudApigeeV1OperationGroupPtrInput
-	OrganizationsId pulumi.StringInput
+	OperationGroup GoogleCloudApigeeV1OperationGroupPtrInput
+	OrganizationId pulumi.StringInput
 	// Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
 	Proxies pulumi.StringArrayInput
 	// Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.

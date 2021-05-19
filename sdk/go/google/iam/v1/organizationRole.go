@@ -38,11 +38,11 @@ func NewOrganizationRole(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.RolesId == nil {
-		return nil, errors.New("invalid value for required argument 'RolesId'")
+	if args.RoleId == nil {
+		return nil, errors.New("invalid value for required argument 'RoleId'")
 	}
 	var resource OrganizationRole
 	err := ctx.RegisterResource("google-native:iam/v1:OrganizationRole", name, args, &resource, opts...)
@@ -113,11 +113,10 @@ type organizationRoleArgs struct {
 	// The names of the permissions this role grants when bound in an IAM policy.
 	IncludedPermissions []string `pulumi:"includedPermissions"`
 	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId  *string `pulumi:"roleId"`
-	RolesId string  `pulumi:"rolesId"`
+	RoleId string `pulumi:"roleId"`
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage *string `pulumi:"stage"`
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
@@ -135,11 +134,10 @@ type OrganizationRoleArgs struct {
 	// The names of the permissions this role grants when bound in an IAM policy.
 	IncludedPermissions pulumi.StringArrayInput
 	// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
-	RoleId  pulumi.StringPtrInput
-	RolesId pulumi.StringInput
+	RoleId pulumi.StringInput
 	// The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
 	Stage pulumi.StringPtrInput
 	// Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.

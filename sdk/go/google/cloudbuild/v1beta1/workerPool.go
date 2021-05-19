@@ -38,17 +38,14 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
-	}
-	if args.WorkerPoolsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
 	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1beta1:WorkerPool", name, args, &resource, opts...)
@@ -110,26 +107,24 @@ func (WorkerPoolState) ElementType() reflect.Type {
 }
 
 type workerPoolArgs struct {
-	LocationsId string `pulumi:"locationsId"`
+	Location string `pulumi:"location"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
-	ProjectsId    string         `pulumi:"projectsId"`
+	Project       string         `pulumi:"project"`
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig  *WorkerConfig `pulumi:"workerConfig"`
-	WorkerPoolId  string        `pulumi:"workerPoolId"`
-	WorkerPoolsId string        `pulumi:"workerPoolsId"`
+	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
+	WorkerPoolId string        `pulumi:"workerPoolId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
 type WorkerPoolArgs struct {
-	LocationsId pulumi.StringInput
+	Location pulumi.StringInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
-	ProjectsId    pulumi.StringInput
+	Project       pulumi.StringInput
 	// Worker configuration for the `WorkerPool`.
-	WorkerConfig  WorkerConfigPtrInput
-	WorkerPoolId  pulumi.StringInput
-	WorkerPoolsId pulumi.StringInput
+	WorkerConfig WorkerConfigPtrInput
+	WorkerPoolId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

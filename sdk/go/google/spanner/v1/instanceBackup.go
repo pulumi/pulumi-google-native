@@ -45,17 +45,14 @@ func NewInstanceBackup(ctx *pulumi.Context,
 	if args.BackupId == nil {
 		return nil, errors.New("invalid value for required argument 'BackupId'")
 	}
-	if args.BackupsId == nil {
-		return nil, errors.New("invalid value for required argument 'BackupsId'")
-	}
 	if args.EncryptionConfigEncryptionType == nil {
 		return nil, errors.New("invalid value for required argument 'EncryptionConfigEncryptionType'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource InstanceBackup
 	err := ctx.RegisterResource("google-native:spanner/v1:InstanceBackup", name, args, &resource, opts...)
@@ -125,36 +122,34 @@ func (InstanceBackupState) ElementType() reflect.Type {
 }
 
 type instanceBackupArgs struct {
-	BackupId  string `pulumi:"backupId"`
-	BackupsId string `pulumi:"backupsId"`
+	BackupId string `pulumi:"backupId"`
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
 	Database                       *string `pulumi:"database"`
 	EncryptionConfigEncryptionType string  `pulumi:"encryptionConfigEncryptionType"`
 	EncryptionConfigKmsKeyName     *string `pulumi:"encryptionConfigKmsKeyName"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
-	ExpireTime  *string `pulumi:"expireTime"`
-	InstancesId string  `pulumi:"instancesId"`
+	ExpireTime *string `pulumi:"expireTime"`
+	InstanceId string  `pulumi:"instanceId"`
 	// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
 	VersionTime *string `pulumi:"versionTime"`
 }
 
 // The set of arguments for constructing a InstanceBackup resource.
 type InstanceBackupArgs struct {
-	BackupId  pulumi.StringInput
-	BackupsId pulumi.StringInput
+	BackupId pulumi.StringInput
 	// Required for the CreateBackup operation. Name of the database from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects//instances//databases/`.
 	Database                       pulumi.StringPtrInput
 	EncryptionConfigEncryptionType pulumi.StringInput
 	EncryptionConfigKmsKeyName     pulumi.StringPtrInput
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
-	ExpireTime  pulumi.StringPtrInput
-	InstancesId pulumi.StringInput
+	ExpireTime pulumi.StringPtrInput
+	InstanceId pulumi.StringInput
 	// Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The backup will contain an externally consistent copy of the database at the timestamp specified by `version_time`. If `version_time` is not specified, the system will set `version_time` to the `create_time` of the backup.
 	VersionTime pulumi.StringPtrInput
 }

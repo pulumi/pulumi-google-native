@@ -38,14 +38,14 @@ func NewGlossary(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GlossariesId == nil {
-		return nil, errors.New("invalid value for required argument 'GlossariesId'")
+	if args.GlossaryId == nil {
+		return nil, errors.New("invalid value for required argument 'GlossaryId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Glossary
 	err := ctx.RegisterResource("google-native:translate/v3beta1:Glossary", name, args, &resource, opts...)
@@ -107,32 +107,32 @@ func (GlossaryState) ElementType() reflect.Type {
 }
 
 type glossaryArgs struct {
-	GlossariesId string `pulumi:"glossariesId"`
+	GlossaryId string `pulumi:"glossaryId"`
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig *GlossaryInputConfig `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet *LanguageCodesSet `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair *LanguageCodePair `pulumi:"languagePair"`
-	LocationsId  string            `pulumi:"locationsId"`
+	Location     string            `pulumi:"location"`
 	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Glossary resource.
 type GlossaryArgs struct {
-	GlossariesId pulumi.StringInput
+	GlossaryId pulumi.StringInput
 	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigPtrInput
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetPtrInput
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (GlossaryArgs) ElementType() reflect.Type {

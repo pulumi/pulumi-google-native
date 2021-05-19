@@ -74,14 +74,11 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:datafusion/v1beta1:Instance", name, args, &resource, opts...)
@@ -232,17 +229,16 @@ type instanceArgs struct {
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring *bool   `pulumi:"enableStackdriverMonitoring"`
 	InstanceId                  *string `pulumi:"instanceId"`
-	InstancesId                 string  `pulumi:"instancesId"`
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options map[string]string `pulumi:"options"`
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance *bool  `pulumi:"privateInstance"`
-	ProjectsId      string `pulumi:"projectsId"`
+	Project         string `pulumi:"project"`
 	// Required. Instance type.
 	Type *string `pulumi:"type"`
 	// Current version of Data Fusion.
@@ -270,17 +266,16 @@ type InstanceArgs struct {
 	// Option to enable Stackdriver Monitoring.
 	EnableStackdriverMonitoring pulumi.BoolPtrInput
 	InstanceId                  pulumi.StringPtrInput
-	InstancesId                 pulumi.StringInput
 	// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Network configuration options. These are required when a private Data Fusion instance is to be created.
 	NetworkConfig NetworkConfigPtrInput
 	// Map of additional options used to configure the behavior of Data Fusion instance.
 	Options pulumi.StringMapInput
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolPtrInput
-	ProjectsId      pulumi.StringInput
+	Project         pulumi.StringInput
 	// Required. Instance type.
 	Type pulumi.StringPtrInput
 	// Current version of Data Fusion.

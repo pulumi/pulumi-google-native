@@ -50,11 +50,11 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DomainsId == nil {
-		return nil, errors.New("invalid value for required argument 'DomainsId'")
+	if args.DomainId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Domain
 	err := ctx.RegisterResource("google-native:managedidentities/v1alpha1:Domain", name, args, &resource, opts...)
@@ -146,8 +146,8 @@ type domainArgs struct {
 	AuthorizedNetworks []string `pulumi:"authorizedNetworks"`
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime *string `pulumi:"createTime"`
+	DomainId   string  `pulumi:"domainId"`
 	DomainName *string `pulumi:"domainName"`
-	DomainsId  string  `pulumi:"domainsId"`
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn *string `pulumi:"fqdn"`
 	// Optional. Resource labels to represent user provided metadata
@@ -157,8 +157,8 @@ type domainArgs struct {
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName *string `pulumi:"managedIdentitiesAdminName"`
 	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// The current state of this domain.
@@ -179,8 +179,8 @@ type DomainArgs struct {
 	AuthorizedNetworks pulumi.StringArrayInput
 	// The time the instance was created. Synthetic field is populated automatically by CCFE. go/ccfe-synthetic-field-user-guide
 	CreateTime pulumi.StringPtrInput
+	DomainId   pulumi.StringInput
 	DomainName pulumi.StringPtrInput
-	DomainsId  pulumi.StringInput
 	// Fully-qualified domain name of the exposed domain used by clients to connect to the service. Similar to what would be chosen for an Active Directory that is set up on an internal network.
 	Fqdn pulumi.StringPtrInput
 	// Optional. Resource labels to represent user provided metadata
@@ -190,8 +190,8 @@ type DomainArgs struct {
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName pulumi.StringPtrInput
 	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
 	// The current state of this domain.

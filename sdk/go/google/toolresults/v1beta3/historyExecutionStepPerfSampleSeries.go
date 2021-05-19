@@ -22,7 +22,7 @@ type HistoryExecutionStepPerfSampleSeries struct {
 	// A tool results history ID. @OutputOnly
 	HistoryId pulumi.StringOutput `pulumi:"historyId"`
 	// The cloud project @OutputOnly
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// A sample series id @OutputOnly
 	SampleSeriesId pulumi.StringOutput `pulumi:"sampleSeriesId"`
 	// A tool results step ID. @OutputOnly
@@ -42,8 +42,8 @@ func NewHistoryExecutionStepPerfSampleSeries(ctx *pulumi.Context,
 	if args.HistoryId == nil {
 		return nil, errors.New("invalid value for required argument 'HistoryId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.SampleSeriesId == nil {
 		return nil, errors.New("invalid value for required argument 'SampleSeriesId'")
@@ -80,7 +80,7 @@ type historyExecutionStepPerfSampleSeriesState struct {
 	// A tool results history ID. @OutputOnly
 	HistoryId *string `pulumi:"historyId"`
 	// The cloud project @OutputOnly
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// A sample series id @OutputOnly
 	SampleSeriesId *string `pulumi:"sampleSeriesId"`
 	// A tool results step ID. @OutputOnly
@@ -95,7 +95,7 @@ type HistoryExecutionStepPerfSampleSeriesState struct {
 	// A tool results history ID. @OutputOnly
 	HistoryId pulumi.StringPtrInput
 	// The cloud project @OutputOnly
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// A sample series id @OutputOnly
 	SampleSeriesId pulumi.StringPtrInput
 	// A tool results step ID. @OutputOnly
@@ -114,7 +114,7 @@ type historyExecutionStepPerfSampleSeriesArgs struct {
 	// A tool results history ID. @OutputOnly
 	HistoryId string `pulumi:"historyId"`
 	// The cloud project @OutputOnly
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// A sample series id @OutputOnly
 	SampleSeriesId string `pulumi:"sampleSeriesId"`
 	// A tool results step ID. @OutputOnly
@@ -130,7 +130,7 @@ type HistoryExecutionStepPerfSampleSeriesArgs struct {
 	// A tool results history ID. @OutputOnly
 	HistoryId pulumi.StringInput
 	// The cloud project @OutputOnly
-	ProjectId pulumi.StringInput
+	Project pulumi.StringInput
 	// A sample series id @OutputOnly
 	SampleSeriesId pulumi.StringInput
 	// A tool results step ID. @OutputOnly

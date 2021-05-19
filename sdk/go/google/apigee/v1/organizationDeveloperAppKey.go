@@ -42,17 +42,17 @@ func NewOrganizationDeveloperAppKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AppsId == nil {
-		return nil, errors.New("invalid value for required argument 'AppsId'")
+	if args.AppId == nil {
+		return nil, errors.New("invalid value for required argument 'AppId'")
 	}
-	if args.DevelopersId == nil {
-		return nil, errors.New("invalid value for required argument 'DevelopersId'")
+	if args.DeveloperId == nil {
+		return nil, errors.New("invalid value for required argument 'DeveloperId'")
 	}
-	if args.KeysId == nil {
-		return nil, errors.New("invalid value for required argument 'KeysId'")
+	if args.KeyId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationDeveloperAppKey
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDeveloperAppKey", name, args, &resource, opts...)
@@ -124,22 +124,22 @@ func (OrganizationDeveloperAppKeyState) ElementType() reflect.Type {
 type organizationDeveloperAppKeyArgs struct {
 	// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
 	ApiProducts []interface{} `pulumi:"apiProducts"`
-	AppsId      string        `pulumi:"appsId"`
+	AppId       string        `pulumi:"appId"`
 	// List of attributes associated with the credential.
 	Attributes []GoogleCloudApigeeV1Attribute `pulumi:"attributes"`
 	// Consumer key.
 	ConsumerKey *string `pulumi:"consumerKey"`
 	// Secret key.
 	ConsumerSecret *string `pulumi:"consumerSecret"`
-	DevelopersId   string  `pulumi:"developersId"`
+	DeveloperId    string  `pulumi:"developerId"`
 	// Time the developer app expires in milliseconds since epoch.
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	ExpiresInSeconds *string `pulumi:"expiresInSeconds"`
 	// Time the developer app was created in milliseconds since epoch.
-	IssuedAt        *string `pulumi:"issuedAt"`
-	KeysId          string  `pulumi:"keysId"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	IssuedAt       *string `pulumi:"issuedAt"`
+	KeyId          string  `pulumi:"keyId"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
 	Scopes []string `pulumi:"scopes"`
 	// Status of the credential. Valid values include `approved` or `revoked`.
@@ -150,22 +150,22 @@ type organizationDeveloperAppKeyArgs struct {
 type OrganizationDeveloperAppKeyArgs struct {
 	// List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
 	ApiProducts pulumi.ArrayInput
-	AppsId      pulumi.StringInput
+	AppId       pulumi.StringInput
 	// List of attributes associated with the credential.
 	Attributes GoogleCloudApigeeV1AttributeArrayInput
 	// Consumer key.
 	ConsumerKey pulumi.StringPtrInput
 	// Secret key.
 	ConsumerSecret pulumi.StringPtrInput
-	DevelopersId   pulumi.StringInput
+	DeveloperId    pulumi.StringInput
 	// Time the developer app expires in milliseconds since epoch.
 	ExpiresAt pulumi.StringPtrInput
 	// Input only. Expiration time, in seconds, for the consumer key. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
 	ExpiresInSeconds pulumi.StringPtrInput
 	// Time the developer app was created in milliseconds since epoch.
-	IssuedAt        pulumi.StringPtrInput
-	KeysId          pulumi.StringInput
-	OrganizationsId pulumi.StringInput
+	IssuedAt       pulumi.StringPtrInput
+	KeyId          pulumi.StringInput
+	OrganizationId pulumi.StringInput
 	// Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
 	Scopes pulumi.StringArrayInput
 	// Status of the credential. Valid values include `approved` or `revoked`.

@@ -43,8 +43,8 @@ func NewJob(ctx *pulumi.Context,
 	if args.JobId == nil {
 		return nil, errors.New("invalid value for required argument 'JobId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:bigquery/v2:Job", name, args, &resource, opts...)
@@ -120,8 +120,8 @@ type jobArgs struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference *JobReference `pulumi:"jobReference"`
 	// [Output-only] The type of the resource.
-	Kind      *string `pulumi:"kind"`
-	ProjectId string  `pulumi:"projectId"`
+	Kind    *string `pulumi:"kind"`
+	Project string  `pulumi:"project"`
 	// [Output-only] A URL that can be used to access this resource again.
 	SelfLink *string `pulumi:"selfLink"`
 	// [Output-only] Information about the job, including starting time and ending time of the job.
@@ -144,8 +144,8 @@ type JobArgs struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
 	// [Output-only] The type of the resource.
-	Kind      pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	Kind    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// [Output-only] A URL that can be used to access this resource again.
 	SelfLink pulumi.StringPtrInput
 	// [Output-only] Information about the job, including starting time and ending time of the job.

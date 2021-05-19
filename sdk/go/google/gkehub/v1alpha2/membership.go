@@ -50,17 +50,14 @@ func NewMembership(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.MembershipId == nil {
 		return nil, errors.New("invalid value for required argument 'MembershipId'")
 	}
-	if args.MembershipsId == nil {
-		return nil, errors.New("invalid value for required argument 'MembershipsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Membership
 	err := ctx.RegisterResource("google-native:gkehub/v1alpha2:Membership", name, args, &resource, opts...)
@@ -155,11 +152,10 @@ type membershipArgs struct {
 	// Optional. The infrastructure type this Membership is running on.
 	InfrastructureType *string `pulumi:"infrastructureType"`
 	// Optional. GCP labels for this membership.
-	Labels        map[string]string `pulumi:"labels"`
-	LocationsId   string            `pulumi:"locationsId"`
-	MembershipId  string            `pulumi:"membershipId"`
-	MembershipsId string            `pulumi:"membershipsId"`
-	ProjectsId    string            `pulumi:"projectsId"`
+	Labels       map[string]string `pulumi:"labels"`
+	Location     string            `pulumi:"location"`
+	MembershipId string            `pulumi:"membershipId"`
+	Project      string            `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Membership resource.
@@ -173,11 +169,10 @@ type MembershipArgs struct {
 	// Optional. The infrastructure type this Membership is running on.
 	InfrastructureType pulumi.StringPtrInput
 	// Optional. GCP labels for this membership.
-	Labels        pulumi.StringMapInput
-	LocationsId   pulumi.StringInput
-	MembershipId  pulumi.StringInput
-	MembershipsId pulumi.StringInput
-	ProjectsId    pulumi.StringInput
+	Labels       pulumi.StringMapInput
+	Location     pulumi.StringInput
+	MembershipId pulumi.StringInput
+	Project      pulumi.StringInput
 }
 
 func (MembershipArgs) ElementType() reflect.Type {

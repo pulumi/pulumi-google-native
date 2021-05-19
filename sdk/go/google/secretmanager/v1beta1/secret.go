@@ -32,14 +32,11 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.SecretId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretId'")
-	}
-	if args.SecretsId == nil {
-		return nil, errors.New("invalid value for required argument 'SecretsId'")
 	}
 	var resource Secret
 	err := ctx.RegisterResource("google-native:secretmanager/v1beta1:Secret", name, args, &resource, opts...)
@@ -90,23 +87,21 @@ func (SecretState) ElementType() reflect.Type {
 
 type secretArgs struct {
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels     map[string]string `pulumi:"labels"`
-	ProjectsId string            `pulumi:"projectsId"`
+	Labels  map[string]string `pulumi:"labels"`
+	Project string            `pulumi:"project"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
 	SecretId    string       `pulumi:"secretId"`
-	SecretsId   string       `pulumi:"secretsId"`
 }
 
 // The set of arguments for constructing a Secret resource.
 type SecretArgs struct {
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels     pulumi.StringMapInput
-	ProjectsId pulumi.StringInput
+	Labels  pulumi.StringMapInput
+	Project pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput
 	SecretId    pulumi.StringInput
-	SecretsId   pulumi.StringInput
 }
 
 func (SecretArgs) ElementType() reflect.Type {

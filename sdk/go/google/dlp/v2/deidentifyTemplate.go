@@ -36,14 +36,14 @@ func NewDeidentifyTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DeidentifyTemplatesId == nil {
-		return nil, errors.New("invalid value for required argument 'DeidentifyTemplatesId'")
+	if args.DeidentifyTemplateId == nil {
+		return nil, errors.New("invalid value for required argument 'DeidentifyTemplateId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DeidentifyTemplate
 	err := ctx.RegisterResource("google-native:dlp/v2:DeidentifyTemplate", name, args, &resource, opts...)
@@ -102,14 +102,14 @@ func (DeidentifyTemplateState) ElementType() reflect.Type {
 
 type deidentifyTemplateArgs struct {
 	// The core content of the template.
-	DeidentifyConfig      *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
-	DeidentifyTemplatesId string                              `pulumi:"deidentifyTemplatesId"`
+	DeidentifyConfig     *GooglePrivacyDlpV2DeidentifyConfig `pulumi:"deidentifyConfig"`
+	DeidentifyTemplateId string                              `pulumi:"deidentifyTemplateId"`
 	// Short description (max 256 chars).
 	Description *string `pulumi:"description"`
 	// Display name (max 256 chars).
 	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
+	Location    string  `pulumi:"location"`
+	Project     string  `pulumi:"project"`
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId *string `pulumi:"templateId"`
 }
@@ -117,14 +117,14 @@ type deidentifyTemplateArgs struct {
 // The set of arguments for constructing a DeidentifyTemplate resource.
 type DeidentifyTemplateArgs struct {
 	// The core content of the template.
-	DeidentifyConfig      GooglePrivacyDlpV2DeidentifyConfigPtrInput
-	DeidentifyTemplatesId pulumi.StringInput
+	DeidentifyConfig     GooglePrivacyDlpV2DeidentifyConfigPtrInput
+	DeidentifyTemplateId pulumi.StringInput
 	// Short description (max 256 chars).
 	Description pulumi.StringPtrInput
 	// Display name (max 256 chars).
 	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
 	// The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TemplateId pulumi.StringPtrInput
 }

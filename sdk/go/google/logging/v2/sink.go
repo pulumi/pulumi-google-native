@@ -46,8 +46,8 @@ func NewSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.SinksId == nil {
-		return nil, errors.New("invalid value for required argument 'SinksId'")
+	if args.SinkId == nil {
+		return nil, errors.New("invalid value for required argument 'SinkId'")
 	}
 	if args.V2Id == nil {
 		return nil, errors.New("invalid value for required argument 'V2Id'")
@@ -147,7 +147,7 @@ type sinkArgs struct {
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 *string `pulumi:"name"`
-	SinksId              string  `pulumi:"sinksId"`
+	SinkId               string  `pulumi:"sinkId"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 	V2Id                 string  `pulumi:"v2Id"`
 	V2Id1                string  `pulumi:"v2Id1"`
@@ -171,7 +171,7 @@ type SinkArgs struct {
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 pulumi.StringPtrInput
-	SinksId              pulumi.StringInput
+	SinkId               pulumi.StringInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 	V2Id                 pulumi.StringInput
 	V2Id1                pulumi.StringInput

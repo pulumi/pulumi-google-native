@@ -48,11 +48,11 @@ func NewAccountCustomer(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountsId'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.CustomersId == nil {
-		return nil, errors.New("invalid value for required argument 'CustomersId'")
+	if args.CustomerId == nil {
+		return nil, errors.New("invalid value for required argument 'CustomerId'")
 	}
 	var resource AccountCustomer
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:AccountCustomer", name, args, &resource, opts...)
@@ -134,12 +134,12 @@ func (AccountCustomerState) ElementType() reflect.Type {
 }
 
 type accountCustomerArgs struct {
-	AccountsId string `pulumi:"accountsId"`
+	AccountId string `pulumi:"accountId"`
 	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
 	AlternateEmail *string `pulumi:"alternateEmail"`
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId *string `pulumi:"channelPartnerId"`
-	CustomersId      string  `pulumi:"customersId"`
+	CustomerId       string  `pulumi:"customerId"`
 	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain *string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
@@ -154,12 +154,12 @@ type accountCustomerArgs struct {
 
 // The set of arguments for constructing a AccountCustomer resource.
 type AccountCustomerArgs struct {
-	AccountsId pulumi.StringInput
+	AccountId pulumi.StringInput
 	// Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
 	AlternateEmail pulumi.StringPtrInput
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId pulumi.StringPtrInput
-	CustomersId      pulumi.StringInput
+	CustomerId       pulumi.StringInput
 	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain pulumi.StringPtrInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.

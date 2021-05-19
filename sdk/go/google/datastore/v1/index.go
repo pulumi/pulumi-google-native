@@ -22,7 +22,7 @@ type Index struct {
 	// Required. The entity kind to which this index applies.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Project ID.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput `pulumi:"properties"`
 	// The state of the index.
@@ -39,8 +39,8 @@ func NewIndex(ctx *pulumi.Context,
 	if args.IndexId == nil {
 		return nil, errors.New("invalid value for required argument 'IndexId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Index
 	err := ctx.RegisterResource("google-native:datastore/v1:Index", name, args, &resource, opts...)
@@ -71,7 +71,7 @@ type indexState struct {
 	// Required. The entity kind to which this index applies.
 	Kind *string `pulumi:"kind"`
 	// Project ID.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
 	// The state of the index.
@@ -86,7 +86,7 @@ type IndexState struct {
 	// Required. The entity kind to which this index applies.
 	Kind pulumi.StringPtrInput
 	// Project ID.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput
 	// The state of the index.
@@ -102,8 +102,8 @@ type indexArgs struct {
 	Ancestor *string `pulumi:"ancestor"`
 	IndexId  string  `pulumi:"indexId"`
 	// Required. The entity kind to which this index applies.
-	Kind      *string `pulumi:"kind"`
-	ProjectId string  `pulumi:"projectId"`
+	Kind    *string `pulumi:"kind"`
+	Project string  `pulumi:"project"`
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedProperty `pulumi:"properties"`
 }
@@ -114,8 +114,8 @@ type IndexArgs struct {
 	Ancestor pulumi.StringPtrInput
 	IndexId  pulumi.StringInput
 	// Required. The entity kind to which this index applies.
-	Kind      pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	Kind    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyArrayInput
 }

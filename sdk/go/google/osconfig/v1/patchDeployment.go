@@ -49,11 +49,8 @@ func NewPatchDeployment(ctx *pulumi.Context,
 	if args.PatchDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'PatchDeploymentId'")
 	}
-	if args.PatchDeploymentsId == nil {
-		return nil, errors.New("invalid value for required argument 'PatchDeploymentsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource PatchDeployment
 	err := ctx.RegisterResource("google-native:osconfig/v1:PatchDeployment", name, args, &resource, opts...)
@@ -142,10 +139,9 @@ type patchDeploymentArgs struct {
 	// Required. Schedule a one-time execution.
 	OneTimeSchedule *OneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
-	PatchConfig        *PatchConfig `pulumi:"patchConfig"`
-	PatchDeploymentId  string       `pulumi:"patchDeploymentId"`
-	PatchDeploymentsId string       `pulumi:"patchDeploymentsId"`
-	ProjectsId         string       `pulumi:"projectsId"`
+	PatchConfig       *PatchConfig `pulumi:"patchConfig"`
+	PatchDeploymentId string       `pulumi:"patchDeploymentId"`
+	Project           string       `pulumi:"project"`
 	// Required. Schedule recurring executions.
 	RecurringSchedule *RecurringSchedule `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
@@ -165,10 +161,9 @@ type PatchDeploymentArgs struct {
 	// Required. Schedule a one-time execution.
 	OneTimeSchedule OneTimeSchedulePtrInput
 	// Optional. Patch configuration that is applied.
-	PatchConfig        PatchConfigPtrInput
-	PatchDeploymentId  pulumi.StringInput
-	PatchDeploymentsId pulumi.StringInput
-	ProjectsId         pulumi.StringInput
+	PatchConfig       PatchConfigPtrInput
+	PatchDeploymentId pulumi.StringInput
+	Project           pulumi.StringInput
 	// Required. Schedule recurring executions.
 	RecurringSchedule RecurringSchedulePtrInput
 	// Optional. Rollout strategy of the patch job.

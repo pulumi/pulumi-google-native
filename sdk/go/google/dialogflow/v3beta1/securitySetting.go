@@ -38,14 +38,14 @@ func NewSecuritySetting(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SecuritySettingsId == nil {
-		return nil, errors.New("invalid value for required argument 'SecuritySettingsId'")
+	if args.SecuritySettingId == nil {
+		return nil, errors.New("invalid value for required argument 'SecuritySettingId'")
 	}
 	var resource SecuritySetting
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:SecuritySetting", name, args, &resource, opts...)
@@ -111,10 +111,10 @@ type securitySettingArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate *string `pulumi:"inspectTemplate"`
-	LocationsId     string  `pulumi:"locationsId"`
+	Location        string  `pulumi:"location"`
 	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
 	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
@@ -123,7 +123,7 @@ type securitySettingArgs struct {
 	RedactionStrategy *string `pulumi:"redactionStrategy"`
 	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
 	RetentionWindowDays *int   `pulumi:"retentionWindowDays"`
-	SecuritySettingsId  string `pulumi:"securitySettingsId"`
+	SecuritySettingId   string `pulumi:"securitySettingId"`
 }
 
 // The set of arguments for constructing a SecuritySetting resource.
@@ -132,10 +132,10 @@ type SecuritySettingArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate pulumi.StringPtrInput
-	LocationsId     pulumi.StringInput
+	Location        pulumi.StringInput
 	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes pulumi.StringArrayInput
 	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
@@ -144,7 +144,7 @@ type SecuritySettingArgs struct {
 	RedactionStrategy pulumi.StringPtrInput
 	// Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
 	RetentionWindowDays pulumi.IntPtrInput
-	SecuritySettingsId  pulumi.StringInput
+	SecuritySettingId   pulumi.StringInput
 }
 
 func (SecuritySettingArgs) ElementType() reflect.Type {

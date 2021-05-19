@@ -54,11 +54,11 @@ func NewOccurrence(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.OccurrencesId == nil {
-		return nil, errors.New("invalid value for required argument 'OccurrencesId'")
+	if args.OccurrenceId == nil {
+		return nil, errors.New("invalid value for required argument 'OccurrenceId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Occurrence
 	err := ctx.RegisterResource("google-native:containeranalysis/v1beta1:Occurrence", name, args, &resource, opts...)
@@ -173,9 +173,9 @@ type occurrenceArgs struct {
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name *string `pulumi:"name"`
 	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-	NoteName      *string `pulumi:"noteName"`
-	OccurrencesId string  `pulumi:"occurrencesId"`
-	ProjectsId    string  `pulumi:"projectsId"`
+	NoteName     *string `pulumi:"noteName"`
+	OccurrenceId string  `pulumi:"occurrenceId"`
+	Project      string  `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
 	// Required. Immutable. The resource for which the occurrence applies.
@@ -209,9 +209,9 @@ type OccurrenceArgs struct {
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name pulumi.StringPtrInput
 	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-	NoteName      pulumi.StringPtrInput
-	OccurrencesId pulumi.StringInput
-	ProjectsId    pulumi.StringInput
+	NoteName     pulumi.StringPtrInput
+	OccurrenceId pulumi.StringInput
+	Project      pulumi.StringInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
 	// Required. Immutable. The resource for which the occurrence applies.

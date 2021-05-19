@@ -34,17 +34,17 @@ func NewAgentWebhook(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WebhooksId == nil {
-		return nil, errors.New("invalid value for required argument 'WebhooksId'")
+	if args.WebhookId == nil {
+		return nil, errors.New("invalid value for required argument 'WebhookId'")
 	}
 	var resource AgentWebhook
 	err := ctx.RegisterResource("google-native:dialogflow/v3:AgentWebhook", name, args, &resource, opts...)
@@ -98,38 +98,38 @@ func (AgentWebhookState) ElementType() reflect.Type {
 }
 
 type agentWebhookArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
 	// Required. The human-readable name of the webhook, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebService `pulumi:"genericWebService"`
-	LocationsId       string                                             `pulumi:"locationsId"`
+	Location          string                                             `pulumi:"location"`
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout    *string `pulumi:"timeout"`
-	WebhooksId string  `pulumi:"webhooksId"`
+	Timeout   *string `pulumi:"timeout"`
+	WebhookId string  `pulumi:"webhookId"`
 }
 
 // The set of arguments for constructing a AgentWebhook resource.
 type AgentWebhookArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
 	// Required. The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput
-	LocationsId       pulumi.StringInput
+	Location          pulumi.StringInput
 	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout    pulumi.StringPtrInput
-	WebhooksId pulumi.StringInput
+	Timeout   pulumi.StringPtrInput
+	WebhookId pulumi.StringInput
 }
 
 func (AgentWebhookArgs) ElementType() reflect.Type {

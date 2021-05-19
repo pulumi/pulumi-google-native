@@ -48,11 +48,11 @@ func NewUptimeCheckConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.UptimeCheckConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'UptimeCheckConfigsId'")
+	if args.UptimeCheckConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'UptimeCheckConfigId'")
 	}
 	var resource UptimeCheckConfig
 	err := ctx.RegisterResource("google-native:monitoring/v3:UptimeCheckConfig", name, args, &resource, opts...)
@@ -149,8 +149,8 @@ type uptimeCheckConfigArgs struct {
 	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name *string `pulumi:"name"`
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
-	Period     *string `pulumi:"period"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Period  *string `pulumi:"period"`
+	Project string  `pulumi:"project"`
 	// The group resource associated with the configuration.
 	ResourceGroup *ResourceGroup `pulumi:"resourceGroup"`
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
@@ -158,8 +158,8 @@ type uptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	TcpCheck *TcpCheck `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
-	Timeout              *string `pulumi:"timeout"`
-	UptimeCheckConfigsId string  `pulumi:"uptimeCheckConfigsId"`
+	Timeout             *string `pulumi:"timeout"`
+	UptimeCheckConfigId string  `pulumi:"uptimeCheckConfigId"`
 }
 
 // The set of arguments for constructing a UptimeCheckConfig resource.
@@ -179,8 +179,8 @@ type UptimeCheckConfigArgs struct {
 	// A unique resource name for this Uptime check configuration. The format is: projects/[PROJECT_ID_OR_NUMBER]/uptimeCheckConfigs/[UPTIME_CHECK_ID] [PROJECT_ID_OR_NUMBER] is the Workspace host project associated with the Uptime check.This field should be omitted when creating the Uptime check configuration; on create, the resource name is assigned by the server and included in the response.
 	Name pulumi.StringPtrInput
 	// How often, in seconds, the Uptime check is performed. Currently, the only supported values are 60s (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to 60s.
-	Period     pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Period  pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The group resource associated with the configuration.
 	ResourceGroup ResourceGroupPtrInput
 	// The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
@@ -188,8 +188,8 @@ type UptimeCheckConfigArgs struct {
 	// Contains information needed to make a TCP check.
 	TcpCheck TcpCheckPtrInput
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
-	Timeout              pulumi.StringPtrInput
-	UptimeCheckConfigsId pulumi.StringInput
+	Timeout             pulumi.StringPtrInput
+	UptimeCheckConfigId pulumi.StringInput
 }
 
 func (UptimeCheckConfigArgs) ElementType() reflect.Type {

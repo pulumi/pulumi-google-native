@@ -50,11 +50,11 @@ func NewOrganizationHostQuery(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.HostQueriesId == nil {
-		return nil, errors.New("invalid value for required argument 'HostQueriesId'")
+	if args.HostQueryId == nil {
+		return nil, errors.New("invalid value for required argument 'HostQueryId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationHostQuery
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationHostQuery", name, args, &resource, opts...)
@@ -150,14 +150,14 @@ type organizationHostQueryArgs struct {
 	Filter *string `pulumi:"filter"`
 	// Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
 	GroupByTimeUnit *string `pulumi:"groupByTimeUnit"`
-	HostQueriesId   string  `pulumi:"hostQueriesId"`
+	HostQueryId     string  `pulumi:"hostQueryId"`
 	// Maximum number of rows that can be returned in the result.
 	Limit *int `pulumi:"limit"`
 	// A list of Metrics.
 	Metrics []GoogleCloudApigeeV1QueryMetric `pulumi:"metrics"`
 	// Asynchronous Query Name.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat *string `pulumi:"outputFormat"`
 	// Asynchronous Report ID.
@@ -178,14 +178,14 @@ type OrganizationHostQueryArgs struct {
 	Filter pulumi.StringPtrInput
 	// Time unit used to group the result set. Valid values include: second, minute, hour, day, week, or month. If a query includes groupByTimeUnit, then the result is an aggregation based on the specified time unit and the resultant timestamp does not include milliseconds precision. If a query omits groupByTimeUnit, then the resultant timestamp includes milliseconds precision.
 	GroupByTimeUnit pulumi.StringPtrInput
-	HostQueriesId   pulumi.StringInput
+	HostQueryId     pulumi.StringInput
 	// Maximum number of rows that can be returned in the result.
 	Limit pulumi.IntPtrInput
 	// A list of Metrics.
 	Metrics GoogleCloudApigeeV1QueryMetricArrayInput
 	// Asynchronous Query Name.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the csvDelimiter property.
 	OutputFormat pulumi.StringPtrInput
 	// Asynchronous Report ID.

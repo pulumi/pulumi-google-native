@@ -38,7 +38,7 @@ type Job struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionResponseOutput `pulumi:"pipelineDescription"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId pulumi.StringOutput `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
@@ -76,8 +76,8 @@ func NewJob(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:dataflow/v1b3:Job", name, args, &resource, opts...)
@@ -124,7 +124,7 @@ type jobState struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription *PipelineDescriptionResponse `pulumi:"pipelineDescription"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId *string `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
@@ -173,7 +173,7 @@ type JobState struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionResponsePtrInput
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId pulumi.StringPtrInput
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
@@ -229,7 +229,7 @@ type jobArgs struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription *PipelineDescription `pulumi:"pipelineDescription"`
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId *string `pulumi:"replaceJobId"`
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.
@@ -283,7 +283,7 @@ type JobArgs struct {
 	// Preliminary field: The format of this data may change at any time. A description of the user pipeline and stages through which it is executed. Created by Cloud Dataflow service. Only retrieved with JOB_VIEW_DESCRIPTION or JOB_VIEW_ALL.
 	PipelineDescription PipelineDescriptionPtrInput
 	// The ID of the Cloud Platform project that the job belongs to.
-	ProjectId pulumi.StringInput
+	Project pulumi.StringInput
 	// If this job is an update of an existing job, this field is the job ID of the job it replaced. When sending a `CreateJobRequest`, you can update a job by specifying it here. The job named here is stopped, and its intermediate state is transferred to this job.
 	ReplaceJobId pulumi.StringPtrInput
 	// If another job is an update of this job (and thus, this job is in `JOB_STATE_UPDATED`), this field contains the ID of that job.

@@ -34,17 +34,17 @@ func NewTaxonomyPolicyTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.PolicyTagsId == nil {
-		return nil, errors.New("invalid value for required argument 'PolicyTagsId'")
+	if args.PolicyTagId == nil {
+		return nil, errors.New("invalid value for required argument 'PolicyTagId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TaxonomiesId == nil {
-		return nil, errors.New("invalid value for required argument 'TaxonomiesId'")
+	if args.TaxonomyId == nil {
+		return nil, errors.New("invalid value for required argument 'TaxonomyId'")
 	}
 	var resource TaxonomyPolicyTag
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:TaxonomyPolicyTag", name, args, &resource, opts...)
@@ -102,12 +102,12 @@ type taxonomyPolicyTagArgs struct {
 	Description *string `pulumi:"description"`
 	// Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
 	ParentPolicyTag *string `pulumi:"parentPolicyTag"`
-	PolicyTagsId    string  `pulumi:"policyTagsId"`
-	ProjectsId      string  `pulumi:"projectsId"`
-	TaxonomiesId    string  `pulumi:"taxonomiesId"`
+	PolicyTagId     string  `pulumi:"policyTagId"`
+	Project         string  `pulumi:"project"`
+	TaxonomyId      string  `pulumi:"taxonomyId"`
 }
 
 // The set of arguments for constructing a TaxonomyPolicyTag resource.
@@ -116,12 +116,12 @@ type TaxonomyPolicyTagArgs struct {
 	Description pulumi.StringPtrInput
 	// Required. User defined name of this policy tag. It must: be unique within the parent taxonomy; contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// Resource name of this policy tag's parent policy tag (e.g. for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag). If empty, it means this policy tag is a top level policy tag (e.g. this field is empty for the "Geolocation" policy tag in the example above). If not set, defaults to an empty string.
 	ParentPolicyTag pulumi.StringPtrInput
-	PolicyTagsId    pulumi.StringInput
-	ProjectsId      pulumi.StringInput
-	TaxonomiesId    pulumi.StringInput
+	PolicyTagId     pulumi.StringInput
+	Project         pulumi.StringInput
+	TaxonomyId      pulumi.StringInput
 }
 
 func (TaxonomyPolicyTagArgs) ElementType() reflect.Type {

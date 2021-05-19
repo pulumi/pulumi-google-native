@@ -40,17 +40,17 @@ func NewAgentTestCase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TestCasesId == nil {
-		return nil, errors.New("invalid value for required argument 'TestCasesId'")
+	if args.TestCaseId == nil {
+		return nil, errors.New("invalid value for required argument 'TestCaseId'")
 	}
 	var resource AgentTestCase
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:AgentTestCase", name, args, &resource, opts...)
@@ -116,44 +116,44 @@ func (AgentTestCaseState) ElementType() reflect.Type {
 }
 
 type agentTestCaseArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult *GoogleCloudDialogflowCxV3beta1TestCaseResult `pulumi:"lastTestResult"`
-	LocationsId    string                                        `pulumi:"locationsId"`
+	Location       string                                        `pulumi:"location"`
 	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 	Name *string `pulumi:"name"`
 	// Additional freeform notes about the test case. Limit of 400 characters.
-	Notes      *string `pulumi:"notes"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Notes   *string `pulumi:"notes"`
+	Project string  `pulumi:"project"`
 	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
 	Tags []string `pulumi:"tags"`
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
 	TestCaseConversationTurns []GoogleCloudDialogflowCxV3beta1ConversationTurn `pulumi:"testCaseConversationTurns"`
-	TestCasesId               string                                           `pulumi:"testCasesId"`
+	TestCaseId                string                                           `pulumi:"testCaseId"`
 	// Config for the test case.
 	TestConfig *GoogleCloudDialogflowCxV3beta1TestConfig `pulumi:"testConfig"`
 }
 
 // The set of arguments for constructing a AgentTestCase resource.
 type AgentTestCaseArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3beta1TestCaseResultPtrInput
-	LocationsId    pulumi.StringInput
+	Location       pulumi.StringInput
 	// The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
 	Name pulumi.StringPtrInput
 	// Additional freeform notes about the test case. Limit of 400 characters.
-	Notes      pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Notes   pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
 	Tags pulumi.StringArrayInput
 	// The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
 	TestCaseConversationTurns GoogleCloudDialogflowCxV3beta1ConversationTurnArrayInput
-	TestCasesId               pulumi.StringInput
+	TestCaseId                pulumi.StringInput
 	// Config for the test case.
 	TestConfig GoogleCloudDialogflowCxV3beta1TestConfigPtrInput
 }

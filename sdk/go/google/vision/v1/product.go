@@ -34,14 +34,11 @@ func NewProduct(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProductsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProductsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Product
 	err := ctx.RegisterResource("google-native:vision/v1:Product", name, args, &resource, opts...)
@@ -99,7 +96,7 @@ type productArgs struct {
 	Description *string `pulumi:"description"`
 	// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
 	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 	Name *string `pulumi:"name"`
 	// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
@@ -107,8 +104,7 @@ type productArgs struct {
 	ProductId       *string `pulumi:"productId"`
 	// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 	ProductLabels []KeyValue `pulumi:"productLabels"`
-	ProductsId    string     `pulumi:"productsId"`
-	ProjectsId    string     `pulumi:"projectsId"`
+	Project       string     `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Product resource.
@@ -117,7 +113,7 @@ type ProductArgs struct {
 	Description pulumi.StringPtrInput
 	// The user-provided name for this Product. Must not be empty. Must be at most 4096 characters long.
 	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// The resource name of the product. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID`. This field is ignored when creating a product.
 	Name pulumi.StringPtrInput
 	// Immutable. The category for the product identified by the reference image. This should be one of "homegoods-v2", "apparel-v2", "toys-v2", "packagedgoods-v1" or "general-v1". The legacy categories "homegoods", "apparel", and "toys" are still supported, but these should not be used for new products.
@@ -125,8 +121,7 @@ type ProductArgs struct {
 	ProductId       pulumi.StringPtrInput
 	// Key-value pairs that can be attached to a product. At query time, constraints can be specified based on the product_labels. Note that integer values can be provided as strings, e.g. "1199". Only strings with integer values can match a range-based restriction which is to be supported soon. Multiple values can be assigned to the same key. One product may have up to 500 product_labels. Notice that the total number of distinct product_labels over all products in one ProductSet cannot exceed 1M, otherwise the product search pipeline will refuse to work for that ProductSet.
 	ProductLabels KeyValueArrayInput
-	ProductsId    pulumi.StringInput
-	ProjectsId    pulumi.StringInput
+	Project       pulumi.StringInput
 }
 
 func (ProductArgs) ElementType() reflect.Type {

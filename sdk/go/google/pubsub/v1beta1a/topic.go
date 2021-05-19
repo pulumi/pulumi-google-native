@@ -26,8 +26,8 @@ func NewTopic(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.TopicsId == nil {
-		return nil, errors.New("invalid value for required argument 'TopicsId'")
+	if args.TopicId == nil {
+		return nil, errors.New("invalid value for required argument 'TopicId'")
 	}
 	var resource Topic
 	err := ctx.RegisterResource("google-native:pubsub/v1beta1a:Topic", name, args, &resource, opts...)
@@ -66,15 +66,15 @@ func (TopicState) ElementType() reflect.Type {
 
 type topicArgs struct {
 	// Name of the topic.
-	Name     *string `pulumi:"name"`
-	TopicsId string  `pulumi:"topicsId"`
+	Name    *string `pulumi:"name"`
+	TopicId string  `pulumi:"topicId"`
 }
 
 // The set of arguments for constructing a Topic resource.
 type TopicArgs struct {
 	// Name of the topic.
-	Name     pulumi.StringPtrInput
-	TopicsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	TopicId pulumi.StringInput
 }
 
 func (TopicArgs) ElementType() reflect.Type {

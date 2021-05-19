@@ -30,11 +30,11 @@ func NewAgentKnowledgeBase(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KnowledgeBasesId == nil {
-		return nil, errors.New("invalid value for required argument 'KnowledgeBasesId'")
+	if args.KnowledgeBaseId == nil {
+		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentKnowledgeBase
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:AgentKnowledgeBase", name, args, &resource, opts...)
@@ -81,25 +81,25 @@ func (AgentKnowledgeBaseState) ElementType() reflect.Type {
 
 type agentKnowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName      *string `pulumi:"displayName"`
-	KnowledgeBasesId string  `pulumi:"knowledgeBasesId"`
+	DisplayName     *string `pulumi:"displayName"`
+	KnowledgeBaseId string  `pulumi:"knowledgeBaseId"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode *string `pulumi:"languageCode"`
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AgentKnowledgeBase resource.
 type AgentKnowledgeBaseArgs struct {
 	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName      pulumi.StringPtrInput
-	KnowledgeBasesId pulumi.StringInput
+	DisplayName     pulumi.StringPtrInput
+	KnowledgeBaseId pulumi.StringInput
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
 	LanguageCode pulumi.StringPtrInput
 	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (AgentKnowledgeBaseArgs) ElementType() reflect.Type {

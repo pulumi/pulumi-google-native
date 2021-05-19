@@ -30,17 +30,14 @@ func NewProductReferenceImage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProductsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProductsId'")
+	if args.ProductId == nil {
+		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.ReferenceImagesId == nil {
-		return nil, errors.New("invalid value for required argument 'ReferenceImagesId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ProductReferenceImage
 	err := ctx.RegisterResource("google-native:vision/v1:ProductReferenceImage", name, args, &resource, opts...)
@@ -88,13 +85,12 @@ func (ProductReferenceImageState) ElementType() reflect.Type {
 type productReferenceImageArgs struct {
 	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
 	BoundingPolys []BoundingPoly `pulumi:"boundingPolys"`
-	LocationsId   string         `pulumi:"locationsId"`
+	Location      string         `pulumi:"location"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
-	Name              *string `pulumi:"name"`
-	ProductsId        string  `pulumi:"productsId"`
-	ProjectsId        string  `pulumi:"projectsId"`
-	ReferenceImageId  *string `pulumi:"referenceImageId"`
-	ReferenceImagesId string  `pulumi:"referenceImagesId"`
+	Name             *string `pulumi:"name"`
+	ProductId        string  `pulumi:"productId"`
+	Project          string  `pulumi:"project"`
+	ReferenceImageId *string `pulumi:"referenceImageId"`
 	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri *string `pulumi:"uri"`
 }
@@ -103,13 +99,12 @@ type productReferenceImageArgs struct {
 type ProductReferenceImageArgs struct {
 	// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
 	BoundingPolys BoundingPolyArrayInput
-	LocationsId   pulumi.StringInput
+	Location      pulumi.StringInput
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
-	Name              pulumi.StringPtrInput
-	ProductsId        pulumi.StringInput
-	ProjectsId        pulumi.StringInput
-	ReferenceImageId  pulumi.StringPtrInput
-	ReferenceImagesId pulumi.StringInput
+	Name             pulumi.StringPtrInput
+	ProductId        pulumi.StringInput
+	Project          pulumi.StringInput
+	ReferenceImageId pulumi.StringPtrInput
 	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringPtrInput
 }

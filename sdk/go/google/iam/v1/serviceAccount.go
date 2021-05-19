@@ -28,7 +28,7 @@ type ServiceAccount struct {
 	// The OAuth 2.0 client ID for the service account.
 	Oauth2ClientId pulumi.StringOutput `pulumi:"oauth2ClientId"`
 	// The ID of the project that owns the service account.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
 	UniqueId pulumi.StringOutput `pulumi:"uniqueId"`
 }
@@ -40,11 +40,11 @@ func NewServiceAccount(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ServiceAccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceAccountsId'")
+	if args.ServiceAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceAccountId'")
 	}
 	var resource ServiceAccount
 	err := ctx.RegisterResource("google-native:iam/v1:ServiceAccount", name, args, &resource, opts...)
@@ -81,7 +81,7 @@ type serviceAccountState struct {
 	// The OAuth 2.0 client ID for the service account.
 	Oauth2ClientId *string `pulumi:"oauth2ClientId"`
 	// The ID of the project that owns the service account.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
 	UniqueId *string `pulumi:"uniqueId"`
 }
@@ -100,7 +100,7 @@ type ServiceAccountState struct {
 	// The OAuth 2.0 client ID for the service account.
 	Oauth2ClientId pulumi.StringPtrInput
 	// The ID of the project that owns the service account.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
 	UniqueId pulumi.StringPtrInput
 }
@@ -117,9 +117,9 @@ type serviceAccountArgs struct {
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
-	Name              *string `pulumi:"name"`
-	ProjectsId        string  `pulumi:"projectsId"`
-	ServiceAccountsId string  `pulumi:"serviceAccountsId"`
+	Name             *string `pulumi:"name"`
+	Project          string  `pulumi:"project"`
+	ServiceAccountId string  `pulumi:"serviceAccountId"`
 }
 
 // The set of arguments for constructing a ServiceAccount resource.
@@ -131,9 +131,9 @@ type ServiceAccountArgs struct {
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
 	DisplayName pulumi.StringPtrInput
 	// The resource name of the service account. Use one of the following formats: * `projects/{PROJECT_ID}/serviceAccounts/{EMAIL_ADDRESS}` * `projects/{PROJECT_ID}/serviceAccounts/{UNIQUE_ID}` As an alternative, you can use the `-` wildcard character instead of the project ID: * `projects/-/serviceAccounts/{EMAIL_ADDRESS}` * `projects/-/serviceAccounts/{UNIQUE_ID}` When possible, avoid using the `-` wildcard character, because it can cause response messages to contain misleading error codes. For example, if you try to get the service account `projects/-/serviceAccounts/fake@example.com`, which does not exist, the response contains an HTTP `403 Forbidden` error instead of a `404 Not Found` error.
-	Name              pulumi.StringPtrInput
-	ProjectsId        pulumi.StringInput
-	ServiceAccountsId pulumi.StringInput
+	Name             pulumi.StringPtrInput
+	Project          pulumi.StringInput
+	ServiceAccountId pulumi.StringInput
 }
 
 func (ServiceAccountArgs) ElementType() reflect.Type {

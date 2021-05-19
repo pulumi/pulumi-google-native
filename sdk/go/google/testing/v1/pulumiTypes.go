@@ -10732,7 +10732,7 @@ type TestExecution struct {
 	// Id of the containing TestMatrix.
 	MatrixId *string `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Details about the shard.
 	Shard *Shard `pulumi:"shard"`
 	// Indicates the current progress of the test execution (e.g., FINISHED).
@@ -10767,7 +10767,7 @@ type TestExecutionArgs struct {
 	// Id of the containing TestMatrix.
 	MatrixId pulumi.StringPtrInput `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Details about the shard.
 	Shard ShardPtrInput `pulumi:"shard"`
 	// Indicates the current progress of the test execution (e.g., FINISHED).
@@ -10850,8 +10850,8 @@ func (o TestExecutionOutput) MatrixId() pulumi.StringPtrOutput {
 }
 
 // The cloud project that owns the test execution.
-func (o TestExecutionOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TestExecution) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o TestExecutionOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TestExecution) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Details about the shard.
@@ -10911,7 +10911,7 @@ type TestExecutionResponse struct {
 	// Id of the containing TestMatrix.
 	MatrixId string `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Details about the shard.
 	Shard ShardResponse `pulumi:"shard"`
 	// Indicates the current progress of the test execution (e.g., FINISHED).
@@ -10944,7 +10944,7 @@ type TestExecutionResponseArgs struct {
 	// Id of the containing TestMatrix.
 	MatrixId pulumi.StringInput `pulumi:"matrixId"`
 	// The cloud project that owns the test execution.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Details about the shard.
 	Shard ShardResponseInput `pulumi:"shard"`
 	// Indicates the current progress of the test execution (e.g., FINISHED).
@@ -11022,8 +11022,8 @@ func (o TestExecutionResponseOutput) MatrixId() pulumi.StringOutput {
 }
 
 // The cloud project that owns the test execution.
-func (o TestExecutionResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v TestExecutionResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o TestExecutionResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v TestExecutionResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Details about the shard.
@@ -12508,7 +12508,7 @@ type ToolResultsExecution struct {
 	// A tool results history ID.
 	HistoryId *string `pulumi:"historyId"`
 	// The cloud project that owns the tool results execution.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // ToolResultsExecutionInput is an input type that accepts ToolResultsExecutionArgs and ToolResultsExecutionOutput values.
@@ -12529,7 +12529,7 @@ type ToolResultsExecutionArgs struct {
 	// A tool results history ID.
 	HistoryId pulumi.StringPtrInput `pulumi:"historyId"`
 	// The cloud project that owns the tool results execution.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (ToolResultsExecutionArgs) ElementType() reflect.Type {
@@ -12621,8 +12621,8 @@ func (o ToolResultsExecutionOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // The cloud project that owns the tool results execution.
-func (o ToolResultsExecutionOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ToolResultsExecution) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ToolResultsExecutionOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolResultsExecution) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type ToolResultsExecutionPtrOutput struct{ *pulumi.OutputState }
@@ -12664,12 +12664,12 @@ func (o ToolResultsExecutionPtrOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // The cloud project that owns the tool results execution.
-func (o ToolResultsExecutionPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ToolResultsExecutionPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsExecution) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12680,7 +12680,7 @@ type ToolResultsExecutionResponse struct {
 	// A tool results history ID.
 	HistoryId string `pulumi:"historyId"`
 	// The cloud project that owns the tool results execution.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // ToolResultsExecutionResponseInput is an input type that accepts ToolResultsExecutionResponseArgs and ToolResultsExecutionResponseOutput values.
@@ -12701,7 +12701,7 @@ type ToolResultsExecutionResponseArgs struct {
 	// A tool results history ID.
 	HistoryId pulumi.StringInput `pulumi:"historyId"`
 	// The cloud project that owns the tool results execution.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (ToolResultsExecutionResponseArgs) ElementType() reflect.Type {
@@ -12793,8 +12793,8 @@ func (o ToolResultsExecutionResponseOutput) HistoryId() pulumi.StringOutput {
 }
 
 // The cloud project that owns the tool results execution.
-func (o ToolResultsExecutionResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ToolResultsExecutionResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o ToolResultsExecutionResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolResultsExecutionResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ToolResultsExecutionResponsePtrOutput struct{ *pulumi.OutputState }
@@ -12836,12 +12836,12 @@ func (o ToolResultsExecutionResponsePtrOutput) HistoryId() pulumi.StringPtrOutpu
 }
 
 // The cloud project that owns the tool results execution.
-func (o ToolResultsExecutionResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ToolResultsExecutionResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsExecutionResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12850,7 +12850,7 @@ type ToolResultsHistory struct {
 	// Required. A tool results history ID.
 	HistoryId *string `pulumi:"historyId"`
 	// Required. The cloud project that owns the tool results history.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // ToolResultsHistoryInput is an input type that accepts ToolResultsHistoryArgs and ToolResultsHistoryOutput values.
@@ -12869,7 +12869,7 @@ type ToolResultsHistoryArgs struct {
 	// Required. A tool results history ID.
 	HistoryId pulumi.StringPtrInput `pulumi:"historyId"`
 	// Required. The cloud project that owns the tool results history.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (ToolResultsHistoryArgs) ElementType() reflect.Type {
@@ -12956,8 +12956,8 @@ func (o ToolResultsHistoryOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // Required. The cloud project that owns the tool results history.
-func (o ToolResultsHistoryOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ToolResultsHistory) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ToolResultsHistoryOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolResultsHistory) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type ToolResultsHistoryPtrOutput struct{ *pulumi.OutputState }
@@ -12989,12 +12989,12 @@ func (o ToolResultsHistoryPtrOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // Required. The cloud project that owns the tool results history.
-func (o ToolResultsHistoryPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ToolResultsHistoryPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistory) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13003,7 +13003,7 @@ type ToolResultsHistoryResponse struct {
 	// Required. A tool results history ID.
 	HistoryId string `pulumi:"historyId"`
 	// Required. The cloud project that owns the tool results history.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // ToolResultsHistoryResponseInput is an input type that accepts ToolResultsHistoryResponseArgs and ToolResultsHistoryResponseOutput values.
@@ -13022,7 +13022,7 @@ type ToolResultsHistoryResponseArgs struct {
 	// Required. A tool results history ID.
 	HistoryId pulumi.StringInput `pulumi:"historyId"`
 	// Required. The cloud project that owns the tool results history.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (ToolResultsHistoryResponseArgs) ElementType() reflect.Type {
@@ -13109,8 +13109,8 @@ func (o ToolResultsHistoryResponseOutput) HistoryId() pulumi.StringOutput {
 }
 
 // Required. The cloud project that owns the tool results history.
-func (o ToolResultsHistoryResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o ToolResultsHistoryResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ToolResultsHistoryResponsePtrOutput struct{ *pulumi.OutputState }
@@ -13142,12 +13142,12 @@ func (o ToolResultsHistoryResponsePtrOutput) HistoryId() pulumi.StringPtrOutput 
 }
 
 // Required. The cloud project that owns the tool results history.
-func (o ToolResultsHistoryResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ToolResultsHistoryResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistoryResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13158,7 +13158,7 @@ type ToolResultsStep struct {
 	// A tool results history ID.
 	HistoryId *string `pulumi:"historyId"`
 	// The cloud project that owns the tool results step.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// A tool results step ID.
 	StepId *string `pulumi:"stepId"`
 }
@@ -13181,7 +13181,7 @@ type ToolResultsStepArgs struct {
 	// A tool results history ID.
 	HistoryId pulumi.StringPtrInput `pulumi:"historyId"`
 	// The cloud project that owns the tool results step.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// A tool results step ID.
 	StepId pulumi.StringPtrInput `pulumi:"stepId"`
 }
@@ -13275,8 +13275,8 @@ func (o ToolResultsStepOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // The cloud project that owns the tool results step.
-func (o ToolResultsStepOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ToolResultsStep) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o ToolResultsStepOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ToolResultsStep) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // A tool results step ID.
@@ -13323,12 +13323,12 @@ func (o ToolResultsStepPtrOutput) HistoryId() pulumi.StringPtrOutput {
 }
 
 // The cloud project that owns the tool results step.
-func (o ToolResultsStepPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o ToolResultsStepPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsStep) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13349,7 +13349,7 @@ type ToolResultsStepResponse struct {
 	// A tool results history ID.
 	HistoryId string `pulumi:"historyId"`
 	// The cloud project that owns the tool results step.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// A tool results step ID.
 	StepId string `pulumi:"stepId"`
 }
@@ -13372,7 +13372,7 @@ type ToolResultsStepResponseArgs struct {
 	// A tool results history ID.
 	HistoryId pulumi.StringInput `pulumi:"historyId"`
 	// The cloud project that owns the tool results step.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// A tool results step ID.
 	StepId pulumi.StringInput `pulumi:"stepId"`
 }
@@ -13415,8 +13415,8 @@ func (o ToolResultsStepResponseOutput) HistoryId() pulumi.StringOutput {
 }
 
 // The cloud project that owns the tool results step.
-func (o ToolResultsStepResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v ToolResultsStepResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o ToolResultsStepResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolResultsStepResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // A tool results step ID.

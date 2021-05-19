@@ -40,11 +40,11 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:Dataset", name, args, &resource, opts...)
@@ -116,7 +116,7 @@ type datasetArgs struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The number of data items in the dataset.
 	DataItemCount *string `pulumi:"dataItemCount"`
-	DatasetsId    string  `pulumi:"datasetsId"`
+	DatasetId     string  `pulumi:"datasetId"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// Required. The display name of the dataset. Maximum of 64 characters.
@@ -126,8 +126,8 @@ type datasetArgs struct {
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime *string `pulumi:"lastMigrateTime"`
 	// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Dataset resource.
@@ -138,7 +138,7 @@ type DatasetArgs struct {
 	CreateTime pulumi.StringPtrInput
 	// The number of data items in the dataset.
 	DataItemCount pulumi.StringPtrInput
-	DatasetsId    pulumi.StringInput
+	DatasetId     pulumi.StringInput
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// Required. The display name of the dataset. Maximum of 64 characters.
@@ -148,8 +148,8 @@ type DatasetArgs struct {
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime pulumi.StringPtrInput
 	// Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (DatasetArgs) ElementType() reflect.Type {

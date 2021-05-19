@@ -35,11 +35,8 @@ func NewAttestor(ctx *pulumi.Context,
 	if args.AttestorId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorId'")
 	}
-	if args.AttestorsId == nil {
-		return nil, errors.New("invalid value for required argument 'AttestorsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Attestor
 	err := ctx.RegisterResource("google-native:binaryauthorization/v1beta1:Attestor", name, args, &resource, opts...)
@@ -89,26 +86,24 @@ func (AttestorState) ElementType() reflect.Type {
 }
 
 type attestorArgs struct {
-	AttestorId  string `pulumi:"attestorId"`
-	AttestorsId string `pulumi:"attestorsId"`
+	AttestorId string `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
 	UserOwnedDrydockNote *UserOwnedDrydockNote `pulumi:"userOwnedDrydockNote"`
 }
 
 // The set of arguments for constructing a Attestor resource.
 type AttestorArgs struct {
-	AttestorId  pulumi.StringInput
-	AttestorsId pulumi.StringInput
+	AttestorId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
 	UserOwnedDrydockNote UserOwnedDrydockNotePtrInput
 }

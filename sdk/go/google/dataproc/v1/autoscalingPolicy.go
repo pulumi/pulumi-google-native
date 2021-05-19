@@ -31,14 +31,14 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AutoscalingPoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'AutoscalingPoliciesId'")
+	if args.AutoscalingPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AutoscalingPolicyId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AutoscalingPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1:AutoscalingPolicy", name, args, &resource, opts...)
@@ -86,12 +86,12 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 }
 
 type autoscalingPolicyArgs struct {
-	AutoscalingPoliciesId string                     `pulumi:"autoscalingPoliciesId"`
-	BasicAlgorithm        *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
+	AutoscalingPolicyId string                     `pulumi:"autoscalingPolicyId"`
+	BasicAlgorithm      *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id          *string `pulumi:"id"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
+	Id       *string `pulumi:"id"`
+	Location string  `pulumi:"location"`
+	Project  string  `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfig `pulumi:"secondaryWorkerConfig"`
 	// Required. Describes how the autoscaler will operate for primary workers.
@@ -100,12 +100,12 @@ type autoscalingPolicyArgs struct {
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
-	AutoscalingPoliciesId pulumi.StringInput
-	BasicAlgorithm        BasicAutoscalingAlgorithmPtrInput
+	AutoscalingPolicyId pulumi.StringInput
+	BasicAlgorithm      BasicAutoscalingAlgorithmPtrInput
 	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id          pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	Id       pulumi.StringPtrInput
+	Location pulumi.StringInput
+	Project  pulumi.StringInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigPtrInput
 	// Required. Describes how the autoscaler will operate for primary workers.

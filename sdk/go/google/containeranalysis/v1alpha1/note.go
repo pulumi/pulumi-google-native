@@ -56,11 +56,8 @@ func NewNote(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.NotesId == nil {
-		return nil, errors.New("invalid value for required argument 'NotesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Note
 	err := ctx.RegisterResource("google-native:containeranalysis/v1alpha1:Note", name, args, &resource, opts...)
@@ -177,12 +174,11 @@ type noteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription *string `pulumi:"longDescription"`
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name    *string `pulumi:"name"`
-	NoteId  *string `pulumi:"noteId"`
-	NotesId string  `pulumi:"notesId"`
+	Name   *string `pulumi:"name"`
+	NoteId *string `pulumi:"noteId"`
 	// A note describing a package hosted by various package managers.
-	Package    *Package `pulumi:"package"`
-	ProjectsId string   `pulumi:"projectsId"`
+	Package *Package `pulumi:"package"`
+	Project string   `pulumi:"project"`
 	// URLs associated with this note
 	RelatedUrl []RelatedUrl `pulumi:"relatedUrl"`
 	// A one sentence description of this `Note`.
@@ -216,12 +212,11 @@ type NoteArgs struct {
 	// A detailed description of this `Note`.
 	LongDescription pulumi.StringPtrInput
 	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name    pulumi.StringPtrInput
-	NoteId  pulumi.StringPtrInput
-	NotesId pulumi.StringInput
+	Name   pulumi.StringPtrInput
+	NoteId pulumi.StringPtrInput
 	// A note describing a package hosted by various package managers.
-	Package    PackagePtrInput
-	ProjectsId pulumi.StringInput
+	Package PackagePtrInput
+	Project pulumi.StringInput
 	// URLs associated with this note
 	RelatedUrl RelatedUrlArrayInput
 	// A one sentence description of this `Note`.

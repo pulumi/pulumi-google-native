@@ -36,20 +36,20 @@ func NewDatasetAnnotationStoreAnnotation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotationStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationStoresId'")
+	if args.AnnotationId == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationId'")
 	}
-	if args.AnnotationsId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationsId'")
+	if args.AnnotationStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationStoreId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetAnnotationStoreAnnotation
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetAnnotationStoreAnnotation", name, args, &resource, opts...)
@@ -107,19 +107,19 @@ func (DatasetAnnotationStoreAnnotationState) ElementType() reflect.Type {
 }
 
 type datasetAnnotationStoreAnnotationArgs struct {
+	AnnotationId string `pulumi:"annotationId"`
 	// Details of the source.
-	AnnotationSource   *AnnotationSource `pulumi:"annotationSource"`
-	AnnotationStoresId string            `pulumi:"annotationStoresId"`
-	AnnotationsId      string            `pulumi:"annotationsId"`
+	AnnotationSource  *AnnotationSource `pulumi:"annotationSource"`
+	AnnotationStoreId string            `pulumi:"annotationStoreId"`
 	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
 	CustomData map[string]string `pulumi:"customData"`
-	DatasetsId string            `pulumi:"datasetsId"`
+	DatasetId  string            `pulumi:"datasetId"`
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation *ImageAnnotation `pulumi:"imageAnnotation"`
-	LocationsId     string           `pulumi:"locationsId"`
+	Location        string           `pulumi:"location"`
 	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Annotations for resource. For example, classification tags.
 	ResourceAnnotation *ResourceAnnotation `pulumi:"resourceAnnotation"`
 	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
@@ -128,19 +128,19 @@ type datasetAnnotationStoreAnnotationArgs struct {
 
 // The set of arguments for constructing a DatasetAnnotationStoreAnnotation resource.
 type DatasetAnnotationStoreAnnotationArgs struct {
+	AnnotationId pulumi.StringInput
 	// Details of the source.
-	AnnotationSource   AnnotationSourcePtrInput
-	AnnotationStoresId pulumi.StringInput
-	AnnotationsId      pulumi.StringInput
+	AnnotationSource  AnnotationSourcePtrInput
+	AnnotationStoreId pulumi.StringInput
 	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
 	CustomData pulumi.StringMapInput
-	DatasetsId pulumi.StringInput
+	DatasetId  pulumi.StringInput
 	// Annotations for images. For example, bounding polygons.
 	ImageAnnotation ImageAnnotationPtrInput
-	LocationsId     pulumi.StringInput
+	Location        pulumi.StringInput
 	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Annotations for resource. For example, classification tags.
 	ResourceAnnotation ResourceAnnotationPtrInput
 	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.

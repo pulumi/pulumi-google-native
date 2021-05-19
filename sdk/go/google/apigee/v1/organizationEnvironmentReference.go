@@ -32,14 +32,14 @@ func NewOrganizationEnvironmentReference(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReferencesId == nil {
-		return nil, errors.New("invalid value for required argument 'ReferencesId'")
+	if args.ReferenceId == nil {
+		return nil, errors.New("invalid value for required argument 'ReferenceId'")
 	}
 	var resource OrganizationEnvironmentReference
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentReference", name, args, &resource, opts...)
@@ -90,12 +90,12 @@ func (OrganizationEnvironmentReferenceState) ElementType() reflect.Type {
 
 type organizationEnvironmentReferenceArgs struct {
 	// Optional. A human-readable description of this reference.
-	Description    *string `pulumi:"description"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	Description   *string `pulumi:"description"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
-	ReferencesId    string  `pulumi:"referencesId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
+	ReferenceId    string  `pulumi:"referenceId"`
 	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers *string `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -105,12 +105,12 @@ type organizationEnvironmentReferenceArgs struct {
 // The set of arguments for constructing a OrganizationEnvironmentReference resource.
 type OrganizationEnvironmentReferenceArgs struct {
 	// Optional. A human-readable description of this reference.
-	Description    pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	Description   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
-	ReferencesId    pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
+	ReferenceId    pulumi.StringInput
 	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringPtrInput
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.

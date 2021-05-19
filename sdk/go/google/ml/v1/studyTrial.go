@@ -44,17 +44,17 @@ func NewStudyTrial(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.StudiesId == nil {
-		return nil, errors.New("invalid value for required argument 'StudiesId'")
+	if args.StudyId == nil {
+		return nil, errors.New("invalid value for required argument 'StudyId'")
 	}
-	if args.TrialsId == nil {
-		return nil, errors.New("invalid value for required argument 'TrialsId'")
+	if args.TrialId == nil {
+		return nil, errors.New("invalid value for required argument 'TrialId'")
 	}
 	var resource StudyTrial
 	err := ctx.RegisterResource("google-native:ml/v1:StudyTrial", name, args, &resource, opts...)
@@ -130,32 +130,32 @@ func (StudyTrialState) ElementType() reflect.Type {
 type studyTrialArgs struct {
 	// The final measurement containing the objective value.
 	FinalMeasurement *GoogleCloudMlV1__Measurement `pulumi:"finalMeasurement"`
-	LocationsId      string                        `pulumi:"locationsId"`
+	Location         string                        `pulumi:"location"`
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements []GoogleCloudMlV1__Measurement `pulumi:"measurements"`
 	// The parameters of the trial.
 	Parameters []GoogleCloudMlV1_Trial_Parameter `pulumi:"parameters"`
-	ProjectsId string                            `pulumi:"projectsId"`
+	Project    string                            `pulumi:"project"`
 	// The detailed state of a trial.
-	State     *string `pulumi:"state"`
-	StudiesId string  `pulumi:"studiesId"`
-	TrialsId  string  `pulumi:"trialsId"`
+	State   *string `pulumi:"state"`
+	StudyId string  `pulumi:"studyId"`
+	TrialId string  `pulumi:"trialId"`
 }
 
 // The set of arguments for constructing a StudyTrial resource.
 type StudyTrialArgs struct {
 	// The final measurement containing the objective value.
 	FinalMeasurement GoogleCloudMlV1__MeasurementPtrInput
-	LocationsId      pulumi.StringInput
+	Location         pulumi.StringInput
 	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
 	Measurements GoogleCloudMlV1__MeasurementArrayInput
 	// The parameters of the trial.
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
-	ProjectsId pulumi.StringInput
+	Project    pulumi.StringInput
 	// The detailed state of a trial.
-	State     pulumi.StringPtrInput
-	StudiesId pulumi.StringInput
-	TrialsId  pulumi.StringInput
+	State   pulumi.StringPtrInput
+	StudyId pulumi.StringInput
+	TrialId pulumi.StringInput
 }
 
 func (StudyTrialArgs) ElementType() reflect.Type {

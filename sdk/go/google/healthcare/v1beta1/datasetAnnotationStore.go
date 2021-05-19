@@ -28,17 +28,14 @@ func NewDatasetAnnotationStore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotationStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationStoresId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetAnnotationStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetAnnotationStore", name, args, &resource, opts...)
@@ -80,28 +77,26 @@ func (DatasetAnnotationStoreState) ElementType() reflect.Type {
 }
 
 type datasetAnnotationStoreArgs struct {
-	AnnotationStoreId  *string `pulumi:"annotationStoreId"`
-	AnnotationStoresId string  `pulumi:"annotationStoresId"`
-	DatasetsId         string  `pulumi:"datasetsId"`
+	AnnotationStoreId *string `pulumi:"annotationStoreId"`
+	DatasetId         string  `pulumi:"datasetId"`
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a DatasetAnnotationStore resource.
 type DatasetAnnotationStoreArgs struct {
-	AnnotationStoreId  pulumi.StringPtrInput
-	AnnotationStoresId pulumi.StringInput
-	DatasetsId         pulumi.StringInput
+	AnnotationStoreId pulumi.StringPtrInput
+	DatasetId         pulumi.StringInput
 	// Optional. User-supplied key-value pairs used to organize Annotation stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (DatasetAnnotationStoreArgs) ElementType() reflect.Type {

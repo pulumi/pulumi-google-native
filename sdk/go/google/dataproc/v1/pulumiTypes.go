@@ -8015,7 +8015,7 @@ type JobReference struct {
 	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
 	JobId *string `pulumi:"jobId"`
 	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // JobReferenceInput is an input type that accepts JobReferenceArgs and JobReferenceOutput values.
@@ -8034,7 +8034,7 @@ type JobReferenceArgs struct {
 	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
 	JobId pulumi.StringPtrInput `pulumi:"jobId"`
 	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (JobReferenceArgs) ElementType() reflect.Type {
@@ -8121,8 +8121,8 @@ func (o JobReferenceOutput) JobId() pulumi.StringPtrOutput {
 }
 
 // Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-func (o JobReferenceOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobReference) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o JobReferenceOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobReference) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type JobReferencePtrOutput struct{ *pulumi.OutputState }
@@ -8154,12 +8154,12 @@ func (o JobReferencePtrOutput) JobId() pulumi.StringPtrOutput {
 }
 
 // Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-func (o JobReferencePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o JobReferencePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobReference) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8168,7 +8168,7 @@ type JobReferenceResponse struct {
 	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
 	JobId string `pulumi:"jobId"`
 	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // JobReferenceResponseInput is an input type that accepts JobReferenceResponseArgs and JobReferenceResponseOutput values.
@@ -8187,7 +8187,7 @@ type JobReferenceResponseArgs struct {
 	// Optional. The job ID, which must be unique within the project.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
 	JobId pulumi.StringInput `pulumi:"jobId"`
 	// Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (JobReferenceResponseArgs) ElementType() reflect.Type {
@@ -8274,8 +8274,8 @@ func (o JobReferenceResponseOutput) JobId() pulumi.StringOutput {
 }
 
 // Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-func (o JobReferenceResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v JobReferenceResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o JobReferenceResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v JobReferenceResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type JobReferenceResponsePtrOutput struct{ *pulumi.OutputState }
@@ -8307,12 +8307,12 @@ func (o JobReferenceResponsePtrOutput) JobId() pulumi.StringPtrOutput {
 }
 
 // Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID.
-func (o JobReferenceResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o JobReferenceResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobReferenceResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

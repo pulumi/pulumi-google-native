@@ -42,14 +42,11 @@ func NewKey(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.KeysId == nil {
-		return nil, errors.New("invalid value for required argument 'KeysId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Key
 	err := ctx.RegisterResource("google-native:apikeys/v2:Key", name, args, &resource, opts...)
@@ -122,9 +119,8 @@ type keyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName *string `pulumi:"displayName"`
 	KeyId       *string `pulumi:"keyId"`
-	KeysId      string  `pulumi:"keysId"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
+	Location    string  `pulumi:"location"`
+	Project     string  `pulumi:"project"`
 	// Key restrictions.
 	Restrictions *V2Restrictions `pulumi:"restrictions"`
 }
@@ -134,9 +130,8 @@ type KeyArgs struct {
 	// Human-readable display name of this key that you can modify. The maximum length is 63 characters.
 	DisplayName pulumi.StringPtrInput
 	KeyId       pulumi.StringPtrInput
-	KeysId      pulumi.StringInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
 	// Key restrictions.
 	Restrictions V2RestrictionsPtrInput
 }

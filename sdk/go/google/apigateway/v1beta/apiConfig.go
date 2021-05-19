@@ -51,17 +51,17 @@ func NewApiConfig(ctx *pulumi.Context,
 	if args.ApiConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ApiConfigId'")
 	}
-	if args.ApisId == nil {
-		return nil, errors.New("invalid value for required argument 'ApisId'")
+	if args.ApiId == nil {
+		return nil, errors.New("invalid value for required argument 'ApiId'")
 	}
-	if args.ConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConfigsId'")
+	if args.ConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ApiConfig
 	err := ctx.RegisterResource("google-native:apigateway/v1beta:ApiConfig", name, args, &resource, opts...)
@@ -144,8 +144,8 @@ func (ApiConfigState) ElementType() reflect.Type {
 
 type apiConfigArgs struct {
 	ApiConfigId string `pulumi:"apiConfigId"`
-	ApisId      string `pulumi:"apisId"`
-	ConfigsId   string `pulumi:"configsId"`
+	ApiId       string `pulumi:"apiId"`
+	ConfigId    string `pulumi:"configId"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	// Immutable. Gateway specific configuration.
@@ -155,20 +155,20 @@ type apiConfigArgs struct {
 	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
 	GrpcServices []ApigatewayApiConfigGrpcServiceDefinition `pulumi:"grpcServices"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs []ApigatewayApiConfigFile `pulumi:"managedServiceConfigs"`
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments []ApigatewayApiConfigOpenApiDocument `pulumi:"openapiDocuments"`
-	ProjectsId       string                               `pulumi:"projectsId"`
+	Project          string                               `pulumi:"project"`
 }
 
 // The set of arguments for constructing a ApiConfig resource.
 type ApiConfigArgs struct {
 	ApiConfigId pulumi.StringInput
-	ApisId      pulumi.StringInput
-	ConfigsId   pulumi.StringInput
+	ApiId       pulumi.StringInput
+	ConfigId    pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	// Immutable. Gateway specific configuration.
@@ -178,13 +178,13 @@ type ApiConfigArgs struct {
 	// Optional. gRPC service definition files. If specified, openapi_documents must not be included.
 	GrpcServices ApigatewayApiConfigGrpcServiceDefinitionArrayInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
 	ManagedServiceConfigs ApigatewayApiConfigFileArrayInput
 	// Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
 	OpenapiDocuments ApigatewayApiConfigOpenApiDocumentArrayInput
-	ProjectsId       pulumi.StringInput
+	Project          pulumi.StringInput
 }
 
 func (ApiConfigArgs) ElementType() reflect.Type {

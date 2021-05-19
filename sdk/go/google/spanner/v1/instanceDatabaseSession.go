@@ -32,17 +32,17 @@ func NewInstanceDatabaseSession(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatabasesId == nil {
-		return nil, errors.New("invalid value for required argument 'DatabasesId'")
+	if args.DatabaseId == nil {
+		return nil, errors.New("invalid value for required argument 'DatabaseId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.SessionsId == nil {
-		return nil, errors.New("invalid value for required argument 'SessionsId'")
+	if args.SessionId == nil {
+		return nil, errors.New("invalid value for required argument 'SessionId'")
 	}
 	var resource InstanceDatabaseSession
 	err := ctx.RegisterResource("google-native:spanner/v1:InstanceDatabaseSession", name, args, &resource, opts...)
@@ -92,22 +92,22 @@ func (InstanceDatabaseSessionState) ElementType() reflect.Type {
 }
 
 type instanceDatabaseSessionArgs struct {
-	DatabasesId string `pulumi:"databasesId"`
-	InstancesId string `pulumi:"instancesId"`
+	DatabaseId string `pulumi:"databaseId"`
+	InstanceId string `pulumi:"instanceId"`
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels     map[string]string `pulumi:"labels"`
-	ProjectsId string            `pulumi:"projectsId"`
-	SessionsId string            `pulumi:"sessionsId"`
+	Labels    map[string]string `pulumi:"labels"`
+	Project   string            `pulumi:"project"`
+	SessionId string            `pulumi:"sessionId"`
 }
 
 // The set of arguments for constructing a InstanceDatabaseSession resource.
 type InstanceDatabaseSessionArgs struct {
-	DatabasesId pulumi.StringInput
-	InstancesId pulumi.StringInput
+	DatabaseId pulumi.StringInput
+	InstanceId pulumi.StringInput
 	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels     pulumi.StringMapInput
-	ProjectsId pulumi.StringInput
-	SessionsId pulumi.StringInput
+	Labels    pulumi.StringMapInput
+	Project   pulumi.StringInput
+	SessionId pulumi.StringInput
 }
 
 func (InstanceDatabaseSessionArgs) ElementType() reflect.Type {

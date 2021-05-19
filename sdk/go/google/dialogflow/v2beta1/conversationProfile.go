@@ -48,14 +48,14 @@ func NewConversationProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConversationProfilesId == nil {
-		return nil, errors.New("invalid value for required argument 'ConversationProfilesId'")
+	if args.ConversationProfileId == nil {
+		return nil, errors.New("invalid value for required argument 'ConversationProfileId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource ConversationProfile
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:ConversationProfile", name, args, &resource, opts...)
@@ -138,8 +138,8 @@ func (ConversationProfileState) ElementType() reflect.Type {
 
 type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
-	AutomatedAgentConfig   *GoogleCloudDialogflowV2beta1AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
-	ConversationProfilesId string                                            `pulumi:"conversationProfilesId"`
+	AutomatedAgentConfig  *GoogleCloudDialogflowV2beta1AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
+	ConversationProfileId string                                            `pulumi:"conversationProfileId"`
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
@@ -148,7 +148,7 @@ type conversationProfileArgs struct {
 	HumanAgentHandoffConfig *GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig `pulumi:"humanAgentHandoffConfig"`
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode *string `pulumi:"languageCode"`
-	LocationsId  string  `pulumi:"locationsId"`
+	Location     string  `pulumi:"location"`
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig *GoogleCloudDialogflowV2beta1LoggingConfig `pulumi:"loggingConfig"`
 	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
@@ -157,7 +157,7 @@ type conversationProfileArgs struct {
 	NewMessageEventNotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"newMessageEventNotificationConfig"`
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig *GoogleCloudDialogflowV2beta1NotificationConfig `pulumi:"notificationConfig"`
-	ProjectsId         string                                          `pulumi:"projectsId"`
+	Project            string                                          `pulumi:"project"`
 	// Settings for speech transcription.
 	SttConfig *GoogleCloudDialogflowV2beta1SpeechToTextConfig `pulumi:"sttConfig"`
 }
@@ -165,8 +165,8 @@ type conversationProfileArgs struct {
 // The set of arguments for constructing a ConversationProfile resource.
 type ConversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
-	AutomatedAgentConfig   GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput
-	ConversationProfilesId pulumi.StringInput
+	AutomatedAgentConfig  GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput
+	ConversationProfileId pulumi.StringInput
 	// Required. Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for agent assistance to use with this profile.
@@ -175,7 +175,7 @@ type ConversationProfileArgs struct {
 	HumanAgentHandoffConfig GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput
 	// Language code for the conversation profile. If not specified, the language is en-US. Language at ConversationProfile should be set for all non en-us languages.
 	LanguageCode pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// Configuration for logging conversation lifecycle events.
 	LoggingConfig GoogleCloudDialogflowV2beta1LoggingConfigPtrInput
 	// The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`.
@@ -184,7 +184,7 @@ type ConversationProfileArgs struct {
 	NewMessageEventNotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput
 	// Configuration for publishing conversation lifecycle events.
 	NotificationConfig GoogleCloudDialogflowV2beta1NotificationConfigPtrInput
-	ProjectsId         pulumi.StringInput
+	Project            pulumi.StringInput
 	// Settings for speech transcription.
 	SttConfig GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput
 }

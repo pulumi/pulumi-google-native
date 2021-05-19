@@ -36,11 +36,8 @@ func NewServiceServiceLevelObjective(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ServiceLevelObjectivesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServiceLevelObjectivesId'")
-	}
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
+	if args.ServiceId == nil {
+		return nil, errors.New("invalid value for required argument 'ServiceId'")
 	}
 	if args.V3Id == nil {
 		return nil, errors.New("invalid value for required argument 'V3Id'")
@@ -114,13 +111,12 @@ type serviceServiceLevelObjectiveArgs struct {
 	Name *string `pulumi:"name"`
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod *string `pulumi:"rollingPeriod"`
+	ServiceId     string  `pulumi:"serviceId"`
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
-	ServiceLevelIndicator    *ServiceLevelIndicator `pulumi:"serviceLevelIndicator"`
-	ServiceLevelObjectiveId  *string                `pulumi:"serviceLevelObjectiveId"`
-	ServiceLevelObjectivesId string                 `pulumi:"serviceLevelObjectivesId"`
-	ServicesId               string                 `pulumi:"servicesId"`
-	V3Id                     string                 `pulumi:"v3Id"`
-	V3Id1                    string                 `pulumi:"v3Id1"`
+	ServiceLevelIndicator   *ServiceLevelIndicator `pulumi:"serviceLevelIndicator"`
+	ServiceLevelObjectiveId *string                `pulumi:"serviceLevelObjectiveId"`
+	V3Id                    string                 `pulumi:"v3Id"`
+	V3Id1                   string                 `pulumi:"v3Id1"`
 }
 
 // The set of arguments for constructing a ServiceServiceLevelObjective resource.
@@ -135,13 +131,12 @@ type ServiceServiceLevelObjectiveArgs struct {
 	Name pulumi.StringPtrInput
 	// A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
 	RollingPeriod pulumi.StringPtrInput
+	ServiceId     pulumi.StringInput
 	// The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
-	ServiceLevelIndicator    ServiceLevelIndicatorPtrInput
-	ServiceLevelObjectiveId  pulumi.StringPtrInput
-	ServiceLevelObjectivesId pulumi.StringInput
-	ServicesId               pulumi.StringInput
-	V3Id                     pulumi.StringInput
-	V3Id1                    pulumi.StringInput
+	ServiceLevelIndicator   ServiceLevelIndicatorPtrInput
+	ServiceLevelObjectiveId pulumi.StringPtrInput
+	V3Id                    pulumi.StringInput
+	V3Id1                   pulumi.StringInput
 }
 
 func (ServiceServiceLevelObjectiveArgs) ElementType() reflect.Type {

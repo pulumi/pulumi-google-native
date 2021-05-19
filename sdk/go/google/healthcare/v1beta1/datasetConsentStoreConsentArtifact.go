@@ -40,20 +40,20 @@ func NewDatasetConsentStoreConsentArtifact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConsentArtifactsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentArtifactsId'")
+	if args.ConsentArtifactId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentArtifactId'")
 	}
-	if args.ConsentStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentStoresId'")
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetConsentStoreConsentArtifact
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetConsentStoreConsentArtifact", name, args, &resource, opts...)
@@ -119,21 +119,21 @@ func (DatasetConsentStoreConsentArtifactState) ElementType() reflect.Type {
 }
 
 type datasetConsentStoreConsentArtifactArgs struct {
-	ConsentArtifactsId string `pulumi:"consentArtifactsId"`
+	ConsentArtifactId string `pulumi:"consentArtifactId"`
 	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots []Image `pulumi:"consentContentScreenshots"`
 	// Optional. An string indicating the version of the consent information shown to the user.
 	ConsentContentVersion *string `pulumi:"consentContentVersion"`
-	ConsentStoresId       string  `pulumi:"consentStoresId"`
-	DatasetsId            string  `pulumi:"datasetsId"`
+	ConsentStoreId        string  `pulumi:"consentStoreId"`
+	DatasetId             string  `pulumi:"datasetId"`
 	// Optional. A signature from a guardian.
 	GuardianSignature *Signature `pulumi:"guardianSignature"`
-	LocationsId       string     `pulumi:"locationsId"`
+	Location          string     `pulumi:"location"`
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Required. User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 	// Optional. User's signature.
@@ -144,21 +144,21 @@ type datasetConsentStoreConsentArtifactArgs struct {
 
 // The set of arguments for constructing a DatasetConsentStoreConsentArtifact resource.
 type DatasetConsentStoreConsentArtifactArgs struct {
-	ConsentArtifactsId pulumi.StringInput
+	ConsentArtifactId pulumi.StringInput
 	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
 	ConsentContentScreenshots ImageArrayInput
 	// Optional. An string indicating the version of the consent information shown to the user.
 	ConsentContentVersion pulumi.StringPtrInput
-	ConsentStoresId       pulumi.StringInput
-	DatasetsId            pulumi.StringInput
+	ConsentStoreId        pulumi.StringInput
+	DatasetId             pulumi.StringInput
 	// Optional. A signature from a guardian.
 	GuardianSignature SignaturePtrInput
-	LocationsId       pulumi.StringInput
+	Location          pulumi.StringInput
 	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// Required. User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
 	// Optional. User's signature.

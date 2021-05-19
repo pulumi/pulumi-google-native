@@ -41,17 +41,14 @@ func NewRealmGameServerCluster(ctx *pulumi.Context,
 	if args.GameServerClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'GameServerClusterId'")
 	}
-	if args.GameServerClustersId == nil {
-		return nil, errors.New("invalid value for required argument 'GameServerClustersId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.RealmsId == nil {
-		return nil, errors.New("invalid value for required argument 'RealmsId'")
+	if args.RealmId == nil {
+		return nil, errors.New("invalid value for required argument 'RealmId'")
 	}
 	var resource RealmGameServerCluster
 	err := ctx.RegisterResource("google-native:gameservices/v1:RealmGameServerCluster", name, args, &resource, opts...)
@@ -118,16 +115,15 @@ type realmGameServerClusterArgs struct {
 	// Human readable description of the cluster.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
-	Etag                 *string `pulumi:"etag"`
-	GameServerClusterId  string  `pulumi:"gameServerClusterId"`
-	GameServerClustersId string  `pulumi:"gameServerClustersId"`
+	Etag                *string `pulumi:"etag"`
+	GameServerClusterId string  `pulumi:"gameServerClusterId"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	RealmsId   string  `pulumi:"realmsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
+	RealmId string  `pulumi:"realmId"`
 }
 
 // The set of arguments for constructing a RealmGameServerCluster resource.
@@ -137,16 +133,15 @@ type RealmGameServerClusterArgs struct {
 	// Human readable description of the cluster.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
-	Etag                 pulumi.StringPtrInput
-	GameServerClusterId  pulumi.StringInput
-	GameServerClustersId pulumi.StringInput
+	Etag                pulumi.StringPtrInput
+	GameServerClusterId pulumi.StringInput
 	// The labels associated with this game server cluster. Each label is a key-value pair.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	RealmsId   pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
+	RealmId pulumi.StringInput
 }
 
 func (RealmGameServerClusterArgs) ElementType() reflect.Type {

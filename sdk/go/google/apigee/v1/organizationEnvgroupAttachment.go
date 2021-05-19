@@ -30,14 +30,14 @@ func NewOrganizationEnvgroupAttachment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AttachmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AttachmentsId'")
+	if args.AttachmentId == nil {
+		return nil, errors.New("invalid value for required argument 'AttachmentId'")
 	}
-	if args.EnvgroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvgroupsId'")
+	if args.EnvgroupId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvgroupId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvgroupAttachment
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvgroupAttachment", name, args, &resource, opts...)
@@ -83,24 +83,24 @@ func (OrganizationEnvgroupAttachmentState) ElementType() reflect.Type {
 }
 
 type organizationEnvgroupAttachmentArgs struct {
-	AttachmentsId string `pulumi:"attachmentsId"`
-	EnvgroupsId   string `pulumi:"envgroupsId"`
+	AttachmentId string `pulumi:"attachmentId"`
+	EnvgroupId   string `pulumi:"envgroupId"`
 	// Required. ID of the attached environment.
 	Environment *string `pulumi:"environment"`
 	// ID of the environment group attachment.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationEnvgroupAttachment resource.
 type OrganizationEnvgroupAttachmentArgs struct {
-	AttachmentsId pulumi.StringInput
-	EnvgroupsId   pulumi.StringInput
+	AttachmentId pulumi.StringInput
+	EnvgroupId   pulumi.StringInput
 	// Required. ID of the attached environment.
 	Environment pulumi.StringPtrInput
 	// ID of the environment group attachment.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 }
 
 func (OrganizationEnvgroupAttachmentArgs) ElementType() reflect.Type {

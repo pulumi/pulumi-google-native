@@ -34,11 +34,11 @@ func NewOrganizationEnvgroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvgroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvgroupsId'")
+	if args.EnvgroupId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvgroupId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvgroup
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvgroup", name, args, &resource, opts...)
@@ -92,22 +92,22 @@ func (OrganizationEnvgroupState) ElementType() reflect.Type {
 }
 
 type organizationEnvgroupArgs struct {
-	EnvgroupsId string `pulumi:"envgroupsId"`
+	EnvgroupId string `pulumi:"envgroupId"`
 	// Required. Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// ID of the environment group.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationEnvgroup resource.
 type OrganizationEnvgroupArgs struct {
-	EnvgroupsId pulumi.StringInput
+	EnvgroupId pulumi.StringInput
 	// Required. Host names for this environment group.
 	Hostnames pulumi.StringArrayInput
 	// ID of the environment group.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 }
 
 func (OrganizationEnvgroupArgs) ElementType() reflect.Type {

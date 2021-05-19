@@ -58,17 +58,14 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.ServiceId == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceId'")
-	}
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
 	}
 	var resource Service
 	err := ctx.RegisterResource("google-native:metastore/v1alpha:Service", name, args, &resource, opts...)
@@ -173,8 +170,8 @@ type serviceArgs struct {
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig *HiveMetastoreConfig `pulumi:"hiveMetastoreConfig"`
 	// User-defined labels for the metastore service.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
@@ -184,13 +181,12 @@ type serviceArgs struct {
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port       *int   `pulumi:"port"`
-	ProjectsId string `pulumi:"projectsId"`
+	Port    *int   `pulumi:"port"`
+	Project string `pulumi:"project"`
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel *string `pulumi:"releaseChannel"`
 	RequestId      *string `pulumi:"requestId"`
 	ServiceId      string  `pulumi:"serviceId"`
-	ServicesId     string  `pulumi:"servicesId"`
 	// The tier of the service.
 	Tier *string `pulumi:"tier"`
 }
@@ -200,8 +196,8 @@ type ServiceArgs struct {
 	// Configuration information specific to running Hive metastore software as the metastore service.
 	HiveMetastoreConfig HiveMetastoreConfigPtrInput
 	// User-defined labels for the metastore service.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
@@ -211,13 +207,12 @@ type ServiceArgs struct {
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput
 	// The TCP port at which the metastore service is reached. Default: 9083.
-	Port       pulumi.IntPtrInput
-	ProjectsId pulumi.StringInput
+	Port    pulumi.IntPtrInput
+	Project pulumi.StringInput
 	// Immutable. The release channel of the service. If unspecified, defaults to STABLE.
 	ReleaseChannel pulumi.StringPtrInput
 	RequestId      pulumi.StringPtrInput
 	ServiceId      pulumi.StringInput
-	ServicesId     pulumi.StringInput
 	// The tier of the service.
 	Tier pulumi.StringPtrInput
 }

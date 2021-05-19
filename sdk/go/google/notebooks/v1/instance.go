@@ -93,14 +93,11 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Instance
 	err := ctx.RegisterResource("google-native:notebooks/v1:Instance", name, args, &resource, opts...)
@@ -287,12 +284,11 @@ type instanceArgs struct {
 	InstanceId       string `pulumi:"instanceId"`
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners []string `pulumi:"instanceOwners"`
-	InstancesId    string   `pulumi:"instancesId"`
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType *string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
@@ -309,7 +305,7 @@ type instanceArgs struct {
 	NoRemoveDataDisk *bool `pulumi:"noRemoveDataDisk"`
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript *string `pulumi:"postStartupScript"`
-	ProjectsId        string  `pulumi:"projectsId"`
+	Project           string  `pulumi:"project"`
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute
@@ -349,12 +345,11 @@ type InstanceArgs struct {
 	InstanceId       pulumi.StringInput
 	// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one owner only. If not specified, all of the service account users of your VM instance's service account can use the instance.
 	InstanceOwners pulumi.StringArrayInput
-	InstancesId    pulumi.StringInput
 	// Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about [using your own encryption keys](/kms/docs/quickstart).
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringPtrInput
 	// Custom metadata to apply to this instance.
@@ -371,7 +366,7 @@ type InstanceArgs struct {
 	NoRemoveDataDisk pulumi.BoolPtrInput
 	// Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path (gs://path-to-file/file-name).
 	PostStartupScript pulumi.StringPtrInput
-	ProjectsId        pulumi.StringInput
+	Project           pulumi.StringInput
 	// The service account on this instance, giving access to other Google Cloud services. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
 	ServiceAccount pulumi.StringPtrInput
 	// Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute

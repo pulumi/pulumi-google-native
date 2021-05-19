@@ -39,14 +39,14 @@ func NewGameServerDeployment(ctx *pulumi.Context,
 	if args.DeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'DeploymentId'")
 	}
-	if args.GameServerDeploymentsId == nil {
-		return nil, errors.New("invalid value for required argument 'GameServerDeploymentsId'")
+	if args.GameServerDeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource GameServerDeployment
 	err := ctx.RegisterResource("google-native:gameservices/v1:GameServerDeployment", name, args, &resource, opts...)
@@ -108,14 +108,14 @@ type gameServerDeploymentArgs struct {
 	// Human readable description of the game server delpoyment.
 	Description *string `pulumi:"description"`
 	// ETag of the resource.
-	Etag                    *string `pulumi:"etag"`
-	GameServerDeploymentsId string  `pulumi:"gameServerDeploymentsId"`
+	Etag                   *string `pulumi:"etag"`
+	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
 	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a GameServerDeployment resource.
@@ -124,14 +124,14 @@ type GameServerDeploymentArgs struct {
 	// Human readable description of the game server delpoyment.
 	Description pulumi.StringPtrInput
 	// ETag of the resource.
-	Etag                    pulumi.StringPtrInput
-	GameServerDeploymentsId pulumi.StringInput
+	Etag                   pulumi.StringPtrInput
+	GameServerDeploymentId pulumi.StringInput
 	// The labels associated with this game server deployment. Each label is a key-value pair.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (GameServerDeploymentArgs) ElementType() reflect.Type {

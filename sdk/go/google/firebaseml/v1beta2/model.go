@@ -44,11 +44,11 @@ func NewModel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ModelsId == nil {
-		return nil, errors.New("invalid value for required argument 'ModelsId'")
+	if args.ModelId == nil {
+		return nil, errors.New("invalid value for required argument 'ModelId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Model
 	err := ctx.RegisterResource("google-native:firebaseml/v1beta2:Model", name, args, &resource, opts...)
@@ -124,10 +124,10 @@ func (ModelState) ElementType() reflect.Type {
 type modelArgs struct {
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName *string `pulumi:"displayName"`
-	ModelsId    string  `pulumi:"modelsId"`
+	ModelId     string  `pulumi:"modelId"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// State common to all model types. Includes publishing and validation information.
 	State *ModelStateType `pulumi:"state"`
 	// User defined tags which can be used to group/filter models during listing
@@ -140,10 +140,10 @@ type modelArgs struct {
 type ModelArgs struct {
 	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName pulumi.StringPtrInput
-	ModelsId    pulumi.StringInput
+	ModelId     pulumi.StringInput
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// State common to all model types. Includes publishing and validation information.
 	State ModelStateTypePtrInput
 	// User defined tags which can be used to group/filter models during listing

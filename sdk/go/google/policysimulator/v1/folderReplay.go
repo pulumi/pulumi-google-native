@@ -32,14 +32,14 @@ func NewFolderReplay(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FoldersId == nil {
-		return nil, errors.New("invalid value for required argument 'FoldersId'")
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ReplaysId == nil {
-		return nil, errors.New("invalid value for required argument 'ReplaysId'")
+	if args.ReplayId == nil {
+		return nil, errors.New("invalid value for required argument 'ReplayId'")
 	}
 	var resource FolderReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1:FolderReplay", name, args, &resource, opts...)
@@ -90,19 +90,19 @@ func (FolderReplayState) ElementType() reflect.Type {
 
 type folderReplayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config      *GoogleCloudPolicysimulatorV1ReplayConfig `pulumi:"config"`
-	FoldersId   string                                    `pulumi:"foldersId"`
-	LocationsId string                                    `pulumi:"locationsId"`
-	ReplaysId   string                                    `pulumi:"replaysId"`
+	Config   *GoogleCloudPolicysimulatorV1ReplayConfig `pulumi:"config"`
+	FolderId string                                    `pulumi:"folderId"`
+	Location string                                    `pulumi:"location"`
+	ReplayId string                                    `pulumi:"replayId"`
 }
 
 // The set of arguments for constructing a FolderReplay resource.
 type FolderReplayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config      GoogleCloudPolicysimulatorV1ReplayConfigPtrInput
-	FoldersId   pulumi.StringInput
-	LocationsId pulumi.StringInput
-	ReplaysId   pulumi.StringInput
+	Config   GoogleCloudPolicysimulatorV1ReplayConfigPtrInput
+	FolderId pulumi.StringInput
+	Location pulumi.StringInput
+	ReplayId pulumi.StringInput
 }
 
 func (FolderReplayArgs) ElementType() reflect.Type {

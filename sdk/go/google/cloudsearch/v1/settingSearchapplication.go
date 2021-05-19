@@ -42,8 +42,8 @@ func NewSettingSearchapplication(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.SearchapplicationsId == nil {
-		return nil, errors.New("invalid value for required argument 'SearchapplicationsId'")
+	if args.SearchapplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'SearchapplicationId'")
 	}
 	var resource SettingSearchapplication
 	err := ctx.RegisterResource("google-native:cloudsearch/v1:SettingSearchapplication", name, args, &resource, opts...)
@@ -126,8 +126,8 @@ type settingSearchapplicationArgs struct {
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name *string `pulumi:"name"`
 	// Configuration for ranking results.
-	ScoringConfig        *ScoringConfig `pulumi:"scoringConfig"`
-	SearchapplicationsId string         `pulumi:"searchapplicationsId"`
+	ScoringConfig       *ScoringConfig `pulumi:"scoringConfig"`
+	SearchapplicationId string         `pulumi:"searchapplicationId"`
 	// Configuration for a sources specified in data_source_restrictions.
 	SourceConfig []SourceConfig `pulumi:"sourceConfig"`
 }
@@ -147,8 +147,8 @@ type SettingSearchapplicationArgs struct {
 	// Name of the Search Application. Format: searchapplications/{application_id}.
 	Name pulumi.StringPtrInput
 	// Configuration for ranking results.
-	ScoringConfig        ScoringConfigPtrInput
-	SearchapplicationsId pulumi.StringInput
+	ScoringConfig       ScoringConfigPtrInput
+	SearchapplicationId pulumi.StringInput
 	// Configuration for a sources specified in data_source_restrictions.
 	SourceConfig SourceConfigArrayInput
 }

@@ -40,14 +40,11 @@ func NewSecret(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.SecretId == nil {
 		return nil, errors.New("invalid value for required argument 'SecretId'")
-	}
-	if args.SecretsId == nil {
-		return nil, errors.New("invalid value for required argument 'SecretsId'")
 	}
 	var resource Secret
 	err := ctx.RegisterResource("google-native:secretmanager/v1:Secret", name, args, &resource, opts...)
@@ -116,14 +113,13 @@ type secretArgs struct {
 	// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	ExpireTime *string `pulumi:"expireTime"`
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels     map[string]string `pulumi:"labels"`
-	ProjectsId string            `pulumi:"projectsId"`
+	Labels  map[string]string `pulumi:"labels"`
+	Project string            `pulumi:"project"`
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication *Replication `pulumi:"replication"`
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
-	Rotation  *Rotation `pulumi:"rotation"`
-	SecretId  string    `pulumi:"secretId"`
-	SecretsId string    `pulumi:"secretsId"`
+	Rotation *Rotation `pulumi:"rotation"`
+	SecretId string    `pulumi:"secretId"`
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	Topics []Topic `pulumi:"topics"`
 	// Input only. The TTL for the Secret.
@@ -135,14 +131,13 @@ type SecretArgs struct {
 	// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	ExpireTime pulumi.StringPtrInput
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.
-	Labels     pulumi.StringMapInput
-	ProjectsId pulumi.StringInput
+	Labels  pulumi.StringMapInput
+	Project pulumi.StringInput
 	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationPtrInput
 	// Optional. Rotation policy attached to the Secret. May be excluded if there is no rotation policy.
-	Rotation  RotationPtrInput
-	SecretId  pulumi.StringInput
-	SecretsId pulumi.StringInput
+	Rotation RotationPtrInput
+	SecretId pulumi.StringInput
 	// Optional. A list of up to 10 Pub/Sub topics to which messages are published when control plane operations are called on the secret or its versions.
 	Topics TopicArrayInput
 	// Input only. The TTL for the Secret.

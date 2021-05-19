@@ -26,7 +26,7 @@ type Project struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
 	Parent ResourceIdResponseOutput `pulumi:"parent"`
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
 }
@@ -38,8 +38,8 @@ func NewProject(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Project
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v1beta1:Project", name, args, &resource, opts...)
@@ -74,7 +74,7 @@ type projectState struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
 	Parent *ResourceIdResponse `pulumi:"parent"`
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber *string `pulumi:"projectNumber"`
 }
@@ -91,7 +91,7 @@ type ProjectState struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
 	Parent ResourceIdResponsePtrInput
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringPtrInput
 }
@@ -112,7 +112,7 @@ type projectArgs struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
 	Parent *ResourceId `pulumi:"parent"`
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber  *string `pulumi:"projectNumber"`
 	UseLegacyStack *string `pulumi:"useLegacyStack"`
@@ -131,7 +131,7 @@ type ProjectArgs struct {
 	// An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
 	Parent ResourceIdPtrInput
 	// The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
-	ProjectId pulumi.StringInput
+	Project pulumi.StringInput
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber  pulumi.StringPtrInput
 	UseLegacyStack pulumi.StringPtrInput

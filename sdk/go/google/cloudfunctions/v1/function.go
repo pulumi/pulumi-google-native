@@ -76,14 +76,14 @@ func NewFunction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.FunctionsId == nil {
-		return nil, errors.New("invalid value for required argument 'FunctionsId'")
+	if args.FunctionId == nil {
+		return nil, errors.New("invalid value for required argument 'FunctionId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Function
 	err := ctx.RegisterResource("google-native:cloudfunctions/v1:Function", name, args, &resource, opts...)
@@ -235,21 +235,21 @@ type functionArgs struct {
 	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
 	// A source that fires events in response to a condition in another service.
 	EventTrigger *EventTrigger `pulumi:"eventTrigger"`
-	FunctionsId  string        `pulumi:"functionsId"`
+	FunctionId   string        `pulumi:"functionId"`
 	// An HTTPS endpoint type of source that can be triggered via URL.
 	HttpsTrigger *HttpsTrigger `pulumi:"httpsTrigger"`
 	// The ingress settings for the function, controlling what traffic can reach it.
 	IngressSettings *string `pulumi:"ingressSettings"`
 	// Labels associated with this Cloud Function.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstances *int `pulumi:"maxInstances"`
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name *string `pulumi:"name"`
 	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
-	Network    *string `pulumi:"network"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Network *string `pulumi:"network"`
+	Project string  `pulumi:"project"`
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime *string `pulumi:"runtime"`
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.
@@ -286,21 +286,21 @@ type FunctionArgs struct {
 	EnvironmentVariables pulumi.StringMapInput
 	// A source that fires events in response to a condition in another service.
 	EventTrigger EventTriggerPtrInput
-	FunctionsId  pulumi.StringInput
+	FunctionId   pulumi.StringInput
 	// An HTTPS endpoint type of source that can be triggered via URL.
 	HttpsTrigger HttpsTriggerPtrInput
 	// The ingress settings for the function, controlling what traffic can reach it.
 	IngressSettings pulumi.StringPtrInput
 	// Labels associated with this Cloud Function.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The limit on the maximum number of function instances that may coexist at a given time. In some cases, such as rapid traffic surges, Cloud Functions may, for a short period of time, create more instances than the specified max instances limit. If your function cannot tolerate this temporary behavior, you may want to factor in a safety margin and set a lower max instances value than your function can tolerate. See the [Max Instances](https://cloud.google.com/functions/docs/max-instances) Guide for more details.
 	MaxInstances pulumi.IntPtrInput
 	// A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
 	Name pulumi.StringPtrInput
 	// The VPC Network that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network resource. If the short network name is used, the network must belong to the same project. Otherwise, it must belong to a project within the same organization. The format of this field is either `projects/{project}/global/networks/{network}` or `{network}`, where {project} is a project id where the network is defined, and {network} is the short name of the network. This field is mutually exclusive with `vpc_connector` and will be replaced by it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
-	Network    pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Network pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The runtime in which to run the function. Required when deploying a new function, optional when updating an existing function. For a complete list of possible choices, see the [`gcloud` command reference](/sdk/gcloud/reference/functions/deploy#--runtime).
 	Runtime pulumi.StringPtrInput
 	// The email of the function's service account. If empty, defaults to `{project_id}@appspot.gserviceaccount.com`.

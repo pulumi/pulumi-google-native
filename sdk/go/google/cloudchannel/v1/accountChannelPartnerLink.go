@@ -40,11 +40,11 @@ func NewAccountChannelPartnerLink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'AccountsId'")
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
 	}
-	if args.ChannelPartnerLinksId == nil {
-		return nil, errors.New("invalid value for required argument 'ChannelPartnerLinksId'")
+	if args.ChannelPartnerLinkId == nil {
+		return nil, errors.New("invalid value for required argument 'ChannelPartnerLinkId'")
 	}
 	var resource AccountChannelPartnerLink
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:AccountChannelPartnerLink", name, args, &resource, opts...)
@@ -110,8 +110,8 @@ func (AccountChannelPartnerLinkState) ElementType() reflect.Type {
 }
 
 type accountChannelPartnerLinkArgs struct {
-	AccountsId            string `pulumi:"accountsId"`
-	ChannelPartnerLinksId string `pulumi:"channelPartnerLinksId"`
+	AccountId            string `pulumi:"accountId"`
+	ChannelPartnerLinkId string `pulumi:"channelPartnerLinkId"`
 	// Required. State of the channel partner link.
 	LinkState *string `pulumi:"linkState"`
 	// Required. Cloud Identity ID of the linked reseller.
@@ -120,8 +120,8 @@ type accountChannelPartnerLinkArgs struct {
 
 // The set of arguments for constructing a AccountChannelPartnerLink resource.
 type AccountChannelPartnerLinkArgs struct {
-	AccountsId            pulumi.StringInput
-	ChannelPartnerLinksId pulumi.StringInput
+	AccountId            pulumi.StringInput
+	ChannelPartnerLinkId pulumi.StringInput
 	// Required. State of the channel partner link.
 	LinkState pulumi.StringPtrInput
 	// Required. Cloud Identity ID of the linked reseller.

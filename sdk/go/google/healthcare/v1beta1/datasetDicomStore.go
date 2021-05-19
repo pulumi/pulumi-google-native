@@ -32,17 +32,14 @@ func NewDatasetDicomStore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.DicomStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'DicomStoresId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetDicomStore
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetDicomStore", name, args, &resource, opts...)
@@ -92,34 +89,32 @@ func (DatasetDicomStoreState) ElementType() reflect.Type {
 }
 
 type datasetDicomStoreArgs struct {
-	DatasetsId    string  `pulumi:"datasetsId"`
-	DicomStoreId  *string `pulumi:"dicomStoreId"`
-	DicomStoresId string  `pulumi:"dicomStoresId"`
+	DatasetId    string  `pulumi:"datasetId"`
+	DicomStoreId *string `pulumi:"dicomStoreId"`
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
 	Name *string `pulumi:"name"`
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
-	ProjectsId         string              `pulumi:"projectsId"`
+	Project            string              `pulumi:"project"`
 	// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
 	StreamConfigs []GoogleCloudHealthcareV1beta1DicomStreamConfig `pulumi:"streamConfigs"`
 }
 
 // The set of arguments for constructing a DatasetDicomStore resource.
 type DatasetDicomStoreArgs struct {
-	DatasetsId    pulumi.StringInput
-	DicomStoreId  pulumi.StringPtrInput
-	DicomStoresId pulumi.StringInput
+	DatasetId    pulumi.StringInput
+	DicomStoreId pulumi.StringPtrInput
 	// User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
 	Name pulumi.StringPtrInput
 	// Notification destination for new DICOM instances. Supplied by the client.
 	NotificationConfig NotificationConfigPtrInput
-	ProjectsId         pulumi.StringInput
+	Project            pulumi.StringInput
 	// A list of streaming configs used to configure the destination of streaming exports for every DICOM instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server stops streaming to that destination. Each config must contain a unique destination.
 	StreamConfigs GoogleCloudHealthcareV1beta1DicomStreamConfigArrayInput
 }

@@ -30,14 +30,14 @@ func NewOrganizationInstanceNatAddress(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstancesId == nil {
-		return nil, errors.New("invalid value for required argument 'InstancesId'")
+	if args.InstanceId == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.NatAddressesId == nil {
-		return nil, errors.New("invalid value for required argument 'NatAddressesId'")
+	if args.NatAddressId == nil {
+		return nil, errors.New("invalid value for required argument 'NatAddressId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationInstanceNatAddress
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationInstanceNatAddress", name, args, &resource, opts...)
@@ -83,20 +83,20 @@ func (OrganizationInstanceNatAddressState) ElementType() reflect.Type {
 }
 
 type organizationInstanceNatAddressArgs struct {
-	InstancesId string `pulumi:"instancesId"`
+	InstanceId string `pulumi:"instanceId"`
 	// Required. Resource ID of the NAT address.
-	Name            *string `pulumi:"name"`
-	NatAddressesId  string  `pulumi:"natAddressesId"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	NatAddressId   string  `pulumi:"natAddressId"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a OrganizationInstanceNatAddress resource.
 type OrganizationInstanceNatAddressArgs struct {
-	InstancesId pulumi.StringInput
+	InstanceId pulumi.StringInput
 	// Required. Resource ID of the NAT address.
-	Name            pulumi.StringPtrInput
-	NatAddressesId  pulumi.StringInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	NatAddressId   pulumi.StringInput
+	OrganizationId pulumi.StringInput
 }
 
 func (OrganizationInstanceNatAddressArgs) ElementType() reflect.Type {

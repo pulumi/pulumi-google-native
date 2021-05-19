@@ -34,14 +34,11 @@ func NewStudy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.StudiesId == nil {
-		return nil, errors.New("invalid value for required argument 'StudiesId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
@@ -98,9 +95,8 @@ func (StudyState) ElementType() reflect.Type {
 }
 
 type studyArgs struct {
-	LocationsId string `pulumi:"locationsId"`
-	ProjectsId  string `pulumi:"projectsId"`
-	StudiesId   string `pulumi:"studiesId"`
+	Location string `pulumi:"location"`
+	Project  string `pulumi:"project"`
 	// Required. Configuration of the study.
 	StudyConfig *GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
 	StudyId     string                        `pulumi:"studyId"`
@@ -108,9 +104,8 @@ type studyArgs struct {
 
 // The set of arguments for constructing a Study resource.
 type StudyArgs struct {
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
-	StudiesId   pulumi.StringInput
+	Location pulumi.StringInput
+	Project  pulumi.StringInput
 	// Required. Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigPtrInput
 	StudyId     pulumi.StringInput

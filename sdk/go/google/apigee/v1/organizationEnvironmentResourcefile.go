@@ -30,14 +30,14 @@ func NewOrganizationEnvironmentResourcefile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
@@ -89,13 +89,13 @@ type organizationEnvironmentResourcefileArgs struct {
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
-	Data           *string `pulumi:"data"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	Data          *string `pulumi:"data"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      []map[string]string `pulumi:"extensions"`
-	Name            string              `pulumi:"name"`
-	OrganizationsId string              `pulumi:"organizationsId"`
-	Type            string              `pulumi:"type"`
+	Extensions     []map[string]string `pulumi:"extensions"`
+	Name           string              `pulumi:"name"`
+	OrganizationId string              `pulumi:"organizationId"`
+	Type           string              `pulumi:"type"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentResourcefile resource.
@@ -103,13 +103,13 @@ type OrganizationEnvironmentResourcefileArgs struct {
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
-	Data           pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	Data          pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
-	Extensions      pulumi.StringMapArrayInput
-	Name            pulumi.StringInput
-	OrganizationsId pulumi.StringInput
-	Type            pulumi.StringInput
+	Extensions     pulumi.StringMapArrayInput
+	Name           pulumi.StringInput
+	OrganizationId pulumi.StringInput
+	Type           pulumi.StringInput
 }
 
 func (OrganizationEnvironmentResourcefileArgs) ElementType() reflect.Type {

@@ -45,11 +45,8 @@ func NewSiteChannel(ctx *pulumi.Context,
 	if args.ChannelId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelId'")
 	}
-	if args.ChannelsId == nil {
-		return nil, errors.New("invalid value for required argument 'ChannelsId'")
-	}
-	if args.SitesId == nil {
-		return nil, errors.New("invalid value for required argument 'SitesId'")
+	if args.SiteId == nil {
+		return nil, errors.New("invalid value for required argument 'SiteId'")
 	}
 	var resource SiteChannel
 	err := ctx.RegisterResource("google-native:firebasehosting/v1beta1:SiteChannel", name, args, &resource, opts...)
@@ -119,8 +116,7 @@ func (SiteChannelState) ElementType() reflect.Type {
 }
 
 type siteChannelArgs struct {
-	ChannelId  string `pulumi:"channelId"`
-	ChannelsId string `pulumi:"channelsId"`
+	ChannelId string `pulumi:"channelId"`
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime *string `pulumi:"expireTime"`
 	// Text labels used for extra metadata and/or filtering.
@@ -129,15 +125,14 @@ type siteChannelArgs struct {
 	Name *string `pulumi:"name"`
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount *int   `pulumi:"retainedReleaseCount"`
-	SitesId              string `pulumi:"sitesId"`
+	SiteId               string `pulumi:"siteId"`
 	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
 	Ttl *string `pulumi:"ttl"`
 }
 
 // The set of arguments for constructing a SiteChannel resource.
 type SiteChannelArgs struct {
-	ChannelId  pulumi.StringInput
-	ChannelsId pulumi.StringInput
+	ChannelId pulumi.StringInput
 	// The time at which the channel will be automatically deleted. If null, the channel will not be automatically deleted. This field is present in the output whether it's set directly or via the `ttl` field.
 	ExpireTime pulumi.StringPtrInput
 	// Text labels used for extra metadata and/or filtering.
@@ -146,7 +141,7 @@ type SiteChannelArgs struct {
 	Name pulumi.StringPtrInput
 	// The number of previous releases to retain on the channel for rollback or other purposes. Must be a number between 1-100. Defaults to 10 for new channels.
 	RetainedReleaseCount pulumi.IntPtrInput
-	SitesId              pulumi.StringInput
+	SiteId               pulumi.StringInput
 	// Input only. A time-to-live for this channel. Sets `expire_time` to the provided duration past the time of the request.
 	Ttl pulumi.StringPtrInput
 }

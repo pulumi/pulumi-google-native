@@ -1635,7 +1635,7 @@ type GooglePrivacyDlpV2BigQueryTable struct {
 	// Dataset ID of the table.
 	DatasetId *string `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Name of the table.
 	TableId *string `pulumi:"tableId"`
 }
@@ -1656,7 +1656,7 @@ type GooglePrivacyDlpV2BigQueryTableArgs struct {
 	// Dataset ID of the table.
 	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Name of the table.
 	TableId pulumi.StringPtrInput `pulumi:"tableId"`
 }
@@ -1745,8 +1745,8 @@ func (o GooglePrivacyDlpV2BigQueryTableOutput) DatasetId() pulumi.StringPtrOutpu
 }
 
 // The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-func (o GooglePrivacyDlpV2BigQueryTableOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTable) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2BigQueryTableOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTable) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Name of the table.
@@ -1783,12 +1783,12 @@ func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) DatasetId() pulumi.StringPtrOu
 }
 
 // The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GooglePrivacyDlpV2BigQueryTablePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTable) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1807,7 +1807,7 @@ type GooglePrivacyDlpV2BigQueryTableResponse struct {
 	// Dataset ID of the table.
 	DatasetId string `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Name of the table.
 	TableId string `pulumi:"tableId"`
 }
@@ -1828,7 +1828,7 @@ type GooglePrivacyDlpV2BigQueryTableResponseArgs struct {
 	// Dataset ID of the table.
 	DatasetId pulumi.StringInput `pulumi:"datasetId"`
 	// The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Name of the table.
 	TableId pulumi.StringInput `pulumi:"tableId"`
 }
@@ -1917,8 +1917,8 @@ func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) DatasetId() pulumi.String
 }
 
 // The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GooglePrivacyDlpV2BigQueryTableResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2BigQueryTableResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Name of the table.
@@ -1955,12 +1955,12 @@ func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) DatasetId() pulumi.Str
 }
 
 // The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is inferred from the API call.
-func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GooglePrivacyDlpV2BigQueryTableResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2BigQueryTableResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19660,7 +19660,7 @@ type GooglePrivacyDlpV2PartitionId struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId *string `pulumi:"namespaceId"`
 	// The ID of the project to which the entities belong.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // GooglePrivacyDlpV2PartitionIdInput is an input type that accepts GooglePrivacyDlpV2PartitionIdArgs and GooglePrivacyDlpV2PartitionIdOutput values.
@@ -19679,7 +19679,7 @@ type GooglePrivacyDlpV2PartitionIdArgs struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId pulumi.StringPtrInput `pulumi:"namespaceId"`
 	// The ID of the project to which the entities belong.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (GooglePrivacyDlpV2PartitionIdArgs) ElementType() reflect.Type {
@@ -19766,8 +19766,8 @@ func (o GooglePrivacyDlpV2PartitionIdOutput) NamespaceId() pulumi.StringPtrOutpu
 }
 
 // The ID of the project to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionId) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o GooglePrivacyDlpV2PartitionIdOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionId) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type GooglePrivacyDlpV2PartitionIdPtrOutput struct{ *pulumi.OutputState }
@@ -19799,12 +19799,12 @@ func (o GooglePrivacyDlpV2PartitionIdPtrOutput) NamespaceId() pulumi.StringPtrOu
 }
 
 // The ID of the project to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GooglePrivacyDlpV2PartitionIdPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionId) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19813,7 +19813,7 @@ type GooglePrivacyDlpV2PartitionIdResponse struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId string `pulumi:"namespaceId"`
 	// The ID of the project to which the entities belong.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // GooglePrivacyDlpV2PartitionIdResponseInput is an input type that accepts GooglePrivacyDlpV2PartitionIdResponseArgs and GooglePrivacyDlpV2PartitionIdResponseOutput values.
@@ -19832,7 +19832,7 @@ type GooglePrivacyDlpV2PartitionIdResponseArgs struct {
 	// If not empty, the ID of the namespace to which the entities belong.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 	// The ID of the project to which the entities belong.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GooglePrivacyDlpV2PartitionIdResponseArgs) ElementType() reflect.Type {
@@ -19919,8 +19919,8 @@ func (o GooglePrivacyDlpV2PartitionIdResponseOutput) NamespaceId() pulumi.String
 }
 
 // The ID of the project to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionIdResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GooglePrivacyDlpV2PartitionIdResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2PartitionIdResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2PartitionIdResponsePtrOutput struct{ *pulumi.OutputState }
@@ -19952,12 +19952,12 @@ func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) NamespaceId() pulumi.Str
 }
 
 // The ID of the project to which the entities belong.
-func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o GooglePrivacyDlpV2PartitionIdResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2PartitionIdResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

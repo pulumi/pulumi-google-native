@@ -44,14 +44,14 @@ func NewAgentKnowledgeBaseDocument(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DocumentsId == nil {
-		return nil, errors.New("invalid value for required argument 'DocumentsId'")
+	if args.DocumentId == nil {
+		return nil, errors.New("invalid value for required argument 'DocumentId'")
 	}
-	if args.KnowledgeBasesId == nil {
-		return nil, errors.New("invalid value for required argument 'KnowledgeBasesId'")
+	if args.KnowledgeBaseId == nil {
+		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentKnowledgeBaseDocument
 	err := ctx.RegisterResource("google-native:dialogflow/v2beta1:AgentKnowledgeBaseDocument", name, args, &resource, opts...)
@@ -131,11 +131,11 @@ type agentKnowledgeBaseDocumentArgs struct {
 	ContentUri *string `pulumi:"contentUri"`
 	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName *string `pulumi:"displayName"`
-	DocumentsId string  `pulumi:"documentsId"`
+	DocumentId  string  `pulumi:"documentId"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        *bool   `pulumi:"enableAutoReload"`
 	ImportGcsCustomMetadata *string `pulumi:"importGcsCustomMetadata"`
-	KnowledgeBasesId        string  `pulumi:"knowledgeBasesId"`
+	KnowledgeBaseId         string  `pulumi:"knowledgeBaseId"`
 	// Required. The knowledge type of document content.
 	KnowledgeTypes []string `pulumi:"knowledgeTypes"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
@@ -143,8 +143,8 @@ type agentKnowledgeBaseDocumentArgs struct {
 	// Required. The MIME type of this document.
 	MimeType *string `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent *string `pulumi:"rawContent"`
 }
@@ -157,11 +157,11 @@ type AgentKnowledgeBaseDocumentArgs struct {
 	ContentUri pulumi.StringPtrInput
 	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringPtrInput
-	DocumentsId pulumi.StringInput
+	DocumentId  pulumi.StringInput
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        pulumi.BoolPtrInput
 	ImportGcsCustomMetadata pulumi.StringPtrInput
-	KnowledgeBasesId        pulumi.StringInput
+	KnowledgeBaseId         pulumi.StringInput
 	// Required. The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayInput
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
@@ -169,8 +169,8 @@ type AgentKnowledgeBaseDocumentArgs struct {
 	// Required. The MIME type of this document.
 	MimeType pulumi.StringPtrInput
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
 	RawContent pulumi.StringPtrInput
 }

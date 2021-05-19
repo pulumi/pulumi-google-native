@@ -30,11 +30,8 @@ func NewSchema(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
-	}
-	if args.SchemasId == nil {
-		return nil, errors.New("invalid value for required argument 'SchemasId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Schema
 	err := ctx.RegisterResource("google-native:pubsub/v1:Schema", name, args, &resource, opts...)
@@ -83,10 +80,9 @@ type schemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
-	SchemaId   *string `pulumi:"schemaId"`
-	SchemasId  string  `pulumi:"schemasId"`
+	Name     *string `pulumi:"name"`
+	Project  string  `pulumi:"project"`
+	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
 	Type *string `pulumi:"type"`
 }
@@ -96,10 +92,9 @@ type SchemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
 	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
-	SchemaId   pulumi.StringPtrInput
-	SchemasId  pulumi.StringInput
+	Name     pulumi.StringPtrInput
+	Project  pulumi.StringInput
+	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
 	Type pulumi.StringPtrInput
 }

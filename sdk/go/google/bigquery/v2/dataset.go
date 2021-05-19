@@ -56,8 +56,8 @@ func NewDataset(ctx *pulumi.Context,
 	if args.DatasetId == nil {
 		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Dataset
 	err := ctx.RegisterResource("google-native:bigquery/v2:Dataset", name, args, &resource, opts...)
@@ -176,8 +176,8 @@ type datasetArgs struct {
 	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime *string `pulumi:"lastModifiedTime"`
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-	Location  *string `pulumi:"location"`
-	ProjectId string  `pulumi:"projectId"`
+	Location *string `pulumi:"location"`
+	Project  string  `pulumi:"project"`
 	// [Output-only] Reserved for future use.
 	SatisfiesPZS *bool `pulumi:"satisfiesPZS"`
 	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
@@ -213,8 +213,8 @@ type DatasetArgs struct {
 	// [Output-only] The date when this dataset or any of its tables was last modified, in milliseconds since the epoch.
 	LastModifiedTime pulumi.StringPtrInput
 	// The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
-	Location  pulumi.StringPtrInput
-	ProjectId pulumi.StringInput
+	Location pulumi.StringPtrInput
+	Project  pulumi.StringInput
 	// [Output-only] Reserved for future use.
 	SatisfiesPZS pulumi.BoolPtrInput
 	// [Output-only] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.

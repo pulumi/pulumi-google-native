@@ -40,14 +40,11 @@ func NewCapacityCommitment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CapacityCommitmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'CapacityCommitmentsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource CapacityCommitment
 	err := ctx.RegisterResource("google-native:bigqueryreservation/v1:CapacityCommitment", name, args, &resource, opts...)
@@ -114,12 +111,11 @@ func (CapacityCommitmentState) ElementType() reflect.Type {
 
 type capacityCommitmentArgs struct {
 	CapacityCommitmentId            *string `pulumi:"capacityCommitmentId"`
-	CapacityCommitmentsId           string  `pulumi:"capacityCommitmentsId"`
 	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
-	LocationsId                     string  `pulumi:"locationsId"`
+	Location                        string  `pulumi:"location"`
 	// Capacity commitment commitment plan.
-	Plan       *string `pulumi:"plan"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Plan    *string `pulumi:"plan"`
+	Project string  `pulumi:"project"`
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan *string `pulumi:"renewalPlan"`
 	// Number of slots in this commitment.
@@ -129,12 +125,11 @@ type capacityCommitmentArgs struct {
 // The set of arguments for constructing a CapacityCommitment resource.
 type CapacityCommitmentArgs struct {
 	CapacityCommitmentId            pulumi.StringPtrInput
-	CapacityCommitmentsId           pulumi.StringInput
 	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
-	LocationsId                     pulumi.StringInput
+	Location                        pulumi.StringInput
 	// Capacity commitment commitment plan.
-	Plan       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Plan    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
 	RenewalPlan pulumi.StringPtrInput
 	// Number of slots in this commitment.

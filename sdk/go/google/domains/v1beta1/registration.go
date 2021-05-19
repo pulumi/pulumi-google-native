@@ -48,14 +48,14 @@ func NewRegistration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RegistrationsId == nil {
-		return nil, errors.New("invalid value for required argument 'RegistrationsId'")
+	if args.RegistrationId == nil {
+		return nil, errors.New("invalid value for required argument 'RegistrationId'")
 	}
 	var resource Registration
 	err := ctx.RegisterResource("google-native:domains/v1beta1:Registration", name, args, &resource, opts...)
@@ -148,12 +148,12 @@ type registrationArgs struct {
 	// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
 	DomainNotices []string `pulumi:"domainNotices"`
 	// Set of labels associated with the `Registration`.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings *ManagementSettings `pulumi:"managementSettings"`
-	ProjectsId         string              `pulumi:"projectsId"`
-	RegistrationsId    string              `pulumi:"registrationsId"`
+	Project            string              `pulumi:"project"`
+	RegistrationId     string              `pulumi:"registrationId"`
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
@@ -173,12 +173,12 @@ type RegistrationArgs struct {
 	// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
 	DomainNotices pulumi.StringArrayInput
 	// Set of labels associated with the `Registration`.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Settings for management of the `Registration`, including renewal, billing, and transfer. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureManagementSettings` method.
 	ManagementSettings ManagementSettingsPtrInput
-	ProjectsId         pulumi.StringInput
-	RegistrationsId    pulumi.StringInput
+	Project            pulumi.StringInput
+	RegistrationId     pulumi.StringInput
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly pulumi.BoolPtrInput
 	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.

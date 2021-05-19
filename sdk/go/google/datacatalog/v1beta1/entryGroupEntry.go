@@ -50,20 +50,17 @@ func NewEntryGroupEntry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EntriesId == nil {
-		return nil, errors.New("invalid value for required argument 'EntriesId'")
-	}
-	if args.EntryGroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'EntryGroupsId'")
+	if args.EntryGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'EntryGroupId'")
 	}
 	if args.EntryId == nil {
 		return nil, errors.New("invalid value for required argument 'EntryId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource EntryGroupEntry
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:EntryGroupEntry", name, args, &resource, opts...)
@@ -156,16 +153,15 @@ type entryGroupEntryArgs struct {
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
 	Description *string `pulumi:"description"`
 	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
-	DisplayName   *string `pulumi:"displayName"`
-	EntriesId     string  `pulumi:"entriesId"`
-	EntryGroupsId string  `pulumi:"entryGroupsId"`
-	EntryId       string  `pulumi:"entryId"`
+	DisplayName  *string `pulumi:"displayName"`
+	EntryGroupId string  `pulumi:"entryGroupId"`
+	EntryId      string  `pulumi:"entryId"`
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec *GoogleCloudDatacatalogV1beta1GcsFilesetSpec `pulumi:"gcsFilesetSpec"`
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource *string `pulumi:"linkedResource"`
-	LocationsId    string  `pulumi:"locationsId"`
-	ProjectsId     string  `pulumi:"projectsId"`
+	Location       string  `pulumi:"location"`
+	Project        string  `pulumi:"project"`
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema *GoogleCloudDatacatalogV1beta1Schema `pulumi:"schema"`
 	// The type of the entry. Only used for Entries with types in the EntryType enum.
@@ -185,16 +181,15 @@ type EntryGroupEntryArgs struct {
 	// Entry description, which can consist of several sentences or paragraphs that describe entry contents. Default value is an empty string.
 	Description pulumi.StringPtrInput
 	// Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
-	DisplayName   pulumi.StringPtrInput
-	EntriesId     pulumi.StringInput
-	EntryGroupsId pulumi.StringInput
-	EntryId       pulumi.StringInput
+	DisplayName  pulumi.StringPtrInput
+	EntryGroupId pulumi.StringInput
+	EntryId      pulumi.StringInput
 	// Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
 	GcsFilesetSpec GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrInput
 	// The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
 	LinkedResource pulumi.StringPtrInput
-	LocationsId    pulumi.StringInput
-	ProjectsId     pulumi.StringInput
+	Location       pulumi.StringInput
+	Project        pulumi.StringInput
 	// Schema of the entry. An entry might not have any schema attached to it.
 	Schema GoogleCloudDatacatalogV1beta1SchemaPtrInput
 	// The type of the entry. Only used for Entries with types in the EntryType enum.

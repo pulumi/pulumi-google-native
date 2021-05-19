@@ -38,14 +38,14 @@ func NewRegistry(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RegistriesId == nil {
-		return nil, errors.New("invalid value for required argument 'RegistriesId'")
+	if args.RegistryId == nil {
+		return nil, errors.New("invalid value for required argument 'RegistryId'")
 	}
 	var resource Registry
 	err := ctx.RegisterResource("google-native:cloudiot/v1:Registry", name, args, &resource, opts...)
@@ -114,16 +114,16 @@ type registryArgs struct {
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig *HttpConfig `pulumi:"httpConfig"`
 	// The identifier of this device registry. For example, `myRegistry`.
-	Id          *string `pulumi:"id"`
-	LocationsId string  `pulumi:"locationsId"`
+	Id       *string `pulumi:"id"`
+	Location string  `pulumi:"location"`
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel *string `pulumi:"logLevel"`
 	// The MQTT configuration for this device registry.
 	MqttConfig *MqttConfig `pulumi:"mqttConfig"`
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
-	Name         *string `pulumi:"name"`
-	ProjectsId   string  `pulumi:"projectsId"`
-	RegistriesId string  `pulumi:"registriesId"`
+	Name       *string `pulumi:"name"`
+	Project    string  `pulumi:"project"`
+	RegistryId string  `pulumi:"registryId"`
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig *StateNotificationConfig `pulumi:"stateNotificationConfig"`
 }
@@ -137,16 +137,16 @@ type RegistryArgs struct {
 	// The DeviceService (HTTP) configuration for this device registry.
 	HttpConfig HttpConfigPtrInput
 	// The identifier of this device registry. For example, `myRegistry`.
-	Id          pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Id       pulumi.StringPtrInput
+	Location pulumi.StringInput
 	// **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
 	LogLevel pulumi.StringPtrInput
 	// The MQTT configuration for this device registry.
 	MqttConfig MqttConfigPtrInput
 	// The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
-	Name         pulumi.StringPtrInput
-	ProjectsId   pulumi.StringInput
-	RegistriesId pulumi.StringInput
+	Name       pulumi.StringPtrInput
+	Project    pulumi.StringInput
+	RegistryId pulumi.StringInput
 	// The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
 	StateNotificationConfig StateNotificationConfigPtrInput
 }

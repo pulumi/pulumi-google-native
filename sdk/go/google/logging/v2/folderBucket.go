@@ -43,14 +43,11 @@ func NewFolderBucket(ctx *pulumi.Context,
 	if args.BucketId == nil {
 		return nil, errors.New("invalid value for required argument 'BucketId'")
 	}
-	if args.BucketsId == nil {
-		return nil, errors.New("invalid value for required argument 'BucketsId'")
+	if args.FolderId == nil {
+		return nil, errors.New("invalid value for required argument 'FolderId'")
 	}
-	if args.FoldersId == nil {
-		return nil, errors.New("invalid value for required argument 'FoldersId'")
-	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	var resource FolderBucket
 	err := ctx.RegisterResource("google-native:logging/v2:FolderBucket", name, args, &resource, opts...)
@@ -116,12 +113,11 @@ func (FolderBucketState) ElementType() reflect.Type {
 }
 
 type folderBucketArgs struct {
-	BucketId  string `pulumi:"bucketId"`
-	BucketsId string `pulumi:"bucketsId"`
+	BucketId string `pulumi:"bucketId"`
 	// Describes this bucket.
 	Description *string `pulumi:"description"`
-	FoldersId   string  `pulumi:"foldersId"`
-	LocationsId string  `pulumi:"locationsId"`
+	FolderId    string  `pulumi:"folderId"`
+	Location    string  `pulumi:"location"`
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked *bool `pulumi:"locked"`
 	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.
@@ -132,12 +128,11 @@ type folderBucketArgs struct {
 
 // The set of arguments for constructing a FolderBucket resource.
 type FolderBucketArgs struct {
-	BucketId  pulumi.StringInput
-	BucketsId pulumi.StringInput
+	BucketId pulumi.StringInput
 	// Describes this bucket.
 	Description pulumi.StringPtrInput
-	FoldersId   pulumi.StringInput
-	LocationsId pulumi.StringInput
+	FolderId    pulumi.StringInput
+	Location    pulumi.StringInput
 	// Whether the bucket has been locked. The retention period on a locked bucket may not be changed. Locked buckets may only be deleted if they are empty.
 	Locked pulumi.BoolPtrInput
 	// Log entry field paths that are denied access in this bucket. The following fields and their children are eligible: textPayload, jsonPayload, protoPayload, httpRequest, labels, sourceLocation. Restricting a repeated field will restrict all values. Adding a parent will block all child fields e.g. foo.bar will block foo.bar.baz.

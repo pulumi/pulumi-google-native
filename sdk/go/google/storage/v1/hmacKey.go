@@ -22,7 +22,7 @@ type HmacKey struct {
 	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Project ID owning the service account to which the key authenticates.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// The link to this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// The email address of the key's associated service account.
@@ -45,8 +45,8 @@ func NewHmacKey(ctx *pulumi.Context,
 	if args.AccessId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.ServiceAccountEmail == nil {
 		return nil, errors.New("invalid value for required argument 'ServiceAccountEmail'")
@@ -80,7 +80,7 @@ type hmacKeyState struct {
 	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
 	Kind *string `pulumi:"kind"`
 	// Project ID owning the service account to which the key authenticates.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// The link to this resource.
 	SelfLink *string `pulumi:"selfLink"`
 	// The email address of the key's associated service account.
@@ -101,7 +101,7 @@ type HmacKeyState struct {
 	// The kind of item this is. For HMAC Key metadata, this is always storage#hmacKeyMetadata.
 	Kind pulumi.StringPtrInput
 	// Project ID owning the service account to which the key authenticates.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// The link to this resource.
 	SelfLink pulumi.StringPtrInput
 	// The email address of the key's associated service account.
@@ -120,7 +120,7 @@ func (HmacKeyState) ElementType() reflect.Type {
 
 type hmacKeyArgs struct {
 	AccessId            string  `pulumi:"accessId"`
-	ProjectId           string  `pulumi:"projectId"`
+	Project             string  `pulumi:"project"`
 	ServiceAccountEmail string  `pulumi:"serviceAccountEmail"`
 	UserProject         *string `pulumi:"userProject"`
 }
@@ -128,7 +128,7 @@ type hmacKeyArgs struct {
 // The set of arguments for constructing a HmacKey resource.
 type HmacKeyArgs struct {
 	AccessId            pulumi.StringInput
-	ProjectId           pulumi.StringInput
+	Project             pulumi.StringInput
 	ServiceAccountEmail pulumi.StringInput
 	UserProject         pulumi.StringPtrInput
 }

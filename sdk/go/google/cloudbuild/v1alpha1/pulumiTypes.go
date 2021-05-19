@@ -15,7 +15,7 @@ type Network struct {
 	// Network on which the workers are created. "default" network is used if empty.
 	Network *string `pulumi:"network"`
 	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
@@ -36,7 +36,7 @@ type NetworkArgs struct {
 	// Network on which the workers are created. "default" network is used if empty.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
@@ -125,8 +125,8 @@ func (o NetworkOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-func (o NetworkOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Network) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o NetworkOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Network) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 // Subnetwork on which the workers are created. "default" subnetwork is used if empty.
@@ -163,12 +163,12 @@ func (o NetworkPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-func (o NetworkPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o NetworkPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -187,7 +187,7 @@ type NetworkResponse struct {
 	// Network on which the workers are created. "default" network is used if empty.
 	Network string `pulumi:"network"`
 	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
 	Subnetwork string `pulumi:"subnetwork"`
 }
@@ -208,7 +208,7 @@ type NetworkResponseArgs struct {
 	// Network on which the workers are created. "default" network is used if empty.
 	Network pulumi.StringInput `pulumi:"network"`
 	// Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 	// Subnetwork on which the workers are created. "default" subnetwork is used if empty.
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 }
@@ -297,8 +297,8 @@ func (o NetworkResponseOutput) Network() pulumi.StringOutput {
 }
 
 // Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-func (o NetworkResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o NetworkResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 // Subnetwork on which the workers are created. "default" subnetwork is used if empty.
@@ -335,12 +335,12 @@ func (o NetworkResponsePtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Project id containing the defined network and subnetwork. For a peered VPC, this will be the same as the project_id in which the workers are created. For a shared VPC, this will be the project sharing the network with the project_id project in which workers will be created. For custom workers with no VPC, this will be the same as project_id.
-func (o NetworkResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o NetworkResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -30,20 +30,20 @@ func NewOrganizationEnvironmentKeystoreAlias(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AliasesId == nil {
-		return nil, errors.New("invalid value for required argument 'AliasesId'")
+	if args.AliasId == nil {
+		return nil, errors.New("invalid value for required argument 'AliasId'")
 	}
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
 	if args.Format == nil {
 		return nil, errors.New("invalid value for required argument 'Format'")
 	}
-	if args.KeystoresId == nil {
-		return nil, errors.New("invalid value for required argument 'KeystoresId'")
+	if args.KeystoreId == nil {
+		return nil, errors.New("invalid value for required argument 'KeystoreId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationEnvironmentKeystoreAlias
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentKeystoreAlias", name, args, &resource, opts...)
@@ -89,39 +89,39 @@ func (OrganizationEnvironmentKeystoreAliasState) ElementType() reflect.Type {
 }
 
 type organizationEnvironmentKeystoreAliasArgs struct {
-	Alias     *string `pulumi:"alias"`
-	AliasesId string  `pulumi:"aliasesId"`
+	Alias   *string `pulumi:"alias"`
+	AliasId string  `pulumi:"aliasId"`
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType *string `pulumi:"contentType"`
 	// The HTTP request/response body as raw binary.
-	Data           *string `pulumi:"data"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	Data          *string `pulumi:"data"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions              []map[string]string `pulumi:"extensions"`
 	Format                  string              `pulumi:"format"`
 	IgnoreExpiryValidation  *string             `pulumi:"ignoreExpiryValidation"`
 	IgnoreNewlineValidation *string             `pulumi:"ignoreNewlineValidation"`
-	KeystoresId             string              `pulumi:"keystoresId"`
-	OrganizationsId         string              `pulumi:"organizationsId"`
+	KeystoreId              string              `pulumi:"keystoreId"`
+	OrganizationId          string              `pulumi:"organizationId"`
 	Password                *string             `pulumi:"password"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentKeystoreAlias resource.
 type OrganizationEnvironmentKeystoreAliasArgs struct {
-	Alias     pulumi.StringPtrInput
-	AliasesId pulumi.StringInput
+	Alias   pulumi.StringPtrInput
+	AliasId pulumi.StringInput
 	// The HTTP Content-Type header value specifying the content type of the body.
 	ContentType pulumi.StringPtrInput
 	// The HTTP request/response body as raw binary.
-	Data           pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	Data          pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions              pulumi.StringMapArrayInput
 	Format                  pulumi.StringInput
 	IgnoreExpiryValidation  pulumi.StringPtrInput
 	IgnoreNewlineValidation pulumi.StringPtrInput
-	KeystoresId             pulumi.StringInput
-	OrganizationsId         pulumi.StringInput
+	KeystoreId              pulumi.StringInput
+	OrganizationId          pulumi.StringInput
 	Password                pulumi.StringPtrInput
 }
 

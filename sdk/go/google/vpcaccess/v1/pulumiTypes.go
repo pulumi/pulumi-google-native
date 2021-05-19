@@ -15,7 +15,7 @@ type Subnet struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
 	Name *string `pulumi:"name"`
 	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 }
 
 // SubnetInput is an input type that accepts SubnetArgs and SubnetOutput values.
@@ -34,7 +34,7 @@ type SubnetArgs struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	Project pulumi.StringPtrInput `pulumi:"project"`
 }
 
 func (SubnetArgs) ElementType() reflect.Type {
@@ -121,8 +121,8 @@ func (o SubnetOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-func (o SubnetOutput) ProjectId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Subnet) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+func (o SubnetOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Subnet) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
 
 type SubnetPtrOutput struct{ *pulumi.OutputState }
@@ -154,12 +154,12 @@ func (o SubnetPtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-func (o SubnetPtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o SubnetPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Subnet) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ProjectId
+		return v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -168,7 +168,7 @@ type SubnetResponse struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
 	Name string `pulumi:"name"`
 	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-	ProjectId string `pulumi:"projectId"`
+	Project string `pulumi:"project"`
 }
 
 // SubnetResponseInput is an input type that accepts SubnetResponseArgs and SubnetResponseOutput values.
@@ -187,7 +187,7 @@ type SubnetResponseArgs struct {
 	// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
 	Name pulumi.StringInput `pulumi:"name"`
 	// Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (SubnetResponseArgs) ElementType() reflect.Type {
@@ -274,8 +274,8 @@ func (o SubnetResponseOutput) Name() pulumi.StringOutput {
 }
 
 // Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-func (o SubnetResponseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v SubnetResponse) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o SubnetResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v SubnetResponse) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type SubnetResponsePtrOutput struct{ *pulumi.OutputState }
@@ -307,12 +307,12 @@ func (o SubnetResponsePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-func (o SubnetResponsePtrOutput) ProjectId() pulumi.StringPtrOutput {
+func (o SubnetResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubnetResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.ProjectId
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 

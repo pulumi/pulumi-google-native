@@ -43,17 +43,14 @@ func NewSchedule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.ScheduleId == nil {
 		return nil, errors.New("invalid value for required argument 'ScheduleId'")
-	}
-	if args.SchedulesId == nil {
-		return nil, errors.New("invalid value for required argument 'SchedulesId'")
 	}
 	var resource Schedule
 	err := ctx.RegisterResource("google-native:notebooks/v1:Schedule", name, args, &resource, opts...)
@@ -131,10 +128,9 @@ type scheduleArgs struct {
 	Description *string `pulumi:"description"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplate `pulumi:"executionTemplate"`
-	LocationsId       string             `pulumi:"locationsId"`
-	ProjectsId        string             `pulumi:"projectsId"`
+	Location          string             `pulumi:"location"`
+	Project           string             `pulumi:"project"`
 	ScheduleId        string             `pulumi:"scheduleId"`
-	SchedulesId       string             `pulumi:"schedulesId"`
 	State             *string            `pulumi:"state"`
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone *string `pulumi:"timeZone"`
@@ -148,10 +144,9 @@ type ScheduleArgs struct {
 	Description pulumi.StringPtrInput
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplatePtrInput
-	LocationsId       pulumi.StringInput
-	ProjectsId        pulumi.StringInput
+	Location          pulumi.StringInput
+	Project           pulumi.StringInput
 	ScheduleId        pulumi.StringInput
-	SchedulesId       pulumi.StringInput
 	State             pulumi.StringPtrInput
 	// Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT).
 	TimeZone pulumi.StringPtrInput

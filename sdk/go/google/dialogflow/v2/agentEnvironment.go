@@ -41,14 +41,11 @@ func NewAgentEnvironment(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentEnvironment
 	err := ctx.RegisterResource("google-native:dialogflow/v2:AgentEnvironment", name, args, &resource, opts...)
@@ -113,13 +110,12 @@ type agentEnvironmentArgs struct {
 	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion *string `pulumi:"agentVersion"`
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description    *string `pulumi:"description"`
-	EnvironmentId  string  `pulumi:"environmentId"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	Description   *string `pulumi:"description"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment *GoogleCloudDialogflowV2Fulfillment `pulumi:"fulfillment"`
-	LocationsId string                              `pulumi:"locationsId"`
-	ProjectsId  string                              `pulumi:"projectsId"`
+	Location    string                              `pulumi:"location"`
+	Project     string                              `pulumi:"project"`
 	// Optional. Text to speech settings for this environment.
 	TextToSpeechSettings *GoogleCloudDialogflowV2TextToSpeechSettings `pulumi:"textToSpeechSettings"`
 }
@@ -129,13 +125,12 @@ type AgentEnvironmentArgs struct {
 	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
 	AgentVersion pulumi.StringPtrInput
 	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description    pulumi.StringPtrInput
-	EnvironmentId  pulumi.StringInput
-	EnvironmentsId pulumi.StringInput
+	Description   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
 	// Optional. Text to speech settings for this environment.
 	TextToSpeechSettings GoogleCloudDialogflowV2TextToSpeechSettingsPtrInput
 }

@@ -37,11 +37,11 @@ func NewOrganizationNotificationConfig(ctx *pulumi.Context,
 	if args.ConfigId == nil {
 		return nil, errors.New("invalid value for required argument 'ConfigId'")
 	}
-	if args.NotificationConfigsId == nil {
-		return nil, errors.New("invalid value for required argument 'NotificationConfigsId'")
+	if args.NotificationConfigId == nil {
+		return nil, errors.New("invalid value for required argument 'NotificationConfigId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationNotificationConfig
 	err := ctx.RegisterResource("google-native:securitycenter/v1:OrganizationNotificationConfig", name, args, &resource, opts...)
@@ -99,9 +99,9 @@ type organizationNotificationConfigArgs struct {
 	// The description of the notification config (max of 1024 characters).
 	Description *string `pulumi:"description"`
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name                  *string `pulumi:"name"`
-	NotificationConfigsId string  `pulumi:"notificationConfigsId"`
-	OrganizationsId       string  `pulumi:"organizationsId"`
+	Name                 *string `pulumi:"name"`
+	NotificationConfigId string  `pulumi:"notificationConfigId"`
+	OrganizationId       string  `pulumi:"organizationId"`
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic *string `pulumi:"pubsubTopic"`
 	// The config for triggering streaming-based notifications.
@@ -114,9 +114,9 @@ type OrganizationNotificationConfigArgs struct {
 	// The description of the notification config (max of 1024 characters).
 	Description pulumi.StringPtrInput
 	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name                  pulumi.StringPtrInput
-	NotificationConfigsId pulumi.StringInput
-	OrganizationsId       pulumi.StringInput
+	Name                 pulumi.StringPtrInput
+	NotificationConfigId pulumi.StringInput
+	OrganizationId       pulumi.StringInput
 	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
 	PubsubTopic pulumi.StringPtrInput
 	// The config for triggering streaming-based notifications.

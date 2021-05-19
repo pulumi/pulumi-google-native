@@ -36,14 +36,14 @@ func NewOrganizationEnvironmentTargetserver(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.EnvironmentsId == nil {
-		return nil, errors.New("invalid value for required argument 'EnvironmentsId'")
+	if args.EnvironmentId == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.TargetserversId == nil {
-		return nil, errors.New("invalid value for required argument 'TargetserversId'")
+	if args.TargetserverId == nil {
+		return nil, errors.New("invalid value for required argument 'TargetserverId'")
 	}
 	var resource OrganizationEnvironmentTargetserver
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationEnvironmentTargetserver", name, args, &resource, opts...)
@@ -102,39 +102,39 @@ func (OrganizationEnvironmentTargetserverState) ElementType() reflect.Type {
 
 type organizationEnvironmentTargetserverArgs struct {
 	// Optional. A human-readable description of this TargetServer.
-	Description    *string `pulumi:"description"`
-	EnvironmentsId string  `pulumi:"environmentsId"`
+	Description   *string `pulumi:"description"`
+	EnvironmentId string  `pulumi:"environmentId"`
 	// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host *string `pulumi:"host"`
 	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Required. The resource id of this target server. Values must match the regular expression
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port *int `pulumi:"port"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo         *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
-	TargetserversId string                      `pulumi:"targetserversId"`
+	SSLInfo        *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
+	TargetserverId string                      `pulumi:"targetserverId"`
 }
 
 // The set of arguments for constructing a OrganizationEnvironmentTargetserver resource.
 type OrganizationEnvironmentTargetserverArgs struct {
 	// Optional. A human-readable description of this TargetServer.
-	Description    pulumi.StringPtrInput
-	EnvironmentsId pulumi.StringInput
+	Description   pulumi.StringPtrInput
+	EnvironmentId pulumi.StringInput
 	// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
 	Host pulumi.StringPtrInput
 	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
 	IsEnabled pulumi.BoolPtrInput
 	// Required. The resource id of this target server. Values must match the regular expression
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntPtrInput
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo         GoogleCloudApigeeV1TlsInfoPtrInput
-	TargetserversId pulumi.StringInput
+	SSLInfo        GoogleCloudApigeeV1TlsInfoPtrInput
+	TargetserverId pulumi.StringInput
 }
 
 func (OrganizationEnvironmentTargetserverArgs) ElementType() reflect.Type {

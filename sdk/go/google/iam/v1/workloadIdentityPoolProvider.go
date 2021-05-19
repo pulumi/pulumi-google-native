@@ -42,20 +42,20 @@ func NewWorkloadIdentityPoolProvider(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.ProvidersId == nil {
-		return nil, errors.New("invalid value for required argument 'ProvidersId'")
+	if args.ProviderId == nil {
+		return nil, errors.New("invalid value for required argument 'ProviderId'")
+	}
+	if args.WorkloadIdentityPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolId'")
 	}
 	if args.WorkloadIdentityPoolProviderId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolProviderId'")
-	}
-	if args.WorkloadIdentityPoolsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkloadIdentityPoolsId'")
 	}
 	var resource WorkloadIdentityPoolProvider
 	err := ctx.RegisterResource("google-native:iam/v1:WorkloadIdentityPoolProvider", name, args, &resource, opts...)
@@ -137,13 +137,13 @@ type workloadIdentityPoolProviderArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           *Oidc  `pulumi:"oidc"`
-	ProjectsId                     string `pulumi:"projectsId"`
-	ProvidersId                    string `pulumi:"providersId"`
+	Project                        string `pulumi:"project"`
+	ProviderId                     string `pulumi:"providerId"`
+	WorkloadIdentityPoolId         string `pulumi:"workloadIdentityPoolId"`
 	WorkloadIdentityPoolProviderId string `pulumi:"workloadIdentityPoolProviderId"`
-	WorkloadIdentityPoolsId        string `pulumi:"workloadIdentityPoolsId"`
 }
 
 // The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
@@ -160,13 +160,13 @@ type WorkloadIdentityPoolProviderArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// An OpenId Connect 1.0 identity provider.
 	Oidc                           OidcPtrInput
-	ProjectsId                     pulumi.StringInput
-	ProvidersId                    pulumi.StringInput
+	Project                        pulumi.StringInput
+	ProviderId                     pulumi.StringInput
+	WorkloadIdentityPoolId         pulumi.StringInput
 	WorkloadIdentityPoolProviderId pulumi.StringInput
-	WorkloadIdentityPoolsId        pulumi.StringInput
 }
 
 func (WorkloadIdentityPoolProviderArgs) ElementType() reflect.Type {

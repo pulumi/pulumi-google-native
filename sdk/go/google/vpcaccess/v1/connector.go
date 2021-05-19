@@ -49,14 +49,11 @@ func NewConnector(ctx *pulumi.Context,
 	if args.ConnectorId == nil {
 		return nil, errors.New("invalid value for required argument 'ConnectorId'")
 	}
-	if args.ConnectorsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectorsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Connector
 	err := ctx.RegisterResource("google-native:vpcaccess/v1:Connector", name, args, &resource, opts...)
@@ -134,11 +131,10 @@ func (ConnectorState) ElementType() reflect.Type {
 }
 
 type connectorArgs struct {
-	ConnectorId  string `pulumi:"connectorId"`
-	ConnectorsId string `pulumi:"connectorsId"`
+	ConnectorId string `pulumi:"connectorId"`
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange *string `pulumi:"ipCidrRange"`
-	LocationsId string  `pulumi:"locationsId"`
+	Location    string  `pulumi:"location"`
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType *string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
@@ -152,19 +148,18 @@ type connectorArgs struct {
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
 	Name *string `pulumi:"name"`
 	// Name of a VPC network.
-	Network    *string `pulumi:"network"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Network *string `pulumi:"network"`
+	Project string  `pulumi:"project"`
 	// The subnet in which to house the VPC Access Connector.
 	Subnet *Subnet `pulumi:"subnet"`
 }
 
 // The set of arguments for constructing a Connector resource.
 type ConnectorArgs struct {
-	ConnectorId  pulumi.StringInput
-	ConnectorsId pulumi.StringInput
+	ConnectorId pulumi.StringInput
 	// The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
 	IpCidrRange pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	Location    pulumi.StringInput
 	// Machine type of VM Instance underlying connector. Default is e2-micro
 	MachineType pulumi.StringPtrInput
 	// Maximum value of instances in autoscaling group underlying the connector.
@@ -178,8 +173,8 @@ type ConnectorArgs struct {
 	// The resource name in the format `projects/*/locations/*/connectors/*`.
 	Name pulumi.StringPtrInput
 	// Name of a VPC network.
-	Network    pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Network pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The subnet in which to house the VPC Access Connector.
 	Subnet SubnetPtrInput
 }

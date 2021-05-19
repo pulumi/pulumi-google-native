@@ -80,8 +80,8 @@ func NewDevice(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DevicesId == nil {
-		return nil, errors.New("invalid value for required argument 'DevicesId'")
+	if args.DeviceId == nil {
+		return nil, errors.New("invalid value for required argument 'DeviceId'")
 	}
 	var resource Device
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:Device", name, args, &resource, opts...)
@@ -228,8 +228,8 @@ func (DeviceState) ElementType() reflect.Type {
 
 type deviceArgs struct {
 	// Asset tag of the device.
-	AssetTag  *string `pulumi:"assetTag"`
-	DevicesId string  `pulumi:"devicesId"`
+	AssetTag *string `pulumi:"assetTag"`
+	DeviceId string  `pulumi:"deviceId"`
 	// Most recent time when device synced with this service.
 	LastSyncTime *string `pulumi:"lastSyncTime"`
 	// Serial Number of device. Example: HT82V1A01076.
@@ -241,8 +241,8 @@ type deviceArgs struct {
 // The set of arguments for constructing a Device resource.
 type DeviceArgs struct {
 	// Asset tag of the device.
-	AssetTag  pulumi.StringPtrInput
-	DevicesId pulumi.StringInput
+	AssetTag pulumi.StringPtrInput
+	DeviceId pulumi.StringInput
 	// Most recent time when device synced with this service.
 	LastSyncTime pulumi.StringPtrInput
 	// Serial Number of device. Example: HT82V1A01076.

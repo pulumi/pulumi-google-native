@@ -44,20 +44,20 @@ func NewDatasetConsentStoreConsent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConsentStoresId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentStoresId'")
+	if args.ConsentId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentId'")
 	}
-	if args.ConsentsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConsentsId'")
+	if args.ConsentStoreId == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
-	if args.DatasetsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatasetsId'")
+	if args.DatasetId == nil {
+		return nil, errors.New("invalid value for required argument 'DatasetId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DatasetConsentStoreConsent
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:DatasetConsentStoreConsent", name, args, &resource, opts...)
@@ -133,19 +133,19 @@ func (DatasetConsentStoreConsentState) ElementType() reflect.Type {
 type datasetConsentStoreConsentArgs struct {
 	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact *string `pulumi:"consentArtifact"`
-	ConsentStoresId string  `pulumi:"consentStoresId"`
-	ConsentsId      string  `pulumi:"consentsId"`
-	DatasetsId      string  `pulumi:"datasetsId"`
+	ConsentId       string  `pulumi:"consentId"`
+	ConsentStoreId  string  `pulumi:"consentStoreId"`
+	DatasetId       string  `pulumi:"datasetId"`
 	// Timestamp in UTC of when this Consent is considered expired.
-	ExpireTime  *string `pulumi:"expireTime"`
-	LocationsId string  `pulumi:"locationsId"`
+	ExpireTime *string `pulumi:"expireTime"`
+	Location   string  `pulumi:"location"`
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-	Policies   []GoogleCloudHealthcareV1beta1ConsentPolicy `pulumi:"policies"`
-	ProjectsId string                                      `pulumi:"projectsId"`
+	Policies []GoogleCloudHealthcareV1beta1ConsentPolicy `pulumi:"policies"`
+	Project  string                                      `pulumi:"project"`
 	// Required. Indicates the current state of this Consent.
 	State *string `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
@@ -158,19 +158,19 @@ type datasetConsentStoreConsentArgs struct {
 type DatasetConsentStoreConsentArgs struct {
 	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringPtrInput
-	ConsentStoresId pulumi.StringInput
-	ConsentsId      pulumi.StringInput
-	DatasetsId      pulumi.StringInput
+	ConsentId       pulumi.StringInput
+	ConsentStoreId  pulumi.StringInput
+	DatasetId       pulumi.StringInput
 	// Timestamp in UTC of when this Consent is considered expired.
-	ExpireTime  pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
+	ExpireTime pulumi.StringPtrInput
+	Location   pulumi.StringInput
 	// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - begin with a letter - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes Metadata values must be: - be between 1 and 63 characters long - have a UTF-8 encoding of maximum 128 bytes - consist of up to 63 characters including lowercase letters, numeric characters, underscores, and dashes No more than 64 metadata entries can be associated with a given consent.
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-	Policies   GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput
-	ProjectsId pulumi.StringInput
+	Policies GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput
+	Project  pulumi.StringInput
 	// Required. Indicates the current state of this Consent.
 	State pulumi.StringPtrInput
 	// Input only. The time to live for this Consent from when it is created.

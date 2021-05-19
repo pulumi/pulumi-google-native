@@ -42,17 +42,14 @@ func NewRuntime(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.RuntimeId == nil {
 		return nil, errors.New("invalid value for required argument 'RuntimeId'")
-	}
-	if args.RuntimesId == nil {
-		return nil, errors.New("invalid value for required argument 'RuntimesId'")
 	}
 	var resource Runtime
 	err := ctx.RegisterResource("google-native:notebooks/v1:Runtime", name, args, &resource, opts...)
@@ -124,10 +121,9 @@ func (RuntimeState) ElementType() reflect.Type {
 type runtimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
-	LocationsId  string               `pulumi:"locationsId"`
-	ProjectsId   string               `pulumi:"projectsId"`
+	Location     string               `pulumi:"location"`
+	Project      string               `pulumi:"project"`
 	RuntimeId    string               `pulumi:"runtimeId"`
-	RuntimesId   string               `pulumi:"runtimesId"`
 	// The config settings for software inside the runtime.
 	SoftwareConfig *RuntimeSoftwareConfig `pulumi:"softwareConfig"`
 	// Use a Compute Engine VM image to start the managed notebook instance.
@@ -138,10 +134,9 @@ type runtimeArgs struct {
 type RuntimeArgs struct {
 	// The config settings for accessing runtime.
 	AccessConfig RuntimeAccessConfigPtrInput
-	LocationsId  pulumi.StringInput
-	ProjectsId   pulumi.StringInput
+	Location     pulumi.StringInput
+	Project      pulumi.StringInput
 	RuntimeId    pulumi.StringInput
-	RuntimesId   pulumi.StringInput
 	// The config settings for software inside the runtime.
 	SoftwareConfig RuntimeSoftwareConfigPtrInput
 	// Use a Compute Engine VM image to start the managed notebook instance.

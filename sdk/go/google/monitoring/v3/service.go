@@ -42,9 +42,6 @@ func NewService(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ServicesId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicesId'")
-	}
 	if args.V3Id == nil {
 		return nil, errors.New("invalid value for required argument 'V3Id'")
 	}
@@ -134,9 +131,8 @@ type serviceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio *MeshIstio `pulumi:"meshIstio"`
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name       *string `pulumi:"name"`
-	ServiceId  *string `pulumi:"serviceId"`
-	ServicesId string  `pulumi:"servicesId"`
+	Name      *string `pulumi:"name"`
+	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *Telemetry `pulumi:"telemetry"`
 	V3Id      string     `pulumi:"v3Id"`
@@ -160,9 +156,8 @@ type ServiceArgs struct {
 	// Type used for Istio services scoped to an Istio mesh.
 	MeshIstio MeshIstioPtrInput
 	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name       pulumi.StringPtrInput
-	ServiceId  pulumi.StringPtrInput
-	ServicesId pulumi.StringInput
+	Name      pulumi.StringPtrInput
+	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryPtrInput
 	V3Id      pulumi.StringInput

@@ -44,14 +44,14 @@ func NewDlpJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DlpJobsId == nil {
-		return nil, errors.New("invalid value for required argument 'DlpJobsId'")
+	if args.DlpJobId == nil {
+		return nil, errors.New("invalid value for required argument 'DlpJobId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource DlpJob
 	err := ctx.RegisterResource("google-native:dlp/v2:DlpJob", name, args, &resource, opts...)
@@ -125,26 +125,26 @@ func (DlpJobState) ElementType() reflect.Type {
 }
 
 type dlpJobArgs struct {
-	DlpJobsId string `pulumi:"dlpJobsId"`
+	DlpJobId string `pulumi:"dlpJobId"`
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob *GooglePrivacyDlpV2InspectJobConfig `pulumi:"inspectJob"`
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId       *string `pulumi:"jobId"`
-	LocationsId string  `pulumi:"locationsId"`
-	ProjectsId  string  `pulumi:"projectsId"`
+	JobId    *string `pulumi:"jobId"`
+	Location string  `pulumi:"location"`
+	Project  string  `pulumi:"project"`
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob *GooglePrivacyDlpV2RiskAnalysisJobConfig `pulumi:"riskJob"`
 }
 
 // The set of arguments for constructing a DlpJob resource.
 type DlpJobArgs struct {
-	DlpJobsId pulumi.StringInput
+	DlpJobId pulumi.StringInput
 	// An inspection job scans a storage repository for InfoTypes.
 	InspectJob GooglePrivacyDlpV2InspectJobConfigPtrInput
 	// The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-	JobId       pulumi.StringPtrInput
-	LocationsId pulumi.StringInput
-	ProjectsId  pulumi.StringInput
+	JobId    pulumi.StringPtrInput
+	Location pulumi.StringInput
+	Project  pulumi.StringInput
 	// A risk analysis job calculates re-identification risk metrics for a BigQuery table.
 	RiskJob GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput
 }

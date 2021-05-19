@@ -22,7 +22,7 @@ type WorkerPool struct {
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	Project pulumi.StringOutput `pulumi:"project"`
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
 	// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -44,11 +44,11 @@ func NewWorkerPool(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.WorkerPoolsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkerPoolsId'")
+	if args.WorkerPoolId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
 	}
 	var resource WorkerPool
 	err := ctx.RegisterResource("google-native:cloudbuild/v1alpha1:WorkerPool", name, args, &resource, opts...)
@@ -79,7 +79,7 @@ type workerPoolState struct {
 	// User-defined name of the `WorkerPool`.
 	Name *string `pulumi:"name"`
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	ProjectId *string `pulumi:"projectId"`
+	Project *string `pulumi:"project"`
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions []string `pulumi:"regions"`
 	// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -102,7 +102,7 @@ type WorkerPoolState struct {
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringPtrInput
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	ProjectId pulumi.StringPtrInput
+	Project pulumi.StringPtrInput
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions pulumi.StringArrayInput
 	// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -129,8 +129,7 @@ type workerPoolArgs struct {
 	// User-defined name of the `WorkerPool`.
 	Name *string `pulumi:"name"`
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	ProjectId  *string `pulumi:"projectId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Project string `pulumi:"project"`
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions []string `pulumi:"regions"`
 	// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -142,8 +141,8 @@ type workerPoolArgs struct {
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
 	// Total number of workers to be created across all requested regions.
-	WorkerCount   *string `pulumi:"workerCount"`
-	WorkerPoolsId string  `pulumi:"workerPoolsId"`
+	WorkerCount  *string `pulumi:"workerCount"`
+	WorkerPoolId string  `pulumi:"workerPoolId"`
 }
 
 // The set of arguments for constructing a WorkerPool resource.
@@ -155,8 +154,7 @@ type WorkerPoolArgs struct {
 	// User-defined name of the `WorkerPool`.
 	Name pulumi.StringPtrInput
 	// The project ID of the GCP project for which the `WorkerPool` is created.
-	ProjectId  pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Project pulumi.StringInput
 	// List of regions to create the `WorkerPool`. Regions can't be empty. If Cloud Build adds a new GCP region in the future, the existing `WorkerPool` will not be enabled in the new region automatically; you must add the new region to the `regions` field to enable the `WorkerPool` in that region.
 	Regions pulumi.StringArrayInput
 	// The service account used to manage the `WorkerPool`. The service account must have the Compute Instance Admin (Beta) permission at the project level.
@@ -168,8 +166,8 @@ type WorkerPoolArgs struct {
 	// Configuration to be used for a creating workers in the `WorkerPool`.
 	WorkerConfig WorkerConfigPtrInput
 	// Total number of workers to be created across all requested regions.
-	WorkerCount   pulumi.StringPtrInput
-	WorkerPoolsId pulumi.StringInput
+	WorkerCount  pulumi.StringPtrInput
+	WorkerPoolId pulumi.StringInput
 }
 
 func (WorkerPoolArgs) ElementType() reflect.Type {

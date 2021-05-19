@@ -28,20 +28,17 @@ func NewRepositoryPackageTag(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.PackagesId == nil {
-		return nil, errors.New("invalid value for required argument 'PackagesId'")
+	if args.PackageId == nil {
+		return nil, errors.New("invalid value for required argument 'PackageId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.RepositoriesId == nil {
-		return nil, errors.New("invalid value for required argument 'RepositoriesId'")
-	}
-	if args.TagsId == nil {
-		return nil, errors.New("invalid value for required argument 'TagsId'")
+	if args.RepositoryId == nil {
+		return nil, errors.New("invalid value for required argument 'RepositoryId'")
 	}
 	var resource RepositoryPackageTag
 	err := ctx.RegisterResource("google-native:artifactregistry/v1beta1:RepositoryPackageTag", name, args, &resource, opts...)
@@ -83,28 +80,26 @@ func (RepositoryPackageTagState) ElementType() reflect.Type {
 }
 
 type repositoryPackageTagArgs struct {
-	LocationsId string `pulumi:"locationsId"`
+	Location string `pulumi:"location"`
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
-	Name           *string `pulumi:"name"`
-	PackagesId     string  `pulumi:"packagesId"`
-	ProjectsId     string  `pulumi:"projectsId"`
-	RepositoriesId string  `pulumi:"repositoriesId"`
-	TagId          *string `pulumi:"tagId"`
-	TagsId         string  `pulumi:"tagsId"`
+	Name         *string `pulumi:"name"`
+	PackageId    string  `pulumi:"packageId"`
+	Project      string  `pulumi:"project"`
+	RepositoryId string  `pulumi:"repositoryId"`
+	TagId        *string `pulumi:"tagId"`
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
 	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a RepositoryPackageTag resource.
 type RepositoryPackageTagArgs struct {
-	LocationsId pulumi.StringInput
+	Location pulumi.StringInput
 	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
-	Name           pulumi.StringPtrInput
-	PackagesId     pulumi.StringInput
-	ProjectsId     pulumi.StringInput
-	RepositoriesId pulumi.StringInput
-	TagId          pulumi.StringPtrInput
-	TagsId         pulumi.StringInput
+	Name         pulumi.StringPtrInput
+	PackageId    pulumi.StringInput
+	Project      pulumi.StringInput
+	RepositoryId pulumi.StringInput
+	TagId        pulumi.StringPtrInput
 	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
 	Version pulumi.StringPtrInput
 }

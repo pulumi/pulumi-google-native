@@ -64,14 +64,14 @@ func NewAgentIntent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.IntentsId == nil {
-		return nil, errors.New("invalid value for required argument 'IntentsId'")
+	if args.IntentId == nil {
+		return nil, errors.New("invalid value for required argument 'IntentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentIntent
 	err := ctx.RegisterResource("google-native:dialogflow/v2:AgentIntent", name, args, &resource, opts...)
@@ -199,14 +199,14 @@ type agentIntentArgs struct {
 	FollowupIntentInfo []GoogleCloudDialogflowV2IntentFollowupIntentInfo `pulumi:"followupIntentInfo"`
 	// Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
 	InputContextNames []string `pulumi:"inputContextNames"`
+	IntentId          string   `pulumi:"intentId"`
 	IntentView        *string  `pulumi:"intentView"`
-	IntentsId         string   `pulumi:"intentsId"`
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback   *bool   `pulumi:"isFallback"`
 	LanguageCode *string `pulumi:"languageCode"`
 	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
 	LiveAgentHandoff *bool  `pulumi:"liveAgentHandoff"`
-	LocationsId      string `pulumi:"locationsId"`
+	Location         string `pulumi:"location"`
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages []GoogleCloudDialogflowV2IntentMessage `pulumi:"messages"`
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -220,8 +220,8 @@ type agentIntentArgs struct {
 	// Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
 	ParentFollowupIntentName *string `pulumi:"parentFollowupIntentName"`
 	// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority   *int   `pulumi:"priority"`
-	ProjectsId string `pulumi:"projectsId"`
+	Priority *int   `pulumi:"priority"`
+	Project  string `pulumi:"project"`
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts *bool `pulumi:"resetContexts"`
 	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.
@@ -248,14 +248,14 @@ type AgentIntentArgs struct {
 	FollowupIntentInfo GoogleCloudDialogflowV2IntentFollowupIntentInfoArrayInput
 	// Optional. The list of context names required for this intent to be triggered. Format: `projects//agent/sessions/-/contexts/`.
 	InputContextNames pulumi.StringArrayInput
+	IntentId          pulumi.StringInput
 	IntentView        pulumi.StringPtrInput
-	IntentsId         pulumi.StringInput
 	// Optional. Indicates whether this is a fallback intent.
 	IsFallback   pulumi.BoolPtrInput
 	LanguageCode pulumi.StringPtrInput
 	// Optional. Indicates that a live agent should be brought in to handle the interaction with the user. In most cases, when you set this flag to true, you would also want to set end_interaction to true as well. Default is false.
 	LiveAgentHandoff pulumi.BoolPtrInput
-	LocationsId      pulumi.StringInput
+	Location         pulumi.StringInput
 	// Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow console.
 	Messages GoogleCloudDialogflowV2IntentMessageArrayInput
 	// Optional. Indicates whether Machine Learning is disabled for the intent. Note: If `ml_disabled` setting is set to true, then this intent is not taken into account during inference in `ML ONLY` match mode. Also, auto-markup in the UI is turned off.
@@ -269,8 +269,8 @@ type AgentIntentArgs struct {
 	// Read-only after creation. The unique identifier of the parent intent in the chain of followup intents. You can set this field when creating an intent, for example with CreateIntent or BatchUpdateIntents, in order to make this intent a followup intent. It identifies the parent followup intent. Format: `projects//agent/intents/`.
 	ParentFollowupIntentName pulumi.StringPtrInput
 	// Optional. The priority of this intent. Higher numbers represent higher priorities. - If the supplied value is unspecified or 0, the service translates the value to 500,000, which corresponds to the `Normal` priority in the console. - If the supplied value is negative, the intent is ignored in runtime detect intent requests.
-	Priority   pulumi.IntPtrInput
-	ProjectsId pulumi.StringInput
+	Priority pulumi.IntPtrInput
+	Project  pulumi.StringInput
 	// Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
 	ResetContexts pulumi.BoolPtrInput
 	// Read-only. The unique identifier of the root intent in the chain of followup intents. It identifies the correct followup intents chain for this intent. We populate this field only in the output. Format: `projects//agent/intents/`.

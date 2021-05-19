@@ -36,14 +36,14 @@ func NewTaxonomy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TaxonomiesId == nil {
-		return nil, errors.New("invalid value for required argument 'TaxonomiesId'")
+	if args.TaxonomyId == nil {
+		return nil, errors.New("invalid value for required argument 'TaxonomyId'")
 	}
 	var resource Taxonomy
 	err := ctx.RegisterResource("google-native:datacatalog/v1beta1:Taxonomy", name, args, &resource, opts...)
@@ -106,10 +106,10 @@ type taxonomyArgs struct {
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
 	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName  *string `pulumi:"displayName"`
-	LocationsId  string  `pulumi:"locationsId"`
-	ProjectsId   string  `pulumi:"projectsId"`
-	TaxonomiesId string  `pulumi:"taxonomiesId"`
+	DisplayName *string `pulumi:"displayName"`
+	Location    string  `pulumi:"location"`
+	Project     string  `pulumi:"project"`
+	TaxonomyId  string  `pulumi:"taxonomyId"`
 }
 
 // The set of arguments for constructing a Taxonomy resource.
@@ -119,10 +119,10 @@ type TaxonomyArgs struct {
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
 	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName  pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
-	ProjectsId   pulumi.StringInput
-	TaxonomiesId pulumi.StringInput
+	DisplayName pulumi.StringPtrInput
+	Location    pulumi.StringInput
+	Project     pulumi.StringInput
+	TaxonomyId  pulumi.StringInput
 }
 
 func (TaxonomyArgs) ElementType() reflect.Type {

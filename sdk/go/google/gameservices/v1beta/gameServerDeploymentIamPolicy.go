@@ -35,14 +35,14 @@ func NewGameServerDeploymentIamPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.GameServerDeploymentsId == nil {
-		return nil, errors.New("invalid value for required argument 'GameServerDeploymentsId'")
+	if args.GameServerDeploymentId == nil {
+		return nil, errors.New("invalid value for required argument 'GameServerDeploymentId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource GameServerDeploymentIamPolicy
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy", name, args, &resource, opts...)
@@ -103,11 +103,11 @@ type gameServerDeploymentIamPolicyArgs struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings []Binding `pulumi:"bindings"`
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-	Etag                    *string `pulumi:"etag"`
-	GameServerDeploymentsId string  `pulumi:"gameServerDeploymentsId"`
-	IamOwned                *bool   `pulumi:"iamOwned"`
-	LocationsId             string  `pulumi:"locationsId"`
-	ProjectsId              string  `pulumi:"projectsId"`
+	Etag                   *string `pulumi:"etag"`
+	GameServerDeploymentId string  `pulumi:"gameServerDeploymentId"`
+	IamOwned               *bool   `pulumi:"iamOwned"`
+	Location               string  `pulumi:"location"`
+	Project                string  `pulumi:"project"`
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules []Rule `pulumi:"rules"`
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
@@ -123,11 +123,11 @@ type GameServerDeploymentIamPolicyArgs struct {
 	// Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
 	Bindings BindingArrayInput
 	// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
-	Etag                    pulumi.StringPtrInput
-	GameServerDeploymentsId pulumi.StringInput
-	IamOwned                pulumi.BoolPtrInput
-	LocationsId             pulumi.StringInput
-	ProjectsId              pulumi.StringInput
+	Etag                   pulumi.StringPtrInput
+	GameServerDeploymentId pulumi.StringInput
+	IamOwned               pulumi.BoolPtrInput
+	Location               pulumi.StringInput
+	Project                pulumi.StringInput
 	// If more than one rule is specified, the rules are applied in the following manner: - All matching LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule matches, permission is granted. Logging will be applied if one or more matching rule requires logging. - Otherwise, if no rule applies, permission is denied.
 	Rules RuleArrayInput
 	// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`

@@ -46,11 +46,11 @@ func NewConnectivityTest(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConnectivityTestsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectivityTestsId'")
+	if args.ConnectivityTestId == nil {
+		return nil, errors.New("invalid value for required argument 'ConnectivityTestId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.TestId == nil {
 		return nil, errors.New("invalid value for required argument 'TestId'")
@@ -131,7 +131,7 @@ func (ConnectivityTestState) ElementType() reflect.Type {
 }
 
 type connectivityTestArgs struct {
-	ConnectivityTestsId string `pulumi:"connectivityTestsId"`
+	ConnectivityTestId string `pulumi:"connectivityTestId"`
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description *string `pulumi:"description"`
 	// Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
@@ -139,8 +139,8 @@ type connectivityTestArgs struct {
 	// Resource labels to represent user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
 	// Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol *string `pulumi:"protocol"`
 	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.
@@ -152,7 +152,7 @@ type connectivityTestArgs struct {
 
 // The set of arguments for constructing a ConnectivityTest resource.
 type ConnectivityTestArgs struct {
-	ConnectivityTestsId pulumi.StringInput
+	ConnectivityTestId pulumi.StringInput
 	// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
 	Description pulumi.StringPtrInput
 	// Required. Destination specification of the Connectivity Test. You can use a combination of destination IP address, Compute Engine VM instance, or VPC network to uniquely identify the destination location. Even if the destination IP address is not unique, the source IP location is unique. Usually, the analysis can infer the destination endpoint from route information. If the destination you specify is a VM instance and the instance has multiple network interfaces, then you must also specify either a destination IP address or VPC network to identify the destination interface. A reachability analysis proceeds even if the destination location is ambiguous. However, the result can include endpoints that you don't intend to test.
@@ -160,8 +160,8 @@ type ConnectivityTestArgs struct {
 	// Resource labels to represent user-provided metadata.
 	Labels pulumi.StringMapInput
 	// Required. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// IP Protocol of the test. When not provided, "TCP" is assumed.
 	Protocol pulumi.StringPtrInput
 	// Other projects that may be relevant for reachability analysis. This is applicable to scenarios where a test can cross project boundaries.

@@ -38,14 +38,11 @@ func NewConnection(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ConnectionsId == nil {
-		return nil, errors.New("invalid value for required argument 'ConnectionsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Connection
 	err := ctx.RegisterResource("google-native:bigqueryconnection/v1beta1:Connection", name, args, &resource, opts...)
@@ -108,33 +105,31 @@ func (ConnectionState) ElementType() reflect.Type {
 
 type connectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql      *CloudSqlProperties `pulumi:"cloudSql"`
-	ConnectionId  *string             `pulumi:"connectionId"`
-	ConnectionsId string              `pulumi:"connectionsId"`
+	CloudSql     *CloudSqlProperties `pulumi:"cloudSql"`
+	ConnectionId *string             `pulumi:"connectionId"`
 	// User provided description.
 	Description *string `pulumi:"description"`
 	// User provided display name for the connection.
 	FriendlyName *string `pulumi:"friendlyName"`
-	LocationsId  string  `pulumi:"locationsId"`
+	Location     string  `pulumi:"location"`
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
 	// Cloud SQL properties.
-	CloudSql      CloudSqlPropertiesPtrInput
-	ConnectionId  pulumi.StringPtrInput
-	ConnectionsId pulumi.StringInput
+	CloudSql     CloudSqlPropertiesPtrInput
+	ConnectionId pulumi.StringPtrInput
 	// User provided description.
 	Description pulumi.StringPtrInput
 	// User provided display name for the connection.
 	FriendlyName pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (ConnectionArgs) ElementType() reflect.Type {

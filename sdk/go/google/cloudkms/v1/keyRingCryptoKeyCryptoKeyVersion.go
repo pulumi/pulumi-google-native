@@ -50,20 +50,20 @@ func NewKeyRingCryptoKeyCryptoKeyVersion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.CryptoKeyVersionsId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeyVersionsId'")
+	if args.CryptoKeyId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyId'")
 	}
-	if args.CryptoKeysId == nil {
-		return nil, errors.New("invalid value for required argument 'CryptoKeysId'")
+	if args.CryptoKeyVersionId == nil {
+		return nil, errors.New("invalid value for required argument 'CryptoKeyVersionId'")
 	}
-	if args.KeyRingsId == nil {
-		return nil, errors.New("invalid value for required argument 'KeyRingsId'")
+	if args.KeyRingId == nil {
+		return nil, errors.New("invalid value for required argument 'KeyRingId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource KeyRingCryptoKeyCryptoKeyVersion
 	err := ctx.RegisterResource("google-native:cloudkms/v1:KeyRingCryptoKeyCryptoKeyVersion", name, args, &resource, opts...)
@@ -149,26 +149,26 @@ func (KeyRingCryptoKeyCryptoKeyVersionState) ElementType() reflect.Type {
 }
 
 type keyRingCryptoKeyCryptoKeyVersionArgs struct {
-	CryptoKeyVersionsId string `pulumi:"cryptoKeyVersionsId"`
-	CryptoKeysId        string `pulumi:"cryptoKeysId"`
+	CryptoKeyId        string `pulumi:"cryptoKeyId"`
+	CryptoKeyVersionId string `pulumi:"cryptoKeyVersionId"`
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions *ExternalProtectionLevelOptions `pulumi:"externalProtectionLevelOptions"`
-	KeyRingsId                     string                          `pulumi:"keyRingsId"`
-	LocationsId                    string                          `pulumi:"locationsId"`
-	ProjectsId                     string                          `pulumi:"projectsId"`
+	KeyRingId                      string                          `pulumi:"keyRingId"`
+	Location                       string                          `pulumi:"location"`
+	Project                        string                          `pulumi:"project"`
 	// The current state of the CryptoKeyVersion.
 	State *string `pulumi:"state"`
 }
 
 // The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
 type KeyRingCryptoKeyCryptoKeyVersionArgs struct {
-	CryptoKeyVersionsId pulumi.StringInput
-	CryptoKeysId        pulumi.StringInput
+	CryptoKeyId        pulumi.StringInput
+	CryptoKeyVersionId pulumi.StringInput
 	// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
 	ExternalProtectionLevelOptions ExternalProtectionLevelOptionsPtrInput
-	KeyRingsId                     pulumi.StringInput
-	LocationsId                    pulumi.StringInput
-	ProjectsId                     pulumi.StringInput
+	KeyRingId                      pulumi.StringInput
+	Location                       pulumi.StringInput
+	Project                        pulumi.StringInput
 	// The current state of the CryptoKeyVersion.
 	State pulumi.StringPtrInput
 }

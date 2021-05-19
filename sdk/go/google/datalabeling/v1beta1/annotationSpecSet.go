@@ -34,11 +34,11 @@ func NewAnnotationSpecSet(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AnnotationSpecSetsId == nil {
-		return nil, errors.New("invalid value for required argument 'AnnotationSpecSetsId'")
+	if args.AnnotationSpecSetId == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationSpecSetId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AnnotationSpecSet
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:AnnotationSpecSet", name, args, &resource, opts...)
@@ -92,7 +92,7 @@ func (AnnotationSpecSetState) ElementType() reflect.Type {
 }
 
 type annotationSpecSetArgs struct {
-	AnnotationSpecSetsId string `pulumi:"annotationSpecSetsId"`
+	AnnotationSpecSetId string `pulumi:"annotationSpecSetId"`
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs []GoogleCloudDatalabelingV1beta1AnnotationSpec `pulumi:"annotationSpecs"`
 	// The names of any related resources that are blocking changes to the annotation spec set.
@@ -102,13 +102,13 @@ type annotationSpecSetArgs struct {
 	// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	Name       *string `pulumi:"name"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a AnnotationSpecSet resource.
 type AnnotationSpecSetArgs struct {
-	AnnotationSpecSetsId pulumi.StringInput
+	AnnotationSpecSetId pulumi.StringInput
 	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput
 	// The names of any related resources that are blocking changes to the annotation spec set.
@@ -118,8 +118,8 @@ type AnnotationSpecSetArgs struct {
 	// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	Name       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	Project pulumi.StringInput
 }
 
 func (AnnotationSpecSetArgs) ElementType() reflect.Type {

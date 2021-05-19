@@ -52,23 +52,20 @@ func NewCatalogBranchProduct(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BranchesId == nil {
-		return nil, errors.New("invalid value for required argument 'BranchesId'")
+	if args.BranchId == nil {
+		return nil, errors.New("invalid value for required argument 'BranchId'")
 	}
-	if args.CatalogsId == nil {
-		return nil, errors.New("invalid value for required argument 'CatalogsId'")
+	if args.CatalogId == nil {
+		return nil, errors.New("invalid value for required argument 'CatalogId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.ProductId == nil {
 		return nil, errors.New("invalid value for required argument 'ProductId'")
 	}
-	if args.ProductsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProductsId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource CatalogBranchProduct
 	err := ctx.RegisterResource("google-native:retail/v2:CatalogBranchProduct", name, args, &resource, opts...)
@@ -166,8 +163,8 @@ type catalogBranchProductArgs struct {
 	AvailableQuantity *int `pulumi:"availableQuantity"`
 	// The timestamp when this Product becomes available for recommendation.
 	AvailableTime *string `pulumi:"availableTime"`
-	BranchesId    string  `pulumi:"branchesId"`
-	CatalogsId    string  `pulumi:"catalogsId"`
+	BranchId      string  `pulumi:"branchId"`
+	CatalogId     string  `pulumi:"catalogId"`
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories []string `pulumi:"categories"`
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
@@ -175,8 +172,8 @@ type catalogBranchProductArgs struct {
 	// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org Property [Product.sku](https://schema.org/sku).
 	Id *string `pulumi:"id"`
 	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Images      []GoogleCloudRetailV2Image `pulumi:"images"`
-	LocationsId string                     `pulumi:"locationsId"`
+	Images   []GoogleCloudRetailV2Image `pulumi:"images"`
+	Location string                     `pulumi:"location"`
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
 	Name *string `pulumi:"name"`
 	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -184,8 +181,7 @@ type catalogBranchProductArgs struct {
 	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	PrimaryProductId *string `pulumi:"primaryProductId"`
 	ProductId        string  `pulumi:"productId"`
-	ProductsId       string  `pulumi:"productsId"`
-	ProjectsId       string  `pulumi:"projectsId"`
+	Project          string  `pulumi:"project"`
 	// Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
 	Tags []string `pulumi:"tags"`
 	// Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
@@ -206,8 +202,8 @@ type CatalogBranchProductArgs struct {
 	AvailableQuantity pulumi.IntPtrInput
 	// The timestamp when this Product becomes available for recommendation.
 	AvailableTime pulumi.StringPtrInput
-	BranchesId    pulumi.StringInput
-	CatalogsId    pulumi.StringInput
+	BranchId      pulumi.StringInput
+	CatalogId     pulumi.StringInput
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories pulumi.StringArrayInput
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). schema.org property [Product.description](https://schema.org/description).
@@ -215,8 +211,8 @@ type CatalogBranchProductArgs struct {
 	// Immutable. Product identifier, which is the final component of name. For example, this field is "id_1", if name is `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/id_1`. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [id](https://support.google.com/merchants/answer/6324405). Schema.org Property [Product.sku](https://schema.org/sku).
 	Id pulumi.StringPtrInput
 	// Product images for the product.Highly recommended to put the main image to the first. A maximum of 300 images are allowed. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Images      GoogleCloudRetailV2ImageArrayInput
-	LocationsId pulumi.StringInput
+	Images   GoogleCloudRetailV2ImageArrayInput
+	Location pulumi.StringInput
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. The branch ID must be "default_branch".
 	Name pulumi.StringPtrInput
 	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
@@ -224,8 +220,7 @@ type CatalogBranchProductArgs struct {
 	// Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
 	PrimaryProductId pulumi.StringPtrInput
 	ProductId        pulumi.StringInput
-	ProductsId       pulumi.StringInput
-	ProjectsId       pulumi.StringInput
+	Project          pulumi.StringInput
 	// Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
 	Tags pulumi.StringArrayInput
 	// Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).

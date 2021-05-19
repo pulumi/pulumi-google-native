@@ -38,11 +38,11 @@ func NewBillingAccountBudget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingAccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccountsId'")
+	if args.BillingAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
 	}
-	if args.BudgetsId == nil {
-		return nil, errors.New("invalid value for required argument 'BudgetsId'")
+	if args.BudgetId == nil {
+		return nil, errors.New("invalid value for required argument 'BudgetId'")
 	}
 	var resource BillingAccountBudget
 	err := ctx.RegisterResource("google-native:billingbudgets/v1:BillingAccountBudget", name, args, &resource, opts...)
@@ -105,11 +105,11 @@ func (BillingAccountBudgetState) ElementType() reflect.Type {
 
 type billingAccountBudgetArgs struct {
 	// Required. Budgeted amount.
-	Amount            *GoogleCloudBillingBudgetsV1BudgetAmount `pulumi:"amount"`
-	BillingAccountsId string                                   `pulumi:"billingAccountsId"`
+	Amount           *GoogleCloudBillingBudgetsV1BudgetAmount `pulumi:"amount"`
+	BillingAccountId string                                   `pulumi:"billingAccountId"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter *GoogleCloudBillingBudgetsV1Filter `pulumi:"budgetFilter"`
-	BudgetsId    string                             `pulumi:"budgetsId"`
+	BudgetId     string                             `pulumi:"budgetId"`
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
@@ -123,11 +123,11 @@ type billingAccountBudgetArgs struct {
 // The set of arguments for constructing a BillingAccountBudget resource.
 type BillingAccountBudgetArgs struct {
 	// Required. Budgeted amount.
-	Amount            GoogleCloudBillingBudgetsV1BudgetAmountPtrInput
-	BillingAccountsId pulumi.StringInput
+	Amount           GoogleCloudBillingBudgetsV1BudgetAmountPtrInput
+	BillingAccountId pulumi.StringInput
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterPtrInput
-	BudgetsId    pulumi.StringInput
+	BudgetId     pulumi.StringInput
 	// User data for display name in UI. The name must be less than or equal to 60 characters.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.

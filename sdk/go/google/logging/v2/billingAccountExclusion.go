@@ -36,11 +36,11 @@ func NewBillingAccountExclusion(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingAccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccountsId'")
+	if args.BillingAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
 	}
-	if args.ExclusionsId == nil {
-		return nil, errors.New("invalid value for required argument 'ExclusionsId'")
+	if args.ExclusionId == nil {
+		return nil, errors.New("invalid value for required argument 'ExclusionId'")
 	}
 	var resource BillingAccountExclusion
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountExclusion", name, args, &resource, opts...)
@@ -98,12 +98,12 @@ func (BillingAccountExclusionState) ElementType() reflect.Type {
 }
 
 type billingAccountExclusionArgs struct {
-	BillingAccountsId string `pulumi:"billingAccountsId"`
+	BillingAccountId string `pulumi:"billingAccountId"`
 	// Optional. A description of this exclusion.
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled     *bool  `pulumi:"disabled"`
-	ExclusionsId string `pulumi:"exclusionsId"`
+	Disabled    *bool  `pulumi:"disabled"`
+	ExclusionId string `pulumi:"exclusionId"`
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter *string `pulumi:"filter"`
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
@@ -112,12 +112,12 @@ type billingAccountExclusionArgs struct {
 
 // The set of arguments for constructing a BillingAccountExclusion resource.
 type BillingAccountExclusionArgs struct {
-	BillingAccountsId pulumi.StringInput
+	BillingAccountId pulumi.StringInput
 	// Optional. A description of this exclusion.
 	Description pulumi.StringPtrInput
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
-	Disabled     pulumi.BoolPtrInput
-	ExclusionsId pulumi.StringInput
+	Disabled    pulumi.BoolPtrInput
+	ExclusionId pulumi.StringInput
 	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter pulumi.StringPtrInput
 	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.

@@ -32,14 +32,14 @@ func NewOrganizationReplay(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.ReplaysId == nil {
-		return nil, errors.New("invalid value for required argument 'ReplaysId'")
+	if args.ReplayId == nil {
+		return nil, errors.New("invalid value for required argument 'ReplayId'")
 	}
 	var resource OrganizationReplay
 	err := ctx.RegisterResource("google-native:policysimulator/v1beta1:OrganizationReplay", name, args, &resource, opts...)
@@ -90,19 +90,19 @@ func (OrganizationReplayState) ElementType() reflect.Type {
 
 type organizationReplayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config          *GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
-	LocationsId     string                                         `pulumi:"locationsId"`
-	OrganizationsId string                                         `pulumi:"organizationsId"`
-	ReplaysId       string                                         `pulumi:"replaysId"`
+	Config         *GoogleCloudPolicysimulatorV1beta1ReplayConfig `pulumi:"config"`
+	Location       string                                         `pulumi:"location"`
+	OrganizationId string                                         `pulumi:"organizationId"`
+	ReplayId       string                                         `pulumi:"replayId"`
 }
 
 // The set of arguments for constructing a OrganizationReplay resource.
 type OrganizationReplayArgs struct {
 	// Required. The configuration used for the `Replay`.
-	Config          GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput
-	LocationsId     pulumi.StringInput
-	OrganizationsId pulumi.StringInput
-	ReplaysId       pulumi.StringInput
+	Config         GoogleCloudPolicysimulatorV1beta1ReplayConfigPtrInput
+	Location       pulumi.StringInput
+	OrganizationId pulumi.StringInput
+	ReplayId       pulumi.StringInput
 }
 
 func (OrganizationReplayArgs) ElementType() reflect.Type {

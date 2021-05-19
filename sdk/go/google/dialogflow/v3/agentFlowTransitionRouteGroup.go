@@ -30,20 +30,20 @@ func NewAgentFlowTransitionRouteGroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.FlowsId == nil {
-		return nil, errors.New("invalid value for required argument 'FlowsId'")
+	if args.FlowId == nil {
+		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
-	if args.TransitionRouteGroupsId == nil {
-		return nil, errors.New("invalid value for required argument 'TransitionRouteGroupsId'")
+	if args.TransitionRouteGroupId == nil {
+		return nil, errors.New("invalid value for required argument 'TransitionRouteGroupId'")
 	}
 	var resource AgentFlowTransitionRouteGroup
 	err := ctx.RegisterResource("google-native:dialogflow/v3:AgentFlowTransitionRouteGroup", name, args, &resource, opts...)
@@ -89,32 +89,32 @@ func (AgentFlowTransitionRouteGroupState) ElementType() reflect.Type {
 }
 
 type agentFlowTransitionRouteGroupArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName  *string `pulumi:"displayName"`
-	FlowsId      string  `pulumi:"flowsId"`
+	FlowId       string  `pulumi:"flowId"`
 	LanguageCode *string `pulumi:"languageCode"`
-	LocationsId  string  `pulumi:"locationsId"`
+	Location     string  `pulumi:"location"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name                    *string `pulumi:"name"`
-	ProjectsId              string  `pulumi:"projectsId"`
-	TransitionRouteGroupsId string  `pulumi:"transitionRouteGroupsId"`
+	Name                   *string `pulumi:"name"`
+	Project                string  `pulumi:"project"`
+	TransitionRouteGroupId string  `pulumi:"transitionRouteGroupId"`
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes []GoogleCloudDialogflowCxV3TransitionRoute `pulumi:"transitionRoutes"`
 }
 
 // The set of arguments for constructing a AgentFlowTransitionRouteGroup resource.
 type AgentFlowTransitionRouteGroupArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName  pulumi.StringPtrInput
-	FlowsId      pulumi.StringInput
+	FlowId       pulumi.StringInput
 	LanguageCode pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
-	Name                    pulumi.StringPtrInput
-	ProjectsId              pulumi.StringInput
-	TransitionRouteGroupsId pulumi.StringInput
+	Name                   pulumi.StringPtrInput
+	Project                pulumi.StringInput
+	TransitionRouteGroupId pulumi.StringInput
 	// Transition routes associated with the TransitionRouteGroup.
 	TransitionRoutes GoogleCloudDialogflowCxV3TransitionRouteArrayInput
 }

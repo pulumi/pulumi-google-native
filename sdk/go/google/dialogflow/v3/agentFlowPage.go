@@ -38,20 +38,20 @@ func NewAgentFlowPage(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AgentsId == nil {
-		return nil, errors.New("invalid value for required argument 'AgentsId'")
+	if args.AgentId == nil {
+		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
-	if args.FlowsId == nil {
-		return nil, errors.New("invalid value for required argument 'FlowsId'")
+	if args.FlowId == nil {
+		return nil, errors.New("invalid value for required argument 'FlowId'")
 	}
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.PagesId == nil {
-		return nil, errors.New("invalid value for required argument 'PagesId'")
+	if args.PageId == nil {
+		return nil, errors.New("invalid value for required argument 'PageId'")
 	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource AgentFlowPage
 	err := ctx.RegisterResource("google-native:dialogflow/v3:AgentFlowPage", name, args, &resource, opts...)
@@ -113,22 +113,22 @@ func (AgentFlowPageState) ElementType() reflect.Type {
 }
 
 type agentFlowPageArgs struct {
-	AgentsId string `pulumi:"agentsId"`
+	AgentId string `pulumi:"agentId"`
 	// Required. The human-readable name of the page, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3Fulfillment `pulumi:"entryFulfillment"`
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
 	EventHandlers []GoogleCloudDialogflowCxV3EventHandler `pulumi:"eventHandlers"`
-	FlowsId       string                                  `pulumi:"flowsId"`
+	FlowId        string                                  `pulumi:"flowId"`
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form         *GoogleCloudDialogflowCxV3Form `pulumi:"form"`
 	LanguageCode *string                        `pulumi:"languageCode"`
-	LocationsId  string                         `pulumi:"locationsId"`
+	Location     string                         `pulumi:"location"`
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-	Name       *string `pulumi:"name"`
-	PagesId    string  `pulumi:"pagesId"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Name    *string `pulumi:"name"`
+	PageId  string  `pulumi:"pageId"`
+	Project string  `pulumi:"project"`
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups []string `pulumi:"transitionRouteGroups"`
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.
@@ -137,22 +137,22 @@ type agentFlowPageArgs struct {
 
 // The set of arguments for constructing a AgentFlowPage resource.
 type AgentFlowPageArgs struct {
-	AgentsId pulumi.StringInput
+	AgentId pulumi.StringInput
 	// Required. The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3FulfillmentPtrInput
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
 	EventHandlers GoogleCloudDialogflowCxV3EventHandlerArrayInput
-	FlowsId       pulumi.StringInput
+	FlowId        pulumi.StringInput
 	// The form associated with the page, used for collecting parameters relevant to the page.
 	Form         GoogleCloudDialogflowCxV3FormPtrInput
 	LanguageCode pulumi.StringPtrInput
-	LocationsId  pulumi.StringInput
+	Location     pulumi.StringInput
 	// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
-	Name       pulumi.StringPtrInput
-	PagesId    pulumi.StringInput
-	ProjectsId pulumi.StringInput
+	Name    pulumi.StringPtrInput
+	PageId  pulumi.StringInput
+	Project pulumi.StringInput
 	// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
 	TransitionRouteGroups pulumi.StringArrayInput
 	// A list of transitions for the transition rules of this page. They route the conversation to another page in the same flow, or another flow. When we are in a certain page, the TransitionRoutes are evalauted in the following order: * TransitionRoutes defined in the page with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in flow with intent specified. * TransitionRoutes defined in the transition route groups with intent specified. * TransitionRoutes defined in the page with only condition specified. * TransitionRoutes defined in the transition route groups with only condition specified.

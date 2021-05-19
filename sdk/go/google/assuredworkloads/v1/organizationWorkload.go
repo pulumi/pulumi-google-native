@@ -46,14 +46,14 @@ func NewOrganizationWorkload(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
-	if args.WorkloadsId == nil {
-		return nil, errors.New("invalid value for required argument 'WorkloadsId'")
+	if args.WorkloadId == nil {
+		return nil, errors.New("invalid value for required argument 'WorkloadId'")
 	}
 	var resource OrganizationWorkload
 	err := ctx.RegisterResource("google-native:assuredworkloads/v1:OrganizationWorkload", name, args, &resource, opts...)
@@ -143,16 +143,16 @@ type organizationWorkloadArgs struct {
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings `pulumi:"kmsSettings"`
 	// Optional. Labels applied to the workload.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent *string `pulumi:"provisionedResourcesParent"`
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings []GoogleCloudAssuredworkloadsV1WorkloadResourceSettings `pulumi:"resourceSettings"`
-	WorkloadsId      string                                                  `pulumi:"workloadsId"`
+	WorkloadId       string                                                  `pulumi:"workloadId"`
 }
 
 // The set of arguments for constructing a OrganizationWorkload resource.
@@ -169,16 +169,16 @@ type OrganizationWorkloadArgs struct {
 	// Input only. Settings used to create a CMEK crypto key. When set a project with a KMS CMEK key is provisioned. This field is mandatory for a subset of Compliance Regimes.
 	KmsSettings GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput
 	// Optional. Labels applied to the workload.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
 	ProvisionedResourcesParent pulumi.StringPtrInput
 	// Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
 	ResourceSettings GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput
-	WorkloadsId      pulumi.StringInput
+	WorkloadId       pulumi.StringInput
 }
 
 func (OrganizationWorkloadArgs) ElementType() reflect.Type {

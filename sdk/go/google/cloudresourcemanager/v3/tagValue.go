@@ -40,8 +40,8 @@ func NewTagValue(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.TagValuesId == nil {
-		return nil, errors.New("invalid value for required argument 'TagValuesId'")
+	if args.TagValueId == nil {
+		return nil, errors.New("invalid value for required argument 'TagValueId'")
 	}
 	var resource TagValue
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:TagValue", name, args, &resource, opts...)
@@ -117,7 +117,7 @@ type tagValueArgs struct {
 	Parent *string `pulumi:"parent"`
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName    *string `pulumi:"shortName"`
-	TagValuesId  string  `pulumi:"tagValuesId"`
+	TagValueId   string  `pulumi:"tagValueId"`
 	ValidateOnly *string `pulumi:"validateOnly"`
 }
 
@@ -133,7 +133,7 @@ type TagValueArgs struct {
 	Parent pulumi.StringPtrInput
 	// Required. Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
 	ShortName    pulumi.StringPtrInput
-	TagValuesId  pulumi.StringInput
+	TagValueId   pulumi.StringInput
 	ValidateOnly pulumi.StringPtrInput
 }
 

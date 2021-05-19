@@ -143,8 +143,8 @@ func NewCluster(ctx *pulumi.Context,
 	if args.ClusterId == nil {
 		return nil, errors.New("invalid value for required argument 'ClusterId'")
 	}
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	if args.Zone == nil {
 		return nil, errors.New("invalid value for required argument 'Zone'")
@@ -504,7 +504,7 @@ type clusterArgs struct {
 	PrivateCluster *bool `pulumi:"privateCluster"`
 	// Configuration for private cluster.
 	PrivateClusterConfig *PrivateClusterConfig `pulumi:"privateClusterConfig"`
-	ProjectId            string                `pulumi:"projectId"`
+	Project              string                `pulumi:"project"`
 	// Release channel configuration.
 	ReleaseChannel *ReleaseChannel `pulumi:"releaseChannel"`
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.
@@ -628,7 +628,7 @@ type ClusterArgs struct {
 	PrivateCluster pulumi.BoolPtrInput
 	// Configuration for private cluster.
 	PrivateClusterConfig PrivateClusterConfigPtrInput
-	ProjectId            pulumi.StringInput
+	Project              pulumi.StringInput
 	// Release channel configuration.
 	ReleaseChannel ReleaseChannelPtrInput
 	// The resource labels for the cluster to use to annotate any related Google Compute Engine resources.

@@ -34,11 +34,11 @@ func NewOrganizationDatacollector(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.DatacollectorsId == nil {
-		return nil, errors.New("invalid value for required argument 'DatacollectorsId'")
+	if args.DatacollectorId == nil {
+		return nil, errors.New("invalid value for required argument 'DatacollectorId'")
 	}
-	if args.OrganizationsId == nil {
-		return nil, errors.New("invalid value for required argument 'OrganizationsId'")
+	if args.OrganizationId == nil {
+		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
 	var resource OrganizationDatacollector
 	err := ctx.RegisterResource("google-native:apigee/v1:OrganizationDatacollector", name, args, &resource, opts...)
@@ -92,26 +92,26 @@ func (OrganizationDatacollectorState) ElementType() reflect.Type {
 }
 
 type organizationDatacollectorArgs struct {
-	DataCollectorId  *string `pulumi:"dataCollectorId"`
-	DatacollectorsId string  `pulumi:"datacollectorsId"`
+	DataCollectorId *string `pulumi:"dataCollectorId"`
+	DatacollectorId string  `pulumi:"datacollectorId"`
 	// A description of the data collector.
 	Description *string `pulumi:"description"`
 	// ID of the data collector. Must begin with `dc_`.
-	Name            *string `pulumi:"name"`
-	OrganizationsId string  `pulumi:"organizationsId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Immutable. The type of data this data collector will collect.
 	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a OrganizationDatacollector resource.
 type OrganizationDatacollectorArgs struct {
-	DataCollectorId  pulumi.StringPtrInput
-	DatacollectorsId pulumi.StringInput
+	DataCollectorId pulumi.StringPtrInput
+	DatacollectorId pulumi.StringInput
 	// A description of the data collector.
 	Description pulumi.StringPtrInput
 	// ID of the data collector. Must begin with `dc_`.
-	Name            pulumi.StringPtrInput
-	OrganizationsId pulumi.StringInput
+	Name           pulumi.StringPtrInput
+	OrganizationId pulumi.StringInput
 	// Immutable. The type of data this data collector will collect.
 	Type pulumi.StringPtrInput
 }

@@ -34,11 +34,11 @@ func NewAccessPolicyServicePerimeter(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.AccessPoliciesId == nil {
-		return nil, errors.New("invalid value for required argument 'AccessPoliciesId'")
+	if args.AccessPolicyId == nil {
+		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
-	if args.ServicePerimetersId == nil {
-		return nil, errors.New("invalid value for required argument 'ServicePerimetersId'")
+	if args.ServicePerimeterId == nil {
+		return nil, errors.New("invalid value for required argument 'ServicePerimeterId'")
 	}
 	var resource AccessPolicyServicePerimeter
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:AccessPolicyServicePerimeter", name, args, &resource, opts...)
@@ -92,14 +92,14 @@ func (AccessPolicyServicePerimeterState) ElementType() reflect.Type {
 }
 
 type accessPolicyServicePerimeterArgs struct {
-	AccessPoliciesId string `pulumi:"accessPoliciesId"`
+	AccessPolicyId string `pulumi:"accessPolicyId"`
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
 	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-	PerimeterType       *string `pulumi:"perimeterType"`
-	ServicePerimetersId string  `pulumi:"servicePerimetersId"`
+	PerimeterType      *string `pulumi:"perimeterType"`
+	ServicePerimeterId string  `pulumi:"servicePerimeterId"`
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
 	Status *ServicePerimeterConfig `pulumi:"status"`
 	// Human readable title. Must be unique within the Policy.
@@ -108,14 +108,14 @@ type accessPolicyServicePerimeterArgs struct {
 
 // The set of arguments for constructing a AccessPolicyServicePerimeter resource.
 type AccessPolicyServicePerimeterArgs struct {
-	AccessPoliciesId pulumi.StringInput
+	AccessPolicyId pulumi.StringInput
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Required. Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
 	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
-	PerimeterType       pulumi.StringPtrInput
-	ServicePerimetersId pulumi.StringInput
+	PerimeterType      pulumi.StringPtrInput
+	ServicePerimeterId pulumi.StringInput
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
 	Status ServicePerimeterConfigPtrInput
 	// Human readable title. Must be unique within the Policy.

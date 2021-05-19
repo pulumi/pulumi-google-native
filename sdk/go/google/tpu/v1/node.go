@@ -62,14 +62,11 @@ func NewNode(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.LocationsId == nil {
-		return nil, errors.New("invalid value for required argument 'LocationsId'")
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.NodesId == nil {
-		return nil, errors.New("invalid value for required argument 'NodesId'")
-	}
-	if args.ProjectsId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectsId'")
+	if args.Project == nil {
+		return nil, errors.New("invalid value for required argument 'Project'")
 	}
 	var resource Node
 	err := ctx.RegisterResource("google-native:tpu/v1:Node", name, args, &resource, opts...)
@@ -190,15 +187,14 @@ type nodeArgs struct {
 	// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
 	IpAddress *string `pulumi:"ipAddress"`
 	// Resource labels to represent user-provided metadata.
-	Labels      map[string]string `pulumi:"labels"`
-	LocationsId string            `pulumi:"locationsId"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network *string `pulumi:"network"`
 	NodeId  *string `pulumi:"nodeId"`
-	NodesId string  `pulumi:"nodesId"`
 	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-	Port       *string `pulumi:"port"`
-	ProjectsId string  `pulumi:"projectsId"`
+	Port    *string `pulumi:"port"`
+	Project string  `pulumi:"project"`
 	// The scheduling options for this node.
 	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
 	// Required. The version of Tensorflow running in the Node.
@@ -220,15 +216,14 @@ type NodeArgs struct {
 	// DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as visible to Compute Engine instances.
 	IpAddress pulumi.StringPtrInput
 	// Resource labels to represent user-provided metadata.
-	Labels      pulumi.StringMapInput
-	LocationsId pulumi.StringInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine network inside of the project on which this API has been activated. If none is provided, "default" will be used.
 	Network pulumi.StringPtrInput
 	NodeId  pulumi.StringPtrInput
-	NodesId pulumi.StringInput
 	// DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as visible to Compute Engine instances.
-	Port       pulumi.StringPtrInput
-	ProjectsId pulumi.StringInput
+	Port    pulumi.StringPtrInput
+	Project pulumi.StringInput
 	// The scheduling options for this node.
 	SchedulingConfig SchedulingConfigPtrInput
 	// Required. The version of Tensorflow running in the Node.

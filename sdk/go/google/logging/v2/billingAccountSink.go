@@ -46,11 +46,11 @@ func NewBillingAccountSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BillingAccountsId == nil {
-		return nil, errors.New("invalid value for required argument 'BillingAccountsId'")
+	if args.BillingAccountId == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
 	}
-	if args.SinksId == nil {
-		return nil, errors.New("invalid value for required argument 'SinksId'")
+	if args.SinkId == nil {
+		return nil, errors.New("invalid value for required argument 'SinkId'")
 	}
 	var resource BillingAccountSink
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountSink", name, args, &resource, opts...)
@@ -129,8 +129,8 @@ func (BillingAccountSinkState) ElementType() reflect.Type {
 
 type billingAccountSinkArgs struct {
 	// Optional. Options that affect sinks exporting data to BigQuery.
-	BigqueryOptions   *BigQueryOptions `pulumi:"bigqueryOptions"`
-	BillingAccountsId string           `pulumi:"billingAccountsId"`
+	BigqueryOptions  *BigQueryOptions `pulumi:"bigqueryOptions"`
+	BillingAccountId string           `pulumi:"billingAccountId"`
 	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
 	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -145,15 +145,15 @@ type billingAccountSinkArgs struct {
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 *string `pulumi:"name"`
-	SinksId              string  `pulumi:"sinksId"`
+	SinkId               string  `pulumi:"sinkId"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
 
 // The set of arguments for constructing a BillingAccountSink resource.
 type BillingAccountSinkArgs struct {
 	// Optional. Options that affect sinks exporting data to BigQuery.
-	BigqueryOptions   BigQueryOptionsPtrInput
-	BillingAccountsId pulumi.StringInput
+	BigqueryOptions  BigQueryOptionsPtrInput
+	BillingAccountId pulumi.StringInput
 	// Optional. A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
 	// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -168,7 +168,7 @@ type BillingAccountSinkArgs struct {
 	IncludeChildren pulumi.BoolPtrInput
 	// Required. The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name                 pulumi.StringPtrInput
-	SinksId              pulumi.StringInput
+	SinkId               pulumi.StringInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 }
 
