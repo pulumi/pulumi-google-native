@@ -71,26 +71,26 @@ export class InstanceWorkerpool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workerpoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerpoolsId'");
+            if ((!args || args.workerpoolId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workerpoolId'");
             }
             inputs["autoscale"] = args ? args.autoscale : undefined;
             inputs["channel"] = args ? args.channel : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["poolId"] = args ? args.poolId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerCount"] = args ? args.workerCount : undefined;
-            inputs["workerpoolsId"] = args ? args.workerpoolsId : undefined;
+            inputs["workerpoolId"] = args ? args.workerpoolId : undefined;
         } else {
             inputs["autoscale"] = undefined /*out*/;
             inputs["channel"] = undefined /*out*/;
@@ -118,7 +118,7 @@ export interface InstanceWorkerpoolArgs {
      * Channel specifies the release channel of the pool.
      */
     readonly channel?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
      */
@@ -131,7 +131,7 @@ export interface InstanceWorkerpoolArgs {
      * ID of the created worker pool. A valid pool ID must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
     readonly poolId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * State of the worker pool.
      */
@@ -144,5 +144,5 @@ export interface InstanceWorkerpoolArgs {
      * The desired number of workers in the worker pool. Must be a value between 0 and 15000.
      */
     readonly workerCount?: pulumi.Input<string>;
-    readonly workerpoolsId: pulumi.Input<string>;
+    readonly workerpoolId: pulumi.Input<string>;
 }

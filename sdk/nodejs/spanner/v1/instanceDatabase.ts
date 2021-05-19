@@ -79,21 +79,21 @@ export class InstanceDatabase extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.databasesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'databasesId'");
+            if ((!args || args.databaseId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'databaseId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createStatement"] = args ? args.createStatement : undefined;
-            inputs["databasesId"] = args ? args.databasesId : undefined;
+            inputs["databaseId"] = args ? args.databaseId : undefined;
             inputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
             inputs["extraStatements"] = args ? args.extraStatements : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["earliestVersionTime"] = undefined /*out*/;
             inputs["encryptionInfo"] = undefined /*out*/;
@@ -126,7 +126,7 @@ export interface InstanceDatabaseArgs {
      * Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
      */
     readonly createStatement?: pulumi.Input<string>;
-    readonly databasesId: pulumi.Input<string>;
+    readonly databaseId: pulumi.Input<string>;
     /**
      * Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
      */
@@ -135,6 +135,6 @@ export interface InstanceDatabaseArgs {
      * Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
      */
     readonly extraStatements?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly instancesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

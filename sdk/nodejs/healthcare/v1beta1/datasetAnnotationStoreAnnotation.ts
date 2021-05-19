@@ -71,30 +71,30 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotationStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationStoresId'");
+            if ((!args || args.annotationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationId'");
             }
-            if ((!args || args.annotationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationsId'");
+            if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationStoreId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
+            inputs["annotationId"] = args ? args.annotationId : undefined;
             inputs["annotationSource"] = args ? args.annotationSource : undefined;
-            inputs["annotationStoresId"] = args ? args.annotationStoresId : undefined;
-            inputs["annotationsId"] = args ? args.annotationsId : undefined;
+            inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
             inputs["customData"] = args ? args.customData : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["imageAnnotation"] = args ? args.imageAnnotation : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["resourceAnnotation"] = args ? args.resourceAnnotation : undefined;
             inputs["textAnnotation"] = args ? args.textAnnotation : undefined;
         } else {
@@ -116,27 +116,27 @@ export class DatasetAnnotationStoreAnnotation extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetAnnotationStoreAnnotation resource.
  */
 export interface DatasetAnnotationStoreAnnotationArgs {
+    readonly annotationId: pulumi.Input<string>;
     /**
      * Details of the source.
      */
     readonly annotationSource?: pulumi.Input<inputs.healthcare.v1beta1.AnnotationSourceArgs>;
-    readonly annotationStoresId: pulumi.Input<string>;
-    readonly annotationsId: pulumi.Input<string>;
+    readonly annotationStoreId: pulumi.Input<string>;
     /**
      * Additional information for this annotation record, such as annotator and verifier information or study campaign.
      */
     readonly customData?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Annotations for images. For example, bounding polygons.
      */
     readonly imageAnnotation?: pulumi.Input<inputs.healthcare.v1beta1.ImageAnnotationArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Annotations for resource. For example, classification tags.
      */

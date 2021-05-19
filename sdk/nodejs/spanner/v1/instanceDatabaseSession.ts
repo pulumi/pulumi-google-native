@@ -62,23 +62,23 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.databasesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'databasesId'");
+            if ((!args || args.databaseId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'databaseId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sessionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sessionsId'");
+            if ((!args || args.sessionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sessionId'");
             }
-            inputs["databasesId"] = args ? args.databasesId : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["databaseId"] = args ? args.databaseId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["sessionsId"] = args ? args.sessionsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["sessionId"] = args ? args.sessionId : undefined;
             inputs["approximateLastUseTime"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -99,12 +99,12 @@ export class InstanceDatabaseSession extends pulumi.CustomResource {
  * The set of arguments for constructing a InstanceDatabaseSession resource.
  */
 export interface InstanceDatabaseSessionArgs {
-    readonly databasesId: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly databaseId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly sessionsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly sessionId: pulumi.Input<string>;
 }

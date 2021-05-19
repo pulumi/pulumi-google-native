@@ -83,29 +83,29 @@ export class KnowledgeBaseDocument extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.documentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'documentsId'");
+            if ((!args || args.documentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'documentId'");
             }
-            if ((!args || args.knowledgeBasesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'knowledgeBasesId'");
+            if ((!args || args.knowledgeBaseId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'knowledgeBaseId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["contentUri"] = args ? args.contentUri : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["documentsId"] = args ? args.documentsId : undefined;
+            inputs["documentId"] = args ? args.documentId : undefined;
             inputs["enableAutoReload"] = args ? args.enableAutoReload : undefined;
-            inputs["knowledgeBasesId"] = args ? args.knowledgeBasesId : undefined;
+            inputs["knowledgeBaseId"] = args ? args.knowledgeBaseId : undefined;
             inputs["knowledgeTypes"] = args ? args.knowledgeTypes : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["mimeType"] = args ? args.mimeType : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["rawContent"] = args ? args.rawContent : undefined;
             inputs["latestReloadStatus"] = undefined /*out*/;
         } else {
@@ -138,17 +138,17 @@ export interface KnowledgeBaseDocumentArgs {
      * Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly documentsId: pulumi.Input<string>;
+    readonly documentId: pulumi.Input<string>;
     /**
      * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */
     readonly enableAutoReload?: pulumi.Input<boolean>;
-    readonly knowledgeBasesId: pulumi.Input<string>;
+    readonly knowledgeBaseId: pulumi.Input<string>;
     /**
      * Required. The knowledge type of document content.
      */
     readonly knowledgeTypes?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
      */
@@ -161,7 +161,7 @@ export interface KnowledgeBaseDocumentArgs {
      * Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
      */

@@ -58,25 +58,21 @@ export class TagTemplate extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.tagTemplateId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'tagTemplateId'");
             }
-            if ((!args || args.tagTemplatesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tagTemplatesId'");
-            }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["fields"] = args ? args.fields : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tagTemplateId"] = args ? args.tagTemplateId : undefined;
-            inputs["tagTemplatesId"] = args ? args.tagTemplatesId : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
             inputs["fields"] = undefined /*out*/;
@@ -101,12 +97,11 @@ export interface TagTemplateArgs {
      * Required. Map of tag template field IDs to the settings for the field. This map is an exhaustive list of the allowed fields. This map must contain at least one field and at most 500 fields. The keys to this map are tag template field IDs. Field IDs can contain letters (both uppercase and lowercase), numbers (0-9) and underscores (_). Field IDs must be at least 1 character long and at most 64 characters long. Field IDs must start with a letter or underscore.
      */
     readonly fields?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly tagTemplateId: pulumi.Input<string>;
-    readonly tagTemplatesId: pulumi.Input<string>;
 }

@@ -73,23 +73,23 @@ export class GameServerDeployment extends pulumi.CustomResource {
             if ((!args || args.deploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'deploymentId'");
             }
-            if ((!args || args.gameServerDeploymentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gameServerDeploymentsId'");
+            if ((!args || args.gameServerDeploymentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'gameServerDeploymentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["deploymentId"] = args ? args.deploymentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["gameServerDeploymentsId"] = args ? args.gameServerDeploymentsId : undefined;
+            inputs["gameServerDeploymentId"] = args ? args.gameServerDeploymentId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -120,15 +120,15 @@ export interface GameServerDeploymentArgs {
      * ETag of the resource.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly gameServerDeploymentsId: pulumi.Input<string>;
+    readonly gameServerDeploymentId: pulumi.Input<string>;
     /**
      * The labels associated with this game server deployment. Each label is a key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the game server deployment, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-deployment`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

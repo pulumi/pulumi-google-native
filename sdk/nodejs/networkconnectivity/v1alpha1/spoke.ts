@@ -91,14 +91,11 @@ export class Spoke extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.spokesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spokesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -107,12 +104,11 @@ export class Spoke extends pulumi.CustomResource {
             inputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
             inputs["linkedRouterApplianceInstances"] = args ? args.linkedRouterApplianceInstances : undefined;
             inputs["linkedVpnTunnels"] = args ? args.linkedVpnTunnels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["spokeId"] = args ? args.spokeId : undefined;
-            inputs["spokesId"] = args ? args.spokesId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["state"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
@@ -168,15 +164,14 @@ export interface SpokeArgs {
      * The URIs of linked VPN tunnel resources
      */
     readonly linkedVpnTunnels?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Immutable. The name of a Spoke resource.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     readonly spokeId?: pulumi.Input<string>;
-    readonly spokesId: pulumi.Input<string>;
     /**
      * The time when the Spoke was updated.
      */

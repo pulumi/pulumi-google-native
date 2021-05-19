@@ -87,16 +87,16 @@ export class Model extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.modelsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'modelsId'");
+            if ((!args || args.modelId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'modelId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["modelsId"] = args ? args.modelsId : undefined;
+            inputs["modelId"] = args ? args.modelId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["tfliteModel"] = args ? args.tfliteModel : undefined;
@@ -132,12 +132,12 @@ export interface ModelArgs {
      * Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly modelsId: pulumi.Input<string>;
+    readonly modelId: pulumi.Input<string>;
     /**
      * The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * State common to all model types. Includes publishing and validation information.
      */

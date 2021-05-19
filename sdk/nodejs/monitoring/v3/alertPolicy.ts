@@ -91,13 +91,13 @@ export class AlertPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.alertPoliciesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'alertPoliciesId'");
+            if ((!args || args.alertPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'alertPolicyId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["alertPoliciesId"] = args ? args.alertPoliciesId : undefined;
+            inputs["alertPolicyId"] = args ? args.alertPolicyId : undefined;
             inputs["combiner"] = args ? args.combiner : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["creationRecord"] = args ? args.creationRecord : undefined;
@@ -107,7 +107,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["mutationRecord"] = args ? args.mutationRecord : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationChannels"] = args ? args.notificationChannels : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["validity"] = args ? args.validity : undefined;
         } else {
@@ -134,7 +134,7 @@ export class AlertPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AlertPolicy resource.
  */
 export interface AlertPolicyArgs {
-    readonly alertPoliciesId: pulumi.Input<string>;
+    readonly alertPolicyId: pulumi.Input<string>;
     /**
      * How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
      */
@@ -171,7 +171,7 @@ export interface AlertPolicyArgs {
      * Identifies the notification channels to which notifications should be sent when incidents are opened or closed or when new violations occur on an already opened incident. Each element of this array corresponds to the name field in each of the NotificationChannel objects that are returned from the ListNotificationChannels method. The format of the entries in this field is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] 
      */
     readonly notificationChannels?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
      */

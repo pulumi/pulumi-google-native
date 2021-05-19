@@ -83,9 +83,6 @@ export class Service extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
-            }
             if ((!args || args.v3Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v3Id'");
             }
@@ -101,7 +98,6 @@ export class Service extends pulumi.CustomResource {
             inputs["meshIstio"] = args ? args.meshIstio : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["telemetry"] = args ? args.telemetry : undefined;
             inputs["v3Id"] = args ? args.v3Id : undefined;
             inputs["v3Id1"] = args ? args.v3Id1 : undefined;
@@ -160,7 +156,6 @@ export interface ServiceArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly serviceId?: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
     /**
      * Configuration for how to query telemetry on a Service.
      */

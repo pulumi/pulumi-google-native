@@ -67,21 +67,17 @@ export class Study extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.studiesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'studiesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
             }
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["studiesId"] = args ? args.studiesId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["studyConfig"] = args ? args.studyConfig : undefined;
             inputs["studyId"] = args ? args.studyId : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -106,9 +102,8 @@ export class Study extends pulumi.CustomResource {
  * The set of arguments for constructing a Study resource.
  */
 export interface StudyArgs {
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly studiesId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Configuration of the study.
      */

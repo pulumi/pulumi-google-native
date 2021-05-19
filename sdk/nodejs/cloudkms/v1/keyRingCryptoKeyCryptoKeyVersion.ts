@@ -99,27 +99,27 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.cryptoKeyVersionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeyVersionsId'");
+            if ((!args || args.cryptoKeyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cryptoKeyId'");
             }
-            if ((!args || args.cryptoKeysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cryptoKeysId'");
+            if ((!args || args.cryptoKeyVersionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'cryptoKeyVersionId'");
             }
-            if ((!args || args.keyRingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyRingsId'");
+            if ((!args || args.keyRingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["cryptoKeyVersionsId"] = args ? args.cryptoKeyVersionsId : undefined;
-            inputs["cryptoKeysId"] = args ? args.cryptoKeysId : undefined;
+            inputs["cryptoKeyId"] = args ? args.cryptoKeyId : undefined;
+            inputs["cryptoKeyVersionId"] = args ? args.cryptoKeyVersionId : undefined;
             inputs["externalProtectionLevelOptions"] = args ? args.externalProtectionLevelOptions : undefined;
-            inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["keyRingId"] = args ? args.keyRingId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
             inputs["algorithm"] = undefined /*out*/;
             inputs["attestation"] = undefined /*out*/;
@@ -158,15 +158,15 @@ export class KeyRingCryptoKeyCryptoKeyVersion extends pulumi.CustomResource {
  * The set of arguments for constructing a KeyRingCryptoKeyCryptoKeyVersion resource.
  */
 export interface KeyRingCryptoKeyCryptoKeyVersionArgs {
-    readonly cryptoKeyVersionsId: pulumi.Input<string>;
-    readonly cryptoKeysId: pulumi.Input<string>;
+    readonly cryptoKeyId: pulumi.Input<string>;
+    readonly cryptoKeyVersionId: pulumi.Input<string>;
     /**
      * ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level.
      */
     readonly externalProtectionLevelOptions?: pulumi.Input<inputs.cloudkms.v1.ExternalProtectionLevelOptionsArgs>;
-    readonly keyRingsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly keyRingId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The current state of the CryptoKeyVersion.
      */

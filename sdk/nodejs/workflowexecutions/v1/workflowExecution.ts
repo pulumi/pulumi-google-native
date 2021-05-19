@@ -79,23 +79,23 @@ export class WorkflowExecution extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.executionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'executionsId'");
+            if ((!args || args.executionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'executionId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.workflowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workflowsId'");
+            if ((!args || args.workflowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workflowId'");
             }
             inputs["argument"] = args ? args.argument : undefined;
-            inputs["executionsId"] = args ? args.executionsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["workflowsId"] = args ? args.workflowsId : undefined;
+            inputs["executionId"] = args ? args.executionId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["workflowId"] = args ? args.workflowId : undefined;
             inputs["endTime"] = undefined /*out*/;
             inputs["error"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -128,8 +128,8 @@ export interface WorkflowExecutionArgs {
      * Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
      */
     readonly argument?: pulumi.Input<string>;
-    readonly executionsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly workflowsId: pulumi.Input<string>;
+    readonly executionId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly workflowId: pulumi.Input<string>;
 }

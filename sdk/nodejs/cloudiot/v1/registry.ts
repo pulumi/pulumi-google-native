@@ -75,25 +75,25 @@ export class Registry extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.registriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'registriesId'");
+            if ((!args || args.registryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'registryId'");
             }
             inputs["credentials"] = args ? args.credentials : undefined;
             inputs["eventNotificationConfigs"] = args ? args.eventNotificationConfigs : undefined;
             inputs["httpConfig"] = args ? args.httpConfig : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["logLevel"] = args ? args.logLevel : undefined;
             inputs["mqttConfig"] = args ? args.mqttConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["registriesId"] = args ? args.registriesId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["registryId"] = args ? args.registryId : undefined;
             inputs["stateNotificationConfig"] = args ? args.stateNotificationConfig : undefined;
         } else {
             inputs["credentials"] = undefined /*out*/;
@@ -131,7 +131,7 @@ export interface RegistryArgs {
      * The identifier of this device registry. For example, `myRegistry`.
      */
     readonly id?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
      */
@@ -144,8 +144,8 @@ export interface RegistryArgs {
      * The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly registriesId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly registryId: pulumi.Input<string>;
     /**
      * The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
      */

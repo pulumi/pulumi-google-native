@@ -103,11 +103,11 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.developersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'developersId'");
+            if ((!args || args.developerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'developerId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["accessType"] = args ? args.accessType : undefined;
             inputs["appFamily"] = args ? args.appFamily : undefined;
@@ -115,11 +115,10 @@ export class OrganizationDeveloper extends pulumi.CustomResource {
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["companies"] = args ? args.companies : undefined;
             inputs["developerId"] = args ? args.developerId : undefined;
-            inputs["developersId"] = args ? args.developersId : undefined;
             inputs["email"] = args ? args.email : undefined;
             inputs["firstName"] = args ? args.firstName : undefined;
             inputs["lastName"] = args ? args.lastName : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["userName"] = args ? args.userName : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
@@ -175,8 +174,7 @@ export interface OrganizationDeveloperArgs {
     /**
      * ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
      */
-    readonly developerId?: pulumi.Input<string>;
-    readonly developersId: pulumi.Input<string>;
+    readonly developerId: pulumi.Input<string>;
     /**
      * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
@@ -189,7 +187,7 @@ export interface OrganizationDeveloperArgs {
      * Required. Last name of the developer.
      */
     readonly lastName?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Required. User name of the developer. Not used by Apigee hybrid.
      */

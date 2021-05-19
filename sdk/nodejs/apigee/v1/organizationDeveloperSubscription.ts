@@ -70,21 +70,21 @@ export class OrganizationDeveloperSubscription extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.developersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'developersId'");
+            if ((!args || args.developerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'developerId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.subscriptionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subscriptionsId'");
+            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subscriptionId'");
             }
             inputs["apiproduct"] = args ? args.apiproduct : undefined;
-            inputs["developersId"] = args ? args.developersId : undefined;
+            inputs["developerId"] = args ? args.developerId : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["startTime"] = args ? args.startTime : undefined;
-            inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
+            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -111,15 +111,15 @@ export interface OrganizationDeveloperSubscriptionArgs {
      * Name of the API product for which the developer is purchasing a subscription.
      */
     readonly apiproduct?: pulumi.Input<string>;
-    readonly developersId: pulumi.Input<string>;
+    readonly developerId: pulumi.Input<string>;
     /**
      * Time when the API product subscription ends in milliseconds since epoch.
      */
     readonly endTime?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Time when the API product subscription starts in milliseconds since epoch.
      */
     readonly startTime?: pulumi.Input<string>;
-    readonly subscriptionsId: pulumi.Input<string>;
+    readonly subscriptionId: pulumi.Input<string>;
 }

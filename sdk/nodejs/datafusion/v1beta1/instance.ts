@@ -147,14 +147,11 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["accelerators"] = args ? args.accelerators : undefined;
             inputs["availableVersion"] = args ? args.availableVersion : undefined;
@@ -165,13 +162,12 @@ export class Instance extends pulumi.CustomResource {
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
             inputs["enableStackdriverMonitoring"] = args ? args.enableStackdriverMonitoring : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
             inputs["options"] = args ? args.options : undefined;
             inputs["privateInstance"] = args ? args.privateInstance : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["version"] = args ? args.version : undefined;
             inputs["zone"] = args ? args.zone : undefined;
@@ -256,12 +252,11 @@ export interface InstanceArgs {
      */
     readonly enableStackdriverMonitoring?: pulumi.Input<boolean>;
     readonly instanceId?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
     /**
      * The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Network configuration options. These are required when a private Data Fusion instance is to be created.
      */
@@ -274,7 +269,7 @@ export interface InstanceArgs {
      * Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
      */
     readonly privateInstance?: pulumi.Input<boolean>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Instance type.
      */

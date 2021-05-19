@@ -63,19 +63,19 @@ export class FolderReplay extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.replaysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'replaysId'");
+            if ((!args || args.replayId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'replayId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["replaysId"] = args ? args.replaysId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["replayId"] = args ? args.replayId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["resultsSummary"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface FolderReplayArgs {
      * Required. The configuration used for the `Replay`.
      */
     readonly config?: pulumi.Input<inputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigArgs>;
-    readonly foldersId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly replaysId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly replayId: pulumi.Input<string>;
 }

@@ -74,7 +74,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
      */
-    public readonly locationId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Required. Redis memory size in GiB.
      */
@@ -138,14 +138,11 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["alternativeLocationId"] = args ? args.alternativeLocationId : undefined;
             inputs["authEnabled"] = args ? args.authEnabled : undefined;
@@ -153,13 +150,11 @@ export class Instance extends pulumi.CustomResource {
             inputs["connectMode"] = args ? args.connectMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["memorySizeGb"] = args ? args.memorySizeGb : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["redisConfigs"] = args ? args.redisConfigs : undefined;
             inputs["redisVersion"] = args ? args.redisVersion : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
@@ -183,7 +178,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["displayName"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
-            inputs["locationId"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
             inputs["memorySizeGb"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["persistenceIamIdentity"] = undefined /*out*/;
@@ -229,7 +224,6 @@ export interface InstanceArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly instanceId: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata
      */
@@ -237,8 +231,7 @@ export interface InstanceArgs {
     /**
      * Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
      */
-    readonly locationId?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. Redis memory size in GiB.
      */
@@ -247,7 +240,7 @@ export interface InstanceArgs {
      * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
      */

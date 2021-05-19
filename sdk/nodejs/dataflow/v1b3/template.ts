@@ -63,15 +63,15 @@ export class Template extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["environment"] = args ? args.environment : undefined;
             inputs["gcsPath"] = args ? args.gcsPath : undefined;
             inputs["jobName"] = args ? args.jobName : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["metadata"] = undefined /*out*/;
             inputs["runtimeMetadata"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
@@ -113,5 +113,5 @@ export interface TemplateArgs {
      * The runtime parameters to pass to the job.
      */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

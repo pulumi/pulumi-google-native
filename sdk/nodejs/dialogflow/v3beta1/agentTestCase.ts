@@ -79,28 +79,28 @@ export class AgentTestCase extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.testCasesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'testCasesId'");
+            if ((!args || args.testCaseId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'testCaseId'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["lastTestResult"] = args ? args.lastTestResult : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notes"] = args ? args.notes : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["testCaseConversationTurns"] = args ? args.testCaseConversationTurns : undefined;
-            inputs["testCasesId"] = args ? args.testCasesId : undefined;
+            inputs["testCaseId"] = args ? args.testCaseId : undefined;
             inputs["testConfig"] = args ? args.testConfig : undefined;
             inputs["creationTime"] = undefined /*out*/;
         } else {
@@ -124,7 +124,7 @@ export class AgentTestCase extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentTestCase resource.
  */
 export interface AgentTestCaseArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
@@ -133,7 +133,7 @@ export interface AgentTestCaseArgs {
      * The latest test result.
      */
     readonly lastTestResult?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1TestCaseResultArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
      */
@@ -142,7 +142,7 @@ export interface AgentTestCaseArgs {
      * Additional freeform notes about the test case. Limit of 400 characters.
      */
     readonly notes?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
      */
@@ -151,7 +151,7 @@ export interface AgentTestCaseArgs {
      * The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
      */
     readonly testCaseConversationTurns?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1ConversationTurnArgs>[]>;
-    readonly testCasesId: pulumi.Input<string>;
+    readonly testCaseId: pulumi.Input<string>;
     /**
      * Config for the test case.
      */

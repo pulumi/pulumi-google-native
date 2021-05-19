@@ -66,25 +66,21 @@ export class WorkloadIdentityPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.workloadIdentityPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workloadIdentityPoolId'");
             }
-            if ((!args || args.workloadIdentityPoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workloadIdentityPoolsId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
-            inputs["workloadIdentityPoolsId"] = args ? args.workloadIdentityPoolsId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -117,8 +113,7 @@ export interface WorkloadIdentityPoolArgs {
      * A display name for the pool. Cannot exceed 32 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly workloadIdentityPoolId: pulumi.Input<string>;
-    readonly workloadIdentityPoolsId: pulumi.Input<string>;
 }

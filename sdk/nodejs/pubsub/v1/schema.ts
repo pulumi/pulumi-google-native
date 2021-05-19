@@ -58,17 +58,13 @@ export class Schema extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.schemasId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'schemasId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["definition"] = args ? args.definition : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schemaId"] = args ? args.schemaId : undefined;
-            inputs["schemasId"] = args ? args.schemasId : undefined;
             inputs["type"] = args ? args.type : undefined;
         } else {
             inputs["definition"] = undefined /*out*/;
@@ -94,9 +90,8 @@ export interface SchemaArgs {
      * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly schemaId?: pulumi.Input<string>;
-    readonly schemasId: pulumi.Input<string>;
     /**
      * The type of the schema definition.
      */

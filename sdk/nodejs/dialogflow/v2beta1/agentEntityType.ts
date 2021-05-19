@@ -71,25 +71,25 @@ export class AgentEntityType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.entityTypesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypesId'");
+            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entityTypeId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["autoExpansionMode"] = args ? args.autoExpansionMode : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableFuzzyExtraction"] = args ? args.enableFuzzyExtraction : undefined;
             inputs["entities"] = args ? args.entities : undefined;
-            inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
+            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["autoExpansionMode"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -125,16 +125,16 @@ export interface AgentEntityTypeArgs {
      * Optional. The collection of entity entries associated with the entity type.
      */
     readonly entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1EntityTypeEntityArgs>[]>;
-    readonly entityTypesId: pulumi.Input<string>;
+    readonly entityTypeId: pulumi.Input<string>;
     /**
      * Required. Indicates the kind of entity type.
      */
     readonly kind?: pulumi.Input<string>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

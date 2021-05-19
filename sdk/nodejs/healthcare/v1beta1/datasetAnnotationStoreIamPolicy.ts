@@ -63,25 +63,25 @@ export class DatasetAnnotationStoreIamPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotationStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationStoresId'");
+            if ((!args || args.annotationStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationStoreId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["annotationStoresId"] = args ? args.annotationStoresId : undefined;
+            inputs["annotationStoreId"] = args ? args.annotationStoreId : undefined;
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["updateMask"] = args ? args.updateMask : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
@@ -101,7 +101,7 @@ export class DatasetAnnotationStoreIamPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetAnnotationStoreIamPolicy resource.
  */
 export interface DatasetAnnotationStoreIamPolicyArgs {
-    readonly annotationStoresId: pulumi.Input<string>;
+    readonly annotationStoreId: pulumi.Input<string>;
     /**
      * Specifies cloud audit logging configuration for this policy.
      */
@@ -110,13 +110,13 @@ export interface DatasetAnnotationStoreIamPolicyArgs {
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.BindingArgs>[]>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
      */

@@ -75,32 +75,32 @@ export class AgentFlowPage extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.flowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'flowsId'");
+            if ((!args || args.flowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'flowId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.pagesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'pagesId'");
+            if ((!args || args.pageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'pageId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entryFulfillment"] = args ? args.entryFulfillment : undefined;
             inputs["eventHandlers"] = args ? args.eventHandlers : undefined;
-            inputs["flowsId"] = args ? args.flowsId : undefined;
+            inputs["flowId"] = args ? args.flowId : undefined;
             inputs["form"] = args ? args.form : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["pagesId"] = args ? args.pagesId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["pageId"] = args ? args.pageId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["transitionRouteGroups"] = args ? args.transitionRouteGroups : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
@@ -123,7 +123,7 @@ export class AgentFlowPage extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentFlowPage resource.
  */
 export interface AgentFlowPageArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the page, unique within the agent.
      */
@@ -136,19 +136,19 @@ export interface AgentFlowPageArgs {
      * Handlers associated with the page to handle events such as webhook errors, no match or no input.
      */
     readonly eventHandlers?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EventHandlerArgs>[]>;
-    readonly flowsId: pulumi.Input<string>;
+    readonly flowId: pulumi.Input<string>;
     /**
      * The form associated with the page, used for collecting parameters relevant to the page.
      */
     readonly form?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormArgs>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the name automatically. Format: `projects//locations//agents//flows//pages/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly pagesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly pageId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique within a page. * If multiple transition routes within a page scope refer to the same intent, then the precedence order is: page's transition route -> page's transition route group -> flow's transition routes. * If multiple transition route groups within a page contain the same intent, then the first group in the ordered list takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/`.
      */

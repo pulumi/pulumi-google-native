@@ -123,28 +123,24 @@ export class MigrationJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.migrationJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'migrationJobId'");
             }
-            if ((!args || args.migrationJobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'migrationJobsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["destination"] = args ? args.destination : undefined;
             inputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dumpPath"] = args ? args.dumpPath : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["migrationJobId"] = args ? args.migrationJobId : undefined;
-            inputs["migrationJobsId"] = args ? args.migrationJobsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["reverseSshConnectivity"] = args ? args.reverseSshConnectivity : undefined;
             inputs["source"] = args ? args.source : undefined;
@@ -211,14 +207,13 @@ export interface MigrationJobArgs {
      * The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     readonly migrationJobId: pulumi.Input<string>;
-    readonly migrationJobsId: pulumi.Input<string>;
     /**
      * The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * The details needed to communicate to the source over Reverse SSH tunnel connectivity.

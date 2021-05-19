@@ -90,24 +90,20 @@ export class KeyRingImportJob extends pulumi.CustomResource {
             if ((!args || args.importJobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'importJobId'");
             }
-            if ((!args || args.importJobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'importJobsId'");
+            if ((!args || args.keyRingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyRingId'");
             }
-            if ((!args || args.keyRingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keyRingsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["importJobId"] = args ? args.importJobId : undefined;
-            inputs["importJobsId"] = args ? args.importJobsId : undefined;
             inputs["importMethod"] = args ? args.importMethod : undefined;
-            inputs["keyRingsId"] = args ? args.keyRingsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["keyRingId"] = args ? args.keyRingId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["protectionLevel"] = args ? args.protectionLevel : undefined;
             inputs["attestation"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -141,14 +137,13 @@ export class KeyRingImportJob extends pulumi.CustomResource {
  */
 export interface KeyRingImportJobArgs {
     readonly importJobId: pulumi.Input<string>;
-    readonly importJobsId: pulumi.Input<string>;
     /**
      * Required. Immutable. The wrapping method to be used for incoming key material.
      */
     readonly importMethod?: pulumi.Input<string>;
-    readonly keyRingsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly keyRingId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
      */

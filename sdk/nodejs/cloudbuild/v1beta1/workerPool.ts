@@ -75,24 +75,20 @@ export class WorkerPool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.workerPoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workerPoolId'");
             }
-            if ((!args || args.workerPoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workerPoolsId'");
-            }
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["networkConfig"] = args ? args.networkConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["workerConfig"] = args ? args.workerConfig : undefined;
             inputs["workerPoolId"] = args ? args.workerPoolId : undefined;
-            inputs["workerPoolsId"] = args ? args.workerPoolsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -118,16 +114,15 @@ export class WorkerPool extends pulumi.CustomResource {
  * The set of arguments for constructing a WorkerPool resource.
  */
 export interface WorkerPoolArgs {
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Network configuration for the `WorkerPool`.
      */
     readonly networkConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.NetworkConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Worker configuration for the `WorkerPool`.
      */
     readonly workerConfig?: pulumi.Input<inputs.cloudbuild.v1beta1.WorkerConfigArgs>;
     readonly workerPoolId: pulumi.Input<string>;
-    readonly workerPoolsId: pulumi.Input<string>;
 }

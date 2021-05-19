@@ -54,28 +54,24 @@ export class RepositoryPackageTag extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.packagesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'packagesId'");
+            if ((!args || args.packageId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'packageId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.repositoriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'repositoriesId'");
+            if ((!args || args.repositoryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'repositoryId'");
             }
-            if ((!args || args.tagsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tagsId'");
-            }
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["packagesId"] = args ? args.packagesId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["repositoriesId"] = args ? args.repositoriesId : undefined;
+            inputs["packageId"] = args ? args.packageId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["repositoryId"] = args ? args.repositoryId : undefined;
             inputs["tagId"] = args ? args.tagId : undefined;
-            inputs["tagsId"] = args ? args.tagsId : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
@@ -92,16 +88,15 @@ export class RepositoryPackageTag extends pulumi.CustomResource {
  * The set of arguments for constructing a RepositoryPackageTag resource.
  */
 export interface RepositoryPackageTagArgs {
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
      */
     readonly name?: pulumi.Input<string>;
-    readonly packagesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly repositoriesId: pulumi.Input<string>;
+    readonly packageId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly repositoryId: pulumi.Input<string>;
     readonly tagId?: pulumi.Input<string>;
-    readonly tagsId: pulumi.Input<string>;
     /**
      * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
      */

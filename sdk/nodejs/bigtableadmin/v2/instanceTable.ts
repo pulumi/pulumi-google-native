@@ -67,23 +67,22 @@ export class InstanceTable extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.tablesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'tablesId'");
+            if ((!args || args.tableId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'tableId'");
             }
             inputs["columnFamilies"] = args ? args.columnFamilies : undefined;
             inputs["granularity"] = args ? args.granularity : undefined;
             inputs["initialSplits"] = args ? args.initialSplits : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tableId"] = args ? args.tableId : undefined;
-            inputs["tablesId"] = args ? args.tablesId : undefined;
             inputs["clusterStates"] = undefined /*out*/;
             inputs["restoreInfo"] = undefined /*out*/;
         } else {
@@ -116,15 +115,14 @@ export interface InstanceTableArgs {
      * The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
      */
     readonly initialSplits?: pulumi.Input<pulumi.Input<inputs.bigtableadmin.v2.SplitArgs>[]>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
      */
-    readonly tableId?: pulumi.Input<string>;
-    readonly tablesId: pulumi.Input<string>;
+    readonly tableId: pulumi.Input<string>;
 }

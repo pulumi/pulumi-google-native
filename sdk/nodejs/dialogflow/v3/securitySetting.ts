@@ -74,25 +74,25 @@ export class SecuritySetting extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.securitySettingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'securitySettingsId'");
+            if ((!args || args.securitySettingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'securitySettingId'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectTemplate"] = args ? args.inspectTemplate : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["purgeDataTypes"] = args ? args.purgeDataTypes : undefined;
             inputs["redactionScope"] = args ? args.redactionScope : undefined;
             inputs["redactionStrategy"] = args ? args.redactionStrategy : undefined;
             inputs["retentionWindowDays"] = args ? args.retentionWindowDays : undefined;
-            inputs["securitySettingsId"] = args ? args.securitySettingsId : undefined;
+            inputs["securitySettingId"] = args ? args.securitySettingId : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
             inputs["inspectTemplate"] = undefined /*out*/;
@@ -121,12 +121,12 @@ export interface SecuritySettingArgs {
      * DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
      */
     readonly inspectTemplate?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * List of types of data to remove when retention settings triggers purge.
      */
@@ -143,5 +143,5 @@ export interface SecuritySettingArgs {
      * Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
      */
     readonly retentionWindowDays?: pulumi.Input<number>;
-    readonly securitySettingsId: pulumi.Input<string>;
+    readonly securitySettingId: pulumi.Input<string>;
 }

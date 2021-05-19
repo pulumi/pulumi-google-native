@@ -81,22 +81,18 @@ export class Gateway extends pulumi.CustomResource {
             if ((!args || args.gatewayId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'gatewayId'");
             }
-            if ((!args || args.gatewaysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'gatewaysId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["apiConfig"] = args ? args.apiConfig : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayId"] = args ? args.gatewayId : undefined;
-            inputs["gatewaysId"] = args ? args.gatewaysId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["defaultHostname"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -132,11 +128,10 @@ export interface GatewayArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly gatewayId: pulumi.Input<string>;
-    readonly gatewaysId: pulumi.Input<string>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

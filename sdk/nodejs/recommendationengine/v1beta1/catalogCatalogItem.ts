@@ -75,28 +75,28 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.catalogItemsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'catalogItemsId'");
+            if ((!args || args.catalogId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'catalogId'");
             }
-            if ((!args || args.catalogsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'catalogsId'");
+            if ((!args || args.catalogItemId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'catalogItemId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["catalogItemsId"] = args ? args.catalogItemsId : undefined;
-            inputs["catalogsId"] = args ? args.catalogsId : undefined;
+            inputs["catalogId"] = args ? args.catalogId : undefined;
+            inputs["catalogItemId"] = args ? args.catalogItemId : undefined;
             inputs["categoryHierarchies"] = args ? args.categoryHierarchies : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["itemAttributes"] = args ? args.itemAttributes : undefined;
             inputs["itemGroupId"] = args ? args.itemGroupId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["productMetadata"] = args ? args.productMetadata : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
@@ -119,8 +119,8 @@ export class CatalogCatalogItem extends pulumi.CustomResource {
  * The set of arguments for constructing a CatalogCatalogItem resource.
  */
 export interface CatalogCatalogItemArgs {
-    readonly catalogItemsId: pulumi.Input<string>;
-    readonly catalogsId: pulumi.Input<string>;
+    readonly catalogId: pulumi.Input<string>;
+    readonly catalogItemId: pulumi.Input<string>;
     /**
      * Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
      */
@@ -141,12 +141,12 @@ export interface CatalogCatalogItemArgs {
      * Optional. Variant group identifier for prediction results. UTF-8 encoded string with a length limit of 128 bytes. This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
      */
     readonly itemGroupId?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Metadata specific to retail products.
      */
     readonly productMetadata?: pulumi.Input<inputs.recommendationengine.v1beta1.GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
      */

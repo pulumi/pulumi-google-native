@@ -130,8 +130,8 @@ export class RegionJob extends pulumi.CustomResource {
             if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
@@ -143,7 +143,7 @@ export class RegionJob extends pulumi.CustomResource {
             inputs["pigJob"] = args ? args.pigJob : undefined;
             inputs["placement"] = args ? args.placement : undefined;
             inputs["prestoJob"] = args ? args.prestoJob : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["pysparkJob"] = args ? args.pysparkJob : undefined;
             inputs["reference"] = args ? args.reference : undefined;
             inputs["region"] = args ? args.region : undefined;
@@ -218,7 +218,7 @@ export interface RegionJobArgs {
      * Optional. Job is a Presto job.
      */
     readonly prestoJob?: pulumi.Input<inputs.dataproc.v1beta2.PrestoJobArgs>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Job is a PySpark job.
      */

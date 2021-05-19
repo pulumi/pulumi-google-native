@@ -67,19 +67,19 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.annotationSpecSetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'annotationSpecSetsId'");
+            if ((!args || args.annotationSpecSetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'annotationSpecSetId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["annotationSpecSetsId"] = args ? args.annotationSpecSetsId : undefined;
+            inputs["annotationSpecSetId"] = args ? args.annotationSpecSetId : undefined;
             inputs["annotationSpecs"] = args ? args.annotationSpecs : undefined;
             inputs["blockingResources"] = args ? args.blockingResources : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["annotationSpecs"] = undefined /*out*/;
             inputs["blockingResources"] = undefined /*out*/;
@@ -98,7 +98,7 @@ export class AnnotationSpecSet extends pulumi.CustomResource {
  * The set of arguments for constructing a AnnotationSpecSet resource.
  */
 export interface AnnotationSpecSetArgs {
-    readonly annotationSpecSetsId: pulumi.Input<string>;
+    readonly annotationSpecSetId: pulumi.Input<string>;
     /**
      * Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
      */
@@ -119,5 +119,5 @@ export interface AnnotationSpecSetArgs {
      * The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

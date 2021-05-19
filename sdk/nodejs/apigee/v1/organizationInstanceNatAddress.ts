@@ -58,19 +58,19 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.natAddressesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'natAddressesId'");
+            if ((!args || args.natAddressId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'natAddressId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["natAddressesId"] = args ? args.natAddressesId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["natAddressId"] = args ? args.natAddressId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["ipAddress"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         } else {
@@ -89,11 +89,11 @@ export class OrganizationInstanceNatAddress extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationInstanceNatAddress resource.
  */
 export interface OrganizationInstanceNatAddressArgs {
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Required. Resource ID of the NAT address.
      */
     readonly name?: pulumi.Input<string>;
-    readonly natAddressesId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly natAddressId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
 }

@@ -59,33 +59,33 @@ export class AgentEnvironmentUserSessionEntityType extends pulumi.CustomResource
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.entityTypesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entityTypesId'");
+            if ((!args || args.entityTypeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entityTypeId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sessionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sessionsId'");
+            if ((!args || args.sessionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sessionId'");
             }
-            if ((!args || args.usersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'usersId'");
+            if ((!args || args.userId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userId'");
             }
             inputs["entities"] = args ? args.entities : undefined;
             inputs["entityOverrideMode"] = args ? args.entityOverrideMode : undefined;
-            inputs["entityTypesId"] = args ? args.entityTypesId : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["entityTypeId"] = args ? args.entityTypeId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["sessionsId"] = args ? args.sessionsId : undefined;
-            inputs["usersId"] = args ? args.usersId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["sessionId"] = args ? args.sessionId : undefined;
+            inputs["userId"] = args ? args.userId : undefined;
         } else {
             inputs["entities"] = undefined /*out*/;
             inputs["entityOverrideMode"] = undefined /*out*/;
@@ -110,14 +110,14 @@ export interface AgentEnvironmentUserSessionEntityTypeArgs {
      * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     readonly entityOverrideMode?: pulumi.Input<string>;
-    readonly entityTypesId: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly entityTypeId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly sessionsId: pulumi.Input<string>;
-    readonly usersId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly sessionId: pulumi.Input<string>;
+    readonly userId: pulumi.Input<string>;
 }

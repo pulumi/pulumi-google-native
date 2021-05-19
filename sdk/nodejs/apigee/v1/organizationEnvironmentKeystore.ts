@@ -54,19 +54,19 @@ export class OrganizationEnvironmentKeystore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.keystoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keystoresId'");
+            if ((!args || args.keystoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keystoreId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
-            inputs["keystoresId"] = args ? args.keystoresId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["keystoreId"] = args ? args.keystoreId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["aliases"] = undefined /*out*/;
         } else {
             inputs["aliases"] = undefined /*out*/;
@@ -83,11 +83,11 @@ export class OrganizationEnvironmentKeystore extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationEnvironmentKeystore resource.
  */
 export interface OrganizationEnvironmentKeystoreArgs {
-    readonly environmentsId: pulumi.Input<string>;
-    readonly keystoresId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
+    readonly keystoreId: pulumi.Input<string>;
     /**
      * Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
 }

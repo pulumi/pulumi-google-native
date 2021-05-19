@@ -91,14 +91,14 @@ export class OrganizationWorkload extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.workloadsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'workloadsId'");
+            if ((!args || args.workloadId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'workloadId'");
             }
             inputs["billingAccount"] = args ? args.billingAccount : undefined;
             inputs["complianceRegime"] = args ? args.complianceRegime : undefined;
@@ -107,12 +107,12 @@ export class OrganizationWorkload extends pulumi.CustomResource {
             inputs["externalId"] = args ? args.externalId : undefined;
             inputs["kmsSettings"] = args ? args.kmsSettings : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["provisionedResourcesParent"] = args ? args.provisionedResourcesParent : undefined;
             inputs["resourceSettings"] = args ? args.resourceSettings : undefined;
-            inputs["workloadsId"] = args ? args.workloadsId : undefined;
+            inputs["workloadId"] = args ? args.workloadId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["resources"] = undefined /*out*/;
         } else {
@@ -164,12 +164,12 @@ export interface OrganizationWorkloadArgs {
      * Optional. Labels applied to the workload.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Input only. The parent resource for the resources managed by this Assured Workload. May be either an organization or a folder. Must be the same or a child of the Workload parent. If not specified all resources are created under the Workload parent. Formats: folders/{folder_id} organizations/{organization_id}
      */
@@ -178,5 +178,5 @@ export interface OrganizationWorkloadArgs {
      * Input only. Resource properties that are used to customize workload resources. These properties (such as custom project id) will be used to create workload resources if possible. This field is optional.
      */
     readonly resourceSettings?: pulumi.Input<pulumi.Input<inputs.assuredworkloads.v1.GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs>[]>;
-    readonly workloadsId: pulumi.Input<string>;
+    readonly workloadId: pulumi.Input<string>;
 }

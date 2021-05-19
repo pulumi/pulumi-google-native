@@ -70,17 +70,17 @@ export class FolderExclusion extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.exclusionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'exclusionsId'");
+            if ((!args || args.exclusionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'exclusionId'");
             }
-            if ((!args || args.foldersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'foldersId'");
+            if ((!args || args.folderId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'folderId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
-            inputs["exclusionsId"] = args ? args.exclusionsId : undefined;
+            inputs["exclusionId"] = args ? args.exclusionId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["foldersId"] = args ? args.foldersId : undefined;
+            inputs["folderId"] = args ? args.folderId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -111,12 +111,12 @@ export interface FolderExclusionArgs {
      * Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
      */
     readonly disabled?: pulumi.Input<boolean>;
-    readonly exclusionsId: pulumi.Input<string>;
+    readonly exclusionId: pulumi.Input<string>;
     /**
      * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
      */
     readonly filter?: pulumi.Input<string>;
-    readonly foldersId: pulumi.Input<string>;
+    readonly folderId: pulumi.Input<string>;
     /**
      * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */

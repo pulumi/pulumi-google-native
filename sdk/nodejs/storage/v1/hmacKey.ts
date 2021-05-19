@@ -49,7 +49,7 @@ export class HmacKey extends pulumi.CustomResource {
     /**
      * Project ID owning the service account to which the key authenticates.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The link to this resource.
      */
@@ -85,14 +85,14 @@ export class HmacKey extends pulumi.CustomResource {
             if ((!args || args.accessId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
             inputs["accessId"] = args ? args.accessId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
             inputs["userProject"] = args ? args.userProject : undefined;
             inputs["etag"] = undefined /*out*/;
@@ -105,7 +105,7 @@ export class HmacKey extends pulumi.CustomResource {
             inputs["accessId"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
             inputs["serviceAccountEmail"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -124,7 +124,7 @@ export class HmacKey extends pulumi.CustomResource {
  */
 export interface HmacKeyArgs {
     readonly accessId: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly serviceAccountEmail: pulumi.Input<string>;
     readonly userProject?: pulumi.Input<string>;
 }

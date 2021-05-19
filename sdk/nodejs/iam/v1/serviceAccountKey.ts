@@ -82,20 +82,20 @@ export class ServiceAccountKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.keysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keysId'");
+            if ((!args || args.keyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.serviceAccountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'serviceAccountsId'");
+            if ((!args || args.serviceAccountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceAccountId'");
             }
             inputs["keyAlgorithm"] = args ? args.keyAlgorithm : undefined;
-            inputs["keysId"] = args ? args.keysId : undefined;
+            inputs["keyId"] = args ? args.keyId : undefined;
             inputs["privateKeyType"] = args ? args.privateKeyType : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["serviceAccountsId"] = args ? args.serviceAccountsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["serviceAccountId"] = args ? args.serviceAccountId : undefined;
             inputs["keyOrigin"] = undefined /*out*/;
             inputs["keyType"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -129,11 +129,11 @@ export interface ServiceAccountKeyArgs {
      * Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
      */
     readonly keyAlgorithm?: pulumi.Input<string>;
-    readonly keysId: pulumi.Input<string>;
+    readonly keyId: pulumi.Input<string>;
     /**
      * The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
      */
     readonly privateKeyType?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly serviceAccountsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly serviceAccountId: pulumi.Input<string>;
 }

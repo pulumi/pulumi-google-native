@@ -90,20 +90,20 @@ export class OrganizationInstance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["environments"] = args ? args.environments : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["peeringCidrRange"] = args ? args.peeringCidrRange : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["host"] = undefined /*out*/;
@@ -147,7 +147,7 @@ export interface OrganizationInstanceArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly environments?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Required. Compute Engine location where the instance resides.
      */
@@ -156,7 +156,7 @@ export interface OrganizationInstanceArgs {
      * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
      */

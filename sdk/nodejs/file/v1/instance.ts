@@ -94,24 +94,20 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["fileShares"] = args ? args.fileShares : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["networks"] = args ? args.networks : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -155,17 +151,16 @@ export interface InstanceArgs {
      */
     readonly fileShares?: pulumi.Input<pulumi.Input<inputs.file.v1.FileShareConfigArgs>[]>;
     readonly instanceId: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
     /**
      * Resource labels to represent user provided metadata.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * VPC networks to which the instance is connected. For this version, only a single network is supported.
      */
     readonly networks?: pulumi.Input<pulumi.Input<inputs.file.v1.NetworkConfigArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The service tier of the instance.
      */

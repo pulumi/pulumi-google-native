@@ -119,19 +119,15 @@ export class CertificateAuthority extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.certificateAuthoritiesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'certificateAuthoritiesId'");
-            }
             if ((!args || args.certificateAuthorityId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'certificateAuthorityId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["certificateAuthoritiesId"] = args ? args.certificateAuthoritiesId : undefined;
             inputs["certificateAuthorityId"] = args ? args.certificateAuthorityId : undefined;
             inputs["certificatePolicy"] = args ? args.certificatePolicy : undefined;
             inputs["config"] = args ? args.config : undefined;
@@ -140,8 +136,8 @@ export class CertificateAuthority extends pulumi.CustomResource {
             inputs["keySpec"] = args ? args.keySpec : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lifetime"] = args ? args.lifetime : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["subordinateConfig"] = args ? args.subordinateConfig : undefined;
             inputs["tier"] = args ? args.tier : undefined;
@@ -185,7 +181,6 @@ export class CertificateAuthority extends pulumi.CustomResource {
  * The set of arguments for constructing a CertificateAuthority resource.
  */
 export interface CertificateAuthorityArgs {
-    readonly certificateAuthoritiesId: pulumi.Input<string>;
     readonly certificateAuthorityId: pulumi.Input<string>;
     /**
      * Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
@@ -215,8 +210,8 @@ export interface CertificateAuthorityArgs {
      * Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
      */
     readonly lifetime?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.

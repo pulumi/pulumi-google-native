@@ -103,33 +103,33 @@ export class ClusterNodePool extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.clustersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'clustersId'");
+            if ((!args || args.clusterId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.nodePoolsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'nodePoolsId'");
+            if ((!args || args.nodePoolId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'nodePoolId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["autoscaling"] = args ? args.autoscaling : undefined;
-            inputs["clustersId"] = args ? args.clustersId : undefined;
+            inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["initialNodeCount"] = args ? args.initialNodeCount : undefined;
             inputs["instanceGroupUrls"] = args ? args.instanceGroupUrls : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["locations"] = args ? args.locations : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
             inputs["management"] = args ? args.management : undefined;
             inputs["maxPodsConstraint"] = args ? args.maxPodsConstraint : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["nodePoolsId"] = args ? args.nodePoolsId : undefined;
+            inputs["nodePoolId"] = args ? args.nodePoolId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["podIpv4CidrSize"] = args ? args.podIpv4CidrSize : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
@@ -165,7 +165,7 @@ export interface ClusterNodePoolArgs {
      * Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
      */
     readonly autoscaling?: pulumi.Input<inputs.container.v1.NodePoolAutoscalingArgs>;
-    readonly clustersId: pulumi.Input<string>;
+    readonly clusterId: pulumi.Input<string>;
     /**
      * Which conditions caused the current node pool state.
      */
@@ -182,11 +182,11 @@ export interface ClusterNodePoolArgs {
      * [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
      */
     readonly instanceGroupUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly location: pulumi.Input<string>;
     /**
      * The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
      */
     readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly locationsId: pulumi.Input<string>;
     /**
      * NodeManagement configuration for this NodePool.
      */
@@ -199,7 +199,7 @@ export interface ClusterNodePoolArgs {
      * The name of the node pool.
      */
     readonly name?: pulumi.Input<string>;
-    readonly nodePoolsId: pulumi.Input<string>;
+    readonly nodePoolId: pulumi.Input<string>;
     /**
      * The parent (project, location, cluster id) where the node pool will be created. Specified in the format `projects/*&#47;locations/*&#47;clusters/*`.
      */
@@ -208,7 +208,7 @@ export interface ClusterNodePoolArgs {
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */

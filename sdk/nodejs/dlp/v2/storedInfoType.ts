@@ -59,16 +59,15 @@ export class StoredInfoType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.storedInfoTypesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'storedInfoTypesId'");
+            if ((!args || args.storedInfoTypeId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'storedInfoTypeId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["storedInfoTypeId"] = args ? args.storedInfoTypeId : undefined;
-            inputs["storedInfoTypesId"] = args ? args.storedInfoTypesId : undefined;
             inputs["currentVersion"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["pendingVersions"] = undefined /*out*/;
@@ -92,10 +91,9 @@ export interface StoredInfoTypeArgs {
      * Required. Configuration of the storedInfoType to create.
      */
     readonly config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
-    readonly storedInfoTypeId?: pulumi.Input<string>;
-    readonly storedInfoTypesId: pulumi.Input<string>;
+    readonly storedInfoTypeId: pulumi.Input<string>;
 }

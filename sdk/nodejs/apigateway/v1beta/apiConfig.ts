@@ -98,30 +98,30 @@ export class ApiConfig extends pulumi.CustomResource {
             if ((!args || args.apiConfigId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'apiConfigId'");
             }
-            if ((!args || args.apisId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apisId'");
+            if ((!args || args.apiId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.configsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'configsId'");
+            if ((!args || args.configId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'configId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["apiConfigId"] = args ? args.apiConfigId : undefined;
-            inputs["apisId"] = args ? args.apisId : undefined;
-            inputs["configsId"] = args ? args.configsId : undefined;
+            inputs["apiId"] = args ? args.apiId : undefined;
+            inputs["configId"] = args ? args.configId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["gatewayConfig"] = args ? args.gatewayConfig : undefined;
             inputs["gatewayServiceAccount"] = args ? args.gatewayServiceAccount : undefined;
             inputs["grpcServices"] = args ? args.grpcServices : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["managedServiceConfigs"] = args ? args.managedServiceConfigs : undefined;
             inputs["openapiDocuments"] = args ? args.openapiDocuments : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["serviceConfigId"] = undefined /*out*/;
@@ -153,8 +153,8 @@ export class ApiConfig extends pulumi.CustomResource {
  */
 export interface ApiConfigArgs {
     readonly apiConfigId: pulumi.Input<string>;
-    readonly apisId: pulumi.Input<string>;
-    readonly configsId: pulumi.Input<string>;
+    readonly apiId: pulumi.Input<string>;
+    readonly configId: pulumi.Input<string>;
     /**
      * Optional. Display name.
      */
@@ -175,7 +175,7 @@ export interface ApiConfigArgs {
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Service Configuration files. At least one must be included when using gRPC service definitions. See https://cloud.google.com/endpoints/docs/grpc/grpc-service-config#service_configuration_overview for the expected file contents. If multiple files are specified, the files are merged with the following rules: * All singular scalar fields are merged using "last one wins" semantics in the order of the files uploaded. * Repeated fields are concatenated. * Singular embedded messages are merged using these rules for nested fields.
      */
@@ -184,5 +184,5 @@ export interface ApiConfigArgs {
      * Optional. OpenAPI specification documents. If specified, grpc_services and managed_service_configs must not be included.
      */
     readonly openapiDocuments?: pulumi.Input<pulumi.Input<inputs.apigateway.v1beta.ApigatewayApiConfigOpenApiDocumentArgs>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

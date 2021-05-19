@@ -87,22 +87,22 @@ export class EvaluationJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.evaluationJobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'evaluationJobsId'");
+            if ((!args || args.evaluationJobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'evaluationJobId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["annotationSpecSet"] = args ? args.annotationSpecSet : undefined;
             inputs["attempts"] = args ? args.attempts : undefined;
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["evaluationJobConfig"] = args ? args.evaluationJobConfig : undefined;
-            inputs["evaluationJobsId"] = args ? args.evaluationJobsId : undefined;
+            inputs["evaluationJobId"] = args ? args.evaluationJobId : undefined;
             inputs["labelMissingGroundTruth"] = args ? args.labelMissingGroundTruth : undefined;
             inputs["modelVersion"] = args ? args.modelVersion : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
@@ -148,7 +148,7 @@ export interface EvaluationJobArgs {
      * Required. Configuration details for the evaluation job.
      */
     readonly evaluationJobConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs>;
-    readonly evaluationJobsId: pulumi.Input<string>;
+    readonly evaluationJobId: pulumi.Input<string>;
     /**
      * Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
      */
@@ -161,7 +161,7 @@ export interface EvaluationJobArgs {
      * After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
      */

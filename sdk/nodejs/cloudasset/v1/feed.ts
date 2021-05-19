@@ -71,8 +71,8 @@ export class Feed extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.feedsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'feedsId'");
+            if ((!args || args.feedId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'feedId'");
             }
             if ((!args || args.v1Id === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'v1Id'");
@@ -86,7 +86,6 @@ export class Feed extends pulumi.CustomResource {
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["feedId"] = args ? args.feedId : undefined;
             inputs["feedOutputConfig"] = args ? args.feedOutputConfig : undefined;
-            inputs["feedsId"] = args ? args.feedsId : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["v1Id"] = args ? args.v1Id : undefined;
             inputs["v1Id1"] = args ? args.v1Id1 : undefined;
@@ -128,12 +127,11 @@ export interface FeedArgs {
     /**
      * Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
      */
-    readonly feedId?: pulumi.Input<string>;
+    readonly feedId: pulumi.Input<string>;
     /**
      * Required. Feed output configuration defining where the asset updates are published to.
      */
     readonly feedOutputConfig?: pulumi.Input<inputs.cloudasset.v1.FeedOutputConfigArgs>;
-    readonly feedsId: pulumi.Input<string>;
     /**
      * Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */

@@ -75,16 +75,16 @@ export class BillingAccountBudget extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.billingAccountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'billingAccountsId'");
+            if ((!args || args.billingAccountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'billingAccountId'");
             }
-            if ((!args || args.budgetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'budgetsId'");
+            if ((!args || args.budgetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'budgetId'");
             }
             inputs["amount"] = args ? args.amount : undefined;
-            inputs["billingAccountsId"] = args ? args.billingAccountsId : undefined;
+            inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["budgetFilter"] = args ? args.budgetFilter : undefined;
-            inputs["budgetsId"] = args ? args.budgetsId : undefined;
+            inputs["budgetId"] = args ? args.budgetId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["notificationsRule"] = args ? args.notificationsRule : undefined;
@@ -114,12 +114,12 @@ export interface BillingAccountBudgetArgs {
      * Required. Budgeted amount.
      */
     readonly amount?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountArgs>;
-    readonly billingAccountsId: pulumi.Input<string>;
+    readonly billingAccountId: pulumi.Input<string>;
     /**
      * Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
      */
     readonly budgetFilter?: pulumi.Input<inputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1FilterArgs>;
-    readonly budgetsId: pulumi.Input<string>;
+    readonly budgetId: pulumi.Input<string>;
     /**
      * User data for display name in UI. The name must be less than or equal to 60 characters.
      */

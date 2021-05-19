@@ -91,25 +91,25 @@ export class Agent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["avatarUri"] = args ? args.avatarUri : undefined;
             inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["enableSpellCorrection"] = args ? args.enableSpellCorrection : undefined;
             inputs["enableStackdriverLogging"] = args ? args.enableStackdriverLogging : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
             inputs["startFlow"] = args ? args.startFlow : undefined;
@@ -138,7 +138,7 @@ export class Agent extends pulumi.CustomResource {
  * The set of arguments for constructing a Agent resource.
  */
 export interface AgentArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
      */
@@ -163,12 +163,12 @@ export interface AgentArgs {
      * Indicates if stackdriver logging is enabled for the agent.
      */
     readonly enableStackdriverLogging?: pulumi.Input<boolean>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the agent. Required for the Agents.UpdateAgent method. Agents.CreateAgent populates the name automatically. Format: `projects//locations//agents/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
      */

@@ -58,19 +58,19 @@ export class BrandIdentityAwareProxyClient extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.brandsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'brandsId'");
+            if ((!args || args.brandId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'brandId'");
             }
-            if ((!args || args.identityAwareProxyClientsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'identityAwareProxyClientsId'");
+            if ((!args || args.identityAwareProxyClientId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'identityAwareProxyClientId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["brandsId"] = args ? args.brandsId : undefined;
+            inputs["brandId"] = args ? args.brandId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["identityAwareProxyClientsId"] = args ? args.identityAwareProxyClientsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["identityAwareProxyClientId"] = args ? args.identityAwareProxyClientId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["secret"] = undefined /*out*/;
         } else {
@@ -89,11 +89,11 @@ export class BrandIdentityAwareProxyClient extends pulumi.CustomResource {
  * The set of arguments for constructing a BrandIdentityAwareProxyClient resource.
  */
 export interface BrandIdentityAwareProxyClientArgs {
-    readonly brandsId: pulumi.Input<string>;
+    readonly brandId: pulumi.Input<string>;
     /**
      * Human-friendly name given to the OAuth client.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly identityAwareProxyClientsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly identityAwareProxyClientId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

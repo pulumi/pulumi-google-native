@@ -70,24 +70,20 @@ export class InstanceAppProfile extends pulumi.CustomResource {
             if ((!args || args.appProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'appProfileId'");
             }
-            if ((!args || args.appProfilesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appProfilesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["appProfileId"] = args ? args.appProfileId : undefined;
-            inputs["appProfilesId"] = args ? args.appProfilesId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["ignoreWarnings"] = args ? args.ignoreWarnings : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
+            inputs["instanceId"] = args ? args.instanceId : undefined;
             inputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -108,7 +104,6 @@ export class InstanceAppProfile extends pulumi.CustomResource {
  */
 export interface InstanceAppProfileArgs {
     readonly appProfileId: pulumi.Input<string>;
-    readonly appProfilesId: pulumi.Input<string>;
     /**
      * Long form description of the use case for this AppProfile.
      */
@@ -118,7 +113,7 @@ export interface InstanceAppProfileArgs {
      */
     readonly etag?: pulumi.Input<string>;
     readonly ignoreWarnings?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * Use a multi-cluster routing policy.
      */
@@ -127,7 +122,7 @@ export interface InstanceAppProfileArgs {
      * The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Use a single-cluster routing policy.
      */

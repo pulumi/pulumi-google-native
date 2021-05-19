@@ -66,29 +66,25 @@ export class BucketView extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.bucketsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bucketsId'");
+            if ((!args || args.bucketId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'bucketId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.viewId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'viewId'");
             }
-            if ((!args || args.viewsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'viewsId'");
-            }
-            inputs["bucketsId"] = args ? args.bucketsId : undefined;
+            inputs["bucketId"] = args ? args.bucketId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["viewId"] = args ? args.viewId : undefined;
-            inputs["viewsId"] = args ? args.viewsId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -109,7 +105,7 @@ export class BucketView extends pulumi.CustomResource {
  * The set of arguments for constructing a BucketView resource.
  */
 export interface BucketViewArgs {
-    readonly bucketsId: pulumi.Input<string>;
+    readonly bucketId: pulumi.Input<string>;
     /**
      * Describes this view.
      */
@@ -118,12 +114,11 @@ export interface BucketViewArgs {
      * Filter that restricts which log entries in a bucket are visible in this view. Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log id Example: SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
      */
     readonly filter?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the view. For example "projects/my-project-id/locations/my-location/buckets/my-bucket-id/views/my-view
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly viewId: pulumi.Input<string>;
-    readonly viewsId: pulumi.Input<string>;
 }

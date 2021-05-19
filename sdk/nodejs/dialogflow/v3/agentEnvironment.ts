@@ -67,25 +67,25 @@ export class AgentEnvironment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["versionConfigs"] = args ? args.versionConfigs : undefined;
             inputs["updateTime"] = undefined /*out*/;
         } else {
@@ -106,7 +106,7 @@ export class AgentEnvironment extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentEnvironment resource.
  */
 export interface AgentEnvironmentArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -115,13 +115,13 @@ export interface AgentEnvironmentArgs {
      * Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of the environment. Format: `projects//locations//agents//environments/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
      */

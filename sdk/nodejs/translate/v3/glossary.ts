@@ -75,22 +75,22 @@ export class Glossary extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.glossariesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'glossariesId'");
+            if ((!args || args.glossaryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'glossaryId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["glossariesId"] = args ? args.glossariesId : undefined;
+            inputs["glossaryId"] = args ? args.glossaryId : undefined;
             inputs["inputConfig"] = args ? args.inputConfig : undefined;
             inputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
             inputs["languagePair"] = args ? args.languagePair : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["endTime"] = undefined /*out*/;
             inputs["entryCount"] = undefined /*out*/;
             inputs["submitTime"] = undefined /*out*/;
@@ -114,7 +114,7 @@ export class Glossary extends pulumi.CustomResource {
  * The set of arguments for constructing a Glossary resource.
  */
 export interface GlossaryArgs {
-    readonly glossariesId: pulumi.Input<string>;
+    readonly glossaryId: pulumi.Input<string>;
     /**
      * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
@@ -127,10 +127,10 @@ export interface GlossaryArgs {
      * Used with unidirectional glossaries.
      */
     readonly languagePair?: pulumi.Input<inputs.translate.v3.LanguageCodePairArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

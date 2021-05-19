@@ -82,8 +82,8 @@ export class Job extends pulumi.CustomResource {
             if ((!args || args.jobId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["configuration"] = args ? args.configuration : undefined;
             inputs["etag"] = args ? args.etag : undefined;
@@ -91,7 +91,7 @@ export class Job extends pulumi.CustomResource {
             inputs["jobId"] = args ? args.jobId : undefined;
             inputs["jobReference"] = args ? args.jobReference : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["statistics"] = args ? args.statistics : undefined;
             inputs["status"] = args ? args.status : undefined;
@@ -138,7 +138,7 @@ export interface JobArgs {
      * [Output-only] The type of the resource.
      */
     readonly kind?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [Output-only] A URL that can be used to access this resource again.
      */

@@ -58,8 +58,8 @@ export class DatasetFhirStoreFhir extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
             if ((!args || args.fhirId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fhirId'");
@@ -67,24 +67,24 @@ export class DatasetFhirStoreFhir extends pulumi.CustomResource {
             if ((!args || args.fhirId1 === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'fhirId1'");
             }
-            if ((!args || args.fhirStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'fhirStoresId'");
+            if ((!args || args.fhirStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'fhirStoreId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["contentType"] = args ? args.contentType : undefined;
             inputs["data"] = args ? args.data : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["extensions"] = args ? args.extensions : undefined;
             inputs["fhirId"] = args ? args.fhirId : undefined;
             inputs["fhirId1"] = args ? args.fhirId1 : undefined;
-            inputs["fhirStoresId"] = args ? args.fhirStoresId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["fhirStoreId"] = args ? args.fhirStoreId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["contentType"] = undefined /*out*/;
             inputs["data"] = undefined /*out*/;
@@ -109,14 +109,14 @@ export interface DatasetFhirStoreFhirArgs {
      * The HTTP request/response body as raw binary.
      */
     readonly data?: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     readonly extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
     readonly fhirId: pulumi.Input<string>;
     readonly fhirId1: pulumi.Input<string>;
-    readonly fhirStoresId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly fhirStoreId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

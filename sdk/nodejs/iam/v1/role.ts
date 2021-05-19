@@ -74,20 +74,19 @@ export class Role extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.rolesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rolesId'");
+            if ((!args || args.roleId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'roleId'");
             }
             inputs["deleted"] = args ? args.deleted : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["includedPermissions"] = args ? args.includedPermissions : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
-            inputs["rolesId"] = args ? args.rolesId : undefined;
             inputs["stage"] = args ? args.stage : undefined;
             inputs["title"] = args ? args.title : undefined;
         } else {
@@ -130,12 +129,11 @@ export interface RoleArgs {
      * The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters.
      */
-    readonly roleId?: pulumi.Input<string>;
-    readonly rolesId: pulumi.Input<string>;
+    readonly roleId: pulumi.Input<string>;
     /**
      * The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
      */

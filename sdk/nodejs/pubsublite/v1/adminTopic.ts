@@ -59,25 +59,21 @@ export class AdminTopic extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.topicId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'topicId'");
             }
-            if ((!args || args.topicsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'topicsId'");
-            }
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["partitionConfig"] = args ? args.partitionConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["retentionConfig"] = args ? args.retentionConfig : undefined;
             inputs["topicId"] = args ? args.topicId : undefined;
-            inputs["topicsId"] = args ? args.topicsId : undefined;
         } else {
             inputs["name"] = undefined /*out*/;
             inputs["partitionConfig"] = undefined /*out*/;
@@ -94,7 +90,7 @@ export class AdminTopic extends pulumi.CustomResource {
  * The set of arguments for constructing a AdminTopic resource.
  */
 export interface AdminTopicArgs {
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
      */
@@ -103,11 +99,10 @@ export interface AdminTopicArgs {
      * The settings for this topic's partitions.
      */
     readonly partitionConfig?: pulumi.Input<inputs.pubsublite.v1.PartitionConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The settings for this topic's message retention.
      */
     readonly retentionConfig?: pulumi.Input<inputs.pubsublite.v1.RetentionConfigArgs>;
     readonly topicId: pulumi.Input<string>;
-    readonly topicsId: pulumi.Input<string>;
 }

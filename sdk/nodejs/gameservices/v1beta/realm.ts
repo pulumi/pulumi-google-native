@@ -74,26 +74,22 @@ export class Realm extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.realmId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'realmId'");
             }
-            if ((!args || args.realmsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'realmsId'");
-            }
             inputs["description"] = args ? args.description : undefined;
             inputs["etag"] = args ? args.etag : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["realmId"] = args ? args.realmId : undefined;
-            inputs["realmsId"] = args ? args.realmsId : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -129,14 +125,13 @@ export interface RealmArgs {
      * The labels associated with this realm. Each label is a key-value pair.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly realmId: pulumi.Input<string>;
-    readonly realmsId: pulumi.Input<string>;
     /**
      * Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
      */

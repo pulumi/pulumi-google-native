@@ -70,29 +70,29 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apisId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apisId'");
+            if ((!args || args.apiId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiId'");
             }
-            if ((!args || args.debugsessionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'debugsessionsId'");
+            if ((!args || args.debugsessionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'debugsessionId'");
             }
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.revisionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'revisionsId'");
+            if ((!args || args.revisionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'revisionId'");
             }
-            inputs["apisId"] = args ? args.apisId : undefined;
+            inputs["apiId"] = args ? args.apiId : undefined;
             inputs["count"] = args ? args.count : undefined;
-            inputs["debugsessionsId"] = args ? args.debugsessionsId : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
+            inputs["debugsessionId"] = args ? args.debugsessionId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
             inputs["filter"] = args ? args.filter : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["revisionsId"] = args ? args.revisionsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["revisionId"] = args ? args.revisionId : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
             inputs["tracesize"] = args ? args.tracesize : undefined;
             inputs["validity"] = args ? args.validity : undefined;
@@ -115,13 +115,13 @@ export class OrganizationEnvironmentApiRevisionDebugsession extends pulumi.Custo
  * The set of arguments for constructing a OrganizationEnvironmentApiRevisionDebugsession resource.
  */
 export interface OrganizationEnvironmentApiRevisionDebugsessionArgs {
-    readonly apisId: pulumi.Input<string>;
+    readonly apiId: pulumi.Input<string>;
     /**
      * Optional. The number of request to be traced. Min = 1, Max = 15, Default = 10.
      */
     readonly count?: pulumi.Input<number>;
-    readonly debugsessionsId: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
+    readonly debugsessionId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
     /**
      * Optional. A conditional statement which is evaluated against the request message to determine if it should be traced. Syntax matches that of on API Proxy bundle flow Condition.
      */
@@ -130,8 +130,8 @@ export interface OrganizationEnvironmentApiRevisionDebugsessionArgs {
      * A unique ID for this DebugSession.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly revisionsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly revisionId: pulumi.Input<string>;
     /**
      * Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided.
      */

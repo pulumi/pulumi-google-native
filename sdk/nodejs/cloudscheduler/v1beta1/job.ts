@@ -107,25 +107,25 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobsId'");
+            if ((!args || args.jobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["appEngineHttpTarget"] = args ? args.appEngineHttpTarget : undefined;
             inputs["attemptDeadline"] = args ? args.attemptDeadline : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["httpTarget"] = args ? args.httpTarget : undefined;
-            inputs["jobsId"] = args ? args.jobsId : undefined;
+            inputs["jobId"] = args ? args.jobId : undefined;
             inputs["lastAttemptTime"] = args ? args.lastAttemptTime : undefined;
             inputs["legacyAppEngineCron"] = args ? args.legacyAppEngineCron : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["pubsubTarget"] = args ? args.pubsubTarget : undefined;
             inputs["retryConfig"] = args ? args.retryConfig : undefined;
             inputs["schedule"] = args ? args.schedule : undefined;
@@ -178,7 +178,7 @@ export interface JobArgs {
      * HTTP target.
      */
     readonly httpTarget?: pulumi.Input<inputs.cloudscheduler.v1beta1.HttpTargetArgs>;
-    readonly jobsId: pulumi.Input<string>;
+    readonly jobId: pulumi.Input<string>;
     /**
      * The time the last job attempt started.
      */
@@ -187,12 +187,12 @@ export interface JobArgs {
      * Immutable. This field is used to manage the legacy App Engine Cron jobs using the Cloud Scheduler API. If the field is set to true, the job will be considered a legacy job. Note that App Engine Cron jobs have fewer features than Cloud Scheduler jobs, e.g., are only limited to App Engine targets.
      */
     readonly legacyAppEngineCron?: pulumi.Input<boolean>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/jobs/JOB_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the job's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `JOB_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Pub/Sub target.
      */

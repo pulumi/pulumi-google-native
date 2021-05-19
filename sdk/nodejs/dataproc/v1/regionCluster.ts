@@ -58,7 +58,7 @@ export class RegionCluster extends pulumi.CustomResource {
     /**
      * Required. The Google Cloud Platform project ID that the cluster belongs to.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Cluster status.
      */
@@ -82,8 +82,8 @@ export class RegionCluster extends pulumi.CustomResource {
             if ((!args || args.clusterName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterName'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.region === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'region'");
@@ -91,7 +91,7 @@ export class RegionCluster extends pulumi.CustomResource {
             inputs["clusterName"] = args ? args.clusterName : undefined;
             inputs["config"] = args ? args.config : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["region"] = args ? args.region : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["clusterUuid"] = undefined /*out*/;
@@ -104,7 +104,7 @@ export class RegionCluster extends pulumi.CustomResource {
             inputs["config"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["metrics"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
             inputs["statusHistory"] = undefined /*out*/;
         }
@@ -134,7 +134,7 @@ export interface RegionClusterArgs {
     /**
      * Required. The Google Cloud Platform project ID that the cluster belongs to.
      */
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly region: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
 }

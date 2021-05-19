@@ -67,14 +67,14 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accessLevelsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessLevelsId'");
+            if ((!args || args.accessLevelId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accessLevelId'");
             }
-            if ((!args || args.accessPoliciesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accessPoliciesId'");
+            if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accessPolicyId'");
             }
-            inputs["accessLevelsId"] = args ? args.accessLevelsId : undefined;
-            inputs["accessPoliciesId"] = args ? args.accessPoliciesId : undefined;
+            inputs["accessLevelId"] = args ? args.accessLevelId : undefined;
+            inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["basic"] = args ? args.basic : undefined;
             inputs["custom"] = args ? args.custom : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -98,8 +98,8 @@ export class AccessPolicyAccessLevel extends pulumi.CustomResource {
  * The set of arguments for constructing a AccessPolicyAccessLevel resource.
  */
 export interface AccessPolicyAccessLevelArgs {
-    readonly accessLevelsId: pulumi.Input<string>;
-    readonly accessPoliciesId: pulumi.Input<string>;
+    readonly accessLevelId: pulumi.Input<string>;
+    readonly accessPolicyId: pulumi.Input<string>;
     /**
      * A `BasicLevel` composed of `Conditions`.
      */

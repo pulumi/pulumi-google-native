@@ -115,31 +115,27 @@ export class Service extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
-            }
             inputs["hiveMetastoreConfig"] = args ? args.hiveMetastoreConfig : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
             inputs["metadataIntegration"] = args ? args.metadataIntegration : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
             inputs["port"] = args ? args.port : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["releaseChannel"] = args ? args.releaseChannel : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["tier"] = args ? args.tier : undefined;
             inputs["artifactGcsUri"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
@@ -187,7 +183,7 @@ export interface ServiceArgs {
      * User-defined labels for the metastore service.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
      */
@@ -208,14 +204,13 @@ export interface ServiceArgs {
      * The TCP port at which the metastore service is reached. Default: 9083.
      */
     readonly port?: pulumi.Input<number>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Immutable. The release channel of the service. If unspecified, defaults to STABLE.
      */
     readonly releaseChannel?: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     readonly serviceId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
     /**
      * The tier of the service.
      */

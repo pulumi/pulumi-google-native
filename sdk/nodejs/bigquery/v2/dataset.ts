@@ -107,8 +107,8 @@ export class Dataset extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["access"] = args ? args.access : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
@@ -125,7 +125,7 @@ export class Dataset extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["lastModifiedTime"] = args ? args.lastModifiedTime : undefined;
             inputs["location"] = args ? args.location : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["satisfiesPZS"] = args ? args.satisfiesPZS : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
         } else {
@@ -210,7 +210,7 @@ export interface DatasetArgs {
      * The geographic location where the dataset should reside. The default value is US. See details at https://cloud.google.com/bigquery/docs/locations.
      */
     readonly location?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [Output-only] Reserved for future use.
      */

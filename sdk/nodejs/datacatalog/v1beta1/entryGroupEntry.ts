@@ -99,32 +99,28 @@ export class EntryGroupEntry extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.entriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entriesId'");
-            }
-            if ((!args || args.entryGroupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entryGroupsId'");
+            if ((!args || args.entryGroupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entryGroupId'");
             }
             if ((!args || args.entryId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["bigqueryDateShardedSpec"] = args ? args.bigqueryDateShardedSpec : undefined;
             inputs["bigqueryTableSpec"] = args ? args.bigqueryTableSpec : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["entriesId"] = args ? args.entriesId : undefined;
-            inputs["entryGroupsId"] = args ? args.entryGroupsId : undefined;
+            inputs["entryGroupId"] = args ? args.entryGroupId : undefined;
             inputs["entryId"] = args ? args.entryId : undefined;
             inputs["gcsFilesetSpec"] = args ? args.gcsFilesetSpec : undefined;
             inputs["linkedResource"] = args ? args.linkedResource : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["schema"] = args ? args.schema : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
@@ -174,8 +170,7 @@ export interface EntryGroupEntryArgs {
      * Display information such as title and description. A short name to identify the entry, for example, "Analytics Data - Jan 2011". Default value is an empty string.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly entriesId: pulumi.Input<string>;
-    readonly entryGroupsId: pulumi.Input<string>;
+    readonly entryGroupId: pulumi.Input<string>;
     readonly entryId: pulumi.Input<string>;
     /**
      * Specification that applies to a Cloud Storage fileset. This is only valid on entries of type FILESET.
@@ -185,8 +180,8 @@ export interface EntryGroupEntryArgs {
      * The resource this metadata entry refers to. For Google Cloud Platform resources, `linked_resource` is the [full name of the resource](https://cloud.google.com/apis/design/resource_names#full_resource_name). For example, the `linked_resource` for a table resource from BigQuery is: * //bigquery.googleapis.com/projects/projectId/datasets/datasetId/tables/tableId Output only when Entry is of type in the EntryType enum. For entries with user_specified_type, this field is optional and defaults to an empty string.
      */
     readonly linkedResource?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Schema of the entry. An entry might not have any schema attached to it.
      */

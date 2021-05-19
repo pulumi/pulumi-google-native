@@ -99,23 +99,23 @@ export class Domain extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.domainId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainId'");
+            }
             if ((!args || args.domainName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domainName'");
             }
-            if ((!args || args.domainsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["admin"] = args ? args.admin : undefined;
             inputs["auditLogsEnabled"] = args ? args.auditLogsEnabled : undefined;
             inputs["authorizedNetworks"] = args ? args.authorizedNetworks : undefined;
+            inputs["domainId"] = args ? args.domainId : undefined;
             inputs["domainName"] = args ? args.domainName : undefined;
-            inputs["domainsId"] = args ? args.domainsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["locations"] = args ? args.locations : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["reservedIpRange"] = args ? args.reservedIpRange : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["fqdn"] = undefined /*out*/;
@@ -162,8 +162,8 @@ export interface DomainArgs {
      * Optional. The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) the domain instance is connected to. Networks can be added using UpdateDomain. The domain is only available on networks listed in `authorized_networks`. If CIDR subnets overlap between networks, domain creation will fail.
      */
     readonly authorizedNetworks?: pulumi.Input<pulumi.Input<string>[]>;
+    readonly domainId: pulumi.Input<string>;
     readonly domainName: pulumi.Input<string>;
-    readonly domainsId: pulumi.Input<string>;
     /**
      * Optional. Resource labels that can contain user-provided metadata.
      */
@@ -172,7 +172,7 @@ export interface DomainArgs {
      * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
     readonly locations?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */

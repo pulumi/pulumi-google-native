@@ -95,20 +95,20 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountsId'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.customersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'customersId'");
+            if ((!args || args.customerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'customerId'");
             }
-            if ((!args || args.entitlementsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entitlementsId'");
+            if ((!args || args.entitlementId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entitlementId'");
             }
-            inputs["accountsId"] = args ? args.accountsId : undefined;
+            inputs["accountId"] = args ? args.accountId : undefined;
             inputs["associationInfo"] = args ? args.associationInfo : undefined;
             inputs["commitmentSettings"] = args ? args.commitmentSettings : undefined;
-            inputs["customersId"] = args ? args.customersId : undefined;
-            inputs["entitlementsId"] = args ? args.entitlementsId : undefined;
+            inputs["customerId"] = args ? args.customerId : undefined;
+            inputs["entitlementId"] = args ? args.entitlementId : undefined;
             inputs["offer"] = args ? args.offer : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
             inputs["purchaseOrderId"] = args ? args.purchaseOrderId : undefined;
@@ -145,7 +145,7 @@ export class AccountCustomerEntitlement extends pulumi.CustomResource {
  * The set of arguments for constructing a AccountCustomerEntitlement resource.
  */
 export interface AccountCustomerEntitlementArgs {
-    readonly accountsId: pulumi.Input<string>;
+    readonly accountId: pulumi.Input<string>;
     /**
      * Association information to other entitlements.
      */
@@ -154,8 +154,8 @@ export interface AccountCustomerEntitlementArgs {
      * Commitment settings for a commitment-based Offer. Required for commitment based offers.
      */
     readonly commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
-    readonly customersId: pulumi.Input<string>;
-    readonly entitlementsId: pulumi.Input<string>;
+    readonly customerId: pulumi.Input<string>;
+    readonly entitlementId: pulumi.Input<string>;
     /**
      * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */

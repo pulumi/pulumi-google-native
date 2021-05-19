@@ -79,14 +79,14 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.accountsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'accountsId'");
+            if ((!args || args.accountId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'accountId'");
             }
-            if ((!args || args.channelPartnerLinksId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'channelPartnerLinksId'");
+            if ((!args || args.channelPartnerLinkId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'channelPartnerLinkId'");
             }
-            inputs["accountsId"] = args ? args.accountsId : undefined;
-            inputs["channelPartnerLinksId"] = args ? args.channelPartnerLinksId : undefined;
+            inputs["accountId"] = args ? args.accountId : undefined;
+            inputs["channelPartnerLinkId"] = args ? args.channelPartnerLinkId : undefined;
             inputs["linkState"] = args ? args.linkState : undefined;
             inputs["resellerCloudIdentityId"] = args ? args.resellerCloudIdentityId : undefined;
             inputs["channelPartnerCloudIdentityInfo"] = undefined /*out*/;
@@ -116,8 +116,8 @@ export class AccountChannelPartnerLink extends pulumi.CustomResource {
  * The set of arguments for constructing a AccountChannelPartnerLink resource.
  */
 export interface AccountChannelPartnerLinkArgs {
-    readonly accountsId: pulumi.Input<string>;
-    readonly channelPartnerLinksId: pulumi.Input<string>;
+    readonly accountId: pulumi.Input<string>;
+    readonly channelPartnerLinkId: pulumi.Input<string>;
     /**
      * Required. State of the channel partner link.
      */

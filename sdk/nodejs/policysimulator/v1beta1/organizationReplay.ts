@@ -63,19 +63,19 @@ export class OrganizationReplay extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.replaysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'replaysId'");
+            if ((!args || args.replayId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'replayId'");
             }
             inputs["config"] = args ? args.config : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["replaysId"] = args ? args.replaysId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["replayId"] = args ? args.replayId : undefined;
             inputs["name"] = undefined /*out*/;
             inputs["resultsSummary"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -100,7 +100,7 @@ export interface OrganizationReplayArgs {
      * Required. The configuration used for the `Replay`.
      */
     readonly config?: pulumi.Input<inputs.policysimulator.v1beta1.GoogleCloudPolicysimulatorV1beta1ReplayConfigArgs>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly replaysId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly replayId: pulumi.Input<string>;
 }

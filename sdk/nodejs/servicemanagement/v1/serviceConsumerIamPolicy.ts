@@ -63,17 +63,17 @@ export class ServiceConsumerIamPolicy extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.consumersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consumersId'");
+            if ((!args || args.consumerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consumerId'");
             }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["auditConfigs"] = args ? args.auditConfigs : undefined;
             inputs["bindings"] = args ? args.bindings : undefined;
-            inputs["consumersId"] = args ? args.consumersId : undefined;
+            inputs["consumerId"] = args ? args.consumerId : undefined;
             inputs["etag"] = args ? args.etag : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["updateMask"] = args ? args.updateMask : undefined;
             inputs["version"] = args ? args.version : undefined;
         } else {
@@ -101,12 +101,12 @@ export interface ServiceConsumerIamPolicyArgs {
      * Associates a list of `members` to a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one member.
      */
     readonly bindings?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.BindingArgs>[]>;
-    readonly consumersId: pulumi.Input<string>;
+    readonly consumerId: pulumi.Input<string>;
     /**
      * `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      */
     readonly etag?: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
     /**
      * OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
      */

@@ -123,17 +123,17 @@ export class OrganizationApiproductRateplan extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apiproductsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiproductsId'");
+            if ((!args || args.apiproductId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiproductId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.rateplansId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'rateplansId'");
+            if ((!args || args.rateplanId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'rateplanId'");
             }
             inputs["apiproduct"] = args ? args.apiproduct : undefined;
-            inputs["apiproductsId"] = args ? args.apiproductsId : undefined;
+            inputs["apiproductId"] = args ? args.apiproductId : undefined;
             inputs["billingPeriod"] = args ? args.billingPeriod : undefined;
             inputs["consumptionPricingRates"] = args ? args.consumptionPricingRates : undefined;
             inputs["consumptionPricingType"] = args ? args.consumptionPricingType : undefined;
@@ -143,9 +143,9 @@ export class OrganizationApiproductRateplan extends pulumi.CustomResource {
             inputs["endTime"] = args ? args.endTime : undefined;
             inputs["fixedFeeFrequency"] = args ? args.fixedFeeFrequency : undefined;
             inputs["fixedRecurringFee"] = args ? args.fixedRecurringFee : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["paymentFundingModel"] = args ? args.paymentFundingModel : undefined;
-            inputs["rateplansId"] = args ? args.rateplansId : undefined;
+            inputs["rateplanId"] = args ? args.rateplanId : undefined;
             inputs["revenueShareRates"] = args ? args.revenueShareRates : undefined;
             inputs["revenueShareType"] = args ? args.revenueShareType : undefined;
             inputs["setupFee"] = args ? args.setupFee : undefined;
@@ -190,7 +190,7 @@ export interface OrganizationApiproductRateplanArgs {
      * Name of the API product that the rate plan is associated with.
      */
     readonly apiproduct?: pulumi.Input<string>;
-    readonly apiproductsId: pulumi.Input<string>;
+    readonly apiproductId: pulumi.Input<string>;
     /**
      * Frequency at which the customer will be billed.
      */
@@ -227,12 +227,12 @@ export interface OrganizationApiproductRateplanArgs {
      * Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
      */
     readonly fixedRecurringFee?: pulumi.Input<inputs.apigee.v1.GoogleTypeMoneyArgs>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Flag that specifies the billing account type, prepaid or postpaid.
      */
     readonly paymentFundingModel?: pulumi.Input<string>;
-    readonly rateplansId: pulumi.Input<string>;
+    readonly rateplanId: pulumi.Input<string>;
     /**
      * Details of the revenue sharing model.
      */

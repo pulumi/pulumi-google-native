@@ -59,29 +59,29 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.flowsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'flowsId'");
+            if ((!args || args.flowId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'flowId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.transitionRouteGroupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transitionRouteGroupsId'");
+            if ((!args || args.transitionRouteGroupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'transitionRouteGroupId'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["flowsId"] = args ? args.flowsId : undefined;
+            inputs["flowId"] = args ? args.flowId : undefined;
             inputs["languageCode"] = args ? args.languageCode : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["transitionRouteGroupsId"] = args ? args.transitionRouteGroupsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["transitionRouteGroupId"] = args ? args.transitionRouteGroupId : undefined;
             inputs["transitionRoutes"] = args ? args.transitionRoutes : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
@@ -99,20 +99,20 @@ export class AgentFlowTransitionRouteGroup extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentFlowTransitionRouteGroup resource.
  */
 export interface AgentFlowTransitionRouteGroupArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly flowsId: pulumi.Input<string>;
+    readonly flowId: pulumi.Input<string>;
     readonly languageCode?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly transitionRouteGroupsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly transitionRouteGroupId: pulumi.Input<string>;
     /**
      * Transition routes associated with the TransitionRouteGroup.
      */

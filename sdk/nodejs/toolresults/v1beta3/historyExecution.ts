@@ -85,8 +85,8 @@ export class HistoryExecution extends pulumi.CustomResource {
             if ((!args || args.historyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'historyId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["completionTime"] = args ? args.completionTime : undefined;
             inputs["creationTime"] = args ? args.creationTime : undefined;
@@ -94,7 +94,7 @@ export class HistoryExecution extends pulumi.CustomResource {
             inputs["executionId"] = args ? args.executionId : undefined;
             inputs["historyId"] = args ? args.historyId : undefined;
             inputs["outcome"] = args ? args.outcome : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["specification"] = args ? args.specification : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -141,7 +141,7 @@ export interface HistoryExecutionArgs {
      * Classify the result, for example into SUCCESS or FAILURE - In response: present if set by create/update request - In create/update request: optional
      */
     readonly outcome?: pulumi.Input<inputs.toolresults.v1beta3.OutcomeArgs>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * Lightweight information about execution request. - In response: present if set by create - In create: optional - In update: optional

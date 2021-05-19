@@ -94,19 +94,15 @@ export class Connector extends pulumi.CustomResource {
             if ((!args || args.connectorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectorId'");
             }
-            if ((!args || args.connectorsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectorsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["connectorId"] = args ? args.connectorId : undefined;
-            inputs["connectorsId"] = args ? args.connectorsId : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["machineType"] = args ? args.machineType : undefined;
             inputs["maxInstances"] = args ? args.maxInstances : undefined;
             inputs["maxThroughput"] = args ? args.maxThroughput : undefined;
@@ -114,7 +110,7 @@ export class Connector extends pulumi.CustomResource {
             inputs["minThroughput"] = args ? args.minThroughput : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["subnet"] = args ? args.subnet : undefined;
             inputs["connectedProjects"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
@@ -143,12 +139,11 @@ export class Connector extends pulumi.CustomResource {
  */
 export interface ConnectorArgs {
     readonly connectorId: pulumi.Input<string>;
-    readonly connectorsId: pulumi.Input<string>;
     /**
      * The range of internal addresses that follows RFC 4632 notation. Example: `10.132.0.0/28`.
      */
     readonly ipCidrRange?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Machine type of VM Instance underlying connector. Default is e2-micro
      */
@@ -177,7 +172,7 @@ export interface ConnectorArgs {
      * Name of a VPC network.
      */
     readonly network?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The subnet in which to house the VPC Access Connector.
      */

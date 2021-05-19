@@ -75,7 +75,7 @@ export class App extends pulumi.CustomResource {
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
-    public readonly locationId!: pulumi.Output<string>;
+    public readonly location!: pulumi.Output<string>;
     /**
      * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
      */
@@ -96,10 +96,10 @@ export class App extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            inputs["appsId"] = args ? args.appsId : undefined;
+            inputs["appId"] = args ? args.appId : undefined;
             inputs["authDomain"] = args ? args.authDomain : undefined;
             inputs["codeBucket"] = args ? args.codeBucket : undefined;
             inputs["databaseType"] = args ? args.databaseType : undefined;
@@ -111,7 +111,7 @@ export class App extends pulumi.CustomResource {
             inputs["gcrDomain"] = args ? args.gcrDomain : undefined;
             inputs["iap"] = args ? args.iap : undefined;
             inputs["id"] = args ? args.id : undefined;
-            inputs["locationId"] = args ? args.locationId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["servingStatus"] = args ? args.servingStatus : undefined;
         } else {
@@ -125,7 +125,7 @@ export class App extends pulumi.CustomResource {
             inputs["featureSettings"] = undefined /*out*/;
             inputs["gcrDomain"] = undefined /*out*/;
             inputs["iap"] = undefined /*out*/;
-            inputs["locationId"] = undefined /*out*/;
+            inputs["location"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["servingStatus"] = undefined /*out*/;
         }
@@ -140,7 +140,7 @@ export class App extends pulumi.CustomResource {
  * The set of arguments for constructing a App resource.
  */
 export interface AppArgs {
-    readonly appsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
     /**
      * Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
      */
@@ -185,7 +185,7 @@ export interface AppArgs {
     /**
      * Location from which this application runs. Application instances run out of the data centers in the specified location, which is also where all of the application's end user content is stored.Defaults to us-central.View the list of supported locations (https://cloud.google.com/appengine/docs/locations).
      */
-    readonly locationId?: pulumi.Input<string>;
+    readonly location?: pulumi.Input<string>;
     /**
      * Full path to the Application resource in the API. Example: apps/myapp.@OutputOnly
      */

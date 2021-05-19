@@ -87,20 +87,20 @@ export class DlpJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.dlpJobsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dlpJobsId'");
+            if ((!args || args.dlpJobId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dlpJobId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["dlpJobsId"] = args ? args.dlpJobsId : undefined;
+            inputs["dlpJobId"] = args ? args.dlpJobId : undefined;
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
             inputs["jobId"] = args ? args.jobId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["riskJob"] = args ? args.riskJob : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["endTime"] = undefined /*out*/;
@@ -135,7 +135,7 @@ export class DlpJob extends pulumi.CustomResource {
  * The set of arguments for constructing a DlpJob resource.
  */
 export interface DlpJobArgs {
-    readonly dlpJobsId: pulumi.Input<string>;
+    readonly dlpJobId: pulumi.Input<string>;
     /**
      * An inspection job scans a storage repository for InfoTypes.
      */
@@ -144,8 +144,8 @@ export interface DlpJobArgs {
      * The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */
     readonly jobId?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A risk analysis job calculates re-identification risk metrics for a BigQuery table.
      */

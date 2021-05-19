@@ -59,26 +59,22 @@ export class DatasetDicomStore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.dicomStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'dicomStoresId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["dicomStoreId"] = args ? args.dicomStoreId : undefined;
-            inputs["dicomStoresId"] = args ? args.dicomStoresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
         } else {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -95,14 +91,13 @@ export class DatasetDicomStore extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetDicomStore resource.
  */
 export interface DatasetDicomStoreArgs {
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     readonly dicomStoreId?: pulumi.Input<string>;
-    readonly dicomStoresId: pulumi.Input<string>;
     /**
      * User-supplied key-value pairs used to organize DICOM stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`.
      */
@@ -111,5 +106,5 @@ export interface DatasetDicomStoreArgs {
      * Notification destination for new DICOM instances. Supplied by the client.
      */
     readonly notificationConfig?: pulumi.Input<inputs.healthcare.v1.NotificationConfigArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

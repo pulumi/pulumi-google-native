@@ -67,21 +67,20 @@ export class OrganizationSiteApicategory extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apicategoriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apicategoriesId'");
+            if ((!args || args.apicategoryId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apicategoryId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.sitesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sitesId'");
+            if ((!args || args.siteId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'siteId'");
             }
-            inputs["apicategoriesId"] = args ? args.apicategoriesId : undefined;
+            inputs["apicategoryId"] = args ? args.apicategoryId : undefined;
             inputs["id"] = args ? args.id : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["siteId"] = args ? args.siteId : undefined;
-            inputs["sitesId"] = args ? args.sitesId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["data"] = undefined /*out*/;
             inputs["errorCode"] = undefined /*out*/;
@@ -106,7 +105,7 @@ export class OrganizationSiteApicategory extends pulumi.CustomResource {
  * The set of arguments for constructing a OrganizationSiteApicategory resource.
  */
 export interface OrganizationSiteApicategoryArgs {
-    readonly apicategoriesId: pulumi.Input<string>;
+    readonly apicategoryId: pulumi.Input<string>;
     /**
      * ID of the category (a UUID).
      */
@@ -115,12 +114,11 @@ export interface OrganizationSiteApicategoryArgs {
      * Name of the category.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Name of the portal.
      */
-    readonly siteId?: pulumi.Input<string>;
-    readonly sitesId: pulumi.Input<string>;
+    readonly siteId: pulumi.Input<string>;
     /**
      * Time the category was last modified in milliseconds since epoch.
      */

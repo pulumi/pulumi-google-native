@@ -53,7 +53,7 @@ export class WebApp extends pulumi.CustomResource {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
      */
@@ -70,26 +70,25 @@ export class WebApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webAppsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'webAppsId'");
+            if ((!args || args.webAppId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'webAppId'");
             }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["appUrls"] = args ? args.appUrls : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["webAppsId"] = args ? args.webAppsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["webAppId"] = args ? args.webAppId : undefined;
             inputs["webId"] = undefined /*out*/;
         } else {
             inputs["appId"] = undefined /*out*/;
             inputs["appUrls"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["webId"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -122,7 +121,6 @@ export interface WebAppArgs {
     /**
      * Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly webAppsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly webAppId: pulumi.Input<string>;
 }

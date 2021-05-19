@@ -50,7 +50,7 @@ export class Index extends pulumi.CustomResource {
     /**
      * Project ID.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Required. An ordered sequence of property names and their index attributes.
      */
@@ -74,20 +74,20 @@ export class Index extends pulumi.CustomResource {
             if ((!args || args.indexId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'indexId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["ancestor"] = args ? args.ancestor : undefined;
             inputs["indexId"] = args ? args.indexId : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["properties"] = args ? args.properties : undefined;
             inputs["state"] = undefined /*out*/;
         } else {
             inputs["ancestor"] = undefined /*out*/;
             inputs["indexId"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["properties"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
@@ -111,7 +111,7 @@ export interface IndexArgs {
      * Required. The entity kind to which this index applies.
      */
     readonly kind?: pulumi.Input<string>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. An ordered sequence of property names and their index attributes.
      */

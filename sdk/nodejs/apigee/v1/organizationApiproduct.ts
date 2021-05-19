@@ -108,14 +108,14 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.apiproductsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'apiproductsId'");
+            if ((!args || args.apiproductId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'apiproductId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["apiResources"] = args ? args.apiResources : undefined;
-            inputs["apiproductsId"] = args ? args.apiproductsId : undefined;
+            inputs["apiproductId"] = args ? args.apiproductId : undefined;
             inputs["approvalType"] = args ? args.approvalType : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["createdAt"] = args ? args.createdAt : undefined;
@@ -126,7 +126,7 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
             inputs["lastModifiedAt"] = args ? args.lastModifiedAt : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["operationGroup"] = args ? args.operationGroup : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["proxies"] = args ? args.proxies : undefined;
             inputs["quota"] = args ? args.quota : undefined;
             inputs["quotaInterval"] = args ? args.quotaInterval : undefined;
@@ -162,7 +162,7 @@ export class OrganizationApiproduct extends pulumi.CustomResource {
  */
 export interface OrganizationApiproductArgs {
     readonly apiResources?: pulumi.Input<pulumi.Input<string>[]>;
-    readonly apiproductsId: pulumi.Input<string>;
+    readonly apiproductId: pulumi.Input<string>;
     /**
      * Flag that specifies how API keys are approved to access the APIs defined by the API product. If set to `manual`, the consumer key is generated and returned in "pending" state. In this case, the API keys won't work until they have been explicitly approved. If set to `auto`, the consumer key is generated and returned in "approved" state and can be used immediately. **Note:** Typically, `auto` is used to provide access to free or trial API products that provide limited quota or capabilities.
      */
@@ -203,7 +203,7 @@ export interface OrganizationApiproductArgs {
      * Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
      */
     readonly operationGroup?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1OperationGroupArgs>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
      */

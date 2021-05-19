@@ -67,27 +67,27 @@ export class AgentWebhook extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.agentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'agentsId'");
+            if ((!args || args.agentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.webhooksId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'webhooksId'");
+            if ((!args || args.webhookId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'webhookId'");
             }
-            inputs["agentsId"] = args ? args.agentsId : undefined;
+            inputs["agentId"] = args ? args.agentId : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["genericWebService"] = args ? args.genericWebService : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["timeout"] = args ? args.timeout : undefined;
-            inputs["webhooksId"] = args ? args.webhooksId : undefined;
+            inputs["webhookId"] = args ? args.webhookId : undefined;
         } else {
             inputs["disabled"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -106,7 +106,7 @@ export class AgentWebhook extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentWebhook resource.
  */
 export interface AgentWebhookArgs {
-    readonly agentsId: pulumi.Input<string>;
+    readonly agentId: pulumi.Input<string>;
     /**
      * Indicates whether the webhook is disabled.
      */
@@ -119,15 +119,15 @@ export interface AgentWebhookArgs {
      * Configuration for a generic web service.
      */
     readonly genericWebService?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
      */
     readonly timeout?: pulumi.Input<string>;
-    readonly webhooksId: pulumi.Input<string>;
+    readonly webhookId: pulumi.Input<string>;
 }

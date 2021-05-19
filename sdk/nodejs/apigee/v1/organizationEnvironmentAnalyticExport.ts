@@ -83,23 +83,23 @@ export class OrganizationEnvironmentAnalyticExport extends pulumi.CustomResource
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.environmentsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'environmentsId'");
+            if ((!args || args.environmentId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.exportsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'exportsId'");
+            if ((!args || args.exportId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'exportId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["csvDelimiter"] = args ? args.csvDelimiter : undefined;
             inputs["datastoreName"] = args ? args.datastoreName : undefined;
             inputs["dateRange"] = args ? args.dateRange : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["environmentsId"] = args ? args.environmentsId : undefined;
-            inputs["exportsId"] = args ? args.exportsId : undefined;
+            inputs["environmentId"] = args ? args.environmentId : undefined;
+            inputs["exportId"] = args ? args.exportId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["outputFormat"] = args ? args.outputFormat : undefined;
             inputs["created"] = undefined /*out*/;
             inputs["error"] = undefined /*out*/;
@@ -145,13 +145,13 @@ export interface OrganizationEnvironmentAnalyticExportArgs {
      * Optional. Description of the export job.
      */
     readonly description?: pulumi.Input<string>;
-    readonly environmentsId: pulumi.Input<string>;
-    readonly exportsId: pulumi.Input<string>;
+    readonly environmentId: pulumi.Input<string>;
+    readonly exportId: pulumi.Input<string>;
     /**
      * Required. Display name of the export job.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
      */

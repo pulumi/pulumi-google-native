@@ -67,20 +67,19 @@ export class Instance extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.instancesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'instancesId'");
+            if ((!args || args.instanceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["featurePolicy"] = args ? args.featurePolicy : undefined;
             inputs["instanceId"] = args ? args.instanceId : undefined;
-            inputs["instancesId"] = args ? args.instancesId : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["loggingEnabled"] = args ? args.loggingEnabled : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["state"] = args ? args.state : undefined;
         } else {
             inputs["featurePolicy"] = undefined /*out*/;
@@ -107,8 +106,7 @@ export interface InstanceArgs {
     /**
      * ID of the created instance. A valid `instance_id` must: be 6-50 characters long, contain only lowercase letters, digits, hyphens and underscores, start with a lowercase letter, and end with a lowercase letter or a digit.
      */
-    readonly instanceId?: pulumi.Input<string>;
-    readonly instancesId: pulumi.Input<string>;
+    readonly instanceId: pulumi.Input<string>;
     /**
      * The location is a GCP region. Currently only `us-central1` is supported.
      */
@@ -125,7 +123,7 @@ export interface InstanceArgs {
      * Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
      */
     readonly parent?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * State of the instance.
      */

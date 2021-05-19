@@ -66,19 +66,19 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupsId'");
+            if ((!args || args.groupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["filter"] = args ? args.filter : undefined;
-            inputs["groupsId"] = args ? args.groupsId : undefined;
+            inputs["groupId"] = args ? args.groupId : undefined;
             inputs["isCluster"] = args ? args.isCluster : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parentName"] = args ? args.parentName : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             inputs["displayName"] = undefined /*out*/;
@@ -106,7 +106,7 @@ export interface GroupArgs {
      * The filter used to determine which monitored resources belong to this group.
      */
     readonly filter?: pulumi.Input<string>;
-    readonly groupsId: pulumi.Input<string>;
+    readonly groupId: pulumi.Input<string>;
     /**
      * If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
      */
@@ -119,6 +119,6 @@ export interface GroupArgs {
      * The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
      */
     readonly parentName?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly validateOnly?: pulumi.Input<string>;
 }

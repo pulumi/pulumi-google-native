@@ -62,7 +62,7 @@ export class Pipeline extends pulumi.CustomResource {
     /**
      * Required. The project in which to create the pipeline. The caller must have WRITE access.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */
@@ -88,7 +88,7 @@ export class Pipeline extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["outputParameters"] = args ? args.outputParameters : undefined;
             inputs["pipelineId"] = args ? args.pipelineId : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["resources"] = args ? args.resources : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -97,7 +97,7 @@ export class Pipeline extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
             inputs["outputParameters"] = undefined /*out*/;
             inputs["pipelineId"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["resources"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -138,7 +138,7 @@ export interface PipelineArgs {
     /**
      * Required. The project in which to create the pipeline. The caller must have WRITE access.
      */
-    readonly projectId?: pulumi.Input<string>;
+    readonly project?: pulumi.Input<string>;
     /**
      * Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */

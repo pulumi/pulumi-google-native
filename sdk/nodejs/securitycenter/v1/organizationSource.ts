@@ -62,18 +62,18 @@ export class OrganizationSource extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.sourcesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sourcesId'");
+            if ((!args || args.sourceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceId'");
             }
             inputs["canonicalName"] = args ? args.canonicalName : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
-            inputs["sourcesId"] = args ? args.sourcesId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
+            inputs["sourceId"] = args ? args.sourceId : undefined;
         } else {
             inputs["canonicalName"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
@@ -107,6 +107,6 @@ export interface OrganizationSourceArgs {
      * The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
-    readonly sourcesId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
+    readonly sourceId: pulumi.Input<string>;
 }

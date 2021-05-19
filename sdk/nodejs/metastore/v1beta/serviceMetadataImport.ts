@@ -71,30 +71,26 @@ export class ServiceMetadataImport extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
             if ((!args || args.metadataImportId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataImportId'");
             }
-            if ((!args || args.metadataImportsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadataImportsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
+            if ((!args || args.serviceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serviceId'");
             }
             inputs["databaseDump"] = args ? args.databaseDump : undefined;
             inputs["description"] = args ? args.description : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadataImportId"] = args ? args.metadataImportId : undefined;
-            inputs["metadataImportsId"] = args ? args.metadataImportsId : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
+            inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
@@ -125,14 +121,13 @@ export interface ServiceMetadataImportArgs {
      * The description of the metadata import.
      */
     readonly description?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     readonly metadataImportId: pulumi.Input<string>;
-    readonly metadataImportsId: pulumi.Input<string>;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
+    readonly serviceId: pulumi.Input<string>;
 }

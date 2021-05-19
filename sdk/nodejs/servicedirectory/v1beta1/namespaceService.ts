@@ -59,28 +59,24 @@ export class NamespaceService extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.namespacesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'namespacesId'");
+            if ((!args || args.namespaceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'namespaceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.serviceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'serviceId'");
             }
-            if ((!args || args.servicesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'servicesId'");
-            }
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["namespacesId"] = args ? args.namespacesId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["namespaceId"] = args ? args.namespaceId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
-            inputs["servicesId"] = args ? args.servicesId : undefined;
             inputs["endpoints"] = undefined /*out*/;
         } else {
             inputs["endpoints"] = undefined /*out*/;
@@ -98,7 +94,7 @@ export class NamespaceService extends pulumi.CustomResource {
  * The set of arguments for constructing a NamespaceService resource.
  */
 export interface NamespaceServiceArgs {
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Metadata for the service. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
      */
@@ -107,8 +103,7 @@ export interface NamespaceServiceArgs {
      * Immutable. The resource name for the service in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly namespacesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly namespaceId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly serviceId: pulumi.Input<string>;
-    readonly servicesId: pulumi.Input<string>;
 }

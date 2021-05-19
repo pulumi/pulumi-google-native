@@ -58,25 +58,25 @@ export class AgentSessionContext extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.contextsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'contextsId'");
+            if ((!args || args.contextId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'contextId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.sessionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sessionsId'");
+            if ((!args || args.sessionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sessionId'");
             }
-            inputs["contextsId"] = args ? args.contextsId : undefined;
+            inputs["contextId"] = args ? args.contextId : undefined;
             inputs["lifespanCount"] = args ? args.lifespanCount : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["parameters"] = args ? args.parameters : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["sessionsId"] = args ? args.sessionsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
+            inputs["sessionId"] = args ? args.sessionId : undefined;
         } else {
             inputs["lifespanCount"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -93,12 +93,12 @@ export class AgentSessionContext extends pulumi.CustomResource {
  * The set of arguments for constructing a AgentSessionContext resource.
  */
 export interface AgentSessionContextArgs {
-    readonly contextsId: pulumi.Input<string>;
+    readonly contextId: pulumi.Input<string>;
     /**
      * Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
      */
     readonly lifespanCount?: pulumi.Input<number>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
      */
@@ -107,6 +107,6 @@ export interface AgentSessionContextArgs {
      * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
      */
     readonly parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly sessionsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
+    readonly sessionId: pulumi.Input<string>;
 }

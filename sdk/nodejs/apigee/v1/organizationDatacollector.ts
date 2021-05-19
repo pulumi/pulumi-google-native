@@ -66,17 +66,17 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datacollectorsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datacollectorsId'");
+            if ((!args || args.datacollectorId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datacollectorId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["dataCollectorId"] = args ? args.dataCollectorId : undefined;
-            inputs["datacollectorsId"] = args ? args.datacollectorsId : undefined;
+            inputs["datacollectorId"] = args ? args.datacollectorId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["createdAt"] = undefined /*out*/;
             inputs["lastModifiedAt"] = undefined /*out*/;
@@ -99,7 +99,7 @@ export class OrganizationDatacollector extends pulumi.CustomResource {
  */
 export interface OrganizationDatacollectorArgs {
     readonly dataCollectorId?: pulumi.Input<string>;
-    readonly datacollectorsId: pulumi.Input<string>;
+    readonly datacollectorId: pulumi.Input<string>;
     /**
      * A description of the data collector.
      */
@@ -108,7 +108,7 @@ export interface OrganizationDatacollectorArgs {
      * ID of the data collector. Must begin with `dc_`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Immutable. The type of data this data collector will collect.
      */

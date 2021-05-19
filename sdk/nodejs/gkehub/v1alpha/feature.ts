@@ -87,17 +87,13 @@ export class Feature extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.featuresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'featuresId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["featureId"] = args ? args.featureId : undefined;
-            inputs["featuresId"] = args ? args.featuresId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["membershipSpecs"] = args ? args.membershipSpecs : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -131,7 +127,6 @@ export class Feature extends pulumi.CustomResource {
  */
 export interface FeatureArgs {
     readonly featureId?: pulumi.Input<string>;
-    readonly featuresId: pulumi.Input<string>;
     /**
      * GCP labels for this Feature.
      */
@@ -140,7 +135,7 @@ export interface FeatureArgs {
      * Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
      */
     readonly membershipSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.

@@ -83,29 +83,29 @@ export class OrganizationDeveloperAppKey extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.developersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'developersId'");
+            if ((!args || args.developerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'developerId'");
             }
-            if ((!args || args.keysId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'keysId'");
+            if ((!args || args.keyId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'keyId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["apiProducts"] = args ? args.apiProducts : undefined;
-            inputs["appsId"] = args ? args.appsId : undefined;
+            inputs["appId"] = args ? args.appId : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["consumerKey"] = args ? args.consumerKey : undefined;
             inputs["consumerSecret"] = args ? args.consumerSecret : undefined;
-            inputs["developersId"] = args ? args.developersId : undefined;
+            inputs["developerId"] = args ? args.developerId : undefined;
             inputs["expiresAt"] = args ? args.expiresAt : undefined;
             inputs["expiresInSeconds"] = args ? args.expiresInSeconds : undefined;
             inputs["issuedAt"] = args ? args.issuedAt : undefined;
-            inputs["keysId"] = args ? args.keysId : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["keyId"] = args ? args.keyId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["scopes"] = args ? args.scopes : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -134,7 +134,7 @@ export interface OrganizationDeveloperAppKeyArgs {
      * List of API products for which the credential can be used. **Note**: Do not specify the list of API products when creating a consumer key and secret for a developer app. Instead, use the UpdateDeveloperAppKey API to make the association after the consumer key and secret are created.
      */
     readonly apiProducts?: pulumi.Input<any[]>;
-    readonly appsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
     /**
      * List of attributes associated with the credential.
      */
@@ -147,7 +147,7 @@ export interface OrganizationDeveloperAppKeyArgs {
      * Secret key.
      */
     readonly consumerSecret?: pulumi.Input<string>;
-    readonly developersId: pulumi.Input<string>;
+    readonly developerId: pulumi.Input<string>;
     /**
      * Time the developer app expires in milliseconds since epoch.
      */
@@ -160,8 +160,8 @@ export interface OrganizationDeveloperAppKeyArgs {
      * Time the developer app was created in milliseconds since epoch.
      */
     readonly issuedAt?: pulumi.Input<string>;
-    readonly keysId: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly keyId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Scopes to apply to the app. The specified scope names must already be defined for the API product that you associate with the app.
      */

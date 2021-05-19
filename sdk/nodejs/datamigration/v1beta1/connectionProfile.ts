@@ -90,24 +90,20 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
-            if ((!args || args.connectionProfilesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'connectionProfilesId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["cloudsql"] = args ? args.cloudsql : undefined;
             inputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
-            inputs["connectionProfilesId"] = args ? args.connectionProfilesId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["mysql"] = args ? args.mysql : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["provider"] = args ? args.provider : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["state"] = args ? args.state : undefined;
@@ -142,7 +138,6 @@ export interface ConnectionProfileArgs {
      */
     readonly cloudsql?: pulumi.Input<inputs.datamigration.v1beta1.CloudSqlConnectionProfileArgs>;
     readonly connectionProfileId: pulumi.Input<string>;
-    readonly connectionProfilesId: pulumi.Input<string>;
     /**
      * The connection profile display name.
      */
@@ -151,7 +146,7 @@ export interface ConnectionProfileArgs {
      * The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * A MySQL database connection profile.
      */
@@ -160,7 +155,7 @@ export interface ConnectionProfileArgs {
      * The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The database provider.
      */

@@ -67,22 +67,22 @@ export class Domainmapping extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.domainmappingsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domainmappingsId'");
+            if ((!args || args.domainmappingId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainmappingId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["apiVersion"] = args ? args.apiVersion : undefined;
-            inputs["domainmappingsId"] = args ? args.domainmappingsId : undefined;
+            inputs["domainmappingId"] = args ? args.domainmappingId : undefined;
             inputs["dryRun"] = args ? args.dryRun : undefined;
             inputs["kind"] = args ? args.kind : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["spec"] = args ? args.spec : undefined;
             inputs["status"] = args ? args.status : undefined;
         } else {
@@ -107,18 +107,18 @@ export interface DomainmappingArgs {
      * The API version for this call such as "domains.cloudrun.com/v1".
      */
     readonly apiVersion?: pulumi.Input<string>;
-    readonly domainmappingsId: pulumi.Input<string>;
+    readonly domainmappingId: pulumi.Input<string>;
     readonly dryRun?: pulumi.Input<string>;
     /**
      * The kind of resource, in this case "DomainMapping".
      */
     readonly kind?: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Metadata associated with this BuildTemplate.
      */
     readonly metadata?: pulumi.Input<inputs.run.v1.ObjectMetaArgs>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * The spec for this DomainMapping.
      */

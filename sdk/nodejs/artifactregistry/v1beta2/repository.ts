@@ -74,24 +74,20 @@ export class Repository extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
-            }
-            if ((!args || args.repositoriesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'repositoriesId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["format"] = args ? args.format : undefined;
             inputs["kmsKeyName"] = args ? args.kmsKeyName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
-            inputs["repositoriesId"] = args ? args.repositoriesId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["repositoryId"] = args ? args.repositoryId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
         } else {
@@ -134,13 +130,12 @@ export interface RepositoryArgs {
      * Labels with user-defined metadata. This field may contain up to 64 entries. Label keys and values may be no longer than 63 characters. Label keys must begin with a lowercase letter and may only contain lowercase letters, numeric characters, underscores, and dashes.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The name of the repository, for example: "projects/p1/locations/us-central1/repositories/repo1".
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
-    readonly repositoriesId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly repositoryId?: pulumi.Input<string>;
     /**
      * The time when the repository was last updated.

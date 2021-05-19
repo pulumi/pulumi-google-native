@@ -99,28 +99,28 @@ export class Routine extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.routinesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'routinesId'");
+            if ((!args || args.routineId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'routineId'");
             }
             inputs["arguments"] = args ? args.arguments : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["definitionBody"] = args ? args.definitionBody : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["determinismLevel"] = args ? args.determinismLevel : undefined;
             inputs["importedLibraries"] = args ? args.importedLibraries : undefined;
             inputs["language"] = args ? args.language : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["returnTableType"] = args ? args.returnTableType : undefined;
             inputs["returnType"] = args ? args.returnType : undefined;
+            inputs["routineId"] = args ? args.routineId : undefined;
             inputs["routineReference"] = args ? args.routineReference : undefined;
             inputs["routineType"] = args ? args.routineType : undefined;
-            inputs["routinesId"] = args ? args.routinesId : undefined;
             inputs["creationTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
             inputs["lastModifiedTime"] = undefined /*out*/;
@@ -154,7 +154,7 @@ export interface RoutineArgs {
      * Optional.
      */
     readonly arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ArgumentArgs>[]>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
@@ -175,7 +175,7 @@ export interface RoutineArgs {
      * Optional. Defaults to "SQL".
      */
     readonly language?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Optional. Set only if Routine is a "TABLE_VALUED_FUNCTION".
      */
@@ -184,6 +184,7 @@ export interface RoutineArgs {
      * Optional if language = "SQL"; required otherwise. If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
      */
     readonly returnType?: pulumi.Input<inputs.bigquery.v2.StandardSqlDataTypeArgs>;
+    readonly routineId: pulumi.Input<string>;
     /**
      * Required. Reference describing the ID of this routine.
      */
@@ -192,5 +193,4 @@ export interface RoutineArgs {
      * Required. The type of routine.
      */
     readonly routineType?: pulumi.Input<string>;
-    readonly routinesId: pulumi.Input<string>;
 }

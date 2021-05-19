@@ -111,11 +111,8 @@ export class ProviderNote extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.notesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'notesId'");
-            }
-            if ((!args || args.providersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'providersId'");
+            if ((!args || args.providerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'providerId'");
             }
             inputs["attestationAuthority"] = args ? args.attestationAuthority : undefined;
             inputs["baseImage"] = args ? args.baseImage : undefined;
@@ -128,10 +125,9 @@ export class ProviderNote extends pulumi.CustomResource {
             inputs["longDescription"] = args ? args.longDescription : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteId"] = args ? args.noteId : undefined;
-            inputs["notesId"] = args ? args.notesId : undefined;
             inputs["package"] = args ? args.package : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["providersId"] = args ? args.providersId : undefined;
+            inputs["providerId"] = args ? args.providerId : undefined;
             inputs["relatedUrl"] = args ? args.relatedUrl : undefined;
             inputs["shortDescription"] = args ? args.shortDescription : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
@@ -207,13 +203,12 @@ export interface ProviderNoteArgs {
      */
     readonly name?: pulumi.Input<string>;
     readonly noteId?: pulumi.Input<string>;
-    readonly notesId: pulumi.Input<string>;
     /**
      * A note describing a package hosted by various package managers.
      */
     readonly package?: pulumi.Input<inputs.containeranalysis.v1alpha1.PackageArgs>;
     readonly parent?: pulumi.Input<string>;
-    readonly providersId: pulumi.Input<string>;
+    readonly providerId: pulumi.Input<string>;
     /**
      * URLs associated with this note
      */

@@ -79,31 +79,31 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.consentArtifactsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentArtifactsId'");
+            if ((!args || args.consentArtifactId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentArtifactId'");
             }
-            if ((!args || args.consentStoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'consentStoresId'");
+            if ((!args || args.consentStoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentStoreId'");
             }
-            if ((!args || args.datasetsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datasetsId'");
+            if ((!args || args.datasetId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datasetId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            inputs["consentArtifactsId"] = args ? args.consentArtifactsId : undefined;
+            inputs["consentArtifactId"] = args ? args.consentArtifactId : undefined;
             inputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
             inputs["consentContentVersion"] = args ? args.consentContentVersion : undefined;
-            inputs["consentStoresId"] = args ? args.consentStoresId : undefined;
-            inputs["datasetsId"] = args ? args.datasetsId : undefined;
+            inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
+            inputs["datasetId"] = args ? args.datasetId : undefined;
             inputs["guardianSignature"] = args ? args.guardianSignature : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["userId"] = args ? args.userId : undefined;
             inputs["userSignature"] = args ? args.userSignature : undefined;
             inputs["witnessSignature"] = args ? args.witnessSignature : undefined;
@@ -128,7 +128,7 @@ export class DatasetConsentStoreConsentArtifact extends pulumi.CustomResource {
  * The set of arguments for constructing a DatasetConsentStoreConsentArtifact resource.
  */
 export interface DatasetConsentStoreConsentArtifactArgs {
-    readonly consentArtifactsId: pulumi.Input<string>;
+    readonly consentArtifactId: pulumi.Input<string>;
     /**
      * Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
      */
@@ -137,13 +137,13 @@ export interface DatasetConsentStoreConsentArtifactArgs {
      * Optional. An string indicating the version of the consent information shown to the user.
      */
     readonly consentContentVersion?: pulumi.Input<string>;
-    readonly consentStoresId: pulumi.Input<string>;
-    readonly datasetsId: pulumi.Input<string>;
+    readonly consentStoreId: pulumi.Input<string>;
+    readonly datasetId: pulumi.Input<string>;
     /**
      * Optional. A signature from a guardian.
      */
     readonly guardianSignature?: pulumi.Input<inputs.healthcare.v1beta1.SignatureArgs>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
      */
@@ -152,7 +152,7 @@ export interface DatasetConsentStoreConsentArtifactArgs {
      * Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. User's UUID provided by the client.
      */

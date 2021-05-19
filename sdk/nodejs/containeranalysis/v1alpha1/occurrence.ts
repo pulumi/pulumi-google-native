@@ -111,11 +111,11 @@ export class Occurrence extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.occurrencesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'occurrencesId'");
+            if ((!args || args.occurrenceId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'occurrenceId'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["buildDetails"] = args ? args.buildDetails : undefined;
@@ -127,8 +127,8 @@ export class Occurrence extends pulumi.CustomResource {
             inputs["kind"] = args ? args.kind : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["noteName"] = args ? args.noteName : undefined;
-            inputs["occurrencesId"] = args ? args.occurrencesId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["occurrenceId"] = args ? args.occurrenceId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["remediation"] = args ? args.remediation : undefined;
             inputs["resource"] = args ? args.resource : undefined;
             inputs["resourceUrl"] = args ? args.resourceUrl : undefined;
@@ -204,8 +204,8 @@ export interface OccurrenceArgs {
      * An analysis note associated with this image, in the form "providers/{provider_id}/notes/{NOTE_ID}" This field can be used as a filter in list requests.
      */
     readonly noteName?: pulumi.Input<string>;
-    readonly occurrencesId: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly occurrenceId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the `Note`
      */

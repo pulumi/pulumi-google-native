@@ -66,20 +66,16 @@ export class Site extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.siteId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'siteId'");
             }
-            if ((!args || args.sitesId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'sitesId'");
-            }
             inputs["appId"] = args ? args.appId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["siteId"] = args ? args.siteId : undefined;
-            inputs["sitesId"] = args ? args.sitesId : undefined;
             inputs["defaultUrl"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["type"] = undefined /*out*/;
@@ -109,7 +105,6 @@ export interface SiteArgs {
      * Optional. User-specified labels for the Hosting site.
      */
     readonly labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly siteId: pulumi.Input<string>;
-    readonly sitesId: pulumi.Input<string>;
 }

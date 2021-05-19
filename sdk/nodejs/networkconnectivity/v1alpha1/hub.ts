@@ -78,19 +78,15 @@ export class Hub extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.hubsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'hubsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["createTime"] = args ? args.createTime : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["hubId"] = args ? args.hubId : undefined;
-            inputs["hubsId"] = args ? args.hubsId : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
             inputs["spokes"] = undefined /*out*/;
@@ -126,7 +122,6 @@ export interface HubArgs {
      */
     readonly description?: pulumi.Input<string>;
     readonly hubId?: pulumi.Input<string>;
-    readonly hubsId: pulumi.Input<string>;
     /**
      * User-defined labels.
      */
@@ -135,7 +130,7 @@ export interface HubArgs {
      * Immutable. The name of a Hub resource.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     readonly requestId?: pulumi.Input<string>;
     /**
      * Time when the Hub was updated.

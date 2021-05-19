@@ -65,7 +65,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    public readonly projectId!: pulumi.Output<string>;
+    public readonly project!: pulumi.Output<string>;
     /**
      * The project lifecycle state.
      */
@@ -86,14 +86,13 @@ export class Project extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["parent"] = args ? args.parent : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["deleteTime"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
@@ -108,7 +107,7 @@ export class Project extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["parent"] = undefined /*out*/;
-            inputs["projectId"] = undefined /*out*/;
+            inputs["project"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;
         }
@@ -138,6 +137,5 @@ export interface ProjectArgs {
     /**
      * Immutable. The unique, user-assigned id of the project. It must be 6 to 30 lowercase ASCII letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123`
      */
-    readonly projectId?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

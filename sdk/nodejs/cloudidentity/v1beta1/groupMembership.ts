@@ -75,15 +75,15 @@ export class GroupMembership extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.groupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'groupsId'");
+            if ((!args || args.groupId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'groupId'");
             }
-            if ((!args || args.membershipsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'membershipsId'");
+            if ((!args || args.membershipId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'membershipId'");
             }
-            inputs["groupsId"] = args ? args.groupsId : undefined;
+            inputs["groupId"] = args ? args.groupId : undefined;
             inputs["memberKey"] = args ? args.memberKey : undefined;
-            inputs["membershipsId"] = args ? args.membershipsId : undefined;
+            inputs["membershipId"] = args ? args.membershipId : undefined;
             inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             inputs["roles"] = args ? args.roles : undefined;
             inputs["createTime"] = undefined /*out*/;
@@ -110,12 +110,12 @@ export class GroupMembership extends pulumi.CustomResource {
  * The set of arguments for constructing a GroupMembership resource.
  */
 export interface GroupMembershipArgs {
-    readonly groupsId: pulumi.Input<string>;
+    readonly groupId: pulumi.Input<string>;
     /**
      * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
     readonly memberKey?: pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>;
-    readonly membershipsId: pulumi.Input<string>;
+    readonly membershipId: pulumi.Input<string>;
     /**
      * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */

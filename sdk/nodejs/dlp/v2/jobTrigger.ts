@@ -87,22 +87,22 @@ export class JobTrigger extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.jobTriggersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'jobTriggersId'");
+            if ((!args || args.jobTriggerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'jobTriggerId'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["inspectJob"] = args ? args.inspectJob : undefined;
-            inputs["jobTriggersId"] = args ? args.jobTriggersId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["jobTriggerId"] = args ? args.jobTriggerId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["triggerId"] = args ? args.triggerId : undefined;
             inputs["triggers"] = args ? args.triggers : undefined;
@@ -145,13 +145,13 @@ export interface JobTriggerArgs {
      * For inspect jobs, a snapshot of the configuration.
      */
     readonly inspectJob?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InspectJobConfigArgs>;
-    readonly jobTriggersId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly jobTriggerId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * Required. A status for this trigger.
      */

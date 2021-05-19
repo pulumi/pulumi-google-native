@@ -113,8 +113,8 @@ export class ClusterNodePool extends pulumi.CustomResource {
             if ((!args || args.nodePoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodePoolId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             if ((!args || args.zone === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'zone'");
@@ -133,7 +133,7 @@ export class ClusterNodePool extends pulumi.CustomResource {
             inputs["nodePoolId"] = args ? args.nodePoolId : undefined;
             inputs["parent"] = args ? args.parent : undefined;
             inputs["podIpv4CidrSize"] = args ? args.podIpv4CidrSize : undefined;
-            inputs["projectId"] = args ? args.projectId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["selfLink"] = args ? args.selfLink : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["upgradeSettings"] = args ? args.upgradeSettings : undefined;
@@ -217,7 +217,7 @@ export interface ClusterNodePoolArgs {
      * [Output only] The pod CIDR block size per node in this node pool.
      */
     readonly podIpv4CidrSize?: pulumi.Input<number>;
-    readonly projectId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * [Output only] Server-defined URL for the resource.
      */

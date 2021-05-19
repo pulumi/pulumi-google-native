@@ -66,22 +66,18 @@ export class EntryGroup extends pulumi.CustomResource {
             if ((!args || args.entryGroupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'entryGroupId'");
             }
-            if ((!args || args.entryGroupsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'entryGroupsId'");
+            if ((!args || args.location === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.locationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'locationsId'");
-            }
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["entryGroupId"] = args ? args.entryGroupId : undefined;
-            inputs["entryGroupsId"] = args ? args.entryGroupsId : undefined;
-            inputs["locationsId"] = args ? args.locationsId : undefined;
+            inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["dataCatalogTimestamps"] = undefined /*out*/;
         } else {
             inputs["dataCatalogTimestamps"] = undefined /*out*/;
@@ -109,11 +105,10 @@ export interface EntryGroupArgs {
      */
     readonly displayName?: pulumi.Input<string>;
     readonly entryGroupId: pulumi.Input<string>;
-    readonly entryGroupsId: pulumi.Input<string>;
-    readonly locationsId: pulumi.Input<string>;
+    readonly location: pulumi.Input<string>;
     /**
      * The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
 }

@@ -99,26 +99,24 @@ export class OrganizationDeveloperApp extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.appsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'appsId'");
+            if ((!args || args.appId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'appId'");
             }
-            if ((!args || args.developersId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'developersId'");
+            if ((!args || args.developerId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'developerId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["apiProducts"] = args ? args.apiProducts : undefined;
             inputs["appFamily"] = args ? args.appFamily : undefined;
             inputs["appId"] = args ? args.appId : undefined;
-            inputs["appsId"] = args ? args.appsId : undefined;
             inputs["attributes"] = args ? args.attributes : undefined;
             inputs["callbackUrl"] = args ? args.callbackUrl : undefined;
             inputs["developerId"] = args ? args.developerId : undefined;
-            inputs["developersId"] = args ? args.developersId : undefined;
             inputs["keyExpiresIn"] = args ? args.keyExpiresIn : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["scopes"] = args ? args.scopes : undefined;
             inputs["status"] = args ? args.status : undefined;
             inputs["createdAt"] = undefined /*out*/;
@@ -161,8 +159,7 @@ export interface OrganizationDeveloperAppArgs {
     /**
      * ID of the developer app.
      */
-    readonly appId?: pulumi.Input<string>;
-    readonly appsId: pulumi.Input<string>;
+    readonly appId: pulumi.Input<string>;
     /**
      * List of attributes for the developer app.
      */
@@ -174,8 +171,7 @@ export interface OrganizationDeveloperAppArgs {
     /**
      * ID of the developer.
      */
-    readonly developerId?: pulumi.Input<string>;
-    readonly developersId: pulumi.Input<string>;
+    readonly developerId: pulumi.Input<string>;
     /**
      * Expiration time, in milliseconds, for the consumer key that is generated for the developer app. If not set or left to the default value of `-1`, the API key never expires. The expiration time can't be updated after it is set.
      */
@@ -184,7 +180,7 @@ export interface OrganizationDeveloperAppArgs {
      * Name of the developer app.
      */
     readonly name?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Scopes to apply to the developer app. The specified scopes must already exist for the API product that you associate with the developer app.
      */

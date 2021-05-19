@@ -75,16 +75,16 @@ export class OrganizationAnalyticDatastore extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.datastoresId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'datastoresId'");
+            if ((!args || args.datastoreId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'datastoreId'");
             }
-            if ((!args || args.organizationsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'organizationsId'");
+            if ((!args || args.organizationId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'organizationId'");
             }
             inputs["datastoreConfig"] = args ? args.datastoreConfig : undefined;
-            inputs["datastoresId"] = args ? args.datastoresId : undefined;
+            inputs["datastoreId"] = args ? args.datastoreId : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["organizationsId"] = args ? args.organizationsId : undefined;
+            inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["targetType"] = args ? args.targetType : undefined;
             inputs["createTime"] = undefined /*out*/;
             inputs["lastUpdateTime"] = undefined /*out*/;
@@ -114,12 +114,12 @@ export interface OrganizationAnalyticDatastoreArgs {
      * Datastore Configurations.
      */
     readonly datastoreConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1DatastoreConfigArgs>;
-    readonly datastoresId: pulumi.Input<string>;
+    readonly datastoreId: pulumi.Input<string>;
     /**
      * Required. Display name in UI
      */
     readonly displayName?: pulumi.Input<string>;
-    readonly organizationsId: pulumi.Input<string>;
+    readonly organizationId: pulumi.Input<string>;
     /**
      * Destination storage type. Supported types `gcs` or `bigquery`.
      */

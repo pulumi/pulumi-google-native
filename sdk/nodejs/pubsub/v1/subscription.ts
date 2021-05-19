@@ -99,11 +99,11 @@ export class Subscription extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
-            if ((!args || args.projectsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectsId'");
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.subscriptionsId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'subscriptionsId'");
+            if ((!args || args.subscriptionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subscriptionId'");
             }
             inputs["ackDeadlineSeconds"] = args ? args.ackDeadlineSeconds : undefined;
             inputs["deadLetterPolicy"] = args ? args.deadLetterPolicy : undefined;
@@ -114,11 +114,11 @@ export class Subscription extends pulumi.CustomResource {
             inputs["labels"] = args ? args.labels : undefined;
             inputs["messageRetentionDuration"] = args ? args.messageRetentionDuration : undefined;
             inputs["name"] = args ? args.name : undefined;
-            inputs["projectsId"] = args ? args.projectsId : undefined;
+            inputs["project"] = args ? args.project : undefined;
             inputs["pushConfig"] = args ? args.pushConfig : undefined;
             inputs["retainAckedMessages"] = args ? args.retainAckedMessages : undefined;
             inputs["retryPolicy"] = args ? args.retryPolicy : undefined;
-            inputs["subscriptionsId"] = args ? args.subscriptionsId : undefined;
+            inputs["subscriptionId"] = args ? args.subscriptionId : undefined;
             inputs["topic"] = args ? args.topic : undefined;
         } else {
             inputs["ackDeadlineSeconds"] = undefined /*out*/;
@@ -182,7 +182,7 @@ export interface SubscriptionArgs {
      * Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
      */
     readonly name?: pulumi.Input<string>;
-    readonly projectsId: pulumi.Input<string>;
+    readonly project: pulumi.Input<string>;
     /**
      * If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
      */
@@ -195,7 +195,7 @@ export interface SubscriptionArgs {
      * A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
      */
     readonly retryPolicy?: pulumi.Input<inputs.pubsub.v1.RetryPolicyArgs>;
-    readonly subscriptionsId: pulumi.Input<string>;
+    readonly subscriptionId: pulumi.Input<string>;
     /**
      * Required. The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
      */
