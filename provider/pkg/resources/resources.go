@@ -22,7 +22,7 @@ type CloudAPIResource struct {
 	UpdateVerb       string                      `json:"updateVerb,omitempty"`
 	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
 	IdPath           string                      `json:"idPath,omitempty"`
-	IdParams         []string                    `json:"idParams,omitempty"`
+	IdParams         map[string]string           `json:"idParams,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
 }
 
@@ -43,4 +43,5 @@ type CloudAPIProperty struct {
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists
 	// in the API payload but does not exist in the SDK.
 	Container string `json:"container,omitempty"`
+	SdkName   string `json:"sdkName,omitempty"`
 }

@@ -246,9 +246,9 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 
 	id := res.IdPath
 	idParams := res.IdParams
-	for _, param := range idParams {
-		value := inputs[resource.PropertyKey(param)].StringValue()
-		id = strings.Replace(id, fmt.Sprintf("{%s}", param), value, 1)
+	for name, sdkName := range idParams {
+		value := inputs[resource.PropertyKey(sdkName)].StringValue()
+		id = strings.Replace(id, fmt.Sprintf("{%s}", name), value, 1)
 	}
 
 	var resp map[string]interface{}
@@ -307,7 +307,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 					body[value.Container] = parent
 				}
 			}
-			parent[name] = inputsMap[name]
+			sdkName := name
+			if value.SdkName != "" {
+				sdkName = value.SdkName
+			}
+			parent[name] = inputsMap[sdkName]
 		}
 
 		op, err := p.client.sendRequestWithTimeout(res.CreateVerb, uri, body, 0)
@@ -529,7 +533,11 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 				body[value.Container] = parent
 			}
 		}
-		parent[name] = inputsMap[name]
+		sdkName := name
+		if value.SdkName != "" {
+			sdkName = value.SdkName
+		}
+		parent[name] = inputsMap[sdkName]
 	}
 
 	uri := res.RelativePath(req.GetId())

@@ -16,7 +16,9 @@ func TestGetInputsFromState(t *testing.T) {
 			"p2": {
 				Container: "c1",
 			},
-			"p3": {},
+			"p3": {
+				SdkName: "p3sdk",
+			},
 		},
 	}
 	state := resource.NewPropertyMapFromMap(map[string]interface{}{
@@ -31,7 +33,7 @@ func TestGetInputsFromState(t *testing.T) {
 	expected := map[string]interface{}{
 		"p1": "v1",
 		"p2": "v2",
-		"p3": 123.456,
+		"p3sdk": 123.456,
 	}
 	assert.Equal(t, expected, actual)
 }

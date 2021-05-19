@@ -3,8 +3,29 @@
 package gen
 
 import (
+	"github.com/gedex/inflector"
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"strings"
 )
+
+var s = codegen.NewStringSet()
+
+// apiNameToSdkName returns an SDK name for a given API parameter or property name.
+// In particular, it converts pluralized ID names to singular ID names.
+func apiNameToSdkName(name string) string {
+	if strings.HasSuffix(name, "Id") {
+		name = inflector.Singularize(name[:len(name)-2])
+		switch name {
+		case "project", "location", "managedZone":
+			return name
+		case "datum":
+			return "dataId"
+		default:
+			return name + "Id"
+		}
+	}
+	return name
+}
 
 // ToLowerCamel converts a string to lowerCamelCase.
 // The code is adopted from https://github.com/iancoleman/strcase but changed in several ways to handle

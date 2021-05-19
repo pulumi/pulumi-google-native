@@ -284,6 +284,7 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 		CreatePath: createPath,
 		CreateVerb: createMethod.HttpMethod,
 		NoDelete:   deleteMethod == nil,
+		IdParams:   map[string]string{},
 	}
 
 	for _, name := range codegen.SortedKeys(createMethod.Parameters) {
@@ -320,14 +321,19 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	subMatches := pathRegex.FindAllStringSubmatch(createPath, -1)
 	for _, names := range subMatches {
 		name := names[1]
-		inputProperties[name] = schema.PropertySpec{
+		sdkName := apiNameToSdkName(name)
+		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
-		resourceMeta.CreateParams = append(resourceMeta.CreateParams, resources.CloudAPIResourceParam{
+		param := resources.CloudAPIResourceParam{
 			Name:     name,
 			Location: "path",
-		})
-		requiredInputProperties.Add(name)
+		}
+		if sdkName != name {
+			param.SdkName = sdkName
+		}
+		resourceMeta.CreateParams = append(resourceMeta.CreateParams, param)
+		requiredInputProperties.Add(sdkName)
 	}
 
 	idPath := getMethod.FlatPath
@@ -339,13 +345,14 @@ func (g *packageGenerator) genResource(typeName string, createMethod, getMethod,
 	subMatches = pathRegex.FindAllStringSubmatch(idPath, -1)
 	for _, names := range subMatches {
 		name := names[1]
-		if _, has := inputProperties[name]; !has {
-			inputProperties[name] = schema.PropertySpec{
+		sdkName := apiNameToSdkName(name)
+		if _, has := inputProperties[sdkName]; !has {
+			inputProperties[sdkName] = schema.PropertySpec{
 				TypeSpec: schema.TypeSpec{Type: "string"},
 			}
-			requiredInputProperties.Add(name)
+			requiredInputProperties.Add(sdkName)
 		}
-		resourceMeta.IdParams = append(resourceMeta.IdParams, name)
+		resourceMeta.IdParams[name] = sdkName
 	}
 
 	if createMethod.Request != nil {
@@ -452,6 +459,8 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 	}
 	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
 		value := typeSchema.Properties[name]
+		sdkName := apiNameToSdkName(name)
+
 		if strings.Contains(value.Description, "Deprecated.") {
 			continue
 		}
@@ -484,22 +493,26 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			continue
 		}
 
-		typeSpec, err := g.genTypeSpec(typeName, name, &prop, isOutput)
+		typeSpec, err := g.genTypeSpec(typeName, sdkName, &prop, isOutput)
 		if err != nil {
 			return nil, err
 		}
 
 		if prop.Required || isOutput {
-			result.requiredSpecs.Add(name)
+			result.requiredSpecs.Add(sdkName)
 		}
 
 		description := strings.TrimPrefix(prop.Description, "Output only. ")
 
-		result.specs[name] = schema.PropertySpec{
+		result.specs[sdkName] = schema.PropertySpec{
 			Description: description,
 			TypeSpec:    *typeSpec,
 		}
-		result.properties[name] = resources.CloudAPIProperty{}
+		apiProp := resources.CloudAPIProperty{}
+		if name != sdkName {
+			apiProp.SdkName = sdkName
+		}
+		result.properties[name] = apiProp
 	}
 	return &result, nil
 }

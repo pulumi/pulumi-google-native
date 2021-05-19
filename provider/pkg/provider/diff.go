@@ -22,7 +22,11 @@ func getInputsFromState(res resources.CloudAPIResource, state resource.PropertyM
 		}
 
 		if value, has := parent[name]; has {
-			inputsMap[name] = value
+			sdkName := name
+			if prop.SdkName != "" {
+				sdkName = prop.SdkName
+			}
+			inputsMap[sdkName] = value
 		}
 	}
 	return resource.NewPropertyMapFromMap(inputsMap)
